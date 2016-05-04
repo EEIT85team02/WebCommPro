@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Student.model.Student" table="Student" >
+        
+        <id name="stu_id" column="stu_id">
+         
+        </id>
+        
+        <property name="stu_lastname" column="stu_lastname" />
+        <property name="stu_firstname" column="stu_firstname" />
+        <property name="stu_tel" column="stu_tel" />
+        <property name="stu_mobile" column="stu_mobile" />
+        <property name="stu_email" column="stu_email" />
+        <property name="stu_add" column="stu_add" />
+        <property name="stu_age" column="stu_age" />
+        <property name="stu_sch" column="stu_sch" />
+        <property name="stu_dep" column="stu_dep" />
+        <property name="class_id" column="class_id" />
+        <property name="log_pw" column="log_pw" />
+    </class>
+</hibernate-mapping>
+
