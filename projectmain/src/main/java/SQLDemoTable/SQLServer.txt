@@ -1,0 +1,180 @@
+create database demo
+go
+use demo
+go
+drop table Edu;             --教育中心資料表
+drop table Class;           --班級資料表
+drop table Student;         --學員資料表
+drop table Sign_list;		--權限資料表
+drop table Employee;		--員工資料表(模擬建檔/主要登入專用)
+drop table Test_period;		--班級考試區間資料表
+drop table Test_interval;	--考試時段資料表
+drop table Test_Date;		--班級考試日期時段資料表
+drop table Member_status;	--考生狀況檔(紀錄單據狀況報名/報名確認/已考試等)
+drop table Member_test;		--考生考試資料檔(預約報名加考試)
+drop table Mail_template;	--Email樣板資料表
+drop table Examiner_offday;	--主考官請假資料表
+
+
+
+create table Edu                --教育中心資料表
+(
+edu_id  int IDENTITY(1,1) primary key  NOT NULL  ,			--教育代號
+  edu_name           nvarchar(30)  NOT NULL ,   			--教育中心名稱       
+  edu_add            nvarchar(30)  NOT NULL,				--教育中心地址
+  edu_tel            nvarchar(15)  NOT NULL,				--教育中心電話
+  edu_contact        nvarchar(10)  NOT NULL					--教育中心聯絡人
+);  
+
+
+create table Class		--班級資料表
+(
+  class_id             nvarchar(10)  primary key  NOT NULL,   		--班級代號  
+  class_name           nvarchar(10)  NOT NULL ,						--班級名稱
+  class_contact        nvarchar(30) ,								--班級聯絡人
+  class_teach          nvarchar(15)  NOT NULL,						--班級導師
+  edu_id               int            references   Edu(edu_id)		--教育中心代號
+);  
+
+
+create table Student		--學員資料表
+(
+  stu_id               nvarchar(10)  primary key  NOT NULL,    				--學員代號 
+  stu_lastname         nvarchar(4)   NOT NULL ,           					--姓
+  stu_firstname        nvarchar(8)   NOT NULL,								--名
+  stu_tel              nvarchar(15)  UNIQUE NOT NULL,						--電話1(家裡電話)	
+  stu_mobile           nvarchar(15)  ,										--電話2（手機）
+  stu_email            nvarchar(30)  UNIQUE NOT NULL,						--mail
+  stu_add              nvarchar(30)  ,										--地址
+  stu_age              int           NOT NULL,								--年次
+  stu_sch              nvarchar(10),										--畢業學校
+  stu_dep              nvarchar(30),										--科系
+  class_id             nvarchar(10)  references  Class(class_id) NOT NULL,	--班級代號
+  log_pw               nvarchar(30)  UNIQUE NOT NULL 						--學員登入密碼??
+);  	
+
+create table Sign_list		--權限資料表
+(
+  sl_id                int            primary key  NOT NULL,  			--權限代號   
+  sl_name              nvarchar(10)   NOT NULL         					--權限名稱
+);  
+
+
+
+create table Employee		--員工資料表(模擬建檔/主要登入專用)
+(
+  emp_id               nvarchar(10)  primary key  NOT NULL,					--員工代號 
+  emp_lastname         nvarchar(4)   NOT NULL ,          					--姓 
+  emp_firstname        nvarchar(8)   NOT NULL,								--名
+  dep_id               int	         NOT NULL,     							--部門編號
+  dep_name	           nvarchar(10)  NOT NULL ,   							--部門名稱
+  emp_mail             nvarchar(30)  UNIQUE NOT NULL,						--mail
+  sl_id                int           references  Sign_list(sl_id) NOT NULL 	--權限代號 
+);  
+
+
+
+
+
+
+
+create table Test_period	--班級考試區間資料表
+(
+  test_hour_id           int	       primary key  NOT NULL,  				--考試時段代號
+  test_hour              TIME          NOT NULL           					--考試時段
+);  
+
+
+
+create table Test_interval	--考試日期資料表
+(
+  test_interval_id int IDENTITY(1,1)         NOT NULL  , 								--考試日期代號
+  class_id               nvarchar(10)  references  Class(class_id) NOT NULL,   	 		--班級代號
+  test_startdate         date     UNIQUE NOT NULL ,           							--考試開始日期
+  test_enddate           date          NOT NULL,										--考試結束日期
+  test_hour_id           int	       references  Test_period(test_hour_id) NOT NULL, 	--考試時段代號****
+  PRIMARY KEY (test_interval_id, class_id, test_startdate)
+);  
+
+
+
+
+create table Test_Date		--班級考試日期時段資料表
+(
+  test_date_id int IDENTITY(1,1) NOT NULL  ,   											--考試日期時段代號
+  class_id               nvarchar(10)   references  Class(class_id) NOT NULL,    		--班級代號
+  test_startdate         date      references  Test_interval(test_startdate) NOT NULL, 	--考試開始日期
+  test_hour_id           int	        references  Test_period(test_hour_id) NOT NULL,	--考試時段代號
+  test_people            int           NOT NULL, 										--可報名人數
+  exam_people            int           NOT NULL,										--已報名人數default(0)
+  PRIMARY KEY (class_id, test_startdate,test_hour_id)
+);  
+
+create table Member_status	--考生狀況檔(紀錄單據狀況報名/報名確認/已考試等)
+(
+  sta_id           int	          primary key  NOT NULL,   					--狀況代號
+  sta_name         nvarchar(10)   NOT NULL           						--狀況名稱
+); 
+
+
+
+ create table Member_test	--考生考試資料檔(預約報名加考試)
+(
+  stu_id           nvarchar(10)   references  Student(stu_id) NOT NULL, --學員代號
+  test_startdate   date      references  Test_interval(test_startdate) NOT NULL,		--考試日期
+  test_hour_id     int	          references  Test_period(test_hour_id) NOT NULL,		--考試時段代號
+	mem_applytime  timestamp      UNIQUE NOT NULL,										--預約報名時間
+  mem_implement    float,																--上機考
+  mem_interview    float,																--面試成績
+  sta_id           int            references  Member_status(sta_id) NOT NULL ,			--狀況代號
+  emp_id           nvarchar(10)   references  Employee(emp_id) NOT NULL,				--員工代號(主考官)
+  mem_checktime    time,																--主考官確認時間
+  PRIMARY KEY (stu_id , test_startdate,test_hour_id)
+); 
+
+
+
+
+
+
+
+create table Mail_template	--Email樣板資料表
+(
+  mail_id int IDENTITY(1,1) primary key  NOT NULL , 
+  mail_name        nvarchar(10) ,   								--樣板名稱  
+  mail_text        nvarchar(250)     								--樣板內容     
+); 
+
+
+
+
+ create table Examiner_offday	--主考官請假資料表
+(
+  emp_id           nvarchar(10)	  references  Employee(emp_id) NOT NULL, 		--員工代號		
+  off_stardate     date      NOT NULL,    										--請假開始日期   
+  off_enddate      date      NOT NULL, 											--請假結束日期
+  off_day          int            NOT NULL,										--請假天數
+  emp_job_id       nvarchar(10)	  references  Employee(emp_id) NOT NULL			--職務代理人
+); 
+
+
+
+--create view view_examiner	--檢視主考官VIEW
+--as
+--select e.emp_id, o.off_stardate, o.off_enddate, o.off_day, o.emp_job_id, e.dep_id
+--from Employee e left outer join Examiner_offday o
+--on (s.emp_id = o.emp_id)
+--inner join Employee e
+--on (s.emp_id = e.emp_id)
+--where s.sl_id=1 ;
+
+
+create view view_Member		--檢視考生基本資料VIEW
+as
+select m.stu_id, s.stu_lastmame, s.stu_firstname, s.stu_tel, s.stu_mobile, s.stu_email, s.stu_add
+from Member_test m inner join Student s
+on (m.stu_id = s.stu_id);
+
+
+ 
+ 
