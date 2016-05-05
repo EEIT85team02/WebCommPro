@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Employee.model.Employee" table="Employee" >
+        
+        <id name="emp_id" column="emp_id">
+           
+        </id>
+        
+        <property name="emp_lastname" column="emp_lastname" />
+        <property name="emp_firstname" column="emp_firstname" />
+        <property name="dep_id" column="dep_id" />
+        <property name="dep_name" column="dep_name" />
+        <property name="emp_mail" column="emp_mail" />
+        <property name="sl_id" column="sl_id" />
+    </class>
+</hibernate-mapping>
+
