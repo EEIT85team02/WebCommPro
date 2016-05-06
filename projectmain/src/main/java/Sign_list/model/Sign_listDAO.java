@@ -16,7 +16,7 @@ public class Sign_listDAO implements ISign_listDAO {
 			"from Sign_list order by sl_id";
 
 
-		public void insert(Sign_list sig) {
+		public void insert(Sign_listVO sig) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -30,7 +30,7 @@ public class Sign_listDAO implements ISign_listDAO {
 
 
 
-		public void update(Sign_list sig) {
+		public void update(Sign_listVO sig) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -46,7 +46,7 @@ public class Sign_listDAO implements ISign_listDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				Sign_list sig = (Sign_list) session.get(Sign_list.class, sl_id);
+				Sign_listVO sig = (Sign_listVO) session.get(Sign_listVO.class, sl_id);
 				session.delete(sig);
 				session.getTransaction().commit();	
 			} catch (RuntimeException ex) {
@@ -56,12 +56,12 @@ public class Sign_listDAO implements ISign_listDAO {
 		}
 		
 
-		public Sign_list findByPrimaryKey(Integer sl_id) {
-			Sign_list sig = null;
+		public Sign_listVO findByPrimaryKey(Integer sl_id) {
+			Sign_listVO sig = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				sig = (Sign_list) session.get(Sign_list.class, sl_id);
+				sig = (Sign_listVO) session.get(Sign_listVO.class, sl_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -70,8 +70,8 @@ public class Sign_listDAO implements ISign_listDAO {
 			return sig;
 		}
 
-		public List<Sign_list> getAll() {
-			List<Sign_list> list = null;
+		public List<Sign_listVO> getAll() {
+			List<Sign_listVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();

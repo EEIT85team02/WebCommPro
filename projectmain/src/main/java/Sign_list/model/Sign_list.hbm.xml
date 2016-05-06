@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="Sign_list.model.Sign_list" table="Sign_list" >
+    <class name="Sign_list.model.Sign_listVO" table="Sign_list" >
         
         <id name="sl_id" column="sl_id">
             
