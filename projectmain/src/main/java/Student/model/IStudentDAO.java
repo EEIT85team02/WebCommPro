@@ -11,4 +11,6 @@ public interface IStudentDAO {
 	public void delete(String class_id) throws SQLException;
 	public Student findByPrimaryKey(String class_id) throws SQLException;
 	public List<Student> getAll() throws SQLException;
+	public List<String> getAllGmail() throws SQLException;
+	public List<String> getAllNonGmail() throws SQLException;	
 }
