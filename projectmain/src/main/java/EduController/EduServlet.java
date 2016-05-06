@@ -26,12 +26,13 @@ public class EduServlet extends HttpServlet {
 	}
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
+			doPost(request,response);
 	}
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		Map<String, String> errorMsgs = null;
+		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 
 		/******************************** 新增資料表 ***********************/
@@ -39,11 +40,9 @@ public class EduServlet extends HttpServlet {
 			try {
 				errorMsgs = new HashMap<String, String>();
 				/********************建立資料庫連線******************/
-				System.out.println("OK1");
 				IEduDAO edu = new EduDAO();
-				System.out.println("Ok2");
+				System.out.println("連線成功");
 				/***************(新增)取得Edu-form表單資料***************/
-				request.setCharacterEncoding("UTF-8");
 				String edu_name = request.getParameter("edu_name");
 				String edu_add = request.getParameter("edu_add");
 				String edu_tel = request.getParameter("edu_tel");
@@ -52,32 +51,11 @@ public class EduServlet extends HttpServlet {
 				if (edu_name == null || edu_name.trim().length() == 0) {
 					errorMsgs.put("edu_nameMsg", "中心名稱不可空白");
 				}
-				if (!errorMsgs.isEmpty()) {
-					request.setAttribute("errorMsgs", errorMsgs);
-					RequestDispatcher failureMsg = request
-							.getRequestDispatcher("/Edu/EduView.jsp");
-					failureMsg.forward(request, response);
-					return;
-				}
 				if (edu_add == null || edu_add.trim().length() == 0) {
 					errorMsgs.put("edu_addMsg", "中心地址不可空白");
 				}
-				if (!errorMsgs.isEmpty()) {
-					request.setAttribute("errorMsgs", errorMsgs);
-					RequestDispatcher failureMsg = request
-							.getRequestDispatcher("/Edu/EduView.jsp");
-					failureMsg.forward(request, response);
-					return;
-				}
 				if (edu_tel == null || edu_tel.trim().length() == 0) {
 					errorMsgs.put("edu_telMsg", "中心電話不可空白");
-				}
-				if (!errorMsgs.isEmpty()) {
-					request.setAttribute("errorMsgs", errorMsgs);
-					RequestDispatcher failureMsg = request
-							.getRequestDispatcher("/Edu/EduView.jsp");
-					failureMsg.forward(request, response);
-					return;
 				}
 				if (edu_contact == null || edu_contact.trim().length() == 0) {
 					errorMsgs.put("edu_contactMsg", "聯絡人不可空白");
@@ -111,11 +89,9 @@ public class EduServlet extends HttpServlet {
 		if ("deleteEdu".equals(action)) {
 			try {
 				/********************建立資料庫連線******************/
-				System.out.println("OK1");
 				IEduDAO edu = new EduDAO();
-				System.out.println("Ok2");
+				System.out.println("連線成功");
 				// ============接收中心代號edu_id資料====================
-				request.setCharacterEncoding("UTF-8");
 				Integer edu_id =Integer.parseInt(request.getParameter("edu_id"));
 				// ============呼叫方法刪除資料====================
 				edu.delete(edu_id);
@@ -133,14 +109,11 @@ public class EduServlet extends HttpServlet {
 		/******************************** 更新資料表 ***********************/	
 		if ("updateEdu".equals(action)) { 
 			try {
-				
 				errorMsgs = new HashMap<String, String>();
 				/********************建立資料庫連線******************/
-				System.out.println("OK1");
 				IEduDAO edu = new EduDAO();
-				System.out.println("Ok2");
+				System.out.println("連線成功");
 				/***************(更新)取得Edu-form表單資料***************/
-				request.setCharacterEncoding("UTF-8");
 				Integer edu_id =Integer.parseInt(request.getParameter("edu_id"));
 				String edu_name = request.getParameter("edu_name");
 				String edu_add = request.getParameter("edu_add");
@@ -152,53 +125,18 @@ public class EduServlet extends HttpServlet {
 				edu1.setEdu_add(edu_add);
 				edu1.setEdu_tel(edu_tel);
 				edu1.setEdu_contact(edu_contact);
-				
-				System.out.println(edu_tel);
-				System.out.println(edu_name);
 				/*******************檢查Edu-form表單資料*******************/
 				if (edu_id == null) {
 					errorMsgs.put("edu_idMsg", "中心代號不可空白");
 				}
-				if (!errorMsgs.isEmpty()) {
-					request.setAttribute("errorMsgs", errorMsgs);
-					request.setAttribute("eduVO", edu1);
-					RequestDispatcher failureMsg = request
-							.getRequestDispatcher("/Edu/EduUpdateFrom.jsp");
-					failureMsg.forward(request, response);
-					return;
-				}
 				if (edu_name == null || edu_name.trim().length() == 0) {
 					errorMsgs.put("edu_nameMsg", "中心名稱不可空白");
-				}
-				if (!errorMsgs.isEmpty()) {
-					request.setAttribute("errorMsgs", errorMsgs);
-					request.setAttribute("eduVO", edu1);
-					RequestDispatcher failureMsg = request
-							.getRequestDispatcher("/Edu/EduUpdateFrom.jsp");
-					failureMsg.forward(request, response);
-					return;
 				}
 				if (edu_add == null || edu_add.trim().length() == 0) {
 					errorMsgs.put("edu_addMsg", "中心地址不可空白");
 				}
-				if (!errorMsgs.isEmpty()) {
-					request.setAttribute("errorMsgs", errorMsgs);
-					request.setAttribute("eduVO", edu1);
-					RequestDispatcher failureMsg = request
-							.getRequestDispatcher("/Edu/EduUpdateFrom.jsp");
-					failureMsg.forward(request, response);
-					return;
-				}
 				if (edu_tel == null || edu_tel.trim().length() == 0) {
 					errorMsgs.put("edu_telMsg", "中心電話不可空白");
-				}
-				if (!errorMsgs.isEmpty()) {
-					request.setAttribute("errorMsgs", errorMsgs);
-					request.setAttribute("eduVO", edu1);
-					RequestDispatcher failureMsg = request
-							.getRequestDispatcher("/Edu/EduUpdateFrom.jsp");
-					failureMsg.forward(request, response);
-					return;
 				}
 				if (edu_contact == null || edu_contact.trim().length() == 0) {
 					errorMsgs.put("edu_contactMsg", "聯絡人不可空白");
@@ -253,7 +191,6 @@ public class EduServlet extends HttpServlet {
 				IEduDAO edu = new EduDAO();
 				System.out.println("Ok2");
 				// ============接收中心代號edu_id資料====================
-				request.setCharacterEncoding("UTF-8");
 				Integer edu_id =Integer.parseInt(request.getParameter("edu_id"));
 				Edu eduVO = edu.findByPrimaryKey(edu_id);
 				request.setAttribute("eduVO", eduVO);
