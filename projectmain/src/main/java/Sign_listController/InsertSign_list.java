@@ -1,59 +1,274 @@
 package Sign_listController;
 
-import java.io.IOException;
-import java.sql.SQLException;
+import java.io.*;
+import java.util.*;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
-
-import Sign_list.model.ISign_listDAO;
-import Sign_list.model.Sign_list;
-import Sign_list.model.Sign_listDAO;
-
+import Sign_list.model.*;
 
 @WebServlet("/Sign_list/InsertSign_list.do")
 public class InsertSign_list extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-  
-    public InsertSign_list() {
-        super();
-       
-    }
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
+		doPost(req, res);
+	}
+
+	public void doPost(HttpServletRequest req, HttpServletResponse res)
+			throws ServletException, IOException {
+
+		req.setCharacterEncoding("UTF-8");
+		String action = req.getParameter("action");
 		
-	}
+		
+		if ("getOneSign_list".equals(action)) { // 來自Sign_listform.jsp的請求(查詢權限代號)
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			System.out.println("OK1");
-			ISign_listDAO sig= new Sign_listDAO(); 
-			System.out.println("Ok2");
-			request.setCharacterEncoding("UTF-8");
-			Integer sl_id = Integer.parseInt(request.getParameter("sl_id"));
-			String sl_name = request.getParameter("sl_name");
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
 
-			Sign_list sig1= new Sign_list();
-			sig1.setSl_id(sl_id);
-			sig1.setSl_name(sl_name);
+			try {
+				/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
+				String str = req.getParameter("sl_id");
+				if (str == null || (str.trim()).length() == 0) {
+					errorMsgs.add("請輸入權限代號");
+				}
+				// Send the use back to the form, if there were errors
+				if (!errorMsgs.isEmpty()) {
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/Sign_list/Sign_listform.jsp");
+					failureView.forward(req, res);
+					return;//程式中斷
+				}
+				
+				Integer sl_id = null;
+				try {
+					sl_id = new Integer(str);
+				} catch (Exception e) {
+					errorMsgs.add("權限代號格式不正確");
+				}
+				// Send the use back to the form, if there were errors
+				if (!errorMsgs.isEmpty()) {
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/Sign_list/Sign_listform.jsp");
+					failureView.forward(req, res);
+					return;//程式中斷
+				}
+				
+				/***************************2.開始查詢資料*****************************************/
+				Sign_listService slSvc = new Sign_listService();
+				Sign_listVO sig = slSvc.getOneSl(sl_id);
+				if (sig == null) {
+					errorMsgs.add("查無資料");
+				}
+				// Send the use back to the form, if there were errors
+				if (!errorMsgs.isEmpty()) {
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/Sign_list/Sign_listform.jsp");
+					failureView.forward(req, res);
+					return;//程式中斷
+				}
+				
+				/***************************3.查詢完成,準備轉交(Send the Success view)*************/
+				req.setAttribute("sig", sig); // 資料庫取出的sig(VO)物件,存入req
+				String url = "/Sign_list/Sign_listOne.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 Sign_listOne.jsp
+				successView.forward(req, res);
 
-			sig.insert(sig1);
-			System.out.println("okokokok");
+				/***************************其他可能的錯誤處理*************************************/
+			} catch (Exception e) {
+				errorMsgs.add("無法取得資料:" + e.getMessage());
+				RequestDispatcher failureView = req
+						.getRequestDispatcher("/Sign_list/Sign_listform.jsp");
+				failureView.forward(req, res);
+			}
+		}
+		
+		
+//		if ("getOne_For_Update".equals(action)) { // 來自Sign_listform.jsp的請求(修改)
+//
+//			List<String> errorMsgs = new LinkedList<String>();
+//			// Store this set in the request scope, in case we need to
+//			// send the ErrorPage view.
+//			req.setAttribute("errorMsgs", errorMsgs);
+//			
+//			try {
+//				/***************************1.接收請求參數****************************************/
+//				Integer sl_id = new Integer(req.getParameter("sl_id"));
+//				
+//				/***************************2.開始查詢資料****************************************/
+//				Sign_listService slSvc = new Sign_listService();
+//				Sign_listVO sig = slSvc.getOneSl(sl_id);
+//								
+//				/***************************3.查詢完成,準備轉交(Send the Success view)************/
+//				req.setAttribute("sig", sig);         // 資料庫取出的sig(VO)物件,存入req
+//				String url = "/emp/update_emp_input.jsp";
+//				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_emp_input.jsp
+//				successView.forward(req, res);
+//
+//				/***************************其他可能的錯誤處理**********************************/
+//			} catch (Exception e) {
+//				errorMsgs.add("無法取得要修改的資料:" + e.getMessage());
+//				RequestDispatcher failureView = req
+//						.getRequestDispatcher("/emp/listAllEmp.jsp");
+//				failureView.forward(req, res);
+//			}
+//		}
+//		
+//		
+//		if ("update".equals(action)) { // 來自update_emp_input.jsp的請求
+//			
+//			List<String> errorMsgs = new LinkedList<String>();
+//			// Store this set in the request scope, in case we need to
+//			// send the ErrorPage view.
+//			req.setAttribute("errorMsgs", errorMsgs);
+//		
+//			try {
+//				/***************************1.接收請求參數 - 輸入格式的錯誤處理**********************/
+//				Integer empno = new Integer(req.getParameter("empno").trim());
+//				String ename = req.getParameter("ename").trim();
+//				String job = req.getParameter("job").trim();				
+//				
+//				java.sql.Date hiredate = null;
+//				try {
+//					hiredate = java.sql.Date.valueOf(req.getParameter("hiredate").trim());
+//				} catch (IllegalArgumentException e) {
+//					hiredate=new java.sql.Date(System.currentTimeMillis());
+//					errorMsgs.add("請輸入日期!");
+//				}
+//
+//				Double sal = null;
+//				try {
+//					sal = new Double(req.getParameter("sal").trim());
+//				} catch (NumberFormatException e) {
+//					sal = 0.0;
+//					errorMsgs.add("薪水請填數字.");
+//				}
+//
+//				Double comm = null;
+//				try {
+//					comm = new Double(req.getParameter("comm").trim());
+//				} catch (NumberFormatException e) {
+//					comm = 0.0;
+//					errorMsgs.add("獎金請填數字.");
+//				}
+//
+//				Integer deptno = new Integer(req.getParameter("deptno").trim());
+//
+//				EmpVO empVO = new EmpVO();
+//				empVO.setEmpno(empno);
+//				empVO.setEname(ename);
+//				empVO.setJob(job);
+//				empVO.setHiredate(hiredate);
+//				empVO.setSal(sal);
+//				empVO.setComm(comm);
+//				DeptVO deptVO = new DeptVO();
+//				deptVO.setDeptno(deptno);
+//				empVO.setDeptVO(deptVO);
+//
+//				// Send the use back to the form, if there were errors
+//				if (!errorMsgs.isEmpty()) {
+//					req.setAttribute("empVO", empVO); // 含有輸入格式錯誤的empVO物件,也存入req
+//					RequestDispatcher failureView = req
+//							.getRequestDispatcher("/emp/update_emp_input.jsp");
+//					failureView.forward(req, res);
+//					return; //程式中斷
+//				}
+//				
+//				/***************************2.開始修改資料*****************************************/
+//				EmpService empSvc = new EmpService();
+//				empVO = empSvc.updateEmp(empno, ename, job, hiredate, sal,comm, deptno);
+//				/***************************3.修改完成,準備轉交(Send the Success view)*************/
+//				req.setAttribute("empVO", empVO); // 資料庫update成功後,正確的的empVO物件,存入req
+//				String url = "/emp/listOneEmp.jsp";
+//				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
+//				successView.forward(req, res);
+//
+//				/***************************其他可能的錯誤處理*************************************/
+//			} catch (Exception e) {
+//				errorMsgs.add("修改資料失敗:"+e.getMessage());
+//				RequestDispatcher failureView = req
+//						.getRequestDispatcher("/emp/update_emp_input.jsp");
+//				failureView.forward(req, res);
+//			}
+//		}
+
+        if ("addSign_list".equals(action)) { // 來自Sign_listform.jsp的請求(新增)
+        	
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/Sign_list/Sign_listformOK.jsp");
-			rd.forward(request, response);
-			return;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} 	
-	}
+			try {
+				/***********************1.接收請求參數 - 輸入格式的錯誤處理*************************/
+				Integer sl_id = new Integer(req.getParameter("sl_id"));
+				String sl_name = req.getParameter("sl_name").trim();
+				
+				Sign_listVO sig = new Sign_listVO();
+				sig.setSl_id(sl_id);
+				sig.setSl_name(sl_name);
+				
+				
+				// Send the use back to the form, if there were errors
+				if (!errorMsgs.isEmpty()) {
+					req.setAttribute("sig", sig); // 含有輸入格式錯誤的sig(VO)物件,也存入req
+					RequestDispatcher failureView = req
+							.getRequestDispatcher("/Sign_list/Sign_listform.jsp");
+					failureView.forward(req, res);
+					return;
+				}
+				
+				/***************************2.開始新增資料***************************************/
+				Sign_listService slSvc = new Sign_listService();
+				sig = slSvc.addSign_list(sl_id, sl_name);
+				
+				/***************************3.新增完成,準備轉交(Send the Success view)***********/
+				String url = "/Sign_list/Sign_listform.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交Sign_listform.jsp
+				successView.forward(req, res);				
+				
+				/***************************其他可能的錯誤處理**********************************/
+			} catch (Exception e) {
+				errorMsgs.add(e.getMessage());
+				RequestDispatcher failureView = req
+						.getRequestDispatcher("/Sign_list/Sign_listform.jsp");
+				failureView.forward(req, res);
+			}
+		}
+		
+		
+		if ("deleteSign_list".equals(action)) { // 來自Sign_listform.jsp(刪除)
 
+			List<String> errorMsgs = new LinkedList<String>();
+			// Store this set in the request scope, in case we need to
+			// send the ErrorPage view.
+			req.setAttribute("errorMsgs", errorMsgs);
+	
+			try {
+				/***************************1.接收請求參數***************************************/
+				Integer sl_id = new Integer(req.getParameter("sl_id"));
+				
+				/***************************2.開始刪除資料***************************************/
+				Sign_listService slSvc = new Sign_listService();
+				slSvc.deleteSign_list(sl_id);
+				
+				/***************************3.刪除完成,準備轉交(Send the Success view)***********/								
+				String url = "/Sign_list/Sign_listform.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後,轉交回送出刪除的來源網頁
+				successView.forward(req, res);
+				
+				/***************************其他可能的錯誤處理**********************************/
+			} catch (Exception e) {
+				errorMsgs.add("刪除資料失敗:"+e.getMessage());
+				RequestDispatcher failureView = req
+						.getRequestDispatcher("/Sign_list/Sign_listform.jsp");
+				failureView.forward(req, res);
+			}
+		}
+	}
 }
