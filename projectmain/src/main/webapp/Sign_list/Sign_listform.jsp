@@ -28,7 +28,7 @@
 				<!-- 設定全版面內容100% 分為兩部分 比例4:8  第二部份開始-->
 				<div class="col-md-8">
 					<div class=page-header>
-						<h3>教育中心資料查詢</h3>
+						<h3>權限資料查詢</h3>
 					</div>
 					<div class=row>
 						<table class="table table-hover">
@@ -63,7 +63,7 @@
 								</c:forEach>
 							</tbody>
 						</table>
-						<!------------------點選新增教育中心表單區塊內容----------------------------- -->
+						<!------------------點選新增權限設定表單區塊內容----------------------------- -->
 						<button type="button" class="btn btn-primary btn-lg"
 							data-toggle="modal" data-target="#myModal">新增</button>
 						<!-- Modal -->
