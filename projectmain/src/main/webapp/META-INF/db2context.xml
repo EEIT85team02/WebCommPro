@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?> 
+<Context displayName="JNDI DataSource" docBase="sysdesign" path="/sysdesign" reloadable="true">
+<!--                    DB2                   -->
+  <Resource name="jdbc/sysdesign" type="javax.sql.DataSource"
+      username="user14422" password="3hzL7wE3j2bx"
+      driverClassName="com.ibm.db2.jcc.DB2Driver"
+      url="jdbc:db2://75.126.155.153:50000/SQLDB"
+      maxActive="8"
+      maxIdle="4"
+      maxWait="5000"
+  />   
+</Context>
+<!--  <Context displayName="JNDI DataSource" docBase="projectmain" path="/projectmain" reloadable="true"> -->
+<!--                   DB2                 -->
+<!--  <Resource auth="Container" -->
+<!--         driverClassName="com.ibm.db2.jcc.DB2Driver" -->
+<!--         name="jdbc/sysdesign" -->
+<!--         password="3hzL7wE3j2bx" -->
+<!--         username="user14422" -->
+<!--         type="javax.sql.DataSource" -->
+<!--         url="jdbc:db2://75.126.155.153:50000/SQLDB"/> -->
+<!-- </Context>  -->
+
+
+
+
+

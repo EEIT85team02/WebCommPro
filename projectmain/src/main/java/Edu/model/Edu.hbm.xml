@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Edu.model.Edu" table="Edu" >
+        
+        <id name="edu_id" column="edu_id">
+            <generator class="identity"/>
+        </id>
+        
+        <property name="edu_name" column="edu_name" />
+        <property name="edu_add" column="edu_add" />
+        <property name="edu_tel" column="edu_tel" />
+        <property name="edu_contact" column="edu_contact" />
+    </class>
+</hibernate-mapping>
+

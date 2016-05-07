@@ -1,0 +1,36 @@
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會' ,'台北市大安區復興南路一段', '026631666','Mary');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會' ,'桃園市中壢區中大路300號', '034257387','John');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會' ,'高雄市前金區中正四路211號', '079699885','Alean');
+
+insert into class  values ('EEIT85','Java程式設計師','羅秀燕','劉翰卿',1 );
+insert into class  values ('EEIT70','Java程式設計師','羅秀燕','劉翰卿',1 );
+insert into class  values ('MEME33','嵌入式軟體系統設計','羅秀燕','詹民進',2 );
+insert into class  values ('MSIT05','全方位應用程式設計','羅秀燕','王芳芳',2 );
+insert into class  values ('SESE59','網路系統整合工程師','羅秀燕','陳其元 ',3 );
+insert into class  values ('MMMH25','網路多媒體設計師','羅秀燕','楊斐羽',3 );
+
+
+
+insert into student values ('EEIT8501', '黃','煜勝','0224558201','09205556781','test1@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_1');
+insert into student values ('EEIT8502', '李','協益','0224558202','09205556786','test2@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT70','log_pw_2');
+insert into student values ('EEIT8503', '王','潔'  ,'0224558203','09205556787','test3@hotmail.com.tw', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_3');
+insert into student values ('EEIT8504', '林','俊佑','0224558204','09205556784','test4@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_4');
+insert into student values ('EEIT8505', '張','書豪','0224558205','09205556783','test5@hotmaol.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT70','log_pw_5');
+insert into student values ('EEIT8506', '游','家暉','0224558206','09205556785','test6@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_6');
+insert into student values ('EEIT8507', '林','星妤','0224558207','09205556786','test7@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT70','log_pw_7');
+insert into student values ('EEIT8508', '賴','建宏','0224558208','09205556783','test8@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_8');
+insert into student values ('EEIT8509', '高','明輝','0224558209','09205556787','test9@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MEME33','log_pw_9');
+insert into student values ('EEIT8510', '官','子皓','0224558210','09205556782','test10@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_10');
+insert into student values ('EEIT8511', '林','瑞傑','0224558211','09205556786','test11@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','SESE59','log_pw_11');
+insert into student values ('EEIT8512', '沈','宣武','0224558212','09205556787','test12@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MSIT05','log_pw_12');
+insert into student values ('EEIT8513', '王','子豪','0224558213','09205556782','test13@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MEME33','log_pw_13');
+insert into student values ('EEIT8514', '柏','佳緯','0224558214','09205556781','test14@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_14');
+insert into student values ('EEIT8515', '陳','彥婷','0224558215','09205556784','test15@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','SESE59','log_pw_15');
+insert into student values ('EEIT8516', '張','凱翔','0224558216','09205556786','test16@yahoo.com', '台北市大安區復興南路一段','77','淡江','電機','MSIT05','log_pw_16');
+insert into student values ('EEIT8517', '王','彥淳','0224558217','09205556781','test17@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MEME33','log_pw_17');
+insert into student values ('EEIT8518', '王','眾慧','0224558218','09205556782','test18@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_18');
+insert into student values ('EEIT8519', '賈','毓柔','0224558219','09205556781','test19@outmail.com', '台北市大安區復興南路一段','77','淡江','電機','MMMH25','log_pw_19');
+insert into student values ('EEIT8520', '詹','上緯','0224558220','09205556787','test20@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MEME33','log_pw_20');
+insert into student values ('EEIT8521', '詹','上緯','0224558221','09205556787','test21@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MSIT05','log_pw_21');
+insert into student values ('EEIT8522', '蔡','鎮嶸','0224558223','09205556781','test22@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MMMH25','log_pw_22');
+insert into student values ('EEIT8523', '許','貿誠','0224558222','09205556787','test23@iii.edu.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_23');

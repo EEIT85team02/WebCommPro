@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Test_Date.model.Test_Date" table="Test_Date" >
+        
+        <composite-id>
+        	<key-property name="class_id" column="class_id"></key-property>
+     		<key-property name="test_startdate" column="test_startdate"></key-property>
+        	<key-property name="test_hour_id" column="test_hour_id"></key-property>
+        	<key-property name="test_date_id" column="test_date_id"></key-property>
+        </composite-id>
+
+        <property name="test_people" column="test_people" />
+        <property name="exam_people" column="exam_people" />
+    </class>
+</hibernate-mapping>
+
