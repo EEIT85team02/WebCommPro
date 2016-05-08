@@ -3,23 +3,27 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="Student.model.Student" table="Student" >
+    <class name="Student.model.StudentVO" table="Student" >
         
         <id name="stu_id" column="stu_id">
          
         </id>
         
-        <property name="stu_lastname" column="stu_lastname" />
-        <property name="stu_firstname" column="stu_firstname" />
-        <property name="stu_tel" column="stu_tel" />
-        <property name="stu_mobile" column="stu_mobile" />
-        <property name="stu_email" column="stu_email" />
-        <property name="stu_add" column="stu_add" />
+        <property name="stu_group" column="stu_group" />
+        <property name="stu_note1" column="stu_note1" />
+        <property name="stu_name" column="stu_name" />
         <property name="stu_age" column="stu_age" />
-        <property name="stu_sch" column="stu_sch" />
-        <property name="stu_dep" column="stu_dep" />
-        <property name="class_id" column="class_id" />
-        <property name="log_pw" column="log_pw" />
+        <property name="stu_sex" column="stu_sex" />
+        <property name="stu_email" column="stu_email" />
+        <property name="stu_pre" column="stu_pre" />
+        <property name="stu_implement" column="stu_implement" />
+        <property name="stu_testtime" column="stu_testtime" />
+        <property name="stu_interview" column="stu_interview" />
+        <property name="stu_total" column="stu_total" />
+        <property name="stu_workdate" column="stu_workdate" />
+        <property name="stu_except" column="stu_except" />
+        <property name="stu_final" column="stu_final" />
+        <property name="stu_note2" column="stu_note2" />
     </class>
 </hibernate-mapping>
 
