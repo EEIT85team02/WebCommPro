@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="Edu.model.Edu" table="Edu" >
+    <class name="Edu.model.EduVO" table="Edu" >
         
         <id name="edu_id" column="edu_id">
             <generator class="identity"/>
@@ -13,6 +13,17 @@
         <property name="edu_add" column="edu_add" />
         <property name="edu_tel" column="edu_tel" />
         <property name="edu_contact" column="edu_contact" />
+    	<set name="clas" table="Class" lazy="false" cascade="all"  inverse="true"  order-by="class_id asc">			
+			<key>
+				<column name="edu_id" />
+			</key>
+			<one-to-many class="Class.model.ClassVO" />
+		</set>
+    
+    
+    
+    
+    
     </class>
 </hibernate-mapping>
 

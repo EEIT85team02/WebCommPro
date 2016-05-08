@@ -89,8 +89,60 @@
 					haven't heard of them accusamus labore sustainable VHS.</div>
 			</div>
 		</div>
-<!-- 		================================================================ -->
+
 	</div>
+<!-- 		新增icon語法================================================================ -->
+
+						<button type="button" class="btn btn-primary btn-lg"
+							data-toggle="modal" data-target="#myModal">新增</button>
+						<!-- Modal -->
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+							aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<form action="EduServlet.do" method="post" name="EduForm">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal">
+												<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+											</button>
+											<h4 class="modal-title" id="myModalLabel">新增中心資料</h4>
+										</div>
+										<div class="modal-body">
+											<div class="form-group">
+												<label class="control-label">中心名稱:</label> <input
+													type="text" class="form-control" name="edu_name"
+													value="${param.edu_name}" placeholder="中心名稱"> <label
+													style="color: red">${errorMsgs.edu_nameMsg}</label>
+											</div>
+											<div class="form-group">
+												<label class="control-label">中心地址:</label> <input
+													type="text" class="form-control" name="edu_add"
+													value="${param.edu_add}" placeholder="中心地址"> <label
+													style="color: red">${errorMsgs.edu_addMsg}</label>
+											</div>
+											<div class="form-group">
+												<label class="control-label">中心電話:</label> <input
+													type="text" class="form-control" name="edu_tel"
+													value="${param.edu_tel}" placeholder="中心電話"> <label
+													style="color: red">${errorMsgs.edu_telMsg}</label>
+											</div>
+											<div class="form-group">
+												<label class="control-label">聯絡人:</label> <input type="text"
+													class="form-control" name="edu_contact"
+													value="${param.edu_contact}" placeholder="聯絡人"> <label
+													style="color: red">${errorMsgs.edu_contactMsg}</label>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">Close</button>
+											<input type="submit" class="btn btn-primary" value="Send">
+											<input type="hidden" name="action" value="addEdu">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
 
 </body>
 </html>

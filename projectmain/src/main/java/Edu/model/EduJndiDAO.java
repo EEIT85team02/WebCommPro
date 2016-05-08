@@ -36,7 +36,7 @@ public class EduJndiDAO implements IEduJndiDAO {
 
 		}
 
-		public int insert(Edu edu) throws SQLException {
+		public int insert(EduVO edu) throws SQLException {
 			conn = ds.getConnection();
 			int updateCount = 0;
 			PreparedStatement pstmt = conn.prepareStatement(INSERT_STMT);
@@ -49,7 +49,7 @@ public class EduJndiDAO implements IEduJndiDAO {
 			return updateCount;
 		}
 
-		public int update(Edu edu) throws SQLException {
+		public int update(EduVO edu) throws SQLException {
 			conn = ds.getConnection();
 			int updateCount = 0;
 			PreparedStatement pstmt = conn.prepareStatement(UPDATE_STMT);
@@ -72,14 +72,14 @@ public class EduJndiDAO implements IEduJndiDAO {
 			return updateCount;
 		}
 
-		public Edu findByPrimaryKey(Integer edu_id) throws SQLException {
-			Edu edu = null;
+		public EduVO findByPrimaryKey(Integer edu_id) throws SQLException {
+			EduVO edu = null;
 			conn = ds.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(GET_ONE_STMT);
 			pstmt.setInt(1, edu_id);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				edu = new Edu();
+				edu = new EduVO();
 				edu.setEdu_id(rs.getInt("edu_id"));
 				edu.setEdu_name(rs.getString("edu_name"));
 				edu.setEdu_add(rs.getString("edu_add"));
@@ -89,14 +89,14 @@ public class EduJndiDAO implements IEduJndiDAO {
 			return edu;
 		}
 
-		public List<Edu> getAll() throws SQLException {
+		public List<EduVO> getAll() throws SQLException {
 			conn = ds.getConnection();
-			Edu edu = null;
-			List<Edu> edus = new ArrayList<Edu>();
+			EduVO edu = null;
+			List<EduVO> edus = new ArrayList<EduVO>();
 			PreparedStatement pstmt = conn.prepareStatement(GET_ALL_STMT);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				edu = new Edu();
+				edu = new EduVO();
 				edu.setEdu_id(rs.getInt("edu_id"));
 				edu.setEdu_name(rs.getString("edu_name"));
 				edu.setEdu_add(rs.getString("edu_add"));

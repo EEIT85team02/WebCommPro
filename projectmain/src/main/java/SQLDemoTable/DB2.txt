@@ -35,9 +35,9 @@ No cache          --是否缓存
 create table Class		--班級資料表
 (
   class_id             nvarchar(10)  primary key  NOT NULL,   			--班級代號  
-  class_name           nvarchar(10)  NOT NULL ,							--班級名稱
-  class_contact        nvarchar(30) ,									--班級聯絡人
-  class_teach          nvarchar(15)  NOT NULL,							--班級導師
+  class_name           nvarchar(30)  NOT NULL ,							--班級名稱
+  class_contact        nvarchar(10) ,									--班級聯絡人
+  class_teach          nvarchar(10)  NOT NULL,							--班級導師
   edu_id               int           fk_edu_id references   Edu(edu_id)	--教育中心代號
 );  
 

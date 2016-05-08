@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Edu_Page</title>
+<title>Class_Page</title>
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -24,41 +24,41 @@
 							type="submit" class="btn" value="Search">
 					</form>
 					<div class=page-header>
-						<h3>教育中心資料查詢</h3>
+						<h3>班級資料查詢</h3>
 					</div>
 					<div class=row>
 						<table class="table table-hover">
 							<thead>
 								<tr>
+									<th class="col-md-2 col-xs-2">班級代號</th>
+									<th class="col-md-2 col-xs-2">班級名稱</th>
+									<th class="col-md-4 col-xs-4">聯絡人</th>
+									<th class="col-md-1 col-xs-1">導師</th>
 									<th class="col-md-1 col-xs-1">#</th>
-									<th class="col-md-2 col-xs-2">名稱</th>
-									<th class="col-md-4 col-xs-4">地址</th>
-									<th class="col-md-1 col-xs-1">電話</th>
-									<th class="col-md-2 col-xs-2">連絡人</th>
 									<th class="col-md-1 col-xs-1">修改</th>
 									<th class="col-md-1 col-xs-1">刪除</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var='eduVO' items='${eduVO}'>
+								<c:forEach var='classVO' items='${classVO}'>
 									<tr>
-										<td>${eduVO.edu_id}</td>
-										<td>${eduVO.edu_name}</td>
-										<td>${eduVO.edu_add}</td>
-										<td>${eduVO.edu_tel}</td>
-										<td>${eduVO.edu_contact}</td>
+										<td>${classVO.class_id}</td>
+										<td>${classVO.class_name}</td>
+										<td>${classVO.class_contact}</td>
+										<td>${classVO.class_teach}</td>
+										<td>${classVO.eduVO.edu_id}</td>
 										<td>
-											<form action="EduServlet.do" method="post">
+											<form action="ClassServlet.do" method="post">
 												<input type="submit" value="修改" name='update'> 
-												<input type="hidden" name="action" value="getoneEdu"> 
-												<input type="hidden" name="edu_id" value="${eduVO.edu_id}">
+												<input type="hidden" name="action" value="getoneClass"> 
+												<input type="hidden" name="class_id" value="${classVO.class_id}">
 											</form>
 										</td>
 										<td>
-											<form action="EduServlet.do" method="post">
+											<form action="ClassServlet.do" method="post">
 												<input type="submit" value="刪除" name='delete'> 
-												<input type="hidden" name="action" value="deleteEdu"> 
-												<input type="hidden" name="edu_id" value="${eduVO.edu_id}">
+												<input type="hidden" name="action" value="deleteClass"> 
+												<input type="hidden" name="class_id" value="${classVO.class_id}">
 											</form>
 										</td>
 									</tr>
@@ -68,7 +68,7 @@
 						
 						<!------------------點選新增教育中心表單區塊內容----------------------------- -->
 						<div>
-							<form action="EduInsertFrom.jsp" method="post">
+							<form action="ClassInsertFrom.jsp" method="post">
 								<input type="submit" value="新增"> <input type="hidden"
 									name="action">
 							</form>

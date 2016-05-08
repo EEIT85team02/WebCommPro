@@ -79,12 +79,12 @@
 
 
 
-		<!--取SQLserve.jar -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.iiiedu</groupId> -->
-<!-- 			<artifactId>SQLjdbc</artifactId> -->
-<!-- 			<version>1.0</version> -->
-<!-- 		</dependency> -->
+		<!--取SQLserver.jar -->
+		<dependency>
+			<groupId>com.iiiedu</groupId>
+			<artifactId>SQLjdbc</artifactId>
+			<version>1.0</version>
+		</dependency>
 
 
 		<!-- test dependencies -->

@@ -1,13 +1,19 @@
 package Edu.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Edu implements Serializable{//教育訓練中心
+import Class.model.ClassVO;
+public class EduVO implements Serializable{//教育訓練中心
 	private Integer	edu_id ;  //教育中心代號
 	private String edu_name ;  //教育中心名稱
 	private String edu_add ; //地址
 	private String edu_tel; //建立電話
 	private String edu_contact; //建立聯絡人
+	private Set<ClassVO> clas = new HashSet<ClassVO>();
+	
+	
 	public Integer getEdu_id() {
 		return edu_id;
 	}
@@ -38,18 +44,29 @@ public class Edu implements Serializable{//教育訓練中心
 	public void setEdu_contact(String edu_contact) {
 		this.edu_contact = edu_contact;
 	}
-	public Edu(int edu_id, String edu_name, String edu_add, String edu_tel,
-			String edu_contact) {
+	
+
+	public Set<ClassVO> getClas() {
+		return clas;
+	}
+	public void setClas(Set<ClassVO> clas) {
+		this.clas = clas;
+	}
+	
+	public EduVO(Integer edu_id, String edu_name, String edu_add,
+			String edu_tel, String edu_contact, Set<ClassVO> clas) {
 		super();
 		this.edu_id = edu_id;
 		this.edu_name = edu_name;
 		this.edu_add = edu_add;
 		this.edu_tel = edu_tel;
 		this.edu_contact = edu_contact;
+		this.clas = clas;
 	}
-	public Edu() {
+	public EduVO() {
 		super();
 	}
+	
 	
 	
 }

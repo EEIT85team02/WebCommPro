@@ -24,45 +24,40 @@
 							type="submit" class="btn" value="Search">
 					</form>
 					<div class=page-header>
-						<h3>教育中心資料修改</h3>
+						<h3>教育中心資料新增</h3>
 					</div>
 					<div class=row>
 						<!------------------點選修改教育中心表單區塊內容----------------------------- -->
 						<div class="modal-content">
-							<form action="EduServlet.do" method="post" name="EduUpdateFrom">
+							<form action="EduServlet.do" method="post" name="EduInsertFrom">
 								<div class="modal-header">
-									<h4 class="modal-title" id="myModalLabel">修改中心資料</h4>
+									<h4 class="modal-title" id="myModalLabel">新增中心資料</h4>
 								</div>
 								<div class="modal-body">
 									<div class="form-group">
-										<label class="control-label">中心代號:</label> <input type="text"
-											class="form-control" name="edu_id" value="${eduVO.edu_id}" readonly>
-										<label style="color:red">${errorMsgs.edu_idMsg}</label>
-									</div>
-									<div class="form-group">
 										<label class="control-label">中心名稱:</label> <input type="text"
-											class="form-control" name="edu_name" value="${eduVO.edu_name}">
+											class="form-control" name="edu_name" value="${param.edu_name}">
 										<label style="color:red">${errorMsgs.edu_nameMsg}</label>
 									</div>
 									<div class="form-group">
 										<label class="control-label">中心地址:</label> <input type="text"
-											class="form-control" name="edu_add" value="${eduVO.edu_add}">
+											class="form-control" name="edu_add" value="${param.edu_add}">
 										<label style="color:red">${errorMsgs.edu_addMsg}</label>
 									</div>
 									<div class="form-group">
 										<label class="control-label">中心電話:</label> <input type="text"
-											class="form-control" name="edu_tel" value="${eduVO.edu_tel}">
+											class="form-control" name="edu_tel" value="${param.edu_tel}">
 										<label style="color:red">${errorMsgs.edu_telMsg}</label>
 									</div>
 									<div class="form-group">
 										<label class="control-label">聯絡人:</label> <input type="text"
-											class="form-control" name="edu_contact" value="${eduVO.edu_contact}">
+											class="form-control" name="edu_contact" value="${param.edu_contact}">
 										<label style="color:red">${errorMsgs.edu_contactMsg}</label>
 									</div>
 								</div>
 								<div class="modal-footer">
 									<input type="submit" class="btn btn-primary" value="Send">
-									<input type="hidden" name="action" value="updateEdu">
+									<input type="hidden" name="action" value="addEdu">
 								</div>
 							</form>
 						</div>
