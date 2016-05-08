@@ -12,7 +12,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-version>1.8</java-version>
-		<hibernate.version>3.6.10.Final</hibernate.version>
+		<hibernate.version>4.3.11.Final</hibernate.version>
 
 	</properties>
 	<repositories>
@@ -29,12 +29,60 @@
 			<artifactId>mail</artifactId>
 			<version>1.4.7</version>
 		</dependency>
-
+		
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>3.6.3.Final</version>
-		</dependency>
+       <groupId>org.hibernate</groupId>
+       <artifactId>hibernate-core</artifactId>
+       <version>${hibernate.version}</version>
+      </dependency>
+      
+      <dependency>
+       <groupId>org.hibernate</groupId>
+       <artifactId>hibernate-entitymanager</artifactId>
+       <version>${hibernate.version}</version>
+      </dependency>
+      
+      <dependency>
+       <groupId>org.hibernate</groupId>
+       <artifactId>hibernate-c3p0</artifactId>
+       <version>${hibernate.version}</version>
+      </dependency>
+      
+      <dependency>
+       <groupId>org.hibernate</groupId>
+       <artifactId>hibernate-proxool</artifactId>
+       <version>${hibernate.version}</version>
+      </dependency>
+      
+      
+      <!-- Apache Commons -->
+      <dependency>
+       <groupId>commons-logging</groupId>
+       <artifactId>commons-logging</artifactId>
+       <version>1.2</version>
+      </dependency>
+      
+      <!-- slf4j -->
+      <dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-api</artifactId>
+       <version>1.7.19</version>
+      </dependency>
+      
+      <!-- slf4j -->
+      <dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-log4j12</artifactId>
+       <version>1.7.19</version>
+      </dependency>
+      
+      <!-- log4j -->
+      <dependency>
+       <groupId>log4j</groupId>
+       <artifactId>log4j</artifactId>
+       <version>1.2.17</version>
+      </dependency>
+
 
 		<dependency>
 			<groupId>javassist</groupId>
@@ -55,19 +103,16 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- 取hibernte jar -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>3.6.10.Final</version>
-		</dependency>
 
 		<!--取db2.jar -->
-		<!-- <dependency> <groupId>com.iiiedu</groupId> <artifactId>db2jdbc</artifactId> 
-			<version>1.0</version> </dependency> -->
+	<dependency>
+		<groupId>com.iiiedu</groupId>
+		<artifactId>db2jcc</artifactId>
+		<version>1.0</version>
+	</dependency>
 		<dependency>
 			<groupId>com.iiiedu</groupId>
-			<artifactId>db2jdbc4</artifactId>
+			<artifactId>db2jcc4</artifactId>
 			<version>1.0</version>
 		</dependency>
 
@@ -80,11 +125,11 @@
 
 
 		<!--取SQLserve.jar -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.iiiedu</groupId> -->
-<!-- 			<artifactId>SQLjdbc</artifactId> -->
-<!-- 			<version>1.0</version> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>com.iiiedu</groupId>
+			<artifactId>sqljdbc42</artifactId>
+			<version>1.0</version>
+		</dependency>
 
 
 		<!-- test dependencies -->

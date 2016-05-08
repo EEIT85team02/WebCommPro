@@ -1,0 +1,126 @@
+package Student.model;
+
+import java.io.Serializable;
+
+public class StudentVO implements Serializable{//學員	(所有資策會學員)
+	private String stu_group; 
+	private String stu_note1 ;
+	private String stu_id ;
+	private String stu_name;
+	private String stu_age;
+	private String stu_sch ; 
+	private String stu_sex ; 
+	private String stu_email ;
+	private String stu_pre ;
+	private String stu_implement ;
+	private String stu_testtime ;
+	private String stu_interview ; 
+	private String stu_total ; 
+	private String stu_workdate ; 
+	private String stu_except ; 
+	private String stu_final ; 
+	private String stu_note2 ;
+	public String getStu_group() {
+		return stu_group;
+	}
+	public void setStu_group(String stu_group) {
+		this.stu_group = stu_group;
+	}
+	public String getStu_note1() {
+		return stu_note1;
+	}
+	public void setStu_note1(String stu_note1) {
+		this.stu_note1 = stu_note1;
+	}
+	public String getStu_id() {
+		return stu_id;
+	}
+	public void setStu_id(String stu_id) {
+		this.stu_id = stu_id;
+	}
+	public String getStu_name() {
+		return stu_name;
+	}
+	public void setStu_name(String stu_name) {
+		this.stu_name = stu_name;
+	}
+	public String getStu_age() {
+		return stu_age;
+	}
+	public void setStu_age(String stu_age) {
+		this.stu_age = stu_age;
+	}
+	public String getStu_sch() {
+		return stu_sch;
+	}
+	public void setStu_sch(String stu_sch) {
+		this.stu_sch = stu_sch;
+	}
+	public String getStu_sex() {
+		return stu_sex;
+	}
+	public void setStu_sex(String stu_sex) {
+		this.stu_sex = stu_sex;
+	}
+	public String getStu_email() {
+		return stu_email;
+	}
+	public void setStu_email(String stu_email) {
+		this.stu_email = stu_email;
+	}
+	public String getStu_pre() {
+		return stu_pre;
+	}
+	public void setStu_pre(String stu_pre) {
+		this.stu_pre = stu_pre;
+	}
+	public String getStu_implement() {
+		return stu_implement;
+	}
+	public void setStu_implement(String stu_implement) {
+		this.stu_implement = stu_implement;
+	}
+	public String getStu_testtime() {
+		return stu_testtime;
+	}
+	public void setStu_testtime(String stu_testtime) {
+		this.stu_testtime = stu_testtime;
+	}
+	public String getStu_interview() {
+		return stu_interview;
+	}
+	public void setStu_interview(String stu_interview) {
+		this.stu_interview = stu_interview;
+	}
+	public String getStu_total() {
+		return stu_total;
+	}
+	public void setStu_total(String stu_total) {
+		this.stu_total = stu_total;
+	}
+	public String getStu_workdate() {
+		return stu_workdate;
+	}
+	public void setStu_workdate(String stu_workdate) {
+		this.stu_workdate = stu_workdate;
+	}
+	public String getStu_except() {
+		return stu_except;
+	}
+	public void setStu_except(String stu_except) {
+		this.stu_except = stu_except;
+	}
+	public String getStu_final() {
+		return stu_final;
+	}
+	public void setStu_final(String stu_final) {
+		this.stu_final = stu_final;
+	}
+	public String getStu_note2() {
+		return stu_note2;
+	}
+	public void setStu_note2(String stu_note2) {
+		this.stu_note2 = stu_note2;
+	} 
+
+}
