@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Edu.model.Edu;
-import Edu.model.EduDAO;
-import Edu.model.IEduDAO;
+
 import Member_status.model.IMember_statusDAO;
 import Member_status.model.Member_status;
 import Member_status.model.Member_statusDAO;

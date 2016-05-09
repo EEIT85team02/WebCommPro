@@ -6,9 +6,9 @@ import java.util.List;
 
 
 public interface IClassDAO {
-	public void insert(Class cla) throws SQLException;
-	public void update(Class cla) throws SQLException;
+	public void insert(ClassVO cla) throws SQLException;
+	public void update(ClassVO cla) throws SQLException;
 	public void delete(String class_id) throws SQLException;
-	public Class findByPrimaryKey(String class_id) throws SQLException;
-	public List<Class> getAll() throws SQLException;
+	public ClassVO findByPrimaryKey(String class_id) throws SQLException;
+	public List<ClassVO> getAll() throws SQLException;
 }

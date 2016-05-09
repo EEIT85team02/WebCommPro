@@ -12,10 +12,12 @@ import hibernate.util.HibernateUtil;
 public class StudentDAO implements IStudentDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from Student order by stu_id";
-
-
-		public void insert(Student stu) {
+			"from StudentVO order by stu_id";
+		private static final String GET_ALL_GMAIL = 
+				"select stu_email from StudentVO where stu_email like '%@gmail.com'";	
+		private static final String GET_ALL_NONGMAIL = 
+				"select stu_email from StudentVO where stu_email not like '%@gmail.com'";			
+		public void insert(StudentVO stu) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -29,7 +31,7 @@ public class StudentDAO implements IStudentDAO {
 
 
 
-		public void update(Student stu) {
+		public void update(StudentVO stu) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -45,7 +47,7 @@ public class StudentDAO implements IStudentDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				Student stu = (Student) session.get(Student.class, stu_id);
+				StudentVO stu = (StudentVO) session.get(StudentVO.class, stu_id);
 				session.delete(stu);
 				session.getTransaction().commit();	
 			} catch (RuntimeException ex) {
@@ -55,12 +57,12 @@ public class StudentDAO implements IStudentDAO {
 		}
 		
 
-		public Student findByPrimaryKey(String stu_id) {
-			Student stu = null;
+		public StudentVO findByPrimaryKey(String stu_id) {
+			StudentVO stu = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				stu = (Student) session.get(Student.class, stu_id);
+				stu = (StudentVO) session.get(StudentVO.class, stu_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -69,8 +71,8 @@ public class StudentDAO implements IStudentDAO {
 			return stu;
 		}
 
-		public List<Student> getAll() {
-			List<Student> list = null;
+		public List<StudentVO> getAll() {
+			List<StudentVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -83,6 +85,32 @@ public class StudentDAO implements IStudentDAO {
 			}
 			return list;
 		}
-
-
+		public List<String> getAllGmail() {
+			List<String> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_ALL_GMAIL);
+				list = query.list();
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return list;
+		}
+		public List<String> getAllNonGmail() {
+			List<String> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_ALL_NONGMAIL);
+				list = query.list();
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return list;
+		}		
 }

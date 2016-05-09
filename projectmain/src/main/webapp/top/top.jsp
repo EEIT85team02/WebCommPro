@@ -40,10 +40,10 @@ $(function(){
 <meta charset="UTF-8">
 <!-- 引入jQuery  and bootstrap css/js 檔案 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" type="text/css" >
+<link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 
 
 
@@ -72,7 +72,7 @@ $(function(){
 							aria-expanded="false">資料建檔<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li class=""><a href="${pageContext.request.contextPath}/Edu/EduServlet.do?action=getALLEdu">教育中心</a></li>
-								<li class=""><a href="${pageContext.request.contextPath}/Class/Classform.jsp">班級建檔</a></li>
+								<li class=""><a href="${pageContext.request.contextPath}/Class/ClassServlet.do?action=getALLClass">班級建檔</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Student/Studentform.jsp">學員建檔</a></li>
 							</ul></li>
 						<!-----------------------------------下拉式選單(資料建檔結束)---------------------------------------------------- -->

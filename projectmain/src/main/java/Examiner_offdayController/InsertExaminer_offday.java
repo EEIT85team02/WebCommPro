@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Edu.model.Edu;
-import Edu.model.EduDAO;
-import Edu.model.IEduDAO;
+
 import Examiner_offday.model.Examiner_offday;
 import Examiner_offday.model.Examiner_offdayDAO;
 import Examiner_offday.model.IExaminer_offdayDAO;

@@ -15,25 +15,21 @@
 	<!-------------中間內容畫面開始------------>
 	<!-- 固定巡覽列位置，建立div使區塊下移 (maincontentdiv)-->
 	<div class="container">
-		<!-- 設定全版面內容100% 分為兩部分 比例4:8-->
 		<div class="maincontentdiv">
 			<div class="row">
-				<!-- 設定全版面內容100% 分為兩部分 比例4:8  第一部份開始-->
-				<div class="col-md-4">
-					<form class="form-search">
+				<!--設定版面內容100%-->
+				<div class="col-md-12">
+				<form class="form-search">
 						<input type="text" class="input-small"> <input
 							type="submit" class="btn" value="Search">
 					</form>
-				</div>
-				<!-- 設定全版面內容100% 分為兩部分 比例4:8  第二部份開始-->
-				<div class="col-md-8">
 					<div class=page-header>
 						<h3>教育中心資料修改</h3>
 					</div>
 					<div class=row>
 						<!------------------點選修改教育中心表單區塊內容----------------------------- -->
 						<div class="modal-content">
-							<form action="EduServlet.do" method="post" name="EduForm">
+							<form action="EduServlet.do" method="post" name="EduUpdateFrom">
 								<div class="modal-header">
 									<h4 class="modal-title" id="myModalLabel">修改中心資料</h4>
 								</div>
@@ -65,8 +61,6 @@
 									</div>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">Close</button>
 									<input type="submit" class="btn btn-primary" value="Send">
 									<input type="hidden" name="action" value="updateEdu">
 								</div>

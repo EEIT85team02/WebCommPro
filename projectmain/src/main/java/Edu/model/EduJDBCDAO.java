@@ -8,9 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.iii.EmpDAO;
-import com.iii.EmpVO;
-import com.iii.IEmpDAO;
+
 
 
 public  class EduJDBCDAO implements IEduJDBCDAO {
@@ -34,7 +32,7 @@ public  class EduJDBCDAO implements IEduJDBCDAO {
 
 		}
 
-		public int insert(Edu edu) throws SQLException {
+		public int insert(EduVO edu) throws SQLException {
 			int updateCount = 0;
 			PreparedStatement pstmt = conn.prepareStatement(INSERT_STMT);
 			pstmt.setString(1, edu.getEdu_name());
@@ -45,7 +43,7 @@ public  class EduJDBCDAO implements IEduJDBCDAO {
 			return updateCount;
 		}
 
-		public int update(Edu edu) throws SQLException {
+		public int update(EduVO edu) throws SQLException {
 			PreparedStatement pstmt = conn.prepareStatement(UPDATE_STMT);
 			int updateCount = 0;
 			pstmt.setInt(1, edu.getEdu_id());
@@ -66,13 +64,13 @@ public  class EduJDBCDAO implements IEduJDBCDAO {
 			return updateCount;
 		}
 
-		public Edu findByPrimaryKey(Integer edu_id) throws SQLException {
-			Edu edu = null;
+		public EduVO findByPrimaryKey(Integer edu_id) throws SQLException {
+			EduVO edu = null;
 			PreparedStatement pstmt = conn.prepareStatement(GET_ONE_STMT);
 			pstmt.setInt(1, edu_id);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				edu = new Edu();
+				edu = new EduVO();
 				edu.setEdu_id(rs.getInt("edu_id"));
 				edu.setEdu_name(rs.getString("edu_name"));
 				edu.setEdu_add(rs.getString("edu_add"));
@@ -82,13 +80,13 @@ public  class EduJDBCDAO implements IEduJDBCDAO {
 			return edu;
 		}
 
-		public List<Edu> getAll() throws SQLException {
+		public List<EduVO> getAll() throws SQLException {
 			PreparedStatement pstmt = conn.prepareStatement(GET_ALL_STMT);
-			Edu edu = null;
-			List<Edu> edus = new ArrayList<Edu>();
+			EduVO edu = null;
+			List<EduVO> edus = new ArrayList<EduVO>();
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				edu = new Edu();
+				edu = new EduVO();
 				edu.setEdu_id(rs.getInt("edu_id"));
 				edu.setEdu_name(rs.getString("edu_name"));
 				edu.setEdu_add(rs.getString("edu_add"));
@@ -106,7 +104,7 @@ public  class EduJDBCDAO implements IEduJDBCDAO {
 		
 		//main method
 		public static void main(String[] args) {
-			Edu edu1 = new Edu();
+			EduVO edu1 = new EduVO();
 			IEduJDBCDAO dao=new EduJDBCDAO();
 			try {
 				dao.getConnection();

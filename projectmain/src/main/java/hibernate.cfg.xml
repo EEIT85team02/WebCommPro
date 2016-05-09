@@ -18,7 +18,7 @@
 		<property name="hibernate.c3p0.max_statements">50</property>
         
 		<!--SQL方言,以下使用SQLServer -->
-		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.DB2Dialect</property>
 
 		<!--是否要顯示實際操作資料庫時的SQL -->
 		<property name="hibernate.show_sql">true</property>
@@ -33,8 +33,8 @@
 		<property name="hibernate.current_session_context_class">thread</property>
 
 		<!--Java物件與資料庫表格的映射檔 -->
-		<mapping resource="Edu/model/Edu.hbm.xml" />
-		<mapping resource="Class/model/Class.hbm.xml" />
+		<mapping resource="Edu/model/EduVO.hbm.xml" />
+		<mapping resource="Class/model/ClassVO.hbm.xml" />
 		<mapping resource="Student/model/Student.hbm.xml" />
 		<mapping resource="Sign_list/model/Sign_list.hbm.xml" />
 		<mapping resource="Employee/model/Employee.hbm.xml" />
@@ -45,6 +45,7 @@
 		<mapping resource="Member_test/model/Member_test.hbm.xml" />
 		<mapping resource="Mail_template/model/Mail_template.hbm.xml" />
 		<mapping resource="Examiner_offday/model/Examiner_offday.hbm.xml" />
+		
 
 	</session-factory>
 	

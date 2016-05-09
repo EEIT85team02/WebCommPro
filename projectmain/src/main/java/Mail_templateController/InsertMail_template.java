@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Edu.model.Edu;
-import Edu.model.EduDAO;
-import Edu.model.IEduDAO;
 import Mail_template.model.IMail_templateDAO;
 import Mail_template.model.Mail_template;
 import Mail_template.model.Mail_templateDAO;

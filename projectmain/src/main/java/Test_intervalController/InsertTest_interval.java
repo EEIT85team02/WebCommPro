@@ -13,9 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import Test_interval.model.ITest_intervalDAO;
 import Test_interval.model.Test_interval;
 import Test_interval.model.Test_intervalDAO;
-import Edu.model.Edu;
-import Edu.model.EduDAO;
-import Edu.model.IEduDAO;
+
 
 
 @WebServlet("/Test_interval/InsertTest_interval.do")

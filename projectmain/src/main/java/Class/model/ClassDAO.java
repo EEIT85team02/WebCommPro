@@ -12,10 +12,10 @@ import hibernate.util.HibernateUtil;
 public class ClassDAO implements IClassDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from Class order by class_id";
+			"from ClassVO order by class_id";
 
 
-		public void insert(Class cla) {
+		public void insert(ClassVO cla) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -29,7 +29,7 @@ public class ClassDAO implements IClassDAO {
 
 
 
-		public void update(Class cla) {
+		public void update(ClassVO cla) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -45,7 +45,7 @@ public class ClassDAO implements IClassDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				Class cla = (Class) session.get(Class.class, class_id);
+				ClassVO cla = (ClassVO) session.get(ClassVO.class, class_id);
 				session.delete(cla);
 				session.getTransaction().commit();	
 			} catch (RuntimeException ex) {
@@ -55,12 +55,12 @@ public class ClassDAO implements IClassDAO {
 		}
 		
 
-		public Class findByPrimaryKey(String class_id) {
-			Class cla = null;
+		public ClassVO findByPrimaryKey(String class_id) {
+			ClassVO cla = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				cla = (Class) session.get(Class.class, class_id);
+				cla =(ClassVO) session.get(ClassVO.class, class_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -69,8 +69,8 @@ public class ClassDAO implements IClassDAO {
 			return cla;
 		}
 
-		public List<Class> getAll() {
-			List<Class> list = null;
+		public List<ClassVO> getAll() {
+			List<ClassVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();

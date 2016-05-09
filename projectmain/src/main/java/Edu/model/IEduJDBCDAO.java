@@ -6,11 +6,11 @@ import java.util.List;
 
 
 public interface IEduJDBCDAO {
-	public int insert(Edu edu) throws SQLException;
-	public int update(Edu edu) throws SQLException;
+	public int insert(EduVO edu) throws SQLException;
+	public int update(EduVO edu) throws SQLException;
 	public int delete(Integer edu_id) throws SQLException;
-	public Edu findByPrimaryKey(Integer edu_id) throws SQLException;
-	public List<Edu> getAll() throws SQLException;
+	public EduVO findByPrimaryKey(Integer edu_id) throws SQLException;
+	public List<EduVO> getAll() throws SQLException;
 	public void closeConn() throws SQLException;
 	public void getConnection()throws SQLException;
 }
