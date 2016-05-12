@@ -36,6 +36,7 @@
 		<mapping resource="Edu/model/EduVO.hbm.xml" />
 		<mapping resource="Class/model/ClassVO.hbm.xml" />
 		<mapping resource="Student/model/Student.hbm.xml" />
+		<mapping resource="Stu_additional/model/Stu_additional.hbm.xml" />
 		<mapping resource="Sign_list/model/Sign_list.hbm.xml" />
 		<mapping resource="Employee/model/Employee.hbm.xml" />
 		<mapping resource="Test_period/model/Test_period.hbm.xml" />
