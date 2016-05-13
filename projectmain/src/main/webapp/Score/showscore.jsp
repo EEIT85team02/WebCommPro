@@ -27,5 +27,10 @@
 			<td>${StudentVO.stu_implement}</td>
 			<td>${StudentVO.stu_interview}</td>
 			</c:forEach>
+			</table>
+			
+	<form action="upscore.jsp">
+		<input type="submit" value="н╫зя">
+	</form>
 </body>
 </html>

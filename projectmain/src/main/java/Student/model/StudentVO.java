@@ -16,9 +16,9 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private String stu_sex ; 
 	private String stu_email ;
 	private String stu_pre ;
-	private String stu_implement ;
+	private Double stu_implement ;
 	private String stu_testtime ;
-	private String stu_interview ; 
+	private Double stu_interview ; 
 	private String stu_total ; 
 	private String stu_workdate ; 
 	private String stu_except ; 
@@ -86,10 +86,10 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	public void setStu_pre(String stu_pre) {
 		this.stu_pre = stu_pre;
 	}
-	public String getStu_implement() {
+	public Double getStu_implement() {
 		return stu_implement;
 	}
-	public void setStu_implement(String stu_implement) {
+	public void setStu_implement(Double stu_implement) {
 		this.stu_implement = stu_implement;
 	}
 	public String getStu_testtime() {
@@ -98,10 +98,10 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	public void setStu_testtime(String stu_testtime) {
 		this.stu_testtime = stu_testtime;
 	}
-	public String getStu_interview() {
+	public Double getStu_interview() {
 		return stu_interview;
 	}
-	public void setStu_interview(String stu_interview) {
+	public void setStu_interview(Double stu_interview) {
 		this.stu_interview = stu_interview;
 	}
 	public String getStu_total() {
