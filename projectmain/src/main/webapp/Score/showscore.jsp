@@ -15,7 +15,7 @@
 <body>
 <table border='1' bordercolor='#CCCCFF' width='800'>
 	<tr>
-		<th>ID</th>
+		<th>班別</th>
 		<th>姓名</th>
 		<th>上機成績</th>
 		<th>面試成績</th>
@@ -27,5 +27,10 @@
 			<td>${StudentVO.stu_implement}</td>
 			<td>${StudentVO.stu_interview}</td>
 			</c:forEach>
+			</table>
+			
+	<form action="upscore.jsp">
+		<input type="submit" value="修改">
+	</form>
 </body>
 </html>

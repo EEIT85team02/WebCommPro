@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+
 import Member_status.model.IMember_statusDAO;
-import Member_status.model.Member_status;
 import Member_status.model.Member_statusDAO;
+import Member_status.model.Member_statusVO;
 
 
 @WebServlet("/Member_status/InsertMember_status.do")
@@ -37,8 +38,8 @@ public class InsertMember_status extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			Integer sta_id = Integer.parseInt(request.getParameter("sta_id"));
 			String sta_name = request.getParameter("sta_name");
-			Member_status mem1= new Member_status();
-			mem1.setSta_id(sta_id);
+			Member_statusVO mem1= new Member_statusVO();
+			//mem1.setSta_id(sta_id);
 			mem1.setSta_name(sta_name);
 			mem.insert(mem1);
 			System.out.println("okokokok");

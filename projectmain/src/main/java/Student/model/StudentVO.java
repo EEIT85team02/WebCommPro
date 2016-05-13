@@ -1,6 +1,10 @@
 package Student.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import Stu_additional.model.Stu_additionalVO;
 
 public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private String stu_group; 
@@ -12,14 +16,22 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private String stu_sex ; 
 	private String stu_email ;
 	private String stu_pre ;
-	private String stu_implement ;
+	private Double stu_implement ;
 	private String stu_testtime ;
-	private String stu_interview ; 
+	private Double stu_interview ; 
 	private String stu_total ; 
 	private String stu_workdate ; 
 	private String stu_except ; 
 	private String stu_final ; 
 	private String stu_note2 ;
+	private Set<Stu_additionalVO> stus = new HashSet<Stu_additionalVO>();
+	
+	public Set<Stu_additionalVO> getStus() {
+		return stus;
+	}
+	public void setStus(Set<Stu_additionalVO> stus) {
+		this.stus = stus;
+	}
 	public String getStu_group() {
 		return stu_group;
 	}
@@ -74,10 +86,10 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	public void setStu_pre(String stu_pre) {
 		this.stu_pre = stu_pre;
 	}
-	public String getStu_implement() {
+	public Double getStu_implement() {
 		return stu_implement;
 	}
-	public void setStu_implement(String stu_implement) {
+	public void setStu_implement(Double stu_implement) {
 		this.stu_implement = stu_implement;
 	}
 	public String getStu_testtime() {
@@ -86,10 +98,10 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	public void setStu_testtime(String stu_testtime) {
 		this.stu_testtime = stu_testtime;
 	}
-	public String getStu_interview() {
+	public Double getStu_interview() {
 		return stu_interview;
 	}
-	public void setStu_interview(String stu_interview) {
+	public void setStu_interview(Double stu_interview) {
 		this.stu_interview = stu_interview;
 	}
 	public String getStu_total() {
