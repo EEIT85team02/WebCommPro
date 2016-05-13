@@ -15,7 +15,7 @@
 <body>
 <table border='1' bordercolor='#CCCCFF' width='800'>
 	<tr>
-		<th>ID</th>
+		<th>班別</th>
 		<th>姓名</th>
 		<th>上機成績</th>
 		<th>面試成績</th>

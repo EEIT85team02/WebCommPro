@@ -13,6 +13,7 @@
         <property name="stu_note1" column="stu_note1" />
         <property name="stu_name" column="stu_name" />
         <property name="stu_age" column="stu_age" />
+        <property name="stu_sch" column="stu_sch" />
         <property name="stu_sex" column="stu_sex" />
         <property name="stu_email" column="stu_email" />
         <property name="stu_pre" column="stu_pre" />
@@ -24,6 +25,14 @@
         <property name="stu_except" column="stu_except" />
         <property name="stu_final" column="stu_final" />
         <property name="stu_note2" column="stu_note2" />
+        
+        <set name="stus" table="Stu_additional" lazy="false" cascade="all"  inverse="true"  order-by="stu_id asc">			
+			<key>
+				<column name="stu_id" />
+			</key>
+			<one-to-many class="Stu_additional.model.Stu_additionalVO" />
+		</set>
+        
     </class>
 </hibernate-mapping>
 
