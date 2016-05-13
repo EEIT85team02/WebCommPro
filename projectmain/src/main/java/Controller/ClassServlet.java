@@ -167,6 +167,7 @@ public class ClassServlet extends HttpServlet {
 		/******************************** 刪除資料表 ***********************/
 		if ("deleteClass".equals(action)) {
 			String class_id=null;
+			Map<String, String> errorMsgs = null;
 			try {
 				// ============接收班級代號class_id資料====================
 				class_id =request.getParameter("class_id");
@@ -180,11 +181,9 @@ public class ClassServlet extends HttpServlet {
 						.getRequestDispatcher("/Class/ClassView.jsp");
 				successMsg.forward(request, response);
 				return;
-			} catch (ObjectDeletedException e) {
-				throw e;
-				//e.printStackTrace();
-				//System.out.println("刪除錯誤");
-				
+			}
+			catch (ConstraintViolationException e) {
+				System.out.println("hibernate 因資料已被使用中，外部連結學生檔有資料");
 			}
 			catch (SQLException e) {
 				e.printStackTrace();

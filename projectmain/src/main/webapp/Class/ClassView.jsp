@@ -37,6 +37,7 @@
 									<th class="col-md-1 col-xs-1">#</th>
 									<th class="col-md-1 col-xs-1">修改</th>
 									<th class="col-md-1 col-xs-1">刪除</th>
+									
 								</tr>
 							</thead>
 							<tbody>
