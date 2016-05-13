@@ -45,7 +45,10 @@ public class ClassDAO implements IClassDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				ClassVO cla = (ClassVO) session.get(ClassVO.class, class_id);
+				//ClassVO cla = (ClassVO) session.get(ClassVO.class, class_id);
+				ClassVO cla = new ClassVO(); //刪除關聯
+				cla.setClass_id(class_id);
+				
 				session.delete(cla);
 				session.getTransaction().commit();	
 			} catch (RuntimeException ex) {

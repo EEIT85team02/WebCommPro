@@ -18,7 +18,8 @@ public class EduDAO implements IEduDAO {
 	
 		private static final String GET_ALL_STMT = 
 			"from EduVO order by edu_id";
-
+		private static final String GET_ALL_STMT_TO_JAON = 
+				"select edu_id,edu_name from EduVO order by edu_id";
 
 		public void insert(EduVO edu) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -88,6 +89,25 @@ public class EduDAO implements IEduDAO {
 			}
 			return list;
 		}
+		
+		
+		
+		public List<EduVO> getAllToJSON() {
+			List<EduVO> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_ALL_STMT_TO_JAON);
+				list = query.list();
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return list;
+		}
+		
+		
 		public Set<ClassVO> getClasByEdu_id(Integer edu_id) {		
 			Set<ClassVO> set = findByPrimaryKey(edu_id).getClas();
 			return set;
