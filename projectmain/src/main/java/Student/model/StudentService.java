@@ -12,18 +12,24 @@ public class StudentService {
 	public List<StudentVO> getAll() throws SQLException {
 		return dao.getAll();
 	}
-	public StudentVO upscore(String stu_id,String stu_name,Double stu_implement,Double stu_interview) throws SQLException {
+	public StudentVO getOneStu(String stu_id) throws SQLException {
+		return dao.findByPrimaryKey(stu_id);
+	}
+	public StudentVO upscore(String stu_id,String stu_name,Double stu_implement,Double stu_interview,String stu_group,String stu_age,String stu_email) throws SQLException {
 
-		StudentVO stu = new StudentVO();
+		StudentVO stuVO = new StudentVO();
 
-		stu.setStu_id(stu_id);
-		stu.setStu_name(stu_name);
-		stu.setStu_implement(stu_implement);
-		stu.setStu_interview(stu_interview);
+		stuVO.setStu_id(stu_id);
+		stuVO.setStu_name(stu_name);
+		stuVO.setStu_implement(stu_implement);
+		stuVO.setStu_interview(stu_interview);
+		stuVO.setStu_group(stu_group);
+		stuVO.setStu_age(stu_age);
+		stuVO.setStu_email(stu_email);
 
-		dao.update(stu);
+		dao.update(stuVO);
 	
 
-		return stu;
+		return dao.findByPrimaryKey(stu_id);
 	}
 }

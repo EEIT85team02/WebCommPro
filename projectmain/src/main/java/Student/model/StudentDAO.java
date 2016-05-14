@@ -17,11 +17,11 @@ public class StudentDAO implements IStudentDAO {
 				"select stu_email from StudentVO where stu_email like '%@gmail.com'";	
 		private static final String GET_ALL_NONGMAIL = 
 				"select stu_email from StudentVO where stu_email not like '%@gmail.com'";			
-		public void insert(StudentVO stu) {
+		public void insert(StudentVO stuVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(stu);
+				session.saveOrUpdate(stuVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -31,11 +31,11 @@ public class StudentDAO implements IStudentDAO {
 
 
 
-		public void update(StudentVO stu) {
+		public void update(StudentVO stuVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(stu);
+				session.saveOrUpdate(stuVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -47,8 +47,8 @@ public class StudentDAO implements IStudentDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				StudentVO stu = (StudentVO) session.get(StudentVO.class, stu_id);
-				session.delete(stu);
+				StudentVO stuVO = (StudentVO) session.get(StudentVO.class, stu_id);
+				session.delete(stuVO);
 				session.getTransaction().commit();	
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -58,17 +58,17 @@ public class StudentDAO implements IStudentDAO {
 		
 
 		public StudentVO findByPrimaryKey(String stu_id) {
-			StudentVO stu = null;
+			StudentVO stuVO = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				stu = (StudentVO) session.get(StudentVO.class, stu_id);
+				stuVO = (StudentVO) session.get(StudentVO.class, stu_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;
 			}
-			return stu;
+			return stuVO;
 		}
 
 		public List<StudentVO> getAll() {
