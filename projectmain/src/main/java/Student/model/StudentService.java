@@ -12,18 +12,34 @@ public class StudentService {
 	public List<StudentVO> getAll() throws SQLException {
 		return dao.getAll();
 	}
-	public StudentVO upscore(String stu_id,String stu_name,Double stu_implement,Double stu_interview) throws SQLException {
+	public StudentVO getOneStu(String stu_id) throws SQLException {
+		return dao.findByPrimaryKey(stu_id);
+	}
+	public StudentVO upscore(String stu_group,String stu_note1,String stu_id,String stu_name,String stu_age,String stu_sch,String stu_sex,String stu_email,String stu_pre,Double stu_implement,String stu_testtime,Double stu_interview,String stu_total,String stu_workdate,String stu_except,String stu_final,String stu_note2) throws SQLException {
 
-		StudentVO stu = new StudentVO();
+		StudentVO stuVO = new StudentVO();
 
-		stu.setStu_id(stu_id);
-		stu.setStu_name(stu_name);
-		stu.setStu_implement(stu_implement);
-		stu.setStu_interview(stu_interview);
+		stuVO.setStu_group(stu_group);
+		stuVO.setStu_note1(stu_note1);
+		stuVO.setStu_id(stu_id);
+		stuVO.setStu_name(stu_name);
+		stuVO.setStu_age(stu_age);
+		stuVO.setStu_sch(stu_sch);
+		stuVO.setStu_sex(stu_sex);
+		stuVO.setStu_email(stu_email);
+		stuVO.setStu_pre(stu_pre);
+		stuVO.setStu_implement(stu_implement);
+		stuVO.setStu_testtime(stu_testtime);			
+		stuVO.setStu_interview(stu_interview);
+		stuVO.setStu_total(stu_total);
+		stuVO.setStu_workdate(stu_workdate);
+		stuVO.setStu_except(stu_except);
+		stuVO.setStu_final(stu_final);
+		stuVO.setStu_note2(stu_note2);
 
-		dao.update(stu);
+		dao.update(stuVO);
 	
 
-		return stu;
+		return dao.findByPrimaryKey(stu_id);
 	}
 }

@@ -19,6 +19,7 @@
 		<th>姓名</th>
 		<th>上機成績</th>
 		<th>面試成績</th>
+		<th>修改</th>
 	</tr>
 	<c:forEach var="StudentVO" items="${list}">
 		<tr align='center' valign='middle'>
@@ -26,11 +27,16 @@
 			<td>${StudentVO.stu_name}</td>
 			<td>${StudentVO.stu_implement}</td>
 			<td>${StudentVO.stu_interview}</td>
+			<td>
+	<form method="post" action="<%=request.getContextPath()%>/Score/upscore.do">
+		<input type="submit" value="修改">
+		 <input type="hidden" name="stu_id" value="${StudentVO.stu_id}">
+	     <input type="hidden" name="action"	value="updatepage">
+	</form>
+	         </td>
 			</c:forEach>
 			</table>
 			
-	<form action="upscore.jsp">
-		<input type="submit" value="修改">
-	</form>
+	
 </body>
 </html>
