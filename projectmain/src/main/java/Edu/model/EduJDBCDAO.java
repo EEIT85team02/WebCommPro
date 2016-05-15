@@ -101,13 +101,8 @@ public  class EduJDBCDAO implements IEduJDBCDAO {
 				edu.setEdu_contact(rs.getString("edu_contact"));
 				edus.add(edu);
 			}
-			
 			return edus;
 		}
-		
-		
-		
-		
 		
 		//-------------------------------
 		public String getAllToJSON(){
@@ -125,7 +120,6 @@ public  class EduJDBCDAO implements IEduJDBCDAO {
 					edus.add(map);
 					}
 				jsonString = JSONValue.toJSONString(edus);
-				
 			}
 			catch(SQLException e){
 			

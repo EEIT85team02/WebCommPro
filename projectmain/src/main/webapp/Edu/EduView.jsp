@@ -30,7 +30,7 @@
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th class="col-md-1 col-xs-1">#</th>
+									<th class="col-md-1 col-xs-1">代號</th>
 									<th class="col-md-2 col-xs-2">名稱</th>
 									<th class="col-md-4 col-xs-4">地址</th>
 									<th class="col-md-1 col-xs-1">電話</th>

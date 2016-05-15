@@ -20,22 +20,7 @@
 </style>
 
 
-<script type="text/javascript">
-$(function(){
-    $("#gotop").click(function(){
-        jQuery("html,body").animate({
-            scrollTop:0
-        },1000);
-    });
-    $(window).scroll(function() {
-        if ( $(this).scrollTop() > 300){
-            $('#gotop').fadeIn("fast");
-        } else {
-            $('#gotop').stop().fadeOut("fast");
-        }
-    });
-});
-</script>
+
 
 <meta charset="UTF-8">
 <!-- 引入jQuery  and bootstrap css/js 檔案 -->
@@ -43,6 +28,7 @@ $(function(){
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 
 
@@ -65,7 +51,7 @@ $(function(){
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li class=""><a href="${pageContext.request.contextPath}/indexOfAdminPage.jsp">關於WebCommTeam2</a></li>
+						<li class=""><a href="${pageContext.request.contextPath}/indexOfAdminPage.jsp">關於我們</a></li>
 						<!-----------------------------------下拉式選單(資料建檔開始)---------------------------------------------------- -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -109,6 +95,22 @@ $(function(){
 
 
 <div id="gotop">TOP</div>
+<script type="text/javascript">
+
+    $("#gotop").click(function(){
+        jQuery("html,body").animate({
+            scrollTop:0
+        },1000);
+    });
+    $(window).scroll(function() {
+        if ( $(this).scrollTop() > 300){
+            $('#gotop').fadeIn("fast");
+        } else {
+            $('#gotop').stop().fadeOut("fast");
+        }
+    });
+
+</script>
 </body>
 </html>
 

@@ -1,8 +1,13 @@
 package Edu.model;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import org.json.simple.JSONValue;
 
 import Class.model.ClassVO;
 
@@ -44,9 +49,42 @@ public class EduService {
 	public List<EduVO> getAllEdu() throws SQLException{
 		return dao.getAll();
 	}
+	public String getAllEduToJSON() throws SQLException{
+		List edus=new LinkedList();
+		List<EduVO> list=dao.getAll();
+		String jsonString= null;
+		for(EduVO eduVO :list){
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("edu_id",eduVO.getEdu_id().toString());
+			map.put("edu_name",eduVO.getEdu_name());
+			map.put("edu_add",eduVO.getEdu_add());
+			map.put("edu_tel",eduVO.getEdu_tel());
+			map.put("edu_contact",eduVO.getEdu_contact());
+			edus.add(map);
+		}
+		jsonString = JSONValue.toJSONString(edus);
+		return jsonString;
+	}
+	
+	public String findByPrimaryKeyEduToJSON(Integer edu_id) throws SQLException{
+		List edus=new LinkedList();
+		EduVO eduVO=dao.findByPrimaryKey(edu_id);
+		String jsonString= null;
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("edu_id",eduVO.getEdu_id().toString());
+			map.put("edu_name",eduVO.getEdu_name());
+			map.put("edu_add",eduVO.getEdu_add());
+			map.put("edu_tel",eduVO.getEdu_tel());
+			map.put("edu_contact",eduVO.getEdu_contact());
+			edus.add(map);
+			jsonString = JSONValue.toJSONString(edus);
+			return jsonString;
+	}
+	
 	public Set<ClassVO> getClasByEdu_idEdu(Integer edu_id){
 		return dao.getClasByEdu_id(edu_id);
 	}
+	
 	
 	
 }

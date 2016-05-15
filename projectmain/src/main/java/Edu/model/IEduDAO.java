@@ -15,5 +15,5 @@ public interface IEduDAO {
 	public EduVO findByPrimaryKey(Integer edu_id) throws SQLException;
 	public List<EduVO> getAll() throws SQLException;
 	public Set<ClassVO> getClasByEdu_id(Integer edu_id);
-	public List<EduVO> getAllToJSON() throws SQLException;
+	
 }

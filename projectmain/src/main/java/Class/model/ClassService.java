@@ -1,8 +1,13 @@
 package Class.model;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import org.json.simple.JSONValue;
 
 import Class.model.ClassVO;
 import Edu.model.EduVO;
@@ -51,6 +56,22 @@ public class ClassService {
 	}
 	public List<ClassVO> getAllClass() throws SQLException{
 		return dao.getAll();
+	}
+	
+	public String getAllClassToJSON() throws SQLException{
+		List clas=new LinkedList();
+		List<ClassVO> list=dao.getAll();
+		String jsonString= null;
+		for(ClassVO classVO :list){
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("class_id",classVO.getClass_id());
+			map.put("class_name",classVO.getClass_name());
+			map.put("class_contact",classVO.getClass_contact());
+			map.put("class_teach",classVO.getClass_teach());
+			clas.add(map);
+		}
+		jsonString = JSONValue.toJSONString(clas);
+		return jsonString;
 	}
 	
 	
