@@ -54,22 +54,44 @@ public class UpStuScore extends HttpServlet {
 			String stu_group = req.getParameter("stu_group");
 			String stu_age = req.getParameter("stu_age");
 		    String stu_email = req.getParameter("stu_email");
-			 
+			String stu_note1 = req.getParameter("stu_note1");
+			String stu_sch = req.getParameter("stu_sch");
+		    String stu_sex = req.getParameter("stu_sex");
+			String stu_pre = req.getParameter("stu_pre");
 			Double stu_implement = Double.parseDouble(req.getParameter("stu_implement"));
+			String stu_testtime = req.getParameter("stu_testtime");
 			Double stu_interview = Double.parseDouble(req.getParameter("stu_interview"));
+		    String stu_total = req.getParameter("stu_total");
+			String stu_workdate = req.getParameter("stu_workdate");
+			String stu_except = req.getParameter("stu_except");
+		    String stu_final = req.getParameter("stu_final");
+		    String stu_note2 = req.getParameter("stu_note2");
+			 
 			
 			StudentVO stuVO = new StudentVO();
+			stuVO.setStu_group(stu_group);
+			stuVO.setStu_note1(stu_note1);
 			stuVO.setStu_id(stu_id);
 			stuVO.setStu_name(stu_name);
-			stuVO.setStu_implement(stu_implement);
-			stuVO.setStu_interview(stu_interview);
-			stuVO.setStu_group(stu_group);
 			stuVO.setStu_age(stu_age);
+			stuVO.setStu_sch(stu_sch);
+			stuVO.setStu_sex(stu_sex);
 			stuVO.setStu_email(stu_email);
+			stuVO.setStu_pre(stu_pre);
+			stuVO.setStu_implement(stu_implement);
+			stuVO.setStu_testtime(stu_testtime);			
+			stuVO.setStu_interview(stu_interview);
+			stuVO.setStu_total(stu_total);
+			stuVO.setStu_workdate(stu_workdate);
+			stuVO.setStu_except(stu_except);
+			stuVO.setStu_final(stu_final);
+			stuVO.setStu_note2(stu_note2);
+
+			
 			
 			StudentService StuSvc = new StudentService();
 			try {
-				stuVO = StuSvc.upscore(stu_id,stu_name,stu_implement,stu_interview,stu_group,stu_age,stu_email);
+				stuVO = StuSvc.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2);
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
