@@ -82,7 +82,7 @@ $(function(){
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">系統設定<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li class=""><a href="${pageContext.request.contextPath}/Sign_list/Sign_listform.jsp">權限設定</a></li>
+								<li class=""><a href="${pageContext.request.contextPath}/Sign_list/Sign_listForm.jsp">權限設定</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Test_interval/Test_intervalform.jsp">考試時段設定</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Test_Date/Test_Dateform.jsp">考試日期設定</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Mail_template/Mail_templateform.jsp">email樣板</a></li>

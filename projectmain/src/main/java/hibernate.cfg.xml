@@ -7,8 +7,8 @@
 	<session-factory>
         
         <!-- 連線池c3p0設定-->
-		<property name="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</property>
-		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/DB01</property>
+		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=project</property>
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">P@ssw0rd</property> 
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
@@ -36,7 +36,7 @@
 		<mapping resource="Edu/model/EduVO.hbm.xml" />
 		<mapping resource="Class/model/ClassVO.hbm.xml" />
 		<mapping resource="Student/model/Student.hbm.xml" />
-		<mapping resource="Sign_list/model/Sign_list.hbm.xml" />
+<!-- 		<mapping resource="Sign_list/model/Sign_list.hbm.xml" /> -->
 		<mapping resource="Employee/model/Employee.hbm.xml" />
 		<mapping resource="Test_period/model/Test_period.hbm.xml" />
 		<mapping resource="Test_interval/model/Test_interval.hbm.xml" />

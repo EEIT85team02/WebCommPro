@@ -11,35 +11,19 @@ public class Sign_listService {
 	private ISign_listDAO dao;
 
 	public Sign_listService() {
-		dao = new Sign_listDAO();
+		dao = new xxSign_listDAO();
 	}
 	
-	public Sign_listVO addSign_list(Integer sl_id, String sl_name) throws SQLException{
-		Sign_listVO sig = new Sign_listVO();
-		sig.setSl_id(sl_id);
-		sig.setSl_name(sl_name);
-		dao.insert(sig);
-		return sig;
+	public Sign_listVO insertSign_list(String emp_id, Integer sl_id){
+		Sign_listVO slVO = new Sign_listVO();
+		slVO.setSl_id(sl_id);
+		dao.insert(slVO);
+		return dao.findByPrimaryKey(emp_id);
+	}
+
+	public Sign_listVO getOneSl(String emp_id){
+		return dao.findByPrimaryKey(emp_id);
 	}
 	
 	
-	public Sign_listVO updateSign_list(Integer sl_id, String sl_name) throws SQLException{
-		Sign_listVO sig = new Sign_listVO();
-		sig.setSl_id(sl_id);
-		sig.setSl_name(sl_name);
-		dao.update(sig);
-		return dao.findByPrimaryKey(sl_id);
-	}
-	
-	public void deleteSign_list(Integer sl_id) throws SQLException{
-		dao.delete(sl_id);
-	}
-	
-	public Sign_listVO getOneSl(Integer sl_id) throws SQLException{
-		return dao.findByPrimaryKey(sl_id);
-	}
-	
-	public List<Sign_listVO> getAll() throws SQLException {
-		return dao.getAll();
-	}
 }
