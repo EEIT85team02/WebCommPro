@@ -1,7 +1,24 @@
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會' ,'台北市大安區復興南路一段', '026631666','Mary');
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會' ,'桃園市中壢區中大路300號', '034257387','John');
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會' ,'高雄市前金區中正四路211號', '079699885','Alean');
+truncate table Mail_template;
+truncate table Stu_additional;
+truncate table Member_status;
+truncate table Test_Date;
+truncate table Test_interval;
+truncate table Examiner_offday;
+truncate table Employee;
+truncate table Student;
+truncate table Sign_list;
+truncate table Test_period;
+truncate table Class;
+truncate table Edu;
 
+
+--Edu
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會', '台北市大安區復興南路一段', '026631666', 'Mary');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會', '桃園市中壢區中大路300號', '034257387', 'John');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會', '高雄市前金區中正四路211號', '079699885', 'Alean');
+
+
+--Class
 insert into class  values ('EEIT85','Java程式設計師','羅秀燕','劉翰卿',1 );
 insert into class  values ('EEIT70','Java程式設計師','羅秀燕','劉翰卿',1 );
 insert into class  values ('MEME33','嵌入式軟體系統設計','羅秀燕','詹民進',2 );
@@ -10,27 +27,86 @@ insert into class  values ('SESE59','網路系統整合工程師','羅秀燕','�
 insert into class  values ('MMMH25','網路多媒體設計師','羅秀燕','楊斐羽',3 );
 
 
+--Student
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('2','EEIT8501', '黃煜勝','77','男','test1@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('5','EEIT8502', '李協益','80','男','test2@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('2','EEIT8503', '王潔'  ,'81','女','test3@hotmail.com.tw');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('2','EEIT8504', '林俊佑','78','男','test4@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('2','EEIT8505', '張書豪','80','男','test5@hotmaol.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('1','EEIT8506', '游家暉','80','男','test6@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('4','EEIT8507', '林星妤','80','女','test7@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('3','EEIT8508', '賴建宏','77','男','test8@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('5','EEIT8509', '高明輝','81','男','test9@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('1','EEIT8510', '官子皓','80','男','test10@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('2','EEIT8511', '林瑞傑','79','男','test11@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('4','EEIT8512', '沈宣武','78','男','test12@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('4','EEIT8513', '王子豪','80','男','test13@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('1','EEIT8514', '柏佳緯','82','男','test14@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('1','EEIT8515', '陳彥婷','79','女','test15@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('5','EEIT8516', '張凱翔','77','男','test16@yahoo.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('5','EEIT8517', '王彥淳','80','男','test17@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('1','EEIT8518', '王眾慧','77','男','test18@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('5','EEIT8519', '賈毓柔','78','女','test19@outmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('3','EEIT8520', '詹上緯','77','男','test20@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('3','EEIT8521', '詹上緯','80','男','test21@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('4','EEIT8522', '蔡鎮嶸','81','男','test22@gmail.com');
+insert into student (stu_group, stu_id, stu_name, stu_age, stu_sex, stu_email) values ('2','EEIT8523', '許貿誠','78','男','test23@iii.edu.com');
 
-insert into student values ('EEIT8501', '黃','煜勝','0224558201','09205556781','test1@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_1');
-insert into student values ('EEIT8502', '李','協益','0224558202','09205556786','test2@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT70','log_pw_2');
-insert into student values ('EEIT8503', '王','潔'  ,'0224558203','09205556787','test3@hotmail.com.tw', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_3');
-insert into student values ('EEIT8504', '林','俊佑','0224558204','09205556784','test4@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_4');
-insert into student values ('EEIT8505', '張','書豪','0224558205','09205556783','test5@hotmaol.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT70','log_pw_5');
-insert into student values ('EEIT8506', '游','家暉','0224558206','09205556785','test6@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_6');
-insert into student values ('EEIT8507', '林','星妤','0224558207','09205556786','test7@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT70','log_pw_7');
-insert into student values ('EEIT8508', '賴','建宏','0224558208','09205556783','test8@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_8');
-insert into student values ('EEIT8509', '高','明輝','0224558209','09205556787','test9@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MEME33','log_pw_9');
-insert into student values ('EEIT8510', '官','子皓','0224558210','09205556782','test10@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_10');
-insert into student values ('EEIT8511', '林','瑞傑','0224558211','09205556786','test11@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','SESE59','log_pw_11');
-insert into student values ('EEIT8512', '沈','宣武','0224558212','09205556787','test12@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MSIT05','log_pw_12');
-insert into student values ('EEIT8513', '王','子豪','0224558213','09205556782','test13@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MEME33','log_pw_13');
-insert into student values ('EEIT8514', '柏','佳緯','0224558214','09205556781','test14@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_14');
-insert into student values ('EEIT8515', '陳','彥婷','0224558215','09205556784','test15@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','SESE59','log_pw_15');
-insert into student values ('EEIT8516', '張','凱翔','0224558216','09205556786','test16@yahoo.com', '台北市大安區復興南路一段','77','淡江','電機','MSIT05','log_pw_16');
-insert into student values ('EEIT8517', '王','彥淳','0224558217','09205556781','test17@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MEME33','log_pw_17');
-insert into student values ('EEIT8518', '王','眾慧','0224558218','09205556782','test18@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_18');
-insert into student values ('EEIT8519', '賈','毓柔','0224558219','09205556781','test19@outmail.com', '台北市大安區復興南路一段','77','淡江','電機','MMMH25','log_pw_19');
-insert into student values ('EEIT8520', '詹','上緯','0224558220','09205556787','test20@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MEME33','log_pw_20');
-insert into student values ('EEIT8521', '詹','上緯','0224558221','09205556787','test21@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MSIT05','log_pw_21');
-insert into student values ('EEIT8522', '蔡','鎮嶸','0224558223','09205556781','test22@gmail.com', '台北市大安區復興南路一段','77','淡江','電機','MMMH25','log_pw_22');
-insert into student values ('EEIT8523', '許','貿誠','0224558222','09205556787','test23@iii.edu.com', '台北市大安區復興南路一段','77','淡江','電機','EEIT85','log_pw_23');
+
+
+--Test_period
+insert into Test_period(test_hour_id, test_hour) values('1', '10:00');
+insert into Test_period(test_hour_id, test_hour) values('2', '12:00');
+insert into Test_period(test_hour_id, test_hour) values('3', '14:00');
+insert into Test_period(test_hour_id, test_hour) values('4', '16:00');
+
+
+ --Sign_list
+insert into Sign_list(sl_id, sl_name) values('1', 'Employee');
+insert into Sign_list(sl_id, sl_name) values('2', 'Examiner');
+insert into Sign_list(sl_id, sl_name) values('3', 'Administrator');
+
+
+ --Employee
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7001','許貿誠', '10','IT Department','test1@webcomme.com','3');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7002','黃煜勝', '20','Administrative Department','test2@webcomme.com','3');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7003','王潔', '30','Finance Department','test3@webcomme.com','2');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7004','張書豪', '40','Marketing Department','test4@webcomme.com','2');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7005','林俊佑', '50','Planning Department','test5@webcomme.com','1');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7006','王彥淳', '60','Sales Department','test6@webcomme.com','1');
+
+
+ --Examiner_offday
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7006','2016-5-15', '2016-5-18','3','7001');
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7004','2016-5-10', '2016-5-20','10','7003');
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7001','2016-5-16', '2016-5-21','5','7002');
+
+
+ --Test_interval
+insert into Test_interval (class_id, test_startdate, test_enddate) values ('EEIT85','2016-5-09', '2016-5-23');
+insert into Test_interval (class_id, test_startdate, test_enddate) values ('MEME33','2016-5-15', '2016-5-29');
+insert into Test_interval (class_id, test_startdate, test_enddate) values ('SESE59','2016-6-01', '2016-5-15');
+
+ --Test_Date
+insert into Test_Date (class_id, test_startdate, test_hour_id, test_people, exam_people) values ('EEIT85','2016-5-09', '1', '2', '0');
+insert into Test_Date (class_id, test_startdate, test_hour_id, test_people, exam_people) values ('EEIT85','2016-5-09', '2', '2', '0');
+insert into Test_Date (class_id, test_startdate, test_hour_id, test_people, exam_people) values ('EEIT85','2016-5-09', '3', '2', '0');
+
+
+
+ --Member_status
+insert into Member_status (sta_id, sta_name) values ('1','核准中');
+insert into Member_status (sta_id, sta_name) values ('2','已核准');
+insert into Member_status (sta_id, sta_name) values ('3','未核准');
+insert into Member_status (sta_id, sta_name) values ('4','未報名');
+insert into Member_status (sta_id, sta_name) values ('5','已報名');
+insert into Member_status (sta_id, sta_name) values ('6','報名中');
+
+
+ --Stu_additional
+insert into Stu_additional (stu_id, test_startdate, test_hour_id, stu_applytime, sta_id, emp_id, class_id) values ('EEIT8501','2016-5-09', '3', '2016-5-10', '4', '7004', 'EEIT85');
+
+
+ --Mail_template
+ insert into Mail_template (mail_name, mail_text) values ('預約成功通知', '預約成功');
+
