@@ -7,6 +7,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import Member_status.model.Member_statusVO;
+
 public class Stu_additionalDAO implements IStu_additionalDAO{
 	private static final String GET_ALL_STMT = 
 			"from Stu_additionalVO order by stu_id";
@@ -25,4 +27,5 @@ public class Stu_additionalDAO implements IStu_additionalDAO{
 		}
 		return list;
 	}
+
 }

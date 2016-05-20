@@ -32,7 +32,6 @@ public class UpStuScore extends HttpServlet {
 		
 		if ("updatepage".equals(action)) {
 			String stu_id = req.getParameter("stu_id");
-			
 			StudentService StuSvc = new StudentService();
 			StudentVO stuVO = null;
 			try {
@@ -44,7 +43,7 @@ public class UpStuScore extends HttpServlet {
 	
 			req.setAttribute("studentVO", stuVO);
 			
-			RequestDispatcher rd = req.getRequestDispatcher("/Score/upscore.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/Score/showscore.jsp");
 			rd.forward(req, res);
 		}
 		
@@ -97,7 +96,8 @@ public class UpStuScore extends HttpServlet {
 				e.printStackTrace();
 			}
 			req.setAttribute("studentVO", stuVO);
-			
+			System.out.println(stuVO);
+			System.out.println("aa");
 			RequestDispatcher rd = req.getRequestDispatcher("/Score/showscore.jsp");
 			rd.forward(req, res);
 		}

@@ -38,8 +38,8 @@ public class StudentService {
 		stuVO.setStu_note2(stu_note2);
 
 		dao.update(stuVO);
-	
-
-		return dao.findByPrimaryKey(stu_id);
+		
+		return stuVO;
+		
 	}
 }

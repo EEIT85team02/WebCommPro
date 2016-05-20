@@ -108,14 +108,14 @@
 
 	<dependency>
 		<groupId>com.iiiedu</groupId>
-		<artifactId>db2jdbc</artifactId>
+		<artifactId>db2jcc</artifactId>
 		<version>1.0</version>
 	</dependency>
 
 
 		<dependency>
 			<groupId>com.iiiedu</groupId>
-			<artifactId>db2jdbc4</artifactId>
+			<artifactId>db2jcc4</artifactId>
 			<version>1.0</version>
 		</dependency>
 		
@@ -133,7 +133,7 @@
 		<!--取SQLserve.jar -->
 		<dependency>
 			<groupId>com.iiiedu</groupId>
-			<artifactId>SQLjdbc</artifactId>
+			<artifactId>sqljdbc42</artifactId>
 			<version>1.0</version>
 		</dependency>
 		<!--取JSON.jar -->
