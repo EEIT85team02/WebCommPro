@@ -1,9 +1,15 @@
 package Class.model;
 
 
+import java.sql.SQLException;
 import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
+
+import Edu.model.EduDAO;
+import Edu.model.EduVO;
+import Edu.model.IEduDAO;
 import hibernate.util.HibernateUtil;
 
 
@@ -86,6 +92,33 @@ public class ClassDAO implements IClassDAO {
 			}
 			return list;
 		}
+		
+		public static void main(String[] args) {
+
+			IClassDAO dao = new ClassDAO();
+			List<ClassVO> list1;
+			try {
+				list1 = dao.getAll();
+				for (ClassVO cla : list1) {
+					System.out.println(cla.getClass_id());
+					System.out.println(cla.getClass_name() );
+					System.out.println(cla.getClass_contact());
+					System.out.println(cla.getClass_teach());
+					System.out.println(cla.getEduVO().getEdu_id());
+					System.out.println(cla.getEduVO().getEdu_name());
+						
+						
+					}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			
+			
+		}
+		
 
 
 }

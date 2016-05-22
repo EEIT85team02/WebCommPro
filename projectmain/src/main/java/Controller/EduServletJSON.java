@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.exception.ConstraintViolationException;
-import org.json.simple.JSONValue;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
@@ -47,8 +46,6 @@ public class EduServletJSON extends HttpServlet {
 		/******************************** 新增資料表 ***********************/
 		if ("addEdu".equals(action)) {
 			Map<String, String> Msgs = null;
-			List edus =new LinkedList();
-			String jsonString = null;
 			String edu_name= null;
 			String edu_add= null;
 			String edu_tel= null;
@@ -85,7 +82,7 @@ public class EduServletJSON extends HttpServlet {
 					Msgs.put("edu_contactMsg", "聯絡人不可空白");
 				}
 				if (edu_contact.trim().length() > 10) {
-					Msgs.put("edu_contactMsg", "聯絡人中英文長度不可大於30碼");
+					Msgs.put("edu_contactMsg", "聯絡人中英文長度不可大於10碼");
 				}
 				if (!Msgs.isEmpty()) {
 					out.write("資料新增失敗");
@@ -127,8 +124,6 @@ public class EduServletJSON extends HttpServlet {
 		/******************************** 更新資料表 ***********************/	
 		if ("updateEdu".equals(action)) { 
 			Map<String, String> Msgs = null;
-			List edus =new LinkedList();
-			String jsonString = null;
 			Integer edu_id= null;
 			String edu_name= null;
 			String edu_add= null;
@@ -206,6 +201,18 @@ public class EduServletJSON extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		/********************************查詢全部資料表FOR DataTables init() ***********************/
+		if ("getAllEduToJSONInitTable".equals(action)) {
+			try {
+				// ============查詢教育中心全部資料回傳JSON字串====================
+				eduSvc = new EduService();
+				String jsonString = eduSvc.getAllEduToJSONInitTable();
+				out.write(jsonString);
+				return;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	
 		/******************************** 查詢單一筆資料 ***********************/	
 		if ("getoneEdu".equals(action)) {
@@ -218,6 +225,18 @@ public class EduServletJSON extends HttpServlet {
 				out.write(jsonString);
 				return;
 			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		/***************************初始連結呼叫EduServletJSON轉址至EduViewTODataTablesJSON.jsp********************/	
+		if ("initEduViewTODataTablesJSON".equals(action)) {
+			try {
+				// ============轉到教育中心EduViewJSON====================
+				RequestDispatcher successMsg = request
+						.getRequestDispatcher("/Edu/EduViewTODataTablesJSON.jsp");
+				successMsg.forward(request, response);
+				return;
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
