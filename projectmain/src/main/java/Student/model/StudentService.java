@@ -1,7 +1,13 @@
 package Student.model;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
+import org.json.simple.JSONValue;
+
 
 public class StudentService {
 	private IStudentDAO dao;
@@ -41,5 +47,19 @@ public class StudentService {
 		
 		return stuVO;
 		
+	}
+	public String getAllScoreJSON() throws SQLException{
+		List stusc=new LinkedList();
+		List<StudentVO> list=dao.getAll();	
+		for(StudentVO stuVO :list){
+			Map map = new HashMap();
+			map.put("stu_id",stuVO.getStu_id());
+			map.put("stu_name",stuVO.getStu_name());
+			map.put("stu_implement",stuVO.getStu_implement());
+			map.put("stu_interview",stuVO.getStu_interview());
+			stusc.add(map);
+		}
+		String jsonString = JSONValue.toJSONString(stusc);
+		return jsonString;
 	}
 }

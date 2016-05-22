@@ -85,14 +85,14 @@ public class Member_statusDAO implements IMember_statusDAO {
 			return list;
 		}
 		
-			public List<Member_statusVO> getStatusOK() {
+			public List<Member_statusVO> getStatusWAIT() {
 			List<Member_statusVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
 				Query query = session.createQuery("from Member_statusVO where sta_name=:sta_name");
 				Member_statusVO member_statusVO = new Member_statusVO();
-				member_statusVO.setSta_name("已核准"); 
+				member_statusVO.setSta_name("核准中"); 
 				query.setProperties(member_statusVO);
 				list = query.list();
 				session.getTransaction().commit();
@@ -102,14 +102,14 @@ public class Member_statusDAO implements IMember_statusDAO {
 			}
 			return list;
 		}
-			public List<Member_statusVO> getStatusWAIT() {
+			public List<Member_statusVO> getStatusOK() {
 				List<Member_statusVO> list = null;
 				Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 				try {
 					session.beginTransaction();
 					Query query = session.createQuery("from Member_statusVO where sta_name=:sta_name");
 					Member_statusVO member_statusVO = new Member_statusVO();
-					member_statusVO.setSta_name("待核准"); 
+					member_statusVO.setSta_name("已核准"); 
 					query.setProperties(member_statusVO);
 					list = query.list();
 					session.getTransaction().commit();
@@ -119,14 +119,14 @@ public class Member_statusDAO implements IMember_statusDAO {
 				}
 				return list;
 			}
-			public List<Member_statusVO> getStatusCANCEL() {
+			public List<Member_statusVO> getStatusNO() {
 				List<Member_statusVO> list = null;
 				Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 				try {
 					session.beginTransaction();
 					Query query = session.createQuery("from Member_statusVO where sta_name=:sta_name");
 					Member_statusVO member_statusVO = new Member_statusVO();
-					member_statusVO.setSta_name("已取消"); 
+					member_statusVO.setSta_name("未核准"); 
 					query.setProperties(member_statusVO);
 					list = query.list();
 					session.getTransaction().commit();
@@ -144,6 +144,40 @@ public class Member_statusDAO implements IMember_statusDAO {
 					Query query = session.createQuery("from Member_statusVO where sta_name=:sta_name");
 					Member_statusVO member_statusVO = new Member_statusVO();
 					member_statusVO.setSta_name("未報名"); 
+					query.setProperties(member_statusVO);
+					list = query.list();
+					session.getTransaction().commit();
+				} catch (RuntimeException ex) {
+					session.getTransaction().rollback();
+					throw ex;
+				}
+				return list;
+			}
+			public List<Member_statusVO> getStatusYES() {
+				List<Member_statusVO> list = null;
+				Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+				try {
+					session.beginTransaction();
+					Query query = session.createQuery("from Member_statusVO where sta_name=:sta_name");
+					Member_statusVO member_statusVO = new Member_statusVO();
+					member_statusVO.setSta_name("已報名"); 
+					query.setProperties(member_statusVO);
+					list = query.list();
+					session.getTransaction().commit();
+				} catch (RuntimeException ex) {
+					session.getTransaction().rollback();
+					throw ex;
+				}
+				return list;
+			}
+			public List<Member_statusVO> getStatusWAITING() {
+				List<Member_statusVO> list = null;
+				Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+				try {
+					session.beginTransaction();
+					Query query = session.createQuery("from Member_statusVO where sta_name=:sta_name");
+					Member_statusVO member_statusVO = new Member_statusVO();
+					member_statusVO.setSta_name("報名中"); 
 					query.setProperties(member_statusVO);
 					list = query.list();
 					session.getTransaction().commit();
