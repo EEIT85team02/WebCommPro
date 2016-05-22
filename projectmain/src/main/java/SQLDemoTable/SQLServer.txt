@@ -34,9 +34,9 @@ create table Edu
 create table Class
 (
   class_id             nvarchar(10)  primary key  NOT NULL,     
-  class_name           nvarchar(10)  NOT NULL ,           
-  class_contact        nvarchar(30) ,
-  class_teach          nvarchar(15)  NOT NULL,
+  class_name           nvarchar(30)  NOT NULL ,           
+  class_contact        nvarchar(10) ,
+  class_teach          nvarchar(10)  NOT NULL,
   edu_id               int           foreign key references   Edu(edu_id)
 );  
 

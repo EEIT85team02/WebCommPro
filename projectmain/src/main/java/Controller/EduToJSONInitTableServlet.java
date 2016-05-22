@@ -9,16 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Class.model.ClassService;
-import Edu.model.EduJDBCDAO;
+
 import Edu.model.EduService;
-import Edu.model.IEduJDBCDAO;
 
 
-@WebServlet("/ClassJSON")
-public class ClassJSON extends HttpServlet {
+
+@WebServlet("/Edu/EduToJSONInitTableServlet")
+public class EduToJSONInitTableServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public ClassJSON() {
+	public EduToJSONInitTableServlet() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,10 +25,10 @@ public class ClassJSON extends HttpServlet {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
-		ClassService claSvc = new ClassService();
+		EduService eduSvc = new EduService();
 		try {
-			String jsonString=claSvc.getAllClassToJSON();
-			out.println(jsonString);
+			String jsonString=eduSvc.getAllEduToJSONInitTable();
+			out.write(jsonString);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

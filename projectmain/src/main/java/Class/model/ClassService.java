@@ -1,6 +1,7 @@
 package Class.model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -68,10 +69,49 @@ public class ClassService {
 			map.put("class_name",classVO.getClass_name());
 			map.put("class_contact",classVO.getClass_contact());
 			map.put("class_teach",classVO.getClass_teach());
+			
+			map.put("edu_id",classVO.getEduVO().getEdu_id().toString());
+			map.put("edu_name",classVO.getEduVO().getEdu_name());
 			clas.add(map);
 		}
 		jsonString = JSONValue.toJSONString(clas);
 		return jsonString;
+	}
+	
+	public String getAllClassToJSONInitTable() throws SQLException{
+		List<ClassVO> list=dao.getAll();
+		List<List<String>> classVO = new LinkedList<List<String>>();
+		String jsonValue = null;
+		for(ClassVO a :list){
+			List<String> detailClassVO = new ArrayList<String>();
+			detailClassVO.add(a.getClass_id());
+			detailClassVO.add(a.getClass_name());
+			detailClassVO.add(a.getClass_contact());
+			detailClassVO.add(a.getClass_teach());
+			detailClassVO.add(a.getEduVO().getEdu_id().toString());
+			detailClassVO.add(a.getEduVO().getEdu_name() );
+			classVO.add(detailClassVO);
+		}
+		Map<String,List<List<String>>> mapJSON=new HashMap<String,List<List<String>>>();
+		mapJSON.put("data",classVO);
+		jsonValue = JSONValue.toJSONString(mapJSON);
+		return jsonValue;
+	}
+	
+	public String findByPrimaryKeyClassToJSON(String class_id) throws SQLException{
+		List cals=new LinkedList();
+		ClassVO classVO=dao.findByPrimaryKey(class_id);
+		String jsonString= null;
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("class_id",classVO.getClass_id());
+			map.put("class_name",classVO.getClass_name());
+			map.put("class_contact",classVO.getClass_contact());
+			map.put("class_teach",classVO.getClass_teach());
+			map.put("edu_id",classVO.getEduVO().getEdu_id().toString());
+			map.put("edu_name",classVO.getEduVO().getEdu_name());
+			cals.add(map);
+			jsonString = JSONValue.toJSONString(cals);
+			return jsonString;
 	}
 	
 	

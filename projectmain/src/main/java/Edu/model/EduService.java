@@ -1,6 +1,7 @@
 package Edu.model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -66,6 +67,25 @@ public class EduService {
 		return jsonString;
 	}
 	
+	public String getAllEduToJSONInitTable() throws SQLException{
+		List<EduVO> list=dao.getAll();
+		List<List<String>> eduVO = new LinkedList<List<String>>();
+		String jsonValue = null;
+		for(EduVO a :list){
+			List<String> detailEduVO = new ArrayList<String>();
+			detailEduVO.add(a.getEdu_id().toString());
+			detailEduVO.add(a.getEdu_name());
+			detailEduVO.add(a.getEdu_add());
+			detailEduVO.add(a.getEdu_tel());
+			detailEduVO.add(a.getEdu_contact());
+			eduVO.add(detailEduVO);
+		}
+		Map<String,List<List<String>>> mapJSON=new HashMap<String,List<List<String>>>();
+		mapJSON.put("data",eduVO);
+		jsonValue = JSONValue.toJSONString(mapJSON);
+		return jsonValue;
+	}
+	
 	public String findByPrimaryKeyEduToJSON(Integer edu_id) throws SQLException{
 		List edus=new LinkedList();
 		EduVO eduVO=dao.findByPrimaryKey(edu_id);
@@ -80,6 +100,9 @@ public class EduService {
 			jsonString = JSONValue.toJSONString(edus);
 			return jsonString;
 	}
+	
+	
+	
 	
 	public Set<ClassVO> getClasByEdu_idEdu(Integer edu_id){
 		return dao.getClasByEdu_id(edu_id);

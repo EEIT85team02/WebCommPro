@@ -30,8 +30,8 @@
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
-
-
+<script
+	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
 </head>
 <body>
@@ -57,7 +57,7 @@
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">資料建檔<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li class=""><a href="${pageContext.request.contextPath}/Edu/EduServlet.do?action=getALLEdu">教育中心</a></li>
+								<li class=""><a href="${pageContext.request.contextPath}/Edu/EduServletJSON.do?action=initEduViewTODataTablesJSON">教育中心</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Class/ClassServlet.do?action=getALLClass">班級建檔</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Student/Studentform.jsp">學員建檔</a></li>
 							</ul></li>
