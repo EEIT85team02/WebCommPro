@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Examiner_offday.model.Examiner_offday" table="Examiner_offday" >
+        
+        <id name="emp_id" column="emp_id">
+            
+        </id>
+        
+        <property name="off_stardate" column="off_stardate" />
+        <property name="off_enddate" column="off_enddate" />
+        <property name="off_day" column="off_day" />
+        <property name="emp_job_id" column="emp_job_id" />
+    </class>
+</hibernate-mapping>
+
