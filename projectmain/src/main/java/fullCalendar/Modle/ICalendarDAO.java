@@ -1,4 +1,4 @@
-package fullCalendarModle;
+package fullCalendar.Modle;
 
 import java.sql.SQLException;
 import java.util.List;

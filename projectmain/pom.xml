@@ -106,7 +106,7 @@
 
 		<!--取db2.jar -->
 
-	<dependency>
+<!-- 	<dependency>
 		<groupId>com.iiiedu</groupId>
 		<artifactId>db2jdbc</artifactId>
 		<version>1.0</version>
@@ -119,7 +119,7 @@
 			<version>1.0</version>
 		</dependency>
 		
-
+ -->
 
 <!-- 		<dependency> -->
 <!-- 			<groupId>com.iiiedu</groupId> -->

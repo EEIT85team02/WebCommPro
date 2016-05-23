@@ -21,7 +21,7 @@
 	
 		 <servlet>
 	    <servlet-name>CalendarJsonServlet</servlet-name>
-	    <servlet-class>fullCalendarControler.CalendarJsonServlet</servlet-class>
+	    <servlet-class>fullCalendar.Controler.CalendarJsonServlet</servlet-class>
 	  </servlet>
 	  <servlet-mapping>
 	    <servlet-name>CalendarJsonServlet</servlet-name>
@@ -30,7 +30,7 @@
 	  
 	  	 <servlet>
 	    <servlet-name>AddEditEvent</servlet-name>
-	    <servlet-class>fullCalendarControler.AddEditEvent</servlet-class>
+	    <servlet-class>fullCalendar.Controler.AddEditEvent</servlet-class>
 	  </servlet>
 	  <servlet-mapping>
 	    <servlet-name>AddEditEvent</servlet-name>

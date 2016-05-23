@@ -1,4 +1,4 @@
-package fullCalendarModle;
+package fullCalendar.Modle;
 
 import hibernate.util.HibernateUtil;
 

@@ -1,4 +1,4 @@
-package fullCalendarControler;
+package fullCalendar.Controler;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,9 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.exception.ConstraintViolationException;
 
-import fullCalendarModle.CalendarDAO;
-import fullCalendarModle.CalendarDTO;
-import fullCalendarModle.ICalendarDAO;
+import fullCalendar.Modle.CalendarDAO;
+import fullCalendar.Modle.CalendarDTO;
+import fullCalendar.Modle.ICalendarDAO;
 
 /*@WebServlet("/AddEditEvent")*/
 public class AddEditEvent extends HttpServlet {
@@ -63,7 +63,7 @@ public class AddEditEvent extends HttpServlet {
 		
 	
 			
-			RequestDispatcher successMsg = request.getRequestDispatcher("/calendarView_insert.jsp");
+			RequestDispatcher successMsg = request.getRequestDispatcher("/fullCalendar/calendarView_insert.jsp");
 			successMsg.forward(request, response);
 			
 			return;

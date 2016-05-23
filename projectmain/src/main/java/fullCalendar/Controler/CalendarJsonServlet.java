@@ -1,4 +1,4 @@
-package fullCalendarControler;
+package fullCalendar.Controler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,9 +25,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import fullCalendarModle.CalendarDAO;
-import fullCalendarModle.CalendarDTO;
-import fullCalendarModle.ICalendarDAO;
+import fullCalendar.Modle.CalendarDAO;
+import fullCalendar.Modle.CalendarDTO;
+import fullCalendar.Modle.ICalendarDAO;
 
 
 /*@WebServlet("/CalendarJsonServlet")*/
