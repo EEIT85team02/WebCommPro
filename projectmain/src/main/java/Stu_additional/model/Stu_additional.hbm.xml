@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Stu_additional.model.Stu_additionalVO" table="Stu_additional" >
+        
+        <id name="test_startdate" column="test_startdate">
+         
+        </id>
+        
+        <property name="test_hour_id" column="test_hour_id" />
+        <property name="stu_applytime" column="stu_applytime" />
+        <property name="emp_id" column="emp_id" />
+        <property name="confirm_time" column="confirm_time" />
+        <property name="class_id" column="class_id" />
+        <property name="log_pw" column="log_pw" />
+
+        
+        <many-to-one name="StudentVO" class="Student.model.StudentVO" lazy="false">
+            <column name="stu_id" />
+        </many-to-one>
+        
+        <many-to-one name="Member_statusVO" class="Member_status.model.Member_statusVO" lazy="false">
+            <column name="sta_id" />
+        </many-to-one>
+
+    </class>
+</hibernate-mapping>

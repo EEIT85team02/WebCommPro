@@ -6,7 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
+import org.json.simple.JSONValue;
 
 
 
@@ -22,12 +27,14 @@ public  class EduJDBCDAO implements IEduJDBCDAO {
 			"SELECT edu_id, edu_name, edu_add, edu_tel, edu_contact FROM Edu WHERE edu_id=?";
 		private static final String GET_ALL_STMT = 
 			"SELECT edu_id, edu_name, edu_add,edu_tel, edu_contact FROM Edu ORDER BY edu_id";
-
+		private static final String GET_ALL_STMT_TOJSON = 
+				"SELECT edu_id, edu_name FROM Edu";
 		Connection conn = null;
 		public void getConnection() throws SQLException {
-			String connUrl = "jdbc:db2://75.126.155.153:50000/SQLDB";
-			String userId="user14422";
-			String userPwd="3hzL7wE3j2bx";
+			String connUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=demo";
+			String userId="sa";
+			String userPwd="sa123456";
+			DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
 			conn = DriverManager.getConnection(connUrl,userId,userPwd);
 
 		}
@@ -96,6 +103,35 @@ public  class EduJDBCDAO implements IEduJDBCDAO {
 			}
 			return edus;
 		}
+		
+		//-------------------------------
+		public String getAllToJSON(){
+			PreparedStatement pstmt;
+			List edus=null;
+			String jsonString=null;
+			try{
+			pstmt = conn.prepareStatement(GET_ALL_STMT_TOJSON);
+			edus = new LinkedList();
+			ResultSet rs = pstmt.executeQuery();
+				while (rs.next()) {
+					Map<String,String> map = new HashMap<String,String>();
+					map.put("edu_id",rs.getString(1));
+					map.put("edu_name",rs.getString(2));
+					edus.add(map);
+					}
+				jsonString = JSONValue.toJSONString(edus);
+			}
+			catch(SQLException e){
+			
+			}
+			return jsonString;
+		}
+		
+		
+		
+		
+		
+		
 
 		public void closeConn() throws SQLException {
 			if (conn != null)
@@ -104,20 +140,18 @@ public  class EduJDBCDAO implements IEduJDBCDAO {
 		
 		//main method
 		public static void main(String[] args) {
-			EduVO edu1 = new EduVO();
 			IEduJDBCDAO dao=new EduJDBCDAO();
 			try {
 				dao.getConnection();
-
-				// insert
-				edu1.setEdu_name("Jean Tsao");
-				edu1.setEdu_add("taipei");
-				edu1.setEdu_tel("0999852963");
-				edu1.setEdu_contact("潔哥");
-				int count1 = dao.insert(edu1);
-				System.out.println("insert " + count1 + " rows");
-				
-
+// insert
+//				edu1.setEdu_name("Jean Tsao");
+//				edu1.setEdu_add("taipei");
+//				edu1.setEdu_tel("0999852963");
+//				edu1.setEdu_contact("潔哥");
+//				int count1 = dao.insert(edu1);
+//				System.out.println("insert " + count1 + " rows");
+				String jsonString = dao.getAllToJSON();
+				System.out.println(jsonString);
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}

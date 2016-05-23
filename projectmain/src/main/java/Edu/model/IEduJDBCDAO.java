@@ -13,4 +13,5 @@ public interface IEduJDBCDAO {
 	public List<EduVO> getAll() throws SQLException;
 	public void closeConn() throws SQLException;
 	public void getConnection()throws SQLException;
+	public String getAllToJSON();
 }

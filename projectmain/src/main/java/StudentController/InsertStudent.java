@@ -42,9 +42,9 @@ public class InsertStudent extends HttpServlet {
 			String stu_sex = request.getParameter("stu_sex");
 			String stu_email = request.getParameter("stu_email");
 			String stu_pre = request.getParameter("stu_pre");
-			String stu_implement = request.getParameter("stu_implement");
+			Double stu_implement = Double.parseDouble(request.getParameter("stu_implement"));
 			String stu_testtime = request.getParameter("stu_testtime");
-			String stu_interview = request.getParameter("stu_interview");
+			Double stu_interview = Double.parseDouble(request.getParameter("stu_interview"));
 			String stu_total = request.getParameter("stu_total");
 			String stu_workdate = request.getParameter("stu_workdate");
 			String stu_except = request.getParameter("stu_except");

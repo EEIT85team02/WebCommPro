@@ -2,7 +2,8 @@ package Sign_list.model;
 
 public class Sign_listVO {
 	private String emp_id ; 	//員工編號(employee)	  
-	private String emp_name ;	//員工姓名(employee)
+	private String emp_lastname ;	//員工姓(employee)
+	private String emp_firstname ;  //員工名(employee)
 	private String emp_mail;    //員工email(employee)
 	private Integer dep_id;     //部門編號(employee)
 	private String dep_name;    //部門名稱(employee)
@@ -17,12 +18,20 @@ public class Sign_listVO {
 		this.emp_id = emp_id;
 	}
 
-	public String getEmp_name() {
-		return emp_name;
+	public String getEmp_lastname() {
+		return emp_lastname;
 	}
 
-	public void setEmp_name(String emp_name) {
-		this.emp_name = emp_name;
+	public void setEmp_lastname(String emp_lastname) {
+		this.emp_lastname = emp_lastname;
+	}
+
+	public String getEmp_firstname() {
+		return emp_firstname;
+	}
+
+	public void setEmp_firstname(String emp_firstname) {
+		this.emp_firstname = emp_firstname;
 	}
 
 	public String getEmp_mail() {

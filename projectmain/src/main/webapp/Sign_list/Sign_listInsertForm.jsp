@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="Sign_list.model.*"%>
+<%
+	Sign_listVO slVO = (Sign_listVO) request.getAttribute("slVO");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +54,7 @@
 											class="form-control" name="dep_name" value="${param.dep_name}">
 										<label style="color:red">${errorMsgs}</label>
 										<label class="control-label">權限:</label> 
-										<select id="select1" class="form-control" name="sl_name"></select>													
+										<select id="select1" class="form-control" name="sl_name" value="${param.sl_id}"></select>													
 									</div>
 								</div>
 								<div class="modal-footer">
@@ -67,6 +71,7 @@
 	
 	<!-- 員工編號關鍵字 -->
 	<script>
+	
 	var show;
 	window.addEventListener("load", init, false);
 	var txt = document.getElementById("txtId");
@@ -107,6 +112,7 @@
 						
 						var id = txt.value;
 						console.log(id);
+						
 						$.getJSON('EmployeeList',{'emp_id':id},function(datas){
 							$.each(datas,function(i,emp){
 								
@@ -114,8 +120,6 @@
 								document.Sign_listInsertFrom.emp_mail.value = emp.emp_mail;
 								document.Sign_listInsertFrom.dep_name.value = emp.dep_name;
 								
-// 								var row = $('<tr></tr>').append([cell1,cell2,cell3,cell4]);
-// 								$('#productTable>tbody').append(row);				
 							})
 						})
 						

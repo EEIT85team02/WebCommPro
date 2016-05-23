@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Mail_template.model.IMail_templateDAO;
-import Mail_template.model.Mail_template;
+import Mail_template.model.Mail_templateVO;
 import Mail_template.model.Mail_templateDAO;
 
 
@@ -36,7 +36,7 @@ public class InsertMail_template extends HttpServlet {
 			request.setCharacterEncoding("UTF-8");
 			String mail_name = request.getParameter("mail_name");
 			String mail_text = request.getParameter("mail_text");
-			Mail_template mai1= new Mail_template();
+			Mail_templateVO mai1= new Mail_templateVO();
 			mai1.setMail_name(mail_name);
 			mai1.setMail_text(mail_text);
 			mai.insert(mai1);

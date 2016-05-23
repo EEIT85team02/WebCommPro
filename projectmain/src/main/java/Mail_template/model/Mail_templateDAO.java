@@ -16,7 +16,7 @@ public class Mail_templateDAO implements IMail_templateDAO {
 			"from Mail_template order by mail_id";
 
 
-		public void insert(Mail_template mai) {
+		public void insert(Mail_templateVO mai) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -30,7 +30,7 @@ public class Mail_templateDAO implements IMail_templateDAO {
 
 
 
-		public void update(Mail_template mai) {
+		public void update(Mail_templateVO mai) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -46,7 +46,7 @@ public class Mail_templateDAO implements IMail_templateDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				Mail_template mai = (Mail_template) session.get(Mail_template.class, mail_id);
+				Mail_templateVO mai = (Mail_templateVO) session.get(Mail_templateVO.class, mail_id);
 				session.delete(mai);
 				session.getTransaction().commit();	
 			} catch (RuntimeException ex) {
@@ -56,12 +56,12 @@ public class Mail_templateDAO implements IMail_templateDAO {
 		}
 		
 
-		public Mail_template findByPrimaryKey(Integer mail_id) {
-			Mail_template mai = null;
+		public Mail_templateVO findByPrimaryKey(Integer mail_id) {
+			Mail_templateVO mai = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				mai = (Mail_template) session.get(Mail_template.class, mail_id);
+				mai = (Mail_templateVO) session.get(Mail_templateVO.class, mail_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -70,8 +70,8 @@ public class Mail_templateDAO implements IMail_templateDAO {
 			return mai;
 		}
 
-		public List<Mail_template> getAll() {
-			List<Mail_template> list = null;
+		public List<Mail_templateVO> getAllMail() {
+			List<Mail_templateVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
+
 import Edu.model.*;
 
 
@@ -204,7 +206,12 @@ public class EduServlet extends HttpServlet {
 				return;
 
 				
-			} catch (Exception e) {
+			} 
+			catch (SQLServerException e) {
+				e.printStackTrace();
+				System.out.println("資料庫錯誤");
+			}
+			catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

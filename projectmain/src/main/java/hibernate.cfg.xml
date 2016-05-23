@@ -5,12 +5,14 @@
 <hibernate-configuration>
 
 	<session-factory>
+
         
         <!-- 連線池c3p0設定-->
 		<property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
 		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=project</property>
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">P@ssw0rd</property> 
+
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
 		<property name="hibernate.c3p0.min_size">5</property>
 		<property name="hibernate.c3p0.max_size">20</property>
@@ -36,7 +38,10 @@
 		<mapping resource="Edu/model/EduVO.hbm.xml" />
 		<mapping resource="Class/model/ClassVO.hbm.xml" />
 		<mapping resource="Student/model/Student.hbm.xml" />
+
 <!-- 		<mapping resource="Sign_list/model/Sign_list.hbm.xml" /> -->
+
+		<mapping resource="Stu_additional/model/Stu_additional.hbm.xml" />
 		<mapping resource="Employee/model/Employee.hbm.xml" />
 		<mapping resource="Test_period/model/Test_period.hbm.xml" />
 		<mapping resource="Test_interval/model/Test_interval.hbm.xml" />
@@ -45,7 +50,6 @@
 		<mapping resource="Member_test/model/Member_test.hbm.xml" />
 		<mapping resource="Mail_template/model/Mail_template.hbm.xml" />
 		<mapping resource="Examiner_offday/model/Examiner_offday.hbm.xml" />
-		
 
 	</session-factory>
 	

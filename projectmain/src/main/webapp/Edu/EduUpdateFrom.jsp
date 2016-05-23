@@ -36,7 +36,7 @@
 								<div class="modal-body">
 									<div class="form-group">
 										<label class="control-label">中心代號:</label> <input type="text"
-											class="form-control" name="edu_id" value="${eduVO.edu_id}" readonly>
+											class="form-control" name="edu_id" value="${eduVO.edu_id}" readonly >
 										<label style="color:red">${errorMsgs.edu_idMsg}</label>
 									</div>
 									<div class="form-group">
