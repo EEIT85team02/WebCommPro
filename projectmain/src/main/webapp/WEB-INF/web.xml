@@ -18,5 +18,24 @@
 		<servlet-name>UpStuScore</servlet-name>
 		<url-pattern>/Score/upscore.do</url-pattern>
 	</servlet-mapping>
+	
+		 <servlet>
+	    <servlet-name>CalendarJsonServlet</servlet-name>
+	    <servlet-class>fullCalendarControler.CalendarJsonServlet</servlet-class>
+	  </servlet>
+	  <servlet-mapping>
+	    <servlet-name>CalendarJsonServlet</servlet-name>
+	    <url-pattern>/fullCalendar/CalendarJsonServlet.do</url-pattern>
+	  </servlet-mapping>
+	  
+	  	 <servlet>
+	    <servlet-name>AddEditEvent</servlet-name>
+	    <servlet-class>fullCalendarControler.AddEditEvent</servlet-class>
+	  </servlet>
+	  <servlet-mapping>
+	    <servlet-name>AddEditEvent</servlet-name>
+	    <url-pattern>/fullCalendar/AddEditEvent.do</url-pattern>
+	  </servlet-mapping>
+	
   
 </web-app>
