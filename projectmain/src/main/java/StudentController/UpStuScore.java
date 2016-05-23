@@ -30,9 +30,26 @@ public class UpStuScore extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
 		
+         if ("score".equals(action)) {
+			
+			StudentService StuSvc = new StudentService();
+			List<StudentVO> stuVO = null;
+			try {
+				stuVO = StuSvc.getAll();
+		
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+	
+			req.setAttribute("studentVO", stuVO);
+			
+			RequestDispatcher rd = req.getRequestDispatcher("/Score/showscore.jsp");
+			rd.forward(req, res);
+		}
+		
 		if ("updatepage".equals(action)) {
 			String stu_id = req.getParameter("stu_id");
-			
 			StudentService StuSvc = new StudentService();
 			StudentVO stuVO = null;
 			try {
@@ -44,7 +61,7 @@ public class UpStuScore extends HttpServlet {
 	
 			req.setAttribute("studentVO", stuVO);
 			
-			RequestDispatcher rd = req.getRequestDispatcher("/Score/upscore.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("/Score/showscore.jsp");
 			rd.forward(req, res);
 		}
 		
@@ -97,7 +114,7 @@ public class UpStuScore extends HttpServlet {
 				e.printStackTrace();
 			}
 			req.setAttribute("studentVO", stuVO);
-			
+
 			RequestDispatcher rd = req.getRequestDispatcher("/Score/showscore.jsp");
 			rd.forward(req, res);
 		}

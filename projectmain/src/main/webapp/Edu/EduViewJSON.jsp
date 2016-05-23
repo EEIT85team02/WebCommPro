@@ -20,6 +20,7 @@
 <style>
 .Main_Content {
 	margin-top: 100px;
+	background-color:#BBFFEE;
 }
 .buttonUpdate{
 	color: red;
@@ -27,7 +28,6 @@
 .buttonDelete{
 	color: blue;
 }
-
 
 label, input {
 	display: block;
@@ -50,23 +50,6 @@ h1 {
 	margin: .6em 0;
 }
 
-div#users-contain {
-	width: 350px;
-	margin: 20px 0;
-}
-
-div#users-contain table {
-	margin: 1em 0;
-	border-collapse: collapse;
-	width: 100%;
-}
-
-div#users-contain table td, div#users-contain table th {
-	border: 1px solid #eee;
-	padding: .6em 10px;
-	text-align: left;
-}
-
 .ui-dialog .ui-state-error {
 	padding: .3em;
 }
@@ -75,8 +58,10 @@ div#users-contain table td, div#users-contain table th {
 	border: 1px solid transparent;
 	padding: 0.3em;
 }
-</style>
+.aaa{
 
+}
+</style>
 </head>
 <body>
 	<!-- 引入top.jsp標頭檔 巡覽列部分-->
@@ -87,11 +72,11 @@ div#users-contain table td, div#users-contain table th {
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-md-12">
-					<div class=>
-						<table class="table table-hover" id="EduTable">
+					<table class="table table-hover" id="EduTable">
 							<thead>
 								<tr>
-									<th class="col-md-3 col-xs-3">名稱</th>
+									<th class="col-md-1 col-xs-1">代號</th>
+									<th class="col-md-2 col-xs-2">名稱</th>
 									<th class="col-md-3 col-xs-3">地址</th>
 									<th class="col-md-2 col-xs-2">電話</th>
 									<th class="col-md-2 col-xs-2">連絡人</th>
@@ -113,97 +98,99 @@ div#users-contain table td, div#users-contain table th {
 
 						<!------------------點選新增教育中心表單區塊內容----------------------------- -->
 							<button id="buttonAdd">新增資料</button>
-							<button id="buttonUpdate1">資料修改</button>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
 	<!-- 設定新增FORM表單區塊dialog -->
-	<div id="dialog-form1" title="Create 教育中心資料">
-		<p class="validateTips">表單驗證顯示</p>
-		<form>
+	<div id="dialog-insertForm" title="建立教育中心資料">
+		<p class="validateTips"></p>
+		<form name="EduInsertForm">
 			<fieldset>
 				<label for="edu_name">中心名稱</label> 
-				<input type="text" name="edu_name" id="edu_name" value="台北資策會" class="text ui-widget-content ui-corner-all"> 
+				<input type="text" name="edu_name" id="edu_name" class="text ui-widget-content ui-corner-all"> 
 				<label for="edu_add">中心地址</label> 
-				<input type="text" name="edu_add" id="edu_add" value="台北市" class="text ui-widget-content ui-corner-all"> 
+				<input type="text" name="edu_add" id="edu_add" class="text ui-widget-content ui-corner-all"> 
 				<label for="edu_tel">中心電話</label> 
-				<input type="text"name="edu_tel" id="edu_tel" value="022987456" class="text ui-widget-content ui-corner-all">
+				<input type="text"name="edu_tel" id="edu_tel" class="text ui-widget-content ui-corner-all">
 				<label for="edu_contact">聯絡人</label> 
-				<input type="text"name="edu_contact" id="edu_contact" value="林書豪" class="text ui-widget-content ui-corner-all">
+				<input type="text"name="edu_contact" id="edu_contact" class="text ui-widget-content ui-corner-all">
+				<input type="hidden"name="action" value="addEdu">
 				<!-- Allow form submission with keyboard without duplicating the dialog button -->
 				<input type="submit" tabindex="-1"
 					style="position: absolute; top: -1000px">
 			</fieldset>
 		</form>
 	</div>
-	
 	<!-- 設定修改FORM表單區塊dialog -->
-	<div id="dialog-form2" title="Update 教育中心資料">
-		<p class="validateTips">表單驗證顯示</p>
-		<form>
+	<div id="dialog-updateForm" title="修改教育中心資料">
+		<p class="validateTips"></p>
+		<form name="EduUpdateForm" action="updateEdu">
 			<fieldset>
 				<label for="edu_id">中心代號</label> 
-				<input type="text" name="edu_id" id="edu_id"  readOnly class="text ui-widget-content ui-corner-all">
+				<input type="text" name="edu_id" id="uedu_id"  readOnly class="text ui-widget-content ui-corner-all">
 				<label for="edu_name">中心名稱</label> 
-				<input type="text" name="edu_name" id="edu_name" value="台北資策會" class="text ui-widget-content ui-corner-all"> 
+				<input type="text" name="edu_name" id="uedu_name" class="text ui-widget-content ui-corner-all"> 
 				<label for="edu_add">中心地址</label> 
-				<input type="text" name="edu_add" id="edu_add" value="台北市" class="text ui-widget-content ui-corner-all"> 
+				<input type="text" name="edu_add" id="uedu_add" class="text ui-widget-content ui-corner-all"> 
 				<label for="edu_tel">中心電話</label> 
-				<input type="text"name="edu_tel" id="edu_tel" value="022987456" class="text ui-widget-content ui-corner-all">
+				<input type="text"name="edu_tel" id="uedu_tel" class="text ui-widget-content ui-corner-all">
 				<label for="edu_contact">聯絡人</label> 
-				<input type="text"name="edu_contact" id="edu_contact" value="林書豪" class="text ui-widget-content ui-corner-all">
+				<input type="text"name="edu_contact" id="uedu_contact" class="text ui-widget-content ui-corner-all">
+				<input type="hidden"name="action" value="updateEdu">
 				<!-- Allow form submission with keyboard without duplicating the dialog button -->
 				<input type="submit" tabindex="-1"
 					style="position: absolute; top: -1000px">
 			</fieldset>
 		</form>
 	</div>
-
+	<!-- 設定刪除確認表單區塊dialog -->
+<div id="dialog-deleteForm" title="刪除確認">
+  <p>是否要刪除此筆資料?</p>
+</div>
 
 	<script>
 		$(function() {
-			//載入頁面時，先利用getJSON方法呼叫EduJSON.do，取回資料庫資料並建立table內容
+			//載入頁面時，先利用getJSON方法呼叫EduServletJSON.do，取回資料庫資料並建立table內容
 			$('#EduTable>tbody>tr').remove();
 			$.getJSON('EduServletJSON.do', {"action":"getALLEdu"}, function(datas) {
-				//datas 就是一個JSON物件
+				//console.log(datas);
 				$.each(datas, function(i, Edus) {
-					//var edu_id = Edus.edu_id;
-					
-					//欄位內容
+					//資料載入將頁面塞入欄位內容
 					$( "#EduTable>tbody" ).append( 
 						"<tr>" +
+						  "<td>" + Edus.edu_id + "</td>" +
 				          "<td>" + Edus.edu_name + "</td>" +
 				          "<td>" + Edus.edu_add + "</td>" +
 				          "<td>" + Edus.edu_tel + "</td>" +
 				          "<td>" + Edus.edu_contact + "</td>" +
-				          "<td>" + "<button class='buttonUpdate'> "+"修改"+"</button>"+ "</td>" +
-				          "<td>" + "<button class='buttonDelete'> "+"刪除"+"</button>" + "</td>" +
+				          "<td>" + "<button class='buttonUpdate' value="+Edus.edu_id+"> "+"編輯"+"</button>"+ "</td>" +
+				          "<td>" + "<button class='buttonDelete' value="+Edus.edu_id+"> "+"刪除"+"</button>" + "</td>" +
 				        "</tr>" );
 					console.log(Edus.edu_id);
-					
 				});
-			})//取回資料庫資料並建立table內容結束
+			});//取回資料庫資料並建立table內容結束
 			
-			
-			
-			//diolog程式部分以下(新增)
+			//---------------diolog程式部分以下(新增)------------------
 			 var  form,EduInsertForm,EduUpdateForm,
 			  edu_id = $( "#edu_id" ),
 		      edu_name = $( "#edu_name" ),
 		      edu_add = $( "#edu_add" ),
 		      edu_tel = $( "#edu_tel" ),
 		      edu_contact = $( "#edu_contact" ),
-		      allFields = $( [] ).add( edu_id ).add( edu_name ).add( edu_add ).add( edu_tel ).add( edu_contact ),
+		      uedu_id = $('#uedu_id'),
+			  uedu_name = $('#uedu_name'),
+			  uedu_add = $('#uedu_add'),
+			  uedu_tel = $('#uedu_tel'),
+			  uedu_contact = $('#uedu_contact');
+		      allFields = $( [] ).add( edu_id ).add( edu_name ).add( edu_add ).add( edu_tel ).add( edu_contact );
+		      uallFields = $( [] ).add( uedu_id ).add( uedu_name ).add( uedu_add ).add( uedu_tel ).add( uedu_contact );
 		      tips = $( ".validateTips" );
 		 //在驗證顯示區塊新增class t->傳入的一段文字
 		    function updateTips( t ) {
 		      tips
 		        .text( t )
+		        .css('color','red')
 		        .addClass( "ui-state-highlight" );
 		      setTimeout(function() {
 		        tips.removeClass( "ui-state-highlight", 1500 );
@@ -213,7 +200,7 @@ div#users-contain table td, div#users-contain table th {
 		    function checkLength( o, n, min, max ) {
 		      if ( o.val().length > max || o.val().length < min ) {
 		        o.addClass( "ui-state-error" );
-		        updateTips( "欄位: " + n + "長度必須於 " +
+		        updateTips( "欄位 " + n + ":長度必須於 " +
 		          min + " 到 " + max + "之間" );
 		        return false;
 		      } else {
@@ -230,39 +217,59 @@ div#users-contain table td, div#users-contain table th {
 		        return true;
 		      }
 		    }
-		//驗證表單資料是否錯誤開始
-		    function addData() {
+		 //點選新增鍵，所執行的方法
+		    function insertEduFormToCreateTable() {
 		      var valid = true;
 		      allFields.removeClass( "ui-state-error" );
-			  valid = valid && checkLength( edu_name, "edu_name", 1, 30 );
-		      valid = valid && checkLength( edu_add, "edu_add", 1, 30 );
-		      valid = valid && checkLength( edu_tel, "edu_tel", 7, 15 );
-		      valid = valid && checkLength( edu_contact, "edu_contact", 1, 15 );
+			  valid = valid && checkLength( edu_name, "名稱", 1, 30 );
+		      valid = valid && checkLength( edu_add, "地址", 1, 30 );
+		      valid = valid && checkLength( edu_tel, "電話", 7, 15 );
+		      valid = valid && checkLength( edu_contact, "聯絡人", 1, 10 );
 		      valid = valid && checkRegexp( edu_tel, /^([0-9])+$/, "電話欄位只允許輸入數字 : 0-9" );
 		 		if ( valid ) {
-		        $( "#EduTable tbody" ).append( "<tr>" +
-		          "<td>" + edu_name.val() + "</td>" +
-		          "<td>" + edu_add.val() + "</td>" +
-		          "<td>" + edu_tel.val() + "</td>" +
-		          "<td>" + edu_contact.val() + "</td>" +
-		          "<td>" + "<button class='buttonUpdate'>"+"修改"+"</button>"+ "</td>" +
-		          "<td>" + "<button class='buttonDelete'>"+"刪除"+"</button>" + "</td>" +
-		        "</tr>" );
-		        EduInsertForm.dialog( "close" );
-		        EduUpdateForm.dialog( "close" );
-		      }
+		 			var Insertdatas = $('form[name="EduInsertForm"]').serialize();
+		 			$.post('EduServletJSON.do',Insertdatas,function(data){
+		 				console.log(data);
+		 				if(data=="資料新增失敗"){
+		 					$('.validateTips').css('color','red').text("新增錯誤");
+		 				}
+		 				else if(data=="資料新增成功"){
+		 					$.getJSON('EduServletJSON.do', {"action":"getALLEdu"}, function(datas) {
+		 						console.log(datas);
+			 					$('#EduTable>tbody>tr').remove();
+			 					//datas 為一個JSON物件
+			 					$.each(datas, function(i, Edus) {
+			 						//資料載入將頁面塞入欄位內容
+			 						console.log(Edus.edu_id);
+			 						$( "#EduTable > tbody" ).append( 
+			 							"<tr>" +
+			 							  "<td>" + Edus.edu_id + "</td>" +
+			 					          "<td>" + Edus.edu_name + "</td>" +
+			 					          "<td>" + Edus.edu_add + "</td>" +
+			 					          "<td>" + Edus.edu_tel + "</td>" +
+			 					          "<td>" + Edus.edu_contact + "</td>" +
+			 					          "<td>" + "<button class='buttonUpdate' value="+Edus.edu_id+"> "+"編輯"+"</button>"+ "</td>" +
+			 					          "<td>" + "<button class='buttonDelete' value="+Edus.edu_id+"> "+"刪除"+"</button>" + "</td>" +
+			 					        "</tr>" );
+			 					});
+			 					allFields.val("");//將新增form表單內容清空
+					 			$('.validateTips').text("");////將新增form表單驗證區塊內容清空
+			 					EduInsertForm.dialog( "close" );
+			 				});//取回資料庫資料並建立table內容結束
+		 				}
+		 			});
+		 		}
 		      return valid;
 		    }
 		  //驗證表單資料是否錯誤結束
-		 
-		  //設定表單寬度視窗資料開始
-		    EduInsertForm = $( "#dialog-form1" ).dialog({
+		 //設定表單寬度視窗資料開始
+		    EduInsertForm = $( "#dialog-insertForm" ).dialog({
 		      autoOpen: false,
 		      height: 500,
 		      width: 400,
 		      modal: true,
 		      buttons: {
-		        "send": addData,
+		        "send": insertEduFormToCreateTable,
 		        Cancel: function() {
 		        	EduInsertForm.dialog( "close" );
 		        }
@@ -270,12 +277,14 @@ div#users-contain table td, div#users-contain table th {
 		      close: function() {
 		        form[ 0 ].reset();
 		        allFields.removeClass( "ui-state-error" );
+		       	allFields.val("");//將新增form表單內容清空
+	 			$('.validateTips').text("");////將新增form表單驗證區塊內容清空
 		      }
 		    });
 		  	//設定表單寬度視窗資料結束
 		  	form = EduInsertForm.find( "form" ).on( "submit", function( event ) {
 		      event.preventDefault();
-		      addData();
+		      insertEduFormToCreateTable();
 		    });
 		 	//綁定click事件使用者新增icon，開啟dialog 表單EduInsertForm
 		    $( "#buttonAdd" ).button().on( "click", function() {
@@ -285,48 +294,121 @@ div#users-contain table td, div#users-contain table th {
 		    
 		    
 			//diolog程式部分以下(更新)
-		 //在驗證顯示區塊新增class t->傳入的一段文字
-		    function updateTips( t ) {
-		      tips
-		        .text( t )
-		        .addClass( "ui-state-highlight" );
-		      setTimeout(function() {
-		        tips.removeClass( "ui-state-highlight", 1500 );
-		      }, 500 );
-		    }
-		
-		
-		
-		 
-		  //設定表單寬度視窗資料開始
-		    EduUpdateForm = $( "#dialog-form2" ).dialog({
+			//設定表單寬度視窗資料開始
+			EduUpdateForm = $( "#dialog-updateForm" ).dialog({
 		      autoOpen: false,
 		      height: 650,
 		      width: 400,
 		      modal: true,
 		      buttons: {
-			        "send": addData,
+			        "send": updateEduFormToCreateTable,
 			        Cancel: function() {
 			        	EduUpdateForm.dialog( "close" );
 			        }
 			      },
 		      close: function() {
 		        form[ 0 ].reset();
-		        allFields.removeClass( "ui-state-error" );
+		        uallFields.removeClass( "ui-state-error" );
 		      }
 		    });
 		  	//設定表單寬度視窗資料結束
-		  	form1 = EduUpdateForm.find( "form" ).on( "submit", function( event ) {
+		  	form = EduUpdateForm.find( "form" ).on( "submit", function( event ) {
 		      event.preventDefault();
-		      addData();
+		      updateEduFormToCreateTable();
 		    });
-		 	//綁定click事件使用者修改icon，開啟dialog 表單EduUpdateForm
+		 	//綁定click事件使用者編輯icon，開啟dialog 表單EduUpdateForm
 		    $( "tbody" ).button().on( "click",".buttonUpdate", function() {
+		    	updateValue = $(this).val();
+		    	updateValueEdu_id = $(this).parent().parent().find('td:eq(0)');
+		    	updateValueEdu_name = $(this).parent().parent().find('td:eq(1)');
+		    	updateValueEdu_add = $(this).parent().parent().find('td:eq(2)');
+		    	updateValueEdu_tel = $(this).parent().parent().find('td:eq(3)');
+		    	updateValueEdu_contact = $(this).parent().parent().find('td:eq(4)');
+		    	console.log(updateValueEdu_id.text());
+		    	console.log(updateValueEdu_name.text());
+		    	console.log(updateValueEdu_tel.text());
+		    	console.log(updateValueEdu_add.text());
+ 		    	console.log(updateValueEdu_contact.text());
+		    	$.getJSON('EduServletJSON.do', {"action":"getoneEdu","edu_id":updateValue}, function(datas) {
+		    		$.each(datas,function(i,Edus){
+		    			uedu_id.val(Edus.edu_id);
+		    			uedu_name.val(Edus.edu_name);
+		    			uedu_tel.val(Edus.edu_tel);
+		    			uedu_add.val(Edus.edu_add);
+		    			uedu_contact.val(Edus.edu_contact);
+		    		})
+		    	})
 		    	EduUpdateForm.dialog( "open" );
 		    });
+		    //點選修改鍵，所執行的方法
+		    function updateEduFormToCreateTable() {
+			      var valid = true;
+			      uallFields.removeClass( "ui-state-error" );
+				  valid = valid && checkLength( uedu_name, "名稱", 1, 30 );
+			      valid = valid && checkLength( uedu_add, "地址", 1, 30 );
+			      valid = valid && checkLength( uedu_tel, "電話", 7, 15 );
+			      valid = valid && checkLength( uedu_contact, "聯絡人", 1, 10 );
+			      valid = valid && checkRegexp( uedu_tel, /^([0-9])+$/, "電話欄位只允許輸入數字 : 0-9" );
+			 		if ( valid ) {
+			 			var Updatedatas = $('form[name="EduUpdateForm"]').serialize();
+			 			$.get('EduServletJSON.do',Updatedatas,function(data){
+			 				if(data=="資料更新失敗"){
+			 					//console.log(data);
+			 					 $('.validateTips').css('color','red').text("更新錯誤");
+			 				}
+			 				else if(data=="資料更新成功"){
+// 			 					updateValueEdu_id.text(uedu_id.val());
+				 				updateValueEdu_name.text(uedu_name.val());
+				 				updateValueEdu_add.text(uedu_add.val());
+				 				updateValueEdu_tel.text(uedu_tel.val());
+				 				updateValueEdu_contact.text(uedu_contact.val());
+// 				 				uallFields.val("");//將更新form表單內容清空
+						 		$('.validateTips').text("");////將更新form表單驗證區塊內容清空
+				 				EduUpdateForm.dialog( "close" );
+			 				}
+			 			});
+			 		}
+			      return valid;
+			    }
+		  
+		  	//diolog程式部分以下(刪除)
+			//設定刪除確認表單寬度視窗資料開始
+		    EduDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
+		        autoOpen: false,
+		        height: 200,
+		        width: 240,
+		        modal: true,
+		        buttons: {
+		          "確認": deleteEduFormToCreateTable ,
+		          "放棄": function() {
+		            $( this ).dialog( "close" );
+		            $('#dialog-deleteForm p').text('是否要刪除此筆資料?');
+		          }
+		        }
+		    });
+		 	
+		 	//綁定click事件使用者刪除icon
+		    $( "tbody" ).button().on( "click",".buttonDelete", function() {
+		    	deleteValue = $(this).val();
+		    	deleteSelecter= $(this);
+		    	EduDeleteConfirm.dialog( "open" );
+		    });
+		    //點選刪除鍵，所執行的方法
+			function deleteEduFormToCreateTable(){
+			$.get('EduServletJSON.do',{"edu_id":deleteValue,"action":"deleteEdu"},function(data){
+				if(data=="資料刪除成功"){
+					console.log(deleteValue);
+					console.log(data);
+					deleteSelecter.parents("tr").remove();
+					EduDeleteConfirm.dialog( "close" );
+				}else if (data=="資料刪除失敗"){
+					console.log(deleteValue);
+					console.log(data);
+					$('#dialog-deleteForm p').text('資料刪除失敗，資料使用中');
+				}
+			});
 			
-			
-
+	    	}
 		});//load函數結束
 	</script>
 </body>
