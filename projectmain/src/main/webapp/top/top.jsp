@@ -58,7 +58,7 @@
 							aria-expanded="false">資料建檔<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li class=""><a href="${pageContext.request.contextPath}/Edu/EduServletJSON.do?action=initEduViewTODataTablesJSON">教育中心</a></li>
-								<li class=""><a href="${pageContext.request.contextPath}/Class/ClassServlet.do?action=getALLClass">班級建檔</a></li>
+								<li class=""><a href="${pageContext.request.contextPath}/Class/ClassServletJSON.do?action=initClassViewTODataTablesJSON">班級建檔</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Student/Studentform.jsp">學員建檔</a></li>
 							</ul></li>
 						<!-----------------------------------下拉式選單(資料建檔結束)---------------------------------------------------- -->
@@ -91,7 +91,6 @@
 <!-- 		nav結束 -->
 	</div>
 <!-- 	div container結束 -->
-
 
 
 <div id="gotop">TOP</div>

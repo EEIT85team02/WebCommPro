@@ -73,10 +73,10 @@ h1 {
 					<table id="EduTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th class="col-md-1 col-xs-1">代號</th>
-								<th class="col-md-3 col-xs-3">名稱</th>
-								<th class="col-md-3 col-xs-3">地址</th>
-								<th class="col-md-3 col-xs-3">電話</th>
+								<th class="col-md-1 col-xs-1">中心代號</th>
+								<th class="col-md-3 col-xs-3">中心名稱</th>
+								<th class="col-md-3 col-xs-3">中心地址</th>
+								<th class="col-md-3 col-xs-3">中心電話</th>
 								<th class="col-md-2 col-xs-2">連絡人</th>
 							</tr>
 						</thead>
@@ -84,10 +84,10 @@ h1 {
 						</tbody>
 						<tfoot>
 							<tr>
-								<th>代號</th>
-								<th>名稱</th>
-								<th>地址</th>
-								<th>電話</th>
+								<th>中心代號</th>
+								<th>中心名稱</th>
+								<th>中心地址</th>
+								<th>中心電話</th>
 								<th>連絡人</th>
 							</tr>
 						</tfoot>
@@ -107,13 +107,13 @@ h1 {
 		<form name="EduInsertForm">
 			<fieldset>
 				<label for="edu_name">中心名稱</label> 
-				<input type="text" name="edu_name" id="edu_name" class="text ui-widget-content ui-corner-all"> 
+				<input type="text" name="edu_name" id="edu_name" class="text ui-widget-content ui-corner-all" placeholder="請輸入中心名稱" autocomplete="off"> 
 				<label for="edu_add">中心地址</label> 
-				<input type="text" name="edu_add" id="edu_add" class="text ui-widget-content ui-corner-all">
+				<input type="text" name="edu_add" id="edu_add" class="text ui-widget-content ui-corner-all" placeholder="請輸入中心地址" autocomplete="off">
 				<label for="edu_tel">中心電話</label> 
-				<input type="text" name="edu_tel" id="edu_tel" class="text ui-widget-content ui-corner-all">
+				<input type="text" name="edu_tel" id="edu_tel" class="text ui-widget-content ui-corner-all"placeholder="請輸入中心電話" autocomplete="off">
 				<label for="edu_contact">聯絡人</label> 
-				<input type="text" name="edu_contact" id="edu_contact" class="text ui-widget-content ui-corner-all"> 
+				<input type="text" name="edu_contact" id="edu_contact" class="text ui-widget-content ui-corner-all" placeholder="請輸入聯絡人" autocomplete="off"> 
 				<input type="hidden" name="action" value="addEdu">
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
@@ -127,13 +127,13 @@ h1 {
 				<label for="edu_id">中心代號</label> 
 				<input type="text" name="edu_id" id="uedu_id" readOnly class="text ui-widget-content ui-corner-all">
 				<label for="edu_name">中心名稱</label> 
-				<input type="text" name="edu_name" id="uedu_name" class="text ui-widget-content ui-corner-all"> 
+				<input type="text" name="edu_name" id="uedu_name" class="text ui-widget-content ui-corner-all" autocomplete="off"> 
 				<label for="edu_add">中心地址</label> 
-				<input type="text" name="edu_add" id="uedu_add" class="text ui-widget-content ui-corner-all">
+				<input type="text" name="edu_add" id="uedu_add" class="text ui-widget-content ui-corner-all" autocomplete="off">
 				<label for="edu_tel">中心電話</label> 
-				<input type="text" name="edu_tel" id="uedu_tel" class="text ui-widget-content ui-corner-all">
+				<input type="text" name="edu_tel" id="uedu_tel" class="text ui-widget-content ui-corner-all" autocomplete="off">
 				<label for="edu_contact">聯絡人</label> 
-				<input type="text" name="edu_contact" id="uedu_contact" class="text ui-widget-content ui-corner-all"> 
+				<input type="text" name="edu_contact" id="uedu_contact" class="text ui-widget-content ui-corner-all" autocomplete="off"> 
 				<input type="hidden" name="action" value="updateEdu">
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
@@ -409,6 +409,7 @@ h1 {
 						console.log(deleteOrUpdateValue);
 						console.log(data);
 						table.row('.selected').remove().draw( false );//刪除畫面上class為selected的那行
+						deleteOrUpdateValue = null;
 						EduDeleteConfirm.dialog( "close" );
 					}else if (data=="資料刪除失敗"){
 						$('#dialog-deleteForm p').text('資料刪除失敗，資料使用中');

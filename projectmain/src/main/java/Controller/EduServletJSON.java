@@ -22,7 +22,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import Edu.model.*;
 
 
-@WebServlet("/Edu/EduServletJSON.do")
+@WebServlet({"/Edu/EduServletJSON.do","/Class/EduServletJSON.do"})
 public class EduServletJSON extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public EduServletJSON() {
