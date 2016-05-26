@@ -13,14 +13,14 @@ import hibernate.util.HibernateUtil;
 public class Mail_templateDAO implements IMail_templateDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from Mail_template order by mail_id";
+			"from Mail_templateVO order by mail_id";
 
 
-		public void insert(Mail_templateVO mai) {
+		public void insert(Mail_templateVO mailVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(mai);
+				session.saveOrUpdate(mailVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -30,11 +30,11 @@ public class Mail_templateDAO implements IMail_templateDAO {
 
 
 
-		public void update(Mail_templateVO mai) {
+		public void update(Mail_templateVO mailVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(mai);
+				session.saveOrUpdate(mailVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -46,8 +46,8 @@ public class Mail_templateDAO implements IMail_templateDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				Mail_templateVO mai = (Mail_templateVO) session.get(Mail_templateVO.class, mail_id);
-				session.delete(mai);
+				Mail_templateVO mailVO = (Mail_templateVO) session.get(Mail_templateVO.class, mail_id);
+				session.delete(mailVO);
 				session.getTransaction().commit();	
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -57,17 +57,17 @@ public class Mail_templateDAO implements IMail_templateDAO {
 		
 
 		public Mail_templateVO findByPrimaryKey(Integer mail_id) {
-			Mail_templateVO mai = null;
+			Mail_templateVO mailVO = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				mai = (Mail_templateVO) session.get(Mail_templateVO.class, mail_id);
+				mailVO = (Mail_templateVO) session.get(Mail_templateVO.class, mail_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;
 			}
-			return mai;
+			return mailVO;
 		}
 
 		public List<Mail_templateVO> getAllMail() {

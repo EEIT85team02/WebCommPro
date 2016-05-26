@@ -112,13 +112,6 @@
 
 		<!--取db2.jar -->
 
-<!-- 	<dependency> -->
-<!-- 		<groupId>com.iiiedu</groupId> -->
-<!-- 		<artifactId>db2jcc</artifactId> -->
-<!-- 		<version>1.0</version> -->
-<!-- 	</dependency> -->
-
-
 
 
 <!-- 		<dependency> -->
@@ -166,6 +159,7 @@
 			<version>3.1.0</version>
 		</dependency>
 		
+
 		<!-- jason.jar -->
 		<dependency>
 			<groupId>com.iiiedu</groupId>
@@ -179,6 +173,16 @@
 			<artifactId>jdom</artifactId>
 			<version>2.0.5</version>
 		</dependency>
+
+		    <!-- Gson API -->
+	    <dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.6.2</version>
+		</dependency>
+		
+
+
 
 	</dependencies>
 	<build>
@@ -210,4 +214,5 @@
 			</plugin>
 		</plugins>
 	</build>
+
 </project>

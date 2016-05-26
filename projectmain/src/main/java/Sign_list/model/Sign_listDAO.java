@@ -11,6 +11,8 @@ import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import Class.model.ClassVO;
+
 
 
 
@@ -32,33 +34,19 @@ public class Sign_listDAO implements ISign_listDAO {
 				throw ex;
 			}
 		}
-
-		public void delete(String emp_id) {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-			try {
-				session.beginTransaction();
-				Sign_listVO edu = (Sign_listVO) session.get(Sign_listVO.class, emp_id);
-				session.delete(emp_id);
-				session.getTransaction().commit();	
-			} catch (RuntimeException ex) {
-				session.getTransaction().rollback();
-				throw ex;
-			}
-		}
 		
-
 		public Sign_listVO findByPrimaryKey(String emp_id) {
-			Sign_listVO edu = null;
+			Sign_listVO slVO = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				edu = (Sign_listVO) session.get(Sign_listVO.class, emp_id);
+				slVO = (Sign_listVO) session.get(Sign_listVO.class, emp_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;
 			}
-			return edu;
+			return slVO;
 		}
 
 		public List<Sign_listVO> getAllSl() {
@@ -75,6 +63,8 @@ public class Sign_listDAO implements ISign_listDAO {
 			}
 			return list;
 		}
+
+		
 
 //		public static void main(String[] args) {
 //

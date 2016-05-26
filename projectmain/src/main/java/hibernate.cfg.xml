@@ -13,7 +13,6 @@
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">P@ssw0rd</property> 
 
-
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
 		<property name="hibernate.c3p0.min_size">5</property>
 		<property name="hibernate.c3p0.max_size">20</property>
@@ -49,7 +48,7 @@
 		<mapping resource="Member_test/model/Member_test.hbm.xml" />
 		<mapping resource="Mail_template/model/Mail_template.hbm.xml" />
 		<mapping resource="Examiner_offday/model/Examiner_offday.hbm.xml" />
-
+		<mapping resource="fullCalendar/Modle/Calendar.hbm.xml"/>
 	</session-factory>
 	
 </hibernate-configuration>

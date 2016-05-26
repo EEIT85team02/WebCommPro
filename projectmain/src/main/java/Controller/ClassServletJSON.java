@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -16,12 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.exception.ConstraintViolationException;
-import org.json.simple.JSONValue;
+
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import Class.model.ClassService;
-import Edu.model.*;
+import Class.model.ClassVO;
+
 
 
 @WebServlet("/Class/ClassServletJSON.do")
@@ -60,8 +59,8 @@ public class ClassServletJSON extends HttpServlet {
 				if (class_id == null || class_id.trim().length() == 0) {
 					Msgs.put("class_idMsg", "班級代號不可空白");
 				}
-				if (class_id.trim().length() >30) {
-					Msgs.put("class_idMsg", "班級代號中英文長度不可大於30碼");
+				if (class_id.trim().length() >10) {
+					Msgs.put("class_idMsg", "班級代號中英文長度不可大於10碼");
 				}
 				/***************(新增)取得Class-class_name表單資料***************/
 				class_name = request.getParameter("class_name");
@@ -76,8 +75,8 @@ public class ClassServletJSON extends HttpServlet {
 				if (class_contact == null || class_contact.trim().length() == 0) {
 					Msgs.put("class_contactMsg", "班級聯絡人不可空白");
 				}
-				if ( class_contact.trim().length() >15) {
-					Msgs.put("class_contactMsg", "班級聯絡人長度不可大於15碼");
+				if ( class_contact.trim().length() >10) {
+					Msgs.put("class_contactMsg", "班級聯絡人長度不可大於10碼");
 				}
 				/***************(新增)取得Class-class_teach表單資料***************/
 				class_teach = request.getParameter("class_teach");
@@ -112,7 +111,7 @@ public class ClassServletJSON extends HttpServlet {
 			
 			try {
 				// ============接收班級代號class_id資料====================
-				String class_id =request.getParameter("edu_id");
+				String class_id =request.getParameter("class_id");
 				// ============呼叫方法刪除資料====================
 				classSvc = new ClassService();
 				classSvc.deleteClass(class_id);
@@ -144,8 +143,8 @@ public class ClassServletJSON extends HttpServlet {
 				if (class_id == null || class_id.trim().length() == 0) {
 					Msgs.put("class_idMsg", "班級代號不可空白");
 				}
-				if (class_id.trim().length() >30) {
-					Msgs.put("class_idMsg", "班級代號中英文長度不可大於30碼");
+				if (class_id.trim().length() >10) {
+					Msgs.put("class_idMsg", "班級代號中英文長度不可大於10碼");
 				}
 				/***************(修改)取得Class-class_name表單資料***************/
 				class_name = request.getParameter("class_name");
@@ -160,16 +159,16 @@ public class ClassServletJSON extends HttpServlet {
 				if (class_contact == null || class_contact.trim().length() == 0) {
 					Msgs.put("class_contactMsg", "班級聯絡人不可空白");
 				}
-				if (class_contact.trim().length() >30) {
-					Msgs.put("class_contactMsg", "班級聯絡人中英文長度不可大於30碼");
+				if (class_contact.trim().length() >10) {
+					Msgs.put("class_contactMsg", "班級聯絡人中英文長度不可大於10碼");
 				}
 				/***************(修改)取得Class-class_teach表單資料***************/
 				class_teach = request.getParameter("class_teach");
 				if (class_teach == null || class_teach.trim().length() == 0) {
 					Msgs.put("class_teachMsg", "班級導師不可空白");
 				}
-				if ( class_teach.trim().length() >15) {
-					Msgs.put("class_teachMsg", "班級導師長度不可大於15碼");
+				if ( class_teach.trim().length() >10) {
+					Msgs.put("class_teachMsg", "班級導師長度不可大於10碼");
 				}
 				/***************(修改)取得Class-edu_id表單資料***************/
 				edu_id = Integer.parseInt(request.getParameter("edu_id"));
@@ -223,13 +222,33 @@ public class ClassServletJSON extends HttpServlet {
 		}
 	
 		/******************************** 查詢單一筆資料 ***********************/	
-		if ("getoneClass".equals(action)) {
+		if ("checkClassId".equals(action)) {
 			try {
 				// ============接收班級代號class_id資料====================
 				String class_id =request.getParameter("class_id");
 				// ============查詢班級單筆資料回傳JSON字串============
 				classSvc = new ClassService();
-				String jsonString = classSvc.findByPrimaryKeyClassToJSON(class_id);
+				ClassVO classVO = classSvc.findByPrimaryKeyClass(class_id);
+				System.out.println(classVO);
+				if(classVO != null){
+					out.write("代號已存在");
+				}else {
+					out.write("代號不存在");
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		/******************************** 查詢(確認)班級代號資料是否存在資料庫 ***********************/	
+		if ("getoneClass".equals(action)) {
+			String jsonString =null;
+			try {
+				// ============接收班級代號class_id資料====================
+				String class_id =request.getParameter("class_id");
+				// ============查詢班級單筆資料回傳JSON字串============
+				classSvc = new ClassService();
+				jsonString = classSvc.findByPrimaryKeyClassToJSON(class_id);
 				out.write(jsonString);
 				return;
 			} catch (SQLException e) {

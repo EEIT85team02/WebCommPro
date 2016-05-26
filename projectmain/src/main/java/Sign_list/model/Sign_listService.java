@@ -31,9 +31,19 @@ public class Sign_listService {
 		
 		dao.update(slVO);
 	}
-	public void deleteSl(String emp_id) throws SQLException{
-		dao.delete(emp_id);
+	
+	public void updatedelSl(String emp_id,String emp_name, String emp_mail,
+			String dep_name, Integer sl_id) throws SQLException {
+		Sign_listVO slVO = new Sign_listVO();
+		slVO.setEmp_id(emp_id);
+		slVO.setEmp_name(emp_name);
+		slVO.setEmp_mail(emp_mail);
+		slVO.setDep_name(dep_name);
+		slVO.setSl_id(0);
+		
+		dao.update(slVO);
 	}
+
 	public Sign_listVO findByPrimaryKeySl(String emp_id) throws SQLException{
 		return dao.findByPrimaryKey(emp_id);
 	}
