@@ -19,7 +19,11 @@ public class ClassDAO implements IClassDAO {
 	
 		private static final String GET_ALL_STMT = 
 			"from ClassVO order by class_id";
-
+		
+		private static final String CheckClassId_STMT = 
+				"select count(*) as count from ClassVO where class_id = :class_id";
+		private static final String GET_ALL_Class = 
+				"from ClassVO";
 
 		public void insert(ClassVO cla) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -77,6 +81,26 @@ public class ClassDAO implements IClassDAO {
 			}
 			return cla;
 		}
+		
+//		public String CheckClassId(String class_id) {
+//			String msg = null;
+//			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//			try {
+//				msg= "帳號不存在";
+//				session.beginTransaction();
+//				Query query = session.createQuery(CheckClassId_STMT);
+//				query.setParameter("class_id", class_id);
+//				long count = (Long)(query.list().get(0));
+//				session.getTransaction().commit();
+//				if(count != 0 ){
+//					msg= "帳號已存在";
+//				}
+//			} catch (RuntimeException ex) {
+//				session.getTransaction().rollback();
+//				throw ex;
+//			}
+//			return msg;
+//		}
 
 		public List<ClassVO> getAll() {
 			List<ClassVO> list = null;
@@ -93,22 +117,42 @@ public class ClassDAO implements IClassDAO {
 			return list;
 		}
 		
+		public List<ClassVO> getAllClass() {
+			List<ClassVO> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_ALL_Class);
+				list = query.list();
+				System.out.println("query.list()======"+query.list());
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return list;
+		}	
+		
+		
 		public static void main(String[] args) {
 
 			IClassDAO dao = new ClassDAO();
 			List<ClassVO> list1;
+			ClassVO msg = null;
 			try {
-				list1 = dao.getAll();
-				for (ClassVO cla : list1) {
-					System.out.println(cla.getClass_id());
-					System.out.println(cla.getClass_name() );
-					System.out.println(cla.getClass_contact());
-					System.out.println(cla.getClass_teach());
-					System.out.println(cla.getEduVO().getEdu_id());
-					System.out.println(cla.getEduVO().getEdu_name());
-						
-						
-					}
+				msg = dao.findByPrimaryKey("EEIT84");
+				System.out.println(msg);
+//				list1 = dao.getAll();
+//				for (ClassVO cla : list1) {
+//					System.out.println(cla.getClass_id());
+//					System.out.println(cla.getClass_name() );
+//					System.out.println(cla.getClass_contact());
+//					System.out.println(cla.getClass_teach());
+//					System.out.println(cla.getEduVO().getEdu_id());
+//					System.out.println(cla.getEduVO().getEdu_name());
+//						
+//						
+//					}
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

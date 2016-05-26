@@ -58,7 +58,7 @@ public class ClassService {
 	public List<ClassVO> getAllClass() throws SQLException{
 		return dao.getAll();
 	}
-	
+	//取得全部資料轉JSON -MAP對應
 	public String getAllClassToJSON() throws SQLException{
 		List clas=new LinkedList();
 		List<ClassVO> list=dao.getAll();
@@ -77,7 +77,7 @@ public class ClassService {
 		jsonString = JSONValue.toJSONString(clas);
 		return jsonString;
 	}
-	
+	//取得全部資料轉JSON -資料LIST對應MAP
 	public String getAllClassToJSONInitTable() throws SQLException{
 		List<ClassVO> list=dao.getAll();
 		List<List<String>> classVO = new LinkedList<List<String>>();
@@ -97,7 +97,7 @@ public class ClassService {
 		jsonValue = JSONValue.toJSONString(mapJSON);
 		return jsonValue;
 	}
-	
+	//取得單筆資料轉JSON -MAP對應
 	public String findByPrimaryKeyClassToJSON(String class_id) throws SQLException{
 		List cals=new LinkedList();
 		ClassVO classVO=dao.findByPrimaryKey(class_id);

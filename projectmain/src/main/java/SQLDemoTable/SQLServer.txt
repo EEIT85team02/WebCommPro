@@ -92,7 +92,7 @@ create table Employee
 (
   emp_id               nvarchar(10)  primary key  NOT NULL,     
   emp_name             nvarchar(20)   NOT NULL ,           
-  dep_id               int	         NOT NULL,     
+  dep_id               int	         ,     
   dep_name	           nvarchar(30)  NOT NULL ,   
   emp_mail             nvarchar(30)  UNIQUE NOT NULL,
   sl_id                int           foreign key  references  Sign_list(sl_id) NOT NULL   

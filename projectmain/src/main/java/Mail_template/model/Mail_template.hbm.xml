@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="Mail_template.model.Mail_template" table="Mail_template" >
+    <class name="Mail_template.model.Mail_templateVO" table="Mail_template" >
         
         <id name="mail_id" column="mail_id">
             <generator class="identity"/>

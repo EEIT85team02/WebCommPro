@@ -3,8 +3,10 @@ package Mail_template.model;
 
 
 import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
+
 import hibernate.util.HibernateUtil;
 
 
@@ -13,14 +15,14 @@ import hibernate.util.HibernateUtil;
 public class Mail_templateDAO implements IMail_templateDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from Mail_template order by mail_id";
+			"from Mail_templateVO order by mail_id";
 
 
-		public void insert(Mail_template mai) {
+		public void insert(Mail_templateVO mailVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(mai);
+				session.saveOrUpdate(mailVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -30,11 +32,11 @@ public class Mail_templateDAO implements IMail_templateDAO {
 
 
 
-		public void update(Mail_template mai) {
+		public void update(Mail_templateVO mailVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(mai);
+				session.saveOrUpdate(mailVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -46,8 +48,8 @@ public class Mail_templateDAO implements IMail_templateDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				Mail_template mai = (Mail_template) session.get(Mail_template.class, mail_id);
-				session.delete(mai);
+				Mail_templateVO mailVO = (Mail_templateVO) session.get(Mail_templateVO.class, mail_id);
+				session.delete(mailVO);
 				session.getTransaction().commit();	
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -56,22 +58,22 @@ public class Mail_templateDAO implements IMail_templateDAO {
 		}
 		
 
-		public Mail_template findByPrimaryKey(Integer mail_id) {
-			Mail_template mai = null;
+		public Mail_templateVO findByPrimaryKey(Integer mail_id) {
+			Mail_templateVO mailVO = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				mai = (Mail_template) session.get(Mail_template.class, mail_id);
+				mailVO = (Mail_templateVO) session.get(Mail_templateVO.class, mail_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;
 			}
-			return mai;
+			return mailVO;
 		}
 
-		public List<Mail_template> getAll() {
-			List<Mail_template> list = null;
+		public List<Mail_templateVO> getAllMail() {
+			List<Mail_templateVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -84,6 +86,19 @@ public class Mail_templateDAO implements IMail_templateDAO {
 			}
 			return list;
 		}
-
+		public List<Mail_templateVO> getAll() {
+			List<Mail_templateVO> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_ALL_STMT);
+				list = query.list();
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return list;
+		}
 
 }
