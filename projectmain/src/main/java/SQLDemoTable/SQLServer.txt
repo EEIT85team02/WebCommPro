@@ -103,7 +103,7 @@ create table Employee
 
 create table Test_period
 (
-  test_hour_id           int	       primary key  NOT NULL,
+  test_hour_id           int	       primary key  NOT NULL identity,
   test_hour              time          NOT NULL           
 );  
 

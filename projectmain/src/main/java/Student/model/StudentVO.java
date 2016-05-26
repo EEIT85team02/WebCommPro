@@ -7,9 +7,10 @@ import java.util.Set;
 import Stu_additional.model.Stu_additionalVO;
 
 public class StudentVO implements Serializable{//學員	(所有資策會學員)
+	private String stu_id ;
 	private String stu_group; 
 	private String stu_note1 ;
-	private String stu_id ;
+	private String stu_seatno ;
 	private String stu_name;
 	private String stu_age;
 	private String stu_sch ; 
@@ -24,6 +25,7 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private String stu_except ; 
 	private String stu_final ; 
 	private String stu_note2 ;
+	
 	private Set<Stu_additionalVO> stus = new HashSet<Stu_additionalVO>();
 	
 	public Set<Stu_additionalVO> getStus() {
@@ -32,7 +34,13 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	public void setStus(Set<Stu_additionalVO> stus) {
 		this.stus = stus;
 	}
-	public String getStu_group() {
+	
+	public String getStu_id() {
+		return stu_id;
+	}
+	public void setStu_id(String stu_id) {
+		this.stu_id = stu_id;
+	}public String getStu_group() {
 		return stu_group;
 	}
 	public void setStu_group(String stu_group) {
@@ -44,11 +52,12 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	public void setStu_note1(String stu_note1) {
 		this.stu_note1 = stu_note1;
 	}
-	public String getStu_id() {
-		return stu_id;
+	
+	public String getStu_seatno() {
+		return stu_seatno;
 	}
-	public void setStu_id(String stu_id) {
-		this.stu_id = stu_id;
+	public void setStu_seatno(String stu_seatno) {
+		this.stu_seatno = stu_seatno;
 	}
 	public String getStu_name() {
 		return stu_name;

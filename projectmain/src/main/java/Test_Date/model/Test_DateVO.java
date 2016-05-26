@@ -3,7 +3,7 @@ package Test_Date.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Test_Date implements Serializable{//班級考試日期時段
+public class Test_DateVO implements Serializable{//班級考試日期時段
 	private Integer test_date_id;//考試日期時段代號
 	private	String	class_id;//班級代號
 	private	java.sql.Timestamp	test_startdate;//考試日期
@@ -46,7 +46,7 @@ public class Test_Date implements Serializable{//班級考試日期時段
 	public void setExam_people(Integer exam_people) {
 		this.exam_people = exam_people;
 	}
-	public Test_Date(Integer test_date_id, String class_id,
+	public Test_DateVO(Integer test_date_id, String class_id,
 			Timestamp test_startdate, Integer test_hour_id, Integer test_people,
 			Integer exam_people) {
 		super();
@@ -57,7 +57,7 @@ public class Test_Date implements Serializable{//班級考試日期時段
 		this.test_people = test_people;
 		this.exam_people = exam_people;
 	}
-	public Test_Date() {
+	public Test_DateVO() {
 		super();
 	}
 	
