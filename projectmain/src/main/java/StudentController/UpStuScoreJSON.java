@@ -25,23 +25,23 @@ public class UpStuScoreJSON extends HttpServlet {
 	}
 
 
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		
-		req.setCharacterEncoding("UTF-8");
-		String action = req.getParameter("action");
-		
-		if ("getAllScore".equals(action)) {
-			
-				 StudentService stuSvc = new StudentService();
-				try {
-					String jsonString = stuSvc.getAllScoreJSON();
-				} catch (SQLException e) {
-					
-					e.printStackTrace();
-				}
-				
-			}
-		}
+//	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+//		
+//		req.setCharacterEncoding("UTF-8");
+//		String action = req.getParameter("action");
+//		
+//		if ("getAllScore".equals(action)) {
+//			
+//				 StudentService stuSvc = new StudentService();
+//				try {
+//					String jsonString = stuSvc.getAllScoreJSON();
+//				} catch (SQLException e) {
+//					
+//					e.printStackTrace();
+//				}
+//				
+//			}
+//		}
 	}
 
 

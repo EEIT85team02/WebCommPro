@@ -3,7 +3,7 @@
   <!--  請注意，此標籤的寫法不能用於 tomcat 5.x             -->
   <!--                  SQLServer2005, 2008                 -->                  
   <Resource name="jdbc/sysdesign" type="javax.sql.DataSource"
-      username="sa" password="P@ssw0rd"
+      username="sa" password="P@sswOrd"
       driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
 
       url="jdbc:sqlserver://192.168.23.110:1433;DatabaseName=project"

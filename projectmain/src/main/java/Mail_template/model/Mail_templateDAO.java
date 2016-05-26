@@ -3,8 +3,10 @@ package Mail_template.model;
 
 
 import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
+
 import hibernate.util.HibernateUtil;
 
 
@@ -84,6 +86,19 @@ public class Mail_templateDAO implements IMail_templateDAO {
 			}
 			return list;
 		}
-
+		public List<Mail_templateVO> getAll() {
+			List<Mail_templateVO> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_ALL_STMT);
+				list = query.list();
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return list;
+		}
 
 }
