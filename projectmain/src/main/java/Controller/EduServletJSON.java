@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
@@ -17,9 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.exception.ConstraintViolationException;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
-import Edu.model.*;
+import org.json.JSONArray;
+import org.json.simple.JSONObject;
+
+import Edu.model.EduService;
+
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 
 @WebServlet({"/Edu/EduServletJSON.do","/Class/EduServletJSON.do"})
@@ -97,6 +99,31 @@ public class EduServletJSON extends HttpServlet {
 			} 
 			catch (SQLException e) {
 				e.printStackTrace();
+			}
+		}
+		/******************************** 多筆刪除資料表 ***********************/
+		if ("deleteEduMulti".equals(action)) {
+			
+			try {
+				// ============接收中心代號edu_id資料====================
+				String edu_idJSON =request.getParameter("edu_id");
+				//System.out.println("edu_idJSON========="+edu_idJSON);
+				// ============呼叫方法刪除資料====================
+				eduSvc = new EduService();
+				eduSvc.deleteEduMulti(edu_idJSON);
+				//System.out.println("jsonIndex=========="+jsonIndex);
+				//eduSvc.deleteEdu(edu_id);	
+				out.write("資料刪除成功");
+				return;
+			}catch (ConstraintViolationException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
 			}
 		}
 		/******************************** 刪除資料表 ***********************/

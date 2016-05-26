@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.json.JSONArray;
 import org.json.simple.JSONValue;
 
 import Class.model.ClassVO;
@@ -52,6 +53,16 @@ public class ClassService {
 	public void deleteClass(String class_id) throws SQLException{
 		 dao.delete(class_id);
 	}
+	
+	public void deleteClassMulti(String class_idJSON) throws SQLException{
+		JSONArray ja = new JSONArray(class_idJSON);//將字串再轉回JSON
+		for(int i=0,max=ja.length();i< max;i++){
+			String class_id = ja.getString(i);
+			System.out.println("class_id======"+class_id);
+			dao.delete(class_id);
+		}
+	}
+	
 	public ClassVO findByPrimaryKeyClass(String class_id) throws SQLException{
 		return dao.findByPrimaryKey(class_id);
 	}
