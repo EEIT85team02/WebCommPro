@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.fullcalendar.model.CalendarVO" table="calendar" >
+        
+        <id name="orderId" column="orderId">
+            <generator class="identity"/>
+        </id>
+        <property name="id" column="id" />
+<!--         <property name="stuID" column="stuID" /> -->
+        <property name="title" column="title" />
+        <property name="start" column="start" />
+        <property name="end" column="end" />
+        <property name="color" column="color" />
+        <property name="editable" column="editable" />
+        <property name="overlap" column="overlap" />
+        <property name="rendering" column="rendering" />
+        <property name="constraint" column="limit" />
+        
+        <many-to-one name="studentVO" class="com.student.model.StudentVO" lazy="false">
+            <column name="stuID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
+

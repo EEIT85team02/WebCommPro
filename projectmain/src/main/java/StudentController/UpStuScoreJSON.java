@@ -61,6 +61,7 @@ public class UpStuScoreJSON extends HttpServlet {
 			}
 		  }
 		if("upscore".equals(action)){
+			System.out.println(req.getParameter("stu_group"));
 			Integer stu_group = Integer.parseInt(req.getParameter("stu_group"));
 			String stu_note1 = req.getParameter("stu_note1");
 			String stu_id = req.getParameter("stu_id");

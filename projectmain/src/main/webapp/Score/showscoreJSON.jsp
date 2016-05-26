@@ -11,10 +11,10 @@
 
 </head>
 <body>
-
+<jsp:include page="/top/top.jsp" />
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-  <form method="post" action="upscoreJSON.do">
+  <form method="post" action="upscoreJSON.do" name="upup">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -42,19 +42,6 @@
         <button type="button" class="default" data-dismiss="modal">取消</button>
         <input type="submit" class="primary" value="送出">
         <input type="hidden" name="action"	value="upscore">
-   <input type="hidden" name="stu_group" value="">
-   <input type="hidden" name="stu_note1" value="">
-   <input type="hidden" name="stu_age" value="">
-   <input type="hidden" name="stu_sch" value="">
-   <input type="hidden" name="stu_sex" value="">
-   <input type="hidden" name="stu_email" value="">
-   <input type="hidden" name="stu_pre" value="">
-   <input type="hidden" name="stu_testtime" value="">
-   <input type="hidden" name="stu_total" value="">
-   <input type="hidden" name="stu_workdate" value="">
-   <input type="hidden" name="stu_except" value="">
-   <input type="hidden" name="stu_final" value="">
-   <input type="hidden" name="stu_note2" value="">
       </div>
     </div>
     </form>
@@ -94,7 +81,7 @@
 								var cell3 = $("<td></td>").text(score.stu_implement);
 								var cell4 = $("<td></td>").text(score.stu_interview);
 								var cell5 = $("<td></td>").html("<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+score.stu_id+" >修改</button>");
-										
+								
 								var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5]);
 
 								$('#scoreTable>tbody').append(row);
@@ -114,6 +101,7 @@
 //					     console.log(updateID)
 						 $.getJSON("upscoreJSON.do",{"action":"getPkId",'stu_id':updateID},function(datas){
 							 $.each(datas,function(i,score){
+//								 console.log(score.stu_group)
 								 $("#ustu_id").val(score.stu_id); //設定修改表單中各個欄位的值
 								 $("#ustu_name").val(score.stu_name);
 								 $("#ustu_implement").val(score.stu_implement);
@@ -124,11 +112,14 @@
 					 })
 					 
 					 $('.primary').click(function(){  //修改後送出按鈕
-				
+				             var data = $('form[name="upup"]').serialize();
+				                    console.log(data)
+					            $.post("upscoreJSON.do",data,function(){
+					            	console.log(data)
 				 				updateStu_implement.text($("#ustu_implement").val()); //將各個欄位的值插入表格中
 				 				updateStu_interview.text($("#ustu_interview").val());
  //				 				console.log($("#ustu_interview").val())
-				 			
+					            })
 					 })
 					 
 				});	

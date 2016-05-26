@@ -9,6 +9,7 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private Integer stu_group; 
 	private String stu_note1 ;
 	private String stu_id ;
+	private Integer stu_seatno ;
 	private String stu_name;
 	private Integer stu_age;
 	private String stu_sch ; 
@@ -33,6 +34,13 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 		this.stus = stus;
 	}
 	private ClassVO classVO;
+	
+	public Integer getStu_seatno() {
+		return stu_seatno;
+	}
+	public void setStu_seatno(Integer stu_seatno) {
+		this.stu_seatno = stu_seatno;
+	}
 	public Integer getStu_group() {
 
 		return stu_group;
@@ -94,10 +102,10 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	public void setStu_pre(String stu_pre) {
 		this.stu_pre = stu_pre;
 	}
-	public double getStu_implement() {
+	public Double getStu_implement() {
 		return stu_implement;
 	}
-	public void setStu_implement(double stu_implement) {
+	public void setStu_implement(Double stu_implement) {
 		this.stu_implement = stu_implement;
 	}
 	public String getStu_testtime() {
@@ -106,16 +114,16 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	public void setStu_testtime(String stu_testtime) {
 		this.stu_testtime = stu_testtime;
 	}
-	public double getStu_interview() {
+	public Double getStu_interview() {
 		return stu_interview;
 	}
-	public void setStu_interview(double stu_interview) {
+	public void setStu_interview(Double stu_interview) {
 		this.stu_interview = stu_interview;
 	}
-	public double getStu_total() {
+	public Double getStu_total() {
 		return stu_total;
 	}
-	public void setStu_total(double stu_total) {
+	public void setStu_total(Double stu_total) {
 		this.stu_total = stu_total;
 	}
 	public Date getStu_workdate() {
