@@ -7,11 +7,11 @@ import java.util.Set;
 import Stu_additional.model.Stu_additionalVO;
 
 public class StudentVO implements Serializable{//學員	(所有資策會學員)
-	private String stu_group; 
+	private Integer stu_group; 
 	private String stu_note1 ;
 	private String stu_id ;
 	private String stu_name;
-	private String stu_age;
+	private Integer stu_age;
 	private String stu_sch ; 
 	private String stu_sex ; 
 	private String stu_email ;
@@ -21,7 +21,7 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private Double stu_interview ; 
 	private String stu_total ; 
 	private String stu_workdate ; 
-	private String stu_except ; 
+	private Integer stu_except ; 
 	private String stu_final ; 
 	private String stu_note2 ;
 	private Set<Stu_additionalVO> stus = new HashSet<Stu_additionalVO>();
@@ -32,10 +32,10 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	public void setStus(Set<Stu_additionalVO> stus) {
 		this.stus = stus;
 	}
-	public String getStu_group() {
+	public Integer getStu_group() {
 		return stu_group;
 	}
-	public void setStu_group(String stu_group) {
+	public void setStu_group(Integer stu_group) {
 		this.stu_group = stu_group;
 	}
 	public String getStu_note1() {
@@ -56,10 +56,10 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	public void setStu_name(String stu_name) {
 		this.stu_name = stu_name;
 	}
-	public String getStu_age() {
+	public Integer getStu_age() {
 		return stu_age;
 	}
-	public void setStu_age(String stu_age) {
+	public void setStu_age(Integer stu_age) {
 		this.stu_age = stu_age;
 	}
 	public String getStu_sch() {
@@ -116,10 +116,10 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	public void setStu_workdate(String stu_workdate) {
 		this.stu_workdate = stu_workdate;
 	}
-	public String getStu_except() {
+	public Integer getStu_except() {
 		return stu_except;
 	}
-	public void setStu_except(String stu_except) {
+	public void setStu_except(Integer stu_except) {
 		this.stu_except = stu_except;
 	}
 	public String getStu_final() {

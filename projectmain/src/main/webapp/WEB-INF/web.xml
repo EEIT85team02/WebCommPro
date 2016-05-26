@@ -17,7 +17,7 @@
     <servlet-name>UpStuScore</servlet-name>
     <url-pattern>/Score/upscore.do</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>UpStuScoreJSON</servlet-name>
     <servlet-class>StudentController.UpStuScoreJSON</servlet-class>
   </servlet>
