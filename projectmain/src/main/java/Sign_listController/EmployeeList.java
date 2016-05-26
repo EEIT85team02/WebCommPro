@@ -40,7 +40,7 @@ public class EmployeeList extends HttpServlet {
 		ResultSet rs = null;
 		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=project";
 
-		String query = "select emp_lastname,emp_firstname,emp_mail,dep_name from employee where emp_id=?";
+		String query = "select emp_name,emp_mail,dep_name from employee where emp_id=?";
 		String categoryID = request.getParameter("emp_id");
 
 		try{
@@ -55,11 +55,10 @@ public class EmployeeList extends HttpServlet {
 			 
 			 List  l1 = new LinkedList();
 			 while (rs.next()) {
-				 Map m1 = new HashMap();       
-				 m1.put("emp_lastname",rs.getString(1));   
-				 m1.put("emp_firstname", rs.getString(2)); 
-				 m1.put("emp_mail",rs.getString(3)); 
-				 m1.put("dep_name", rs.getString(4));
+				 Map m1 = new HashMap();         
+				 m1.put("emp_name", rs.getString(1)); 
+				 m1.put("emp_mail",rs.getString(2)); 
+				 m1.put("dep_name", rs.getString(3));
 				 l1.add(m1);
 			 }
 			 String jsonString = JSONValue.toJSONString(l1);                    

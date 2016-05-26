@@ -35,7 +35,7 @@ public class Sign_listXML extends HttpServlet {
 
 		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=project";
 
-		String query = "select sl_id, sl_name from Sign_list";
+		String query = "select sl_id, sl_name from Sign_list where sl_id<>0";
 
 		try {
 			DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());

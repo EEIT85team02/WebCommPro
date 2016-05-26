@@ -31,7 +31,7 @@ public class Sign_listAuto extends HttpServlet {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=project";
-		String query = "select emp_id from employee where emp_id like ?";
+		String query = "select emp_id from employee where sl_id=0 and emp_id like ?";
 		String keyword = request.getParameter("keyword");
 		keyword = keyword + "%";
 		try {
