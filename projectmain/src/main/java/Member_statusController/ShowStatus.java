@@ -44,17 +44,17 @@ public class ShowStatus extends HttpServlet {
 			List<Member_statusVO> statuslistNEVER = null;
 			List<Member_statusVO> statuslistYES  = null;
 			List<Member_statusVO> statuslistWAITING = null;
-			try {
-				statuslistWAIT = MscWAIT.getStatusWAIT();
-				statuslistOK = MscWAIT.getStatusOK();
-				statuslistNO = MscWAIT.getStatusNO();
-				statuslistNEVER = MscWAIT.getStatusNEVER();
-				statuslistYES = MscWAIT.getStatusYES();
-				statuslistWAITING = MscWAIT.getStatusWAITING();
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-			}
+//			try {
+//				statuslistWAIT = MscWAIT.getStatusWAIT();
+//				statuslistOK = MscWAIT.getStatusOK();
+//				statuslistNO = MscWAIT.getStatusNO();
+//				statuslistNEVER = MscWAIT.getStatusNEVER();
+//				statuslistYES = MscWAIT.getStatusYES();
+//				statuslistWAITING = MscWAIT.getStatusWAITING();
+//			} catch (SQLException e) {
+//				
+//				e.printStackTrace();
+//			}
 	
 			req.setAttribute("statuslistWAIT", statuslistWAIT);
 			req.setAttribute("statuslistOK", statuslistOK);

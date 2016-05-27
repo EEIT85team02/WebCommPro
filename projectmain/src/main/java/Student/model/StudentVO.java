@@ -7,6 +7,7 @@ import Stu_additional.model.Stu_additionalVO;
 import Class.model.ClassVO;
 public class StudentVO implements Serializable{//學員	(所有資策會學員)
 
+
 	private Integer stu_id ;
 	private Integer stu_group; 
 	private String stu_note1 ;
@@ -16,6 +17,7 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private Integer stu_sex ; 
 	private Integer stu_age ;
 	private String stu_email ;
+
 	private Integer stu_pre ;
 	private double stu_implement ;
 	private Date stu_testtime  ;
@@ -24,7 +26,9 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private Date stu_workdate ;
 	private double stu_except ;
 	private Integer stu_final ;
+
 	private String stu_note2 ;
+
 	private String class_id;
 //	private ClassVO classVO;
 	private Set<Stu_additionalVO> stus = new HashSet<Stu_additionalVO>();
@@ -39,9 +43,12 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 
 	public Integer getStu_group() {
 		return stu_group;
+
 	}
 
+
 	public void setStu_group(Integer stu_group) {
+
 		this.stu_group = stu_group;
 	}
 
@@ -109,11 +116,15 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 		this.stu_pre = stu_pre;
 	}
 
+
 	public double getStu_implement() {
+
 		return stu_implement;
 	}
 
+
 	public void setStu_implement(double stu_implement) {
+
 		this.stu_implement = stu_implement;
 	}
 
@@ -125,19 +136,27 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 		this.stu_testtime = stu_testtime;
 	}
 
+
 	public double getStu_interview() {
+
 		return stu_interview;
 	}
 
+
 	public void setStu_interview(double stu_interview) {
+
 		this.stu_interview = stu_interview;
 	}
 
+
 	public double getStu_total() {
+
 		return stu_total;
 	}
 
+
 	public void setStu_total(double stu_total) {
+
 		this.stu_total = stu_total;
 	}
 
@@ -149,11 +168,15 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 		this.stu_workdate = stu_workdate;
 	}
 
+
 	public double getStu_except() {
+
 		return stu_except;
 	}
 
+
 	public void setStu_except(double stu_except) {
+
 		this.stu_except = stu_except;
 	}
 

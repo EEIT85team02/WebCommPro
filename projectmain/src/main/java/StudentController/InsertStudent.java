@@ -28,6 +28,7 @@ public class InsertStudent extends HttpServlet {
 	
 	}
 
+
 //	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		try {
 //			System.out.println("OK1");
@@ -77,5 +78,6 @@ public class InsertStudent extends HttpServlet {
 //			e.printStackTrace();
 //		}
 //	}
+
 
 }
