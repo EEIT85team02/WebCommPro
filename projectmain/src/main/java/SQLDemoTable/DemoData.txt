@@ -16,15 +16,25 @@ truncate table Edu;
 insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會', '台北市大安區復興南路一段', '026631666', 'Mary');
 insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會', '桃園市中壢區中大路300號', '034257387', 'John');
 insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會', '高雄市前金區中正四路211號', '079699885', 'Alean');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('樹林資策會', '台北市大安區復興南路一段', '026631666', 'Mary');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('板橋資策會', '桃園市中壢區中大路300號', '034257387', 'John');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('雙連資策會', '高雄市前金區中正四路211號', '079699885', 'Alean');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中和資策會', '台北市大安區復興南路一段', '026631666', 'Mary');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('永和資策會', '桃園市中壢區中大路300號', '034257387', 'John');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('土成資策會', '高雄市前金區中正四路211號', '079699885', 'Alean');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('鶯歌資策會', '台北市大安區復興南路一段', '026631666', 'Mary');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('三峽資策會', '桃園市中壢區中大路300號', '034257387', 'John');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('士林資策會', '高雄市前金區中正四路211號', '079699885', 'Alean');
 
 
 --Class
-insert into class  values ('EEIT85','Java程式設計師','羅秀燕','劉翰卿',1 );
-insert into class  values ('EEIT70','Java程式設計師','羅秀燕','劉翰卿',1 );
-insert into class  values ('MEME33','嵌入式軟體系統設計','羅秀燕','詹民進',2 );
-insert into class  values ('MSIT05','全方位應用程式設計','羅秀燕','王芳芳',2 );
-insert into class  values ('SESE59','網路系統整合工程師','羅秀燕','陳其元 ',3 );
-insert into class  values ('MMMH25','網路多媒體設計師','羅秀燕','楊斐羽',3 );
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('EEIT85','Java程式設計師','羅秀燕','劉翰卿',1 );
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('EEIT70','Java程式設計師','羅秀燕','劉翰卿',1 );
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('MEME33','嵌入式軟體系統設計','羅秀燕','詹民進',2 );
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('MSIT05','全方位應用程式設計','羅秀燕','王芳芳',2 );
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('SESE59','網路系統整合工程師','羅秀燕','陳其元 ',3 );
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('MMMH25','網路多媒體設計師','羅秀燕','楊斐羽',3 );
+
 
 
 --Student

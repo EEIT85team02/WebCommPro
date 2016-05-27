@@ -9,7 +9,7 @@ import Student.model.StudentVO;
 
 public class Stu_additionalVO implements Serializable{
 	private String test_startdate ;
-	private String test_hour_id ;
+	private Integer test_hour_id ;
 	private String stu_applytime;
 	private String emp_id ; 
 	private String confirm_time ; 
@@ -32,24 +32,16 @@ public class Stu_additionalVO implements Serializable{
 	public void setMember_statusVO(Member_statusVO member_statusVO) {
 		this.member_statusVO = member_statusVO;
 	}
-	//    private StudentVO studentVO;
-//    
-//	public StudentVO getStudentVO() {
-//		return studentVO;
-//	}
-//	public void setStudentVO(StudentVO studentVO) {
-//		this.studentVO = studentVO;
-//	}
 	public String getTest_startdate() {
 		return test_startdate;
 	}
 	public void setTest_startdate(String test_startdate) {
 		this.test_startdate = test_startdate;
 	}
-	public String getTest_hour_id() {
+	public Integer getTest_hour_id() {
 		return test_hour_id;
 	}
-	public void setTest_hour_id(String test_hour_id) {
+	public void setTest_hour_id(Integer test_hour_id) {
 		this.test_hour_id = test_hour_id;
 	}
 	public String getStu_applytime() {

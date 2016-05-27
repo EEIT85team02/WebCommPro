@@ -10,15 +10,15 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 
-  	<servlet>
-		<servlet-name>UpStuScore</servlet-name>
-		<servlet-class>StudentController.UpStuScore</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>UpStuScore</servlet-name>
-		<url-pattern>/Score/upscore.do</url-pattern>
-	</servlet-mapping>
-	
+  <servlet>
+    <servlet-name>UpStuScoreJSON</servlet-name>
+    <servlet-class>StudentController.UpStuScoreJSON</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpStuScoreJSON</servlet-name>
+    <url-pattern>/Score/upscoreJSON.do</url-pattern>
+  </servlet-mapping>
+
 		 <servlet>
 	    <servlet-name>CalendarJsonServlet</servlet-name>
 	    <servlet-class>fullCalendar.Controler.CalendarJsonServlet</servlet-class>
