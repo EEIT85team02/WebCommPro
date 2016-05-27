@@ -13,14 +13,14 @@ import hibernate.util.HibernateUtil;
 public class Test_intervalDAO implements ITest_intervalDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from Test_interval order by test_interval_id";
+			"from Test_intervalVO order by test_interval_id";
 
 
-		public void insert(Test_interval tes) {
+		public void insert(Test_intervalVO tiVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(tes);
+				session.saveOrUpdate(tiVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -30,11 +30,11 @@ public class Test_intervalDAO implements ITest_intervalDAO {
 
 
 
-		public void update(Test_interval tes) {
+		public void update(Test_intervalVO tiVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(tes);
+				session.saveOrUpdate(tiVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -42,36 +42,36 @@ public class Test_intervalDAO implements ITest_intervalDAO {
 			}
 		}
 
-		public void delete(Integer test_interval_id) {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-			try {
-				session.beginTransaction();
-				Test_interval tes = (Test_interval) session.get(Test_interval.class, test_interval_id);
-				session.delete(tes);
-				session.getTransaction().commit();	
-			} catch (RuntimeException ex) {
-				session.getTransaction().rollback();
-				throw ex;
-			}
-		}
+//		public void delete(Integer test_interval_id) {
+//			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//			try {
+//				session.beginTransaction();
+//				Test_intervalVO tes = (Test_intervalVO) session.get(Test_intervalVO.class, test_interval_id);
+//				session.delete(tes);
+//				session.getTransaction().commit();	
+//			} catch (RuntimeException ex) {
+//				session.getTransaction().rollback();
+//				throw ex;
+//			}
+//		}
 		
 
-		public Test_interval findByPrimaryKey(Integer test_interval_id) {
-			Test_interval tes = null;
+		public Test_intervalVO findByPrimaryKey(Integer test_interval_id) {
+			Test_intervalVO tiVO = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				tes = (Test_interval) session.get(Test_interval.class, test_interval_id);
+				tiVO = (Test_intervalVO) session.get(Test_intervalVO.class, test_interval_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;
 			}
-			return tes;
+			return tiVO;
 		}
 
-		public List<Test_interval> getAll() {
-			List<Test_interval> list = null;
+		public List<Test_intervalVO> getAllTi() {
+			List<Test_intervalVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();

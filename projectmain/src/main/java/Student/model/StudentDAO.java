@@ -152,7 +152,11 @@ public class StudentDAO implements IStudentDAO {
 				throw ex;
 			}
 			return list;
-		}			
+		}	
+		
+		public static void main(String args[]){
+			System.out.println(new StudentDAO().getAll().get(0).getStu_email());
+		}
 		
 		
 }

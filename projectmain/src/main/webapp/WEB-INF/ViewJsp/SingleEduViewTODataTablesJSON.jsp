@@ -5,6 +5,7 @@
 <html lang="zh-tw">
 <head>
 <title>Edu_Page</title>
+
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet"
@@ -72,7 +73,7 @@ h1 {
 					<table id="EduTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th class="col-md-1 col-xs-1">代號</th>
+								<th class="col-md-1 col-xs-1">中心代號</th>
 								<th class="col-md-3 col-xs-3">中心名稱</th>
 								<th class="col-md-3 col-xs-3">中心地址</th>
 								<th class="col-md-3 col-xs-3">中心電話</th>
@@ -83,7 +84,7 @@ h1 {
 						</tbody>
 						<tfoot>
 							<tr>
-								<th>代號</th>
+								<th>中心代號</th>
 								<th>中心名稱</th>
 								<th>中心地址</th>
 								<th>中心電話</th>
@@ -91,13 +92,11 @@ h1 {
 							</tr>
 						</tfoot>
 					</table>
+
 					<!------------------點選新增教育中心表單區塊內容----------------------------- -->
 					<button id="buttonAdd">新增</button>
 					<button id="buttonUpdate">編輯</button>
 					<button id="buttonDelete">刪除</button>
-					<button id="buttonAll">全部選取</button>
-					<button id="buttonRe">取消全選</button>
-					<button id="buttonSel">選取筆數查詢</button>
 				</div>
 			</div>
 		</div>
@@ -170,19 +169,26 @@ h1 {
 		    	  
 		    	} );
 			//定義table資料來源json，與畫面顯示------>結束
-			//新增dialog區塊變數宣告
+			 
+			
+			
+		    //新增dialog區塊變數宣告
 			var form,EduInsertForm,EduUpdateForm,
 			 	edu_id = $( "#edu_id" ),
 		      	edu_name = $( "#edu_name" ),
 		      	edu_add = $( "#edu_add" ),
 		      	edu_tel = $( "#edu_tel" ),
 		      	edu_contact = $( "#edu_contact" );
+			
 				uedu_id = $('#uedu_id'),
 			  	uedu_name = $('#uedu_name'),
 			  	uedu_add = $('#uedu_add'),
 			  	uedu_tel = $('#uedu_tel'),
 			  	uedu_contact = $('#uedu_contact');
-				allFields = $( [] ).add( edu_id ).add( edu_name ).add( edu_add ).add( edu_tel ).add( edu_contact );
+				
+				deleteOrUpdateValue = null;//檢查是否有選取資料行
+				
+		      	allFields = $( [] ).add( edu_id ).add( edu_name ).add( edu_add ).add( edu_tel ).add( edu_contact );
 		      	uallFields = $( [] ).add( uedu_id ).add( uedu_name ).add( uedu_add ).add( uedu_tel ).add( uedu_contact );
 		      	tips = $( ".validateTips" );
 		      //在驗證顯示區塊新增class t->傳入的一段文字
@@ -228,6 +234,7 @@ h1 {
 			 		if ( valid ) {
 			 			var Insertdatas = $('form[name="EduInsertForm"]').serialize();
 			 			$.post('EduServletJSON.do',Insertdatas,function(data){
+			 				console.log(data);
 			 				if(data=="資料新增失敗"){
 			 					$('.validateTips').css('color','red').text("新增錯誤");
 			 				}
@@ -235,7 +242,8 @@ h1 {
 			 					table.ajax.reload();//重新載入data tables的資料
 			 					allFields.val("");//將新增form表單內容清空
 						 		$('.validateTips').text("");////將新增form表單驗證區塊內容清空
-						 		EduInsertForm.dialog( "close" );//將新增form表單關閉
+						 		deleteOrUpdateValue = null;
+				 				EduInsertForm.dialog( "close" );//將新增form表單關閉
 				 				//取回資料庫資料並建立table內容結束
 			 				}
 			 			});
@@ -270,13 +278,31 @@ h1 {
 			    $( "#buttonAdd" ).button().on( "click", function() {
 			    	EduInsertForm.dialog( "open" );
 			    });//diolog程式部分結束
-				
+			
+			
+			
 			    
-			    //點選tr資料，更換class類別,若被選取則更新為未選取，反之選取
+			    
+			    
+				//點選要刪除或編輯的那行，按刪除或編輯鍵即可，先將選擇的[行]資料儲存
 				$('#EduTable tbody').on( 'click', 'tr', function () {
-					$(this).toggleClass('selected');
-				    });
-				
+					deleteOrUpdateValue = $(this).find('td:eq(0)').text(); 
+					edu_idUpdateValue = $(this).find('td:eq(0)'); 
+					edu_nameUpdateValue = $(this).find('td:eq(1)');
+					edu_addUpdateValue = $(this).find('td:eq(2)');
+					edu_telUpdateValue = $(this).find('td:eq(3)');
+					edu_contactUpdateValue = $(this).find('td:eq(4)');
+					console.log(deleteOrUpdateValue);
+						if ( $(this).hasClass('selected') ) {
+				            $(this).removeClass('selected');
+				        }
+				        else {
+				            table.$('tr.selected').removeClass('selected');
+				            $(this).addClass('selected');
+				        }
+				    } );
+			
+			 
 			    
 			    //diolog程式部分以下(更新)
 				//設定表單寬度視窗資料開始
@@ -302,30 +328,21 @@ h1 {
 			      event.preventDefault();
 			      updateEduFormToCreateTable();
 			    });
-				//綁定click事件使用者編輯icon，開啟dialog 表單EduUpdateForm(判斷資料是否多選-僅能選取一筆!!)
-				//table.rows('.selected').data().length->指的是，有幾筆列資料，套用得Class為selected
+
+			  //綁定click事件使用者編輯icon，開啟dialog 表單EduUpdateForm
 			 	$('#buttonUpdate').click( function () {
-			 		if(table.rows('.selected').data().length == 0){
-			    		alert("請選取一筆要進行編輯的資料");
-			    	}else if(table.rows('.selected').data().length > 1){
-			    		alert("[編輯]功能僅能選取一筆資料。");
-			    	}else if(table.rows('.selected').data().length == 1){
-			    		ClickUpdateValue = $('tr.selected').find('td:eq(0)').text();//抓到選到的class為selected的教育中心代號
-				 		console.log(ClickUpdateValue);
-				 		$.getJSON('EduServletJSON.do', {"action":"getoneEdu","edu_id":ClickUpdateValue}, function(datas) {
-							console.log(datas);
-							//將抓到的教育中心代號，發送request請資料庫傳回該筆資料JSON
-							$.each(datas, function(i, Edus) {
-								uedu_id.val(Edus.edu_id);
-							  	uedu_name.val(Edus.edu_name),
-							  	uedu_add.val(Edus.edu_add),
-							  	uedu_tel.val(Edus.edu_tel),
-							  	uedu_contact.val(Edus.edu_contact);
-							});
-						});
-				 		EduUpdateForm.dialog( "open" );
+			    	if(deleteOrUpdateValue==null){
+			    		console.log(deleteOrUpdateValue);
+			    		alert("請先選取要編輯的資料");
+			    	}else{
+			    		uedu_id.val(edu_idUpdateValue.text());
+		    			uedu_name.val(edu_nameUpdateValue.text());
+		    			uedu_add.val(edu_addUpdateValue.text());
+		    			uedu_tel.val(edu_telUpdateValue.text());
+		    			uedu_contact.val(edu_contactUpdateValue.text());
+		    			EduUpdateForm.dialog( "open" );
 			    	}
-			 	} );
+			    } );
 			    //點選修改鍵，所執行的方法
 			    function updateEduFormToCreateTable() {
 				      var valid = true;
@@ -337,22 +354,39 @@ h1 {
 				      valid = valid && checkRegexp( uedu_tel, /^([0-9])+$/, "電話欄位只允許輸入數字 : 0-9" );
 				 		if ( valid ) {
 				 			var Updatedatas = $('form[name="EduUpdateForm"]').serialize();
-				 			//console.log(Updatedatas);
 				 			$.get('EduServletJSON.do',Updatedatas,function(data){
-				 				console.log(data);
 				 				if(data=="資料更新失敗"){
 				 					 $('.validateTips').css('color','red').text("更新錯誤");
 				 				}
 				 				else if(data=="資料更新成功"){
-				 					table.ajax.reload();//重新載入data tables的資料 ?? 須改為直接抓取原更新表單的值回填回去表格
-				 					EduUpdateForm.dialog( "close" );
+				 					console.log(edu_idUpdateValue.text());
+				 					console.log(edu_nameUpdateValue.text());
+				 					console.log(edu_addUpdateValue.text());
+				 					console.log(edu_telUpdateValue.text());
+				 					console.log(edu_contactUpdateValue.text());
+				 					
+				 					console.log(uedu_id.val());
+				 					console.log(uedu_name.val());
+				 					console.log(uedu_add.val());
+				 					console.log(uedu_tel.val());
+				 					console.log(uedu_contact.val());
+				 					
+				 					edu_idUpdateValue.text(uedu_id.val());
+				 					edu_nameUpdateValue.text(uedu_name.val());
+				 					edu_addUpdateValue.text(uedu_add.val());
+				 					edu_telUpdateValue.text(uedu_tel.val());
+				 					edu_contactUpdateValue.text(uedu_contact.val());
+//	 			 					
+							 		$('.validateTips').text("");////將更新form表單驗證區塊內容清空
+					 				EduUpdateForm.dialog( "close" );
 				 				}
 				 			});
 				 		}
-				 	  sel=[];
 				      return valid;
 				    }
-			  	//diolog程式部分以下(刪除)
+			  	
+			    
+    			//diolog程式部分以下(刪除)
 				//設定刪除確認表單寬度視窗資料開始
 			    EduDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
@@ -362,57 +396,40 @@ h1 {
 			        buttons: {
 			          "確認": deleteEduFormToCreateTable ,
 			          "放棄": function() {
-			        	sel=[];
 			            $( this ).dialog( "close" );
-			            $('#dialog-deleteForm p').text('是否要刪除資料?');
+			            $('#dialog-deleteForm p').text('是否要刪除此筆資料?');
 			          }
 			        }
 			    });
-			 	//點選刪除鍵，所執行的方法
+			 	
+			    //點選刪除鍵，所執行的方法
 				function deleteEduFormToCreateTable(){
-			 	$.get('EduServletJSON.do',{"edu_id":selJSON,"action":"deleteEduMulti"},function(data){
+				$.get('EduServletJSON.do',{"edu_id":deleteOrUpdateValue,"action":"deleteEdu"},function(data){
 					if(data=="資料刪除成功"){
-						//table.row('tbody > tr.selected').remove().draw( false );//刪除畫面上class為selected的那行
-						table.ajax.reload();//重新載入data tables的資料 ?? 須改為直接抓取原更新表單的值回填回去表格
+						console.log(deleteOrUpdateValue);
+						console.log(data);
+						table.row('.selected').remove().draw( false );//刪除畫面上class為selected的那行
+						deleteOrUpdateValue = null;
 						EduDeleteConfirm.dialog( "close" );
 					}else if (data=="資料刪除失敗"){
 						$('#dialog-deleteForm p').text('資料刪除失敗，資料使用中');
 					}
 				});
-			 	sel=[];
-				}
-			 	
-			 	var sel=[];
-				$('#buttonDelete').click( function () {
-			    	if(table.rows('.selected').data().length==0){
+				
+		    	}
+			   
+		
+			 
+			    $('#buttonDelete').click( function () {
+			    	
+			    	if(deleteOrUpdateValue==null){
 			    		alert("請先選取要刪除的資料");
-			    	}else if(table.rows('.selected').data().length>=1){
-			    		var trSelLength = $('tbody > tr.selected');//tr被SELECT到的長度
-			    		alert("共選取"+table.rows('.selected').data().length+"筆資料。");
-			    		for(var i=0,max=trSelLength.length;i<max;i++){
-			    			var	obj = $('tbody > tr.selected:eq('+i+')').find('td:eq(0)').text();
-			    			sel.push(obj);//將obj資料加到sel陣列
-			    		}
-			    		console.log("sel====="+sel);
-			    		selJSON =JSON.stringify(sel);//將JSON轉成字串
-			    		console.log("selJSON-----"+selJSON);
+			    	}else{
 			    		EduDeleteConfirm.dialog( "open" );
 			    	}
-			    });
-				
-				//icon全部選取
-				$('#buttonAll').click(function(){
-					$('tbody > tr').addClass('selected');
-				})
-				//icon取消全選
-				$('#buttonRe').click(function(){
-					$('tbody > tr').removeClass('selected');
-				})
-				//icon查詢選取筆數
-				 $('#buttonSel').click( function () {
-				        alert( table.rows('.selected').data().length +' 筆資料被選取' );
-				});
-			} );//load函數結束
+			    } );
+			    
+	} );//load函數結束
 	</script>
 </body>
 </html>

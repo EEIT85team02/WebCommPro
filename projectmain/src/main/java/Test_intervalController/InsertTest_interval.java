@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Test_interval.model.ITest_intervalDAO;
-import Test_interval.model.Test_interval;
+import Test_interval.model.Test_intervalVO;
 import Test_interval.model.Test_intervalDAO;
 
 
@@ -36,14 +36,14 @@ public class InsertTest_interval extends HttpServlet {
 			System.out.println("Ok2");
 			request.setCharacterEncoding("UTF-8");
 			String class_id = request.getParameter("class_id");
-			java.sql.Timestamp test_startdate = java.sql.Timestamp.valueOf(request.getParameter("test_startdate"));
+			java.sql.Date test_startdate = java.sql.Date.valueOf(request.getParameter("test_startdate"));
 			java.sql.Date test_enddate = java.sql.Date.valueOf(request.getParameter("test_enddate"));
 			Integer test_hour_id = Integer.parseInt(request.getParameter("test_hour_id"));
-			Test_interval tes1= new Test_interval();
+			Test_intervalVO tes1= new Test_intervalVO();
 			tes1.setClass_id(class_id);
 			tes1.setTest_startdate(test_startdate);
 			tes1.setTest_enddate(test_enddate);
-			tes1.setTest_hour_id(test_hour_id);
+			
 			tes.insert(tes1);
 			System.out.println("okokokok");
 			

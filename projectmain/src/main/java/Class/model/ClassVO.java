@@ -46,14 +46,16 @@ public class ClassVO implements Serializable{//班級
 		this.eduVO = eduVO;
 	}
 	
+	
 	public ClassVO(String class_id, String class_name, String class_contact,
-			String class_teach, EduVO eduVO) {
+			String class_teach, EduVO eduVO, Set<StudentVO> stus) {
 		super();
 		this.class_id = class_id;
 		this.class_name = class_name;
 		this.class_contact = class_contact;
 		this.class_teach = class_teach;
 		this.eduVO = eduVO;
+		this.stus = stus;
 	}
 	public Set<StudentVO> getStus() {
 		return stus;

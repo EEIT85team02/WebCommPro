@@ -16,10 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.exception.ConstraintViolationException;
 
 
+import org.json.JSONArray;
+
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import Class.model.ClassService;
 import Class.model.ClassVO;
+import Edu.model.EduService;
 
 
 
@@ -104,6 +107,29 @@ public class ClassServletJSON extends HttpServlet {
 			} 
 			catch (SQLException e) {
 				e.printStackTrace();
+			}
+		}
+		/******************************** 多筆刪除資料表 ***********************/
+		if ("deleteClassMulti".equals(action)) {
+			
+			try {
+				// ============接收中心代號edu_id資料====================
+				String class_idJSON =request.getParameter("class_id");
+				//System.out.println("class_idJSON========="+class_idJSON);
+				// ============呼叫方法刪除資料====================
+				classSvc = new ClassService();
+				classSvc.deleteClassMulti(class_idJSON);
+				out.write("資料刪除成功");
+				return;
+			}catch (ConstraintViolationException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
 			}
 		}
 		/******************************** 刪除資料表 ***********************/
