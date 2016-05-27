@@ -3,10 +3,10 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="Test_period.model.Test_period" table="Test_period" >
+    <class name="Test_period.model.Test_periodVO" table="Test_period" >
         
         <id name="test_hour_id" column="test_hour_id">
-            
+            <generator class="identity"/>
         </id>
         
         <property name="test_hour" column="test_hour" />

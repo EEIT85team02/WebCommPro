@@ -1,15 +1,18 @@
 package Class.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import Edu.model.EduVO;
+import Student.model.StudentVO;
 public class ClassVO implements Serializable{//班級
 	private String class_id; //建立班級代號
 	private String	class_name ;//建立班級名稱
 	private String	class_contact; //建立聯絡人
 	private String	class_teach ; //建立班級導師
 	private EduVO eduVO;//代表教育代號edu_id 
-	
+	private Set<StudentVO> stus =new HashSet<StudentVO>();
 	
 	public String getClass_id() {
 		return class_id;
@@ -43,15 +46,24 @@ public class ClassVO implements Serializable{//班級
 		this.eduVO = eduVO;
 	}
 	
+	
 	public ClassVO(String class_id, String class_name, String class_contact,
-			String class_teach, EduVO eduVO) {
+			String class_teach, EduVO eduVO, Set<StudentVO> stus) {
 		super();
 		this.class_id = class_id;
 		this.class_name = class_name;
 		this.class_contact = class_contact;
 		this.class_teach = class_teach;
 		this.eduVO = eduVO;
+		this.stus = stus;
 	}
+	public Set<StudentVO> getStus() {
+		return stus;
+	}
+	public void setStus(Set<StudentVO> stus) {
+		this.stus = stus;
+	}
+	
 	public ClassVO() {
 		super();
 	}

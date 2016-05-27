@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Test_period.model.ITest_periodDAO;
-import Test_period.model.Test_period;
+import Test_period.model.Test_periodVO;
 import Test_period.model.Test_periodDAO;
 
 
@@ -42,7 +42,7 @@ public class InsertTest_period extends HttpServlet {
 			Integer test_hour_id = Integer.parseInt(request.getParameter("test_hour_id"));
 			java.sql.Time test_hour = java.sql.Time.valueOf(request.getParameter("test_hour"));
 			
-			Test_period tes1= new Test_period();
+			Test_periodVO tes1= new Test_periodVO();
 			tes1.setTest_hour_id(test_hour_id);
 			tes1.setTest_hour(test_hour);
 			

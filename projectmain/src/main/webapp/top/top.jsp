@@ -68,16 +68,16 @@
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">系統設定<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li class=""><a href="${pageContext.request.contextPath}/Sign_list/Sign_listform.jsp">權限設定</a></li>
-								<li class=""><a href="${pageContext.request.contextPath}/Test_interval/Test_intervalform.jsp">考試時段設定</a></li>
-								<li class=""><a href="${pageContext.request.contextPath}/Test_Date/Test_Dateform.jsp">考試日期設定</a></li>
-								<li class=""><a href="${pageContext.request.contextPath}/Mail_template/Mail_templateform.jsp">email樣板</a></li>
+								<li class=""><a href="${pageContext.request.contextPath}/Sign_list/Sign_listServletJSON.do?action=initSlViewTODataTablesJSON">權限設定</a></li>
+								<li class=""><a href="${pageContext.request.contextPath}/Test_period/Test_periodServletJSON.do?action=initTpViewTODataTablesJSON">考試時段設定</a></li>
+								<li class=""><a href="${pageContext.request.contextPath}/Test_interval/Test_intervalform.jsp">考試日期設定</a></li>
+								<li class=""><a href="${pageContext.request.contextPath}/Mail_template/MailServletJSON.do?action=initMailViewTODataTablesJSON">email樣板</a></li>
 							</ul></li>
 						<!-----------------------------------下拉式選單(系統設定結束)----------------------------------------------------						 -->
 
 						<li class=""><a
 							href="${pageContext.request.contextPath}/Examiner_offday/Examiner_offdayform.jsp">主考官請假查詢</a></li>
-						<li class=""><a href="${pageContext.request.contextPath}/Test_period/Test_periodform.jsp">開放報名日期查詢</a></li>
+						<li class=""><a href="${pageContext.request.contextPath}/Test_Date/Test_Dateform.jsp">開放報名日期查詢</a></li>
 						<li class=""><a href="#">登出</a></li>
 
 

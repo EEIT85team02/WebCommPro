@@ -13,14 +13,14 @@ import hibernate.util.HibernateUtil;
 public class Test_periodDAO implements ITest_periodDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from Test_period order by test_hour_id";
+			"from Test_periodVO order by test_hour_id";
 
 
-		public void insert(Test_period tes) {
+		public void insert(Test_periodVO tpVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(tes);
+				session.saveOrUpdate(tpVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -30,11 +30,11 @@ public class Test_periodDAO implements ITest_periodDAO {
 
 
 
-		public void update(Test_period tes) {
+		public void update(Test_periodVO tpVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(tes);
+				session.saveOrUpdate(tpVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -46,8 +46,8 @@ public class Test_periodDAO implements ITest_periodDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				Test_period tes = (Test_period) session.get(Test_period.class, test_hour_id);
-				session.delete(tes);
+				Test_periodVO tpVO = (Test_periodVO) session.get(Test_periodVO.class, test_hour_id);
+				session.delete(tpVO);
 				session.getTransaction().commit();	
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -56,22 +56,22 @@ public class Test_periodDAO implements ITest_periodDAO {
 		}
 		
 
-		public Test_period findByPrimaryKey(Integer test_hour_id) {
-			Test_period tes = null;
+		public Test_periodVO findByPrimaryKey(Integer test_hour_id) {
+			Test_periodVO tpVO = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				tes = (Test_period) session.get(Test_period.class, test_hour_id);
+				tpVO = (Test_periodVO) session.get(Test_periodVO.class, test_hour_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;
 			}
-			return tes;
+			return tpVO;
 		}
 
-		public List<Test_period> getAll() {
-			List<Test_period> list = null;
+		public List<Test_periodVO> getAllTp() {
+			List<Test_periodVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();

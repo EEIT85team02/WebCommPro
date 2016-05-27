@@ -12,5 +12,7 @@ public interface IStudentDAO {
 	public StudentVO findByPrimaryKey(String stu_id) throws SQLException;
 	public List<StudentVO> getAll() throws SQLException;
 	public List<String> getAllGmail() throws SQLException;
-	public List<String> getAllNonGmail() throws SQLException;	
+	public List<String> getAllNonGmail() throws SQLException;
+	public List<String> getAllClass() throws SQLException;
+	public List<StudentVO> getAllStudentByClass(String class_id);	
 }
