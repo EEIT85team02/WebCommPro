@@ -124,11 +124,11 @@
 
 
 		<!--取SQLserve.jar -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.iiiedu</groupId> -->
-<!-- 			<artifactId>sqljdbc42</artifactId> -->
-<!-- 			<version>1.0</version> -->
-<!-- 		</dependency> -->
+ 		<dependency> 
+			<groupId>com.iiiedu</groupId> 
+			<artifactId>sqljdbc42</artifactId> 
+			<version>1.0</version> 
+		</dependency> 
 		<!--取JSON.jar -->
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
@@ -162,16 +162,16 @@
 
 		<!-- jason.jar -->
 		<dependency>
-			<groupId>com.iiiedu</groupId>
-			<artifactId>json-simple</artifactId>
-			<version>1.1.1</version>
+		    <groupId>com.googlecode.json-simple</groupId>
+		    <artifactId>json-simple</artifactId>
+		    <version>1.1.1</version>
 		</dependency>
 		
 		<!-- jdom.jar -->
 		<dependency>
-			<groupId>com.iiiedu</groupId>
-			<artifactId>jdom</artifactId>
-			<version>2.0.5</version>
+		    <groupId>org.jdom</groupId>
+		    <artifactId>jdom</artifactId>
+		    <version>2.0.2</version>
 		</dependency>
 
 		    <!-- Gson API -->
