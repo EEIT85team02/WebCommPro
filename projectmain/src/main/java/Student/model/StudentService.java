@@ -41,13 +41,14 @@ public class StudentService {
 			map.put("stu_except",stuVO.getStu_except());
 			map.put("stu_final",stuVO.getStu_final());
 			map.put("stu_note2",stuVO.getStu_note2());
+			map.put("stu_seatno",stuVO.getStu_seatno());
 			stusc.add(map);
 		String jsonString = JSONValue.toJSONString(stusc);
 		return jsonString;
 		
 	}
 
-	public StudentVO upscore(Integer stu_group,String stu_note1,String stu_id,String stu_name,Integer stu_age,String stu_sch,String stu_sex,String stu_email,String stu_pre,String stu_testtime,String stu_total,String stu_workdate,Integer stu_except,String stu_final,String stu_note2,Double stu_implement,Double stu_interview) throws SQLException {
+	public StudentVO upscore(Integer stu_group,String stu_note1,String stu_id,String stu_name,Integer stu_age,String stu_sch,String stu_sex,String stu_email,String stu_pre,String stu_testtime,String stu_total,String stu_workdate,Integer stu_except,String stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno,String log_pw) throws SQLException {
 
 		StudentVO stuVO = new StudentVO();
 
@@ -68,7 +69,9 @@ public class StudentService {
 		stuVO.setStu_name(stu_name);
 		stuVO.setStu_implement(stu_implement);			
 		stuVO.setStu_interview(stu_interview);
-
+		stuVO.setStu_seatno(stu_seatno);
+		stuVO.setLog_pw(log_pw);
+		
 		dao.update(stuVO);
 		
 		return stuVO;

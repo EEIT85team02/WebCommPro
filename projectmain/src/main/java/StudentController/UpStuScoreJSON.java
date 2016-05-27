@@ -61,7 +61,12 @@ public class UpStuScoreJSON extends HttpServlet {
 			}
 		  }
 		if("upscore".equals(action)){
-			System.out.println(req.getParameter("stu_group"));
+			//System.out.println(req.getParameter("stu_except"));
+			
+			String stuex = req.getParameter("stu_except");
+			String stuseat = req.getParameter("stu_seatno");
+			Integer stu_except=0;
+			Integer stu_seatno=0;
 			Integer stu_group = Integer.parseInt(req.getParameter("stu_group"));
 			String stu_note1 = req.getParameter("stu_note1");
 			String stu_id = req.getParameter("stu_id");
@@ -74,14 +79,25 @@ public class UpStuScoreJSON extends HttpServlet {
 			String stu_testtime = req.getParameter("stu_testtime");
 			String stu_total = req.getParameter("stu_total");
 			String stu_workdate = req.getParameter("stu_workdate");
-			Integer stu_except = Integer.parseInt(req.getParameter("stu_except"));
+			if( stuex == null || stuex.length() == 0){
+				stu_except=0;
+			}else{
+				stu_except = Integer.parseInt(stuex);
+			}
+			if( stuseat ==null || stuseat.length() == 0){
+				stu_seatno=0;
+			}else{
+				stu_seatno = Integer.parseInt(stuseat);
+			}
+			
 			String stu_final = req.getParameter("stu_final");
 			String stu_note2 = req.getParameter("stu_note2");
 			Double stu_implement = Double.parseDouble(req.getParameter("stu_implement"));
 			Double stu_interview = Double.parseDouble(req.getParameter("stu_interview"));
+			String log_pw = req.getParameter("log_pw");
 			StudentService stuSvc = new StudentService();
 			try {
-				stuSvc.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_testtime,stu_total,stu_workdate,stu_except,stu_final,stu_note2,stu_implement, stu_interview);
+				stuSvc.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_testtime,stu_total,stu_workdate,stu_except,stu_final,stu_note2,stu_implement, stu_interview,stu_seatno,log_pw);
 			} catch (SQLException e) {
 				
 				e.printStackTrace();

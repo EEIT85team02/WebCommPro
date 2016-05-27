@@ -24,6 +24,7 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private Integer stu_except ; 
 	private String stu_final ; 
 	private String stu_note2 ;
+	private String log_pw;
 	
 	private Set<Stu_additionalVO> stus = new HashSet<Stu_additionalVO>();
 
@@ -160,7 +161,14 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	public void setClassVO(ClassVO classVO) {
 		this.classVO = classVO;
 	}
-//	public Student(	int stu_group, 
+	
+    public String getLog_pw() {
+		return log_pw;
+	}
+	public void setLog_pw(String log_pw) {
+		this.log_pw = log_pw;
+	}
+	//	public Student(	int stu_group, 
 //	String stu_note1 ,
 //	String stu_id ,
 //	String stu_name ,
