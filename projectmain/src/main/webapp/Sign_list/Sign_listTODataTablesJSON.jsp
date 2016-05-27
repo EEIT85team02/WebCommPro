@@ -538,6 +538,8 @@ h1 {
 			'url':'Sign_listXML',
 			'dataType':'xml',
 			'success':function(data){
+				
+			console.log(data);
 				$(data).find('Sign_list').each(function(){
 					var sl_id = $(this).children('sl_id').text();
 					var sl_name = $(this).children('sl_name').text();
