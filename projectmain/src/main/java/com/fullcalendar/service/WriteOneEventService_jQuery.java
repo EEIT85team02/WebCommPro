@@ -12,7 +12,7 @@ public class WriteOneEventService_jQuery {
 	// private StudentDAO_interface dao;
 	private CalendarDAO_interface dao;
 	
-	public void writeOneEventService(CalendarVO calendarVO,String stuID) {
+	public void writeOneEventService(CalendarVO calendarVO,Integer stuID) {
 
 		/**
 		 * 4. 再裝箱?

@@ -18,23 +18,16 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private Integer stu_sex ; 
 	private Integer stu_age ;
 	private String stu_email ;
-
 	private Integer stu_pre ;
-	private double stu_implement ;
+	private Double stu_implement ;
 	private Date stu_testtime  ;
-	private double stu_interview ;
-	private double stu_total ;
+	private Double stu_interview ;
+	private Double stu_total ;
 	private Date stu_workdate ;
-	private double stu_except ;
+	private Double stu_except ;
 	private Integer stu_final ;
-
 	private String stu_note2 ;
-
 	private String log_pw;
-	
-
-
-
 	private String class_id;
 //	private ClassVO classVO;
 

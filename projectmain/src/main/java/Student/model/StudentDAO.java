@@ -63,7 +63,7 @@ public class StudentDAO implements IStudentDAO {
 		}
 		
 
-		public StudentVO findByPrimaryKey(String stu_id) {
+		public StudentVO findByPrimaryKey(Integer stu_id) {
 			StudentVO stu = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {

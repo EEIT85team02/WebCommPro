@@ -57,6 +57,7 @@
         <input type="hidden" id="stu_finalhid" name="stu_final" >
         <input type="hidden" id="stu_note2hid" name="stu_note2" >
         <input type="hidden" id="log_pwhid" name="log_pw" >
+        <input type="hidden" id="class_idhid" name="class_id" >
       </div>
     </div>
     </form>
@@ -137,7 +138,7 @@
 								 $("#stu_finalhid").attr("value",score.stu_final);
 								 $("#stu_note2hid").attr("value",score.stu_note2);
 								 $("#log_pwhid").attr("value",score.log_pw);
-								 
+								 $("#class_idhid").attr("value",score.class_id);
 							 })
 						 })
 					 })

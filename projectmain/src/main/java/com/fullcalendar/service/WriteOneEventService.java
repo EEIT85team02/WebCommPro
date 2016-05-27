@@ -10,7 +10,7 @@ public class WriteOneEventService {
 	// private StudentDAO_interface dao;
 	private CalendarDAO_interface dao;
 
-	public void writeOneEvent(Integer id, String title, java.util.Date start, java.util.Date end, String color, String stuID) {
+	public void writeOneEvent(Integer id, String title, java.util.Date start, java.util.Date end, String color, Integer stuID) {
 
 		/**
 		 * 5.再一次裝箱

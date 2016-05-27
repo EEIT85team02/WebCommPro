@@ -26,7 +26,7 @@ public class ListAllEventsService {
 	 * @param stuID
 	 * @return
 	 */
-	public List<CalendarVO> listAllEvents(String stuID){
+	public List<CalendarVO> listAllEvents(Integer stuID){
 		
 	dao = new StudentDAO();
 	latestList= new ArrayList<CalendarVO>();

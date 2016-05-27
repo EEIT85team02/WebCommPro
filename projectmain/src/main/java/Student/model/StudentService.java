@@ -1,6 +1,7 @@
 package Student.model;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class StudentService {
 	public List<StudentVO> getAll() throws SQLException {
 		return dao.getAll();
 	}
-	public String getOneStu(String stu_id) throws SQLException {	
+	public String getOneStu(Integer stu_id) throws SQLException {	
 		List stusc=new LinkedList();
 		StudentVO stuVO=dao.findByPrimaryKey(stu_id);
 			Map map = new HashMap();
@@ -48,7 +49,7 @@ public class StudentService {
 		
 	}
 
-	public StudentVO upscore(Integer stu_group,String stu_note1,String stu_id,String stu_name,Integer stu_age,String stu_sch,String stu_sex,String stu_email,String stu_pre,String stu_testtime,String stu_total,String stu_workdate,Integer stu_except,String stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno,String log_pw) throws SQLException {
+	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,Date stu_testtime,Double stu_total,Date stu_workdate,Integer stu_except,Integer stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno,String log_pw,String class_id) throws SQLException {
 
 		StudentVO stuVO = new StudentVO();
 
@@ -60,8 +61,8 @@ public class StudentService {
 		stuVO.setStu_email(stu_email);
 		stuVO.setStu_pre(stu_pre);			
 		stuVO.setStu_testtime(stu_testtime);
-		stuVO.setStu_id(stu_total);			
-		stuVO.setStu_name(stu_workdate);
+		stuVO.setStu_total(stu_total);			
+		stuVO.setStu_workdate(stu_workdate);
 		stuVO.setStu_except(stu_except);			
 		stuVO.setStu_final(stu_final);
 		stuVO.setStu_note2(stu_note2);
@@ -71,6 +72,7 @@ public class StudentService {
 		stuVO.setStu_interview(stu_interview);
 		stuVO.setStu_seatno(stu_seatno);
 		stuVO.setLog_pw(log_pw);
+		stuVO.setClass_id(class_id);
 		
 		dao.update(stuVO);
 		
@@ -99,6 +101,9 @@ public class StudentService {
 			map.put("stu_except",stuVO.getStu_except());
 			map.put("stu_final",stuVO.getStu_final());
 			map.put("stu_note2",stuVO.getStu_note2());
+			map.put("log_pw",stuVO.getLog_pw());
+			map.put("class_id",stuVO.getClass_id());
+			map.put("stu_seatno",stuVO.getStu_seatno());
 			stusc.add(map);
 		}
 		String jsonString = JSONValue.toJSONString(stusc);
