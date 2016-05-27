@@ -15,6 +15,12 @@
             <column name="edu_id"/>
         </many-to-one>
         
+  		<set name="stus" table="Student" lazy="false" cascade="all"  inverse="true"  order-by="class_id asc">			
+			<key>
+				<column name="class_id" />
+			</key>
+			<one-to-many class="Student.model.StudentVO" />
+		</set>        
         
     </class>
 </hibernate-mapping>

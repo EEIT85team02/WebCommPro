@@ -59,24 +59,26 @@ create table Class
 */
 
 create table Student
-(
+( stu_id              int  primary key  NOT NULL identity,  
   stu_group            int           NOT NULL,
   stu_note1            nvarchar(100) ,
-  stu_id               nvarchar(10)  primary key  NOT NULL,     
+  stu_seatno           int           NOT NULL,
   stu_name             nvarchar(10)  NOT NULL ,
-  stu_age              int           NOT NULL,
-  stu_sch              nvarchar(10)  ,
-  stu_sex              nvarchar(2)   ,           
+  
+  stu_sch              nvarchar(30)  ,
+  stu_sex              int   , 
+  stu_age              int           NOT NULL,          
   stu_email            nvarchar(30)  UNIQUE NOT NULL,
-  stu_pre              nvarchar(2)   ,
+  stu_pre              int   ,
   stu_implement        float        ,
-  stu_testtime         time     ,
+  stu_testtime         date     ,
   stu_interview        float        ,
   stu_total            float        ,
   stu_workdate         date          ,
-  stu_except           int           ,
-  stu_final            nvarchar(2)   ,
-  stu_note2            nvarchar(100) 
+  stu_except           float           ,
+  stu_final            int   ,
+  stu_note2            nvarchar(100) ,
+  class_id             nvarchar(10) foreign key references  Class(class_id) NOT NULL
 );  
 
 

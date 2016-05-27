@@ -22,7 +22,8 @@ public class ClassDAO implements IClassDAO {
 		
 		private static final String CheckClassId_STMT = 
 				"select count(*) as count from ClassVO where class_id = :class_id";
-
+		private static final String GET_ALL_Class = 
+				"from ClassVO";
 
 		public void insert(ClassVO cla) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -115,6 +116,23 @@ public class ClassDAO implements IClassDAO {
 			}
 			return list;
 		}
+		
+		public List<ClassVO> getAllClass() {
+			List<ClassVO> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_ALL_Class);
+				list = query.list();
+				System.out.println("query.list()======"+query.list());
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return list;
+		}	
+		
 		
 		public static void main(String[] args) {
 
