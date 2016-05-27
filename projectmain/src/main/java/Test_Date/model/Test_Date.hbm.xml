@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="Test_Date.model.Test_Date" table="Test_Date" >
+    <class name="Test_Date.model.Test_DateVO" table="Test_Date" >
         
         <composite-id>
         	<key-property name="class_id" column="class_id"></key-property>

@@ -59,7 +59,7 @@
 							<ul class="dropdown-menu">
 								<li class=""><a href="${pageContext.request.contextPath}/Edu/EduServletJSON.do?action=initEduViewTODataTablesJSON">教育中心</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Class/ClassServletJSON.do?action=initClassViewTODataTablesJSON">班級建檔</a></li>
-								<li class=""><a href="${pageContext.request.contextPath}/Student/Studentform.jsp">學員建檔</a></li>
+								<li class=""><a href="${pageContext.request.contextPath}/02_uploadCSV/StudentInitServlet.do?action=initStuViewTODataTablesJSON">學員建檔</a></li>
 							</ul></li>
 						<!-----------------------------------下拉式選單(資料建檔結束)---------------------------------------------------- -->
 

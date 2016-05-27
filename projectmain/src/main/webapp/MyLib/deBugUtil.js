@@ -41,6 +41,7 @@
             if(i+1!=allTextLines.length){
             // 刷掉最後一組
                 var tarr = [];
+                console.log(data.length)
                 for (var j=0; j<data.length; j++) {
                 	j==0?tarr.push(data[j])									//first
                 			:(j+1==data.length?tarr.push(data[j])			//last
@@ -55,6 +56,7 @@
                 lines.push(tarr);
             }
         }
+        console.log(lines)
       return lines;
     }
 	
@@ -149,8 +151,8 @@
         	            { title: "預期薪資" },
         	            { title: "Rank" },
         	            { title: "備註" },
-        	            { title: "班別" },
-        	            { title: "梯次" }
+        	            { title: "備註" },
+        	            { title: "班級" }
         	        ], 
         	        
         	    	"language": {
@@ -312,7 +314,10 @@
         	     	        		
         	     	        		// 將HTML標籤塞進空div
         	     	        		$("#formMember").append(formTemp);
+        	     	        		// 編輯完成 -- 確認
         	     	        		$("#modifybtn").on('click',$("#formMember :input"),function(event){
+        	     	        			// 按下確認鍵 必須要修改上傳csv按鈕會呼叫的方法
+        	     	        			$("#uploadForm").prop("action", "javascript: uploadAndSubmitAfterEdit();");
         	     	        			var preparedForm = $("#formMember :input");
 //        	     	        			console.log(preparedForm);
         	     	        			var oneNewArray = [];
@@ -351,49 +356,31 @@
         	     	        			
         	     	        			
         	     	        			// 2.寫入uploadForm
-        	     	        			var form = document.forms["uploadForm"];
-        	     	        			 if (form["file"].files.length > 0){ 
-        	     	        	        	 //if (form!=null){ 
-        	     	        				 
-        	     	        	        	  var file = form["file"].files[0];
+        	     	        
         	     	        	        	  file = updatedArray;
         	     	        	        	  // array轉回csv
-        	     	        	        	  console.log(file);
+//        	     	        	        	  console.log(file);
         	     	        	        	 console.log(file.join(",")); 
-        	     	        	        	exportToCsv("test.csv",file);
+        	     	        	        	var renewCsv = exportToCsv("test01.csv",file);
+//        	     	        	        	renewCsv = JSON.parse(renewCsv);
+        	     	        	        	  globalv = renewCsv;
         	     	        	        	  
         	     	        	        	  
         	     	        	        	  
         	     	        	        	  
+//        	     	        	        	  var reader = new FileReader();
+//        	     	        	        	  
+////        	     	        	        	 reader.readAsText(renewCsv,'UTF-8');
+////        	     	        	        	 reader.readAsArrayBuffer(file);
+//        	     	        	        	 
+//        	     	        	        	 reader.onloadend = function(){
+////        	     	        	        		 console.log(reader.result);
+////        	     	        	        		globalv = reader.result;
+//        	     	        	        	 };
         	     	        	        	  
         	     	        	        	  
-        	     	        	        	  var reader = new FileReader();
-//        	     	        	        	 reader.readAsText(file,'UTF-8');
-//        	     	        	        	 reader.readAsArrayBuffer(file);
-        	     	        	        	 
-        	     	        	        	 reader.onloadend = function(){
-        	     	        	        		 console.log(reader.result);
-        	     	        	        		 
-        	     	        	        		 
-        	     	        	        	 };
-        	     	        	        	  console.log();
-        	     	        	        	  console.log(form["file"].files[0]);
-        	     	        				 
-        	     	        				 
-//        	     	        				var fileOld = $("#choosefile");
-//        	     	        				console.log(typeof(fileOld));
-//        	     	        				console.log(fileOld);
-        	     	        				 
-        	     	        				 
-        	     	        			 } else { 
-        	     	        	        	  alert ("Please choose a file."); 
-        	     	        	        	 }
-        	     	        			
-        	     	        			
-        	     	        			
-        	     	        			
-        	     	        			
-        	     	        			
+        	     	        	        	  
+        	     	        	        	 $("#modalClose").click();
         	     	        		});
         	     	        		
         	     	        		// 	按下按鈕後 跳出對話視窗 -- 可以打開任一種風格
@@ -441,26 +428,28 @@
         for (var i = 0; i < rows.length; i++) {
             csvFile += processrows(rows[i]);
         }
-
-        var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
-        console.log(blob);
-        if (navigator.msSaveBlob) { // IE 10+
-            navigator.msSaveBlob(blob, filename);
-        } else {
-            var link = document.createElement("a");
-            if (link.download !== undefined) { // feature detection
-                // Browsers that support HTML5 download attribute
-                var url = URL.createObjectURL(blob);
-                link.setAttribute("href", url);
-                link.setAttribute("download", filename);
-                link.style.visibility = 'hidden';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-        }
+        return csvFile;
     }
-    
+
     
 	
+//  var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
+//  console.log(blob);
+//  if (navigator.msSaveBlob) { // IE 10+
+//      navigator.msSaveBlob(blob, filename);
+//  } else {
+//      var link = document.createElement("a");
+//      if (link.download !== undefined) { // feature detection
+//          // Browsers that support HTML5 download attribute
+//          var url = URL.createObjectURL(blob);
+//          link.setAttribute("href", url);
+//          link.setAttribute("download", filename);
+//          link.style.visibility = 'hidden';
+//          document.body.appendChild(link);
+////          link.click();
+//          document.body.removeChild(link);
+//      }
+//  }
+//}
+
 	

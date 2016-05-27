@@ -6,15 +6,16 @@
     <class name="Student.model.StudentVO" table="Student" >
         
         <id name="stu_id" column="stu_id">
-         
+         	<generator class="identity"/>
         </id>
         
         <property name="stu_group" column="stu_group" />
         <property name="stu_note1" column="stu_note1" />
+        <property name="stu_seatno" column="stu_seatno" />
         <property name="stu_name" column="stu_name" />
-        <property name="stu_age" column="stu_age" />
         <property name="stu_sch" column="stu_sch" />
         <property name="stu_sex" column="stu_sex" />
+        <property name="stu_age" column="stu_age" />
         <property name="stu_email" column="stu_email" />
         <property name="stu_pre" column="stu_pre" />
         <property name="stu_implement" column="stu_implement" />
@@ -25,13 +26,12 @@
         <property name="stu_except" column="stu_except" />
         <property name="stu_final" column="stu_final" />
         <property name="stu_note2" column="stu_note2" />
-                  
-
-
+        <property name="class_id" column="class_id" />
         
-        <many-to-one name="classVO" class="Class.model.ClassVO" lazy="false" >
-            <column name="class_id" />
-        </many-to-one>     
+
+<!--         <many-to-one name="classVO" class="Class.model.ClassVO" lazy="false" > -->
+<!--             <column name="class_id" /> -->
+<!--         </many-to-one>      -->
 
     </class>
 </hibernate-mapping>
