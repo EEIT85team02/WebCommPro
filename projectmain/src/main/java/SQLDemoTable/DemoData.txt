@@ -26,17 +26,16 @@ insert into class(class_id, class_name, class_contact, class_teach,edu_id) value
 insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('SESE59','網路系統整合工程師','羅秀燕','陳其元 ',3 );
 insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('MMMH25','網路多媒體設計師','羅秀燕','楊斐羽',3 );
 
-
 --Student
 insert into student values (2,'備註1',20,'黃煜勝',77,'淡江大學電機系',1,'test1@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null);
 
 
 
 --Test_period
-insert into Test_period values('10:00');
-insert into Test_period values('12:00');
-insert into Test_period values('14:00');
-insert into Test_period values('16:00');
+insert into Test_period values('10:00','12:00');
+insert into Test_period values('12:00','15:00');
+insert into Test_period values('14:00','16:00');
+insert into Test_period values('16:00','18:00');
 
 
  --Sign_list
@@ -81,9 +80,9 @@ insert into Member_status (sta_id, sta_name) values ('4','未報名');
 insert into Member_status (sta_id, sta_name) values ('5','已報名');
 insert into Member_status (sta_id, sta_name) values ('6','報名中');
 
-
+delete from Stu_additional
  --Stu_additional
-insert into Stu_additional (stu_id, test_startdate, test_hour_id, stu_applytime, sta_id, emp_id) values (4,'2016-5-09', '3', '2016-5-10', '4', '7004');
+insert into Stu_additional (stu_id, test_startdate, test_hour_id, stu_applytime, sta_id, emp_id, confirm_time) values (4,'2016-5-09', '3', '2016-5-10', '4', '7004', '15:00');
 
 
  --Mail_template

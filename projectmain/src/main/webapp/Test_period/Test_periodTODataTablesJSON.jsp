@@ -77,8 +77,9 @@ h1 {
 					<table id="Test_periodTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th class="col-md-1 col-xs-1">時段代號</th>
-								<th class="col-md-3 col-xs-3">時段名稱</th>
+								<th class="col-md-2 col-xs-2">時段代號</th>
+								<th class="col-md-5 col-xs-5">時段開始時間</th>
+								<th class="col-md-5 col-xs-5">時段開始時間</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -86,7 +87,8 @@ h1 {
 						<tfoot>
 							<tr>
 								<th>時段代號</th>
-								<th>時段名稱</th>
+								<th>時段開始時間</th>
+								<th>時段結束時間</th>
 							</tr>
 						</tfoot>
 					</table>
@@ -104,8 +106,10 @@ h1 {
 		<p class="validateTips"></p>
 		<form name="TpInsertForm">
 			<fieldset>
-				<label for="test_hour">時段名稱</label> 
-				<input type="text" name="test_hour" id="test_hour" class="text ui-widget-content ui-corner-all">
+				<label for="test_starthour">時段開始時間</label> 
+				<input type="text" name="test_starthour" id="test_starthour" class="text ui-widget-content ui-corner-all">
+				<label for="test_endhour">時段結束時間</label> 
+				<input type="text" name="test_endhour" id="test_endhour" class="text ui-widget-content ui-corner-all">
 				<input type="hidden" name="action" value="addTp">
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
@@ -114,12 +118,14 @@ h1 {
 	<!-- 設定修改FORM表單區塊dialog -->
 	<div id="dialog-updateForm" title="修改時段設定資料">
 		<p class="validateTips"></p>
-		<form name="TpUpdateForm" action="updateTp">
+		<form name="TpUpdateForm">
 			<fieldset>
 				<label for="test_hour_id">時段代號</label> 
 				<input type="text" name="test_hour_id" id="utest_hour_id" readOnly class="text ui-widget-content ui-corner-all">
-				<label for="test_hour">時段名稱</label> 
-				<input type="text" name="test_hour" id="utest_hour" class="text ui-widget-content ui-corner-all"> 
+				<label for="test_starthour">時段開始時間</label> 
+				<input type="text" name="test_starthour" id="utest_starthour" class="text ui-widget-content ui-corner-all"> 
+				<label for="test_endhour">時段結束時間</label> 
+				<input type="text" name="test_endhour" id="utest_endhour" class="text ui-widget-content ui-corner-all"> 
 				<input type="hidden" name="action" value="updateTp">
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
@@ -161,7 +167,9 @@ h1 {
 		    //新增dialog區塊變數宣告
 			var form,TpInsertForm,TpUpdateForm,
 			 	test_hour_id = $( "#test_hour_id" ),
-			 	test_hour = $( "#test_hour" ),
+			 	utest_hour_id = $('#utest_hour_id'),
+			  	utest_hour = $('#utest_hour'),
+			 	
 			
 				utest_hour_id = $('#utest_hour_id'),
 			  	utest_hour = $('#utest_hour'),

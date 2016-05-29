@@ -9,7 +9,8 @@
             <generator class="identity"/>
         </id>
         
-        <property name="test_hour" column="test_hour" />
+        <property name="test_starthour" column="test_starthour" />
+        <property name="test_endhour" column="test_endhour" />
     </class>
 </hibernate-mapping>
 

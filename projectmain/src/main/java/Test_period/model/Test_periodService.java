@@ -20,16 +20,18 @@ public class Test_periodService {
 	}
 	
 	
-	public void insertTp( Time test_hour) throws SQLException {
+	public void insertTp( Time test_starthour, Time test_endhour) throws SQLException {
 		Test_periodVO tpVO = new Test_periodVO();
-		tpVO.setTest_hour(test_hour);
+		tpVO.setTest_starthour(test_starthour);
+		tpVO.setTest_endhour(test_endhour);
 		dao.insert(tpVO);
 	}
 	
-	public void updateTp(Integer test_hour_id,Time test_hour) throws SQLException {
+	public void updateTp(Integer test_hour_id,Time test_starthour, Time test_endhour) throws SQLException {
 		Test_periodVO tpVO = new Test_periodVO();
 		tpVO.setTest_hour_id(test_hour_id);
-		tpVO.setTest_hour(test_hour);
+		tpVO.setTest_starthour(test_starthour);
+		tpVO.setTest_endhour(test_endhour);
 		
 		dao.update(tpVO);
 	}
@@ -49,7 +51,8 @@ public class Test_periodService {
 		for(Test_periodVO tpVO :list){
 			Map<String,String> map = new HashMap<String,String>();
 			map.put("test_hour_id",tpVO.getTest_hour_id().toString());
-			map.put("test_hour",tpVO.getTest_hour().toString());
+			map.put("test_starthour",tpVO.getTest_starthour().toString());
+			map.put("test_endhour",tpVO.getTest_endhour().toString());
 			mails.add(map);
 		}
 		jsonString = JSONValue.toJSONString(mails);
@@ -63,7 +66,8 @@ public class Test_periodService {
 		for(Test_periodVO a :list){
 			List<String> detailTpVO = new ArrayList<String>();
 			detailTpVO.add(a.getTest_hour_id().toString());
-			detailTpVO.add(a.getTest_hour().toString());
+			detailTpVO.add(a.getTest_starthour().toString());
+			detailTpVO.add(a.getTest_endhour().toString());
 			tpVO.add(detailTpVO);
 		}
 		Map<String,List<List<String>>> mapJSON=new HashMap<String,List<List<String>>>();
@@ -78,7 +82,8 @@ public class Test_periodService {
 		String jsonString= null;
 			Map<String,String> map = new HashMap<String,String>();
 			map.put("test_hour_id",tpVO.getTest_hour_id().toString());
-			map.put("test_hour",tpVO.getTest_hour().toString());
+			map.put("test_starthour",tpVO.getTest_starthour().toString());
+			map.put("test_endhour",tpVO.getTest_endhour().toString());
 			tps.add(map);
 			jsonString = JSONValue.toJSONString(tps);
 			return jsonString;
