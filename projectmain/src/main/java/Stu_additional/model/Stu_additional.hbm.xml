@@ -13,8 +13,6 @@
         <property name="stu_applytime" column="stu_applytime" />
         <property name="emp_id" column="emp_id" />
         <property name="confirm_time" column="confirm_time" />
-        <property name="class_id" column="class_id" />
-        <property name="log_pw" column="log_pw" />
 
         
         <many-to-one name="StudentVO" class="Student.model.StudentVO" lazy="false">

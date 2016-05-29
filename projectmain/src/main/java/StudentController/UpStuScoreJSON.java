@@ -44,6 +44,7 @@ public class UpStuScoreJSON extends HttpServlet {
 				try {
 					String jsonString = stuSvc.getAllScoreJSON();
 					out.write(jsonString);
+					System.out.println(jsonString);
 				} catch (SQLException e) {
 					
 					e.printStackTrace();
@@ -63,10 +64,7 @@ public class UpStuScoreJSON extends HttpServlet {
 		  }
 		if("upscore".equals(action)){
 			//System.out.println(req.getParameter("stu_except"));
-			
-			String stuex = req.getParameter("stu_except");
 			String stuseat = req.getParameter("stu_seatno");
-			Integer stu_except=0;
 			Integer stu_seatno=0;
 			Integer stu_group = Integer.parseInt(req.getParameter("stu_group"));
 			String stu_note1 = req.getParameter("stu_note1");
@@ -80,11 +78,8 @@ public class UpStuScoreJSON extends HttpServlet {
 			Date stu_testtime =  java.sql.Date.valueOf(req.getParameter("stu_testtime"));
 			Double stu_total = Double.parseDouble(req.getParameter("stu_total"));
 			Date stu_workdate = java.sql.Date.valueOf(req.getParameter("stu_workdate"));
-			if( stuex == null || stuex.length() == 0){
-				stu_except=0;
-			}else{
-				stu_except = Integer.parseInt(stuex);
-			}
+			Double	stu_except = Double.parseDouble(req.getParameter("stu_except"));
+			
 			if( stuseat ==null || stuseat.length() == 0){
 				stu_seatno=0;
 			}else{

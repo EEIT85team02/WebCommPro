@@ -11,7 +11,6 @@
 
 </head>
 <body>
-<jsp:include page="/Scoretop/top.jsp" />
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
   <form method="post" action="upscoreJSON.do" name="upup">
@@ -87,11 +86,11 @@
 			
 					$('#buttonJSON').click(function() {  //查詢全部成績
 						$('#scoreTable>tbody').empty();
-						
+						console.log("cc")
 						$.getJSON('upscoreJSON.do',{'action':'getAllScore'},function(datas){
-						
+						console.log("aa")
 							$.each(datas, function(i, score) {
-								
+						console.log("bb")
 								var cell1 = $("<td></td>").text(score.stu_id);
 								var cell2 = $("<td></td>").text(score.stu_name);
 								var cell3 = $("<td></td>").text(score.stu_implement);
@@ -104,7 +103,7 @@
 								
 							});
 		
-						})
+						});
 						
 					});
 				    
