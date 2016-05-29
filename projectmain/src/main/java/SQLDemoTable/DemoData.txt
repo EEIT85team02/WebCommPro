@@ -32,10 +32,13 @@ insert into student values (2,'備註1',20,'黃煜勝',77,'淡江大學電機系
 
 
 --Test_period
+insert into Test_period values('08:00','10:00');
 insert into Test_period values('10:00','12:00');
-insert into Test_period values('12:00','15:00');
+insert into Test_period values('12:00','14:00');
 insert into Test_period values('14:00','16:00');
 insert into Test_period values('16:00','18:00');
+insert into Test_period values('18:00','20:00');
+
 
 
  --Sign_list

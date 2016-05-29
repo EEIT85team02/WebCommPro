@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.json.JSONArray;
 import org.json.simple.JSONValue;
 
 
@@ -38,6 +39,18 @@ public class Test_periodService {
 	public void deleteTp(Integer test_hour_id) throws SQLException{
 		dao.delete(test_hour_id);
 	}
+	
+	public void deleteTpMulti(String test_hour_idJSON) throws SQLException{
+		JSONArray ja = new JSONArray(test_hour_idJSON);//將字串再轉回JSON
+		for(int i=0,max=ja.length();i< max;i++){
+			String jsonIndex = ja.getString(i);
+			Integer test_hour_id = Integer.parseInt(jsonIndex);
+			System.out.println("test_hour_id======"+test_hour_id);
+			dao.delete(test_hour_id);
+		}
+	}
+	
+	
 	public Test_periodVO findByPrimaryKeyMail(Integer test_hour_id) throws SQLException{
 		return dao.findByPrimaryKey(test_hour_id);
 	}

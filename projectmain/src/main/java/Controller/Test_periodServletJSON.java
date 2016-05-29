@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.exception.ConstraintViolationException;
 
+import Class.model.ClassService;
 import Test_period.model.Test_periodService;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
@@ -83,6 +84,29 @@ public class Test_periodServletJSON extends HttpServlet {
 			} 
 			catch (SQLException e) {
 				e.printStackTrace();
+			}
+		}
+		/******************************** 多筆刪除資料表 ***********************/
+		if ("deleteTpMulti".equals(action)) {
+			
+			try {
+				// ============接收中心代號edu_id資料====================
+				String test_hour_idJSON =request.getParameter("test_hour_id");
+				//System.out.println("test_hour_idJSON========="+test_hour_idJSON);
+				// ============呼叫方法刪除資料====================
+				tpSvc = new Test_periodService();
+				tpSvc.deleteTpMulti(test_hour_idJSON);
+				out.write("資料刪除成功");
+				return;
+			}catch (ConstraintViolationException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
 			}
 		}
 		/******************************** 刪除資料表 ***********************/
@@ -170,18 +194,7 @@ public class Test_periodServletJSON extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		/********************************查詢全部資料表FOR DataTables init() ***********************/
-		if ("getAllTpToJSONInitTable".equals(action)) {
-			try {
-				// ============查詢時段資料全部資料回傳JSON字串====================
-				tpSvc = new Test_periodService();
-				String jsonString = tpSvc.getAllTpToJSONInitTable();
-				out.write(jsonString);
-				return;
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		
 	
 		/******************************** 查詢單一筆資料JSON ***********************/	
 		if ("getoneTp".equals(action)) {
