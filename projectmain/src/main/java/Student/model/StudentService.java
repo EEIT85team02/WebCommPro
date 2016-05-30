@@ -10,6 +10,7 @@ import java.util.Map;
 import org.json.simple.JSONValue;
 
 import Mail_template.model.Mail_templateDAO;
+import Stu_additional.model.Stu_additionalVO;
 
 
 public class StudentService {
@@ -43,6 +44,23 @@ public class StudentService {
 			map.put("stu_final",stuVO.getStu_final());
 			map.put("stu_note2",stuVO.getStu_note2());
 			map.put("stu_seatno",stuVO.getStu_seatno());
+			stusc.add(map);
+		String jsonString = JSONValue.toJSONString(stusc);
+		return jsonString;
+		
+	}
+	
+	public String getOneStuAll(Integer stu_id) throws SQLException {	
+		List stusc=new LinkedList();
+		Stu_additionalVO stu_addVO=(Stu_additionalVO) dao.getStuByStu_id(stu_id);
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("stu_id",stu_addVO.getStudentVO().getStu_id().toString());
+			map.put("Test_startdate",stu_addVO.getTest_startdate().toString());
+			map.put("Test_hour_id",stu_addVO.getTest_hour_id().toString());
+			map.put("Stu_applytime(",stu_addVO.getStu_applytime());
+			map.put("Emp_id",stu_addVO.getEmp_id());
+			map.put("Confirm_time",stu_addVO.getConfirm_time().toString());
+			map.put("Member_statusVO",stu_addVO.getMem_stas().toString());
 			stusc.add(map);
 		String jsonString = JSONValue.toJSONString(stusc);
 		return jsonString;

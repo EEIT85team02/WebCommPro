@@ -9,6 +9,10 @@ import Edu.model.EduVO;
 public class StudentVO implements Serializable{//學員	(所有資策會學員)
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer stu_id ;
 	private Integer stu_group; 
 	private String stu_note1 ;
@@ -30,8 +34,6 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private String log_pw;
 	private String class_id;
 //	private ClassVO classVO;
-
-
 	private Set<Stu_additionalVO> stus = new HashSet<Stu_additionalVO>();
 
 	public Integer getStu_id() {
