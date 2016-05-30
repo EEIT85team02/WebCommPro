@@ -234,18 +234,6 @@ public class ClassServletJSON extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		/********************************查詢全部資料表FOR DataTables init() ***********************/
-		if ("getAllClassToJSONInitTable".equals(action)) {
-			try {
-				// ============查詢班級全部資料回傳JSON字串====================
-				classSvc = new ClassService();
-				String jsonString = classSvc.getAllClassToJSONInitTable();
-				out.write(jsonString);
-				return;
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
 	
 		/******************************** 查詢單一筆資料 ***********************/	
 		if ("checkClassId".equals(action)) {

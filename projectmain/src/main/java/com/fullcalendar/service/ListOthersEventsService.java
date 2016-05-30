@@ -36,7 +36,7 @@ public class ListOthersEventsService {
 		// 用這個stuIDList去call ListOthersEventsService
 		List<CalendarVO> someoneEvents;
 		List<CalendarVO> allOthersEvents = new ArrayList<CalendarVO>(); 
-		for(String stuID:stuIDList){
+		for(Integer stuID:stuIDList){
 			someoneEvents = listOthersEventsService(stuID);	// 取得某人最新 List
 			for(CalendarVO someoneEvent:someoneEvents){
 				someoneEvent.setId(0);
@@ -55,7 +55,7 @@ public class ListOthersEventsService {
 	}
 	
 	
-	public List<CalendarVO> listOthersEventsService(String stuID){
+	public List<CalendarVO> listOthersEventsService(Integer stuID){
 		// 先判斷共有多少人已經有預定
 		// 排除掉stuID
 		// 取得dao

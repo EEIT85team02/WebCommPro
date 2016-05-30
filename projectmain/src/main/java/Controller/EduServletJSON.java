@@ -224,18 +224,7 @@ public class EduServletJSON extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		/********************************查詢全部資料表FOR DataTables init() ***********************/
-		if ("getAllEduToJSONInitTable".equals(action)) {
-			try {
-				// ============查詢教育中心全部資料回傳JSON字串====================
-				eduSvc = new EduService();
-				String jsonString = eduSvc.getAllEduToJSONInitTable();
-				out.write(jsonString);
-				return;
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		
 	
 		/******************************** 查詢單一筆資料 ***********************/	
 		if ("getoneEdu".equals(action)) {

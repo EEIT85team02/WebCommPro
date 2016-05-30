@@ -46,7 +46,7 @@ public class Calendar2DBServlet extends HttpServlet {
 		java.util.Date start = new java.util.Date(new Long(request.getParameter("start")));
 		java.util.Date end = new java.util.Date(new Long(request.getParameter("end")));
 		String color = request.getParameter("color").toString();
-		String stuID = new String(request.getParameter("stuID").toString());
+		Integer stuID = new Integer(request.getParameter("stuID").toString());
 		
 		
 		/*

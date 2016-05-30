@@ -15,7 +15,7 @@ public class ListLatestEventsService {
 	Set<CalendarVO> events;
 	Set<Integer> eventidset;
 
-	public List<CalendarVO> listLatestEvents(String stuID) {
+	public List<CalendarVO> listLatestEvents(Integer stuID) {
 		// 取得dao
 		dao = new StudentDAO();
 		// 同一人的所有事件紀錄

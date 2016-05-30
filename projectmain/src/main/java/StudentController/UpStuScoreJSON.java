@@ -3,6 +3,7 @@ package StudentController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,6 +44,7 @@ public class UpStuScoreJSON extends HttpServlet {
 				try {
 					String jsonString = stuSvc.getAllScoreJSON();
 					out.write(jsonString);
+					System.out.println(jsonString);
 				} catch (SQLException e) {
 					
 					e.printStackTrace();
@@ -50,7 +52,7 @@ public class UpStuScoreJSON extends HttpServlet {
 				
 			}
 		if("getPkId".equals(action)){
-			String stu_id = req.getParameter("stu_id");
+			Integer stu_id = Integer.parseInt(req.getParameter("stu_id"));
 			StudentService stuSvc = new StudentService();
 			try {
 				String jsonString = stuSvc.getOneStu(stu_id);
@@ -61,27 +63,38 @@ public class UpStuScoreJSON extends HttpServlet {
 			}
 		  }
 		if("upscore".equals(action)){
-			System.out.println(req.getParameter("stu_group"));
+			//System.out.println(req.getParameter("stu_except"));
+			String stuseat = req.getParameter("stu_seatno");
+			Integer stu_seatno=0;
 			Integer stu_group = Integer.parseInt(req.getParameter("stu_group"));
 			String stu_note1 = req.getParameter("stu_note1");
-			String stu_id = req.getParameter("stu_id");
+			Integer stu_id = Integer.parseInt(req.getParameter("stu_id"));
 			String stu_name = req.getParameter("stu_name");
 			Integer stu_age = Integer.parseInt(req.getParameter("stu_age"));
 			String stu_sch = req.getParameter("stu_sch");
-			String stu_sex = req.getParameter("stu_sex");
+			Integer stu_sex = Integer.parseInt(req.getParameter("stu_sex"));
 			String stu_email = req.getParameter("stu_email");
-			String stu_pre = req.getParameter("stu_pre");
-			String stu_testtime = req.getParameter("stu_testtime");
-			String stu_total = req.getParameter("stu_total");
-			String stu_workdate = req.getParameter("stu_workdate");
-			Integer stu_except = Integer.parseInt(req.getParameter("stu_except"));
-			String stu_final = req.getParameter("stu_final");
+			Integer stu_pre = Integer.parseInt(req.getParameter("stu_pre"));
+			Date stu_testtime =  java.sql.Date.valueOf(req.getParameter("stu_testtime"));
+			Double stu_total = Double.parseDouble(req.getParameter("stu_total"));
+			Date stu_workdate = java.sql.Date.valueOf(req.getParameter("stu_workdate"));
+			Double	stu_except = Double.parseDouble(req.getParameter("stu_except"));
+			
+			if( stuseat ==null || stuseat.length() == 0){
+				stu_seatno=0;
+			}else{
+				stu_seatno = Integer.parseInt(stuseat);
+			}
+			
+			Integer stu_final = Integer.parseInt(req.getParameter("stu_final"));
 			String stu_note2 = req.getParameter("stu_note2");
 			Double stu_implement = Double.parseDouble(req.getParameter("stu_implement"));
 			Double stu_interview = Double.parseDouble(req.getParameter("stu_interview"));
+			String log_pw = req.getParameter("log_pw");
+			String class_id = req.getParameter("class_id");
 			StudentService stuSvc = new StudentService();
 			try {
-				stuSvc.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_testtime,stu_total,stu_workdate,stu_except,stu_final,stu_note2,stu_implement, stu_interview);
+				stuSvc.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_testtime,stu_total,stu_workdate,stu_except,stu_final,stu_note2,stu_implement, stu_interview,stu_seatno,log_pw,class_id);
 			} catch (SQLException e) {
 				
 				e.printStackTrace();

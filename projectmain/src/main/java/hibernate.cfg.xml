@@ -40,7 +40,7 @@
 		<mapping resource="Sign_list/model/Sign_list.hbm.xml" />
 		<mapping resource="Stu_additional/model/Stu_additional.hbm.xml" />
 		<mapping resource="Employee/model/Employee.hbm.xml" />
-		<mapping resource="Test_period/model/Test_period.hbm.xml" />
+		<mapping resource="Test_period/model/Test_periodVO.hbm.xml" />
 		<mapping resource="Test_interval/model/Test_interval.hbm.xml" />
 		<mapping resource="Test_Date/model/Test_Date.hbm.xml" />
 		<mapping resource="Member_status/model/Member_status.hbm.xml" />

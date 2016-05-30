@@ -1,8 +1,8 @@
---drop database demo;
---create database demo
---go
---use demo
---go
+drop database demo;
+create database demo;
+go
+use demo
+go
 
 drop table Mail_template;
 drop table Stu_additional;
@@ -59,27 +59,29 @@ create table Class
 */
 
 create table Student
-( stu_id              int  primary key  NOT NULL identity,  
+(
+  stu_id               int  primary key  NOT NULL identity,  
   stu_group            int           NOT NULL,
   stu_note1            nvarchar(100) ,
-  stu_seatno           int           NOT NULL,
+  stu_seatno           int           NOT NULL,     
   stu_name             nvarchar(10)  NOT NULL ,
-  
+  stu_age              int           NOT NULL,
   stu_sch              nvarchar(30)  ,
-  stu_sex              int   , 
-  stu_age              int           NOT NULL,          
+  stu_sex              int           ,           
   stu_email            nvarchar(30)  UNIQUE NOT NULL,
-  stu_pre              int   ,
-  stu_implement        float        ,
-  stu_testtime         date     ,
-  stu_interview        float        ,
-  stu_total            float        ,
+  stu_pre              int           ,
+  stu_implement        float         ,
+  stu_testtime         date          ,
+  stu_interview        float         ,
+  stu_total            float         ,
   stu_workdate         date          ,
-  stu_except           float           ,
-  stu_final            int   ,
+  stu_except           float         ,
+  stu_final            int           ,
   stu_note2            nvarchar(100) ,
-  class_id             nvarchar(10) foreign key references  Class(class_id) NOT NULL
+  class_id			   nvarchar(10)  foreign key references  Class(class_id) NOT NULL,
+  log_pw               varbinary(50) 
 );  
+
 
 
 create table Sign_list
@@ -93,7 +95,7 @@ create table Sign_list
 create table Employee
 (
   emp_id               nvarchar(10)  primary key  NOT NULL,     
-  emp_name             nvarchar(20)   NOT NULL ,           
+  emp_name             nvarchar(20)  NOT NULL ,           
   dep_id               int	         ,     
   dep_name	           nvarchar(30)  NOT NULL ,   
   emp_mail             nvarchar(30)  UNIQUE NOT NULL,
@@ -106,7 +108,8 @@ create table Employee
 create table Test_period
 (
   test_hour_id           int	       primary key  NOT NULL identity,
-  test_hour              time          NOT NULL           
+  test_starthour         time          NOT NULL ,
+  test_endhour           time          NOT NULL          
 );  
 
 
@@ -162,15 +165,15 @@ create table Member_status
 
  create table Stu_additional
 (
-  stu_id           nvarchar(10)   foreign key references  Student(stu_id) NOT NULL, 
+  stu_id           int   foreign key references  Student(stu_id) NOT NULL, 
   test_startdate   date      foreign key references  Test_interval(test_startdate) NOT NULL,
   test_hour_id     int	          foreign key references  Test_period(test_hour_id) NOT NULL,
-  stu_applytime    time      UNIQUE ,
+  stu_applytime    time,
   sta_id           int            foreign key references  Member_status(sta_id) NOT NULL ,
   emp_id           nvarchar(10)   foreign key references  Employee(emp_id) NOT NULL,
   confirm_time     time,
-  class_id         nvarchar(10)  foreign key references  Class(class_id) NOT NULL,
-  log_pw           nvarchar(30)  UNIQUE , 
+  
+
   CONSTRAINT pk_Member_test PRIMARY KEY (stu_id , test_startdate,test_hour_id)
 ); 
 

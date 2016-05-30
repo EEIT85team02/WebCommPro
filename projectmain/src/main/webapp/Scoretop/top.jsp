@@ -1,9 +1,9 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8" 
-pageEncoding="UTF-8"%> 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!-- <!DOCTYPE html > -->
-<!-- <html> -->
-<!-- <head> -->
+<!DOCTYPE html >
+<html>
+<head>
 <style>
 	#gotop {
 		display: none;
@@ -22,19 +22,19 @@ pageEncoding="UTF-8"%>
 
 
 
-<!-- <meta charset="UTF-8"> -->
+<meta charset="UTF-8">
 <!-- 引入jQuery  and bootstrap css/js 檔案 -->
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<%-- <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" > --%>
-<%-- <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" > --%>
-<%-- <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script> --%>
-<%-- <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script> --%>
-<%-- <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script> --%>
-<!-- <script -->
-<!-- 	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
+<link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
-<!-- </head> -->
-<!-- <body> -->
+</head>
+<body>
 	<!-- 巡覽列-->
 	<div class="container">
 		<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -59,7 +59,7 @@ pageEncoding="UTF-8"%>
 							<ul class="dropdown-menu">
 								<li class=""><a href="${pageContext.request.contextPath}/Edu/EduServletJSON.do?action=initEduViewTODataTablesJSON">教育中心</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Class/ClassServletJSON.do?action=initClassViewTODataTablesJSON">班級建檔</a></li>
-								<li class=""><a href="${pageContext.request.contextPath}/02_uploadCSV/StudentInitServlet.do?action=initStuViewTODataTablesJSON">學員建檔</a></li>
+								<li class=""><a href="${pageContext.request.contextPath}/Student/Studentform.jsp">學員建檔</a></li>
 							</ul></li>
 						<!-----------------------------------下拉式選單(資料建檔結束)---------------------------------------------------- -->
 
@@ -110,6 +110,6 @@ pageEncoding="UTF-8"%>
     });
 
 </script>
-<!-- </body> -->
-<!-- </html> -->
+</body>
+</html>
 

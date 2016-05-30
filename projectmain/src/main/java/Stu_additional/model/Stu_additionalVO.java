@@ -13,8 +13,6 @@ public class Stu_additionalVO implements Serializable{
 	private String stu_applytime;
 	private String emp_id ; 
 	private String confirm_time ; 
-	private String class_id ;
-	private String log_pw ;
     
 	private StudentVO studentVO;
 	
@@ -62,16 +60,5 @@ public class Stu_additionalVO implements Serializable{
 	public void setConfirm_time(String confirm_time) {
 		this.confirm_time = confirm_time;
 	}
-	public String getClass_id() {
-		return class_id;
-	}
-	public void setClass_id(String class_id) {
-		this.class_id = class_id;
-	}
-	public String getLog_pw() {
-		return log_pw;
-	}
-	public void setLog_pw(String log_pw) {
-		this.log_pw = log_pw;
-	}
+
 }

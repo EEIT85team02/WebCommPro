@@ -1,4 +1,4 @@
-package Test_periodController;
+package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.exception.ConstraintViolationException;
 
+import Class.model.ClassService;
 import Test_period.model.Test_periodService;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
@@ -49,16 +50,25 @@ public class Test_periodServletJSON extends HttpServlet {
 		if ("addTp".equals(action)) {
 			Map<String, String> Msgs = null;
 			Integer test_hour_id= null;
-			Time test_hour= null;
+			Time test_starthour= null;
+			Time test_endhour= null;
 			try {
 				Msgs = new HashMap<String, String>();
-				/***************(新增)取得Test_period-test_hour表單資料***************/
-				test_hour = java.sql.Time.valueOf(request.getParameter("test_hour"));
-				if (test_hour == null) {
-					Msgs.put("test_hourMsg", "時段名稱不可空白");
+				/***************(新增)取得Test_period-test_starthourMsg表單資料***************/
+				test_starthour = java.sql.Time.valueOf(request.getParameter("test_starthour"));
+				if (test_endhour == null) {
+					Msgs.put("test_starthourMsg", "開始時間不可空白");
 				}
-				if (test_hour.toString().trim().length() >10) {
-					Msgs.put("test_hourMsg", "時段名稱長度不可大於10碼");
+				if (test_endhour.toString().trim().length() >10) {
+					Msgs.put("test_starthourMsg", "開始時間長度不可大於10碼");
+				}
+				/***************(新增)取得Test_period-test_endhourMsg表單資料***************/
+				test_endhour = java.sql.Time.valueOf(request.getParameter("test_endhour"));
+				if (test_endhour == null) {
+					Msgs.put("test_endhourMsg", "結束時間不可空白");
+				}
+				if (test_endhour.toString().trim().length() >10) {
+					Msgs.put("test_endhourMsg", "結束時間長度不可大於10碼");
 				}
 				
 				if (!Msgs.isEmpty()) {
@@ -67,13 +77,36 @@ public class Test_periodServletJSON extends HttpServlet {
 					/***************呼叫Service方法將資料新增***********************/
 				}else{
 					tpSvc = new Test_periodService();
-					tpSvc.insertTp(test_hour);
+					tpSvc.insertTp(test_starthour,test_endhour);
 					out.write("資料新增成功");
 					return;
 				}
 			} 
 			catch (SQLException e) {
 				e.printStackTrace();
+			}
+		}
+		/******************************** 多筆刪除資料表 ***********************/
+		if ("deleteTpMulti".equals(action)) {
+			
+			try {
+				// ============接收中心代號edu_id資料====================
+				String test_hour_idJSON =request.getParameter("test_hour_id");
+				//System.out.println("test_hour_idJSON========="+test_hour_idJSON);
+				// ============呼叫方法刪除資料====================
+				tpSvc = new Test_periodService();
+				tpSvc.deleteTpMulti(test_hour_idJSON);
+				out.write("資料刪除成功");
+				return;
+			}catch (ConstraintViolationException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
 			}
 		}
 		/******************************** 刪除資料表 ***********************/
@@ -102,7 +135,8 @@ public class Test_periodServletJSON extends HttpServlet {
 		if ("updateTp".equals(action)) { 
 			Map<String, String> Msgs = null;
 			Integer test_hour_id= null;
-			Time test_hour= null;
+			Time test_starthour= null;
+			Time test_endhour= null;
 			try {
 				Msgs = new HashMap<String, String>();
 				/***************(修改)取得Test_period-test_hour_id表單資料***************/
@@ -110,13 +144,21 @@ public class Test_periodServletJSON extends HttpServlet {
 				if (test_hour_id == null) {
 					Msgs.put("test_hour_id", "時段代號不可空白");
 				}
-				/***************(修改)取得Test_period-test_hour表單資料***************/
-				test_hour = java.sql.Time.valueOf(request.getParameter("test_hour"));
-				if (test_hour == null || test_hour.toString().trim().length() == 0) {
-					Msgs.put("test_hourMsg", "時段名稱不可空白");
+				/***************(修改)取得Test_period-test_starthour表單資料***************/
+				test_starthour = java.sql.Time.valueOf(request.getParameter("test_starthour"));
+				if (test_starthour == null || test_starthour.toString().trim().length() == 0) {
+					Msgs.put("test_starthourMsg", "開始時間不可空白");
 				}
-				if (test_hour.toString().trim().length() >10) {
-					Msgs.put("test_hourMsg", "時段名稱長度不可大於10碼");
+				if (test_starthour.toString().trim().length() >10) {
+					Msgs.put("test_starthourMsg", "開始時間長度不可大於10碼");
+				}
+				/***************(修改)取得Test_period-test_endhour表單資料***************/
+				test_endhour = java.sql.Time.valueOf(request.getParameter("test_endhour"));
+				if (test_endhour == null || test_endhour.toString().trim().length() == 0) {
+					Msgs.put("test_endhourMsg", "結束時間不可空白");
+				}
+				if (test_endhour.toString().trim().length() >10) {
+					Msgs.put("test_endhourMsg", "結束時間長度不可大於10碼");
 				}
 				
 				if (!Msgs.isEmpty()) {
@@ -126,7 +168,7 @@ public class Test_periodServletJSON extends HttpServlet {
 				/*******************將資料(更新)至資料庫**********************/
 				else{
 					tpSvc = new Test_periodService();
-					tpSvc.updateTp(test_hour_id,test_hour);
+					tpSvc.updateTp(test_hour_id,test_starthour,test_endhour);
 					out.write("資料更新成功");
 					return;
 				}
@@ -140,7 +182,7 @@ public class Test_periodServletJSON extends HttpServlet {
 				return;
 			}
 		}
-		/******************************** 查詢全部資料表 ***********************/		
+		/******************************** 查詢全部資料表JSON ***********************/		
 		if ("getALLTp".equals(action)) {
 			try {
 				// ============查詢教育中心全部資料回傳JSON字串====================
@@ -152,20 +194,9 @@ public class Test_periodServletJSON extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		/********************************查詢全部資料表FOR DataTables init() ***********************/
-		if ("getAllTpToJSONInitTable".equals(action)) {
-			try {
-				// ============查詢教育中心全部資料回傳JSON字串====================
-				tpSvc = new Test_periodService();
-				String jsonString = tpSvc.getAllTpToJSONInitTable();
-				out.write(jsonString);
-				return;
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
+		
 	
-		/******************************** 查詢單一筆資料 ***********************/	
+		/******************************** 查詢單一筆資料JSON ***********************/	
 		if ("getoneTp".equals(action)) {
 			try {
 				// ============接收中心代號test_hour_id資料====================
