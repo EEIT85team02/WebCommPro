@@ -33,13 +33,13 @@ public class Sign_listXML extends HttpServlet {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
-		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=project";
+		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=demo";
 
 		String query = "select sl_id, sl_name from Sign_list where sl_id<>0";
 
 		try {
 			DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-			conn = DriverManager.getConnection(url, "sa", "P@ssw0rd");
+			conn = DriverManager.getConnection(url, "sa", "sa123456");
 			stmt = conn.prepareStatement(query);
 
 			Document document = new Document();

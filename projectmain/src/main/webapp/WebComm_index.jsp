@@ -60,7 +60,7 @@
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center">
-            <h1><b>WebComm</b></h1>
+            <h1><img src="webcommImg\emblemmatic-webcomm-logo-26.png"></h1>
             <h3>WebComm Technology &amp; Web Solutions Provider</h3>
             <br>
             <a href="#about" class="btn btn-dark btn-lg">About Us</a>
