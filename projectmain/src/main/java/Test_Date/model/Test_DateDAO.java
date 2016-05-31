@@ -13,7 +13,7 @@ import hibernate.util.HibernateUtil;
 public class Test_DateDAO implements ITest_DateDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from Test_Date order by test_date_id";
+			"from Test_DateVO order by test_date_id";
 
 
 		public void insert(Test_DateVO tes) {

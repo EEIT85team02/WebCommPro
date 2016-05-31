@@ -42,18 +42,18 @@ public class Test_intervalDAO implements ITest_intervalDAO {
 			}
 		}
 
-//		public void delete(Integer test_interval_id) {
-//			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-//			try {
-//				session.beginTransaction();
-//				Test_intervalVO tes = (Test_intervalVO) session.get(Test_intervalVO.class, test_interval_id);
-//				session.delete(tes);
-//				session.getTransaction().commit();	
-//			} catch (RuntimeException ex) {
-//				session.getTransaction().rollback();
-//				throw ex;
-//			}
-//		}
+		public void delete(Integer test_interval_id) {
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Test_intervalVO tes = (Test_intervalVO) session.get(Test_intervalVO.class, test_interval_id);
+				session.delete(tes);
+				session.getTransaction().commit();	
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+		}
 		
 
 		public Test_intervalVO findByPrimaryKey(Integer test_interval_id) {
@@ -70,7 +70,7 @@ public class Test_intervalDAO implements ITest_intervalDAO {
 			return tiVO;
 		}
 
-		public List<Test_intervalVO> getAllTi() {
+		public List<Test_intervalVO> getAll() {
 			List<Test_intervalVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {

@@ -1,4 +1,4 @@
-package Test_intervalController;
+package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -57,7 +57,7 @@ public class Test_intervalServletJSON extends HttpServlet {
 				/***************(新增)取得Test_interval-class_id表單資料***************/
 				class_id = request.getParameter("class_id");
 				if (class_id == null || class_id.trim().length() == 0) {
-					Msgs.put("class_idMsg", "班級名稱不可空白");
+					Msgs.put("class_idMsg", "班級代號不可空白");
 				}
 				/***************(新增)取得Test_interval-test_startdate表單資料***************/
 				test_startdate = java.sql.Date.valueOf(request.getParameter("test_startdate"));
@@ -87,27 +87,27 @@ public class Test_intervalServletJSON extends HttpServlet {
 			}
 		}
 		/******************************** 刪除資料表 ***********************/
-//		if ("deleteEdu".equals(action)) {
-//			
-//			try {
-//				// ============接收中心代號edu_id資料====================
-//				Integer edu_id =Integer.parseInt(request.getParameter("edu_id"));
-//				// ============呼叫方法刪除資料====================
-//				eduSvc = new EduService();
-//				eduSvc.deleteEdu(edu_id);
-//				out.write("資料刪除成功");
-//				return;
-//			}catch (ConstraintViolationException e) {
-//				e.printStackTrace();
-//				out.write("資料刪除失敗");
-//				return;
-//			}
-//			catch (SQLException e) {
-//				e.printStackTrace();
-//				out.write("資料刪除失敗");
-//				return;
-//			}
-//		}
+		if ("deleteTi".equals(action)) {
+			
+			try {
+				// ============接收中心代號edu_id資料====================
+				Integer test_interval_id =Integer.parseInt(request.getParameter("test_interval_id"));
+				// ============呼叫方法刪除資料====================
+				tiSvc = new Test_intervalService();
+				tiSvc.deleteTi(test_interval_id);
+				out.write("資料刪除成功");
+				return;
+			}catch (ConstraintViolationException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
+			}
+		}
 		/******************************** 更新資料表 ***********************/	
 		if ("updateTi".equals(action)) { 
 			Map<String, String> Msgs = null;

@@ -112,31 +112,26 @@ create table Test_period
   test_endhour           time          NOT NULL          
 );  
 
-
-
 create table Test_interval
 (
-  test_interval_id      int            NOT NULL  identity , 
-  class_id               nvarchar(10)  foreign key  references  Class(class_id) NOT NULL,    
-  test_startdate         date     UNIQUE NOT NULL ,           
-  test_enddate           date          NOT NULL,
-  CONSTRAINT pk_test_interval_id PRIMARY KEY (class_id, test_startdate)
-);  
+  test_interval_id      int            primary key  identity , 
+  class_id               nvarchar(10)  UNIQUE foreign key  references  Class(class_id) NOT NULL,    
+  test_startdate         date          NOT NULL ,           
+  test_enddate           date          NOT NULL
+);   
 
 
 
 
 create table Test_Date
 (
-  test_date_id      int            NOT NULL  identity, 
-  class_id               nvarchar(10)  foreign key references  Class(class_id) NOT NULL,    
-  test_startdate         date     foreign key  references  Test_interval(test_startdate) NOT NULL, 
-  test_hour_id           int	       foreign key  references  Test_period(test_hour_id) NOT NULL,
+  test_date_id      int         PRIMARY KEY   NOT NULL  identity, 
+  class_id          nvarchar(10)  foreign key references  class(class_id) NOT NULL,   
+  test_hour_id      int	       foreign key  references  Test_period(test_hour_id) NOT NULL, 
+  test_date         date     NOT NULL, 
   test_people            int           NOT NULL, 
-  exam_people            int           NOT NULL,
-  CONSTRAINT pk_test_date_id PRIMARY KEY (class_id, test_startdate,test_hour_id)
-);  
-
+  exam_people            int           NOT NULL
+); 
 
 ---------------------------------------------------------------------------------------------------
 create table Member_status

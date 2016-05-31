@@ -197,7 +197,7 @@ h1 {
                               "sNext":"下頁",
                               "sLast":"尾頁"}
 			 },
-		    	  "bJQueryUI":false,
+		    	  "bJQueryUI":true,
 		    	  "bProcessing": true,
 		    	  "sPaginationType":"full_numbers",
 		    	  
@@ -468,7 +468,7 @@ h1 {
 			                              "sNext":"下頁",
 			                              "sLast":"尾頁"}
 						 },
-					    	  "bJQueryUI":false,
+					    	  "bJQueryUI":true,
 					    	  "bProcessing": true,
 					    	  "sPaginationType":"full_numbers",
 					    	  

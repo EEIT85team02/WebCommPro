@@ -55,11 +55,11 @@ public class Test_periodService {
 		return dao.findByPrimaryKey(test_hour_id);
 	}
 	public List<Test_periodVO> getAllTp() throws SQLException{
-		return dao.getAllTp();
+		return dao.getAll();
 	}
 	public String getAllTpToJSON() throws SQLException{
 		List mails=new LinkedList();
-		List<Test_periodVO> list=dao.getAllTp();
+		List<Test_periodVO> list=dao.getAll();
 		String jsonString= null;
 		for(Test_periodVO tpVO :list){
 			Map<String,String> map = new HashMap<String,String>();
@@ -73,7 +73,7 @@ public class Test_periodService {
 	}
 	
 	public String getAllTpToJSONInitTable() throws SQLException{
-		List<Test_periodVO> list=dao.getAllTp();
+		List<Test_periodVO> list=dao.getAll();
 		List<List<String>> tpVO = new LinkedList<List<String>>();
 		String jsonValue = null;
 		for(Test_periodVO a :list){

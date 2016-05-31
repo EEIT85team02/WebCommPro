@@ -2,11 +2,18 @@ package Test_period.model;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.HashSet;
+import java.util.Set;
+
+import Test_Date.model.Test_DateVO;
+import Class.model.ClassVO;
 
 public class Test_periodVO implements Serializable{//考試時段資料表
 	private Integer test_hour_id;//考試時段代號
 	private	java.sql.Time	test_starthour   ;//考試開始時間
 	private	java.sql.Time	test_endhour    ;//考試結束時間
+	private Set<Test_DateVO> tds = new HashSet<Test_DateVO>();
+	
 	
 	public Integer getTest_hour_id() {
 		return test_hour_id;
@@ -26,12 +33,21 @@ public class Test_periodVO implements Serializable{//考試時段資料表
 	public void setTest_endhour(java.sql.Time test_endhour) {
 		this.test_endhour = test_endhour;
 	}
+	
+	public Set<Test_DateVO> getTds() {
+		return tds;
+	}
+	public void setTds(Set<Test_DateVO> tds) {
+		this.tds = tds;
+	}
+	
 	public Test_periodVO(Integer test_hour_id, Time test_starthour,
-			Time test_endhour) {
+			Time test_endhour, Set<Test_DateVO> tds) {
 		super();
 		this.test_hour_id = test_hour_id;
 		this.test_starthour = test_starthour;
 		this.test_endhour = test_endhour;
+		this.tds = tds;
 	}
 	public Test_periodVO() {
 		super();

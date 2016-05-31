@@ -40,18 +40,18 @@ public class Test_intervalService {
 		
 		dao.update(tiVO);
 	}
-//	public void deleteTi(Integer test_interval_id) throws SQLException{
-//		dao.delete(test_interval_id);
-//	}
+	public void deleteTi(Integer test_interval_id) throws SQLException{
+		dao.delete(test_interval_id);
+	}
 	public Test_intervalVO findByPrimaryKeyTi(Integer test_interval_id) throws SQLException{
 		return dao.findByPrimaryKey(test_interval_id);
 	}
 	public List<Test_intervalVO> getAllTi() throws SQLException{
-		return dao.getAllTi();
+		return dao.getAll();
 	}
 	public String getAllTiToJSON() throws SQLException{
 		List tis=new LinkedList();
-		List<Test_intervalVO> list=dao.getAllTi();
+		List<Test_intervalVO> list=dao.getAll();
 		String jsonString= null;
 		for(Test_intervalVO tiVO :list){
 			Map<String,String> map = new HashMap<String,String>();
@@ -66,7 +66,7 @@ public class Test_intervalService {
 	}
 	
 	public String getAllTiToJSONInitTable() throws SQLException{
-		List<Test_intervalVO> list=dao.getAllTi();
+		List<Test_intervalVO> list=dao.getAll();
 		List<List<String>> tiVO = new LinkedList<List<String>>();
 		String jsonValue = null;
 		for(Test_intervalVO a :list){

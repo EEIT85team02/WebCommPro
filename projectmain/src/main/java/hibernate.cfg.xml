@@ -42,8 +42,8 @@
 		<mapping resource="Stu_additional/model/Stu_additional.hbm.xml" />
 		<mapping resource="Employee/model/Employee.hbm.xml" />
 		<mapping resource="Test_period/model/Test_periodVO.hbm.xml" />
-		<mapping resource="Test_interval/model/Test_interval.hbm.xml" />
-		<mapping resource="Test_Date/model/Test_Date.hbm.xml" />
+		<mapping resource="Test_interval/model/Test_intervalVO.hbm.xml" />
+		<mapping resource="Test_Date/model/Test_DateVO.hbm.xml" />
 		<mapping resource="Member_status/model/Member_status.hbm.xml" />
 		<mapping resource="Member_test/model/Member_test.hbm.xml" />
 		<mapping resource="Mail_template/model/Mail_template.hbm.xml" />

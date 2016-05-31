@@ -8,9 +8,19 @@
         <id name="test_hour_id" column="test_hour_id">
             <generator class="identity"/>
         </id>
-        
         <property name="test_starthour" column="test_starthour" />
         <property name="test_endhour" column="test_endhour" />
+    
+    
+    <set name="tds" table="Test_Date" lazy="false" inverse="true"  order-by="test_date_id asc" >			
+			<key>
+				<column name="test_hour_id" />
+			</key>
+			<one-to-many class="Test_Date.model.Test_DateVO" />
+	</set>
+    
+    
     </class>
+     
 </hibernate-mapping>
 
