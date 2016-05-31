@@ -1,4 +1,4 @@
-package Sign_listController;
+package EmployeeController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 
-@WebServlet("/Sign_list/Sign_listAuto")
+@WebServlet("/Employee/Sign_listAuto")
 public class Sign_listAuto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,13 +30,13 @@ public class Sign_listAuto extends HttpServlet {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=project";
+		String url = "jdbc:sqlserver://localhost:1433;DatabaseName=demo";
 		String query = "select emp_id from employee where sl_id=0 and emp_id like ?";
 		String keyword = request.getParameter("keyword");
 		keyword = keyword + "%";
 		try {
 			DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
-			conn = DriverManager.getConnection(url, "sa", "P@ssw0rd");
+			conn = DriverManager.getConnection(url, "sa", "sa123456");
 
 			stmt = conn.prepareStatement(query);
 			stmt.setString(1, keyword);

@@ -2,8 +2,11 @@ package Employee.model;
 
 
 import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
+
+import Class.model.ClassVO;
 import hibernate.util.HibernateUtil;
 
 
@@ -12,14 +15,28 @@ import hibernate.util.HibernateUtil;
 public class EmployeeDAO implements IEmployeeDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from Employee order by emp_id";
+			"from EmployeeVO where sl_id<>0 order by emp_id";
 
 
-		public void insert(Employee emp) {
+//		public void insert(EmployeeVO empVO) {
+//			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//			try {
+//				session.beginTransaction();
+//				session.saveOrUpdate(empVO);
+//				session.getTransaction().commit();
+//			} catch (RuntimeException ex) {
+//				session.getTransaction().rollback();
+//				throw ex;
+//			}
+//		}
+
+
+
+		public void update(EmployeeVO empVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(emp);
+				session.saveOrUpdate(empVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -27,50 +44,39 @@ public class EmployeeDAO implements IEmployeeDAO {
 			}
 		}
 
-
-
-		public void update(Employee emp) {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-			try {
-				session.beginTransaction();
-				session.saveOrUpdate(emp);
-				session.getTransaction().commit();
-			} catch (RuntimeException ex) {
-				session.getTransaction().rollback();
-				throw ex;
-			}
-		}
-
-		public void delete(String emp_id) {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-			try {
-				session.beginTransaction();
-				Employee emp = (Employee) session.get(Employee.class, emp_id);
-				session.delete(emp);
-				session.getTransaction().commit();	
-			} catch (RuntimeException ex) {
-				session.getTransaction().rollback();
-				throw ex;
-			}
-		}
+//		public void delete(String emp_id) {
+//			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//			try {
+//				session.beginTransaction();
+//				//ClassVO cla = (ClassVO) session.get(ClassVO.class, class_id);
+//				EmployeeVO empVO = new EmployeeVO(); //刪除關聯
+//				empVO.setEmp_id(emp_id);
+//				
+//				session.delete(empVO);
+//				session.getTransaction().commit();	
+//			} catch (RuntimeException ex) {
+//				session.getTransaction().rollback();
+//				throw ex;
+//			}
+//		}
 		
 
-		public Employee findByPrimaryKey(String emp_id) {
-			Employee emp = null;
+		public EmployeeVO findByPrimaryKey(String emp_id) {
+			EmployeeVO empVO = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				emp = (Employee) session.get(Employee.class, emp_id);
+				empVO =(EmployeeVO) session.get(EmployeeVO.class, emp_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;
 			}
-			return emp;
+			return empVO;
 		}
-
-		public List<Employee> getAll() {
-			List<Employee> list = null;
+		
+		public List<EmployeeVO> getAllEmp() {
+			List<EmployeeVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -83,6 +89,22 @@ public class EmployeeDAO implements IEmployeeDAO {
 			}
 			return list;
 		}
+		
+//		public List<ClassVO> getAllClass() {
+//			List<ClassVO> list = null;
+//			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//			try {
+//				session.beginTransaction();
+//				Query query = session.createQuery(GET_ALL_Class);
+//				list = query.list();
+//				System.out.println("query.list()======"+query.list());
+//				session.getTransaction().commit();
+//			} catch (RuntimeException ex) {
+//				session.getTransaction().rollback();
+//				throw ex;
+//			}
+//			return list;
+//		}	
 
 
 }

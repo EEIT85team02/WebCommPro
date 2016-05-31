@@ -1,4 +1,4 @@
-package Sign_listController;
+package EmployeeController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -9,16 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Employee.model.EmployeeService;
 
 
-import Sign_list.model.Sign_listService;
-
-
-
-@WebServlet("/Sign_list/Sign_listToJSONInitTableServlet")
-public class Sign_listToJSONInitTableServlet extends HttpServlet {
+@WebServlet("/Employee/EmployeeToJSONInitTableServlet")
+public class EmployeeToJSONInitTableServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public Sign_listToJSONInitTableServlet() {
+	public EmployeeToJSONInitTableServlet() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,10 +23,10 @@ public class Sign_listToJSONInitTableServlet extends HttpServlet {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
-		Sign_listService slSvc = new Sign_listService();
+		EmployeeService empSvc = new EmployeeService();
 		try {
-			String jsonString=slSvc.getAllSlToJSONInitTable();
-			out.write(jsonString);
+			String jsonString=empSvc.getAllEmpToJSONInitTable();
+			out.println(jsonString);
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
