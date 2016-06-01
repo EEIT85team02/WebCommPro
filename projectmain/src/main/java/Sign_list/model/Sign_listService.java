@@ -10,7 +10,9 @@ import java.util.Set;
 
 import org.json.simple.JSONValue;
 
+import Class.model.ClassVO;
 import Edu.model.EduVO;
+import Employee.model.EmployeeVO;
 
 
 public class Sign_listService {
@@ -20,32 +22,26 @@ public class Sign_listService {
 		dao= new Sign_listDAO();
 	}
 	
-	public void updateSl(String emp_id,String emp_name, String emp_mail,
-			String dep_name, Integer sl_id) throws SQLException {
+	public void insertSl(Integer sl_id,String sl_name) throws SQLException {
 		Sign_listVO slVO = new Sign_listVO();
-		slVO.setEmp_id(emp_id);
-		slVO.setEmp_name(emp_name);
-		slVO.setEmp_mail(emp_mail);
-		slVO.setDep_name(dep_name);
 		slVO.setSl_id(sl_id);
+		slVO.setSl_name(sl_name);
 		
-		dao.update(slVO);
+		dao.insert(slVO);
 	}
 	
-	public void updatedelSl(String emp_id,String emp_name, String emp_mail,
-			String dep_name, Integer sl_id) throws SQLException {
+	public void updateSl(Integer sl_id,String sl_name) throws SQLException {
 		Sign_listVO slVO = new Sign_listVO();
-		slVO.setEmp_id(emp_id);
-		slVO.setEmp_name(emp_name);
-		slVO.setEmp_mail(emp_mail);
-		slVO.setDep_name(dep_name);
-		slVO.setSl_id(0);
+		slVO.setSl_id(sl_id);
+		slVO.setSl_name(sl_name);
 		
 		dao.update(slVO);
 	}
-
-	public Sign_listVO findByPrimaryKeySl(String emp_id) throws SQLException{
-		return dao.findByPrimaryKey(emp_id);
+	public void deleteSl(Integer sl_id) throws SQLException{
+		dao.delete(sl_id);
+	}
+	public Sign_listVO findByPrimaryKeySl(Integer sl_id) throws SQLException{
+		return dao.findByPrimaryKey(sl_id);
 	}
 	public List<Sign_listVO> getAllSl() throws SQLException{
 		return dao.getAllSl();
@@ -56,11 +52,8 @@ public class Sign_listService {
 		String jsonString= null;
 		for(Sign_listVO slVO :list){
 			Map<String,String> map = new HashMap<String,String>();
-			map.put("emp_id",slVO.getEmp_id());
-			map.put("emp_name",slVO.getEmp_name());
-			map.put("emp_mail",slVO.getEmp_mail());
-			map.put("dep_name",slVO.getDep_name());
 			map.put("sl_id",slVO.getSl_id().toString());
+			map.put("sl_name",slVO.getSl_name());
 			sls.add(map);
 		}
 		jsonString = JSONValue.toJSONString(sls);
@@ -73,11 +66,8 @@ public class Sign_listService {
 		String jsonValue = null;
 		for(Sign_listVO a :list){
 			List<String> detailSlVO = new ArrayList<String>();
-			detailSlVO.add(a.getEmp_id());
-			detailSlVO.add(a.getEmp_name());
-			detailSlVO.add(a.getEmp_mail());
-			detailSlVO.add(a.getDep_name());
 			detailSlVO.add(a.getSl_id().toString());
+			detailSlVO.add(a.getSl_name());
 			slVO.add(detailSlVO);
 		}
 		Map<String,List<List<String>>> mapJSON=new HashMap<String,List<List<String>>>();
@@ -86,19 +76,23 @@ public class Sign_listService {
 		return jsonValue;
 	}
 	
-	public String findByPrimaryKeySlToJSON(String emp_id) throws SQLException{
+	public String findByPrimaryKeySlToJSON(Integer sl_id) throws SQLException{
 		List sls=new LinkedList();
-		Sign_listVO slVO=dao.findByPrimaryKey(emp_id);
+		Sign_listVO slVO=dao.findByPrimaryKey(sl_id);
 		String jsonString= null;
 			Map<String,String> map = new HashMap<String,String>();
-			map.put("emp_id",slVO.getEmp_id());
-			map.put("emp_name",slVO.getEmp_name());
-			map.put("emp_mail",slVO.getEmp_mail());
-			map.put("dep_name",slVO.getDep_name());
 			map.put("sl_id",slVO.getSl_id().toString());
+			map.put("sl_name",slVO.getSl_name());
 			sls.add(map);
 			jsonString = JSONValue.toJSONString(sls);
 			return jsonString;
+	}
+	
+	
+	
+	
+	public Set<EmployeeVO> getEmpBySl_idSl(Integer sl_id){
+		return dao.getEmpBySl_id(sl_id);
 	}
 
 	

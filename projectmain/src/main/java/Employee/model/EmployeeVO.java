@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import Sign_list.model.Sign_listVO;
 import Stu_additional.model.Stu_additionalVO;
-import Student.model.StudentVO;
 
 public class EmployeeVO implements Serializable{//員工
 	private	String	emp_id;//員工代號
@@ -13,7 +13,7 @@ public class EmployeeVO implements Serializable{//員工
 	private	Integer	dep_id;//部門編號
 	private	String	dep_name;//部門名稱
 	private	String	emp_mail;//mail
-	private	Integer	sl_id;//權限代號
+	private Sign_listVO slVO;   //代表代號sl_id(sign_list) 
 	private Set<Stu_additionalVO> Stu_additionalVO = new HashSet<Stu_additionalVO>();
 	
 	public String getEmp_id() {
@@ -47,17 +47,36 @@ public class EmployeeVO implements Serializable{//員工
 	public void setEmp_mail(String emp_mail) {
 		this.emp_mail = emp_mail;
 	}
-	public Integer getSl_id() {
-		return sl_id;
-	}
-	public void setSl_id(Integer sl_id) {
-		this.sl_id = sl_id;
-	}
 	public Set<Stu_additionalVO> getStu_additionalVO() {
 		return Stu_additionalVO;
 	}
 	public void setStu_additionalVO(Set<Stu_additionalVO> stu_additionalVO) {
 		Stu_additionalVO = stu_additionalVO;
 	}
+
+
+	public Sign_listVO getSlVO() {
+		return slVO;
+	}
+
+	public void setSlVO(Sign_listVO slVO) {
+		this.slVO = slVO;
+	}
+
+	public EmployeeVO(String emp_id, String emp_name, String emp_mail,
+			String dep_name, Sign_listVO slVO) {
+		super();
+		this.emp_id = emp_id;
+		this.emp_name = emp_name;
+		this.emp_mail = emp_mail;
+		this.dep_name = dep_name;
+		this.slVO = slVO;
+		
+	}
+	
+	public EmployeeVO() {
+		super();
+	}
+	
 	
 }

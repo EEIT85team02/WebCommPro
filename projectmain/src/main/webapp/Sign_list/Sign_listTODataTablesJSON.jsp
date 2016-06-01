@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=BIG5"
-    pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
@@ -13,6 +14,14 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
+<link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <style>
 .Main_Content {
 	margin-top: 100px;
@@ -61,497 +70,334 @@ h1 {
 </style>
 </head>
 <body>
-	<!-- ¤Ş¤Jtop.jsp¼ĞÀYÀÉ ¨µÄı¦C³¡¤À-->
+	<!-- å¼•å…¥top.jspæ¨™é ­æª” å·¡è¦½åˆ—éƒ¨åˆ†-->
 	<jsp:include page="/top/top.jsp" />
-	<!-------------¤¤¶¡¤º®eµe­±¶}©l------------>
-	
-	<!-- ©T©w¨µÄı¦C¦ì¸m¡A«Ø¥ßdiv¨Ï°Ï¶ô¤U²¾ (starter-template)-->
+	<!-------------ä¸­é–“å…§å®¹ç•«é¢é–‹å§‹------------>
+	<!-- å›ºå®šå·¡è¦½åˆ—ä½ç½®ï¼Œå»ºç«‹divä½¿å€å¡Šä¸‹ç§» (starter-template)-->
 	<div class="container">
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-md-12">
-					<div class=>
-						<table class="table table-hover" id="Sign_listTable">
-							<thead>
-								<tr>
-									<th class="col-md-1 col-xs-1">¥N¸¹</th>
-									<th class="col-md-2 col-xs-2">¦W¦r</th>
-									<th class="col-md-3 col-xs-3">Email</th>
-									<th class="col-md-2 col-xs-2">³¡ªù</th>
-									<th class="col-md-2 col-xs-2">Åv­­</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<th>¥N¸¹</th>
-									<th>¦W¦r</th>
-									<th>Email</th>
-									<th>³¡ªù</th>
-									<th>Åv­­</th>
-								</tr>
-							</tbody>
-						</table>
-						
-						<!------------------ÂI¿ï·s¼WÅv­­³]©wªí³æ°Ï¶ô¤º®e----------------------------- -->
-					<button id="buttonAdd">·s¼W</button>
-					<button id="buttonUpdate">½s¿è</button>
-					<button id="buttonDelete">§R°£</button>
-					</div>
+				<hr>
+					<table id="Sign_listTable" class="display" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th class="col-md-3 col-xs-3">æ¬Šé™ä»£è™Ÿ</th>
+								<th class="col-md-9 col-xs-9">æ¬Šé™åç¨±</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>æ¬Šé™ä»£è™Ÿ</th>
+								<th>æ¬Šé™åç¨±</th>
+							</tr>
+						</tfoot>
+					</table>
+
+					<!------------------é»é¸æ–°å¢æ¬Šé™è¨­å®šè¡¨å–®å€å¡Šå…§å®¹----------------------------- -->
+					<button id="buttonAdd">æ–°å¢</button>
+					<button id="buttonUpdate">ç·¨è¼¯</button>
+					<button id="buttonDelete">åˆªé™¤</button>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- ³]©w·s¼WFORMªí³æ°Ï¶ôdialog -->
-	<div id="dialog-insertForm" title="«Ø¥ßÅv­­³]©w¸ê®Æ">
+	<!-- è¨­å®šæ–°å¢FORMè¡¨å–®å€å¡Šdialog -->
+	<div id="dialog-insertForm" title="å»ºç«‹æ¬Šé™è¨­å®šè³‡æ–™">
 		<p class="validateTips"></p>
-		<form name="Sign_listInsertForm" action="updateSl">
+		<form name="SlInsertForm">
 			<fieldset>
-				<label for="emp_id">­û¤u¥N¸¹</label> 
-				<input type="text" name="emp_id" id="emp_id" class="text ui-widget-content ui-corner-all" autocomplete="off">
-				<div id="div1"></div>
-				<label for="emp_name">­û¤u¦WºÙ</label> 
-				<input type="text" name="emp_name" id="emp_name" readOnly class="text ui-widget-content ui-corner-all"> 
-				<label for="emp_mail">Email</label> 
-				<input type="text" name="emp_mail" id="emp_mail" readOnly class="text ui-widget-content ui-corner-all"> 
-				<label for="dep_name">³¡ªù¦WºÙ</label> 
-				<input type="text"name="dep_name" id="dep_name" readOnly class="text ui-widget-content ui-corner-all">
-				<label for="sl_id">Åv­­</label> 
-				<select name="sl_id" id="sl_id" class="text ui-widget-content ui-corner-all"></select>
-				<input type="hidden"name="action" value="updateSl">
-				<!-- Allow form submission with keyboard without duplicating the dialog button -->
-				<input type="submit" tabindex="-1"
-					style="position: absolute; top: -1000px">
+				<label for="sl_id">æ¬Šé™ä»£è™Ÿ</label> 
+				<input type="text" name="sl_id" id="sl_id" class="text ui-widget-content ui-corner-all" placeholder="è«‹è¼¸å…¥æ¬Šé™ä»£è™Ÿ">
+				<label for="sl_name">æ¬Šé™åç¨±</label> 
+				<input type="text" name="sl_name" id="sl_name" class="text ui-widget-content ui-corner-all" placeholder="è«‹è¼¸å…¥æ¬Šé™åç¨±" autocomplete="off"> 
+				<input type="hidden" name="action" value="addSl">
+				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
 		</form>
 	</div>
-	<!-- ³]©w­×§ïFORMªí³æ°Ï¶ôdialog -->
-	<div id="dialog-updateForm" title="­×§ïÅv­­³]©w¸ê®Æ">
+	<!-- è¨­å®šä¿®æ”¹FORMè¡¨å–®å€å¡Šdialog -->
+	<div id="dialog-updateForm" title="ä¿®æ”¹æ¬Šé™è¨­å®šè³‡æ–™">
 		<p class="validateTips"></p>
-		<form name="Sign_listUpdateForm" action="updateSl">
+		<form name="SlUpdateForm" action="updateSl">
 			<fieldset>
-				<label for="emp_id">­û¤u¥N¸¹</label> 
-				<input type="text" name="emp_id" id="uemp_id"  readOnly class="text ui-widget-content ui-corner-all">
-				<label for="emp_name">­û¤u¦WºÙ</label> 
-				<input type="text" name="emp_name" id="uemp_name" readOnly class="text ui-widget-content ui-corner-all"> 
-				<label for="emp_mail">Email</label> 
-				<input type="text" name="emp_mail" id="uemp_mail" readOnly class="text ui-widget-content ui-corner-all"> 
-				<label for="dep_name">³¡ªù¦WºÙ</label> 
-				<input type="text"name="dep_name" id="udep_name" readOnly class="text ui-widget-content ui-corner-all">
-				<label for="sl_id">Åv­­</label> 
-				<select name="sl_id" id="usl_id" class="text ui-widget-content ui-corner-all"></select>
-				<input type="hidden"name="action" value="updateSl">
-				<!-- Allow form submission with keyboard without duplicating the dialog button -->
-				<input type="submit" tabindex="-1"
-					style="position: absolute; top: -1000px">
+				<label for="sl_id">æ¬Šé™ä»£è™Ÿ</label> 
+				<input type="text" name="sl_id" id="usl_id" readOnly class="text ui-widget-content ui-corner-all">
+				<label for="sl_name">æ¬Šé™åç¨±</label> 
+				<input type="text" name="sl_name" id="usl_name" class="text ui-widget-content ui-corner-all" autocomplete="off"> 
+				<input type="hidden" name="action" value="updateSl">
+				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
 		</form>
 	</div>
-	<!-- ³]©w§R°£½T»{ªí³æ°Ï¶ôdialog -->
-<div id="dialog-deleteForm" title="§R°£½T»{">
-  <p>¬O§_­n§R°£¦¹µ§¸ê®Æ?</p>
-</div>
-
-
-
+	<!-- è¨­å®šåˆªé™¤ç¢ºèªè¡¨å–®å€å¡Šdialog -->
+	<div id="dialog-deleteForm" title="åˆªé™¤ç¢ºèª">
+		<p>æ˜¯å¦è¦åˆªé™¤æ­¤ç­†è³‡æ–™?</p>
+	</div>
 	<script>
 		$(function() {
-			//©w¸qtable¸ê®Æ¨Ó·½json¡A»Pµe­±Åã¥Ü------>¶}©l
+			//å®šç¾©tableè³‡æ–™ä¾†æºjsonï¼Œèˆ‡ç•«é¢é¡¯ç¤º------>é–‹å§‹
 			var table = $('#Sign_listTable').DataTable( {
-			 	"ajax": {
-		            "url": "Sign_listToJSONInitTableServlet",
-		        },
-		     	"oLanguage": {
-				"sProcessing":"¸ê®Æ¥¿³B²z¤¤...",
-				"sLengthMenu": "Åã¥Ü _MENU_ µ§°O¿ı",
-			    "sZeroRecords": "µL²Å¦X¸ê®Æ",
-			    "sInfo": "¥Ø«e°O¿ı¡G_START_ ¦Ü _END_, Á`µ§¼Æ¡G_TOTAL_",
-			    "sInfoEmpty":"Åã¥Ü²Ä 0 ¦Ü 0 ¶µµ²ªG¡A¦@ 0 ¶µ",
-                "sInfoFiltered":"(±q _MAX_ ¶µµ²ªG¹LÂo)",
-                "sSearch":"·j¯Á:",
-                "oPaginate":{"sFirst":"­º­¶",
-                          "sPrevious":"¤W­¶",
-                          "sNext":"¤U­¶",
-                          "sLast":"§À­¶"}
-		 },
-	    	  "bJQueryUI":false,
-	    	  "bProcessing": true,
-	    	  "sPaginationType":"full_numbers",
-	    	  
-	    	} );
-		//©w¸qtable¸ê®Æ¨Ó·½json¡A»Pµe­±Åã¥Ü------>µ²§ô
-// 		$(function() {
-// 			//¸ü¤J­¶­±®É¡A¥ı§Q¥ÎgetJSON¤èªk©I¥sSign_listServletJSON.do¡A¨ú¦^¸ê®Æ®w¸ê®Æ¨Ã«Ø¥ßtable¤º®e
-// 			$('#Sign_listTable>tbody>tr').remove();
-// 			$.getJSON('Sign_listServletJSON.do', {"action":"getALLSl"}, function(datas) {
-// 				//console.log(datas);
-// 				$.each(datas, function(i, Sls) {
-// 					//¸ê®Æ¸ü¤J±N­¶­±¶ë¤JÄæ¦ì¤º®e
-// 					$( "#Sign_listTable>tbody" ).append( 
-// 						"<tr>" +
-// 						  "<td>" + Sls.emp_id + "</td>" +
-// 				          "<td>" + Sls.emp_name + "</td>" +
-// 				          "<td>" + Sls.emp_mail + "</td>" +
-// 				          "<td>" + Sls.dep_name + "</td>" +
-// 				          "<td>" + Sls.sl_id + "</td>" +
-// 				          "<td>" + "<button class='buttonUpdate' value="+Sls.emp_id+"> "+"½s¿è"+"</button>"+ "</td>" +
-// 				          "<td>" + "<button class='buttonDelete' value="+Sls.emp_id+"> "+"§R°£"+"</button>" + "</td>" +
-// 				        "</tr>" );
-// 					//console.log(Sls.emp_id);
-// 				});
-// 			});//¨ú¦^¸ê®Æ®w¸ê®Æ¨Ã«Ø¥ßtable¤º®eµ²§ô
+				 	"ajax": {
+			            "url": "Sign_listToJSONInitTableServlet",
+			        },
+			     	"oLanguage": {
+					"sProcessing":"è³‡æ–™æ­£è™•ç†ä¸­...",
+					"sLengthMenu": "é¡¯ç¤º _MENU_ ç­†è¨˜éŒ„",
+				    "sZeroRecords": "ç„¡ç¬¦åˆè³‡æ–™",
+				    "sInfo": "ç›®å‰è¨˜éŒ„ï¼š_START_ è‡³ _END_, ç¸½ç­†æ•¸ï¼š_TOTAL_",
+				    "sInfoEmpty":"é¡¯ç¤ºç¬¬ 0 è‡³ 0 é …çµæœï¼Œå…± 0 é …",
+                    "sInfoFiltered":"(å¾ _MAX_ é …çµæœéæ¿¾)",
+                    "sSearch":"æœç´¢:",
+                    "oPaginate":{"sFirst":"é¦–é ",
+                              "sPrevious":"ä¸Šé ",
+                              "sNext":"ä¸‹é ",
+                              "sLast":"å°¾é "}
+			 },
+		    	  "bJQueryUI":false,
+		    	  "bProcessing": true,
+		    	  "sPaginationType":"full_numbers",
+		    	  
+		    	} );
+			//å®šç¾©tableè³‡æ–™ä¾†æºjsonï¼Œèˆ‡ç•«é¢é¡¯ç¤º------>çµæŸ
+			 
 			
-			//---------------diologµ{¦¡³¡¤À¥H¤U(·s¼W)------------------
-			 var  form,Sign_listInsertForm,Sign_listUpdateForm,
-			  emp_id = $( "#emp_id" ),
-		      emp_name = $( "#emp_name" ),
-		      emp_mail = $( "#emp_mail" ),
-		      dep_name = $( "#dep_name" ),
-		      sl_id = $( "#sl_id" ),
-		      uemp_id = $('#uemp_id');
-			  uemp_name = $('#uemp_name');
-			  uemp_mail = $('#uemp_mail');
-			  udep_name = $('#udep_name');
-			  usl_id = $('#usl_id');
-			  
-			  deleteOrUpdateValue = null;//ÀË¬d¬O§_¦³¿ï¨ú¸ê®Æ¦æ
-			  
-		      allFields = $( [] ).add( emp_id ).add( emp_name ).add( emp_mail ).add( dep_name ).add( sl_id ),
-		      uallFields = $( [] ).add( uemp_id ).add( uemp_name ).add( uemp_mail ).add( udep_name ).add( usl_id ),
-		      tips = $( ".validateTips" );
-		 //¦bÅçÃÒÅã¥Ü°Ï¶ô·s¼Wclass t->¶Ç¤Jªº¤@¬q¤å¦r
-		    function updateTips( t ) {
-		      tips
-		        .text( t )
-		        .css('color','red')
-		        .addClass( "ui-state-highlight" );
-		      setTimeout(function() {
-		        tips.removeClass( "ui-state-highlight", 1500 );
-		      }, 500 );
-		    }
-		 //ÅçÃÒ¸ê®Æªø«×¬O§_²Å¦X³W«ho->$('#Äæ¦ìID')Äæ¦ì¸ê®Æ¡Bn->Äæ¦ì¦WºÙ¡Bmin->³Ìµuªø«×¡Bmax->³Ìªøªø«×
-		    function checkLength( o, n, min, max ) {
-		      if ( o.val().length > max || o.val().length < min ) {
-		        o.addClass( "ui-state-error" );
-		        updateTips( "Äæ¦ì " + n + ":ªø«×¥²¶·©ó " +
-		          min + " ¨ì " + max + "¤§¶¡" );
-		        return false;
-		      } else {
-		        return true;
-		      }
-		    }
-		 //ÅçÃÒªí³æ¸ê®Æ¬O§_²Å¦X³W«h o->$('#Äæ¦ìID')¡B³W«h¦¡¡Bn->SHOW¤@¬q¤å¦r
-		    function checkRegexp( o, regexp, n ) {
-		      if ( !( regexp.test( o.val() ) ) ) {
-		        o.addClass( "ui-state-error" );
-		        updateTips( n );
-		        return false;
-		      } else {
-		        return true;
-		      }
-		    }
-		    //ÂI¿ï·s¼WÁä¡A©Ò°õ¦æªº¤èªk
-		    function insertSlFormToCreateTable() {
-		      var valid = true;
-		      allFields.removeClass( "ui-state-error" );
-			  valid = valid && checkLength( emp_name, "¦W¦r", 1, 30 );
-		      valid = valid && checkLength( emp_mail, "Email", 1, 30 );
-		      valid = valid && checkLength( dep_name, "³¡ªù¦WºÙ", 1, 30 );
-		      valid = valid && checkLength( sl_id, "Åv­­", 1, 2 );
-// 		      valid = valid && checkRegexp( edu_tel, /^([0-9])+$/, "¹q¸ÜÄæ¦ì¥u¤¹³\¿é¤J¼Æ¦r : 0-9" );
-		 		if ( valid ) {
-		 			var Insertdatas = $('form[name="Sign_listInsertForm"]').serialize();
-		 			$.post('Sign_listServletJSON.do',Insertdatas,function(data){
-		 				console.log(data);
-		 				if(data=="¸ê®Æ§ó·s¥¢±Ñ"){
-		 					$('.validateTips').css('color','red').text("·s¼W¿ù»~");
-		 				}
-		 				else if(data=="¸ê®Æ§ó·s¦¨¥\"){
-		 					table.ajax.reload();//­«·s¸ü¤Jdata tablesªº¸ê®Æ
-		 					allFields.val("");//±N·s¼Wformªí³æ¤º®e²MªÅ
-					 		$('.validateTips').text("");////±N·s¼Wformªí³æÅçÃÒ°Ï¶ô¤º®e²MªÅ
-					 		deleteOrUpdateValue = null;
-					 		Sign_listInsertForm.dialog( "close" );//±N·s¼Wformªí³æÃö³¬
-			 				//¨ú¦^¸ê®Æ®w¸ê®Æ¨Ã«Ø¥ßtable¤º®eµ²§ô
-		 				}
-		 			});
-		 		}
-		      return valid;
-		    }
-		  
-		  //³]©wªí³æ¼e«×µøµ¡¸ê®Æ¶}©l
-		    Sign_listInsertForm = $( "#dialog-insertForm" ).dialog({
-		      autoOpen: false,
-		      height: 500,
-		      width: 400,
-		      modal: true,
-		      buttons: {
-		        "send": insertSlFormToCreateTable,
-		        Cancel: function() {
-		        	Sign_listInsertForm.dialog( "close" );
-		        }
-		      },
-		      close: function() {
-		        form[ 0 ].reset();
-		        allFields.removeClass( "ui-state-error" );
-		       	allFields.val("");//±N·s¼Wformªí³æ¤º®e²MªÅ
-	 			$('.validateTips').text("");////±N·s¼Wformªí³æÅçÃÒ°Ï¶ô¤º®e²MªÅ
-		      }
-		    });
-		  	//³]©wªí³æ¼e«×µøµ¡¸ê®Æµ²§ô
-		  	form = Sign_listInsertForm.find( "form" ).on( "submit", function( event ) {
-		      event.preventDefault();
-		      insertSlFormToCreateTable();
-		    });
-		 	//¸j©wclick¨Æ¥ó¨Ï¥ÎªÌ·s¼Wicon¡A¶}±Òdialog ªí³æEduInsertForm
-		    $( "#buttonAdd" ).button().on( "click", function() {
-		    	Sign_listInsertForm.dialog( "open" );
-		    });//diologµ{¦¡³¡¤Àµ²§ô
-		    
-		   
-		    
-		  //ÂI¿ï­n§R°£©Î½s¿èªº¨º¦æ¡A«ö§R°£©Î½s¿èÁä§Y¥i¡A¥ı±N¿ï¾Üªº[¦æ]¸ê®ÆÀx¦s
-			$('#Sign_listTable tbody').on( 'click', 'tr', function () {
-				deleteOrUpdateValue = $(this).find('td:eq(0)').text(); 
-				emp_idUpdateValue = $(this).find('td:eq(0)'); 
-				emp_nameUpdateValue = $(this).find('td:eq(1)');
-				emp_mailUpdateValue = $(this).find('td:eq(2)');
-				dep_nameUpdateValue = $(this).find('td:eq(3)');
-				sl_idUpdateValue = $(this).find('td:eq(4)');
-				console.log(deleteOrUpdateValue);
-					if ( $(this).hasClass('selected') ) {
-			            $(this).removeClass('selected');
-			        }
-			        else {
-			            table.$('tr.selected').removeClass('selected');
-			            $(this).addClass('selected');
-			        }
-			    } );
-		
-		 
-		    
-		    //diologµ{¦¡³¡¤À¥H¤U(§ó·s)
-			//³]©wªí³æ¼e«×µøµ¡¸ê®Æ¶}©l
-			Sign_listUpdateForm = $( "#dialog-updateForm" ).dialog({
-		      autoOpen: false,
-		      height: 650,
-		      width: 400,
-		      modal: true,
-		      buttons: {
-			        "send": updateSlFormToCreateTable,
-			        Cancel: function() {
-			        	Sign_listUpdateForm.dialog( "close" );
-			        }
-			      },
-		      close: function() {
-		        form[ 0 ].reset();
-		        uallFields.removeClass( "ui-state-error" );
-		      }
-		    });
-		    
-		  	//³]©wªí³æ¼e«×µøµ¡¸ê®Æµ²§ô
-		  	form = Sign_listUpdateForm.find( "form" ).on( "submit", function( event ) {
-		      event.preventDefault();
-		      updateSlFormToCreateTable();
-		    });
-
-		  //¸j©wclick¨Æ¥ó¨Ï¥ÎªÌ½s¿èicon¡A¶}±Òdialog ªí³æSign_listUpdateForm
-		 	$('#buttonUpdate').click( function () {
-		    	if(deleteOrUpdateValue==null){
-		    		console.log(deleteOrUpdateValue);
-		    		alert("½Ğ¥ı¿ï¨ú­n½s¿èªº¸ê®Æ");
-		    	}else{
-		    		uemp_id.val(emp_idUpdateValue.text());
-	    			uemp_name.val(emp_nameUpdateValue.text());
-	    			uemp_mail.val(emp_mailUpdateValue.text());
-	    			udep_name.val(dep_nameUpdateValue.text());
-	    			usl_id.val(sl_idUpdateValue.text());
-	    			Sign_listUpdateForm.dialog( "open" );
-		    	}
-		    } );
-		    //ÂI¿ï­×§ïÁä¡A©Ò°õ¦æªº¤èªk
-		    function updateSlFormToCreateTable() {
+			
+		    //æ–°å¢dialogå€å¡Šè®Šæ•¸å®£å‘Š
+			var form,SlInsertForm,SlUpdateForm,
+			 	sl_id = $( "#sl_id" ),
+		      	sl_name = $( "#sl_name" ),
+			
+				usl_id = $('#usl_id'),
+			  	usl_name = $('#usl_name'),
+				
+				deleteOrUpdateValue = null;//æª¢æŸ¥æ˜¯å¦æœ‰é¸å–è³‡æ–™è¡Œ
+				
+		      	allFields = $( [] ).add( sl_id ).add( sl_name );
+		      	uallFields = $( [] ).add( usl_id ).add( usl_name );
+		      	tips = $( ".validateTips" );
+		      //åœ¨é©—è­‰é¡¯ç¤ºå€å¡Šæ–°å¢class t->å‚³å…¥çš„ä¸€æ®µæ–‡å­—
+			    function updateTips( t ) {
+			      tips
+			        .text( t )
+			        .css('color','red')
+			        .addClass( "ui-state-highlight" );
+			      setTimeout(function() {
+			        tips.removeClass( "ui-state-highlight", 1500 );
+			      }, 500 );
+			    }
+			 //é©—è­‰è³‡æ–™é•·åº¦æ˜¯å¦ç¬¦åˆè¦å‰‡o->$('#æ¬„ä½ID')æ¬„ä½è³‡æ–™ã€n->æ¬„ä½åç¨±ã€min->æœ€çŸ­é•·åº¦ã€max->æœ€é•·é•·åº¦
+			    function checkLength( o, n, min, max ) {
+			      if ( o.val().length > max || o.val().length < min ) {
+			        o.addClass( "ui-state-error" );
+			        updateTips( "æ¬„ä½ " + n + ":é•·åº¦å¿…é ˆæ–¼ " +
+			          min + " åˆ° " + max + "ä¹‹é–“" );
+			        return false;
+			      } else {
+			        return true;
+			      }
+			    }
+			 //é©—è­‰è¡¨å–®è³‡æ–™æ˜¯å¦ç¬¦åˆè¦å‰‡ o->$('#æ¬„ä½ID')ã€è¦å‰‡å¼ã€n->SHOWä¸€æ®µæ–‡å­—
+			    function checkRegexp( o, regexp, n ) {
+			      if ( !( regexp.test( o.val() ) ) ) {
+			        o.addClass( "ui-state-error" );
+			        updateTips( n );
+			        return false;
+			      } else {
+			        return true;
+			      }
+			    }
+			  //é»é¸æ–°å¢éµï¼Œæ‰€åŸ·è¡Œçš„æ–¹æ³•
+			    function insertSlFormToCreateTable() {
 			      var valid = true;
-			      uallFields.removeClass( "ui-state-error" );
-				  valid = valid && checkLength( uemp_name, "¦W¦r", 1, 30 );
-			      valid = valid && checkLength( uemp_mail, "Email", 1, 30 );
-			      valid = valid && checkLength( udep_name, "³¡ªù¦WºÙ", 1, 30 );
-			      valid = valid && checkLength( usl_id, "Åv­­", 1, 2 );
-// 			      valid = valid && checkRegexp( uedu_tel, /^([0-9])+$/, "¹q¸ÜÄæ¦ì¥u¤¹³\¿é¤J¼Æ¦r : 0-9" );
+			      allFields.removeClass( "ui-state-error" );
+			      valid = valid && checkLength( sl_id, "ä»£è™Ÿ", 1, 2 );
+				  valid = valid && checkLength( sl_name, "åç¨±", 1, 20 );
+				  valid = valid && checkRegexp( sl_id, /^([0-9])$/, "ä»£è™Ÿæ¬„ä½åªå…è¨±è¼¸å…¥æ•¸å­— : 0-9" );
 			 		if ( valid ) {
-			 			var Updatedatas = $('form[name="Sign_listUpdateForm"]').serialize();
-			 			$.get('Sign_listServletJSON.do',Updatedatas,function(data){
-			 				if(data=="¸ê®Æ§ó·s¥¢±Ñ"){
-			 					 $('.validateTips').css('color','red').text("§ó·s¿ù»~");
+			 			var Insertdatas = $('form[name="SlInsertForm"]').serialize();
+			 			$.post('Sign_listServletJSON.do',Insertdatas,function(data){
+			 				console.log(data);
+			 				if(data=="è³‡æ–™æ–°å¢å¤±æ•—"){
+			 					$('.validateTips').css('color','red').text("æ–°å¢éŒ¯èª¤");
 			 				}
-			 				else if(data=="¸ê®Æ§ó·s¦¨¥\"){
-			 					
-			 					
-			 					emp_idUpdateValue.text(uemp_id.val());
-			 					emp_nameUpdateValue.text(uemp_name.val());
-			 					emp_mailUpdateValue.text(uemp_mail.val());
-			 					dep_nameUpdateValue.text(udep_name.val());
-			 					sl_idUpdateValue.text(usl_id.val());
-// 			 					
-						 		$('.validateTips').text("");////±N§ó·sformªí³æÅçÃÒ°Ï¶ô¤º®e²MªÅ
-						 		Sign_listUpdateForm.dialog( "close" );
+			 				else if(data=="è³‡æ–™æ–°å¢æˆåŠŸ"){
+			 					table.ajax.reload();//é‡æ–°è¼‰å…¥data tablesçš„è³‡æ–™
+			 					allFields.val("");//å°‡æ–°å¢formè¡¨å–®å…§å®¹æ¸…ç©º
+						 		$('.validateTips').text("");////å°‡æ–°å¢formè¡¨å–®é©—è­‰å€å¡Šå…§å®¹æ¸…ç©º
+						 		deleteOrUpdateValue = null;
+				 				SlInsertForm.dialog( "close" );//å°‡æ–°å¢formè¡¨å–®é—œé–‰
+				 				//å–å›è³‡æ–™åº«è³‡æ–™ä¸¦å»ºç«‹tableå…§å®¹çµæŸ
 			 				}
 			 			});
 			 		}
 			      return valid;
 			    }
-		  	
-		    
-			//diologµ{¦¡³¡¤À¥H¤U(§R°£)
-			//³]©w§R°£½T»{ªí³æ¼e«×µøµ¡¸ê®Æ¶}©l
-		    Sign_listDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
-		        autoOpen: false,
-		        height: 200,
-		        width: 240,
-		        modal: true,
-		        buttons: {
-		          "½T»{": deleteSlFormToCreateTable ,
-		          "©ñ±ó": function() {
-		            $( this ).dialog( "close" );
-		            $('#dialog-deleteForm p').text('¬O§_­n§R°£¦¹µ§¸ê®Æ?');
-		          }
-		        }
-		    });
+			  //è¨­å®šè¡¨å–®å¯¬åº¦è¦–çª—è³‡æ–™é–‹å§‹
+			    SlInsertForm = $( "#dialog-insertForm" ).dialog({
+			      autoOpen: false,
+			      height: 500,
+			      width: 400,
+			      modal: true,
+			      buttons: {
+			        "send": insertSlFormToCreateTable,
+			        Cancel: function() {
+			        	SlInsertForm.dialog( "close" );
+			        }
+			      },
+			      close: function() {
+			        form[ 0 ].reset();
+			        allFields.removeClass( "ui-state-error" );
+			       	allFields.val("");//å°‡æ–°å¢formè¡¨å–®å…§å®¹æ¸…ç©º
+		 			$('.validateTips').text("");////å°‡æ–°å¢formè¡¨å–®é©—è­‰å€å¡Šå…§å®¹æ¸…ç©º
+			      }
+			    });
+			  	//è¨­å®šè¡¨å–®å¯¬åº¦è¦–çª—è³‡æ–™çµæŸ
+			  	form = SlInsertForm.find( "form" ).on( "submit", function( event ) {
+			      event.preventDefault();
+			      insertSlFormToCreateTable();
+			    });
+			 	//ç¶å®šclickäº‹ä»¶ä½¿ç”¨è€…æ–°å¢iconï¼Œé–‹å•Ÿdialog è¡¨å–®EduInsertForm
+			    $( "#buttonAdd" ).button().on( "click", function() {
+			    	SlInsertForm.dialog( "open" );
+			    });//diologç¨‹å¼éƒ¨åˆ†çµæŸ
 			
-		    
-		    
-			$('#buttonDelete').click( function () {
-		    	
-		    	if(deleteOrUpdateValue==null){
-		    		
-							    	
-		    		alert("½Ğ¥ı¿ï¨ú­n§R°£ªº¸ê®Æ");
-		    	}else{
-		    		Sign_listDeleteConfirm.dialog( "open" );
-		    	}
-		    } );
-		    
-		} );//load¨ç¼Æµ²§ô
-		
-		//ÂI¿ï§R°£Áä¡A©Ò°õ¦æªº¤èªk
-		function deleteSlFormToCreateTable() {
-			$.get('Sign_listServletJSON.do',{"emp_id":deleteOrUpdateValue,
-											 "emp_name":emp_nameUpdateValue.text(),
-											 "emp_mail":emp_mailUpdateValue.text(),
-											 "dep_name":dep_nameUpdateValue.text(),
-											 "sl_id":sl_idUpdateValue.text(),
-											 "action":"updatedelSl"},function(data){
-			    console.log(emp_nameUpdateValue)
-				if(data=="¸ê®Æ§R°£¦¨¥\"){
-					console.log("111111");
-					table.row('.selected').remove().draw( false );//§R°£µe­±¤Wclass¬°selectedªº¨º¦æ
-					Sign_listDeleteConfirm.dialog( "close" );
-				}else if (data=="¸ê®Æ§R°£¥¢±Ñ"){
-					$('#dialog-deleteForm p').text('¸ê®Æ§R°£¥¢±Ñ¡A¸ê®Æ¨Ï¥Î¤¤');
-				}
-			});
-		}	
+			
+			
+			    
+			    
+			    
+				//é»é¸è¦åˆªé™¤æˆ–ç·¨è¼¯çš„é‚£è¡Œï¼ŒæŒ‰åˆªé™¤æˆ–ç·¨è¼¯éµå³å¯ï¼Œå…ˆå°‡é¸æ“‡çš„[è¡Œ]è³‡æ–™å„²å­˜
+				$('#Sign_listTable tbody').on( 'click', 'tr', function () {
+					deleteOrUpdateValue = $(this).find('td:eq(0)').text(); 
+					sl_idUpdateValue = $(this).find('td:eq(0)'); 
+					sl_nameUpdateValue = $(this).find('td:eq(1)');
+						if ( $(this).hasClass('selected') ) {
+				            $(this).removeClass('selected');
+				        }
+				        else {
+				            table.$('tr.selected').removeClass('selected');
+				            $(this).addClass('selected');
+				        }
+				    } );
+			
+			 
+			    
+			    //diologç¨‹å¼éƒ¨åˆ†ä»¥ä¸‹(æ›´æ–°)
+				//è¨­å®šè¡¨å–®å¯¬åº¦è¦–çª—è³‡æ–™é–‹å§‹
+				SlUpdateForm = $( "#dialog-updateForm" ).dialog({
+			      autoOpen: false,
+			      height: 650,
+			      width: 400,
+			      modal: true,
+			      buttons: {
+				        "send": updateSlFormToCreateTable,
+				        Cancel: function() {
+				        	SlUpdateForm.dialog( "close" );
+				        }
+				      },
+			      close: function() {
+			        form[ 0 ].reset();
+			        uallFields.removeClass( "ui-state-error" );
+			      }
+			    });
+			    
+			  	//è¨­å®šè¡¨å–®å¯¬åº¦è¦–çª—è³‡æ–™çµæŸ
+			  	form = SlUpdateForm.find( "form" ).on( "submit", function( event ) {
+			      event.preventDefault();
+			      updateSlFormToCreateTable();
+			    });
 
-	</script>
-
-	
-		<!-- ­û¤u½s¸¹ÃöÁä¦r -->
-	<script>
-	
-	var show;
-	window.addEventListener("load", init, false);
-	var txt = document.getElementById("emp_id");
-	function init() {
-		txt.addEventListener("keyup", getData, false);
-		show = document.getElementById("div1");
-	}
-	function getData() {
-		if(txt.value==''){
-			if (show.childNodes.length > 0) {
-				show.removeChild(show.childNodes[0]);
-				}
-			return;
-		}
-		var xhrEmpId = new XMLHttpRequest();
-		
-		if (xhrEmpId != null) {
-			xhrEmpId.addEventListener("readystatechange", function(){
-				if (xhrEmpId.readyState == 4) {
-	                if (xhrEmpId.status == 200) {
-	                    var name = xhrEmpId.responseText;
-	                    var datas = JSON.parse(name);  
-						show.style.display = "block";
-						if (show.childNodes.length > 0) {
-							show.removeChild(show.childNodes[0]);
-							}
-						var eleDiv = document.createElement("div");
-						eleDiv.className = "list-group";
-						for (var j = 0, max = datas.length; j < max; j++) {
-						var txtBtn = document.createTextNode(datas[j]);
-						var eleBtn = document.createElement("button");
-						eleBtn.className = "list-group-item";
-						eleBtn.setAttribute("type", "button");
-						eleBtn.appendChild(txtBtn);
-
-						eleBtn.addEventListener("click", function() {
-						document.Sign_listInsertForm.emp_id.value = this.firstChild.nodeValue;
-						
-						var id = txt.value;
-						console.log(id);
-						
-						$.getJSON('EmployeeList',{'emp_id':id},function(datas){
-							$.each(datas,function(i,emp){
-								
-								document.Sign_listInsertForm.emp_name.value = emp.emp_name;
-								document.Sign_listInsertForm.emp_mail.value = emp.emp_mail;
-								document.Sign_listInsertForm.dep_name.value = emp.dep_name;
-								
-							})
-						})
-						
-						
-						
-						show.style.display = "none";
-						}, false)
-						eleDiv.appendChild(eleBtn);
+			  //ç¶å®šclickäº‹ä»¶ä½¿ç”¨è€…ç·¨è¼¯iconï¼Œé–‹å•Ÿdialog è¡¨å–®SlUpdateForm
+			 	$('#buttonUpdate').click( function () {
+			    	if(deleteOrUpdateValue==null){
+			    		console.log(deleteOrUpdateValue);
+			    		alert("è«‹å…ˆé¸å–è¦ç·¨è¼¯çš„è³‡æ–™");
+			    	}else{
+			    		usl_id.val(sl_idUpdateValue.text());
+		    			usl_name.val(sl_nameUpdateValue.text());
+		    			SlUpdateForm.dialog( "open" );
+			    	}
+			    } );
+			    //é»é¸ä¿®æ”¹éµï¼Œæ‰€åŸ·è¡Œçš„æ–¹æ³•
+			    function updateSlFormToCreateTable() {
+				      var valid = true;
+				      uallFields.removeClass( "ui-state-error" );
+				      valid = valid && checkLength( usl_id, "ä»£è™Ÿ", 1, 2 );
+					  valid = valid && checkLength( usl_name, "åç¨±", 1, 20 );
+					  valid = valid && checkRegexp( usl_id, /^([0-9])$/, "ä»£è™Ÿæ¬„ä½åªå…è¨±è¼¸å…¥æ•¸å­— : 0-9" );
+				 		if ( valid ) {
+				 			var Updatedatas = $('form[name="SlUpdateForm"]').serialize();
+				 			$.get('Sign_listServletJSON.do',Updatedatas,function(data){
+				 				if(data=="è³‡æ–™æ›´æ–°å¤±æ•—"){
+				 					 $('.validateTips').css('color','red').text("æ›´æ–°éŒ¯èª¤");
+				 				}
+				 				else if(data=="è³‡æ–™æ›´æ–°æˆåŠŸ"){
+				 					
+				 					sl_idUpdateValue.text(usl_id.val());
+				 					sl_nameUpdateValue.text(usl_name.val());
+				 					
+							 		$('.validateTips').text("");////å°‡æ›´æ–°formè¡¨å–®é©—è­‰å€å¡Šå…§å®¹æ¸…ç©º
+					 				SlUpdateForm.dialog( "close" );
+				 				}
+				 			});
+				 		}
+				      return valid;
+				    }
+			  	
+			    
+    			//diologç¨‹å¼éƒ¨åˆ†ä»¥ä¸‹(åˆªé™¤)
+				//è¨­å®šåˆªé™¤ç¢ºèªè¡¨å–®å¯¬åº¦è¦–çª—è³‡æ–™é–‹å§‹
+			    SlDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
+			        autoOpen: false,
+			        height: 200,
+			        width: 240,
+			        modal: true,
+			        buttons: {
+			          "ç¢ºèª": deleteSlFormToCreateTable ,
+			          "æ”¾æ£„": function() {
+			            $( this ).dialog( "close" );
+			            $('#dialog-deleteForm p').text('æ˜¯å¦è¦åˆªé™¤æ­¤ç­†è³‡æ–™?');
+			          }
+			        }
+			    });
+			 	
+			    //é»é¸åˆªé™¤éµï¼Œæ‰€åŸ·è¡Œçš„æ–¹æ³•
+				function deleteSlFormToCreateTable(){
+				$.get('Sign_listServletJSON.do',{"sl_id":deleteOrUpdateValue,"action":"deleteSl"},function(data){
+					if(data=="è³‡æ–™åˆªé™¤æˆåŠŸ"){
+						console.log(deleteOrUpdateValue);
+						console.log(data);
+						table.row('.selected').remove().draw( false );//åˆªé™¤ç•«é¢ä¸Šclassç‚ºselectedçš„é‚£è¡Œ
+						deleteOrUpdateValue = null;
+						SlDeleteConfirm.dialog( "close" );
+					}else if (data=="è³‡æ–™åˆªé™¤å¤±æ•—"){
+						$('#dialog-deleteForm p').text('è³‡æ–™åˆªé™¤å¤±æ•—ï¼Œè³‡æ–™ä½¿ç”¨ä¸­');
 					}
-					show.appendChild(eleDiv);	
-				}
-	            else {
-	                alert(xhrEmpId.status + ":" + xhrEmpId.statusText);
-	            }
-	          }
-	        });
-			
-			xhrEmpId.open("get", "Sign_listAuto?keyword="+txt.value); 
-			xhrEmpId.send();
-			
-			}
-	    }
-	
-	</script>
-	
-		<!-- Åv­­¦WºÙ¤U©Ô¿ï³æ -->
-	<script>
-	$(function() {
-		$.ajax({
-			'type':'get',
-			'url':'Sign_listXML',
-			'dataType':'xml',
-			'success':function(data){
-				
-			console.log(data);
-				$(data).find('Sign_list').each(function(){
-					var sl_id = $(this).children('sl_id').text();
-					var sl_name = $(this).children('sl_name').text();
-					console.log(sl_id);
-					console.log(sl_name);
-					var opt = $('<option></option>').val(sl_id).text(sl_name);
-					$('#sl_id ,#usl_id').append(opt);
-					
 				});
-			}
-		})
-	})
+				
+		    	}
+			   
+		
+			 
+			    $('#buttonDelete').click( function () {
+			    	
+			    	if(deleteOrUpdateValue==null){
+			    		alert("è«‹å…ˆé¸å–è¦åˆªé™¤çš„è³‡æ–™");
+			    	}else{
+			    		SlDeleteConfirm.dialog( "open" );
+			    	}
+			    } );
+			    
+	} );//loadå‡½æ•¸çµæŸ
 	</script>
 </body>
 </html>
+
+
+
+
+
+
