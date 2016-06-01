@@ -77,7 +77,7 @@ public class EmployeeService {
 //			for(int i=0,max=ja.length();i< max;i++){
 //				String emp_id = ja.getString(i);
 //				System.out.println("emp_id======"+emp_id);
-//				dao.update(emp_id);
+//				dao.update(empVO);
 //			}
 //		}
 		
