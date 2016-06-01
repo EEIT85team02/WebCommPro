@@ -1,12 +1,15 @@
 package Employee.model;
 
 
+import java.sql.SQLException;
 import java.util.List;
+
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import Class.model.ClassVO;
+import Stu_additional.model.Stu_additionalVO;
 import hibernate.util.HibernateUtil;
 
 
@@ -31,7 +34,6 @@ public class EmployeeDAO implements IEmployeeDAO {
 //		}
 
 
-
 		public void update(EmployeeVO empVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
@@ -43,6 +45,7 @@ public class EmployeeDAO implements IEmployeeDAO {
 				throw ex;
 			}
 		}
+
 
 //		public void delete(String emp_id) {
 //			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -59,13 +62,16 @@ public class EmployeeDAO implements IEmployeeDAO {
 //				throw ex;
 //			}
 //		}
+
 		
 
 		public EmployeeVO findByPrimaryKey(String emp_id) {
+
 			EmployeeVO empVO = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
+
 				empVO =(EmployeeVO) session.get(EmployeeVO.class, emp_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
@@ -74,6 +80,7 @@ public class EmployeeDAO implements IEmployeeDAO {
 			}
 			return empVO;
 		}
+
 		
 		public List<EmployeeVO> getAllEmp() {
 			List<EmployeeVO> list = null;
@@ -105,6 +112,15 @@ public class EmployeeDAO implements IEmployeeDAO {
 //			}
 //			return list;
 //		}	
+
+
+
+		@Override
+		public Set<Stu_additionalVO> getEmpByEmp_id(String emp_id)
+				throws SQLException {
+			Set<Stu_additionalVO> set = findByPrimaryKey(emp_id).getStu_additionalVO();
+			return null;
+		}
 
 
 }

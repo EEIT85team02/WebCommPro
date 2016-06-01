@@ -12,6 +12,28 @@
     <meta name="author" content="">
 
     <title>Freelancer - Start Bootstrap Theme</title>
+    
+        
+    <!-- jQuery -->
+   <script src="${pageContext.request.contextPath}/js/jquery.js"></script> 
+    
+  <%--   
+    <!-- FullCalendar -->
+	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/fullCalendar/fullcalendar.css' />
+	<link href='${pageContext.request.contextPath}/css/fullCalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+	<script src='${pageContext.request.contextPath}/js/jquery.min.js'></script> 
+	<script src='${pageContext.request.contextPath}/js/fullCalendar/moment.min.js'></script>
+	<script src='${pageContext.request.contextPath}/js/fullCalendar/fullcalendar.js'></script>
+	<script src='${pageContext.request.contextPath}/js/fullCalendar/jquery-ui.custom.min.js'></script>
+	<script src='${pageContext.request.contextPath}/js/fullCalendar/fullcalendar.min.js'></script>
+	
+	
+	
+<!-- fancybox -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/fancybox/jquery.fancybox.css"> 	
+	<script src='${pageContext.request.contextPath}/js/fancybox/jquery.fancybox.pack.js'></script> 
+    
+     --%>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -30,8 +52,122 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!-- jQuery -->
-    <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
+    
+       <!-- jquery-steps-master -->
+        
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/jquery-steps-master/style.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-steps-master/normalize.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-steps-master/main.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-steps-master/jquery.steps.css">
+        <script src="${pageContext.request.contextPath}/js/jquery-steps-master/lib/modernizr-2.6.2.min.js"></script>
+       <%--  <script src="${pageContext.request.contextPath}/js/jquery-steps-master/lib/jquery-1.9.1.min.js"></script> --%>
+        <script src="${pageContext.request.contextPath}/js/jquery-steps-master/lib/jquery.cookie-1.3.1.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-steps-master/build/jquery.steps.js"></script>
+     
+
+  <!--   <script>
+	$(document).ready(function() {
+		
+		$('#external-events .fc-event').each(function() {
+			// store data so the calendar knows to render an event upon drop
+			$(this).data('event', {
+				title: $.trim($(this).text()), // use the element's text as the event title
+				stick: true // maintain when user navigates (see docs on the renderEvent method)
+			});
+	
+			// make the event draggable using jQuery UI
+			$(this).draggable({
+				zIndex: 999,
+				revert: true,      // will cause the event to go back to its
+				revertDuration: 0  //  original position after the drag
+			});
+	
+		});
+	
+		$('#my-button').click(function() {
+		    var moment = $('#calendar').fullCalendar('getDate');
+		    alert("The current date of the calendar is " + moment.format());
+		});
+		
+	$('#calendar').fullCalendar({
+        theme: false,
+        editable: false,
+        events:"CalendarJsonServlet.do", /* AddEditEvent*/
+       		
+        	header: {
+    			left : 'prev,next today',
+    			center :'title',
+    			right :'month,agendaWeek,agendaDay',
+    			prev: 'circle-triangle-w', 
+    			next: 'circle-triangle-e'
+    			},
+    			dayClick: function(start, end, jsEvent, view) {
+		    				start=moment(start).format('YYYY-MM-DD');
+		    				end=moment(start).format('YYYY-MM-DD')
+    						console.log(start);
+		    				console.log(end);
+     			            var selDate =$.fullCalendar.moment().format(start,"YYYY-MM-DD");//格式化日期 
+//    			            var selDate =$.fullCalendar.moment(date); 
+     			            console.log(selDate);
+    			            $.fancybox({//调用fancybox弹出层 
+    			                'type':'ajax', 
+    			                'href':'Event.jsp?action=add&start='+start+'&end='+end //	
+    			            });  
+    			            
+    			        },
+    			
+    			eventClick: function(calEvent, jsEvent, view) {
+    				console.log(calEvent.id);
+    						$.fancybox({
+    							'type':'ajax',
+    							'href':'Event.jsp?action=edit&id='+calEvent.id
+    						});
+    			 		},
+    				
+    			editable : true,
+    			
+    			droppable : true, // this allows things to be dropped onto the calendar
+    			
+    			drop: function() {
+    				// is the "remove after drop" checkbox checked?
+    				if ($('#drop-remove').is(':checked')) {
+    					// if so, remove the element from the "Draggable Events" list
+    					$(this).remove();
+    				}
+    			},
+    			selectable: true,
+    			selectHelper: true,
+    	/* 		select: function(start, end) {
+    				var title = prompt('Event Title:');
+    				var eventData;
+    				if (title) {
+    					eventData = {
+    						title: title,
+    						start: start,
+    						end: end,
+    						overlap: false,
+    					};
+    					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+    				}
+    				$('#calendar').fullCalendar('unselect');
+    			} ,
+*/    			editable: true,
+    			
+	    });
+    
+	
+	
+	/*  var calendar = $('#calendar').fullCalendar('getCalendar');
+	var m = calendar.moment();
+	//alert(m);
+	moment(calendar, "yyyy-MM-dd'T'HH:mm:ss.SSSZ"); 
+	
+	 moment.createFromInputFallback = function(config) {
+		  // unreliable string magic, or
+		  config._d = new Date(config._i);
+		};  */
+	});
+</script> -->
 
 </head>
 
@@ -48,7 +184,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand" href="#page-top"><img src="${pageContext.request.contextPath}/webcommImg/emblemmatic-webcomm-logo-378-2.png"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -119,7 +255,7 @@
                         <img src="${pageContext.request.contextPath}/img/portfolio/cake.png" class="img-responsive" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+             <%--    <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -148,7 +284,7 @@
                         </div>
                         <img src="${pageContext.request.contextPath}/img/portfolio/safe.png" class="img-responsive" alt="">
                     </a>
-                </div>
+                </div> --%>
                 <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
@@ -309,9 +445,10 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
+                    <div class="col-lg-20 col-left-offset">
                         <div class="modal-body">
-                        <jsp:include page='/indexOfAdminPage.jsp' />
+                         <jsp:include page="/profile.jsp"/>
+                       <%--  <jsp:include page='/indexOfAdminPage.jsp' /> --%>
                            <!--  <h2>Project Title</h2>
                             <hr class="star-primary">
                             <img src="${pageContext.request.contextPath}/img/portfolio/cabin.png" class="img-responsive img-centered" alt="">
@@ -349,7 +486,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                         <jsp:include page='/calendarView_insert.jsp' />
+               <%--           <jsp:include page='/calendarView_insert.jsp' /> --%>
                            <!-- <h2>Project Title</h2>
                              <hr class="star-primary">
                             <img src="${pageContext.request.contextPath}/img/portfolio/cake.png" class="img-responsive img-centered" alt="">
@@ -525,7 +662,7 @@
     </div>
 
     <!-- jQuery -->
-  <!--   <script src="js/jquery.js"></script> -->
+<%--   	<script src="${pageContext.request.contextPath}/js/jquery.js"></script> --%>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
