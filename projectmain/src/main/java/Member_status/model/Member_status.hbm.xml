@@ -8,15 +8,18 @@
         <id name="sta_id" column="sta_id">      
         </id>
         
+        
+        
         <property name="sta_name" column="sta_name" />
         
-       
-	<!-- 	
-		<many-to-one name="Stu_additionalVO" class="Stu_additional.model.Stu_additionalVO" lazy="false">
-            <column name="sta_id" />
-    
-        </many-to-one> -->
-        
+        <set name="Stu_additionalVO" table="Stu_additional" lazy="false" cascade="all"  inverse="true"  order-by="sta_id asc">			
+			<key>
+				<column name="sta_id" />
+			</key>
+			<one-to-many class="Stu_additional.model.Stu_additionalVO" />
+		</set>
+		
+	
       <!--   <many-to-one name="Stu_additionalVO" class="Stu_additional.model.Stu_additionalVO" lazy="false">
             <column name="stu_id" />
         </many-to-one> -->

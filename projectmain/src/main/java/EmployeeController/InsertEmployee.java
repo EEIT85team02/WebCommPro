@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Employee.model.Employee;
+import Employee.model.EmployeeVO;
 import Employee.model.EmployeeDAO;
 import Employee.model.IEmployeeDAO;
 
@@ -41,7 +41,7 @@ public class InsertEmployee extends HttpServlet {
 			String dep_name = request.getParameter("dep_name");
 			String emp_mail = request.getParameter("emp_mail");
 			Integer sl_id = Integer.parseInt(request.getParameter("sl_id"));
-			Employee emp1= new Employee();
+			EmployeeVO emp1= new EmployeeVO();
 			emp1.setEmp_id(emp_id);
 			emp1.setEmp_lastname(emp_lastname);
 			emp1.setEmp_firstname(emp_firstname);

@@ -11,23 +11,25 @@
         
 
         <property name="test_startdate" column="test_startdate" />
-        <property name="test_hour_id" column="test_hour_id" />
         <property name="stu_applytime" column="stu_applytime" />
-        <property name="emp_id" column="emp_id" />
         <property name="confirm_time" column="confirm_time" />
-
-
-        
+   
        	 <many-to-one name="StudentVO" class="Student.model.StudentVO" lazy="false">
             <column name="stu_id" />
         </many-to-one>  
         
-         <set name="Mem_stas" table="Member_status" lazy="false" cascade="all"  inverse="true"  order-by="sta_id asc">			
-			<key>
-				<column name="sta_id" />
-			</key>
-			<one-to-many class="Member_status.model.Member_statusVO" />
-		</set>
+        <many-to-one name="Member_statusVO" class="Member_status.model.Member_statusVO" lazy="false">
+            <column name="sta_id" />
+        </many-to-one> 
+        
+          <many-to-one name="EmployeeVO" class="Employee.model.EmployeeVO" lazy="false">
+            <column name="emp_id" />
+        </many-to-one> 
+        
+          <many-to-one name="Test_periodVO" class="Test_period.model.Test_periodVO" lazy="false">
+            <column name="test_hour_id" />
+        </many-to-one> 
+        
 
     </class>
 </hibernate-mapping>

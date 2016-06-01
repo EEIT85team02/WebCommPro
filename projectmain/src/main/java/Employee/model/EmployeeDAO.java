@@ -1,9 +1,14 @@
 package Employee.model;
 
 
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
+
+import Stu_additional.model.Stu_additionalVO;
 import hibernate.util.HibernateUtil;
 
 
@@ -15,7 +20,7 @@ public class EmployeeDAO implements IEmployeeDAO {
 			"from Employee order by emp_id";
 
 
-		public void insert(Employee emp) {
+		public void insert(EmployeeVO emp) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -29,7 +34,7 @@ public class EmployeeDAO implements IEmployeeDAO {
 
 
 
-		public void update(Employee emp) {
+		public void update(EmployeeVO emp) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -45,7 +50,7 @@ public class EmployeeDAO implements IEmployeeDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				Employee emp = (Employee) session.get(Employee.class, emp_id);
+				EmployeeVO emp = (EmployeeVO) session.get(EmployeeVO.class, emp_id);
 				session.delete(emp);
 				session.getTransaction().commit();	
 			} catch (RuntimeException ex) {
@@ -55,12 +60,12 @@ public class EmployeeDAO implements IEmployeeDAO {
 		}
 		
 
-		public Employee findByPrimaryKey(String emp_id) {
-			Employee emp = null;
+		public EmployeeVO findByPrimaryKey(String emp_id) {
+			EmployeeVO emp = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				emp = (Employee) session.get(Employee.class, emp_id);
+				emp = (EmployeeVO) session.get(EmployeeVO.class, emp_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -69,8 +74,8 @@ public class EmployeeDAO implements IEmployeeDAO {
 			return emp;
 		}
 
-		public List<Employee> getAll() {
-			List<Employee> list = null;
+		public List<EmployeeVO> getAll() {
+			List<EmployeeVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -82,6 +87,15 @@ public class EmployeeDAO implements IEmployeeDAO {
 				throw ex;
 			}
 			return list;
+		}
+
+
+
+		@Override
+		public Set<Stu_additionalVO> getEmpByEmp_id(String emp_id)
+				throws SQLException {
+			Set<Stu_additionalVO> set = findByPrimaryKey(emp_id).getStu_additionalVO();
+			return null;
 		}
 
 

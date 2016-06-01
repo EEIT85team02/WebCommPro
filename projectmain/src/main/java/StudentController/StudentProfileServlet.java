@@ -46,30 +46,26 @@ public class StudentProfileServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-		request.setCharacterEncoding("UTF-8");
-			
+			request.setCharacterEncoding("UTF-8");
+			//String action = request.getParameter("action");
+			String action ="stu_add";
 			//Integer stu_id = Integer.parseInt(request.getParameter("stu_id"));
-			Integer stu_id =4;
+			Integer stu_id = 4;
+			
 			System.out.println("------1------");
 			System.out.println(stu_id);
-			StudentService stuSvc = new StudentService() ;
-			String stuListJSON = stuSvc.getOneStuAll(stu_id);
 			
-			
-			response.setCharacterEncoding("UTF-8");
-			PrintWriter out = response.getWriter();
-			out.write(stuListJSON);
-			
-			System.out.println("------2------");
-			
-			Stu_additionalService stu_AllSvc = new Stu_additionalService() ;
-			System.out.println(stu_id);
-			String stu_AllListJSON = stu_AllSvc.getOneStu_add(stu_id);
-			
-			response.setCharacterEncoding("UTF-8");
-			out = response.getWriter();
-			out.write(stu_AllListJSON);
-			
+	
+			if("stu_add".equals(action)){
+				System.out.println("------2------");
+				Stu_additionalService stu_AllSvc = new Stu_additionalService() ;
+				System.out.println(stu_id);
+				String stu_AllListJSON = stu_AllSvc.getStuByStu_id(stu_id);
+				//String stu_AllListJSON = stu_AllSvc.getStuByStu_add_id(stu_add_id);
+				
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().write(stu_AllListJSON);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

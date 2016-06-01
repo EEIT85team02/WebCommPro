@@ -165,9 +165,8 @@ public class StudentDAO implements IStudentDAO {
 
 		@Override
 		public Set<Stu_additionalVO> getStuByStu_id(Integer stu_id)
-				throws SQLException {
-			
-			Set<Stu_additionalVO> set = findByPrimaryKey(stu_id).getStus();
+				throws SQLException {			
+			Set<Stu_additionalVO> set = findByPrimaryKey(stu_id).getStu_additionalVO();
 			return null;
 		}
 		

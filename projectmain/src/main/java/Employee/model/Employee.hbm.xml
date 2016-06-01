@@ -3,18 +3,26 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="Employee.model.Employee" table="Employee" >
+    <class name="Employee.model.EmployeeVO" table="Employee" >
         
         <id name="emp_id" column="emp_id">
            
         </id>
         
-        <property name="emp_lastname" column="emp_lastname" />
-        <property name="emp_firstname" column="emp_firstname" />
+        <property name="emp_name" column="emp_name" />
         <property name="dep_id" column="dep_id" />
         <property name="dep_name" column="dep_name" />
         <property name="emp_mail" column="emp_mail" />
         <property name="sl_id" column="sl_id" />
+        
+     
+        <set name="Stu_additionalVO" table="Stu_additional" lazy="false" cascade="all"  inverse="true"  order-by="emp_id asc">			
+			<key>
+				<column name="emp_id" />
+			</key>
+			<one-to-many class="Stu_additional.model.Stu_additionalVO" />
+		</set>
+        
     </class>
 </hibernate-mapping>
 

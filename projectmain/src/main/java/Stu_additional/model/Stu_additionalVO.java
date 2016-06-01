@@ -3,11 +3,10 @@ package Stu_additional.model;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
-import java.util.HashSet;
-import java.util.Set;
-
+import Employee.model.EmployeeVO;
 import Member_status.model.Member_statusVO;
 import Student.model.StudentVO;
+import Test_period.model.Test_periodVO;
 
 public class Stu_additionalVO implements Serializable{
 	
@@ -17,14 +16,27 @@ public class Stu_additionalVO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Integer stu_add_id ;
 	private Date test_startdate ;
-	private Integer test_hour_id ;
 	private String stu_applytime;
 	private Integer sta_id;
-	private String emp_id ;
 	private Time confirm_time ; 
 	private StudentVO studentVO;
-	private Set<Member_statusVO> Mem_stas;
+	private Member_statusVO Member_statusVO;
+	private EmployeeVO EmployeeVO;
+	private Test_periodVO Test_periodVO;
 	
+	
+	public EmployeeVO getEmployeeVO() {
+		return EmployeeVO;
+	}
+	public void setEmployeeVO(EmployeeVO employeeVO) {
+		EmployeeVO = employeeVO;
+	}
+	public Test_periodVO getTest_periodVO() {
+		return Test_periodVO;
+	}
+	public void setTest_periodVO(Test_periodVO test_periodVO) {
+		Test_periodVO = test_periodVO;
+	}
 	
 	public Integer getStu_add_id() {
 		return stu_add_id;
@@ -38,29 +50,23 @@ public class Stu_additionalVO implements Serializable{
 	public void setTest_startdate(Date test_startdate) {
 		this.test_startdate = test_startdate;
 	}
-	public Integer getTest_hour_id() {
-		return test_hour_id;
-	}
-	public void setTest_hour_id(Integer test_hour_id) {
-		this.test_hour_id = test_hour_id;
-	}
 	public String getStu_applytime() {
 		return stu_applytime;
 	}
 	public void setStu_applytime(String stu_applytime) {
 		this.stu_applytime = stu_applytime;
 	}
+	public Member_statusVO getMember_statusVO() {
+		return Member_statusVO;
+	}
+	public void setMember_statusVO(Member_statusVO member_statusVO) {
+		Member_statusVO = member_statusVO;
+	}
 	public Integer getSta_id() {
 		return sta_id;
 	}
 	public void setSta_id(Integer sta_id) {
 		this.sta_id = sta_id;
-	}
-	public String getEmp_id() {
-		return emp_id;
-	}
-	public void setEmp_id(String emp_id) {
-		this.emp_id = emp_id;
 	}
 	public Time getConfirm_time() {
 		return confirm_time;
@@ -74,13 +80,5 @@ public class Stu_additionalVO implements Serializable{
 	public void setStudentVO(StudentVO studentVO) {
 		this.studentVO = studentVO;
 	}
-	public Set<Member_statusVO> getMem_stas() {
-		return Mem_stas;
-	}
-	public void setMem_stas(Set<Member_statusVO> mem_stas) {
-		Mem_stas = mem_stas;
-	}
-
-
 
 }

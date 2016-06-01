@@ -13,6 +13,11 @@
 
     <title>Freelancer - Start Bootstrap Theme</title>
     
+        
+    <!-- jQuery -->
+   <script src="${pageContext.request.contextPath}/js/jquery.js"></script> 
+    
+  <%--   
     <!-- FullCalendar -->
 	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/fullCalendar/fullcalendar.css' />
 	<link href='${pageContext.request.contextPath}/css/fullCalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
@@ -28,7 +33,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/fancybox/jquery.fancybox.css"> 	
 	<script src='${pageContext.request.contextPath}/js/fancybox/jquery.fancybox.pack.js'></script> 
     
-    
+     --%>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
@@ -47,33 +52,43 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!-- jQuery -->
-    <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
     
-    <script>
-$(document).ready(function() {
+       <!-- jquery-steps-master -->
+        
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/jquery-steps-master/style.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-steps-master/normalize.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-steps-master/main.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-steps-master/jquery.steps.css">
+        <script src="${pageContext.request.contextPath}/js/jquery-steps-master/lib/modernizr-2.6.2.min.js"></script>
+       <%--  <script src="${pageContext.request.contextPath}/js/jquery-steps-master/lib/jquery-1.9.1.min.js"></script> --%>
+        <script src="${pageContext.request.contextPath}/js/jquery-steps-master/lib/jquery.cookie-1.3.1.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-steps-master/build/jquery.steps.js"></script>
+     
+
+  <!--   <script>
+	$(document).ready(function() {
+		
+		$('#external-events .fc-event').each(function() {
+			// store data so the calendar knows to render an event upon drop
+			$(this).data('event', {
+				title: $.trim($(this).text()), // use the element's text as the event title
+				stick: true // maintain when user navigates (see docs on the renderEvent method)
+			});
 	
-	$('#external-events .fc-event').each(function() {
-		// store data so the calendar knows to render an event upon drop
-		$(this).data('event', {
-			title: $.trim($(this).text()), // use the element's text as the event title
-			stick: true // maintain when user navigates (see docs on the renderEvent method)
-		});
-
-		// make the event draggable using jQuery UI
-		$(this).draggable({
-			zIndex: 999,
-			revert: true,      // will cause the event to go back to its
-			revertDuration: 0  //  original position after the drag
-		});
-
-	});
-
-	$('#my-button').click(function() {
-	    var moment = $('#calendar').fullCalendar('getDate');
-	    alert("The current date of the calendar is " + moment.format());
-	});
+			// make the event draggable using jQuery UI
+			$(this).draggable({
+				zIndex: 999,
+				revert: true,      // will cause the event to go back to its
+				revertDuration: 0  //  original position after the drag
+			});
 	
+		});
+	
+		$('#my-button').click(function() {
+		    var moment = $('#calendar').fullCalendar('getDate');
+		    alert("The current date of the calendar is " + moment.format());
+		});
+		
 	$('#calendar').fullCalendar({
         theme: false,
         editable: false,
@@ -152,7 +167,7 @@ $(document).ready(function() {
 		  config._d = new Date(config._i);
 		};  */
 	});
-</script>
+</script> -->
 
 </head>
 
@@ -240,7 +255,7 @@ $(document).ready(function() {
                         <img src="${pageContext.request.contextPath}/img/portfolio/cake.png" class="img-responsive" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+             <%--    <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -269,7 +284,7 @@ $(document).ready(function() {
                         </div>
                         <img src="${pageContext.request.contextPath}/img/portfolio/safe.png" class="img-responsive" alt="">
                     </a>
-                </div>
+                </div> --%>
                 <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
@@ -430,9 +445,9 @@ $(document).ready(function() {
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
+                    <div class="col-lg-20 col-left-offset">
                         <div class="modal-body">
-                        <a href="${pageContext.request.contextPath}/Edu/EduServletJSON.do?action=initEduViewTODataTablesJSON"></a>
+                         <jsp:include page="/profile.jsp"/>
                        <%--  <jsp:include page='/indexOfAdminPage.jsp' /> --%>
                            <!--  <h2>Project Title</h2>
                             <hr class="star-primary">
@@ -471,7 +486,7 @@ $(document).ready(function() {
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                         <jsp:include page='/calendarView_insert.jsp' />
+               <%--           <jsp:include page='/calendarView_insert.jsp' /> --%>
                            <!-- <h2>Project Title</h2>
                              <hr class="star-primary">
                             <img src="${pageContext.request.contextPath}/img/portfolio/cake.png" class="img-responsive img-centered" alt="">
@@ -647,7 +662,7 @@ $(document).ready(function() {
     </div>
 
     <!-- jQuery -->
-  	<script src="${pageContext.request.contextPath}/js/jquery.js"></script>
+<%--   	<script src="${pageContext.request.contextPath}/js/jquery.js"></script> --%>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>

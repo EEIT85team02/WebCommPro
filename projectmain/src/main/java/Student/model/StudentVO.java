@@ -7,11 +7,7 @@ import Stu_additional.model.Stu_additionalVO;
 import Class.model.ClassVO;
 import Edu.model.EduVO;
 public class StudentVO implements Serializable{//學員	(所有資策會學員)
-
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private Integer stu_id ;
 	private Integer stu_group; 
@@ -33,11 +29,19 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private String stu_note2 ;
 	private String log_pw;
 	private String class_id;
-//	private ClassVO classVO;
-	private Set<Stu_additionalVO> stus = new HashSet<Stu_additionalVO>();
+	private ClassVO classVO;
+	private Set<Stu_additionalVO> Stu_additionalVO = new HashSet<Stu_additionalVO>();
 
 	public Integer getStu_id() {
 		return stu_id;
+	}
+
+	public ClassVO getClassVO() {
+		return classVO;
+	}
+
+	public void setClassVO(ClassVO classVO) {
+		this.classVO = classVO;
 	}
 
 	public void setStu_id(Integer stu_id) {
@@ -224,12 +228,12 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	}
 
 
-	public Set<Stu_additionalVO> getStus() {
-		return stus;
+	public Set<Stu_additionalVO> getStu_additionalVO() {
+		return Stu_additionalVO;
 	}
 
-	public void setStus(Set<Stu_additionalVO> stus) {
-		this.stus = stus;
+	public void setStu_additionalVO(Set<Stu_additionalVO> Stu_additionalVO) {
+		this.Stu_additionalVO = Stu_additionalVO;
 	}
 
 	public StudentVO() {

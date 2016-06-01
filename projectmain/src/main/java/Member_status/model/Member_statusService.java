@@ -26,14 +26,14 @@ public class Member_statusService {
 		List<Member_statusVO> list = dao.getStatusWAIT();
 		for(Member_statusVO memVO : list){
 			
-			Set<Stu_additionalVO> set = memVO.getStus();
+			Set<Stu_additionalVO> set = (Set<Stu_additionalVO>) memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
 			map.put("stu_name",stuVO.getStudentVO().getStu_name());
 			map.put("stu_email",stuVO.getStudentVO().getStu_email());
 			map.put("stu_id",stuVO.getStudentVO().getStu_id());
 			map.put("stu_applytime",stuVO.getStu_applytime());
-			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
+			map.put("sta_name",((Member_statusVO) stuVO.getMember_statusVO()).getSta_name());
 			memsc.add(map);
 			}
 		}

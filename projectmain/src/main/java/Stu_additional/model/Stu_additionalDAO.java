@@ -74,21 +74,23 @@ public class Stu_additionalDAO implements IStu_additionalDAO{
 			}
 		}
 		
-		public Stu_additionalVO findByStu_id(Integer stu_id) throws SQLException {
-			Stu_additionalVO stu_add = null;
+		public List<Stu_additionalVO> findByStu_id(Integer stu_id) throws SQLException {
+			//Stu_additionalVO stu_add = null;
 			List<Stu_additionalVO> list = null;
+			System.out.println("------------------------"+stu_id);
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
 				Query query = session.createQuery(GET_STU_ADD_BY_STU_ID);
 				query.setParameter(0,stu_id);
 				list = query.list();
+				System.out.println("11111111111"+list);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;
 			}
-			return stu_add;
+			return list;
 		}
 
 		public Stu_additionalVO findByPrimaryKey2(Integer stu_id) {

@@ -14,7 +14,7 @@ public interface IStu_additionalDAO {
 	public void update(Stu_additionalVO stu_add) throws SQLException;
 	public void delete(Integer stu_id) throws SQLException;
 	public Stu_additionalVO findByPrimaryKey(Integer stu_add_id) throws SQLException;
-	public Stu_additionalVO findByStu_id(Integer stu_add_id) throws SQLException;
+	public List<Stu_additionalVO> findByStu_id(Integer stu_id) throws SQLException;
 	public List<Stu_additionalVO> getAll() throws SQLException;
 	public Stu_additionalVO findByPrimaryKey2(Integer stu_id);
 	
