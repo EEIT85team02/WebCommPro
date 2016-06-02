@@ -2,6 +2,9 @@ package Member_status.model;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
+
+import Stu_additional.model.Stu_additionalVO;
 
 
 
@@ -17,4 +20,5 @@ public interface IMember_statusDAO {
 	public List<Member_statusVO> getStatusNEVER() throws SQLException;
 	public List<Member_statusVO> getStatusYES() throws SQLException;
 	public List<Member_statusVO> getStatusWAITING() throws SQLException;
+	public Set<Stu_additionalVO> getStuBySta_id(Integer sta_id) throws SQLException;
 }

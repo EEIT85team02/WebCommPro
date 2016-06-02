@@ -4,24 +4,32 @@
 
 <hibernate-mapping>
     <class name="Stu_additional.model.Stu_additionalVO" table="Stu_additional" >
-        
-        <id name="test_startdate" column="test_startdate">
-         
+     
+         <id name="stu_add_id" column="stu_add_id">
+				<generator class="identity"></generator>
         </id>
         
-        <property name="test_hour_id" column="test_hour_id" />
-        <property name="stu_applytime" column="stu_applytime" />
-        <property name="emp_id" column="emp_id" />
-        <property name="confirm_time" column="confirm_time" />
 
-        
-        <many-to-one name="StudentVO" class="Student.model.StudentVO" lazy="false">
+        <property name="test_startdate" column="test_startdate" />
+        <property name="stu_applytime" column="stu_applytime" />
+        <property name="confirm_time" column="confirm_time" />
+   
+       	 <many-to-one name="StudentVO" class="Student.model.StudentVO" lazy="false">
             <column name="stu_id" />
-        </many-to-one>
+        </many-to-one>  
         
         <many-to-one name="Member_statusVO" class="Member_status.model.Member_statusVO" lazy="false">
             <column name="sta_id" />
-        </many-to-one>
+        </many-to-one> 
+        
+          <many-to-one name="EmployeeVO" class="Employee.model.EmployeeVO" lazy="false">
+            <column name="emp_id" />
+        </many-to-one> 
+        
+          <many-to-one name="Test_periodVO" class="Test_period.model.Test_periodVO" lazy="false">
+            <column name="test_hour_id" />
+        </many-to-one> 
+        
 
     </class>
 </hibernate-mapping>

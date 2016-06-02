@@ -1,11 +1,14 @@
 package Student.model;
 
 
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import Stu_additional.model.Stu_additionalVO;
 import hibernate.util.HibernateUtil;
 
 
@@ -157,6 +160,14 @@ public class StudentDAO implements IStudentDAO {
 		public static void main(String args[]){
 			System.out.println(new StudentDAO().getAll().get(0).getStu_email());
 		}
-		
+
+
+
+		@Override
+		public Set<Stu_additionalVO> getStuByStu_id(Integer stu_id)
+				throws SQLException {			
+			Set<Stu_additionalVO> set = findByPrimaryKey(stu_id).getStu_additionalVO();
+			return null;
+		}
 		
 }

@@ -3,13 +3,11 @@ package Class.model;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-
-import Edu.model.EduDAO;
-import Edu.model.EduVO;
-import Edu.model.IEduDAO;
+import Student.model.StudentVO;
 import hibernate.util.HibernateUtil;
 
 
@@ -161,6 +159,15 @@ public class ClassDAO implements IClassDAO {
 		
 			
 			
+		}
+
+
+
+		@Override
+		public Set<StudentVO> getStuByClass_id(String class_id)
+				throws SQLException {
+			Set<StudentVO> set = findByPrimaryKey(class_id).getStudentVO();
+			return null;
 		}
 		
 

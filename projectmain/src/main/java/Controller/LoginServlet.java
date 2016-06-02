@@ -24,12 +24,21 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("----------");
+		
 		System.out.println(request.getParameter("Username"));
 		System.out.println(request.getParameter("Password"));
+		String Username = request.getParameter("Username");
 		
-		RequestDispatcher successMsg = request.getRequestDispatcher("/WEB-INF/JSPs/User_Profile.jsp");
-		successMsg.forward(request, response);
+		if ("user".equals(Username)){
+			RequestDispatcher successMsg = request.getRequestDispatcher("/WEB-INF/JSPs/User_Profile.jsp");
+			successMsg.forward(request, response);
+			}else if ("admin".equals(Username)){
+			RequestDispatcher successMsg = request.getRequestDispatcher("/indexOfAdminPage.jsp");
+			successMsg.forward(request, response);
+			} else if ("examiner".equals(Username)){
+			RequestDispatcher successMsg = request.getRequestDispatcher("/WEB-INF/JSPs/User_Profile.jsp");
+			successMsg.forward(request, response);
+			};
 	}
 
 }
