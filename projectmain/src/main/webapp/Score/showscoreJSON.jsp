@@ -8,10 +8,17 @@
 <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link href="../css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
 <link href="../css/jquery-ui.css" rel="stylesheet">
-
+<style>
+.my-error-class {
+    color:#DF0101;
+}
+.my-valid-class {
+    color:#2E2EFE;
+}
+</style>
 </head>
 <body>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
   <div class="modal-dialog">
   <form method="post" action="upscoreJSON.do" name="upup">
     <div class="modal-content">
@@ -30,16 +37,18 @@
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">上機成績:</label>
-            <input type="text" class="form-control" id="ustu_implement" name="stu_implement">
+            <input type="text" class="form-control" id="ustu_implement" name="stu_implement" required>
+            <label for="stu_implement" class="error"></label>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">面試成績:</label>
-            <input type="text" class="form-control" id="ustu_interview" name="stu_interview">
-          </div>
+            <input type="text" class="form-control" id="ustu_interview" name="stu_interview" required>
+            <label for="stu_interview" class="error"></label>   
+          </div>     
       </div>
       <div class="modal-footer">
-        <button type="button" class="default" data-dismiss="modal">取消</button>
-        <input type="submit" class="primary" value="送出">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-success" >送出</button>
         <input type="hidden" name="action"	value="upscore">
         <input type="hidden" id="stu_grouphid" name="stu_group" >
         <input type="hidden" id="stu_note1hid" name="stu_note1" >
@@ -62,8 +71,8 @@
     </form>
   </div>
 </div>
-                   <input type="button" value="成績" id="buttonJSON"
-						class="btn btn-danger">
+<!--                    <input type="button" value="成績" id="buttonJSON" -->
+<!-- 						class="btn btn-danger"> -->
                      <table id="scoreTable" class="table table-bordered">
 						<thead>
 							<tr>
@@ -79,36 +88,40 @@
 					</table>
 	    <script src="../js/jquery.min.js"></script>
 		<script src="../js/bootstrap/bootstrap.min.js"></script>
-		<script src="../js/jquery.js"></script>
         <script src="../js/jquery-ui.js"></script>
+        <script src="../js/jquery-ui.min.js"></script>
+        <script src="../js/jquery-migrate-1.2.1.min.js"></script>
+        <script src="../js/jquery.validate.min.js"></script>
+        <script src="../js/additional-methods.min.js"></script>
+        <script src="../js/messages_zh_TW.min.js"></script>
 		<script>
 				$(function() {
 			
-					$('#buttonJSON').click(function() {  //查詢全部成績
-						$('#scoreTable>tbody').empty();
-						console.log("cc")
-						$.getJSON('upscoreJSON.do',{'action':'getAllScore'},function(datas){
-						console.log("aa")
+                       
+ 						$('#scoreTable>tbody').empty();   
+
+  						$.getJSON("upscoreJSON.do", {"action":"getAllScore"}, function(datas){												
+						
 							$.each(datas, function(i, score) {
-						console.log("bb")
+
 								var cell1 = $("<td></td>").text(score.stu_id);
 								var cell2 = $("<td></td>").text(score.stu_name);
 								var cell3 = $("<td></td>").text(score.stu_implement);
 								var cell4 = $("<td></td>").text(score.stu_interview);
 								var cell5 = $("<td></td>").html("<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+score.stu_id+" >修改</button>");
-								
+//								console.log(score.stu_testtime)
 								var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5]);
-
+                                   
 								$('#scoreTable>tbody').append(row);
 								
 							});
 		
 						});
 						
-					});
-				    
+					
+				})
 					 $(document).on("click",".btn-primary",function(){  //點擊修改按鈕
-						 updateID = $(this).val(); //拿出ID去資料庫找資料
+						 updateID = $(this).val(); //拿出button的value的ID去資料庫找資料
 					     updateStu_id = $(this).parents("tr").find('td:eq(0)'); //找出各個欄位資料
 					     updateStu_name = $(this).parents("tr").find('td:eq(1)');
 					     updateStu_implement = $(this).parents("tr").find('td:eq(2)');
@@ -116,41 +129,74 @@
 //					     console.log(updateID)
 						 $.getJSON("upscoreJSON.do",{"action":"getPkId",'stu_id':updateID},function(datas){
 							 $.each(datas,function(i,score){
-//								 console.log(score.stu_except)
+//								 console.log(score.stu_testtime)
 								 $("#ustu_id").val(score.stu_id); //設定修改表單中各個欄位的值
 								 $("#ustu_name").val(score.stu_name);
 								 $("#ustu_implement").val(score.stu_implement);
 								 $("#ustu_interview").val(score.stu_interview);
-// 								 console.log($("#ustu_id").val(score.stu_id))
-								 $("#stu_grouphid").attr("value",score.stu_group); //取出值並放入hidden的value進行修改
-								 $("#stu_note1hid").attr("value",score.stu_note1);
-								 $("#stu_agehid").attr("value",score.stu_age);
-								 $("#stu_schhid").attr("value",score.stu_sch);
-								 $("#stu_sexhid").attr("value",score.stu_sex);
-								 $("#stu_emailhid").attr("value",score.stu_email);
-								 $("#stu_prehid").attr("value",score.stu_pre);
-								 $("#stu_testtimehid").attr("value",score.stu_testtime);
-								 $("#stu_totalhid").attr("value",score.stu_total);
-								 $("#stu_workdatehid").attr("value",score.stu_workdate);
-								 $("#stu_excepthid").attr("value",score.stu_except);
-								 $("#stu_seatnohid").attr("value",score.stu_seatno);
-								 $("#stu_finalhid").attr("value",score.stu_final);
-								 $("#stu_note2hid").attr("value",score.stu_note2);
-								 $("#log_pwhid").attr("value",score.log_pw);
-								 $("#class_idhid").attr("value",score.class_id);
+//								 console.log($("#ustu_id").val(score.stu_id))
+								 $("#stu_grouphid").val(score.stu_group); //取出值並放入hidden的value進行修改
+								 $("#stu_note1hid").val(score.stu_note1);
+								 $("#stu_agehid").val(score.stu_age);
+								 $("#stu_schhid").val(score.stu_sch);
+								 $("#stu_sexhid").val(score.stu_sex);
+								 $("#stu_emailhid").val(score.stu_email);
+								 $("#stu_prehid").val(score.stu_pre);
+								 $("#stu_testtimehid").val(score.stu_testtime);
+								 $("#stu_totalhid").val(score.stu_total);
+								 $("#stu_workdatehid").val(score.stu_workdate);
+								 $("#stu_excepthid").val(score.stu_except);
+								 $("#stu_seatnohid").val(score.stu_seatno);
+								 $("#stu_finalhid").val(score.stu_final);
+								 $("#stu_note2hid").val(score.stu_note2);
+								 $("#log_pwhid").val(score.log_pw);
+ 								 $("#class_idhid").val(score.class_id);
 							 })
 						 })
 					 })
 					 
-					 $('.primary').click(function(){  //修改後送出按鈕      
+					 $('.btn-success').click(function(){  //修改後送出按鈕		
+						
+						 var Updatedatas = $('form[name="upup"]').serialize();
+				 			$.get('upscoreJSON.do',Updatedatas,function(data){
+				 				if(data=="資料更新成功"){
 				 				updateStu_implement.text($("#ustu_implement").val()); //將各個欄位的值插入表格中
 				 				updateStu_interview.text($("#ustu_interview").val());
- //				 				console.log($("#ustu_interview").val())
+				 				$('#exampleModal').modal('hide');
+				 				}else if(data=="資料更新失敗"){
+				 					alert("資料更新失敗")
+				 				}
 					            
 					 })
-					 
-				});	
-					
+
+                  })
+                           $(".close").click(function() {  //點擊右上XX按鈕將錯誤訊息重置
+                            	validator.resetForm();
+                                   });
+                            $(".btn-danger").click(function() {  //點擊取消按鈕將錯誤訊息重置
+                            	validator.resetForm();
+                                   });
+
+                     var validator = $('form[name="upup"]').validate({
+			        	errorClass: "my-error-class", //錯誤數值顏色
+			        	validClass: "my-valid-class", //正確數值顏色
+						rules:{
+						stu_implement:{               //驗證欄
+							           required:true,
+							           number:true,
+							           min:0,
+							           max:100
+								},
+					    stu_interview:{               //驗證欄
+					    	           required:true,
+					    	           number:true,
+					    	           min:0,
+					    	           max:100
+					    	           }
+			                    },
+
+					})	
+
 		</script>
     
 </body>

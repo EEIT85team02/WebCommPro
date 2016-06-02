@@ -13,7 +13,7 @@ public class Stu_additionalVO implements Serializable{
 	private String stu_applytime;
 	private String emp_id ; 
 	private String confirm_time ; 
-    
+	private Member_statusVO member_statusVO;
 	private StudentVO studentVO;
 	
 	public StudentVO getStudentVO() {
@@ -22,8 +22,6 @@ public class Stu_additionalVO implements Serializable{
 	public void setStudentVO(StudentVO studentVO) {
 		this.studentVO = studentVO;
 	}
-	private Member_statusVO member_statusVO;
-
 	public Member_statusVO getMember_statusVO() {
 		return member_statusVO;
 	}

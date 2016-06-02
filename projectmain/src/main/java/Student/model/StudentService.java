@@ -6,10 +6,14 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.json.simple.JSONValue;
 
+import Class.model.ClassVO;
 import Mail_template.model.Mail_templateDAO;
+import Member_status.model.Member_statusVO;
+import Stu_additional.model.Stu_additionalVO;
 
 
 public class StudentService {
@@ -19,8 +23,27 @@ public class StudentService {
 		dao = new StudentDAO();
 	}
 	public List<StudentVO> getAll() throws SQLException {
+		
 		return dao.getAll();
 	}
+	public String getOneSta(Integer stu_id) throws SQLException {	
+		List memsc=new LinkedList();
+		StudentVO stuVO=dao.findByPrimaryKey(stu_id);	
+		Set<Stu_additionalVO> set = dao.getStusByStu_id(stu_id);
+		for(Stu_additionalVO stuaddVO:set){
+			Map map = new HashMap();
+			map.put("stu_name",stuVO.getStu_name());
+			map.put("stu_email",stuVO.getStu_email());
+			map.put("stu_id",stuVO.getStu_id());
+			map.put("stu_applytime",stuaddVO.getStu_applytime());
+			map.put("sta_name",stuaddVO.getMember_statusVO().getSta_name());
+			memsc.add(map);
+		}
+           
+		String jsonString = JSONValue.toJSONString(memsc);
+	    return jsonString;
+	}	
+		
 	public String getOneStu(Integer stu_id) throws SQLException {	
 		List stusc=new LinkedList();
 		StudentVO stuVO=dao.findByPrimaryKey(stu_id);
@@ -36,20 +59,21 @@ public class StudentService {
 			map.put("stu_sex",stuVO.getStu_sex());
 			map.put("stu_email",stuVO.getStu_email());
 			map.put("stu_pre",stuVO.getStu_pre());
-			map.put("stu_testtime",stuVO.getStu_testtime());
+			map.put("stu_testtime",stuVO.getStu_testtime()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_testtime().toString());
 			map.put("stu_total",stuVO.getStu_total());
-			map.put("stu_workdate",stuVO.getStu_workdate());
+			map.put("stu_workdate",stuVO.getStu_workdate()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_workdate().toString());
 			map.put("stu_except",stuVO.getStu_except());
 			map.put("stu_final",stuVO.getStu_final());
 			map.put("stu_note2",stuVO.getStu_note2());
 			map.put("stu_seatno",stuVO.getStu_seatno());
+			map.put("class_id",stuVO.getClassVO().getClass_id());
 			stusc.add(map);
 		String jsonString = JSONValue.toJSONString(stusc);
 		return jsonString;
 		
 	}
 
-	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,Date stu_testtime,Double stu_total,Date stu_workdate,Double stu_except,Integer stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno,String log_pw,String class_id) throws SQLException {
+	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,java.sql.Date stu_testtime,Double stu_total,java.sql.Date stu_workdate,Double stu_except,Integer stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno,String log_pw,String class_id) throws SQLException {
 
 		StudentVO stuVO = new StudentVO();
 
@@ -72,7 +96,10 @@ public class StudentService {
 		stuVO.setStu_interview(stu_interview);
 		stuVO.setStu_seatno(stu_seatno);
 		stuVO.setLog_pw(log_pw);
-		stuVO.setClass_id(class_id);
+		
+		ClassVO clavo = new ClassVO();
+		clavo.setClass_id(class_id);
+		stuVO.setClassVO(clavo);
 		
 		dao.update(stuVO);
 		
@@ -95,17 +122,22 @@ public class StudentService {
 			map.put("stu_sex",stuVO.getStu_sex());
 			map.put("stu_email",stuVO.getStu_email());
 			map.put("stu_pre",stuVO.getStu_pre());
-			map.put("stu_testtime",stuVO.getStu_testtime());
+//			map.put("stu_testtime",stuVO.getStu_testtime());
+			
+			map.put("stu_testtime",stuVO.getStu_testtime()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_testtime().toString());
+//			System.out.println(stuVO.getStu_testtime());
 			map.put("stu_total",stuVO.getStu_total());
-			map.put("stu_workdate",stuVO.getStu_workdate());
+//			map.put("stu_workdate",stuVO.getStu_workdate());
+			map.put("stu_workdate",stuVO.getStu_workdate()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_workdate().toString());
 			map.put("stu_except",stuVO.getStu_except());
 			map.put("stu_final",stuVO.getStu_final());
 			map.put("stu_note2",stuVO.getStu_note2());
 			map.put("log_pw",stuVO.getLog_pw());
-			map.put("class_id",stuVO.getClass_id());
+			map.put("class_id",stuVO.getClassVO().getClass_id());
 			map.put("stu_seatno",stuVO.getStu_seatno());
 			stusc.add(map);
 		}
+		
 		String jsonString = JSONValue.toJSONString(stusc);
 		return jsonString;
 	}

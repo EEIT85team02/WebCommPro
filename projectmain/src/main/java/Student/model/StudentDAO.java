@@ -2,10 +2,13 @@ package Student.model;
 
 
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import Stu_additional.model.Stu_additionalVO;
+import Class.model.ClassVO;
 import hibernate.util.HibernateUtil;
 
 
@@ -77,6 +80,11 @@ public class StudentDAO implements IStudentDAO {
 			return stu;
 		}
 
+		public Set<Stu_additionalVO> getStusByStu_id(Integer stu_id) {		
+			Set<Stu_additionalVO> set = findByPrimaryKey(stu_id).getStus();
+			return set;
+		}
+		
 		public List<StudentVO> getAll() {
 			List<StudentVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();

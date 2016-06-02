@@ -3,6 +3,8 @@ package Member_status.model;
 import java.sql.SQLException;
 import java.util.List;
 
+import Stu_additional.model.Stu_additionalVO;
+
 
 
 public interface IMember_statusDAO {

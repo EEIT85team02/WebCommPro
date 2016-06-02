@@ -2,6 +2,10 @@ package Student.model;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
+
+import Stu_additional.model.Stu_additionalVO;
+import Class.model.ClassVO;
 
 
 
@@ -14,5 +18,6 @@ public interface IStudentDAO {
 	public List<String> getAllGmail() throws SQLException;
 	public List<String> getAllNonGmail() throws SQLException;
 	public List<String> getAllClass() throws SQLException;
-	public List<StudentVO> getAllStudentByClass(String class_id);	
+	public List<StudentVO> getAllStudentByClass(String class_id);
+	public Set<Stu_additionalVO> getStusByStu_id(Integer stu_id);
 }

@@ -20,16 +20,15 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private String stu_email ;
 	private Integer stu_pre ;
 	private Double stu_implement ;
-	private Date stu_testtime  ;
+	private java.sql.Date stu_testtime  ;
 	private Double stu_interview ;
 	private Double stu_total ;
-	private Date stu_workdate ;
+	private java.sql.Date stu_workdate ;
 	private Double stu_except ;
 	private Integer stu_final ;
 	private String stu_note2 ;
-	private String log_pw;
-	private String class_id;
-//	private ClassVO classVO;
+//	private String class_id;
+	private ClassVO classVO;
 
 
 	private Set<Stu_additionalVO> stus = new HashSet<Stu_additionalVO>();
@@ -129,11 +128,11 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 		this.stu_implement = stu_implement;
 	}
 
-	public Date getStu_testtime() {
+	public java.sql.Date getStu_testtime() {
 		return stu_testtime;
 	}
 
-	public void setStu_testtime(Date stu_testtime) {
+	public void setStu_testtime(java.sql.Date stu_testtime) {
 		this.stu_testtime = stu_testtime;
 	}
 
@@ -161,11 +160,11 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 		this.stu_total = stu_total;
 	}
 
-	public Date getStu_workdate() {
+	public java.sql.Date getStu_workdate() {
 		return stu_workdate;
 	}
 
-	public void setStu_workdate(Date stu_workdate) {
+	public void setStu_workdate(java.sql.Date stu_workdate) {
 		this.stu_workdate = stu_workdate;
 	}
 
@@ -197,29 +196,21 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 		this.stu_note2 = stu_note2;
 	}
 
-//	public ClassVO getClassVO() {
-//		return classVO;
+	public ClassVO getClassVO() {
+		return classVO;
+	}
+
+	public void setClassVO(ClassVO classVO) {
+		this.classVO = classVO;
+	}
+
+//	public String getClass_id() {
+//		return class_id;
 //	}
 //
-//	public void setClassVO(ClassVO classVO) {
-//		this.classVO = classVO;
+//	public void setClass_id(String class_id) {
+//		this.class_id = class_id;
 //	}
-
-	public String getClass_id() {
-		return class_id;
-	}
-
-	public void setClass_id(String class_id) {
-		this.class_id = class_id;
-	}
-
-	
-    public String getLog_pw() {
-		return log_pw;
-	}
-	public void setLog_pw(String log_pw) {
-		this.log_pw = log_pw;
-	}
 
 
 	public Set<Stu_additionalVO> getStus() {
