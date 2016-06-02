@@ -150,8 +150,8 @@
         	            { title: "最快上班日" },
         	            { title: "預期薪資" },
         	            { title: "Rank" },
-        	            { title: "備註" },
-        	            { title: "備註" },
+        	            { title: "備註1" },
+        	            { title: "備註2" },
         	            { title: "班級" }
         	        ], 
         	        
@@ -293,9 +293,68 @@
         	     	        				
         	     	        				
         	     	        				// 欄位名稱
-        	     	        				var textElement02 = document.createTextNode(i);
+//        	     	        				var textElement02 = document.createTextNode(i);
+        	     	        				var textElement02 = null;
 //        	     	        				formItemInput.appendChild(textElement);
         	     	        				// 顯示欄位編號
+        	     	        				switch (i) {
+        	     	        				case 0:
+        	     	        					textElement02 = document.createTextNode("姓名");
+        	     	        					break;
+        	     	        				case 1:
+        	     	        					textElement02 = document.createTextNode("年次");
+        	     	        					break;
+        	     	        				case 2:
+        	     	        					textElement02 = document.createTextNode("性別");
+        	     	        					break;
+        	     	        				case 3:
+        	     	        					textElement02 = document.createTextNode("學校");
+        	     	        					break;
+        	     	        				case 4:
+        	     	        					textElement02 = document.createTextNode("組別");
+        	     	        					break;
+        	     	        				case 5:
+        	     	        					textElement02 = document.createTextNode("座號");
+        	     	        					break;
+        	     	        				case 6:
+        	     	        					textElement02 = document.createTextNode("E-mail");
+        	     	        					break;
+        	     	        				case 7:
+        	     	        					textElement02 = document.createTextNode("已考(pc)");
+        	     	        					break;
+        	     	        				case 8:
+        	     	        					textElement02 = document.createTextNode("成績(pc)");
+        	     	        					break;
+        	     	        				case 9:
+        	     	        					textElement02 = document.createTextNode("日期(pc)");
+        	     	        					break;
+        	     	        				case 10:
+        	     	        					textElement02 = document.createTextNode("成績(i)");
+        	     	        					break;
+        	     	        				case 11:
+        	     	        					textElement02 = document.createTextNode("總成績");
+        	     	        					break;
+        	     	        				case 12:
+        	     	        					textElement02 = document.createTextNode("最快上班日");
+        	     	        					break;
+        	     	        				case 13:
+        	     	        					textElement02 = document.createTextNode("預期薪資");
+        	     	        					break;
+        	     	        				case 14:
+        	     	        					textElement02 = document.createTextNode("Rank");
+        	     	        					break;
+        	     	        				case 15:
+        	     	        					textElement02 = document.createTextNode("備註1");
+        	     	        					break;
+        	     	        				case 16:
+        	     	        					textElement02 = document.createTextNode("備註2");
+        	     	        					break;
+        	     	        				case 17:
+        	     	        					textElement02 = document.createTextNode("班級");
+        	     	        					break;
+        	     	        				default:
+        	     	        					System.out.println("");
+        	     	        				}
         	     	        				formItemTitle.appendChild(textElement02);
         	     	        				formItemInput.setAttribute('type','text');
         	     	        				// 欄位值

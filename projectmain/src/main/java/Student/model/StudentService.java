@@ -12,7 +12,7 @@ import org.json.simple.JSONValue;
 
 import Class.model.ClassVO;
 import Mail_template.model.Mail_templateDAO;
-import Member_status.model.Member_statusVO;
+
 import Stu_additional.model.Stu_additionalVO;
 
 
@@ -29,7 +29,7 @@ public class StudentService {
 	public String getOneSta(Integer stu_id) throws SQLException {	
 		List memsc=new LinkedList();
 		StudentVO stuVO=dao.findByPrimaryKey(stu_id);	
-		Set<Stu_additionalVO> set = dao.getStusByStu_id(stu_id);
+		Set<Stu_additionalVO> set = dao.getStuByStu_id(stu_id);
 		for(Stu_additionalVO stuaddVO:set){
 			Map map = new HashMap();
 			map.put("stu_name",stuVO.getStu_name());
@@ -47,26 +47,44 @@ public class StudentService {
 	public String getOneStu(Integer stu_id) throws SQLException {	
 		List stusc=new LinkedList();
 		StudentVO stuVO=dao.findByPrimaryKey(stu_id);
-			Map map = new HashMap();
-			map.put("stu_id",stuVO.getStu_id());
-			map.put("stu_name",stuVO.getStu_name());
-			map.put("stu_implement",stuVO.getStu_implement());
-			map.put("stu_interview",stuVO.getStu_interview());
-			map.put("stu_group",stuVO.getStu_group());
-			map.put("stu_note1",stuVO.getStu_note1());
-			map.put("stu_age",stuVO.getStu_age());
-			map.put("stu_sch",stuVO.getStu_sch());
-			map.put("stu_sex",stuVO.getStu_sex());
-			map.put("stu_email",stuVO.getStu_email());
-			map.put("stu_pre",stuVO.getStu_pre());
+
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("stu_id",stuVO.getStu_id().toString());
+			map.put("stu_name",stuVO.getStu_name().toString());
+			map.put("stu_implement",stuVO.getStu_implement().toString());
+			map.put("stu_interview",stuVO.getStu_interview().toString());
+			map.put("stu_group",stuVO.getStu_group().toString());
+			map.put("stu_note1",stuVO.getStu_note1().toString());
+			map.put("stu_age",stuVO.getStu_age().toString());
+			map.put("stu_sch",stuVO.getStu_sch().toString());
+			map.put("stu_sex",stuVO.getStu_sex().toString());
+			map.put("stu_email",stuVO.getStu_email().toString());
+			map.put("stu_pre",stuVO.getStu_pre().toString());
 			map.put("stu_testtime",stuVO.getStu_testtime()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_testtime().toString());
-			map.put("stu_total",stuVO.getStu_total());
+			map.put("stu_total",stuVO.getStu_total().toString());
 			map.put("stu_workdate",stuVO.getStu_workdate()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_workdate().toString());
-			map.put("stu_except",stuVO.getStu_except());
-			map.put("stu_final",stuVO.getStu_final());
-			map.put("stu_note2",stuVO.getStu_note2());
-			map.put("stu_seatno",stuVO.getStu_seatno());
-			map.put("class_id",stuVO.getClassVO().getClass_id());
+			map.put("stu_except",stuVO.getStu_except().toString());
+			map.put("stu_final",stuVO.getStu_final().toString());
+			map.put("stu_note2",stuVO.getStu_note2().toString());
+			map.put("stu_seatno",stuVO.getStu_seatno().toString());
+			map.put("class_id",stuVO.getClassVO().getClass_id().toString());
+			stusc.add(map);
+		String jsonString = JSONValue.toJSONString(stusc);
+		return jsonString;
+		
+	}
+	
+	public String getOneStuAll(Integer stu_id) throws SQLException {	
+		List stusc=new LinkedList();
+		Stu_additionalVO stu_addVO=(Stu_additionalVO) dao.getStuByStu_id(stu_id);
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("stu_id",stu_addVO.getStudentVO().getStu_id().toString());
+			map.put("Test_startdate",stu_addVO.getTest_startdate().toString());
+			map.put("Test_hour_id",stu_addVO.getTest_periodVO().getTest_starthour().toString());
+			map.put("Stu_applytime(",stu_addVO.getStu_applytime());
+			map.put("Emp_id",stu_addVO.getEmployeeVO().getEmp_name());
+			map.put("Confirm_time",stu_addVO.getConfirm_time().toString());
+			map.put("Member_statusVO",stu_addVO.getMember_statusVO().toString());
 			stusc.add(map);
 		String jsonString = JSONValue.toJSONString(stusc);
 		return jsonString;
@@ -95,8 +113,7 @@ public class StudentService {
 		stuVO.setStu_implement(stu_implement);			
 		stuVO.setStu_interview(stu_interview);
 		stuVO.setStu_seatno(stu_seatno);
-		stuVO.setLog_pw(log_pw);
-		
+
 		ClassVO clavo = new ClassVO();
 		clavo.setClass_id(class_id);
 		stuVO.setClassVO(clavo);
@@ -132,7 +149,6 @@ public class StudentService {
 			map.put("stu_except",stuVO.getStu_except());
 			map.put("stu_final",stuVO.getStu_final());
 			map.put("stu_note2",stuVO.getStu_note2());
-			map.put("log_pw",stuVO.getLog_pw());
 			map.put("class_id",stuVO.getClassVO().getClass_id());
 			map.put("stu_seatno",stuVO.getStu_seatno());
 			stusc.add(map);

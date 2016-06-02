@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Test_interval.model.Test_intervalVO" table="Test_interval" >
+        <id name="test_interval_id" column="test_interval_id">
+            <generator class="identity"/>
+        </id>
+       
+       <property name="test_startdate" column="test_startdate"></property>
+       <property name="test_enddate" column="test_enddate"></property>
+         
+        <many-to-one name="claVO" class="Class.model.ClassVO" lazy="false">
+            <column name="class_id"/>
+        </many-to-one>
+        
+    </class>
+</hibernate-mapping>
+

@@ -26,17 +26,19 @@
         <property name="stu_except" column="stu_except" />
         <property name="stu_final" column="stu_final" />
         <property name="stu_note2" column="stu_note2" />
-        
-        <set name = "stus" table="Stu_additional" lazy="false"  cascade="all"  inverse="true"  order-by="stu_id asc">
-             <key>
-                   <column name="stu_id"/>
-             </key>
-             <one-to-many class="Stu_additional.model.Stu_additionalVO"/> 
-        </set>
 
-        <many-to-one name="classVO" class="Class.model.ClassVO" lazy="false" >
+
+
+	<set name="Stu_additionalVO" table="Stu_additional" lazy="false" cascade="all"  inverse="true"  order-by="stu_id asc">			
+			<key>
+				<column name="stu_id"/>
+			</key>
+			<one-to-many class="Stu_additional.model.Stu_additionalVO"/>
+	</set>    
+	  <many-to-one name="ClassVO" class="Class.model.ClassVO" lazy="false">
             <column name="class_id" />
-        </many-to-one>     
+        </many-to-one> 
+
 
     </class>
 </hibernate-mapping>

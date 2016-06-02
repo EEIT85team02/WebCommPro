@@ -26,7 +26,7 @@ import Edu.model.EduService;
 
 
 
-@WebServlet("/Class/ClassServletJSON.do")
+@WebServlet({"/Class/ClassServletJSON.do","/Test_interval/ClassServletJSON.do"})
 public class ClassServletJSON extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public ClassServletJSON() {
@@ -235,7 +235,7 @@ public class ClassServletJSON extends HttpServlet {
 			}
 		}
 	
-		/******************************** 查詢單一筆資料 ***********************/	
+		/********************************查詢(確認)班級代號資料是否存在資料庫 ***********************/	
 		if ("checkClassId".equals(action)) {
 			try {
 				// ============接收班級代號class_id資料====================
@@ -254,7 +254,7 @@ public class ClassServletJSON extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		/******************************** 查詢(確認)班級代號資料是否存在資料庫 ***********************/	
+		/******************************** 查詢單一筆資料  ***********************/	
 		if ("getoneClass".equals(action)) {
 			String jsonString =null;
 			try {

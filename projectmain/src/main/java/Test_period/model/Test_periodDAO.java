@@ -2,9 +2,14 @@ package Test_period.model;
 
 
 
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
+
+import Stu_additional.model.Stu_additionalVO;
 import hibernate.util.HibernateUtil;
 
 
@@ -70,7 +75,7 @@ public class Test_periodDAO implements ITest_periodDAO {
 			return tpVO;
 		}
 
-		public List<Test_periodVO> getAllTp() {
+		public List<Test_periodVO> getAll() {
 			List<Test_periodVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
@@ -83,6 +88,15 @@ public class Test_periodDAO implements ITest_periodDAO {
 				throw ex;
 			}
 			return list;
+		}
+
+
+
+		@Override
+		public Set<Stu_additionalVO> getTestHourByTest_hour_id(
+				Integer test_hour_id) throws SQLException {
+			Set<Stu_additionalVO> set = findByPrimaryKey(test_hour_id).getStu_additionalVO();
+			return null;
 		}
 
 

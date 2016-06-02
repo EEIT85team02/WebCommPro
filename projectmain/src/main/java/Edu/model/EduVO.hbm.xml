@@ -13,6 +13,7 @@
         <property name="edu_add" column="edu_add" />
         <property name="edu_tel" column="edu_tel" />
         <property name="edu_contact" column="edu_contact" />
+    	
     	<set name="clas" table="Class" lazy="false" inverse="true"  order-by="class_id asc" >			
 			<key>
 				<column name="edu_id" />

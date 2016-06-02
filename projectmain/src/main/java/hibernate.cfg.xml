@@ -12,7 +12,6 @@
 		<property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;DatabaseName=demo</property>
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">sa123456</property> 
-
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
 		<property name="hibernate.c3p0.min_size">5</property>
 		<property name="hibernate.c3p0.max_size">20</property>
@@ -33,6 +32,7 @@
         
         <!-- Enable Hibernate's automatic session context management -->
 		<property name="hibernate.current_session_context_class">thread</property>
+		
 
 		<!--Java物件與資料庫表格的映射檔 -->
 		<mapping resource="Edu/model/EduVO.hbm.xml" />
@@ -42,8 +42,8 @@
 		<mapping resource="Stu_additional/model/Stu_additional.hbm.xml" />
 		<mapping resource="Employee/model/Employee.hbm.xml" />
 		<mapping resource="Test_period/model/Test_periodVO.hbm.xml" />
-		<mapping resource="Test_interval/model/Test_interval.hbm.xml" />
-		<mapping resource="Test_Date/model/Test_Date.hbm.xml" />
+		<mapping resource="Test_interval/model/Test_intervalVO.hbm.xml" />
+		<mapping resource="Test_Date/model/Test_DateVO.hbm.xml" />
 		<mapping resource="Member_status/model/Member_status.hbm.xml" />
 		<mapping resource="Member_test/model/Member_test.hbm.xml" />
 		<mapping resource="Mail_template/model/Mail_template.hbm.xml" />

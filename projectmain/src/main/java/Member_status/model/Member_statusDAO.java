@@ -2,9 +2,14 @@ package Member_status.model;
 
 
 
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
+
+import Stu_additional.model.Stu_additionalVO;
 import hibernate.util.HibernateUtil;
 
 
@@ -186,6 +191,15 @@ public class Member_statusDAO implements IMember_statusDAO {
 					throw ex;
 				}
 				return list;
+			}
+
+
+
+			@Override
+			public Set<Stu_additionalVO> getStuBySta_id(Integer sta_id)
+					throws SQLException {
+				Set<Stu_additionalVO> set = findByPrimaryKey(sta_id).getStu_additionalVO();
+				return set;
 			}
 
 

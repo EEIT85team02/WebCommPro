@@ -22,7 +22,7 @@ import Sign_list.model.Sign_listService;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 
-@WebServlet("/Sign_list/Sign_listServletJSON.do")
+@WebServlet({"/Sign_list/Sign_listServletJSON.do","/Employee/Sign_listServletJSON.do"})
 public class Sign_listServletJSON extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,51 +41,83 @@ public class Sign_listServletJSON extends HttpServlet {
 		Sign_listService slSvc = null;
 		String action = request.getParameter("action");
 
+		/******************************** 新增資料表 ***********************/
+		if ("addSl".equals(action)) {
+			Map<String, String> Msgs = null;
+			Integer sl_id= null;
+			String sl_name= null;
+			try {
+				Msgs = new HashMap<String, String>();
+				/***************(新增)取得Sign_list-sl_id表單資料***************/
+				sl_id =Integer.parseInt(request.getParameter("sl_id"));
+				if (sl_id == null) {
+					Msgs.put("sl_id", "權限代號不可空白");
+				}
+				/***************(新增)取得Sign_list-sl_name表單資料***************/
+				sl_name = request.getParameter("sl_name");
+				if (sl_name == null || sl_name.trim().length() == 0) {
+					Msgs.put("sl_nameMsg", "中心名稱不可空白");
+				}
+				if (sl_name.trim().length() >20) {
+					Msgs.put("sl_nameMsg", "權限名稱中英文長度不可大於20碼");
+				}
+				
+				if (!Msgs.isEmpty()) {
+					out.write("資料新增失敗");
+					return;
+					/***************呼叫Service方法將資料新增***********************/
+				}else{
+					slSvc = new Sign_listService();
+					slSvc.insertSl(sl_id,sl_name);
+					out.write("資料新增成功");
+					return;
+				}
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		/******************************** 刪除資料表 ***********************/
+		if ("deleteSl".equals(action)) {
+			
+			try {
+				// ============接收權限代號sl_id資料====================
+				Integer sl_id =Integer.parseInt(request.getParameter("sl_id"));
+				// ============呼叫方法刪除資料====================
+				slSvc = new Sign_listService();
+				slSvc.deleteSl(sl_id);
+				out.write("資料刪除成功");
+				return;
+			}catch (ConstraintViolationException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
+			}
+		}
 		/******************************** 更新資料表 ***********************/	
 		if ("updateSl".equals(action)) { 
 			Map<String, String> Msgs = null;
-			List sls =new LinkedList();
-			String jsonString = null;
-			String emp_id= null;
-			String emp_name= null;
-			String emp_mail= null;
-			String dep_name= null;
 			Integer sl_id= null;
+			String sl_name= null;
 			try {
 				Msgs = new HashMap<String, String>();
-				/***************(修改)取得Sign_list-emp_id表單資料***************/
-				emp_id =request.getParameter("emp_id");
-				if (emp_id == null) {
-					Msgs.put("emp_id", "員工代號不可空白");
-				}
-				/***************(修改)取得Sign_list-emp_name表單資料***************/
-				emp_name = request.getParameter("emp_name");
-				if (emp_name == null || emp_name.trim().length() == 0) {
-					Msgs.put("emp_nameMsg", "員工名稱不可空白");
-				}
-				if (emp_name.trim().length() >30) {
-					Msgs.put("edu_nameMsg", "員工名稱中英文長度不可大於30碼");
-				}
-				/***************(修改)取得Sign_list-emp_mail表單資料***************/
-				emp_mail = request.getParameter("emp_mail");
-				if (emp_mail == null || emp_mail.trim().length() == 0) {
-					Msgs.put("emp_mailMsg", "Email不可空白");
-				}
-				if (emp_mail.trim().length() >30) {
-					Msgs.put("emp_mailMsg", "Email中英文長度不可大於30碼");
-				}
-				/***************(修改)取得Sign_list-dep_name表單資料***************/
-				dep_name = request.getParameter("dep_name");
-				if (dep_name == null || dep_name.trim().length() == 0) {
-					Msgs.put("dep_nameMsg", "部門名稱不可空白");
-				}
-				if ( dep_name.trim().length() >30) {
-					Msgs.put("dep_nameMsg", "部門名稱長度不可大於30碼");
-				}
 				/***************(修改)取得Sign_list-sl_id表單資料***************/
 				sl_id =Integer.parseInt(request.getParameter("sl_id"));
 				if (sl_id == null) {
-					Msgs.put("sl_idMsg", "權限設定不可空白");
+					Msgs.put("sl_id", "權限代號不可空白");
+				}
+				/***************(修改)取得Sign_list-sl_name表單資料***************/
+				sl_name = request.getParameter("sl_name");
+				if (sl_name == null || sl_name.trim().length() == 0) {
+					Msgs.put("sl_nameMsg", "權限名稱不可空白");
+				}
+				if (sl_name.trim().length() >20) {
+					Msgs.put("sl_nameMsg", "權限名稱中英文長度不可大於20碼");
 				}
 				
 				if (!Msgs.isEmpty()) {
@@ -95,7 +127,7 @@ public class Sign_listServletJSON extends HttpServlet {
 				/*******************將資料(更新)至資料庫**********************/
 				else{
 					slSvc = new Sign_listService();
-					slSvc.updateSl(emp_id,emp_name,emp_mail,dep_name,sl_id);
+					slSvc.updateSl(sl_id,sl_name);
 					out.write("資料更新成功");
 					return;
 				}
@@ -109,82 +141,24 @@ public class Sign_listServletJSON extends HttpServlet {
 				return;
 			}
 		}
-		
-		/********************** 更新(刪除權限代號設定-->sl_id=0)資料表 ********************/	
-		if ("updatedelSl".equals(action)) { 
-			Map<String, String> Msgs = null;
-			List sls =new LinkedList();
-			String jsonString = null;
-			String emp_id= null;
-			String emp_name= null;
-			String emp_mail= null;
-			String dep_name= null;
-			Integer sl_id= null;
-			try {
-				Msgs = new HashMap<String, String>();
-				/***************(修改)取得Sign_list-emp_id表單資料***************/
-				emp_id =request.getParameter("emp_id");
-				if (emp_id == null) {
-					Msgs.put("emp_id", "員工代號不可空白");
-				}
-				/***************(修改)取得Sign_list-emp_name表單資料***************/
-				emp_name = request.getParameter("emp_name");
-				if (emp_name == null || emp_name.trim().length() == 0) {
-					Msgs.put("emp_nameMsg", "員工名稱不可空白");
-				}
-				if (emp_name.trim().length() >30) {
-					Msgs.put("edu_nameMsg", "員工名稱中英文長度不可大於30碼");
-				}
-				/***************(修改)取得Sign_list-emp_mail表單資料***************/
-				emp_mail = request.getParameter("emp_mail");
-				if (emp_mail == null || emp_mail.trim().length() == 0) {
-					Msgs.put("emp_mailMsg", "Email不可空白");
-				}
-				if (emp_mail.trim().length() >30) {
-					Msgs.put("emp_mailMsg", "Email中英文長度不可大於30碼");
-				}
-				/***************(修改)取得Sign_list-dep_name表單資料***************/
-				dep_name = request.getParameter("dep_name");
-				if (dep_name == null || dep_name.trim().length() == 0) {
-					Msgs.put("dep_nameMsg", "部門名稱不可空白");
-				}
-				if ( dep_name.trim().length() >30) {
-					Msgs.put("dep_nameMsg", "部門名稱長度不可大於30碼");
-				}
-				/***************(修改)取得Sign_list-sl_id表單資料***************/
-				sl_id =Integer.parseInt(request.getParameter("sl_id"));
-				if (sl_id == null) {
-					Msgs.put("sl_idMsg", "權限設定不可空白");
-				}
-				
-				if (!Msgs.isEmpty()) {
-					out.write("資料更新失敗");
-					return;
-				}
-				/*******************將資料(更新)至資料庫**********************/
-				else{
-					slSvc = new Sign_listService();
-					slSvc.updatedelSl(emp_id,emp_name,emp_mail,dep_name,sl_id);
-					
-					out.write("資料刪除成功");
-					return;
-				}
-			} 
-			catch (SQLServerException e) {
-				out.write("資料刪除失敗");
-				return;
-			}
-			catch (Exception e) {
-				out.write("資料刪除失敗");
-				return;
-			}
-		}
 		/******************************** 查詢全部資料表 ***********************/		
 		if ("getALLSl".equals(action)) {
 			try {
-				// ============查詢員工權限設定全部資料回傳JSON字串====================
+				// ============查詢權限設定全部資料回傳JSON字串====================
 				slSvc = new Sign_listService();
 				String jsonString = slSvc.getAllSlToJSON();
+				out.write(jsonString);
+				return;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		/********************************查詢全部資料表FOR DataTables init() ***********************/
+		if ("getAllSlToJSONInitTable".equals(action)) {
+			try {
+				// ============查詢權限設定全部資料回傳JSON字串====================
+				slSvc = new Sign_listService();
+				String jsonString = slSvc.getAllSlToJSONInitTable();
 				out.write(jsonString);
 				return;
 			} catch (SQLException e) {
@@ -195,22 +169,21 @@ public class Sign_listServletJSON extends HttpServlet {
 		/******************************** 查詢單一筆資料 ***********************/	
 		if ("getoneSl".equals(action)) {
 			try {
-				// ============接收員工代號emp_id資料====================
-				String emp_id =request.getParameter("emp_id");
-				// ============查詢員工權限設定單筆資料回傳JSON字串============
+				// ============接收權限代號sl_id資料====================
+				Integer sl_id =Integer.parseInt(request.getParameter("sl_id"));
+				// ============查詢權限設定單筆資料回傳JSON字串============
 				slSvc = new Sign_listService();
-				String jsonString = slSvc.findByPrimaryKeySlToJSON(emp_id);
+				String jsonString = slSvc.findByPrimaryKeySlToJSON(sl_id);
 				out.write(jsonString);
 				return;
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
-		
 		/***************************初始連結呼叫Sign_listServletJSON轉址至Sign_listTODataTablesJSON.jsp********************/	
 		if ("initSlViewTODataTablesJSON".equals(action)) {
 			try {
-				
+				// ============轉到教育中心EduViewJSON====================
 				RequestDispatcher successMsg = request
 						.getRequestDispatcher("/Sign_list/Sign_listTODataTablesJSON.jsp");
 				successMsg.forward(request, response);
