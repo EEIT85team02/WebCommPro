@@ -28,7 +28,6 @@
         <property name="stu_note2" column="stu_note2" />
 
 
-
 	<set name="Stu_additionalVO" table="Stu_additional" lazy="false" cascade="all"  inverse="true"  order-by="stu_id asc">			
 			<key>
 				<column name="stu_id"/>

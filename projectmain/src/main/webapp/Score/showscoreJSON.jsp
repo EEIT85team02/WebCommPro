@@ -18,7 +18,7 @@
 </style>
 </head>
 <body>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog">
   <form method="post" action="upscoreJSON.do" name="upup">
     <div class="modal-content">
@@ -64,8 +64,10 @@
         <input type="hidden" id="stu_seatnohid" name="stu_seatno" >
         <input type="hidden" id="stu_finalhid" name="stu_final" >
         <input type="hidden" id="stu_note2hid" name="stu_note2" >
-        <input type="hidden" id="log_pwhid" name="log_pw" >
         <input type="hidden" id="class_idhid" name="class_id" >
+        <input type="hidden" id="pub_keyhid" name="pub_key" >
+        <input type="hidden" id="pri_keyhid" name="pri_key" >
+        <input type="hidden" id="cipher_texthid" name="cipher_text" >
       </div>
     </div>
     </form>
@@ -149,8 +151,11 @@
 								 $("#stu_seatnohid").val(score.stu_seatno);
 								 $("#stu_finalhid").val(score.stu_final);
 								 $("#stu_note2hid").val(score.stu_note2);
-								 $("#log_pwhid").val(score.log_pw);
  								 $("#class_idhid").val(score.class_id);
+ 								 $("#pub_keyhid").val(score.pub_key);
+ 								 $("#pri_keyhid").val(score.pri_key);
+ 								 $("#cipher_texthid").val(score.cipher_text);
+// 								 console.log(score.class_id);
 							 })
 						 })
 					 })

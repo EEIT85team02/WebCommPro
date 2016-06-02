@@ -170,17 +170,18 @@ public class UpStuScoreJSON extends HttpServlet {
 			if(stu_interview < 0 || stu_interview >100){
 				errorMsgs.add("請填0到100之間的數字");
 			}
-			String log_pw = req.getParameter("log_pw");
 			String class_id = req.getParameter("class_id");
+			byte[] pub_key = req.getParameter("pub_key").getBytes("UTF-8");
+			byte[] pri_key =req.getParameter("pri_key").getBytes("UTF-8");
+			byte[] cipher_text = req.getParameter("cipher_text").getBytes("UTF-8");
 			if (!errorMsgs.isEmpty()) {
 				out.write("資料更新失敗");
 			}else{
 			StudentService stuSvc = new StudentService();
 			try {
-				stuSvc.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_testtime,stu_total,stu_workdate,stu_except,stu_final,stu_note2,stu_implement, stu_interview,stu_seatno,log_pw,class_id);
+				stuSvc.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_testtime,stu_total,stu_workdate,stu_except,stu_final,stu_note2,stu_implement, stu_interview,stu_seatno,class_id,pub_key,pri_key,cipher_text);
 				out.write("資料更新成功");
-//				RequestDispatcher scoreView = req.getRequestDispatcher("/Score/showscoreJSON.jsp");
-//				scoreView.forward(req, res);
+
 			} catch (SQLException e) {
 				out.write("資料更新失敗");
 				e.printStackTrace();

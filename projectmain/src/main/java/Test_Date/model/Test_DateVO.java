@@ -9,7 +9,7 @@ import Test_period.model.Test_periodVO;
 
 public class Test_DateVO implements Serializable{//班級考試日期時段
 	private Integer test_date_id;//考試日期時段代號
-	private	java.sql.Date	test_date;//考試日期
+	private	java.sql.Date  test_date;//考試日期
 	private	Integer	test_people;//可報名人數/時段
 	private Integer exam_people ;//已報名人數default(0)
 	private	Test_periodVO tpVO;//考試時段代號test_hour_id

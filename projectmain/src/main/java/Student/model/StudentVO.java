@@ -28,10 +28,43 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private Integer stu_final ;
 	private String stu_note2 ;
 	private ClassVO classVO;
+	private byte[] pub_key;
+	private byte[] pri_key;
+	private byte[] cipher_text;
 	private Set<Stu_additionalVO> Stu_additionalVO = new HashSet<Stu_additionalVO>();
 
 	
 	
+	public byte[] getPub_key() {
+		return pub_key;
+	}
+
+
+	public void setPub_key(byte[] pub_key) {
+		this.pub_key = pub_key;
+	}
+
+
+	public byte[] getPri_key() {
+		return pri_key;
+	}
+
+
+	public void setPri_key(byte[] pri_key) {
+		this.pri_key = pri_key;
+	}
+
+
+	public byte[] getCipher_text() {
+		return cipher_text;
+	}
+
+
+	public void setCipher_text(byte[] cipher_text) {
+		this.cipher_text = cipher_text;
+	}
+
+
 	public Integer getStu_id() {
 		return stu_id;
 	}
