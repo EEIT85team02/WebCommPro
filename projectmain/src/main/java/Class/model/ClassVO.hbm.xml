@@ -27,7 +27,16 @@
 				<column name="class_id" />
 			</key>
 			<one-to-many class="Test_Date.model.Test_DateVO" />
-		</set>      
+		</set>   
+		
+		
+		
+		<set name="tis" table="Test_interval" lazy="false" inverse="true"  order-by="test_interval_id asc" >			
+			<key>
+				<column name="class_id" />
+			</key>
+			<one-to-many class="Test_interval.model.Test_intervalVO" />
+		</set>     
         
     </class>
 </hibernate-mapping>

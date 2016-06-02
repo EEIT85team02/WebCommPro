@@ -73,46 +73,8 @@ h1 {
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-md-12">
-				<h1>考試時段區間設定(步驟一)</h1>
 				<hr>
-				<!--***************Test_period table 設定************************-->
 					<table id="Test_periodTable" class="display" cellspacing="0" width="100%">
-						<thead>
-							<tr>
-								<th class="col-md-2 col-xs-2">時段代號</th>
-								<th class="col-md-5 col-xs-5">時段開始時間</th>
-								<th class="col-md-5 col-xs-5">時段開始時間</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-						<tfoot>
-							<tr>
-								<th>時段代號</th>
-								<th>時段開始時間</th>
-								<th>時段結束時間</th>
-							</tr>
-						</tfoot>
-					</table>
-
-					<!------------------點選新增時段設定表單區塊內容----------------------------- -->
-					<button id="buttonAll">全部選取</button>
-					<button id="buttonRe">取消全選</button>
-					<button id="buttonSel">選取筆數查詢</button>
-					<button id="buttonNext">下一步</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--***************Test_interval table 設定************************-->
-	
-	<div class="container">
-		<div class="Main_Content">
-			<div class="row">
-				<div class="col-md-12">
-				<h1>班級考試日期區間設定(步驟二)</h1>
-				<hr>
-					<table id="Test_intervalTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th class="col-md-2 col-xs-2">時段代號</th>
@@ -138,7 +100,6 @@ h1 {
 					<button id="buttonAll">全部選取</button>
 					<button id="buttonRe">取消全選</button>
 					<button id="buttonSel">選取筆數查詢</button>
-					<button id="buttonNext">下一步</button>
 				</div>
 			</div>
 		</div>
@@ -197,7 +158,7 @@ h1 {
                               "sNext":"下頁",
                               "sLast":"尾頁"}
 			 },
-		    	  "bJQueryUI":true,
+		    	  "bJQueryUI":false,
 		    	  "bProcessing": true,
 		    	  "sPaginationType":"full_numbers",
 		    	  
@@ -438,43 +399,17 @@ h1 {
 				   
 				   //icon全部選取
 					$('#buttonAll').click(function(){
-						$('#Test_periodTable tbody > tr').addClass('selected');
+						$('tbody > tr').addClass('selected');
 					})
 					//icon取消全選
 					$('#buttonRe').click(function(){
-						$('#Test_periodTable tbody > tr').removeClass('selected');
+						$('tbody > tr').removeClass('selected');
 					})
 					//icon查詢選取筆數
 					 $('#buttonSel').click( function () {
 					        alert( table.rows('.selected').data().length +' 筆資料被選取' );
 					});
-				   
-				   $('#buttonNext').click(function(){
-					 //定義table資料來源json，與畫面顯示------>開始
-						var table = $('#Test_intervalTable').DataTable( {
-							 	"ajax": {
-						            "url": "Test_periodToJSONInitTableServlet",
-						        },
-						     	"oLanguage": {
-								"sProcessing":"資料正處理中...",
-								"sLengthMenu": "顯示 _MENU_ 筆記錄",
-							    "sZeroRecords": "無符合資料",
-							    "sInfo": "目前記錄：_START_ 至 _END_, 總筆數：_TOTAL_",
-							    "sInfoEmpty":"顯示第 0 至 0 項結果，共 0 項",
-			                    "sInfoFiltered":"(從 _MAX_ 項結果過濾)",
-			                    "sSearch":"搜索:",
-			                    "oPaginate":{"sFirst":"首頁",
-			                              "sPrevious":"上頁",
-			                              "sNext":"下頁",
-			                              "sLast":"尾頁"}
-						 },
-					    	  "bJQueryUI":true,
-					    	  "bProcessing": true,
-					    	  "sPaginationType":"full_numbers",
-					    	  
-					    	} );
-						//定義table資料來源json，與畫面顯示------>結束
-				   })		    
+				    
 			    
 	} );//load函數結束
 	</script>

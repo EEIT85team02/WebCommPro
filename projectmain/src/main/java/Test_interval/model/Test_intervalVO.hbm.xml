@@ -7,11 +7,13 @@
         <id name="test_interval_id" column="test_interval_id">
             <generator class="identity"/>
         </id>
-        
-       <property name="class_id" column="class_id"></property>
+       
        <property name="test_startdate" column="test_startdate"></property>
        <property name="test_enddate" column="test_enddate"></property>
-        
+         
+        <many-to-one name="claVO" class="Class.model.ClassVO" lazy="false">
+            <column name="class_id"/>
+        </many-to-one>
         
     </class>
 </hibernate-mapping>

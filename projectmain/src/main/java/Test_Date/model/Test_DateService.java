@@ -59,7 +59,7 @@ public class Test_DateService {
 	public void deleteTd(Integer test_date_id) throws SQLException{
 		 dao.delete(test_date_id);
 	}
-	
+	//多筆刪除
 	public void deleteTdMulti(String test_date_idJSON) throws SQLException{
 		JSONArray ja = new JSONArray(test_date_idJSON);//將字串再轉回JSON
 		for(int i=0,max=ja.length();i< max;i++){
@@ -69,13 +69,20 @@ public class Test_DateService {
 			dao.delete(test_date_id);
 		}
 	}
-	
+	//查詢一筆資料
 	public Test_DateVO findByPrimaryKeyTd(Integer test_date_id) throws SQLException{
 		return dao.findByPrimaryKey(test_date_id);
 	}
+	//查詢全部資料
 	public List<Test_DateVO> getAllTd() throws SQLException{
 		return dao.getAll();
 	}
+	//查詢全部資料
+	public List<Test_DateVO> getAllTdClassId(String class_id) throws SQLException{
+			return dao.getAllClassId(class_id);
+	}
+	
+	
 	//取得全部資料轉JSON -MAP對應
 	public String getAllTdToJSON() throws SQLException{
 		List tds=new LinkedList();
@@ -97,7 +104,7 @@ public class Test_DateService {
 		jsonString = JSONValue.toJSONString(tds);
 		return jsonString;
 	}
-	//取得全部資料轉JSON -資料LIST對應MAP
+	//取得全部資料轉JSON -資料LIST對應MAP(產生datatables資料)
 	public String getAllTdToJSONInitTable() throws SQLException{
 		List<Test_DateVO> list=dao.getAll();
 		List<List<String>> tdVO = new LinkedList<List<String>>();

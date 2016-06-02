@@ -9,9 +9,6 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
-
-
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
@@ -134,7 +131,7 @@ h1 {
 		<p class="validateTips"></p>
 		<form name="EduUpdateForm" action="updateEdu">
 			<fieldset>
-				<label for="edu_id">中心代號</label> 
+				<label for="edu_id">中心代號(不可修改)</label> 
 				<input type="text" name="edu_id" id="uedu_id" readOnly class="text ui-widget-content ui-corner-all">
 				<label for="edu_name">中心名稱</label> 
 				<input type="text" name="edu_name" id="uedu_name" class="text ui-widget-content ui-corner-all" autocomplete="off"> 

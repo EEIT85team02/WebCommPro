@@ -69,6 +69,24 @@ public class Test_intervalDAO implements ITest_intervalDAO {
 			}
 			return tiVO;
 		}
+		
+		//驗證CLASS_ID是否存在資料庫
+		public List<Test_intervalVO> findByTiClass_id(String class_id) {
+			List<Test_intervalVO> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery("from Test_intervalVO where class_id=:class_id");
+				query.setParameter("class_id", class_id);
+				list = query.list();
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			System.out.println("list===="+list);
+			return list;
+		}
 
 		public List<Test_intervalVO> getAll() {
 			List<Test_intervalVO> list = null;

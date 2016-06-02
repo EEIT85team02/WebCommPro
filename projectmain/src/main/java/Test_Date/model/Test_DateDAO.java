@@ -14,7 +14,9 @@ public class Test_DateDAO implements ITest_DateDAO {
 	
 		private static final String GET_ALL_STMT = 
 			"from Test_DateVO order by test_date_id";
-
+		
+		private static final String GET_ALL_STMT_CLASSID = 
+				"from Test_DateVO where class_id = :class_id";
 
 		public void insert(Test_DateVO tes) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -85,5 +87,21 @@ public class Test_DateDAO implements ITest_DateDAO {
 			return list;
 		}
 
+		
+		public List<Test_DateVO> getAllClassId(String class_id) {
+			List<Test_DateVO> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_ALL_STMT_CLASSID);
+				query.setParameter("class_id", class_id);
+				list = query.list();
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return list;
+		}
 
 }

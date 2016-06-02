@@ -145,7 +145,7 @@ h1 {
 			   	</select>
 				<br>
 				
-				<label for="class_id">班級代號</label> 
+				<label for="class_id">班級代號(不可修改)</label> 
 				<input type="text" name="class_id" id="uclass_id" class="text ui-widget-content ui-corner-all" readOnly> 
 				<label for="class_name">班級名稱</label> 
 				<input type="text" name="class_name" id="uclass_name" class="text ui-widget-content ui-corner-all" autocomplete="off">

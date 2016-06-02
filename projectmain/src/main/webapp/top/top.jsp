@@ -70,7 +70,7 @@ pageEncoding="UTF-8"%>
 							<ul class="dropdown-menu">
 								<li class=""><a href="${pageContext.request.contextPath}/Sign_list/Sign_listServletJSON.do?action=initSlViewTODataTablesJSON">權限設定</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Test_period/Test_periodServletJSON.do?action=initTpViewTODataTablesJSON">考試時段設定</a></li>
-								<li class=""><a href="${pageContext.request.contextPath}/Test_interval/Test_intervalform.jsp">考試日期設定</a></li>
+								<li class=""><a href="${pageContext.request.contextPath}/Test_interval/Test_intervalServletJSON.do?action=initTiViewTODataTablesJSON">考試日期設定</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Mail_template/MailServletJSON.do?action=initMailViewTODataTablesJSON">email樣板</a></li>
 							</ul></li>
 						<!-----------------------------------下拉式選單(系統設定結束)----------------------------------------------------						 -->

@@ -7,6 +7,7 @@ import java.util.Set;
 import Edu.model.EduVO;
 import Student.model.StudentVO;
 import Test_Date.model.Test_DateVO;
+import Test_interval.model.Test_intervalVO;
 public class ClassVO implements Serializable{//班級
 	private String class_id; //建立班級代號
 	private String	class_name ;//建立班級名稱
@@ -15,7 +16,7 @@ public class ClassVO implements Serializable{//班級
 	private EduVO eduVO;//代表教育代號edu_id 
 	private Set<StudentVO> stus =new HashSet<StudentVO>();
 	private Set<Test_DateVO> tds = new HashSet<Test_DateVO>();
-	
+	private Set<Test_intervalVO> tis = new HashSet<Test_intervalVO>();
 	
 	public String getClass_id() {
 		return class_id;
@@ -64,9 +65,17 @@ public class ClassVO implements Serializable{//班級
 	}
 	
 	
+	
+	public Set<Test_intervalVO> getTis() {
+		return tis;
+	}
+	public void setTis(Set<Test_intervalVO> tis) {
+		this.tis = tis;
+	}
+	
 	public ClassVO(String class_id, String class_name, String class_contact,
 			String class_teach, EduVO eduVO, Set<StudentVO> stus,
-			Set<Test_DateVO> tds) {
+			Set<Test_DateVO> tds, Set<Test_intervalVO> tis) {
 		super();
 		this.class_id = class_id;
 		this.class_name = class_name;
@@ -75,6 +84,7 @@ public class ClassVO implements Serializable{//班級
 		this.eduVO = eduVO;
 		this.stus = stus;
 		this.tds = tds;
+		this.tis = tis;
 	}
 	public ClassVO() {
 		super();

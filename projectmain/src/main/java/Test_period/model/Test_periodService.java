@@ -51,7 +51,7 @@ public class Test_periodService {
 	}
 	
 	
-	public Test_periodVO findByPrimaryKeyMail(Integer test_hour_id) throws SQLException{
+	public Test_periodVO findByPrimaryKey(Integer test_hour_id) throws SQLException{
 		return dao.findByPrimaryKey(test_hour_id);
 	}
 	public List<Test_periodVO> getAllTp() throws SQLException{
