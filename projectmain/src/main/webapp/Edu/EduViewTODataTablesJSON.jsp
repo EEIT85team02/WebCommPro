@@ -155,7 +155,7 @@ h1 {
 			//定義table資料來源json，與畫面顯示------>開始
 			var table = $('#EduTable').DataTable( {
 				 	"ajax": {
-			            "url": "EduToJSONInitTableServlet",
+			            "url": "/projectmain/Edu/EduToJSONInitTableServlet",
 			        },
 			     	"oLanguage": {
 					"sProcessing":"資料正處理中...",

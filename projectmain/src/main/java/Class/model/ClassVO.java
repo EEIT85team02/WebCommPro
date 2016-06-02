@@ -20,59 +20,121 @@ public class ClassVO implements Serializable{//班級
 	private Set<Test_DateVO> tds = new HashSet<Test_DateVO>();
 	private Set<Test_intervalVO> tis = new HashSet<Test_intervalVO>();
 	
+	
+	
+	
 	public String getClass_id() {
 		return class_id;
 	}
+
+
+
+
 	public void setClass_id(String class_id) {
 		this.class_id = class_id;
 	}
+
+
+
+
 	public String getClass_name() {
 		return class_name;
 	}
+
+
+
+
 	public void setClass_name(String class_name) {
 		this.class_name = class_name;
 	}
+
+
+
+
 	public String getClass_contact() {
 		return class_contact;
 	}
+
+
+
+
 	public void setClass_contact(String class_contact) {
 		this.class_contact = class_contact;
 	}
+
+
+
+
 	public String getClass_teach() {
 		return class_teach;
 	}
+
+
+
+
 	public void setClass_teach(String class_teach) {
 		this.class_teach = class_teach;
 	}
-	
+
+
+
+
 	public EduVO getEduVO() {
 		return eduVO;
 	}
+
+
+
+
 	public void setEduVO(EduVO eduVO) {
 		this.eduVO = eduVO;
 	}
-	public Set<Test_DateVO> getTds() {
-		return tds;
-	}
-	public void setTds(Set<Test_DateVO> tds) {
-		this.tds = tds;
-	}
-	
-	
+
+
+
+
 	public Set<StudentVO> getStus() {
 		return stus;
 	}
+
+
+
+
 	public void setStus(Set<StudentVO> stus) {
 		this.stus = stus;
 	}
 
+
+
+
+	public Set<Test_DateVO> getTds() {
+		return tds;
+	}
+
+
+
+
+	public void setTds(Set<Test_DateVO> tds) {
+		this.tds = tds;
+	}
+
+
+
+
 	public Set<Test_intervalVO> getTis() {
 		return tis;
 	}
+
+
+
+
 	public void setTis(Set<Test_intervalVO> tis) {
 		this.tis = tis;
 	}
-	
+
+
+
+
 	public ClassVO(String class_id, String class_name, String class_contact,
 			String class_teach, EduVO eduVO, Set<StudentVO> stus,
 			Set<Test_DateVO> tds, Set<Test_intervalVO> tis) {
@@ -86,6 +148,10 @@ public class ClassVO implements Serializable{//班級
 		this.tds = tds;
 		this.tis = tis;
 	}
+
+
+
+
 	public ClassVO() {
 		super();
 	}

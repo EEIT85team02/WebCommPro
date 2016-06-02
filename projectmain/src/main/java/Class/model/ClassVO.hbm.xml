@@ -16,7 +16,7 @@
         </many-to-one>
         
   	
-        <set name="StudentVO" table="Student" lazy="false" cascade="all"  inverse="true"  order-by="class_id asc">			
+        <set name="stus" table="Student" lazy="false" cascade="all"  inverse="true"  order-by="stu_id asc">			
 			<key>
 				<column name="class_id" />
 			</key>

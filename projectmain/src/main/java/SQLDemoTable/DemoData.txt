@@ -79,9 +79,8 @@ insert into Member_status (sta_id, sta_name) values ('4','未報名');
 insert into Member_status (sta_id, sta_name) values ('5','已報名');
 insert into Member_status (sta_id, sta_name) values ('6','報名中');
 
-delete from Stu_additional
+
  --Stu_additional
-insert into Stu_additional (stu_id, test_startdate, test_hour_id, stu_applytime, sta_id, emp_id, confirm_time) values (4,'2016-5-09', '3', '2016-5-10', '4', '7004', '15:00');
 
 
  --Mail_template
