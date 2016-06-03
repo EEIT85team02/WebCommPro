@@ -140,7 +140,7 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   //String a=new BASE64Encoder().encode(ciphertextArray[i],);
 
 	   message.setText("Dear "+nameStringArray[i]);
-	   message.setText("http://localhost:8081/projectmain0529/Verification_controller?key="+a+"&email="+emailStringArray[i]);//內文
+	   message.setText("http://localhost:8081/projectmain/Verification_controller?key="+a+"&email="+emailStringArray[i]);//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);
@@ -244,7 +244,7 @@ public static void SendPasswordMailToStudent(String emailString,String nameStrin
 	 
 	   message.setText("Dear "+nameString+"<br/>");
 
-	   message.setText("請登入以下網址更改你的密碼"+"http://localhost:8081/projectmain0529/SendMail/retypePassword.jsp?"+emailString);//內文
+	   message.setText("請登入以下網址更改你的密碼"+"http://localhost:8081/projectmain/SendMail/retypePassword.jsp?"+emailString);//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);
@@ -264,6 +264,7 @@ public static void main(String[] args){
 	String nameString="黃煜勝";
 
 	SendPasswordMailToStudent(emailString,nameString);
+	
 }
 
 }

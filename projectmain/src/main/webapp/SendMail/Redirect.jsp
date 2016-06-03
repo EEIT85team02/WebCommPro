@@ -31,7 +31,7 @@ location.href=surl;
 你好！<%= session.getAttribute("stu_name")%><br/>
 stuID=<%= session.getAttribute("stu_id")%><br/>
 <body><span id="jumpTo">5</span>秒後自動跳轉到CatchStuId.jsp
-<script type="text/javascript">countDown(5,"/projectmain0529/SendMail/CatchStuId.jsp");</script> 
+<script type="text/javascript">countDown(5,"/projectmain/SendMail/CatchStuId.jsp");</script> 
 </body>
 </html>
 </html>
