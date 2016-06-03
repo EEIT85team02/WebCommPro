@@ -117,7 +117,7 @@ public class Test_DateService {
 			detailTest_DateVO.add(a.getTest_date().toString());
 			detailTest_DateVO.add(a.getTest_people().toString());
 			detailTest_DateVO.add(a.getExam_people().toString());
-			detailTest_DateVO.add(a.getTpVO().getTest_hour_id().toString());
+			//detailTest_DateVO.add(a.getTpVO().getTest_hour_id().toString());
 			detailTest_DateVO.add(a.getTpVO().getTest_starthour().toString());
 			detailTest_DateVO.add(a.getTpVO().getTest_endhour().toString());
 			tdVO.add(detailTest_DateVO);

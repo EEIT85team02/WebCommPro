@@ -99,6 +99,30 @@ public class Test_DateServletJSON extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		/******************************** 多筆刪除資料表 ***********************/
+		if ("deleteTdMulti".equals(action)) {
+			
+			try {
+				// ============接收中心代號edu_id資料====================
+				String test_date_idJSON =request.getParameter("test_date_id");
+				//System.out.println("test_date_idJSON========="+test_date_idJSON);
+				// ============呼叫方法刪除資料====================
+				tdSvc = new Test_DateService();
+				tdSvc.deleteTdMulti(test_date_idJSON);
+					
+				out.write("資料刪除成功");
+				return;
+			}catch (ConstraintViolationException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
+			}
+		}
 		/******************************** 刪除資料表 ***********************/
 		if ("deleteTd".equals(action)) {
 			
