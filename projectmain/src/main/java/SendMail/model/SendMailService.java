@@ -1,5 +1,6 @@
 package SendMail.model;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.Properties;
 
@@ -14,17 +15,24 @@ import javax.mail.internet.MimeMessage;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import sun.misc.BASE64Encoder;
 import Student.model.StudentDAO;
 
 //這隻service主要功能是拿來寄信
 public class SendMailService {
 
+	
+
+	
+	
+	
 public void SendMailToStudent(JSONArray ja){
 
 	//將輸入的 json陣列分門別類並new出空陣列
 	String[] emailarray=new String[ja.length()];
 	String[] namearray=new String[ja.length()];
 	String[] mailtextarray=new String[ja.length()];
+
 
 	
 	
@@ -33,11 +41,11 @@ public void SendMailToStudent(JSONArray ja){
 		JSONObject jo=(JSONObject) ja.get(i);
 		String email=jo.getString("stu_email");
 		String stu_name=jo.getString("stu_name");
-		String mailText=jo.getString("mailText");
+		String mail_name=jo.getString("mail_name");
 		
 		emailarray[i]=email;
 		namearray[i]=stu_name;
-		mailtextarray[i]=mailText;
+		mailtextarray[i]=mail_name;
 		 
 		
 		}
@@ -93,6 +101,169 @@ public void SendMailToStudent(JSONArray ja){
 	  } catch (MessagingException|RuntimeException e) {
 		  throw new RuntimeException(e);
 	  }
+}
+
+public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameStringArray,byte[][] publickeyArray,byte[][] privatekeyArray,byte[][] ciphertextArray,String classId){
+  	 
+
+	  String host = "smtp.gmail.com";
+	  int port = 587;
+	  
+
+	  
+	  final String username = "eeit85team02@gmail.com";//發信的帳號
+	  final String password = "pw123456789";//your password
+
+ 
+	  Properties props = new Properties();
+	  props.put("mail.smtp.host", host);
+	  props.put("mail.smtp.auth", "true");
+	  props.put("mail.smtp.starttls.enable", "true");
+	  props.put("mail.smtp.port", port);
+	  Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+		    protected PasswordAuthentication getPasswordAuthentication() {
+		        return new PasswordAuthentication(username, password);
+		    }
+		});
+
+	  try {
+
+	   Message message = new MimeMessage(session);
+	   message.setFrom(new InternetAddress("eeit85team02@gmail.com"));
+	   
+	  for(int i=0,max=nameStringArray.length;i<max;i++){
+		  
+	   message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailStringArray[i]));//對方email
+	   message.setSubject("測試寄信.");
+	   
+	   String a=org.apache.tomcat.util.codec.binary.Base64.encodeBase64URLSafeString(ciphertextArray[i]);
+	   //String a=new BASE64Encoder().encode(ciphertextArray[i],);
+
+	   message.setText("Dear "+nameStringArray[i]);
+	   message.setText("http://localhost:8081/projectmain0529/Verification_controller?key="+a+"&email="+emailStringArray[i]);//內文
+
+	   Transport transport = session.getTransport("smtp");
+	   transport.connect(host, port, username, password);
+	   
+	   Transport.send(message);
+
+	   
+	   System.out.println(nameStringArray[i]+"寄送email結束."+"此人密碼編碼"+ a);
+	  }
+	  
+	  } catch (MessagingException|RuntimeException e) {
+		  throw new RuntimeException(e);
+	  }
+}
+
+public static void SendConfirmMailToStudent(String emailString,String nameString,String test_startdate,String test_hour){
+ 	 
+
+	  String host = "smtp.gmail.com";
+	  int port = 587;
+	  
+
+	  
+	  final String username = "eeit85team02@gmail.com";//發信的帳號
+	  final String password = "pw123456789";//your password
+
+
+	  Properties props = new Properties();
+	  props.put("mail.smtp.host", host);
+	  props.put("mail.smtp.auth", "true");
+	  props.put("mail.smtp.starttls.enable", "true");
+	  props.put("mail.smtp.port", port);
+	  Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+		    protected PasswordAuthentication getPasswordAuthentication() {
+		        return new PasswordAuthentication(username, password);
+		    }
+		});
+
+	  try {
+
+	   Message message = new MimeMessage(session);
+	   message.setFrom(new InternetAddress("eeit85team02@gmail.com"));
+	   
+
+		  
+	   message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailString));//對方email
+	   message.setSubject("恭喜你成功預約偉康考試");
+	   
+	 
+	   message.setText("Dear "+nameString+"<br/>");
+	   message.setText("你的預約日期是"+test_startdate+"時段是"+test_hour);//內文
+
+	   Transport transport = session.getTransport("smtp");
+	   transport.connect(host, port, username, password);
+	   
+	   Transport.send(message);
+
+	   
+
+	  
+	  } catch (MessagingException|RuntimeException e) {
+		  throw new RuntimeException(e);
+	  }
+}
+
+
+
+public static void SendPasswordMailToStudent(String emailString,String nameString){
+	 
+
+	  String host = "smtp.gmail.com";
+	  int port = 587;
+	  
+
+	  
+	  final String username = "eeit85team02@gmail.com";//發信的帳號
+	  final String password = "pw123456789";//your password
+
+
+	  Properties props = new Properties();
+	  props.put("mail.smtp.host", host);
+	  props.put("mail.smtp.auth", "true");
+	  props.put("mail.smtp.starttls.enable", "true");
+	  props.put("mail.smtp.port", port);
+	  Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+		    protected PasswordAuthentication getPasswordAuthentication() {
+		        return new PasswordAuthentication(username, password);
+		    }
+		});
+
+	  try {
+
+	   Message message = new MimeMessage(session);
+	   message.setFrom(new InternetAddress("eeit85team02@gmail.com"));
+	   
+
+		  
+	   message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailString));//對方email
+	   message.setSubject("更改你的密碼");
+	   
+	 
+	   message.setText("Dear "+nameString+"<br/>");
+
+	   message.setText("請登入以下網址更改你的密碼"+"http://localhost:8081/projectmain0529/SendMail/retypePassword.jsp?"+emailString);//內文
+
+	   Transport transport = session.getTransport("smtp");
+	   transport.connect(host, port, username, password);
+	   
+	   Transport.send(message);
+
+	   
+
+	   System.out.println(emailString+"寄送email結束.");	  
+	  } catch (MessagingException|RuntimeException e) {
+		  throw new RuntimeException(e);
+	  }
+}
+
+public static void main(String[] args){
+	String emailString="llluuuyyy123@gmail.com";
+	String nameString="黃煜勝";
+
+	SendPasswordMailToStudent(emailString,nameString);
 }
 
 }

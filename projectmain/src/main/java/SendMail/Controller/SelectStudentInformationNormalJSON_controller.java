@@ -25,15 +25,12 @@ import Student.model.StudentVO;
 import Student.model.StudentDAO;
 import Student.model.StudentService;
 
-@WebServlet("/SendMail/SendMail.do")
-public class SelectStudentInformation_controller extends HttpServlet {
+@WebServlet("/SendMail/SelectStudentInformationNormalJSON_controller.do")
+public class SelectStudentInformationNormalJSON_controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public SelectStudentInformation_controller() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
 
 
 
@@ -54,9 +51,9 @@ public class SelectStudentInformation_controller extends HttpServlet {
 		   StudentService stSvc = new StudentService();
 
 		    try {
-		    	String jsonString=stSvc.getAllStudentInformationByClass1(classId, textNumber);
+		    	String jsonString=stSvc.getAllStudentInformationByClass(classId, textNumber);
 				                    
-				 System.out.println("jsonString======"+jsonString);
+				 System.out.println("jsonString in .do2======"+jsonString);
 				 out.println(jsonString);//把json String丟到jsp 裡面有我那個班上所有的學生
 	
 				
