@@ -37,16 +37,18 @@ public class LoadStartingClassComboBox_controller extends HttpServlet {
 		LoadStartingClassComboBoxService lscs= new LoadStartingClassComboBoxService();
 	
 		String classJsonString=null;
-
+		System.out.println("aaaaaaaaaaaaaa");
 		
 		try {
 			classJsonString=lscs.getAllClass();
 	
+			System.out.println("10111111111111");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println(classJsonString);
 		out.println(classJsonString);
+		System.out.println("255555");
 	}
 
 }

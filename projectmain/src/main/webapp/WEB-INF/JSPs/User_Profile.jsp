@@ -445,7 +445,7 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-20 col-left-offset">
+                    <div class="col-lg-12 col-left-offset">
                         <div class="modal-body">
                          <jsp:include page="/profile.jsp"/>
                        <%--  <jsp:include page='/indexOfAdminPage.jsp' /> --%>

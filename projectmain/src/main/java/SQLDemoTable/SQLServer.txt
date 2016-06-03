@@ -79,7 +79,10 @@ create table Student
   stu_final            int           ,
   stu_note2            nvarchar(100) ,
   class_id			   nvarchar(10)  foreign key references  Class(class_id) NOT NULL,
-  log_pw               varbinary(50) 
+  log_pw               varbinary(max),
+    pub_key               varbinary(max),
+  pri_key               varbinary(max),
+  cipher_text			varbinary(max) 
 );  
 
 

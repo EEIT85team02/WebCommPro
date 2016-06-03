@@ -3,6 +3,8 @@ package SendMail.Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,6 +49,10 @@ public class SendSelectedMail_controller extends HttpServlet {
 		
 		
 		JSONArray ja = new JSONArray(json);
+
+		
+		
+		
 		
 		SendMailService smv =new SendMailService();
 		smv.SendMailToStudent(ja);
