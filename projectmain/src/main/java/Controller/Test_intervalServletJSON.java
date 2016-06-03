@@ -1,4 +1,4 @@
-package Test_intervalController;
+package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,9 +19,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.exception.ConstraintViolationException;
 
 import Test_interval.model.Test_intervalService;
+import Test_interval.model.Test_intervalVO;
 
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
+import Class.model.ClassService;
+import Class.model.ClassVO;
 import Edu.model.*;
 
 
@@ -45,7 +48,7 @@ public class Test_intervalServletJSON extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Test_intervalService tiSvc = null;
 		String action = request.getParameter("action");
-
+		
 		/******************************** 新增資料表 ***********************/
 		if ("addTi".equals(action)) {
 			Map<String, String> Msgs = null;
@@ -57,7 +60,7 @@ public class Test_intervalServletJSON extends HttpServlet {
 				/***************(新增)取得Test_interval-class_id表單資料***************/
 				class_id = request.getParameter("class_id");
 				if (class_id == null || class_id.trim().length() == 0) {
-					Msgs.put("class_idMsg", "班級名稱不可空白");
+					Msgs.put("class_idMsg", "班級代號不可空白");
 				}
 				/***************(新增)取得Test_interval-test_startdate表單資料***************/
 				test_startdate = java.sql.Date.valueOf(request.getParameter("test_startdate"));
@@ -78,36 +81,51 @@ public class Test_intervalServletJSON extends HttpServlet {
 				}else{
 					tiSvc = new Test_intervalService();
 					tiSvc.insertTi(class_id,test_startdate,test_enddate);
+					tiSvc.createTestDateDetailData(class_id,test_startdate,test_enddate);
+					
 					out.write("資料新增成功");
 					return;
 				}
-			} 
-			catch (SQLException e) {
+				
+			}catch (ConstraintViolationException e) {
 				e.printStackTrace();
+				out.write("資料新增失敗");
+				return;
+			} 
+			catch (SQLServerException e) {
+				e.printStackTrace();
+				out.write("資料新增失敗");
+				return;
+			}catch (SQLException e) {
+				e.printStackTrace();
+				out.write("資料新增失敗");
+				return;
 			}
 		}
 		/******************************** 刪除資料表 ***********************/
-//		if ("deleteEdu".equals(action)) {
-//			
-//			try {
-//				// ============接收中心代號edu_id資料====================
-//				Integer edu_id =Integer.parseInt(request.getParameter("edu_id"));
-//				// ============呼叫方法刪除資料====================
-//				eduSvc = new EduService();
-//				eduSvc.deleteEdu(edu_id);
-//				out.write("資料刪除成功");
-//				return;
-//			}catch (ConstraintViolationException e) {
-//				e.printStackTrace();
-//				out.write("資料刪除失敗");
-//				return;
-//			}
-//			catch (SQLException e) {
-//				e.printStackTrace();
-//				out.write("資料刪除失敗");
-//				return;
-//			}
-//		}
+		if ("deleteTi".equals(action)) {
+			
+			try {
+				// ============接收中心代號edu_id資料====================
+				Integer test_interval_id =Integer.parseInt(request.getParameter("test_interval_id"));
+				String class_id = request.getParameter("class_id");
+				// ============呼叫方法刪除資料====================
+				tiSvc = new Test_intervalService();
+				tiSvc.deleteTi(test_interval_id);
+				tiSvc.deleteTestDateDetailData(class_id);
+				out.write("資料刪除成功");
+				return;
+			}catch (ConstraintViolationException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				out.write("資料刪除失敗");
+				return;
+			}
+		}
 		/******************************** 更新資料表 ***********************/	
 		if ("updateTi".equals(action)) { 
 			Map<String, String> Msgs = null;
@@ -147,6 +165,8 @@ public class Test_intervalServletJSON extends HttpServlet {
 				else{
 					tiSvc = new Test_intervalService();
 					tiSvc.updateTi(test_interval_id,class_id,test_startdate,test_enddate);
+					tiSvc.deleteTestDateDetailData(class_id);
+					tiSvc.createTestDateDetailData(class_id,test_startdate,test_enddate);
 					out.write("資料更新成功");
 					return;
 				}
@@ -184,7 +204,26 @@ public class Test_intervalServletJSON extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-	
+		/********************************查詢(確認)班級代號資料是否存在資料庫 ***********************/	
+		if ("checkTiClassId".equals(action)) {
+			try {
+				// ============接收班級代號class_id資料====================
+				String class_id =request.getParameter("class_id");
+				// ============查詢班級單筆資料回傳JSON字串============
+				tiSvc = new Test_intervalService();
+				List<Test_intervalVO> tiVO = tiSvc.findByTiClass_id(class_id);
+				System.out.println(tiVO);
+				System.out.println("size======"+tiVO.size());
+				if(tiVO.size()!=0){
+					out.write("代號已存在");
+				}else {
+					out.write("代號不存在");
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		/******************************** 查詢單一筆資料 ***********************/	
 		if ("getoneTi".equals(action)) {
 			try {

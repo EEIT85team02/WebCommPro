@@ -131,7 +131,7 @@ h1 {
 		<p class="validateTips"></p>
 		<form name="EduUpdateForm" action="updateEdu">
 			<fieldset>
-				<label for="edu_id">中心代號</label> 
+				<label for="edu_id">中心代號(不可修改)</label> 
 				<input type="text" name="edu_id" id="uedu_id" readOnly class="text ui-widget-content ui-corner-all">
 				<label for="edu_name">中心名稱</label> 
 				<input type="text" name="edu_name" id="uedu_name" class="text ui-widget-content ui-corner-all" autocomplete="off"> 
@@ -155,7 +155,7 @@ h1 {
 			//定義table資料來源json，與畫面顯示------>開始
 			var table = $('#EduTable').DataTable( {
 				 	"ajax": {
-			            "url": "EduToJSONInitTableServlet",
+			            "url": "/projectmain/Edu/EduToJSONInitTableServlet",
 			        },
 			     	"oLanguage": {
 					"sProcessing":"資料正處理中...",
@@ -170,7 +170,7 @@ h1 {
                               "sNext":"下頁",
                               "sLast":"尾頁"}
 			 },
-		    	  "bJQueryUI":false,
+		    	  "bJQueryUI":true,
 		    	  "bProcessing": true,
 		    	  "sPaginationType":"full_numbers",
 		    	  

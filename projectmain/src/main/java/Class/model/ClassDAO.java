@@ -166,8 +166,8 @@ public class ClassDAO implements IClassDAO {
 		@Override
 		public Set<StudentVO> getStuByClass_id(String class_id)
 				throws SQLException {
-			Set<StudentVO> set = findByPrimaryKey(class_id).getStudentVO();
-			return null;
+			Set<StudentVO> set = findByPrimaryKey(class_id).getStus();
+			return set;
 		}
 		
 

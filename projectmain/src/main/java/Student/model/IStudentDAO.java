@@ -6,6 +6,9 @@ import java.util.Set;
 
 import Stu_additional.model.Stu_additionalVO;
 
+import Class.model.ClassVO;
+
+
 
 
 public interface IStudentDAO {
@@ -19,4 +22,5 @@ public interface IStudentDAO {
 	public List<String> getAllClass() throws SQLException;
 	public List<StudentVO> getAllStudentByClass(String class_id);	
 	public Set<Stu_additionalVO> getStuByStu_id(Integer stu_id) throws SQLException;
+
 }

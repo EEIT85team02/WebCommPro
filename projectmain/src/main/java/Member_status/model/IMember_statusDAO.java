@@ -6,6 +6,8 @@ import java.util.Set;
 
 import Stu_additional.model.Stu_additionalVO;
 
+import Stu_additional.model.Stu_additionalVO;
+
 
 
 public interface IMember_statusDAO {

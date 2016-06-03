@@ -170,11 +170,11 @@
 
 
 		<!--取SQLserve.jar -->
- 		<dependency> 
-			<groupId>com.iiiedu</groupId> 
-			<artifactId>sqljdbc42</artifactId> 
-			<version>1.0</version> 
-		</dependency> 
+<!--  		<dependency>  -->
+<!-- 			<groupId>com.iiiedu</groupId>  -->
+<!-- 			<artifactId>sqljdbc42</artifactId>  -->
+<!-- 			<version>1.0</version>  -->
+<!-- 		</dependency>  -->
 
 
 		<!--取JSON.jar -->

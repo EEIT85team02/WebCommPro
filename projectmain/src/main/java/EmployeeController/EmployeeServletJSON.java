@@ -47,15 +47,15 @@ public class EmployeeServletJSON extends HttpServlet {
 		String action = request.getParameter("action");
 		
 		/******************************** 多筆刪除資料表 ***********************/
-//		if ("deleteEmpMulti".equals(action)) {
+//		if ("updateEmpdelMulti".equals(action)) {
 //			
 //			try {
-//				// ============接收代號edu_id資料====================
-//				String class_idJSON =request.getParameter("class_id");
+//				// ============接收代號emp_id資料====================
+//				String emp_idJSON =request.getParameter("emp_id");
 //				//System.out.println("class_idJSON========="+class_idJSON);
 //				// ============呼叫方法刪除資料====================
-//				classSvc = new ClassService();
-//				classSvc.deleteClassMulti(class_idJSON);
+//				empSvc = new EmployeeService();
+//				empSvc.updateEmpdelMulti(emp_idJSON);
 //				out.write("資料刪除成功");
 //				return;
 //			}catch (ConstraintViolationException e) {

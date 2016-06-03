@@ -40,19 +40,99 @@ public class Member_statusService {
 		String jsonString = JSONValue.toJSONString(memsc);
 		return jsonString;
 	}
-	public List<Member_statusVO> getStatusOK() throws SQLException {
-		return dao.getStatusOK();
+	public String getStatusOK() throws SQLException {
+		List memsc = new LinkedList();
+		List<Member_statusVO> list = dao.getStatusOK();
+		for(Member_statusVO memVO : list){
+			
+			Set<Stu_additionalVO> set = memVO.getStus();
+			for(Stu_additionalVO stuVO:set){
+			Map map = new HashMap();
+			map.put("stu_name",stuVO.getStudentVO().getStu_name());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id());
+			map.put("stu_applytime",stuVO.getStu_applytime());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
+			memsc.add(map);
+			}
+		}
+		String jsonString = JSONValue.toJSONString(memsc);
+		return jsonString;
 	}
-	public List<Member_statusVO> getStatusNO() throws SQLException {
-		return dao.getStatusNO();
+	public String getStatusNO() throws SQLException {
+		List memsc = new LinkedList();
+		List<Member_statusVO> list = dao.getStatusNO();
+		for(Member_statusVO memVO : list){
+			
+			Set<Stu_additionalVO> set = memVO.getStus();
+			for(Stu_additionalVO stuVO:set){
+			Map map = new HashMap();
+			map.put("stu_name",stuVO.getStudentVO().getStu_name());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id());
+			map.put("stu_applytime",stuVO.getStu_applytime());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
+			memsc.add(map);
+			}
+		}
+		String jsonString = JSONValue.toJSONString(memsc);
+		return jsonString;
 	}
-	public List<Member_statusVO> getStatusNEVER() throws SQLException {
-		return dao.getStatusNEVER();
+	public String getStatusNEVER() throws SQLException {
+		List memsc = new LinkedList();
+		List<Member_statusVO> list = dao.getStatusNEVER();
+		for(Member_statusVO memVO : list){
+			
+			Set<Stu_additionalVO> set = memVO.getStus();
+			for(Stu_additionalVO stuVO:set){
+			Map map = new HashMap();
+			map.put("stu_name",stuVO.getStudentVO().getStu_name());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id());
+			map.put("stu_applytime",stuVO.getStu_applytime());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
+			memsc.add(map);
+			}
+		}
+		String jsonString = JSONValue.toJSONString(memsc);
+		return jsonString;
 	}
-	public List<Member_statusVO> getStatusYES() throws SQLException {
-		return dao.getStatusYES();
+	public String getStatusYES() throws SQLException {
+		List memsc = new LinkedList();
+		List<Member_statusVO> list = dao.getStatusYES();
+		for(Member_statusVO memVO : list){
+			
+			Set<Stu_additionalVO> set = memVO.getStus();
+			for(Stu_additionalVO stuVO:set){
+			Map map = new HashMap();
+			map.put("stu_name",stuVO.getStudentVO().getStu_name());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id());
+			map.put("stu_applytime",stuVO.getStu_applytime());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
+			memsc.add(map);
+			}
+		}
+		String jsonString = JSONValue.toJSONString(memsc);
+		return jsonString;
 	}
-	public List<Member_statusVO> getStatusWAITING() throws SQLException {
-		return dao.getStatusWAITING();
+	public String getStatusWAITING() throws SQLException {
+		List memsc = new LinkedList();
+		List<Member_statusVO> list = dao.getStatusWAITING();
+		for(Member_statusVO memVO : list){
+			
+			Set<Stu_additionalVO> set = memVO.getStus();
+			for(Stu_additionalVO stuVO:set){
+			Map map = new HashMap();
+			map.put("stu_name",stuVO.getStudentVO().getStu_name());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id());
+			map.put("stu_applytime",stuVO.getStu_applytime());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
+			memsc.add(map);
+			}
+		}
+		String jsonString = JSONValue.toJSONString(memsc);
+		return jsonString;
 	}
 }

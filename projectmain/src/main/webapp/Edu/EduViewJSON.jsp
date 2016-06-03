@@ -225,6 +225,7 @@ h1 {
 		      valid = valid && checkRegexp( edu_tel, /^([0-9])+$/, "電話欄位只允許輸入數字 : 0-9" );
 		 		if ( valid ) {
 		 			var Insertdatas = $('form[name="EduInsertForm"]').serialize();
+		 			
 		 			$.post('EduServletJSON.do',Insertdatas,function(data){
 		 				console.log(data);
 		 				if(data=="資料新增失敗"){
@@ -348,6 +349,7 @@ h1 {
 			      valid = valid && checkRegexp( uedu_tel, /^([0-9])+$/, "電話欄位只允許輸入數字 : 0-9" );
 			 		if ( valid ) {
 			 			var Updatedatas = $('form[name="EduUpdateForm"]').serialize();
+			 			console.log(Updatedatas);
 			 			$.get('EduServletJSON.do',Updatedatas,function(data){
 			 				if(data=="資料更新失敗"){
 			 					//console.log(data);

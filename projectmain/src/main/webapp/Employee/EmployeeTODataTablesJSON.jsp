@@ -103,9 +103,9 @@ h1 {
 					<button id="buttonAdd">新增</button>
 					<button id="buttonUpdate">編輯</button>
 					<button id="buttonDelete">刪除</button>
-					<button id="buttonAll">全部選取</button>
-					<button id="buttonRe">取消全選</button>
-					<button id="buttonSel">選取筆數查詢</button>
+<!-- 					<button id="buttonAll">全部選取</button> -->
+<!-- 					<button id="buttonRe">取消全選</button> -->
+<!-- 					<button id="buttonSel">選取筆數查詢</button> -->
 				</div>
 			</div>
 		</div>
@@ -196,6 +196,8 @@ h1 {
 			  	uemp_mail = $('#uemp_mail'),
 			  	udep_name = $('#udep_name'),
 			  	usl_id = $('#uselectSl_id');
+			  	
+			  	deleteOrUpdateValue = null;
 				allFields = $( [] ).add( emp_id ).add( emp_name ).add( emp_mail ).add( dep_name ).add( sl_id );
 		      	uallFields = $( [] ).add( uemp_id ).add( uemp_name ).add( uemp_mail ).add( udep_name ).add( usl_id );
 		      	tips = $( ".validateTips" );
@@ -243,13 +245,14 @@ h1 {
 			     if ( valid ) {
 			  		  	var Insertdatas = $('form[name="EmpInsertForm"]').serialize();
 			 			$.post('EmployeeServletJSON.do',Insertdatas,function(data){
-			 				if(data=="資料新增失敗"){
+			 				if(data=="資料更新失敗"){
 			 					$('.validateTips').css('color','red').text("新增錯誤");
 			 				}
-			 				else if(data=="資料新增成功"){
+			 				else if(data=="資料更新成功"){
 			 					table.ajax.reload();//重新載入data tables的資料
 			 					allFields.val("");//將新增form表單內容清空
 						 		$('.validateTips').text("");////將新增form表單驗證區塊內容清空
+						 		deleteOrUpdateValue = null;
 				 				EmpInsertForm.dialog( "close" );//將新增form表單關閉
 				 				//取回資料庫資料並建立table內容結束
 			 				}
@@ -294,10 +297,23 @@ h1 {
 			    EmpInsertForm.dialog( "open" );
 			    });//diolog程式部分結束
 			
-			    //點選tr資料，更換class類別,若被選取則更新為未選取，反之選取
+			    //點選要刪除或編輯的那行，按刪除或編輯鍵即可，先將選擇的[行]資料儲存
 				$('#EmployeeTable tbody').on( 'click', 'tr', function () {
-					$(this).toggleClass('selected');
-				    } );
+					deleteOrUpdateValue = $(this).find('td:eq(0)').text(); 
+					emp_idUpdateValue = $(this).find('td:eq(0)'); 
+					emp_nameUpdateValue = $(this).find('td:eq(1)');
+					emp_mailUpdateValue = $(this).find('td:eq(2)');
+					dep_nameUpdateValue = $(this).find('td:eq(3)');
+					sl_idUpdateValue = $(this).find('td:eq(4)');
+					console.log(deleteOrUpdateValue);
+						if ( $(this).hasClass('selected') ) {
+				            $(this).removeClass('selected');
+				        }
+				        else {
+				            table.$('tr.selected').removeClass('selected');
+				            $(this).addClass('selected');
+				        }
+				 } );
 			
 			 	//diolog程式部分以下(更新)
 				//設定表單寬度視窗資料開始
@@ -312,75 +328,68 @@ h1 {
 				        	EmpUpdateForm.dialog( "close" );
 				        }
 				      },
-			      close: function() {
-			        form[ 0 ].reset();
-			        uallFields.removeClass( "ui-state-error" );
-			      }
-			    });
+			      	close: function() {
+			        	form[ 0 ].reset();
+			        	uallFields.removeClass( "ui-state-error" );
+			      	}
+			      });
 			    
 			  	//設定表單寬度視窗資料結束
 			  	form = EmpUpdateForm.find( "form" ).on( "submit", function( event ) {
 			      event.preventDefault();
 			      updateEmpFormToCreateTable();
 			    });
-			  //綁定click事件使用者編輯icon，開啟dialog 表單ClassUpdateForm(判斷資料是否多選-僅能選取一筆!!)
-			  //綁定click事件使用者編輯icon，開啟dialog 表單ClassUpdateForm
+			  
+			    //綁定click事件使用者編輯icon，開啟dialog 表單EmployeeUpdateForm
 			 	$('#buttonUpdate').click( function () {
-			 		
-			 		if(table.rows('.selected').data().length == 0){
-			    		alert("請選取一筆要進行編輯的資料");
-			    	}else if(table.rows('.selected').data().length > 1){
-			    		alert("[編輯]功能僅能選取一筆資料。");
-			    	}else if(table.rows('.selected').data().length == 1){
-			    		ClickUpdateValue = $('tr.selected').find('td:eq(0)').text();//抓到選到的class為selected的員工代號
-				 		console.log(ClickUpdateValue);
-				 		$.getJSON('EmployeeServletJSON.do', {"action":"getoneEmp","emp_id":ClickUpdateValue}, function(datas) {
-							console.log(datas);
-							//將抓到的員工代號，發送request請資料庫傳回該筆資料JSON
-							$.each(datas, function(i, emps) {
-								uemp_id.val(emps.emp_id);
-							  	uemp_name.val(emps.emp_name),
-							  	uemp_mail.val(emps.emp_mail),
-							  	udep_name.val(emps.dep_name),
-							  	usl_id.val(emps.sl_id)
-							  	
-// 							  	$.getJSON('Sign_listServletJSON.do', {"action":"getALLSl"}, function(datas) {
-// 									console.log("aaaa"+datas);
-// 									$.each(datas, function(i, sls) {
-// 									sl_id.append( 
-// 						 			"<option value="+ sls.sl_id +">" + sls.sl_name + "</option>");
-// 									});
-// 								});
-								
-							});
-						});
-				 		EmpUpdateForm.dialog( "open" );
-			    	}
-			 	} );
-			    //點選修改鍵，所執行的方法
-			    function updateEmpFormToCreateTable() {
-				      var valid = true;
-				      uallFields.removeClass( "ui-state-error" );
-				      valid = valid && checkLength( usl_id, "權限代號/名稱", 1, 30 );
-					  valid = valid && checkLength( uemp_name, "員工名稱", 1, 20 );
-				      valid = valid && checkLength( uemp_mail, "Email", 1, 30 );
-				      valid = valid && checkLength( udep_name, "部門", 1, 30 );
-				      if ( valid ) {
-				 			var Updatedatas = $('form[name="EmpUpdateForm"]').serialize();
-				 			$.get('EmployeeServletJSON.do',Updatedatas,function(data){
-				 				console.log(data);
-				 				if(data=="資料更新失敗"){
-				 					 $('.validateTips').css('color','red').text("更新錯誤");
-				 				}
-				 				else if(data=="資料更新成功"){
-				 					table.ajax.reload();//重新載入data tables的資料 ?? 須改為直接抓取原更新表單的值回填回去表格
-				 					EmpUpdateForm.dialog( "close" );
-				 				}
-				 			});
-				 		}
-				      sel=[];
-				      return valid;
-				    }
+		    	if(deleteOrUpdateValue==null){
+		    		alert("請先選取要編輯的資料");
+		    	}else{
+		    		uemp_id.val(emp_idUpdateValue.text());
+	    			uemp_name.val(emp_nameUpdateValue.text());
+	    			uemp_mail.val(emp_mailUpdateValue.text());
+	    			udep_name.val(dep_nameUpdateValue.text());
+	    			usl_id.val(sl_idUpdateValue.text());
+	    			EmpUpdateForm.dialog( "open" );
+		    	}
+		    } );
+		    //點選修改鍵，所執行的方法
+		    function updateEmpFormToCreateTable() {
+			      var valid = true;
+			      uallFields.removeClass( "ui-state-error" );
+				  valid = valid && checkLength( usl_id, "權限代號/名稱", 1, 30 );
+				  console.log(valid);
+			      valid = valid && checkLength( uemp_id, "員工代號", 1, 10 );
+			      console.log(valid);
+				  valid = valid && checkLength( uemp_name, "員工名稱", 1, 20 );
+				  console.log(valid);
+			      valid = valid && checkLength( uemp_mail, "Email", 1, 30 );
+			      console.log(valid);
+			      valid = valid && checkLength( udep_name, "部門", 1, 30 );
+			      console.log(valid);
+			      
+			 		if ( valid ) {
+			 		console.log(valid);
+			 			var Updatedatas = $('form[name="EmpUpdateForm"]').serialize();
+			 			console.log(Updatedatas);
+			 			$.get('EmployeeServletJSON.do',Updatedatas,function(data){
+			 				if(data=="資料更新失敗"){
+			 					 $('.validateTips').css('color','red').text("更新錯誤");
+			 				}
+			 				else if(data=="資料更新成功"){
+			 					
+			 					table.ajax.reload();//重新載入data tables的資料
+			 					uallFields.val("");//將修改form表單內容清空
+						 		$('.validateTips').text("");////將新增form表單驗證區塊內容清空
+				 				EmpUpdateForm.dialog( "close" );//將修改form表單關閉
+				 				//取回資料庫資料並建立table內容結束
+			 				
+			 				}
+			 			});
+			 		}
+			      return valid;
+			    }
+			    
 			  	//diolog程式部分以下(刪除)
 				//設定刪除確認表單寬度視窗資料開始
 			    EmpDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
@@ -396,6 +405,37 @@ h1 {
 			          }
 			        }
 			    });
+			    
+			    $('#buttonDelete').click( function () {
+		    	
+		    		if(deleteOrUpdateValue==null){
+		    		console.log(deleteOrUpdateValue)
+							    	
+		    			alert("請先選取要刪除的資料");
+		    		}else{
+		    			EmpDeleteConfirm.dialog( "open" );
+		    		}
+		    	} );
+		    	//點選刪除鍵，所執行的方法
+				function deleteEmpFormToCreateTable() {
+					$.get('EmployeeServletJSON.do',{"emp_id":deleteOrUpdateValue,
+												 	"emp_name":emp_nameUpdateValue.text(),
+												 	"emp_mail":emp_mailUpdateValue.text(),
+												 	"dep_name":dep_nameUpdateValue.text(),
+												 	"sl_id":sl_idUpdateValue.text(),
+												 	"action":"updateEmpdel"},function(data){
+				    	console.log(emp_nameUpdateValue)
+						if(data=="資料刪除成功"){
+							console.log("111111");
+							table.row('.selected').remove().draw( false );//刪除畫面上class為selected的那行
+							EmpDeleteConfirm.dialog( "close" );
+						}else if (data=="資料刪除失敗"){
+							$('#dialog-deleteForm p').text('資料刪除失敗，資料使用中');
+						}
+					});
+				}	
+		    	
+			    
 			 	
 			    //點選刪除鍵，所執行的方法
 // 				function deleteEmpFormToCreateTable(){
@@ -411,22 +451,24 @@ h1 {
 // 				sel=[];
 // 		    	}
 // 				var sel=[];
-			   $('#buttonDelete').click( function () {
-			    	if(table.rows('.selected').data().length==0){
-			    		alert("請先選取要刪除的資料");
-			    	}else if(table.rows('.selected').data().length>=1){
-			    		var trSelLength = $('tbody > tr.selected');//tr被SELECT到的長度
-			    		alert("共選取"+table.rows('.selected').data().length+"筆資料。");
-			    		for(var i=0,max=trSelLength.length;i<max;i++){
-			    			var	obj = $('tbody > tr.selected:eq('+i+')').find('td:eq(0)').text();
-			    			sel.push(obj);//將obj資料加到sel陣列
-			    		}
-			    		console.log("sel====="+sel);
-			    		selJSON =JSON.stringify(sel);//將JSON轉成字串
-			    		console.log("selJSON-----"+selJSON);
-			    		EmpDeleteConfirm.dialog( "open" );
-			    	}
-			    });
+// 			   $('#buttonDelete').click( function () {
+// 			    	if(table.rows('.selected').data().length==0){
+// 			    		alert("請先選取要刪除的資料");
+// 			    	}else if(table.rows('.selected').data().length>=1){
+// 			    		var trSelLength = $('tbody > tr.selected');//tr被SELECT到的長度
+// 			    		alert("共選取"+table.rows('.selected').data().length+"筆資料。");
+// 			    		for(var i=0,max=trSelLength.length;i<max;i++){
+// 			    			var	obj = $('tbody > tr.selected:eq('+i+')').find('td:eq(0)').text();
+// 			    			sel.push(obj);//將obj資料加到sel陣列
+// 			    		}
+// 			    		console.log("sel====="+sel);
+// 			    		selJSON =JSON.stringify(sel);//將JSON轉成字串
+// 			    		console.log("selJSON-----"+selJSON);
+// 			    		EmpDeleteConfirm.dialog( "open" );
+// 			    	}
+// 			    });
+
+				
 			    
 			  //呼叫ServletJSON取回下拉選單資料--編輯表單
 			    $.getJSON('Sign_listServletJSON.do', {"action":"getALLSl"}, function(datas) {
@@ -441,17 +483,17 @@ h1 {
 				
 				
 			  //icon全部選取
-				$('#buttonAll').click(function(){
-					$('tbody > tr').addClass('selected');
-				})
-				//icon取消全選
-				$('#buttonRe').click(function(){
-					$('tbody > tr').removeClass('selected');
-				})
-				//icon查詢選取筆數
-				 $('#buttonSel').click( function () {
-				        alert( table.rows('.selected').data().length +' 筆資料被選取' );
-				});
+// 				$('#buttonAll').click(function(){
+// 					$('tbody > tr').addClass('selected');
+// 				})
+// 				//icon取消全選
+// 				$('#buttonRe').click(function(){
+// 					$('tbody > tr').removeClass('selected');
+// 				})
+// 				//icon查詢選取筆數
+// 				 $('#buttonSel').click( function () {
+// 				        alert( table.rows('.selected').data().length +' 筆資料被選取' );
+// 				});
 	
 	 });//load函數結束
 	</script>
