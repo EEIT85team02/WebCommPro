@@ -116,7 +116,7 @@ create table Test_interval
 (
   test_interval_id      int            primary key  identity , 
   class_id               nvarchar(10)  UNIQUE foreign key  references  Class(class_id) NOT NULL,    
-  test_startdate         date          UNIQUE NOT NULL ,           
+  test_startdate         date          NOT NULL ,           
   test_enddate           date          NOT NULL
 );   
 
@@ -162,7 +162,7 @@ create table Member_status
 (
   stu_add_id       int            identity primary key ,
   stu_id           int   foreign key references  Student(stu_id) NOT NULL, 
-  test_startdate   date      foreign key references  Test_interval(test_startdate) NOT NULL,
+  test_startdate   date      NOT NULL,
   test_hour_id     int	          foreign key references  Test_period(test_hour_id) NOT NULL,
   stu_applytime    time,
   sta_id           int            foreign key references  Member_status(sta_id) NOT NULL ,

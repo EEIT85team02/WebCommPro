@@ -104,6 +104,8 @@ public class EduDAO implements IEduDAO {
 
 			IEduDAO dao = new EduDAO();
 			List<EduVO> list1;
+			int count= 0;
+			System.out.println("=============="+ count++);
 			try {
 				list1 = dao.getAll();
 				for (EduVO edu : list1) {
