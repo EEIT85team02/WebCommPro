@@ -3,6 +3,7 @@ package Stu_additional.model;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,6 +11,8 @@ import java.util.Map;
 
 import org.json.simple.JSONValue;
 
+import Class.model.ClassVO;
+import Edu.model.EduVO;
 import Student.model.StudentVO;
 
 
@@ -19,6 +22,37 @@ public class Stu_additionalService {
 	public Stu_additionalService() {
 		dao = new Stu_additionalDAO();
 	}
+	
+	public void updateStum(Integer stu_id,Integer stu_group,String stu_note1,Integer stu_seatno,
+			String stu_name,String stu_sch,Integer stu_sex,Integer stu_age,String stu_email,
+			Integer stu_pre,Double stu_implement,Date stu_testtime,Double stu_interview,
+			Double stu_total,Date stu_workdate,Double stu_except,Integer stu_final,
+			String stu_note2,String log_pw,String class_id) throws SQLException {
+		StudentVO stuVO = new StudentVO();
+		stuVO.setStu_id(stu_id);
+		stuVO.setStu_group(stu_group);
+		stuVO.setStu_note1(stu_note1);
+		stuVO.setStu_seatno(stu_seatno);
+		stuVO.setStu_name(stu_name);
+		stuVO.setStu_sch(stu_sch);
+		stuVO.setStu_sex(stu_sex);
+		stuVO.setStu_age(stu_age);
+		stuVO.setStu_email(stu_email);
+		stuVO.setStu_pre(stu_pre);
+		stuVO.setStu_implement(stu_implement);
+		stuVO.setStu_testtime(stu_testtime);
+		stuVO.setStu_interview(stu_interview);
+		stuVO.setStu_total(stu_total);
+		stuVO.setStu_workdate(stu_workdate);
+		stuVO.setStu_except(stu_except);
+		stuVO.setStu_final(stu_final);
+		stuVO.setStu_note2(stu_note2);
+		stuVO.setLog_pw(log_pw);
+		stuVO.setClass_id(class_id);
+		
+		dao.update(stuVO);
+	}
+	
 	public List<Stu_additionalVO> getAll() throws SQLException {
 		return dao.getAll();
 	}
@@ -59,5 +93,24 @@ public class Stu_additionalService {
 		String jsonString = JSONValue.toJSONString(stusc);
 		return jsonString;
 		
+	}
+	
+	public String getAllStumToJSONInitTable() throws SQLException{
+		List<Stu_additionalVO> list=dao.getAll();
+		List<List<String>> stu_add = new LinkedList<List<String>>();
+		String jsonValue = null;
+		for(Stu_additionalVO a :list){
+			List<String> detailStu_add = new ArrayList<String>();
+			detailStu_add.add(a.getStudentVO().getStu_id().toString());
+			detailStu_add.add(a.getStudentVO().getStu_name());
+			detailStu_add.add(a.getStudentVO().getClassVO().getClass_id());
+			detailStu_add.add(a.getStudentVO().getClassVO().getClass_name());
+			detailStu_add.add(a.getStudentVO().getStu_email());
+			stu_add.add(detailStu_add);
+		}
+		Map<String,List<List<String>>> mapJSON=new HashMap<String,List<List<String>>>();
+		mapJSON.put("data",stu_add);
+		jsonValue = JSONValue.toJSONString(mapJSON);
+		return jsonValue;
 	}
 }
