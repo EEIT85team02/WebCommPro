@@ -15,7 +15,7 @@ public class Stu_additionalVO implements Serializable{
 	private Date test_start;
 	private Date test_end;
 	private String stu_applytime;
-	private Time confirm_time ; 
+	private timestamp confirm_time ; 
 	private StudentVO studentVO;
 	private Member_statusVO Member_statusVO;
 	private EmployeeVO EmployeeVO;

@@ -174,12 +174,13 @@ public class UpStuScoreJSON extends HttpServlet {
 			byte[] pub_key = req.getParameter("pub_key").getBytes("UTF-8");
 			byte[] pri_key =req.getParameter("pri_key").getBytes("UTF-8");
 			byte[] cipher_text = req.getParameter("cipher_text").getBytes("UTF-8");
+			byte[] log_pw = req.getParameter("log_pw").getBytes("UTF-8");
 			if (!errorMsgs.isEmpty()) {
 				out.write("資料更新失敗");
 			}else{
 			StudentService stuSvc = new StudentService();
 			try {
-				stuSvc.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_testtime,stu_total,stu_workdate,stu_except,stu_final,stu_note2,stu_implement, stu_interview,stu_seatno,class_id,pub_key,pri_key,cipher_text);
+				stuSvc.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_testtime,stu_total,stu_workdate,stu_except,stu_final,stu_note2,stu_implement, stu_interview,stu_seatno,class_id,pub_key,pri_key,cipher_text,log_pw);
 				out.write("資料更新成功");
 
 			} catch (SQLException e) {

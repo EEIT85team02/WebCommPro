@@ -81,7 +81,9 @@ public class UpStuaddStatusJSON extends HttpServlet {
 			String stu_applytime = req.getParameter("stu_applytime");
 			Integer sta_id = Integer.parseInt(req.getParameter("sta_id"));	
 			String emp_id = req.getParameter("emp_id");	
-			Time confirm_time = java.sql.Time.valueOf(req.getParameter("confirm_time"));	
+			System.out.println(req.getParameter("confirm_time"));
+//			Time confirm_time = new java.sql.Time(new java.util.Date(req.getParameter("confirm_time")).getTime());	
+			Time confirm_time = new java.sql.Time(new java.util.Date().getTime());	
 			
 			Stu_additionalService stuaddSvc = new Stu_additionalService();
 			try {

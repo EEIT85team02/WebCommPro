@@ -73,6 +73,7 @@ public class StudentService {
 			map.put("pub_key",stuVO.getPub_key());
 			map.put("pri_key",stuVO.getPri_key());
 			map.put("cipher_text",stuVO.getCipher_text());
+			map.put("log_pw",stuVO.getLog_pw());
 			stusc.add(map);
 		String jsonString = JSONValue.toJSONString(stusc);
 		return jsonString;
@@ -97,7 +98,7 @@ public class StudentService {
 		
 	}
 
-	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,java.sql.Date stu_testtime,Double stu_total,java.sql.Date stu_workdate,Double stu_except,Integer stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno, String class_id,byte[] pub_key,byte[] pri_key,byte[] cipher_text) throws SQLException {
+	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,java.sql.Date stu_testtime,Double stu_total,java.sql.Date stu_workdate,Double stu_except,Integer stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno, String class_id,byte[] pub_key,byte[] pri_key,byte[] cipher_text,byte[] log_pw) throws SQLException {
 
 		StudentVO stuVO = new StudentVO();
 
@@ -122,6 +123,7 @@ public class StudentService {
 		stuVO.setPub_key(pub_key);			
 		stuVO.setPri_key(pri_key);
 		stuVO.setCipher_text(cipher_text);
+		stuVO.setLog_pw(log_pw);
 		
 		ClassVO clavo = new ClassVO();
 		clavo.setClass_id(class_id);

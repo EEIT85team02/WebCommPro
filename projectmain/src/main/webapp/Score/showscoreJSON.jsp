@@ -68,6 +68,7 @@
         <input type="hidden" id="pub_keyhid" name="pub_key" >
         <input type="hidden" id="pri_keyhid" name="pri_key" >
         <input type="hidden" id="cipher_texthid" name="cipher_text" >
+        <input type="hidden" id="log_pwhid" name="log_pw" >
       </div>
     </div>
     </form>
@@ -155,6 +156,7 @@
  								 $("#pub_keyhid").val(score.pub_key);
  								 $("#pri_keyhid").val(score.pri_key);
  								 $("#cipher_texthid").val(score.cipher_text);
+ 								$("#log_pwhid").val(score.log_pw);
 // 								 console.log(score.class_id);
 							 })
 						 })
