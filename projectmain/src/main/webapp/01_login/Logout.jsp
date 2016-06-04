@@ -20,6 +20,6 @@
 <!--  因為之後會把logOUt包在另一個資料夾 所以要寫../ -->
 <%-- <a href="<c:url value='../index.jsp' /> ">回首頁</a> --%>
 
-<a href="<c:url value='/index.jsp' /> ">回首頁</a>
+<a href="<c:url value='/WebComm_index.jsp' /> ">回首頁</a>
 </body>
 </html>

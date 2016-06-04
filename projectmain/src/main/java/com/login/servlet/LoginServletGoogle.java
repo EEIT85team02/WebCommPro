@@ -35,7 +35,7 @@ public class LoginServletGoogle extends HttpServlet {
 		// 把target從session挖出來 再存起來
 		
 		//service = request.getSession().getAttribute("target")==null?service:request.getSession().getAttribute("target").toString();
-		service = "/Login2.do";
+		service = "//LoginForwarded.do";
 		// 錯誤碼
 		System.out.println("Error Code 授權失敗,或是還未Google驗證"+"\n"
 				+"授權代碼:"+request.getParameter("code")+"\n"

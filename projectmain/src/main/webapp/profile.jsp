@@ -21,7 +21,42 @@
         <script src="js/jquery-steps-master/lib/jquery.cookie-1.3.1.js"></script>
         <script src="js/jquery-steps-master/build/jquery.steps.js"></script>  
    
+        <style>
+        .user-row {
+		    margin-bottom: 14px;
+		}
+		
+		.user-row:last-child {
+		    margin-bottom: 0;
+		}
+		
+		.dropdown-user {
+		    margin: 13px 0;
+		    padding: 5px;
+		    height: 100%;
+		}
+		
+		.dropdown-user:hover {
+		    cursor: pointer;
+		}
+		
+		.table-user-information > tbody > tr {
+		    border-top: 1px solid rgb(221, 221, 221);
+		}
+		
+		.table-user-information > tbody > tr:first-child {
+		    border-top: 0;
+		}
+		
+		
+		.table-user-information > tbody > tr > td {
+		    border-top: 0;
+		}
+		.toppad
+		{margin-top:20px;
+		}
         
+        </style>
         <script>
                
         $(document).ready(function() {
@@ -32,7 +67,7 @@
                         bodyTag: "section",
                         transitionEffect: "slideLeft",
                         enableFinishButton: false,
-                        enablePagination: true,
+                        enablePagination: false,
                         enableAllSteps: true,
                         titleTemplate: "#title#",
                         cssClass: "wizard" ,
@@ -52,11 +87,8 @@
                 		  }, 'json');
                  */
                 
-                
-                
-                
-                var id = "4";
-        /*          console.log("-----1----");
+                var id =<%=session.getAttribute("stu_id")%>;
+        /*       
 				$.getJSON('StudentProfileServlet?action=stu&',{'stu_id':id},function(data){
 					$.each(data,function(key,val){
 						
@@ -98,7 +130,7 @@
      
 
         <div class="content" >
-            <div id="wizard">        
+            <div id="wizard" class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad">        
                <h2>基本資料</h2>                
 	            <section>			
 
@@ -109,9 +141,9 @@
 			            </div>
 			            <div class="panel-body">
 			              <div class="row">
-			                <div class=" col-md-6 col-lg-6 "> 
+			                <div class=" col-md-12 col-lg-12 "> 
 			                  <table class="table table-user-information">
-			                    <tbody>
+			                    <tbody >
 			                      <tr>
 			                        <td>ID:</td>
 			                        <td id="stu_id"></td>
@@ -144,15 +176,12 @@
 			                     
 			                    </tbody>
 			                  </table>
-			                  
-			                  <a href="#" class="btn btn-primary">My Sales Performance</a>
-			                  <a href="#" class="btn btn-primary">Team Sales Performance</a>
 			                </div>
 			              </div>
 			            </div>
                     <div class="panel-footer">
-                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                    	<a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                        <!-- <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> -->
+                    	<a href="EditUserProfile.jsp" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
                     </div>
 		          </div>
 		        </div>
@@ -169,7 +198,7 @@
 			            </div>
 			            <div class="panel-body">
 			              <div class="row">
-			                <div class=" col-md-6 col-lg-6 "> 
+			                <div class=" col-md-12 col-lg-12 "> 
 			                  <table class="table table-user-information">
 			                    <tbody>
 			                      <tr>
@@ -193,6 +222,10 @@
 			                  </table>    
 			                </div>
 			              </div>
+			              <div class="panel-footer">
+                        <!-- <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> -->
+                    	<a href="EditUserProfile.jsp" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+			            </div>
 			            </div>
 		          </div>
 		        </div>

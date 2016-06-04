@@ -1,8 +1,8 @@
-drop database demo;
-create database demo;
-go
-use demo
-go
+--drop database demo;
+--create database demo
+--go
+--use demo
+--go
 
 drop table Mail_template;
 drop table Stu_additional;
@@ -78,8 +78,11 @@ create table Student
   stu_except           float         ,
   stu_final            int           ,
   stu_note2            nvarchar(100) ,
-  class_id			   nvarchar(10)  foreign key references  Class(class_id) NOT NULL,
-  log_pw               varbinary(50) 
+  class_id		nvarchar(10)  foreign key references  Class(class_id) NOT NULL,
+  pub_key               varbinary(50),
+  pri_key               varbinary(50),
+  cipher_text			varbinary(50)
+   
 );  
 
 
@@ -160,7 +163,7 @@ create table Member_status
 
  create table Stu_additional
 (
-  stu_add_id       int            identity primary key ,
+   stu_add_id       int            identity primary key ,
   stu_id           int   foreign key references  Student(stu_id) NOT NULL, 
   test_startdate   date      foreign key references  Test_interval(test_startdate) NOT NULL,
   test_hour_id     int	          foreign key references  Test_period(test_hour_id) NOT NULL,

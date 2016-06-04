@@ -17,8 +17,16 @@ public class LoginService {
 			try {
 				List<StudentVO> vos;
 				vos = dao.getAll();
+				
 				for(StudentVO vo:vos){
-					if(vo.getStu_name().equals(id) && vo.getStu_email().equals(password)){
+					System.out.println("password:" + password);
+					System.out.println("id:" + id);
+					System.out.println("vo.getStu_id():" + vo.getStu_id());
+					System.out.println("vo.getStu_email():" + vo.getStu_email());
+					System.out.println(vo.getStu_id().toString().equals(password));
+					System.out.println(vo.getStu_email().equals(id));
+					if(vo.getStu_id().toString().equals(password) && vo.getStu_email().equals(id)){
+						System.out.println("---------------checkIDPassword-------------------");
 						return vo;
 					}
 				}

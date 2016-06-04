@@ -47,10 +47,10 @@ public class StudentProfileServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			request.setCharacterEncoding("UTF-8");
-			//String action = request.getParameter("action");
-			String action ="stu_add";
+			String action = request.getParameter("action");
+			//String action ="stu_add";
 			Integer stu_id = Integer.parseInt(request.getParameter("stu_id"));
-			//Integer stu_id = 4;
+			//Integer stu_id = 1;
 			
 			System.out.println("------1------");
 			System.out.println(stu_id);

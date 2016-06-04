@@ -46,6 +46,7 @@ insert into student values (2,'備註1',20,'黃煜勝15',77,'淡江大學電機�
 insert into student values (2,'備註1',20,'黃煜勝16',77,'淡江大學電機系',1,'test18@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MMMH25',null,null,null);
 insert into student values (2,'備註1',20,'黃煜勝17',77,'淡江大學電機系',1,'test19@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MMMH25',null,null,null);
 insert into student values (2,'備註1',20,'test',77,'淡江大學電機系',1,'eeit85team02@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null,null,null);
+
 --Test_period
 insert into Test_period values('10:00','12:00');
 
@@ -97,6 +98,7 @@ insert into Member_status (sta_id, sta_name) values ('6','報名中');
 
 
  --Stu_additional
+ insert into Stu_additional (stu_id, test_startdate, test_hour_id, stu_applytime, sta_id, emp_id, confirm_time) values (4,'2016-5-09', '3', '2016-5-10', '4', '7004', '15:00');
 
 
  --Mail_template
