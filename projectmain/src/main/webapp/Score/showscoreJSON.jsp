@@ -13,7 +13,7 @@
     color:#DF0101;
 }
 .my-valid-class {
-    color:#2E2EFE;
+    color:#CC2EFA;
 }
 </style>
 </head>

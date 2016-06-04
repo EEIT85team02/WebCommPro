@@ -28,7 +28,7 @@ public class StudentService {
 	public String getOneSta(Integer stu_id) throws SQLException {	
 		List memsc=new LinkedList();
 		StudentVO stuVO=dao.findByPrimaryKey(stu_id);	
-		Set<Stu_additionalVO> set = dao.getStuByStu_id(stu_id);
+		Set<Stu_additionalVO> set = dao.getStuByStu_id(stu_id);	
 		for(Stu_additionalVO stuaddVO:set){
 			Map map = new HashMap();
 			map.put("stu_name",stuVO.getStu_name());
@@ -37,6 +37,8 @@ public class StudentService {
 			map.put("stu_applytime",stuaddVO.getStu_applytime());
 			map.put("sta_name",stuaddVO.getMember_statusVO().getSta_name());
 			memsc.add(map);
+//		System.out.println(stuaddVO.getMember_statusVO().getSta_name());
+//		System.out.println(stuVO.getStu_name());
 		}
            
 		String jsonString = JSONValue.toJSONString(memsc);

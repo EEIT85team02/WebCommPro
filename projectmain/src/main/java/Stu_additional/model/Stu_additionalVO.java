@@ -14,7 +14,6 @@ public class Stu_additionalVO implements Serializable{
 	private Integer stu_add_id ;
 	private Date test_startdate ;
 	private String stu_applytime;
-	private Integer sta_id;
 	private Time confirm_time ; 
 	private StudentVO studentVO;
 	private Member_statusVO Member_statusVO;
@@ -60,12 +59,6 @@ public class Stu_additionalVO implements Serializable{
 	}
 	public void setMember_statusVO(Member_statusVO member_statusVO) {
 		Member_statusVO = member_statusVO;
-	}
-	public Integer getSta_id() {
-		return sta_id;
-	}
-	public void setSta_id(Integer sta_id) {
-		this.sta_id = sta_id;
 	}
 	public Time getConfirm_time() {
 		return confirm_time;
