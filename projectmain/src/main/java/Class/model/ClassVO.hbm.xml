@@ -7,7 +7,6 @@
         
         <id name="class_id" column="class_id">
         
-        <generator class = "identity" />
         </id>
         <property name="class_name" column="class_name"/>
         <property name="class_contact" column="class_contact"/>
