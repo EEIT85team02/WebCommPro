@@ -1,6 +1,7 @@
 package Student.model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -83,7 +84,8 @@ public class StudentService {
 		Stu_additionalVO stu_addVO=(Stu_additionalVO) dao.getStuByStu_id(stu_id);
 			Map<String,String> map = new HashMap<String,String>();
 			map.put("stu_id",stu_addVO.getStudentVO().getStu_id().toString());
-			map.put("Test_startdate",stu_addVO.getTest_startdate().toString());
+			map.put("Test_start",stu_addVO.getTest_start().toString());
+			map.put("Test_end",stu_addVO.getTest_end().toString());
 			map.put("Test_hour_id",stu_addVO.getTest_periodVO().getTest_starthour().toString());
 			map.put("Stu_applytime(",stu_addVO.getStu_applytime());
 			map.put("Emp_id",stu_addVO.getEmployeeVO().getEmp_name());
@@ -168,25 +170,85 @@ public class StudentService {
 		return jsonString;
 	}
 	
+	public String getAllStudentToJSONInitTable(List<StudentVO> list,String textNumber) throws SQLException{
+		Mail_templateDAO mtSvc =new Mail_templateDAO();//new Mail_templateDAO
+		String mail_name = mtSvc.findByPrimaryKey(Integer.parseInt(textNumber)).getMail_name(); //抓Mail_template裡面真正的文字
+	
+		StudentDAO dao=new StudentDAO();
+
+		List<List<String>> stuVO = new LinkedList<List<String>>();
+		String jsonValue = null;
+		int count=1;//為了設value的值
+		for(StudentVO a :list){
+			List<String> detailStuVO = new ArrayList<String>();
+			detailStuVO.add("<input type='checkbox' name='checkboxname' value='"+count+"'>");
+			count++;
+			detailStuVO.add(a.getStu_name().toString());
+			detailStuVO.add(a.getStu_age().toString());
+			detailStuVO.add(a.getStu_sch());
+			detailStuVO.add(a.getStu_email());
+			detailStuVO.add(mail_name);
+			stuVO.add(detailStuVO);
+		}
+		Map<String,List<List<String>>> mapJSON=new HashMap<String,List<List<String>>>();
+		mapJSON.put("data",stuVO);
+		jsonValue = JSONValue.toJSONString(mapJSON);
+		return jsonValue;
+	}
+	public static String getAllStudentInformationByClass1(String class_id,String textNumber) throws SQLException {
+		StudentService ss=new StudentService();
+		Mail_templateDAO mtSvc =new Mail_templateDAO();//new Mail_templateDAO
+		String mail_name = mtSvc.findByPrimaryKey(Integer.parseInt(textNumber)).getMail_name(); //抓Mail_template裡面真正的文字
+		List<StudentVO> list= dao.getAllStudentByClass(class_id);//依照class抓取學生
+		
+		
+		
+		String jsonString =ss.getAllStudentToJSONInitTable(list,textNumber);
+		System.out.println("jsonString====="+jsonString);
+		//將所需的資料先用map包起來再用list裝起來
+//		List  l1 = new LinkedList();
+//		for(int i=0,max=list.size();i<max;i++){
+//			StudentVO aa=(StudentVO) list.get(i);
+//			System.out.println(aa);
+//			 Map m1 = new HashMap();       
+//			 m1.put("stu_name", aa.getStu_name()); 				 
+//			 m1.put("stu_age",aa.getStu_age());   
+//			 m1.put("stu_sch",aa.getStu_sch());   
+//			 m1.put("stu_email", aa.getStu_email());					 
+//			 m1.put("class_id",aa.getClass_id());   
+//			 m1.put("mail_name", mail_name);
+//			 m1.put("class_id", aa.getClass());
+//			 l1.add(m1);					
+//		}
+
+
+
+//		 String jsonString = JSONValue.toJSONString(l1); //list轉成 JSON String                  
+		
+		return jsonString;
+	}	
 	public static String getAllStudentInformationByClass(String class_id,String textNumber) throws SQLException {
 
-		
 		Mail_templateDAO mtSvc =new Mail_templateDAO();//new Mail_templateDAO
-		String mailText = mtSvc.findByPrimaryKey(Integer.parseInt(textNumber)).getMail_text(); //抓Mail_template裡面真正的文字
+		String mail_name = mtSvc.findByPrimaryKey(Integer.parseInt(textNumber)).getMail_name(); //抓Mail_template裡面真正的文字
 		List<StudentVO> list= dao.getAllStudentByClass(class_id);//依照class抓取學生
-		System.out.println("list====="+list);
 		
+		
+		
+
+
 		//將所需的資料先用map包起來再用list裝起來
 		List  l1 = new LinkedList();
 		for(int i=0,max=list.size();i<max;i++){
 			StudentVO aa=(StudentVO) list.get(i);
 			System.out.println(aa);
 			 Map m1 = new HashMap();       
-			 m1.put("stu_id",aa.getStu_id());   
 			 m1.put("stu_name", aa.getStu_name()); 				 
+			 m1.put("stu_age",aa.getStu_age());   
+			 m1.put("stu_sch",aa.getStu_sch());   
 			 m1.put("stu_email", aa.getStu_email());					 
-			 m1.put("mailText", mailText);
-//			 m1.put("class_id", aa.getClass());
+			 m1.put("mail_name", mail_name);
+
 			 l1.add(m1);					
 		}
 
@@ -195,7 +257,10 @@ public class StudentService {
 		 String jsonString = JSONValue.toJSONString(l1); //list轉成 JSON String                  
 		
 		return jsonString;
-	}	
-	
+	}		
 	
 }
+
+
+
+	

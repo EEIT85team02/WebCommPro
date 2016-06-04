@@ -92,12 +92,4 @@ public class Test_periodDAO implements ITest_periodDAO {
 
 
 
-		@Override
-		public Set<Stu_additionalVO> getTestHourByTest_hour_id(
-				Integer test_hour_id) throws SQLException {
-			Set<Stu_additionalVO> set = findByPrimaryKey(test_hour_id).getStu_additionalVO();
-			return null;
-		}
-
-
 }

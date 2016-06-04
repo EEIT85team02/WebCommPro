@@ -101,5 +101,6 @@ public class Member_statusService {
 		String jsonString = JSONValue.toJSONString(memsc);
 		return jsonString;
 	}
-	
+
+
 }

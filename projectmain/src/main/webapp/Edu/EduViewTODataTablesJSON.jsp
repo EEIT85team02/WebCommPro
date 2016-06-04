@@ -8,7 +8,7 @@
 <title>Edu_Page</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
@@ -54,7 +54,10 @@ h1 {
 	margin: .6em 0;
 }
 
-.ui-dialog .ui-state-error {
+.ui-dialog {
+
+}
+.ui-state-error {
 	padding: .3em;
 }
 
@@ -109,7 +112,7 @@ h1 {
 		</div>
 	</div>
 	<!-- 設定新增FORM表單區塊dialog -->
-	<div id="dialog-insertForm" title="建立教育中心資料">
+	<div id="dialog-insertForm" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable" title="建立教育中心資料">
 		<p class="validateTips"></p>
 		<form name="EduInsertForm">
 			<fieldset>

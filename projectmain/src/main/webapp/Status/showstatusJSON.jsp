@@ -15,8 +15,8 @@
         <input type="hidden" name="action"	value="upstatuscancel">
         <input type="hidden" id="stu_add_idhidc" name="stu_add_id" >
         <input type="hidden" id="stu_idhidc" name="stu_id" >
-        <input type="hidden" id="test_startdatehidc" name="test_startdate" >
-        <input type="hidden" id="test_hour_idhidc" name="test_hour_id" >
+        <input type="hidden" id="test_starthidc" name="test_start" >
+        <input type="hidden" id="test_endhidc" name="test_end" >
         <input type="hidden" id="stu_applytimehidc" name="stu_applytime" >
         <input type="hidden" id="sta_idhidc" name="sta_id" >
         <input type="hidden" id="emp_idhidc" name="emp_id" >
@@ -26,8 +26,8 @@
         <input type="hidden" name="action"	value="upstatusok">
         <input type="hidden" id="stu_add_idhidok" name="stu_add_id" >
         <input type="hidden" id="stu_idhidok" name="stu_id" >
-        <input type="hidden" id="test_startdatehidok" name="test_startdate" >
-        <input type="hidden" id="test_hour_idhidok" name="test_hour_id" >
+        <input type="hidden" id="test_starthidok" name="test_start" >
+        <input type="hidden" id="test_endhidok" name="test_end" >
         <input type="hidden" id="stu_applytimehidok" name="stu_applytime" >
         <input type="hidden" id="sta_idhidok" name="sta_id" >
         <input type="hidden" id="emp_idhidok" name="emp_id" >
@@ -138,13 +138,13 @@
 								 
 								 $("#stu_add_idhidc").val(score.stu_add_id); //取出值並放入hidden的value進行修改
 								 $("#stu_idhidc").val(score.stu_id);
-								 $("#test_startdatehidc").val(score.test_startdate);
-								 $("#test_hour_idhidc").val(score.test_hour_id);
+								 $("#test_starthidc").val(score.test_start);
+								 $("#test_endhidc").val(score.test_end);
 								 $("#stu_applytimehidc").val(score.stu_applytime);
 								 $("#sta_idhidc").val(score.sta_id);
 								 $("#emp_idhidc").val(score.emp_id);
 								 $("#confirm_timehidc").val(score.confirm_time);
-           //                       console.log(score.test_startdate)
+           //                       console.log(score.test_start)
                               var Updatedatas = $('form[name="cancelok"]').serialize();
 				 			     $.get('UpStuaddStatusJSON.do',Updatedatas,function(){
 				 			    	 
@@ -195,13 +195,13 @@
 								 
 								 $("#stu_add_idhidok").val(score.stu_add_id); //取出值並放入hidden的value進行修改
 								 $("#stu_idhidok").val(score.stu_id);
-								 $("#test_startdatehidok").val(score.test_startdate);
-								 $("#test_hour_idhidok").val(score.test_hour_id);
+								 $("#test_starthidok").val(score.test_start);
+								 $("#test_endhidok").val(score.test_end);
 								 $("#stu_applytimehidok").val(score.stu_applytime);
 								 $("#sta_idhidok").val(score.sta_id);
 								 $("#emp_idhidok").val(score.emp_id);
 								 $("#confirm_timehidok").val(score.confirm_time);
-           //                       console.log(score.test_startdate)
+           //                       console.log(score.test_start)
                               var Updatedatas = $('form[name="ok"]').serialize();
 				 			     $.get('UpStuaddStatusJSON.do',Updatedatas,function(){
 				 			    	 

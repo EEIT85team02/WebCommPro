@@ -58,17 +58,26 @@ public class UpStuaddStatusJSON extends HttpServlet {
 
 			Integer stu_id = Integer.parseInt(req.getParameter("stu_id"));
 			Integer stu_add_id = new Integer(req.getParameter("stu_add_id"));				
-			String teststartdate = req.getParameter("test_startdate");
-			java.sql.Date test_startdate = null;
-			String testsd[] =req.getParameter("test_startdate").split("-");
-			 GregorianCalendar teststgc = new GregorianCalendar(Integer.parseInt(testsd[0]),Integer.parseInt(testsd[1])-1,Integer.parseInt(testsd[2]));
+			String teststart = req.getParameter("test_start");
+			java.sql.Date test_start = null;
+			String tests[] =req.getParameter("test_start").split("-");
+			 GregorianCalendar teststgc = new GregorianCalendar(Integer.parseInt(tests[0]),Integer.parseInt(tests[1])-1,Integer.parseInt(tests[2]));
 			 teststgc.getTime().getTime();
-			if( teststartdate == null || teststartdate.length() == 0){
-				test_startdate = null;
+			if( teststart == null || teststart.length() == 0){
+				test_start = null;
 			}else{
-				test_startdate = new java.sql.Date(new Long(teststgc.getTime().getTime()));
+				test_start = new java.sql.Date(new Long(teststgc.getTime().getTime()));
 			}
-			Integer test_hour_id = Integer.parseInt(req.getParameter("test_hour_id"));
+			String testend = req.getParameter("test_end");
+			java.sql.Date test_end = null;
+			String teste[] =req.getParameter("test_start").split("-");
+			 GregorianCalendar testegc = new GregorianCalendar(Integer.parseInt(teste[0]),Integer.parseInt(teste[1])-1,Integer.parseInt(teste[2]));
+			 testegc.getTime().getTime();
+			if( testend == null || testend.length() == 0){
+				test_end = null;
+			}else{
+				test_end = new java.sql.Date(new Long(testegc.getTime().getTime()));
+			}
 			String stu_applytime = req.getParameter("stu_applytime");
 			Integer sta_id = Integer.parseInt(req.getParameter("sta_id"));	
 			String emp_id = req.getParameter("emp_id");	
@@ -76,7 +85,7 @@ public class UpStuaddStatusJSON extends HttpServlet {
 			
 			Stu_additionalService stuaddSvc = new Stu_additionalService();
 			try {
-				stuaddSvc.upstatuscancel(stu_id,stu_add_id,test_startdate,test_hour_id,stu_applytime,sta_id,emp_id,confirm_time);
+				stuaddSvc.upstatuscancel(stu_id,stu_add_id,test_start,test_end,stu_applytime,sta_id,emp_id,confirm_time);
 				out.write("資料更新成功");
 
 			} catch (SQLException e) {
@@ -89,17 +98,26 @@ public class UpStuaddStatusJSON extends HttpServlet {
 
 			Integer stu_id = Integer.parseInt(req.getParameter("stu_id"));
 			Integer stu_add_id = new Integer(req.getParameter("stu_add_id"));				
-			String teststartdate = req.getParameter("test_startdate");
-			java.sql.Date test_startdate = null;
-			String testsd[] =req.getParameter("test_startdate").split("-");
-			 GregorianCalendar teststgc = new GregorianCalendar(Integer.parseInt(testsd[0]),Integer.parseInt(testsd[1])-1,Integer.parseInt(testsd[2]));
+			String teststart = req.getParameter("test_start");
+			java.sql.Date test_start = null;
+			String tests[] =req.getParameter("test_start").split("-");
+			 GregorianCalendar teststgc = new GregorianCalendar(Integer.parseInt(tests[0]),Integer.parseInt(tests[1])-1,Integer.parseInt(tests[2]));
 			 teststgc.getTime().getTime();
-			if( teststartdate == null || teststartdate.length() == 0){
-				test_startdate = null;
+			if( teststart == null || teststart.length() == 0){
+				test_start = null;
 			}else{
-				test_startdate = new java.sql.Date(new Long(teststgc.getTime().getTime()));
+				test_start = new java.sql.Date(new Long(teststgc.getTime().getTime()));
 			}
-			Integer test_hour_id = Integer.parseInt(req.getParameter("test_hour_id"));
+			String testend = req.getParameter("test_end");
+			java.sql.Date test_end = null;
+			String teste[] =req.getParameter("test_start").split("-");
+			 GregorianCalendar testegc = new GregorianCalendar(Integer.parseInt(teste[0]),Integer.parseInt(teste[1])-1,Integer.parseInt(teste[2]));
+			 testegc.getTime().getTime();
+			if( testend == null || testend.length() == 0){
+				test_end = null;
+			}else{
+				test_end = new java.sql.Date(new Long(testegc.getTime().getTime()));
+			}
 			String stu_applytime = req.getParameter("stu_applytime");
 			Integer sta_id = Integer.parseInt(req.getParameter("sta_id"));	
 			String emp_id = req.getParameter("emp_id");	
@@ -107,7 +125,7 @@ public class UpStuaddStatusJSON extends HttpServlet {
 			
 			Stu_additionalService stuaddSvc = new Stu_additionalService();
 			try {
-				stuaddSvc.upstatusok(stu_id,stu_add_id,test_startdate,test_hour_id,stu_applytime,sta_id,emp_id,confirm_time);
+				stuaddSvc.upstatusok(stu_id,stu_add_id,test_start,test_end,stu_applytime,sta_id,emp_id,confirm_time);
 				out.write("資料更新成功");
 
 			} catch (SQLException e) {

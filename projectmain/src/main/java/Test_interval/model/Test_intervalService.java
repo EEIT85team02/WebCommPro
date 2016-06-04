@@ -2,7 +2,7 @@ package Test_interval.model;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Time;
+
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
 
 import org.json.simple.JSONValue;
 
