@@ -75,7 +75,7 @@ public class Test_periodDAO implements ITest_periodDAO {
 			return tpVO;
 		}
 
-		public List<Test_periodVO> getAllTp() {
+		public List<Test_periodVO> getAll() {
 			List<Test_periodVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {

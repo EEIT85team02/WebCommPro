@@ -68,7 +68,7 @@
 				$.getJSON('StudentProfileServlet?action=stu_add&',{'stu_id':id},function(data){
 					$.each(data,function(key,val){
 						 $("#stu_id").text(val.stu_id);
-						 console.log("-----2----");
+						 console.log(val.stu_id);
 						 $('#stu_name').text(val.stu_name);
 						 $('#class_id').text(val.class_id);
 						 $('#stu_name2').text(val.stu_name);
@@ -97,15 +97,12 @@
 
      
 
-        <div class="content">
-            <h1>Basic Demo</h1>
+        <div class="content" >
             <div id="wizard">        
                <h2>基本資料</h2>                
 	            <section>			
-						<div class="container" class="col-xs-12 col-sm-6 col-md-6 col-lg-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
-			      <div class="row">
-			    
-			        <div>
+
+			        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 toppad" >
 			          <div class="panel panel-info">
 			            <div class="panel-heading">
 			            <h3 class="panel-title" id="stu_name"></h3>
@@ -159,15 +156,13 @@
                     </div>
 		          </div>
 		        </div>
-		      </div>
-		    </div>
+		      
 	                </section>
 
                <h2>預約資料</h2>
 	            <section>
-	               <div class="container" class="col-xs-12 col-sm-6 col-md-6 col-lg-12 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
-			      <div class="row">
-			        <div>
+	          
+			        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 toppad" >
 			          <div class="panel panel-info">
 			            <div class="panel-heading">
 			            <h3 class="panel-title" id="stu_name2"></h3>
@@ -199,14 +194,9 @@
 			                </div>
 			              </div>
 			            </div>
-                 <div class="panel-footer">
-                        <!-- <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> -->
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
-                    </div>
 		          </div>
 		        </div>
-		      </div>
-		    </div>
+		     
 	                </section>
 
         	<!--   <h2>Third Step</h2>

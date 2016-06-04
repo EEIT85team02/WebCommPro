@@ -71,15 +71,18 @@ pageEncoding="UTF-8"%>
 								<li class=""><a href="${pageContext.request.contextPath}/Sign_list/Sign_listServletJSON.do?action=initSlViewTODataTablesJSON">權限設定</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Employee/EmployeeServletJSON.do?action=initEmpViewTODataTablesJSON">員工權限設定</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Test_period/Test_periodServletJSON.do?action=initTpViewTODataTablesJSON">考試時段設定</a></li>
-								<li class=""><a href="${pageContext.request.contextPath}/Test_interval/Test_intervalform.jsp">考試日期設定</a></li>
+								<li class=""><a href="${pageContext.request.contextPath}/Test_interval/Test_intervalServletJSON.do?action=initTiViewTODataTablesJSON">考試日期設定</a></li>
 								<li class=""><a href="${pageContext.request.contextPath}/Mail_template/MailServletJSON.do?action=initMailViewTODataTablesJSON">email樣板</a></li>
 							</ul></li>
 						<!-----------------------------------下拉式選單(系統設定結束)----------------------------------------------------						 -->
 
 						<li class=""><a
 							href="${pageContext.request.contextPath}/Examiner_offday/Examiner_offdayform.jsp">主考官請假查詢</a></li>
-						<li class=""><a href="${pageContext.request.contextPath}/Test_Date/Test_Dateform.jsp">開放報名日期查詢</a></li>
+
+						<li class=""><a href="${pageContext.request.contextPath}/Test_Date/Test_DateServletJSON.do?action=initTdViewTODataTablesJSON"">開放報名日期查詢</a></li>
+						<li class=""><a href="${pageContext.request.contextPath}/SendMail/SendMail.jsp">EMAIL寄送</a></li>
 						<li class=""><a href="${pageContext.request.contextPath}/StudentProfileServlet?action=initStumTODataTablesJSON">考生資料維護</a></li>
+						
 						<li class=""><a href="#">登出</a></li>
 
 

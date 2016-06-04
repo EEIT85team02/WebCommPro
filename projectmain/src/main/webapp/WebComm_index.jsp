@@ -215,8 +215,8 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2><strong>JOIN US！！</strong></h2>
-                    <a href="Login.jsp" class="btn btn-lg btn-light">Click Me!</a>
-                    <a href="Login.jsp" class="btn btn-lg btn-dark">Look at Me!</a>
+                    <a href="${pageContext.request.contextPath}/LoginServletGoogle.do" class="btn btn-lg btn-light"><strong>GOOGLE登入</strong></br>Click Me!</a>
+                    <a href="Login.jsp" class="btn btn-lg btn-dark"><strong>非GOOGLE登入</strong></br>Look at Me!</a>
                 </div>
             </div>
         </div>

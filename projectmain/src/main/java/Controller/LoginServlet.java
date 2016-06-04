@@ -20,25 +20,14 @@ public class LoginServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println(request.getParameter("Username"));
-		System.out.println(request.getParameter("Password"));
-		String Username = request.getParameter("Username");
-		
-		if ("user".equals(Username)){
+			
+			System.out.println("-----------2------------------");
 			RequestDispatcher successMsg = request.getRequestDispatcher("/WEB-INF/JSPs/User_Profile.jsp");
 			successMsg.forward(request, response);
-			}else if ("admin".equals(Username)){
-			RequestDispatcher successMsg = request.getRequestDispatcher("/indexOfAdminPage.jsp");
-			successMsg.forward(request, response);
-			} else if ("examiner".equals(Username)){
-			RequestDispatcher successMsg = request.getRequestDispatcher("/WEB-INF/JSPs/User_Profile.jsp");
-			successMsg.forward(request, response);
-			};
-	}
+	}	
 
 }

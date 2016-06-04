@@ -59,7 +59,6 @@ public class StudentProfileServlet extends HttpServlet {
 		System.out.println(request.getParameter("stu_id"));
 		
 		try {
-			
 			//Integer stu_id = 4;
 			
 			System.out.println("------1------");

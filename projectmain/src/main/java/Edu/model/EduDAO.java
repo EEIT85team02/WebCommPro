@@ -103,22 +103,24 @@ public class EduDAO implements IEduDAO {
 		public static void main(String[] args) throws Exception {
 
 			IEduDAO dao = new EduDAO();
-			System.out.println(dao.findByPrimaryKey(new Integer(1)).getEdu_name());
-//			List<EduVO> list1;
-//			try {
-//				list1 = dao.getAll();
-//				for (EduVO edu : list1) {
-//					System.out.print(edu.getEdu_id());
-//					System.out.print(edu.getEdu_name() );
-//					System.out.print(edu.getEdu_add());
-//					System.out.print(edu.getEdu_tel());
-//					System.out.print(edu.getEdu_contact());
-//					System.out.println();
-//				}
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
+
+			List<EduVO> list1;
+			int count= 0;
+			System.out.println("=============="+ count++);
+			try {
+				list1 = dao.getAll();
+				for (EduVO edu : list1) {
+					System.out.print(edu.getEdu_id());
+					System.out.print(edu.getEdu_name() );
+					System.out.print(edu.getEdu_add());
+					System.out.print(edu.getEdu_tel());
+					System.out.print(edu.getEdu_contact());
+					System.out.println();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 			
 			

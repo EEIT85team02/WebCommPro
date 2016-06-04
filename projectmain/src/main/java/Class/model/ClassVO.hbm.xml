@@ -5,8 +5,10 @@
 <hibernate-mapping>
     <class name="Class.model.ClassVO" table="Class">
         
-        <id name="class_id" column="class_id"/>
+        <id name="class_id" column="class_id">
         
+        <generator class = "identity" />
+        </id>
         <property name="class_name" column="class_name"/>
         <property name="class_contact" column="class_contact"/>
         <property name="class_teach" column="class_teach"/>
@@ -16,12 +18,32 @@
         </many-to-one>
         
   	
-        <set name="StudentVO" table="Student" lazy="false" cascade="all"  inverse="true"  order-by="class_id asc">			
+        <set name="stus" table="Student" lazy="false" cascade="all"  inverse="true"  order-by="stu_id asc">			
 			<key>
 				<column name="class_id" />
 			</key>
 			<one-to-many class="Student.model.StudentVO" />
-		</set>
+		</set>   
+		
+	   <set name="tds" table="Test_Date" lazy="false" inverse="true"  order-by="test_date_id asc" >			
+			<key>
+				<column name="class_id" />
+			</key>
+			<one-to-many class="Test_Date.model.Test_DateVO" />
+		</set>   
+		
+		
+		
+		<set name="tis" table="Test_interval" lazy="false" inverse="true"  order-by="test_interval_id asc" >			
+			<key>
+				<column name="class_id" />
+			</key>
+			<one-to-many class="Test_interval.model.Test_intervalVO" />
+		</set>     
+        
+
+		
+
     </class>
 </hibernate-mapping>
 

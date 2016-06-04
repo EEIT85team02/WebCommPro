@@ -54,7 +54,7 @@ public class SelectStudentInformation_controller extends HttpServlet {
 		   StudentService stSvc = new StudentService();
 
 		    try {
-		    	String jsonString=stSvc.getAllStudentInformationByClass(classId, textNumber);
+		    	String jsonString=stSvc.getAllStudentInformationByClass1(classId, textNumber);
 				                    
 				 System.out.println("jsonString======"+jsonString);
 				 out.println(jsonString);//把json String丟到jsp 裡面有我那個班上所有的學生

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Member_status.model.Member_statusService;
+import Student.model.StudentService;
 
 @WebServlet("/Status/ShowStatusJSON.do")
 public class ShowStatusJSON extends HttpServlet {
@@ -35,12 +36,91 @@ public class ShowStatusJSON extends HttpServlet {
         
 		String action = req.getParameter("action");
 		
-		if("getShowStatus".equals(action)){
+		if("getPkId".equals(action)){
+			Integer stu_id = Integer.parseInt(req.getParameter("stu_id"));
+			StudentService stuSvc = new StudentService();
+			try {
+				String jsonString = stuSvc.getOneSta(stu_id);
+				out.write(jsonString);
+//				System.out.println(jsonString);
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+		  }
+		
+		if("getShowStatus01".equals(action)){
 			Member_statusService memSvc = new Member_statusService();
 			String jsonString;
 			try {
 				jsonString = memSvc.getStatusWAIT();
 				out.write(jsonString);
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		if("getShowStatus02".equals(action)){
+			Member_statusService memSvc = new Member_statusService();
+			String jsonString;
+			try {
+				jsonString = memSvc.getStatusOK();
+				out.write(jsonString);
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		if("getShowStatus03".equals(action)){
+			Member_statusService memSvc = new Member_statusService();
+			String jsonString;
+			try {
+				jsonString = memSvc.getStatusNO();
+				out.write(jsonString);
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		if("getShowStatus04".equals(action)){
+			Member_statusService memSvc = new Member_statusService();
+			String jsonString;
+			try {
+				jsonString = memSvc.getStatusNEVER();
+				out.write(jsonString);
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		if("getShowStatus05".equals(action)){
+			Member_statusService memSvc = new Member_statusService();
+			String jsonString;
+			try {
+				jsonString = memSvc.getStatusYES();
+				out.write(jsonString);
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		if("getShowStatus06".equals(action)){
+			Member_statusService memSvc = new Member_statusService();
+			String jsonString;
+			try {
+				jsonString = memSvc.getStatusWAITING();
+				out.write(jsonString);
+				
 			} catch (SQLException e) {
 				
 				e.printStackTrace();

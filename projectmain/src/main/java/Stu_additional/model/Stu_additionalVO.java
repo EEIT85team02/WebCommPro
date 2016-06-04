@@ -9,10 +9,7 @@ import Student.model.StudentVO;
 import Test_period.model.Test_periodVO;
 
 public class Stu_additionalVO implements Serializable{
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private Integer stu_add_id ;
 	private Date test_start;
@@ -33,6 +30,8 @@ public class Stu_additionalVO implements Serializable{
 	public void setEmployeeVO(EmployeeVO employeeVO) {
 		EmployeeVO = employeeVO;
 	}
+
+
 	public Test_periodVO getTest_periodVO() {
 		return Test_periodVO;
 	}

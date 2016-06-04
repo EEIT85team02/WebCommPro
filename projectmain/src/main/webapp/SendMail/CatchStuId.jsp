@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-insertOK
+³\­Z¸Û®³¥h¥Î!!!!!!!!
+<%= session.getAttribute("stu_id")%>
+<script>
+</script>
 </body>
 </html>

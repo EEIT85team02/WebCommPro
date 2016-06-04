@@ -34,7 +34,7 @@ public static String getAllClass() throws SQLException {
 	IClassDAO classdao= new ClassDAO();
 
 	List<ClassVO> allclasslist=classdao.getAll();
-
+	System.out.println("fffffffff");
 
 List  l1 = new LinkedList();
 
@@ -49,7 +49,7 @@ for(int i=0,max=allclasslist.size();i<max;i++){
 }
 
 String JsonString = JSONValue.toJSONString(l1);
-
+System.out.println("JsonString==="+JsonString);
 return JsonString;
 
 

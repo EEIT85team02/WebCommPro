@@ -27,18 +27,30 @@ insert into class(class_id, class_name, class_contact, class_teach,edu_id) value
 insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('MMMH25','網路多媒體設計師','羅秀燕','楊斐羽',3 );
 
 --Student
-insert into student values (2,'備註1',20,'黃煜勝',77,'淡江大學電機系',1,'test1@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null);
-
-
-
+insert into student values (2,'備註1',20,'黃煜勝',77,'淡江大學電機系',1,'test1@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝1',77,'淡江大學電機系',1,'test2@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝2',77,'淡江大學電機系',1,'test3@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝3',77,'淡江大學電機系',1,'test4@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝4',77,'淡江大學電機系',1,'test5@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT70',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝5',77,'淡江大學電機系',1,'test6gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT70',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝6',77,'淡江大學電機系',1,'test7@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT70',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝7',77,'淡江大學電機系',1,'test8@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MEME33',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝8',77,'淡江大學電機系',1,'test9@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MEME33',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝9',77,'淡江大學電機系',1,'test10@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MEME33',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝10',77,'淡江大學電機系',1,'test11@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MSIT05',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝11',77,'淡江大學電機系',1,'test12@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MSIT05',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝12',77,'淡江大學電機系',1,'test14@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MSIT05',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝13',77,'淡江大學電機系',1,'test15@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','SESE59',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝14',77,'淡江大學電機系',1,'test16@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','SESE59',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝15',77,'淡江大學電機系',1,'test17@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MMMH25',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝16',77,'淡江大學電機系',1,'test18@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MMMH25',null,null,null,null);
+insert into student values (2,'備註1',20,'黃煜勝17',77,'淡江大學電機系',1,'test19@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MMMH25',null,null,null,null);
+insert into student values (2,'備註1',20,'test',77,'淡江大學電機系',1,'eeit85team02@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null,null,null);
 --Test_period
-insert into Test_period values('08:00','10:00');
 insert into Test_period values('10:00','12:00');
-insert into Test_period values('12:00','14:00');
+
 insert into Test_period values('14:00','16:00');
 insert into Test_period values('16:00','18:00');
-insert into Test_period values('18:00','20:00');
-
 
 
  --Sign_list
@@ -69,9 +81,9 @@ insert into Test_interval (class_id, test_startdate, test_enddate) values ('MEME
 insert into Test_interval (class_id, test_startdate, test_enddate) values ('SESE59','2016-6-01', '2016-5-15');
 
  --Test_Date
-insert into Test_Date (class_id, test_startdate, test_hour_id, test_people, exam_people) values ('EEIT85','2016-5-09', '1', '2', '0');
-insert into Test_Date (class_id, test_startdate, test_hour_id, test_people, exam_people) values ('EEIT85','2016-5-09', '2', '2', '0');
-insert into Test_Date (class_id, test_startdate, test_hour_id, test_people, exam_people) values ('EEIT85','2016-5-09', '3', '2', '0');
+insert into Test_Date (class_id, test_hour_id,test_date,test_people, exam_people) values ('EEIT85','1','2016-5-09','2', '0');
+insert into Test_Date (class_id, test_hour_id,test_date,test_people, exam_people) values ('EEIT85','2','2016-5-09','2', '0');
+insert into Test_Date (class_id, test_hour_id,test_date,test_people, exam_people) values ('EEIT85','3','2016-5-09','2', '0');
 
 
 
@@ -83,11 +95,12 @@ insert into Member_status (sta_id, sta_name) values ('4','未報名');
 insert into Member_status (sta_id, sta_name) values ('5','已報名');
 insert into Member_status (sta_id, sta_name) values ('6','報名中');
 
-delete from Stu_additional
+
  --Stu_additional
-insert into Stu_additional (stu_id, test_startdate, test_hour_id, stu_applytime, sta_id, emp_id, confirm_time) values (4,'2016-5-09', '3', '2016-5-10', '4', '7004', '15:00');
 
 
  --Mail_template
- insert into Mail_template (mail_name, mail_text) values ('預約成功通知', '預約成功');
-
+ insert into Mail_template (mail_name, mail_text) values ('預約成功通知0', '預約成功0');
+ insert into Mail_template (mail_name, mail_text) values ('預約成功通知1', '預約成功1');
+  insert into Mail_template (mail_name, mail_text) values ('預約成功通知2', '預約成功2');
+   insert into Mail_template (mail_name, mail_text) values ('預約成功通知3', '預約成功3');

@@ -7,7 +7,7 @@
 <title>Class_Page</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
@@ -145,7 +145,7 @@ h1 {
 			   	</select>
 				<br>
 				
-				<label for="class_id">班級代號</label> 
+				<label for="class_id">班級代號(不可修改)</label> 
 				<input type="text" name="class_id" id="uclass_id" class="text ui-widget-content ui-corner-all" readOnly> 
 				<label for="class_name">班級名稱</label> 
 				<input type="text" name="class_name" id="uclass_name" class="text ui-widget-content ui-corner-all" autocomplete="off">
@@ -182,7 +182,7 @@ h1 {
                               "sNext":"下頁",
                               "sLast":"尾頁"}
 			 },
-		    	  "bJQueryUI":false,
+		    	  "bJQueryUI":true,
 		    	  "bProcessing": true,
 		    	  "sPaginationType":"full_numbers",
 		    	 

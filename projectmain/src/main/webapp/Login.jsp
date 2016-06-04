@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -64,7 +65,7 @@
     <span class="text">LOGIN</span>
     <span class="loader"></span>
   </header>
-  <form class="login_form" action="Controller/LoginServlet.do" method="post">  
+  <form class="login_form" action="<c:url value='/Login.do' />" method="POST">  
     <input class="input" type="text" name="Username" placeholder="Username">
     <input class="input" type="password" name="Password" placeholder="Password">
     <button class="btn" type="submit"></button>
