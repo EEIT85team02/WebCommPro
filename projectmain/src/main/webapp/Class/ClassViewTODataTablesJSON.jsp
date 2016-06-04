@@ -32,17 +32,12 @@
 }
 
 
-label, input {
-	display: block;
-}
+input.text{ 
+	padding: .4em; 
+} 
 
-input.text {
-	margin-bottom: 12px;
-	width: 95%;
-	padding: .4em;
-}
 
-fieldset {
+fieldset{
 	padding: 0;
 	border: 0;
 	margin-top: 25px;
@@ -53,14 +48,25 @@ h1 {
 	margin: .6em 0;
 }
 
-.ui-dialog .ui-state-error {
+ 
+.ui-dialog, .ui-state-error {
 	padding: .3em;
 }
 
-.validateTips {
+.allValid {
 	border: 1px solid transparent;
 	padding: 0.3em;
 }
+.labelTitle{
+	float:left;
+	width:100px;
+	padding-right:3px;
+}
+.divForm{
+margin: 20px;
+
+}
+
 
 </style>
 </head>
@@ -112,23 +118,40 @@ h1 {
 	</div>
 	<!-- 設定新增FORM表單區塊dialog -->
 	<div id="dialog-insertForm" title="建立班級資料">
-		<p class="validateTips"></p>
+		<p class="allValid"></p>
 		<form name="ClassInsertForm">
 			<fieldset>
-				<label for="edu_id">中心名稱</label> 
-				<select id="selectEdu_id" name='edu_id'>
-			   	
-			   	</select>
-				<br>
-				<label for="class_id">班級代號</label> 
-				<input type="text" name="class_id" id="class_id" class="text ui-widget-content ui-corner-all" placeholder="請輸入班級代號" autocomplete="off" required="required"> 
-				<span id="idspan"></span><br>
-				<label for="class_name">班級名稱</label> 
-				<input type="text" name="class_name" id="class_name" class="text ui-widget-content ui-corner-all" placeholder="請輸入班級名稱" autocomplete="off">
-				<label for="class_contact">聯絡人</label> 
-				<input type="text" name="class_contact" id="class_contact" class="text ui-widget-content ui-corner-all" placeholder="請輸入班級聯絡人" autocomplete="off">
-				<label for="class_teach">班級導師</label> 
-				<input type="text" name="class_teach" id="class_teach" class="text ui-widget-content ui-corner-all" placeholder="請輸入班級導師" autocomplete="off"> 
+				<div class="divForm">
+					<label for="edu_id" class="labelTitle">中心名稱:</label> 
+					<select id="selectEdu_id" name='edu_id'>
+				   	</select>
+				</div>
+				
+				<div class="divForm">
+					<label for="class_id" class="labelTitle">班級代號:</label> 
+					<input type="text" name="class_id" id="class_id" size="20"  placeholder="班級代號(最大長度10碼)" autofocus autocomplete="off" required="required"> 
+					<span id="spanclass_id"></span><br>
+				</div>
+				
+				<div class="divForm">
+					<label for="class_name" class="labelTitle">班級名稱:</label> 
+					<input type="text" name="class_name" id="class_name" size="20"  placeholder="班級名稱(最大長度30碼)" autocomplete="off">
+					<span id="spanclass_name"></span><br>
+				</div>
+				
+				<div class="divForm">
+					<label for="class_contact" class="labelTitle">聯絡人:</label> 
+					<input type="text" name="class_contact" id="class_contact" size="20"  placeholder="班級聯絡人(最大長度10碼)" autocomplete="off">
+					<span id="spanclass_contact"></span><br>
+				</div>
+				
+				<div class="divForm">
+					<label for="class_teach" class="labelTitle">班級導師:</label> 
+					<input type="text" name="class_teach" id="class_teach" size="20"  placeholder="班級導師(最大長度10碼)" autocomplete="off"> 
+					<span id="spanclass_teach"></span><br>
+				</div>
+				
+				
 				<input type="hidden" name="action" value="addClass">
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
@@ -136,23 +159,40 @@ h1 {
 	</div>
 	<!-- 設定修改FORM表單區塊dialog -->
 	<div id="dialog-updateForm" title="修改班級資料">
-		<p class="validateTips"></p>
+		<p class="allValid"></p>
 		<form name="ClassUpdateForm" action="updateClass">
 			<fieldset>
-				<label for="edu_id">中心名稱</label> 
-				<select id="uselectEdu_id" name='edu_id'>
-			   		
-			   	</select>
-				<br>
+				<div class="divForm">
+					<label for="edu_id" class="labelTitle">中心名稱:</label> 
+					<select id="uselectEdu_id" name='edu_id'>
+				   	</select>
+				</div>
 				
-				<label for="class_id">班級代號(不可修改)</label> 
-				<input type="text" name="class_id" id="uclass_id" class="text ui-widget-content ui-corner-all" readOnly> 
-				<label for="class_name">班級名稱</label> 
-				<input type="text" name="class_name" id="uclass_name" class="text ui-widget-content ui-corner-all" autocomplete="off">
-				<label for="class_contact">聯絡人</label> 
-				<input type="text" name="class_contact" id="uclass_contact" class="text ui-widget-content ui-corner-all" autocomplete="off">
-				<label for="class_teach">班級導師</label> 
-				<input type="text" name="class_teach" id="uclass_teach" class="text ui-widget-content ui-corner-all" autocomplete="off"> 
+				<div class="divForm">
+					<label for="class_id" class="labelTitle">班級代號:</label> 
+					<input type="text" name="class_id" id="uclass_id" size="20"  readOnly> 
+					<span id="spanuclass_id"></span><br>
+				</div>
+				
+				<div class="divForm">
+					<label for="class_name" class="labelTitle">班級名稱:</label> 
+					<input type="text" name="class_name" id="uclass_name" size="20"  autocomplete="off">
+					<span id="spanuclass_name"></span><br>
+				</div>
+				
+				<div class="divForm">
+					<label for="class_contact" class="labelTitle">聯絡人:</label> 
+					<input type="text" name="class_contact" id="uclass_contact" size="20"  autocomplete="off">
+					<span id="spanuclass_contact"></span><br>
+				</div>
+				
+				<div class="divForm">
+					<label for="class_teach" class="labelTitle">班級導師:</label> 
+					<input type="text" name="class_teach" id="uclass_teach" size="20"  autocomplete="off"> 
+					<span id="spanuclass_teach"></span><br>
+				</div>
+				
+				
 				<input type="hidden" name="action" value="updateClass">
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
@@ -195,79 +235,67 @@ h1 {
 				class_contact = $( "#class_contact" ),
 				class_teach = $( "#class_teach" ),
 		      	edu_id = $('#selectEdu_id'),
+		      	
 		      	uclass_id = $('#uclass_id'),
 			  	uclass_name = $('#uclass_name'),
 			  	uclass_contact = $('#uclass_contact'),
 			  	uclass_teach = $('#uclass_teach'),
 			  	uedu_id = $('#uselectEdu_id'),
-			  	idspan = $('#idspan'),
+			  	
+			  	spanclass_id =$('#spanclass_id'),
+				spanclass_name =$('#spanclass_name'),
+				spanclass_contact =$('#spanclass_contact'),
+				spanclass_teach =$('#spanclass_teach'),
+			  	
+				spanuclass_id =$('#spanuclass_id'),
+				spanuclass_name =$('#spanuclass_name'),
+				spanuclass_contact =$('#spanuclass_contact'),
+				spanuclass_teach =$('#spanuclass_teach');
+			
+			
+				var checkclass_id=null;
+			 	var checkclass_name=null;
+				var checkclass_contact=null;
+				var checkclass_teach=null;
+			
+			 	var checkuclass_name=null;
+			 	var checkuclass_contact=null;
+			 	var checkuclass_teach=null;
+			
+			
+				allSpan = $( [] ).add( spanclass_id ).add( spanclass_name ).add( spanclass_contact ).add( spanclass_teach );
+				uallSpan = $( [] ).add( spanuclass_id ).add( spanuclass_name ).add( spanuclass_contact ).add( spanuclass_teach );
+				
 				allFields = $( [] ).add( class_id ).add( class_name ).add( class_contact ).add( class_teach ).add( edu_id );
 		      	uallFields = $( [] ).add( uclass_id ).add( uclass_name ).add( uclass_contact ).add( uclass_teach ).add( uedu_id );
-		      	tips = $( ".validateTips" );
-		      //在驗證顯示區塊新增class t->傳入的一段文字
-			    function updateTips( t ) {
-			      tips
-			        .text( t )
-			        .css('color','red')
-			        .addClass( "ui-state-highlight" );
-			      setTimeout(function() {
-			        tips.removeClass( "ui-state-highlight", 1500 );
-			      }, 500 );
-			    }
-		      
-			 //驗證資料長度是否符合規則o->$('#欄位ID')欄位資料、n->欄位名稱、min->最短長度、max->最長長度
-			    function checkLength( o, n, min, max ) {
-			      if ( o.val().length > max || o.val().length < min ) {
-			        o.addClass( "ui-state-error" );
-			        updateTips( "欄位 " + n + ":長度必須於 " +
-			          min + " 到 " + max + "之間" );
-			        return false;
-			      } else {
-			        return true;
-			      }
-			    }
-			 //驗證表單資料是否符合規則 o->$('#欄位ID')、規則式、n->SHOW一段文字
-			    function checkRegexp( o, regexp, n ) {
-			      if ( !( regexp.test( o.val() ) ) ) {
-			        o.addClass( "ui-state-error" );
-			        updateTips( n );
-			        return false;
-			      } else {
-			        return true;
-			      }
-			    }
-			  //點選新增鍵，所執行的方法
+		      	allValid =$('.allValid');
+				//點選新增鍵，所執行的方法
 			    function insertClassFormToCreateTable() {
-			      var valid = true;
-			      allFields.removeClass( "ui-state-error" );
-			      valid = valid && checkLength( edu_id, "中心代號/名稱", 1, 30 );
-			      valid = valid && checkLength( class_id, "班級代號", 1, 10 );
-				  valid = valid && checkLength( class_name, "班級名稱", 1, 30 );
-			      valid = valid && checkLength( class_contact, "聯絡人", 1, 10 );
-			      valid = valid && checkLength( class_teach, "班級導師", 1, 10 );
-			     if ( valid ) {
+					console.log(checkInsertForm());
+			      if ( checkInsertForm() ) {
 			  		  	var Insertdatas = $('form[name="ClassInsertForm"]').serialize();
+			  		  	console.log(Insertdatas);
 			 			$.post('ClassServletJSON.do',Insertdatas,function(data){
 			 				if(data=="資料新增失敗"){
-			 					$('.validateTips').css('color','red').text("新增錯誤");
+			 					allValid.css('color','red').text("新增錯誤");
 			 				}
 			 				else if(data=="資料新增成功"){
 			 					table.ajax.reload();//重新載入data tables的資料
+						 		allFields.removeClass( "ui-state-error" );
 			 					allFields.val("");//將新增form表單內容清空
-						 		$('.validateTips').text("");////將新增form表單驗證區塊內容清空
-						 		idspan.text("");
+			 					allValid.text("");////將新增form表單驗證區塊內容清空
+			 					allSpan.text("");//將新增FROM表單的span內容清空
 				 				ClassInsertForm.dialog( "close" );//將新增form表單關閉
 				 				//取回資料庫資料並建立table內容結束
 			 				}
 			 			});
 			 		}
-			      return valid;
 			    }
 			  //設定表單寬度視窗資料開始
 			    ClassInsertForm = $( "#dialog-insertForm" ).dialog({
 			      autoOpen: false,
 			      height: 550,
-			      width: 400,
+			      width: 800,
 			      modal: true,
 			      buttons: {
 			        "send": insertClassFormToCreateTable,
@@ -278,8 +306,9 @@ h1 {
 			      close: function() {
 			        form[ 0 ].reset();
 			        allFields.removeClass( "ui-state-error" );
-			       	allFields.val("");//將新增form表單內容清空
-		 			$('.validateTips').text("");////將新增form表單驗證區塊內容清空
+ 					allFields.val("");//將新增form表單內容清空
+ 					allValid.text("");////將新增form表單驗證區塊內容清空
+ 					allSpan.text("");//將新增FROM表單的span內容清空
 			      }
 			    });
 			  	//設定表單寬度視窗資料結束
@@ -310,7 +339,7 @@ h1 {
 				  ClassUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
 			      height: 650,
-			      width: 400,
+			      width: 700,
 			      modal: true,
 			      buttons: {
 				        "send": updateClassFormToCreateTable,
@@ -321,6 +350,9 @@ h1 {
 			      close: function() {
 			        form[ 0 ].reset();
 			        uallFields.removeClass( "ui-state-error" );
+ 					uallFields.val("");//將新增form表單內容清空
+ 					allValid.text("");////將新增form表單驗證區塊內容清空
+ 					uallSpan.text("");//將新增FROM表單的span內容清空
 			      }
 			    });
 			    
@@ -356,13 +388,7 @@ h1 {
 			 	} );
 			    //點選修改鍵，所執行的方法
 			    function updateClassFormToCreateTable() {
-				      var valid = true;
-				      uallFields.removeClass( "ui-state-error" );
-				      valid = valid && checkLength( uedu_id, "中心代號/名稱", 1, 30 );
-					  valid = valid && checkLength( uclass_name, "班級名稱", 1, 30 );
-				      valid = valid && checkLength( uclass_contact, "聯絡人", 1, 10 );
-				      valid = valid && checkLength( uclass_teach, "班級導師", 1, 10 );
-				      if ( valid ) {
+				     	if ( checkUpdateForm() ) {
 				 			var Updatedatas = $('form[name="ClassUpdateForm"]').serialize();
 				 			$.get('ClassServletJSON.do',Updatedatas,function(data){
 				 				console.log(data);
@@ -436,16 +462,7 @@ h1 {
 					});
 				});//取回資料庫資料並建立內容結束  
 			   
-			   //class_id欄位驗證(滑鼠離開後檢查)AJAX查詢登打的代號是否已存在資料庫中
-			    class_id.blur(function() {
-					$.get('ClassServletJSON.do',{'class_id':class_id.val(),"action":"checkClassId"},function(data){
-						if(data=="代號已存在"){
-							idspan.text("此班級代號已存在系統").css('color','red');
-						}else {
-							idspan.text("");
-						}
-					})
-				});
+			  
 				
 				
 			  //icon全部選取
@@ -461,7 +478,177 @@ h1 {
 				        alert( table.rows('.selected').data().length +' 筆資料被選取' );
 				});
 				
+			  
+			  
+			  
+				//新增表格欄位判斷
+				//ckeckclass_name欄位驗證(滑鼠離開後檢查)AJAX查詢登打的代號是否已存在資料庫中
+			    class_id.blur(fcheckclass_id);
+			    function fcheckclass_id() {
+			    	checkclass_id=true;
+			    	var class_idVal=class_id.val();
+			    	var class_idValLength = class_idVal.length;
+			    	
+			    	$.get('ClassServletJSON.do',{'class_id':class_idVal,"action":"checkClassId"},function(data){
+			    		console.log(data);
+						if(data=="代號已存在"){
+							console.log("aaaaa");
+							spanclass_id.html("<img src='../img/error.png' style='width:16px'/>此班級代號已存在").css('color','red');
+							checkclass_id=false;
+						}else {
+							console.log("ddddddd");
+						    spanclass_id.html("<img src='../img/correct.png' style='width:16px'/>");
+						    checkclass_id=true;
+						    	
+				    	}
+						
+						
+					})
+				}
 				
+				
+			    
+			    
+
+			  //ckeckclass_name欄位滑鼠離開後的判斷驗證
+				class_name.blur(fcheckclass_name);
+				function fcheckclass_name(){
+					checkclass_name=false;
+					var class_nameVal=class_name.val();
+					var class_nameValLength = class_nameVal.length;
+					if(class_nameVal==""){
+						spanclass_name.html("<img src='../img/error.png' style='width:16px'/>班級名稱不可為空白").css('color','red');
+					}else if(class_nameValLength>30)
+						spanclass_name.html("<img src='../img/error.png' style='width:16px'/>班級名稱欄位長度不可大於30碼").css('color','red');
+					else{
+						spanclass_name.html("<img src='../img/correct.png' style='width:16px'/>");
+						checkclass_name=true;
+					}
+				}
+				
+				 //ckeckclass_contact欄位滑鼠離開後的判斷驗證
+				class_contact.blur(fcheckclass_contact);
+				function fcheckclass_contact(){
+					checkclass_contact=false;
+					var class_contactVal=class_contact.val();
+					var class_contactValLength = class_contactVal.length;
+					if(class_contactVal==""){
+						spanclass_contact.html("<img src='../img/error.png' style='width:16px'/>聯絡人不可為空白").css('color','red');
+					}else if(class_contactValLength>10)
+						spanclass_contact.html("<img src='../img/error.png' style='width:16px'/>聯絡人欄位長度不可大於10碼").css('color','red');
+					else{
+						spanclass_contact.html("<img src='../img/correct.png' style='width:16px'/>");
+						checkclass_contact=true;
+					}
+				}
+			  
+				 //ckeckclass_teach欄位滑鼠離開後的判斷驗證
+				class_teach.blur(fcheckclass_teach);
+				function fcheckclass_teach(){
+					checkclass_teach=false;
+					var class_teachVal=class_teach.val();
+					var class_teachValLength = class_teachVal.length;
+					if(class_teachVal==""){
+						spanclass_teach.html("<img src='../img/error.png' style='width:16px'/>班級導師不可為空白").css('color','red');
+					}else if(class_teachValLength>10)
+						spanclass_teach.html("<img src='../img/error.png' style='width:16px'/>班級導師欄位長度不可大於10碼").css('color','red');
+					else{
+						spanclass_teach.html("<img src='../img/correct.png' style='width:16px'/>");
+						checkclass_teach=true;
+					}
+				}
+				
+				//送出新增表單全部判斷
+				function checkInsertForm(){
+					fcheckclass_id();
+					fcheckclass_name();
+					fcheckclass_contact();
+					fcheckclass_teach();
+					console.log(checkclass_id);
+					console.log(checkclass_name);
+					console.log(checkclass_contact);
+					console.log(checkclass_teach);
+					if(checkclass_id && checkclass_name && checkclass_contact && checkclass_teach){
+						alert("資料皆正確，送出中");
+						return true;
+					}
+					else {
+						alert("資料錯誤，請檢查欄位長度格式是否正確");
+						return false;
+					} 
+						
+				}
+			  
+			  	//修改表格欄位判斷
+				//ckeckuclass_name欄位滑鼠離開後的判斷驗證
+				uclass_name.blur(fcheckuclass_name);
+				function fcheckuclass_name(){
+					checkuclass_name=false;
+					var uclass_nameVal=uclass_name.val();
+					var uclass_nameValLength = uclass_nameVal.length;
+					if(uclass_nameVal==""){
+						spanuclass_name.html("<img src='../img/error.png' style='width:16px'/>班級名稱不可為空白").css('color','red');
+					}else if(uclass_nameValLength>30)
+						spanuclass_name.html("<img src='../img/error.png' style='width:16px'/>班級名稱欄位長度不可大於30碼").css('color','red');
+					else{
+						spanuclass_name.html("<img src='../img/correct.png' style='width:16px'/>");
+						checkuclass_name=true;
+					}
+				}
+				
+				 //ckeckuclass_contact欄位滑鼠離開後的判斷驗證
+				uclass_contact.blur(fcheckuclass_contact);
+				function fcheckuclass_contact(){
+					checkuclass_contact=false;
+					var uclass_contactVal=uclass_contact.val();
+					var uclass_contactValLength = uclass_contactVal.length;
+					if(uclass_contactVal==""){
+						spanuclass_contact.html("<img src='../img/error.png' style='width:16px'/>聯絡人不可為空白").css('color','red');
+					}else if(uclass_contactValLength>10)
+						spanuclass_contact.html("<img src='../img/error.png' style='width:16px'/>聯絡人欄位長度不可大於10碼").css('color','red');
+					else{
+						spanuclass_contact.html("<img src='../img/correct.png' style='width:16px'/>");
+						checkuclass_contact=true;
+					}
+				}
+			  
+				 //ckeckuclass_teach欄位滑鼠離開後的判斷驗證
+				uclass_teach.blur(fcheckuclass_teach);
+				function fcheckuclass_teach(){
+					checkuclass_teach=false;
+					var uclass_teachVal=uclass_teach.val();
+					var uclass_teachValLength = uclass_teachVal.length;
+					if(uclass_teachVal==""){
+						spanuclass_teach.html("<img src='../img/error.png' style='width:16px'/>班級導師不可為空白").css('color','red');
+					}else if(uclass_teachValLength>10)
+						spanuclass_teach.html("<img src='../img/error.png' style='width:16px'/>班級導師欄位長度不可大於10碼").css('color','red');
+					else{
+						spanuclass_teach.html("<img src='../img/correct.png' style='width:16px'/>");
+						checkuclass_teach=true;
+					}
+				}
+				
+				
+				//送出新增表單全部判斷
+				function checkUpdateForm(){
+					fcheckuclass_name();
+					fcheckuclass_contact();
+					fcheckuclass_teach();
+					console.log(checkuclass_name);
+					console.log(checkuclass_contact);
+					console.log(checkuclass_teach);
+					if( checkuclass_name && checkuclass_contact && checkuclass_teach){
+						alert("資料皆正確，送出中");
+						return true;
+					}
+					else {
+						alert("資料錯誤，請檢查欄位長度格式是否正確");
+						return false;
+					} 
+						
+				}
+			  
+			 
 				
 			  
 				
@@ -470,7 +657,15 @@ h1 {
 	</script>
 </body>
 </html>
-
+<!--  if(class_idVal==""){ -->
+<!-- 									console.log("bbbbbb"); -->
+<!-- 									spanclass_id.html("<img src='../img/error.png' style='width:16px'/>班級代號不可為空白").css('color','red'); -->
+<!-- 						    		checkclass_id=false; -->
+<!-- 						    	}else if(class_idValLength>10){ -->
+<!-- 						    		console.log("cccccccc"); -->
+<!-- 						    		spanclass_id.html("<img src='../img/error.png' style='width:16px'/>班級代號欄位長度不可大於10碼").css('color','red'); -->
+<!-- 						    		checkclass_id=false; -->
+<!-- 						    	} -->
 
 
 
