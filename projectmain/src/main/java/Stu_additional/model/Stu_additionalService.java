@@ -28,7 +28,7 @@ public class Stu_additionalService {
 			String stu_name,String stu_sch,Integer stu_sex,Integer stu_age,String stu_email,
 			Integer stu_pre,Double stu_implement,Date stu_testtime,Double stu_interview,
 			Double stu_total,Date stu_workdate,Double stu_except,Integer stu_final,
-			String stu_note2,String log_pw,String class_id) throws SQLException {
+			String stu_note2,byte[] log_pw,ClassVO class_id) throws SQLException {
 		StudentVO stuVO = new StudentVO();
 		stuVO.setStu_id(stu_id);
 		stuVO.setStu_group(stu_group);
@@ -49,7 +49,7 @@ public class Stu_additionalService {
 		stuVO.setStu_final(stu_final);
 		stuVO.setStu_note2(stu_note2);
 		stuVO.setLog_pw(log_pw);
-		stuVO.setClass_id(class_id);
+		stuVO.setClassVO(class_id);
 		
 		dao.update(stuVO);
 	}
