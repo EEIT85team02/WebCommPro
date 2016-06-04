@@ -16,6 +16,7 @@ import Sign_list.model.Sign_listService;
 
 
 @WebServlet("/Sign_list/Sign_listToJSONInitTableServlet")
+
 public class Sign_listToJSONInitTableServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public Sign_listToJSONInitTableServlet() {

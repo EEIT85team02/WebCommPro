@@ -55,7 +55,8 @@ public class StudentService {
 		Stu_additionalVO stu_addVO=(Stu_additionalVO) dao.getStuByStu_id(stu_id);
 			Map<String,String> map = new HashMap<String,String>();
 			map.put("stu_id",stu_addVO.getStudentVO().getStu_id().toString());
-			map.put("Test_startdate",stu_addVO.getTest_startdate().toString());
+			map.put("Test_start",stu_addVO.getTest_start().toString());
+			map.put("Test_end",stu_addVO.getTest_end().toString());
 			map.put("Test_hour_id",stu_addVO.getTest_periodVO().getTest_starthour().toString());
 			map.put("Stu_applytime(",stu_addVO.getStu_applytime());
 			map.put("Emp_id",stu_addVO.getEmployeeVO().getEmp_name());

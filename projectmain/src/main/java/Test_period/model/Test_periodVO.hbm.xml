@@ -12,13 +12,6 @@
         <property name="test_starthour" column="test_starthour" />
         <property name="test_endhour" column="test_endhour" />
         	
-            
-		<set name="Stu_additionalVO" table="Stu_additional" lazy="false" cascade="all"  inverse="true"  order-by="test_hour_id asc">			
-			<key>
-				<column name="test_hour_id" />
-			</key>
-			<one-to-many class="Stu_additional.model.Stu_additionalVO" />
-		</set>
         
     </class>
 </hibernate-mapping>

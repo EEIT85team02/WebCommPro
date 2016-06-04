@@ -3,6 +3,7 @@ package Stu_additional.model;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -60,6 +61,8 @@ public class Stu_additionalService {
 	public String getStuByStu_id(Integer stu_id) throws SQLException {	
 		List stusc=new LinkedList();
 		List<Stu_additionalVO> stu_addList =dao.findByStu_id(stu_id);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		
 		System.out.println("-----------*****"+stu_addList);
 			Map<String,String> map = new HashMap<String,String>();
 			map.put("stu_add_id",stu_addList.get(0).getStu_add_id().toString());
@@ -74,21 +77,24 @@ public class Stu_additionalService {
 			map.put("stu_sex",stu_addList.get(0).getStudentVO().getStu_sex().toString());
 			map.put("stu_email",stu_addList.get(0).getStudentVO().getStu_email().toString());
 			map.put("stu_pre",stu_addList.get(0).getStudentVO().getStu_pre().toString());
-			map.put("stu_testtime",stu_addList.get(0).getStudentVO().getStu_testtime().toString());
+			java.util.Date stu_testtime = stu_addList.get(0).getStudentVO().getStu_testtime();
+			map.put("stu_testtime",sdf.format(stu_testtime));
 			map.put("stu_total",stu_addList.get(0).getStudentVO().getStu_total().toString());
-			map.put("stu_workdate",stu_addList.get(0).getStudentVO().getStu_workdate().toString());
+			java.util.Date stu_workdate = stu_addList.get(0).getStudentVO().getStu_workdate();
+			map.put("stu_workdate",sdf.format(stu_workdate));
 			map.put("stu_except",stu_addList.get(0).getStudentVO().getStu_except().toString());
 			map.put("stu_final",stu_addList.get(0).getStudentVO().getStu_final().toString());
 			map.put("stu_note2",stu_addList.get(0).getStudentVO().getStu_note2().toString());
 			map.put("stu_seatno",stu_addList.get(0).getStudentVO().getStu_seatno().toString());
-			map.put("test_startdate",stu_addList.get(0).getTest_startdate().toString());
-			map.put("test_hour_id",stu_addList.get(0).getTest_periodVO().getTest_starthour().toString()+"-"
-								  +stu_addList.get(0).getTest_periodVO().getTest_endhour().toString());
+			map.put("test_start",stu_addList.get(0).getTest_start().toString());
+			map.put("test_end",stu_addList.get(0).getTest_end().toString());
 			map.put("stu_applytime",stu_addList.get(0).getStu_applytime().toString());
 			map.put("emp_id",stu_addList.get(0).getEmployeeVO().getEmp_name().toString());
 			map.put("confirm_time",stu_addList.get(0).getConfirm_time().toString());
 			map.put("member_statusVO",stu_addList.get(0).getMember_statusVO().getSta_name().toString());
-			map.put("class_id",stu_addList.get(0).getStudentVO().getClassVO().getClass_name());
+			map.put("class_id",stu_addList.get(0).getStudentVO().getClassVO().getClass_id());
+			map.put("class_name",stu_addList.get(0).getStudentVO().getClassVO().getClass_name());
+			
 			stusc.add(map);
 		String jsonString = JSONValue.toJSONString(stusc);
 		return jsonString;

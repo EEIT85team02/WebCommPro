@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -123,7 +124,7 @@ public class StudentProfileServlet extends HttpServlet {
 			String stu_note2 = null;
 			String log_pw = null;
 			String class_id = null;
-			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			
 			try {
 				Msgs = new HashMap<String, String>();
@@ -150,14 +151,16 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(stu_pre);
 				stu_implement =Double.valueOf(request.getParameter("stu_implement"));
 				System.out.println(stu_implement);
-				stu_testtime = Date.valueOf(request.getParameter("stu_testtime"));
-				System.out.println(stu_testtime);
+//				String stu_testtime1 = sdf.format(request.getParameter("stu_testtime"));
+//				stu_testtime = Date.valueOf(stu_testtime1);
+//				
+//				System.out.println("aaa"+stu_testtime);
 				stu_interview = Double.valueOf(request.getParameter("stu_interview"));
 				System.out.println(stu_interview);
 				stu_total = Double.valueOf(request.getParameter("stu_total"));
 				System.out.println(stu_total);
-				stu_workdate = Date.valueOf(request.getParameter("stu_workdate"));
-				System.out.println(stu_workdate);
+//				stu_workdate = Date.valueOf(request.getParameter("stu_workdate"));
+//				System.out.println(stu_workdate);
 				stu_except =Double.valueOf(request.getParameter("stu_except"));
 				System.out.println(stu_except);
 				stu_final = Integer.parseInt(request.getParameter("stu_final"));

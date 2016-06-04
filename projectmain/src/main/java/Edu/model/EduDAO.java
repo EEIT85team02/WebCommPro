@@ -19,7 +19,7 @@ import Class.model.ClassVO;
 public class EduDAO implements IEduDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from EduVO order by edu_id";
+			"from EduVO";
 		
 		
 		public void insert(EduVO edu) {
@@ -100,24 +100,25 @@ public class EduDAO implements IEduDAO {
 		
 		
 		
-		public static void main(String[] args) {
+		public static void main(String[] args) throws Exception {
 
 			IEduDAO dao = new EduDAO();
-			List<EduVO> list1;
-			try {
-				list1 = dao.getAll();
-				for (EduVO edu : list1) {
-					System.out.print(edu.getEdu_id());
-					System.out.print(edu.getEdu_name() );
-					System.out.print(edu.getEdu_add());
-					System.out.print(edu.getEdu_tel());
-					System.out.print(edu.getEdu_contact());
-					System.out.println();
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			System.out.println(dao.findByPrimaryKey(new Integer(1)).getEdu_name());
+//			List<EduVO> list1;
+//			try {
+//				list1 = dao.getAll();
+//				for (EduVO edu : list1) {
+//					System.out.print(edu.getEdu_id());
+//					System.out.print(edu.getEdu_name() );
+//					System.out.print(edu.getEdu_add());
+//					System.out.print(edu.getEdu_tel());
+//					System.out.print(edu.getEdu_contact());
+//					System.out.println();
+//				}
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 		
 			
 			
