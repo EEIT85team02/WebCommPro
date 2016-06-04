@@ -224,8 +224,10 @@
 					id="stu_sch" value=<%=request.getParameter("stu_sch")%>>
 			<input type="hidden" class="input" name="stu_sex" readOnly
 					id="stu_sex" value=<%=request.getParameter("stu_sex")%>>
-			<input type="hidden" class="input" name="test_startdate" readOnly
-					id="test_startdate" value=<%=request.getParameter("test_startdate")%>>
+			<input type="hidden" class="input" name="test_start" readOnly
+					id="test_start" value=<%=request.getParameter("test_start")%>>
+			<input type="hidden" class="input" name="test_end" readOnly
+					id="test_end" value=<%=request.getParameter("test_end")%>>
 			<input type="hidden" class="input" name="stu_applytime" readOnly
 					id="stu_applytime" value=<%=request.getParameter("stu_applytime")%>>
 			<input type="hidden" class="input" name="sta_id" readOnly
@@ -236,6 +238,12 @@
 					id="confirm_time" value=<%=request.getParameter("confirm_time")%>>
 			<input type="hidden" class="input" name="stu_pre" readOnly
 					id="stu_pre" value=<%=request.getParameter("stu_pre")%>>
+			<input type="hidden" class="input" name="pub_key" readOnly
+					id="pub_key" value=<%=request.getParameter("pub_key")%>>
+			<input type="hidden" class="input" name="pri_key" readOnly
+					id="pri_key" value=<%=request.getParameter("pri_key")%>>
+			<input type="hidden" class="input" name="cipher_text" readOnly
+					id="cipher_text" value=<%=request.getParameter("cipher_text")%>>
 			<input type="hidden" class="input" name="log_pw" readOnly
 					id="log_pw" value=<%=request.getParameter("log_pw")%>>
 					
@@ -251,10 +259,12 @@
 				<p>年次：<%=request.getParameter("stu_age")%></p>
 				<p>畢業學校：<%=request.getParameter("stu_sch")%></p>
 				<p>性別：<%=request.getParameter("stu_sex")%></p>
-				<p>考試時間：<%=request.getParameter("test_startdate")%></p>
+				<p>預約報名時間：<%=request.getParameter("stu_applytime")%></p>
+				
 			</div>
 			<div class="div3">
-				<p>預約報名時間：<%=request.getParameter("stu_applytime")%></p>
+				<p>考試開始時間：<%=request.getParameter("test_start")%></p>
+				<p>考試結束時間：<%=request.getParameter("test_end")%></p>
 				<p>狀況代號：<%=request.getParameter("sta_id")%></p>
 				<p>主考官：<%=request.getParameter("emp_id")%></p>
 				<p>確認時間：<%=request.getParameter("confirm_time")%></p>

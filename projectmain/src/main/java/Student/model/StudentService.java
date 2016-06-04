@@ -87,8 +87,7 @@ public class StudentService {
 			map.put("stu_id",stu_addVO.getStudentVO().getStu_id().toString());
 			map.put("Test_start",stu_addVO.getTest_start().toString());
 			map.put("Test_end",stu_addVO.getTest_end().toString());
-			map.put("Test_hour_id",stu_addVO.getTest_periodVO().getTest_starthour().toString());
-			map.put("Stu_applytime(",stu_addVO.getStu_applytime());
+			map.put("Stu_applytime(",stu_addVO.getStu_applytime().toString());
 			map.put("Emp_id",stu_addVO.getEmployeeVO().getEmp_name());
 			map.put("Confirm_time",stu_addVO.getConfirm_time().toString());
 			map.put("Member_statusVO",stu_addVO.getMember_statusVO().toString());

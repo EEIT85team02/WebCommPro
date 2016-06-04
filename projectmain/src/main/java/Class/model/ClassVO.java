@@ -22,7 +22,9 @@ public class ClassVO implements Serializable{//班級
 	
 	
 	
-	
+
+
+
 	public String getClass_id() {
 		return class_id;
 	}
