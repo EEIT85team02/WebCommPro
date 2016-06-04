@@ -9,7 +9,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import Stu_additional.model.Stu_additionalVO;
-
 import hibernate.util.HibernateUtil;
 
 
@@ -26,7 +25,9 @@ public class StudentDAO implements IStudentDAO {
 		private static final String GET_ALL_Class = 
 				"select distinct class_id from Student";		
 		private static final String GET_STUDENT_By_Class = 
-				"from StudentVO where class_id=?";			
+				"from StudentVO where class_id=?";		
+		private static final String GET_STUDENT_By_EMAIL = 
+				"from StudentVO where stu_email=?";	
 		public void insert(StudentVO stu) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
@@ -45,8 +46,12 @@ public class StudentDAO implements IStudentDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
+				System.out.println("456");
 				session.saveOrUpdate(stu);
+				System.out.println("789");
+				
 				session.getTransaction().commit();
+				System.out.println("123");
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;
@@ -162,6 +167,28 @@ public class StudentDAO implements IStudentDAO {
 			}
 			return list;
 		}	
+		
+		public StudentVO getStudentByEmail(String stu_email) {
+			StudentVO stuVO = null;
+			List<StudentVO> list=null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				
+				
+				Query query = session.createQuery(GET_STUDENT_By_EMAIL);
+				query.setParameter(0, stu_email);
+				list = query.list();
+				System.out.println("query.list()======"+query.list());
+				stuVO=list.get(0);
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return stuVO;
+		}		
+		
 		
 		public static void main(String args[]){
 			System.out.println(new StudentDAO().getAll().get(0).getStu_email());

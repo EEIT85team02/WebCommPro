@@ -15,6 +15,7 @@ public class Test_periodVO implements Serializable{//考試時段資料表
 	private Integer test_hour_id;//考試時段代號
 	private	java.sql.Time	test_starthour   ;//考試開始時間
 	private	java.sql.Time	test_endhour    ;//考試結束時間
+
 	private Set<Test_DateVO> tds = new HashSet<Test_DateVO>();
 	private Set<Stu_additionalVO> Stu_additionalVO = new HashSet<Stu_additionalVO>();	
 
@@ -52,6 +53,8 @@ public class Test_periodVO implements Serializable{//考試時段資料表
 
 	public void setTest_endhour(java.sql.Time test_endhour) {
 		this.test_endhour = test_endhour;
+<<<<<<< HEAD
+=======
 	}
 
 
@@ -76,6 +79,7 @@ public class Test_periodVO implements Serializable{//考試時段資料表
 
 	public void setStu_additionalVO(Set<Stu_additionalVO> stu_additionalVO) {
 		Stu_additionalVO = stu_additionalVO;
+>>>>>>> branch 'master' of https://github.com/EEIT85team02/WebCommPro.git
 	}
 
 

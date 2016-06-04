@@ -5,7 +5,7 @@
 <html lang="zh-tw">
 <html>
 <head>
-<title>Edu_Page</title>
+<title>考試日期查詢</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
@@ -73,35 +73,40 @@ h1 {
 	<jsp:include page="/top/top.jsp" />
 	<!-------------中間內容畫面開始------------>
 	<!-- 固定巡覽列位置，建立div使區塊下移 (starter-template)-->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-md-12">
 				<hr>
-					<table id="EduTable" class="display" cellspacing="0" width="100%">
+					<table id="Test_DateTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th class="col-md-1 col-xs-1">代號</th>
-								<th class="col-md-3 col-xs-3">中心名稱</th>
-								<th class="col-md-3 col-xs-3">中心地址</th>
-								<th class="col-md-3 col-xs-3">中心電話</th>
-								<th class="col-md-2 col-xs-2">連絡人</th>
+								<th>#</th>
+								<th class="col-md-2 col-xs-2">班級代號</th>
+								<th class="col-md-2 col-xs-2">班級名稱</th>
+								<th class="col-md-2 col-xs-2">考試日期</th>
+								<th class="col-md-1 col-xs-1">可報/人</th>
+								<th class="col-md-1 col-xs-1">已報/人</th>
+								<th class="col-md-2 col-xs-2">開始時間</th>
+								<th class="col-md-2 col-xs-2">結束時間</th>
 							</tr>
 						</thead>
 						<tbody>
 						</tbody>
 						<tfoot>
 							<tr>
-								<th>代號</th>
-								<th>中心名稱</th>
-								<th>中心地址</th>
-								<th>中心電話</th>
-								<th>連絡人</th>
+								<th>#</th>
+								<th>班級代號</th>
+								<th>班級名稱</th>
+								<th>考試日期</th>
+								<th>可報/人</th>
+								<th>已報/人</th>
+								<th>開始時間</th>
+								<th>結束時間</th>
 							</tr>
 						</tfoot>
 					</table>
 					<!------------------點選新增教育中心表單區塊內容----------------------------- -->
-					<button id="buttonAdd">新增</button>
 					<button id="buttonUpdate">編輯</button>
 					<button id="buttonDelete">刪除</button>
 					<button id="buttonAll">全部選取</button>
@@ -111,40 +116,33 @@ h1 {
 			</div>
 		</div>
 	</div>
-	<!-- 設定新增FORM表單區塊dialog -->
-	<div id="dialog-insertForm" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable" title="建立教育中心資料">
-		<p class="validateTips"></p>
-		<form name="EduInsertForm">
-			<fieldset>
-				<label for="edu_name">中心名稱</label> 
-				<input type="text" name="edu_name" id="edu_name" class="text ui-widget-content ui-corner-all" placeholder="請輸入中心名稱" autocomplete="off"> 
-				<label for="edu_add">中心地址</label> 
-				<input type="text" name="edu_add" id="edu_add" class="text ui-widget-content ui-corner-all" placeholder="請輸入中心地址" autocomplete="off">
-				<label for="edu_tel">中心電話</label> 
-				<input type="text" name="edu_tel" id="edu_tel" class="text ui-widget-content ui-corner-all"placeholder="請輸入中心電話" autocomplete="off">
-				<label for="edu_contact">聯絡人</label> 
-				<input type="text" name="edu_contact" id="edu_contact" class="text ui-widget-content ui-corner-all" placeholder="請輸入聯絡人" autocomplete="off"> 
-				<input type="hidden" name="action" value="addEdu">
-				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
-			</fieldset>
-		</form>
-	</div>
+	
 	<!-- 設定修改FORM表單區塊dialog -->
 	<div id="dialog-updateForm" title="修改教育中心資料">
 		<p class="validateTips"></p>
-		<form name="EduUpdateForm" action="updateEdu">
+		<form name="TdUpdateForm" action="updateEdu">
 			<fieldset>
-				<label for="edu_id">中心代號(不可修改)</label> 
-				<input type="text" name="edu_id" id="uedu_id" readOnly class="text ui-widget-content ui-corner-all">
-				<label for="edu_name">中心名稱</label> 
-				<input type="text" name="edu_name" id="uedu_name" class="text ui-widget-content ui-corner-all" autocomplete="off"> 
-				<label for="edu_add">中心地址</label> 
-				<input type="text" name="edu_add" id="uedu_add" class="text ui-widget-content ui-corner-all" autocomplete="off">
-				<label for="edu_tel">中心電話</label> 
-				<input type="text" name="edu_tel" id="uedu_tel" class="text ui-widget-content ui-corner-all" autocomplete="off">
-				<label for="edu_contact">聯絡人</label> 
-				<input type="text" name="edu_contact" id="uedu_contact" class="text ui-widget-content ui-corner-all" autocomplete="off"> 
-				<input type="hidden" name="action" value="updateEdu">
+				<label for="test_date_id">考試日期時段代號(不可修改)</label> 
+				<input type="text" name="test_date_id" id="utest_date_id" readOnly class="text ui-widget-content ui-corner-all">
+				
+				<label for="class_name">班級名稱(不可修改)</label> 
+				<input type="text" name="class_name" id="uclass_name" readOnly class="text ui-widget-content ui-corner-all" autocomplete="off">
+				
+				<input type="hidden" name="class_id" id="uclass_id"  class="text ui-widget-content ui-corner-all" autocomplete="off">
+				
+				<input type="hidden" name="test_hour_id" id="utest_hour_id"  class="text ui-widget-content ui-corner-all" autocomplete="off">
+				
+				<label for="test_date">考試日期</label> 
+				<input type="date" name="test_date" id="utest_date" class="text ui-widget-content ui-corner-all" autocomplete="off"> 
+				
+				<label for="test_people">可報名人數</label> 
+				<input type="text" name="test_people" id="utest_people" class="text ui-widget-content ui-corner-all" autocomplete="off">
+				
+				<label for="exam_people">已報名人數(不可修改)</label> 
+				<input type="text" name="exam_people" id="uexam_people" readOnly class="text ui-widget-content ui-corner-all" autocomplete="off">
+				
+				
+				<input type="hidden" name="action" value="updateTd">
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
 		</form>
@@ -156,9 +154,9 @@ h1 {
 	<script>
 		$(function() {
 			//定義table資料來源json，與畫面顯示------>開始
-			var table = $('#EduTable').DataTable( {
+			var table = $('#Test_DateTable').DataTable( {
 				 	"ajax": {
-			            "url": "/projectmain/Edu/EduToJSONInitTableServlet",
+			            "url": "/projectmain/Test_Date/Test_DateToJSONInitTableServlet",
 			        },
 			     	"oLanguage": {
 					"sProcessing":"資料正處理中...",
@@ -180,19 +178,16 @@ h1 {
 		    	} );
 			//定義table資料來源json，與畫面顯示------>結束
 			//新增dialog區塊變數宣告
-			var form,EduInsertForm,EduUpdateForm,
-			 	edu_id = $( "#edu_id" ),
-		      	edu_name = $( "#edu_name" ),
-		      	edu_add = $( "#edu_add" ),
-		      	edu_tel = $( "#edu_tel" ),
-		      	edu_contact = $( "#edu_contact" );
-				uedu_id = $('#uedu_id'),
-			  	uedu_name = $('#uedu_name'),
-			  	uedu_add = $('#uedu_add'),
-			  	uedu_tel = $('#uedu_tel'),
-			  	uedu_contact = $('#uedu_contact');
-				allFields = $( [] ).add( edu_id ).add( edu_name ).add( edu_add ).add( edu_tel ).add( edu_contact );
-		      	uallFields = $( [] ).add( uedu_id ).add( uedu_name ).add( uedu_add ).add( uedu_tel ).add( uedu_contact );
+			var form,TdUpdateForm
+				utest_date_id = $('#utest_date_id'),
+				uclass_name = $('#uclass_name'),
+				utest_date = $('#utest_date'),
+				utest_people = $('#utest_people'),
+				uexam_people = $('#uexam_people');
+				uclass_id = $('#uclass_id');
+				utest_hour_id = $('#utest_hour_id');
+			
+				uallFields = $( [] ).add( utest_date_id ).add( uclass_name ).add( utest_date ).add( utest_people ).add( uexam_people );
 		      	tips = $( ".validateTips" );
 		      //在驗證顯示區塊新增class t->傳入的一段文字
 			    function updateTips( t ) {
@@ -225,79 +220,23 @@ h1 {
 			        return true;
 			      }
 			    }
-			  //點選新增鍵，所執行的方法
-			    function insertEduFormToCreateTable() {
-			      var valid = true;
-			      allFields.removeClass( "ui-state-error" );
-				  valid = valid && checkLength( edu_name, "名稱", 1, 30 );
-			      valid = valid && checkLength( edu_add, "地址", 1, 30 );
-			      valid = valid && checkLength( edu_tel, "電話", 7, 15 );
-			      valid = valid && checkLength( edu_contact, "聯絡人", 1, 10 );
-			      valid = valid && checkRegexp( edu_tel, /^([0-9])+$/, "電話欄位只允許輸入數字 : 0-9" );
-			 		if ( valid ) {
-			 			var Insertdatas = $('form[name="EduInsertForm"]').serialize();
-			 			$.post('EduServletJSON.do',Insertdatas,function(data){
-			 				if(data=="資料新增失敗"){
-			 					$('.validateTips').css('color','red').text("新增錯誤");
-			 				}
-			 				else if(data=="資料新增成功"){
-			 					table.ajax.reload();//重新載入data tables的資料
-			 					allFields.val("");//將新增form表單內容清空
-						 		$('.validateTips').text("");////將新增form表單驗證區塊內容清空
-						 		EduInsertForm.dialog( "close" );//將新增form表單關閉
-				 				//取回資料庫資料並建立table內容結束
-			 				}
-			 			});
-			 		}
-			      return valid;
-			    }
-			  //設定表單寬度視窗資料開始
-			    EduInsertForm = $( "#dialog-insertForm" ).dialog({
-			      autoOpen: false,
-			      height: 500,
-			      width: 400,
-			      modal: true,
-			      buttons: {
-			        "send": insertEduFormToCreateTable,
-			        Cancel: function() {
-			        	EduInsertForm.dialog( "close" );
-			        }
-			      },
-			      close: function() {
-			        form[ 0 ].reset();
-			        allFields.removeClass( "ui-state-error" );
-			       	allFields.val("");//將新增form表單內容清空
-		 			$('.validateTips').text("");////將新增form表單驗證區塊內容清空
-			      }
-			    });
-			  	//設定表單寬度視窗資料結束
-			  	form = EduInsertForm.find( "form" ).on( "submit", function( event ) {
-			      event.preventDefault();
-			      insertEduFormToCreateTable();
-			    });
-			 	//綁定click事件使用者新增icon，開啟dialog 表單EduInsertForm
-			    $( "#buttonAdd" ).button().on( "click", function() {
-			    	EduInsertForm.dialog( "open" );
-			    });//diolog程式部分結束
-				
-			    
-			    //點選tr資料，更換class類別,若被選取則更新為未選取，反之選取
-				$('#EduTable tbody').on( 'click', 'tr', function () {
+			 	//點選tr資料，更換class類別,若被選取則更新為未選取，反之選取
+				$('#Test_DateTable tbody').on( 'click', 'tr', function () {
 					$(this).toggleClass('selected');
 				    });
 				
 			    
 			    //diolog程式部分以下(更新)
 				//設定表單寬度視窗資料開始
-				EduUpdateForm = $( "#dialog-updateForm" ).dialog({
+				TdUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
 			      height: 650,
 			      width: 400,
 			      modal: true,
 			      buttons: {
-				        "send": updateEduFormToCreateTable,
+				        "send": updateTdFormToCreateTable,
 				        Cancel: function() {
-				        	EduUpdateForm.dialog( "close" );
+				        	TdUpdateForm.dialog( "close" );
 				        }
 				      },
 			      close: function() {
@@ -307,11 +246,11 @@ h1 {
 			    });
 			    
 			  	//設定表單寬度視窗資料結束
-			  	form = EduUpdateForm.find( "form" ).on( "submit", function( event ) {
+			  	form = TdUpdateForm.find( "form" ).on( "submit", function( event ) {
 			      event.preventDefault();
-			      updateEduFormToCreateTable();
+			      updateTdFormToCreateTable();
 			    });
-				//綁定click事件使用者編輯icon，開啟dialog 表單EduUpdateForm(判斷資料是否多選-僅能選取一筆!!)
+				//綁定click事件使用者編輯icon，開啟dialog 表單TdUpdateForm(判斷資料是否多選-僅能選取一筆!!)
 				//table.rows('.selected').data().length->指的是，有幾筆列資料，套用得Class為selected
 			 	$('#buttonUpdate').click( function () {
 			 		if(table.rows('.selected').data().length == 0){
@@ -321,40 +260,41 @@ h1 {
 			    	}else if(table.rows('.selected').data().length == 1){
 			    		ClickUpdateValue = $('tr.selected').find('td:eq(0)').text();//抓到選到的class為selected的教育中心代號
 				 		console.log(ClickUpdateValue);
-				 		$.getJSON('EduServletJSON.do', {"action":"getoneEdu","edu_id":ClickUpdateValue}, function(datas) {
+				 		$.getJSON('Test_DateServletJSON.do', {"action":"getoneTd","test_date_id":ClickUpdateValue}, function(datas) {
 							console.log(datas);
 							//將抓到的教育中心代號，發送request請資料庫傳回該筆資料JSON
-							$.each(datas, function(i, Edus) {
-								uedu_id.val(Edus.edu_id);
-							  	uedu_name.val(Edus.edu_name),
-							  	uedu_add.val(Edus.edu_add),
-							  	uedu_tel.val(Edus.edu_tel),
-							  	uedu_contact.val(Edus.edu_contact);
+							$.each(datas, function(i, Tds) {
+								utest_date_id.val(Tds.test_date_id);
+								uclass_name.val(Tds.class_name);
+								utest_date.val(Tds.test_date);
+								utest_people.val(Tds.test_people);
+								uexam_people.val(Tds.exam_people);
+								
+								uclass_id.val(Tds.class_id);
+								utest_hour_id.val(Tds.test_hour_id);
 							});
 						});
-				 		EduUpdateForm.dialog( "open" );
+				 		TdUpdateForm.dialog( "open" );
 			    	}
 			 	} );
 			    //點選修改鍵，所執行的方法
-			    function updateEduFormToCreateTable() {
+			    function updateTdFormToCreateTable() {
 				      var valid = true;
 				      uallFields.removeClass( "ui-state-error" );
-					  valid = valid && checkLength( uedu_name, "名稱", 1, 30 );
-				      valid = valid && checkLength( uedu_add, "地址", 1, 30 );
-				      valid = valid && checkLength( uedu_tel, "電話", 7, 15 );
-				      valid = valid && checkLength( uedu_contact, "聯絡人", 1, 10 );
-				      valid = valid && checkRegexp( uedu_tel, /^([0-9])+$/, "電話欄位只允許輸入數字 : 0-9" );
-				 		if ( valid ) {
-				 			var Updatedatas = $('form[name="EduUpdateForm"]').serialize();
+				      valid = valid && checkLength( utest_date, "考試日期", 10, 30 );
+					  valid = valid && checkLength( utest_people, "可報名人數", 1, 30 );
+				    
+				      if ( valid ) {
+				 			var Updatedatas = $('form[name="TdUpdateForm"]').serialize();
 				 			//console.log(Updatedatas);
-				 			$.get('EduServletJSON.do',Updatedatas,function(data){
+				 			$.get('Test_DateServletJSON.do',Updatedatas,function(data){
 				 				console.log(data);
 				 				if(data=="資料更新失敗"){
 				 					 $('.validateTips').css('color','red').text("更新錯誤");
 				 				}
 				 				else if(data=="資料更新成功"){
 				 					table.ajax.reload();//重新載入data tables的資料 ?? 須改為直接抓取原更新表單的值回填回去表格
-				 					EduUpdateForm.dialog( "close" );
+				 					TdUpdateForm.dialog( "close" );
 				 				}
 				 			});
 				 		}
@@ -363,13 +303,13 @@ h1 {
 				    }
 			  	//diolog程式部分以下(刪除)
 				//設定刪除確認表單寬度視窗資料開始
-			    EduDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
+			   TdDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
 			        height: 200,
 			        width: 240,
 			        modal: true,
 			        buttons: {
-			          "確認": deleteEduFormToCreateTable ,
+			          "確認": deleteTdFormToCreateTable ,
 			          "放棄": function() {
 			        	sel=[];
 			            $( this ).dialog( "close" );
@@ -378,12 +318,12 @@ h1 {
 			        }
 			    });
 			 	//點選刪除鍵，所執行的方法
-				function deleteEduFormToCreateTable(){
-			 	$.get('EduServletJSON.do',{"edu_id":selJSON,"action":"deleteEduMulti"},function(data){
+				function deleteTdFormToCreateTable(){
+			 	$.get('Test_DateServletJSON.do',{"test_date_id":selJSON,"action":"deleteTdMulti"},function(data){
 					if(data=="資料刪除成功"){
 						//table.row('tbody > tr.selected').remove().draw( false );//刪除畫面上class為selected的那行
 						table.ajax.reload();//重新載入data tables的資料 ?? 須改為直接抓取原更新表單的值回填回去表格
-						EduDeleteConfirm.dialog( "close" );
+						TdDeleteConfirm.dialog( "close" );
 					}else if (data=="資料刪除失敗"){
 						$('#dialog-deleteForm p').text('資料刪除失敗，資料使用中');
 					}
@@ -405,7 +345,7 @@ h1 {
 			    		console.log("sel====="+sel);
 			    		selJSON =JSON.stringify(sel);//將JSON轉成字串
 			    		console.log("selJSON-----"+selJSON);
-			    		EduDeleteConfirm.dialog( "open" );
+			    		TdDeleteConfirm.dialog( "open" );
 			    	}
 			    });
 				

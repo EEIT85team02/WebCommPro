@@ -1,4 +1,4 @@
-package Sign_listController;
+package StudentController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-import Sign_list.model.Sign_listService;
+import Edu.model.EduService;
+import Stu_additional.model.Stu_additionalService;
 
 
 
-@WebServlet("/Sign_list/Sign_listToJSONInitTableServlet")
-
-public class Sign_listToJSONInitTableServlet extends HttpServlet {
+@WebServlet("/Student_maintain/StumToJSONInitTableServlet")
+public class StumToJSONInitTableServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public Sign_listToJSONInitTableServlet() {
+	public StumToJSONInitTableServlet() {
         super();
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,9 +27,9 @@ public class Sign_listToJSONInitTableServlet extends HttpServlet {
 		response.setHeader("content-type", "text/html;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
-		Sign_listService slSvc = new Sign_listService();
+		Stu_additionalService stumSvc = new Stu_additionalService();
 		try {
-			String jsonString=slSvc.getAllSlToJSONInitTable();
+			String jsonString=stumSvc.getAllStumToJSONInitTable();
 			out.write(jsonString);
 		} catch (SQLException e) {
 			

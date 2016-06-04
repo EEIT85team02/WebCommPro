@@ -60,6 +60,18 @@ public class Stu_additionalDAO implements IStu_additionalDAO{
 				throw ex;
 			}
 		}
+		
+		public void update(StudentVO stuVO) {
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				session.saveOrUpdate(stuVO);
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+		}
 
 		public void delete(Integer stu_add_id) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();

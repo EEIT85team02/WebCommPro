@@ -78,7 +78,11 @@ pageEncoding="UTF-8"%>
 
 						<li class=""><a
 							href="${pageContext.request.contextPath}/Examiner_offday/Examiner_offdayform.jsp">主考官請假查詢</a></li>
-						<li class=""><a href="${pageContext.request.contextPath}/Test_Date/Test_Dateform.jsp">開放報名日期查詢</a></li>
+
+						<li class=""><a href="${pageContext.request.contextPath}/Test_Date/Test_DateServletJSON.do?action=initTdViewTODataTablesJSON"">開放報名日期查詢</a></li>
+						<li class=""><a href="${pageContext.request.contextPath}/SendMail/SendMail.jsp">EMAIL寄送</a></li>
+						<li class=""><a href="${pageContext.request.contextPath}/StudentProfileServlet?action=initStumTODataTablesJSON">考生資料維護</a></li>
+						
 						<li class=""><a href="#">登出</a></li>
 
 

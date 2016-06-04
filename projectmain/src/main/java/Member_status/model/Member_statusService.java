@@ -45,7 +45,7 @@ public class Member_statusService {
 		List<Member_statusVO> list = dao.getStatusOK();
 		for(Member_statusVO memVO : list){
 			
-			Set<Stu_additionalVO> set = memVO.getStus();
+			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
 			map.put("stu_name",stuVO.getStudentVO().getStu_name());
@@ -64,7 +64,7 @@ public class Member_statusService {
 		List<Member_statusVO> list = dao.getStatusNO();
 		for(Member_statusVO memVO : list){
 			
-			Set<Stu_additionalVO> set = memVO.getStus();
+			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
 			map.put("stu_name",stuVO.getStudentVO().getStu_name());
@@ -83,7 +83,7 @@ public class Member_statusService {
 		List<Member_statusVO> list = dao.getStatusNEVER();
 		for(Member_statusVO memVO : list){
 			
-			Set<Stu_additionalVO> set = memVO.getStus();
+			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
 			map.put("stu_name",stuVO.getStudentVO().getStu_name());
@@ -102,7 +102,7 @@ public class Member_statusService {
 		List<Member_statusVO> list = dao.getStatusYES();
 		for(Member_statusVO memVO : list){
 			
-			Set<Stu_additionalVO> set = memVO.getStus();
+			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
 			map.put("stu_name",stuVO.getStudentVO().getStu_name());
@@ -121,7 +121,7 @@ public class Member_statusService {
 		List<Member_statusVO> list = dao.getStatusWAITING();
 		for(Member_statusVO memVO : list){
 			
-			Set<Stu_additionalVO> set = memVO.getStus();
+			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
 			map.put("stu_name",stuVO.getStudentVO().getStu_name());
