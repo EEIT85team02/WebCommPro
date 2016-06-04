@@ -46,8 +46,12 @@ public class StudentDAO implements IStudentDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
+				System.out.println("456");
 				session.saveOrUpdate(stu);
+				System.out.println("789");
+				
 				session.getTransaction().commit();
+				System.out.println("123");
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;

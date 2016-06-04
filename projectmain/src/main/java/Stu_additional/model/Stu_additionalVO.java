@@ -12,7 +12,8 @@ public class Stu_additionalVO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private Integer stu_add_id ;
-	private Date test_startdate ;
+	private Date test_start;
+	private Date test_end;
 	private String stu_applytime;
 	private Integer sta_id;
 	private Time confirm_time ; 
@@ -20,6 +21,7 @@ public class Stu_additionalVO implements Serializable{
 	private Member_statusVO Member_statusVO;
 	private EmployeeVO EmployeeVO;
 	private Test_periodVO Test_periodVO;
+	
 	
 	
 	public EmployeeVO getEmployeeVO() {
@@ -43,11 +45,18 @@ public class Stu_additionalVO implements Serializable{
 	public void setStu_add_id(Integer stu_add_id) {
 		this.stu_add_id = stu_add_id;
 	}
-	public Date getTest_startdate() {
-		return test_startdate;
+	
+	public Date getTest_start() {
+		return test_start;
 	}
-	public void setTest_startdate(Date test_startdate) {
-		this.test_startdate = test_startdate;
+	public void setTest_start(Date test_start) {
+		this.test_start = test_start;
+	}
+	public Date getTest_end() {
+		return test_end;
+	}
+	public void setTest_end(Date test_end) {
+		this.test_end = test_end;
 	}
 	public String getStu_applytime() {
 		return stu_applytime;

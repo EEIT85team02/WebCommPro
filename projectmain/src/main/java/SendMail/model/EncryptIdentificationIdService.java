@@ -27,6 +27,7 @@ import com.sun.org.apache.xml.internal.security.utils.Base64;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
+import Class.model.ClassVO;
 import Student.model.IStudentDAO;
 import Student.model.StudentDAO;
 import Student.model.StudentVO;
@@ -34,7 +35,17 @@ import Student.model.StudentVO;
 public class EncryptIdentificationIdService{
 	
 	   //這是將字串轉為編碼的方法
-       public static StudentVO[] insertPubkeyPrivateKeyTextAndReturnAllStudentVO(String class_id) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, SQLException{  
+       /**
+     * @param class_id
+     * @return
+     * @throws NoSuchAlgorithmException
+     * @throws NoSuchPaddingException
+     * @throws InvalidKeyException
+     * @throws IllegalBlockSizeException
+     * @throws BadPaddingException
+     * @throws SQLException
+     */
+    public StudentVO[] insertPubkeyPrivateKeyTextAndReturnAllStudentVO(String class_id) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, SQLException{  
     	   //為了使用getAllStudentByClass方法，new一個StudentDAO物件
     	   IStudentDAO stu = new StudentDAO();
     	   //輸入classid抓出此班級之所有學生
@@ -62,7 +73,9 @@ public class EncryptIdentificationIdService{
     		   double stu_interview=stuList.get(i).getStu_interview();
     		   double stu_total=stuList.get(i).getStu_total();
     		   java.sql.Date stu_workdate=stuList.get(i).getStu_workdate();
-
+    		   Integer stu_seatno =stuList.get(i).getStu_seatno();
+    		   String class_id1 =stuList.get(i).getClassVO().getClass_id();
+    		   byte[] log_pw=stuList.get(i).getLog_pw();
 //			MD5無法解碼，單向，
 //           // 根據 MD5 演算法生成 MessageDigest 物件  
 //           MessageDigest md5 = MessageDigest.getInstance("MD5");  
@@ -83,7 +96,10 @@ public class EncryptIdentificationIdService{
     		    //從keypair中拿到公鑰和私鑰
     		    PublicKey publicKey= keyPair.getPublic();  
     		    PrivateKey privateKey = keyPair.getPrivate();  
-    		    //伺服器的數據使用私鑰加密  
+    		    System.out.println("PublicKey===="+publicKey);
+    		    System.out.println("privateKey===="+privateKey);
+    		    
+    		    //伺服器的數據使用公鑰加密  
     		    Cipher cipher = Cipher.getInstance("rsa");  
     		    SecureRandom random = new SecureRandom();  
     		      
@@ -99,11 +115,11 @@ public class EncryptIdentificationIdService{
  
     		    //存publickey進資料庫
     		    X509EncodedKeySpec x509ks = new X509EncodedKeySpec(
-    		            publicKey.getEncoded());
+    		           publicKey.getEncoded());
     		    System.out.println("x509ks==="+x509ks);
     		    	byte[] publicKeyEncrpty=x509ks.getEncoded();
     		    	System.out.println("publicKeyEncrpty==="+publicKeyEncrpty);
-    		    	
+
     		    //存privatekey進資料庫	
     		    PKCS8EncodedKeySpec pkcsKeySpec = new PKCS8EncodedKeySpec(
     		                privateKey.getEncoded());
@@ -135,11 +151,17 @@ public class EncryptIdentificationIdService{
     	       		slVO.setPub_key(publicKeyEncrpty);
     	       		slVO.setPri_key(privatekeyEncrpty);
     	       		slVO.setCipher_text(cipherData);
+    	       		slVO.setStu_seatno(stu_seatno);
+    	       		slVO.setLog_pw(log_pw);
     	       		
-    	         	   
-    	    	   System.out.println("getPub_key===="+stuList.get(i).getPub_key());
-    	    	   System.out.println("getPub_key===="+stuList.get(i).getPub_key());
-    	    	   System.out.println("setCipher_text===="+stuList.get(i).getCipher_text());
+    	       		ClassVO classVO=new ClassVO(); 
+    	       		classVO.setClass_id(class_id);
+    	       		slVO.setClassVO(classVO);
+    	         	
+    	       		
+    	       		
+    	       		
+    	       		
     	         	   
     	         	   
     	         	   
@@ -147,6 +169,9 @@ public class EncryptIdentificationIdService{
     	         	   
     	         	   studentvoArray[i]=slVO;
     	         	   stu.update(slVO);//無法更新過去嘗試new新VO
+    	         	   System.out.println("getStu_sex===="+stuList.get(i).getStu_sex());
+    	         	   System.out.println("getPub_key===="+stuList.get(i).getPub_key());
+    	         	   System.out.println("setCipher_text===="+stuList.get(i).getCipher_text());
     	         	   } 
 
     	          	return studentvoArray;
@@ -155,15 +180,15 @@ public class EncryptIdentificationIdService{
     		    	
     
 
-   	public static StudentVO decrypt(String ciphertextString,String emailString) throws Exception {  
-
+   	public StudentVO decrypt(String ciphertextString,String emailString) throws Exception {  
+   		
    		StudentVO returnStudent=null;
    		StudentDAO stu = new StudentDAO();
 		//List<StudentVO> list=stu.getAllStudentByClass(classId);
 		StudentVO matchedStudent=stu.getStudentByEmail(emailString);
 		
 
-			
+		System.out.println("matchedStudent=="+matchedStudent);
 		byte[] publickeydb=matchedStudent.getPub_key();
 		byte[] privatekeydb=matchedStudent.getPri_key();
 		byte[] ciphertextdb=matchedStudent.getCipher_text();
@@ -207,7 +232,7 @@ public class EncryptIdentificationIdService{
 			if(Array.getByte(ciphertextdb,j)==Array.getByte(bb,j)){
 				System.out.println("match");
 
-
+				
 			}else{
 				System.out.println("failXXXXXXXXXXXXXXXXXXXXX");
 				
@@ -277,7 +302,7 @@ public class EncryptIdentificationIdService{
 		
 		return returnStudent;         
    	}
-//main方法測試
+
 //public static void main(String[] args) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, SQLException, IOException{
 //	EncryptIdentificationIdService ls=new EncryptIdentificationIdService();
 //	String classId="EEIT85";
@@ -286,7 +311,11 @@ public class EncryptIdentificationIdService{
 //	byte[][] privatekeyArray=new byte[st.length][];
 //	byte[][] ciphertextArray=new byte[st.length][];
 //	String[] nameStringArray=new String[st.length];	
+//	
+//	
+//	
 //	for(int i =0,max=st.length;i<max;i++){
+//		
 //		publickeyArray[i]=st[i].getPub_key();
 //		privatekeyArray[i]=st[i].getPri_key();
 //		ciphertextArray[i]=st[i].getCipher_text();
@@ -309,8 +338,7 @@ public class EncryptIdentificationIdService{
 //			System.out.println("failXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 //			}		
 //			}
-//		
-//		
+//	
 //
 //		System.out.println("抓二進制陣列＝＝＝"+Array.getByte(st[i].getCipher_text(), 1)+"(資料庫裡拉出來的）");
 //		
