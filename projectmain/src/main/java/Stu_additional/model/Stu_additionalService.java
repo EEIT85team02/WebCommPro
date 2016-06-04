@@ -28,7 +28,8 @@ public class Stu_additionalService {
 			String stu_name,String stu_sch,Integer stu_sex,Integer stu_age,String stu_email,
 			Integer stu_pre,Double stu_implement,Date stu_testtime,Double stu_interview,
 			Double stu_total,Date stu_workdate,Double stu_except,Integer stu_final,
-			String stu_note2,byte[] log_pw,ClassVO class_id) throws SQLException {
+			String stu_note2,byte[] pub_key,byte[] pri_key,byte[] cipher_text,byte[] log_pw,
+			String class_id) throws SQLException {
 		StudentVO stuVO = new StudentVO();
 		stuVO.setStu_id(stu_id);
 		stuVO.setStu_group(stu_group);
@@ -48,8 +49,14 @@ public class Stu_additionalService {
 		stuVO.setStu_except(stu_except);
 		stuVO.setStu_final(stu_final);
 		stuVO.setStu_note2(stu_note2);
+		stuVO.setPub_key(pub_key);
+		stuVO.setPri_key(pri_key);
+		stuVO.setCipher_text(cipher_text);
 		stuVO.setLog_pw(log_pw);
-		stuVO.setClassVO(class_id);
+		
+		ClassVO classVO = new ClassVO();
+		classVO.setClass_id(class_id);
+		stuVO.setClassVO(classVO);
 		
 		dao.update(stuVO);
 	}
@@ -94,6 +101,10 @@ public class Stu_additionalService {
 			map.put("member_statusVO",stu_addList.get(0).getMember_statusVO().getSta_name().toString());
 			map.put("class_id",stu_addList.get(0).getStudentVO().getClassVO().getClass_id());
 			map.put("class_name",stu_addList.get(0).getStudentVO().getClassVO().getClass_name());
+//			map.put("pub_key",stu_addList.get(0).getStudentVO().getPub_key().toString());
+//			map.put("pri_key",stu_addList.get(0).getStudentVO().getPri_key().toString());
+//			map.put("cipher_text",stu_addList.get(0).getStudentVO().getCipher_text().toString());
+//			map.put("log_pw",stu_addList.get(0).getStudentVO().getLog_pw().toString());
 			
 			stusc.add(map);
 		String jsonString = JSONValue.toJSONString(stusc);

@@ -163,21 +163,26 @@ h1 {
 						var stu_age = val.stu_age;
 						var stu_sch = val.stu_sch;
 						var stu_sex = val.stu_sex;
-						var test_startdate = val.test_startdate;
+						var test_start = val.test_start;
+						var test_end = val.test_end;
 						var stu_applytime = val.stu_applytime;
 						var sta_id = val.sta_id;
 						var emp_id = val.emp_id;
 						var confirm_time = val.confirm_time;
 						var stu_pre = val.stu_pre;
 						var stu_implement = val.stu_implement;
-						var stu_testtime=val.stu_testtime;
+// 						var stu_testtime=val.stu_testtime;
 						var stu_interview = val.stu_interview;
 						var stu_total = val.stu_total;
-						var stu_workdate = val.stu_workdate;
+// 						var stu_workdate = val.stu_workdate;
 						var stu_except = val.stu_except;
 						var stu_final = val.stu_final;
 						var stu_note1 = val.stu_note1;
 						var stu_note2 = val.stu_note2;
+						var pub_key = val.pub_key;
+						var pri_key = val.pri_key;
+						var cipher_text = val.cipher_text;
+						var log_pw = val.log_pw;
 						
 						var log_pw = val.log_pw;
 						$.fancybox({//调用fancybox弹出层 
@@ -191,22 +196,27 @@ h1 {
     			                +'&stu_age='+stu_age
     			                +'&stu_sch='+stu_sch
     			                +'&stu_sex='+stu_sex
-    			                +'&test_startdate='+test_startdate
+    			                +'&test_start='+test_start
+    			                +'&test_end='+test_end
     			                +'&stu_applytime='+stu_applytime
     			                +'&sta_id='+sta_id
     			                +'&emp_id='+emp_id
     			                +'&confirm_time='+confirm_time
     			                +'&stu_pre='+stu_pre
     			                +'&stu_implement='+stu_implement
-    			                +'&stu_testtime='+stu_testtime
+//     			                +'&stu_testtime='+stu_testtime
     			                +'&stu_interview='+stu_interview
     			                +'&stu_total='+stu_total
-    			                +'&stu_workdate='+stu_workdate
+//     			                +'&stu_workdate='+stu_workdate
     			                +'&stu_except='+stu_except
     			                +'&stu_final='+stu_final
     			                +'&stu_note1='+stu_note1
     			                +'&stu_note2='+stu_note2
+    			                +'&pub_key='+pub_key
+    			                +'&pri_key='+pri_key
+    			                +'&cipher_text='+cipher_text
     			                +'&log_pw='+log_pw
+    			                
     			        }); 
 					});
 						

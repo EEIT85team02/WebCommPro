@@ -3,10 +3,10 @@ package Stu_additional.model;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+
 import Employee.model.EmployeeVO;
 import Member_status.model.Member_statusVO;
 import Student.model.StudentVO;
-import Test_period.model.Test_periodVO;
 
 public class Stu_additionalVO implements Serializable{
 
@@ -14,14 +14,12 @@ public class Stu_additionalVO implements Serializable{
 	private Integer stu_add_id ;
 	private Date test_start;
 	private Date test_end;
-	private String stu_applytime;
+	private Date stu_applytime;
 	private Integer sta_id;
 	private Time confirm_time ; 
 	private StudentVO studentVO;
 	private Member_statusVO Member_statusVO;
 	private EmployeeVO EmployeeVO;
-	private Test_periodVO Test_periodVO;
-	
 	
 	
 	public EmployeeVO getEmployeeVO() {
@@ -29,23 +27,13 @@ public class Stu_additionalVO implements Serializable{
 	}
 	public void setEmployeeVO(EmployeeVO employeeVO) {
 		EmployeeVO = employeeVO;
-	}
-
-
-	public Test_periodVO getTest_periodVO() {
-		return Test_periodVO;
-	}
-	public void setTest_periodVO(Test_periodVO test_periodVO) {
-		Test_periodVO = test_periodVO;
-	}
-	
+	}	
 	public Integer getStu_add_id() {
 		return stu_add_id;
 	}
 	public void setStu_add_id(Integer stu_add_id) {
 		this.stu_add_id = stu_add_id;
-	}
-	
+	}	
 	public Date getTest_start() {
 		return test_start;
 	}
@@ -58,10 +46,10 @@ public class Stu_additionalVO implements Serializable{
 	public void setTest_end(Date test_end) {
 		this.test_end = test_end;
 	}
-	public String getStu_applytime() {
+	public Date getStu_applytime() {
 		return stu_applytime;
 	}
-	public void setStu_applytime(String stu_applytime) {
+	public void setStu_applytime(Date stu_applytime) {
 		this.stu_applytime = stu_applytime;
 	}
 	public Member_statusVO getMember_statusVO() {
