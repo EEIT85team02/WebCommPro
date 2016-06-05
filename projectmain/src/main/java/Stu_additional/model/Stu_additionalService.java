@@ -3,6 +3,7 @@ package Stu_additional.model;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,12 +14,9 @@ import java.util.Map;
 import org.json.simple.JSONValue;
 
 import Class.model.ClassVO;
-
 import Employee.model.EmployeeVO;
 import Member_status.model.Member_statusVO;
-
 import Edu.model.EduVO;
-
 import Student.model.StudentVO;
 import Test_period.model.Test_periodVO;
 
@@ -70,7 +68,7 @@ public class Stu_additionalService {
 	public List<Stu_additionalVO> getAll() throws SQLException {
 		return dao.getAll();
 	}
-	public Stu_additionalVO upstatuscancel(Integer stu_id,Integer stu_add_id,Date test_start,Date test_end,String stu_applytime,Integer sta_id,String emp_id,Time confirm_time) throws SQLException {
+	public Stu_additionalVO upstatuscancel(Integer stu_id,Integer stu_add_id,Timestamp test_start,Timestamp test_end,Timestamp stu_applytime,Integer sta_id,String emp_id,Timestamp confirm_time) throws SQLException {
 
 		Stu_additionalVO stuaddVO = new Stu_additionalVO();
 
@@ -96,7 +94,7 @@ public class Stu_additionalService {
 		
 		return stuaddVO;
 		}
-	public Stu_additionalVO upstatusok(Integer stu_id,Integer stu_add_id,Date test_start,Date test_end,String stu_applytime,Integer sta_id,String emp_id,Time confirm_time) throws SQLException {
+	public Stu_additionalVO upstatusok(Integer stu_id,Integer stu_add_id,Timestamp test_start,Timestamp test_end,Timestamp stu_applytime,Integer sta_id,String emp_id,Timestamp confirm_time) throws SQLException {
 
 		Stu_additionalVO stuaddVO = new Stu_additionalVO();
 

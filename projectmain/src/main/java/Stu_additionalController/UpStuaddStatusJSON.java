@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
@@ -58,32 +59,14 @@ public class UpStuaddStatusJSON extends HttpServlet {
 
 			Integer stu_id = Integer.parseInt(req.getParameter("stu_id"));
 			Integer stu_add_id = new Integer(req.getParameter("stu_add_id"));				
-			String teststart = req.getParameter("test_start");
-			java.sql.Date test_start = null;
-			String tests[] =req.getParameter("test_start").split("-");
-			 GregorianCalendar teststgc = new GregorianCalendar(Integer.parseInt(tests[0]),Integer.parseInt(tests[1])-1,Integer.parseInt(tests[2]));
-			 teststgc.getTime().getTime();
-			if( teststart == null || teststart.length() == 0){
-				test_start = null;
-			}else{
-				test_start = new java.sql.Date(new Long(teststgc.getTime().getTime()));
-			}
-			String testend = req.getParameter("test_end");
-			java.sql.Date test_end = null;
-			String teste[] =req.getParameter("test_start").split("-");
-			 GregorianCalendar testegc = new GregorianCalendar(Integer.parseInt(teste[0]),Integer.parseInt(teste[1])-1,Integer.parseInt(teste[2]));
-			 testegc.getTime().getTime();
-			if( testend == null || testend.length() == 0){
-				test_end = null;
-			}else{
-				test_end = new java.sql.Date(new Long(testegc.getTime().getTime()));
-			}
-			String stu_applytime = req.getParameter("stu_applytime");
+			Timestamp test_start = Timestamp.valueOf(req.getParameter("test_start"));
+			Timestamp test_end = Timestamp.valueOf(req.getParameter("test_end"));	
+			Timestamp stu_applytime = Timestamp.valueOf(req.getParameter("stu_applytime"));
 			Integer sta_id = Integer.parseInt(req.getParameter("sta_id"));	
 			String emp_id = req.getParameter("emp_id");	
-			System.out.println(req.getParameter("confirm_time"));
+
 //			Time confirm_time = new java.sql.Time(new java.util.Date(req.getParameter("confirm_time")).getTime());	
-			Time confirm_time = new java.sql.Time(new java.util.Date().getTime());	
+			Timestamp confirm_time = Timestamp.valueOf(req.getParameter("confirm_time"));	
 			
 			Stu_additionalService stuaddSvc = new Stu_additionalService();
 			try {
@@ -100,30 +83,12 @@ public class UpStuaddStatusJSON extends HttpServlet {
 
 			Integer stu_id = Integer.parseInt(req.getParameter("stu_id"));
 			Integer stu_add_id = new Integer(req.getParameter("stu_add_id"));				
-			String teststart = req.getParameter("test_start");
-			java.sql.Date test_start = null;
-			String tests[] =req.getParameter("test_start").split("-");
-			 GregorianCalendar teststgc = new GregorianCalendar(Integer.parseInt(tests[0]),Integer.parseInt(tests[1])-1,Integer.parseInt(tests[2]));
-			 teststgc.getTime().getTime();
-			if( teststart == null || teststart.length() == 0){
-				test_start = null;
-			}else{
-				test_start = new java.sql.Date(new Long(teststgc.getTime().getTime()));
-			}
-			String testend = req.getParameter("test_end");
-			java.sql.Date test_end = null;
-			String teste[] =req.getParameter("test_start").split("-");
-			 GregorianCalendar testegc = new GregorianCalendar(Integer.parseInt(teste[0]),Integer.parseInt(teste[1])-1,Integer.parseInt(teste[2]));
-			 testegc.getTime().getTime();
-			if( testend == null || testend.length() == 0){
-				test_end = null;
-			}else{
-				test_end = new java.sql.Date(new Long(testegc.getTime().getTime()));
-			}
-			String stu_applytime = req.getParameter("stu_applytime");
+			Timestamp test_start = Timestamp.valueOf(req.getParameter("test_start"));
+			Timestamp test_end = Timestamp.valueOf(req.getParameter("test_end"));	
+			Timestamp stu_applytime = Timestamp.valueOf(req.getParameter("stu_applytime"));
 			Integer sta_id = Integer.parseInt(req.getParameter("sta_id"));	
 			String emp_id = req.getParameter("emp_id");	
-			Time confirm_time = java.sql.Time.valueOf(req.getParameter("confirm_time"));	
+			Timestamp confirm_time = Timestamp.valueOf(req.getParameter("confirm_time"));
 			
 			Stu_additionalService stuaddSvc = new Stu_additionalService();
 			try {
