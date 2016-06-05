@@ -3,6 +3,7 @@ package Stu_additional.model;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 
 import Employee.model.EmployeeVO;
 import Member_status.model.Member_statusVO;
@@ -12,12 +13,11 @@ public class Stu_additionalVO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private Integer stu_add_id ;
-	private Date test_start;
-	private Date test_end;
+	private Timestamp test_start;
+	private Timestamp test_end;
 
-	private Date stu_applytime;
-	private Integer sta_id;
-	private Time confirm_time ; 
+	private Timestamp stu_applytime;
+	private Timestamp confirm_time ; 
 
 	private StudentVO studentVO;
 	private Member_statusVO Member_statusVO;
@@ -40,22 +40,22 @@ public class Stu_additionalVO implements Serializable{
 	public void setStu_add_id(Integer stu_add_id) {
 		this.stu_add_id = stu_add_id;
 	}	
-	public Date getTest_start() {
+	public Timestamp getTest_start() {
 		return test_start;
 	}
-	public void setTest_start(Date test_start) {
+	public void setTest_start(Timestamp test_start) {
 		this.test_start = test_start;
 	}
-	public Date getTest_end() {
+	public Timestamp getTest_end() {
 		return test_end;
 	}
-	public void setTest_end(Date test_end) {
+	public void setTest_end(Timestamp test_end) {
 		this.test_end = test_end;
 	}
-	public Date getStu_applytime() {
+	public Timestamp getStu_applytime() {
 		return stu_applytime;
 	}
-	public void setStu_applytime(Date stu_applytime) {
+	public void setStu_applytime(Timestamp stu_applytime) {
 		this.stu_applytime = stu_applytime;
 	}
 	public Member_statusVO getMember_statusVO() {
@@ -64,10 +64,10 @@ public class Stu_additionalVO implements Serializable{
 	public void setMember_statusVO(Member_statusVO member_statusVO) {
 		Member_statusVO = member_statusVO;
 	}
-	public Time getConfirm_time() {
+	public Timestamp getConfirm_time() {
 		return confirm_time;
 	}
-	public void setConfirm_time(Time confirm_time) {
+	public void setConfirm_time(Timestamp confirm_time) {
 		this.confirm_time = confirm_time;
 	}
 	public StudentVO getStudentVO() {

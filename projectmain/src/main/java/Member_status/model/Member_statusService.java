@@ -31,12 +31,12 @@ public class Member_statusService {
 			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
-			map.put("stu_name",stuVO.getStudentVO().getStu_name());
-			map.put("stu_email",stuVO.getStudentVO().getStu_email());
-			map.put("stu_id",stuVO.getStudentVO().getStu_id());
-			map.put("stu_applytime",stuVO.getStu_applytime());
-			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
-			map.put("stu_add_id",stuVO.getStu_add_id());
+			map.put("stu_name",stuVO.getStudentVO().getStu_name().toString());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email().toString());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id().toString());
+			map.put("stu_applytime",stuVO.getStu_applytime().toString());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name().toString());
+			map.put("stu_add_id",stuVO.getStu_add_id().toString());
 			memsc.add(map);
 			}
 		}
@@ -51,12 +51,12 @@ public class Member_statusService {
 			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
-			map.put("stu_name",stuVO.getStudentVO().getStu_name());
-			map.put("stu_email",stuVO.getStudentVO().getStu_email());
-			map.put("stu_id",stuVO.getStudentVO().getStu_id());
-			map.put("stu_applytime",stuVO.getStu_applytime());
-			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
-			map.put("stu_add_id",stuVO.getStu_add_id());
+			map.put("stu_name",stuVO.getStudentVO().getStu_name().toString());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email().toString());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id().toString());
+			map.put("stu_applytime",stuVO.getStu_applytime().toString());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name().toString());
+			map.put("stu_add_id",stuVO.getStu_add_id().toString());
 			memsc.add(map);
 			}
 		}
@@ -71,11 +71,11 @@ public class Member_statusService {
 			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
-			map.put("stu_name",stuVO.getStudentVO().getStu_name());
-			map.put("stu_email",stuVO.getStudentVO().getStu_email());
-			map.put("stu_id",stuVO.getStudentVO().getStu_id());
-			map.put("stu_applytime",stuVO.getStu_applytime());
-			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
+			map.put("stu_name",stuVO.getStudentVO().getStu_name().toString());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email().toString());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id().toString());
+			map.put("stu_applytime",stuVO.getStu_applytime().toString());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name().toString());
 			memsc.add(map);
 			}
 		}
@@ -90,11 +90,11 @@ public class Member_statusService {
 			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
-			map.put("stu_name",stuVO.getStudentVO().getStu_name());
-			map.put("stu_email",stuVO.getStudentVO().getStu_email());
-			map.put("stu_id",stuVO.getStudentVO().getStu_id());
-			map.put("stu_applytime",stuVO.getStu_applytime());
-			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
+			map.put("stu_name",stuVO.getStudentVO().getStu_name().toString());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email().toString());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id().toString());
+			map.put("stu_applytime",stuVO.getStu_applytime().toString());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name().toString());
 			memsc.add(map);
 			}
 		}

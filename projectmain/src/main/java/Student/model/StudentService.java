@@ -1,6 +1,7 @@
 package Student.model;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -62,9 +63,9 @@ public class StudentService {
 			map.put("stu_sex",stuVO.getStu_sex().toString());
 			map.put("stu_email",stuVO.getStu_email().toString());
 			map.put("stu_pre",stuVO.getStu_pre().toString());
-			map.put("stu_testtime",stuVO.getStu_testtime()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_testtime().toString());
+			map.put("stu_testtime",stuVO.getStu_testtime().toString());
 			map.put("stu_total",stuVO.getStu_total().toString());
-			map.put("stu_workdate",stuVO.getStu_workdate()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_workdate().toString());
+			map.put("stu_workdate",stuVO.getStu_workdate().toString());
 			map.put("stu_except",stuVO.getStu_except().toString());
 			map.put("stu_final",stuVO.getStu_final().toString());
 			map.put("stu_note2",stuVO.getStu_note2().toString());
@@ -97,7 +98,7 @@ public class StudentService {
 		
 	}
 
-	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,java.sql.Date stu_testtime,Double stu_total,java.sql.Date stu_workdate,Double stu_except,Integer stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno, String class_id,byte[] pub_key,byte[] pri_key,byte[] cipher_text,byte[] log_pw) throws SQLException {
+	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,Timestamp stu_testtime,Double stu_total,Timestamp stu_workdate,Double stu_except,Integer stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno, String class_id,byte[] pub_key,byte[] pri_key,byte[] cipher_text,byte[] log_pw) throws SQLException {
 
 		StudentVO stuVO = new StudentVO();
 
@@ -150,11 +151,11 @@ public class StudentService {
 			map.put("stu_email",stuVO.getStu_email().toString());
 			map.put("stu_pre",stuVO.getStu_pre().toString());
 //			map.put("stu_testtime",stuVO.getStu_testtime());			
-			map.put("stu_testtime",stuVO.getStu_testtime()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_testtime().toString());
+			map.put("stu_testtime",stuVO.getStu_testtime().toString());
 //			System.out.println(stuVO.getStu_testtime());
 			map.put("stu_total",stuVO.getStu_total().toString());
 //			map.put("stu_workdate",stuVO.getStu_workdate());
-			map.put("stu_workdate",stuVO.getStu_workdate()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_workdate().toString());
+			map.put("stu_workdate",stuVO.getStu_workdate().toString());
 			map.put("stu_except",stuVO.getStu_except().toString());
 			map.put("stu_final",stuVO.getStu_final().toString());
 			map.put("stu_note2",stuVO.getStu_note2().toString());
@@ -164,6 +165,7 @@ public class StudentService {
 			map.put("pub_key",stuVO.getPub_key());
 			map.put("pri_key",stuVO.getPri_key());
 			map.put("cipher_text",stuVO.getCipher_text());
+			map.put("log_pw",stuVO.getLog_pw());
 			stusc.add(map);
 		}
 		
