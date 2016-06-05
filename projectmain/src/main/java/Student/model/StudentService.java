@@ -39,8 +39,7 @@ public class StudentService {
 			map.put("sta_name",stuaddVO.getMember_statusVO().getSta_name());
 			memsc.add(map);
 //			System.out.println(stuaddVO.getMember_statusVO().getSta_name());
-//			System.out.println(stuVO.getStu_name());	
-		
+//			System.out.println(stuVO.getStu_name());		
 		}
            
 		String jsonString = JSONValue.toJSONString(memsc);
