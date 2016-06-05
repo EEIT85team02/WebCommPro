@@ -71,10 +71,10 @@ public class StudentService {
 			map.put("stu_note2",stuVO.getStu_note2().toString());
 			map.put("stu_seatno",stuVO.getStu_seatno().toString());
 			map.put("class_id",stuVO.getClassVO().getClass_id().toString());
-			map.put("pub_key",stuVO.getPub_key());
-			map.put("pri_key",stuVO.getPri_key());
-			map.put("cipher_text",stuVO.getCipher_text());
-			map.put("log_pw",stuVO.getLog_pw());
+			map.put("pub_key",stuVO.getPub_key()==null?stuVO.getPub_key():stuVO.getPub_key().toString());
+			map.put("pri_key",stuVO.getPri_key()==null?stuVO.getPri_key():stuVO.getPri_key().toString());
+			map.put("cipher_text",stuVO.getCipher_text()==null?stuVO.getCipher_text():stuVO.getCipher_text().toString());
+			map.put("log_pw",stuVO.getLog_pw()==null?stuVO.getLog_pw():stuVO.getLog_pw().toString());
 			stusc.add(map);
 		String jsonString = JSONValue.toJSONString(stusc);
 		return jsonString;
@@ -162,10 +162,10 @@ public class StudentService {
 			map.put("class_id",stuVO.getClassVO().getClass_id().toString());
 //			System.out.println(stuVO.getClassVO().getClass_id());
 			map.put("stu_seatno",stuVO.getStu_seatno().toString());
-			map.put("pub_key",stuVO.getPub_key());
-			map.put("pri_key",stuVO.getPri_key());
-			map.put("cipher_text",stuVO.getCipher_text());
-			map.put("log_pw",stuVO.getLog_pw());
+			map.put("pub_key",stuVO.getPub_key()==null?stuVO.getPub_key():stuVO.getPub_key().toString());
+			map.put("pri_key",stuVO.getPri_key()==null?stuVO.getPri_key():stuVO.getPri_key().toString());
+			map.put("cipher_text",stuVO.getCipher_text()==null?stuVO.getCipher_text():stuVO.getCipher_text().toString());
+			map.put("log_pw",stuVO.getLog_pw()==null?stuVO.getLog_pw():stuVO.getLog_pw().toString());
 			stusc.add(map);
 		}
 		
