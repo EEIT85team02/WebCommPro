@@ -170,9 +170,13 @@ h1 {
 	<!-- 	</table>					 -->
 
 	<script>
+	window.onload = function ()
+	{
+		loadSendAllMail();
+	}
 		var sel = document.getElementById("class");//抓class下拉式選單的id
 		document.getElementById("class").onload = loadClassSelector();
-
+		//document.getElementById("class").onload = loadSendAllMail();
 		sel.addEventListener("change", changeList);
 		sel.addEventListener("change", loadSendAllMail);
 
@@ -239,12 +243,11 @@ h1 {
  Toggle.click(function(){	 
 	 //this vs $(this)	 
 	if(flag==0){
-		console.log("aaaaa")
+	
 	 $(':checkbox').prop('checked',true);
 	 Toggle.text('取消全選');
 	 flag=1;
 	}else if(flag==1){
-		console.log("bbb")
 			 $(':checkbox').prop('checked',false);
 			 Toggle.text('全部選取');
 			 flag=0;
@@ -395,11 +398,11 @@ h1 {
 							datas = xhr.responseText;
 							//returndatas=datas;
 
-							console.log("datas====" + datas);
+							console.log("從AJAX回來的datas====" + datas);
 							//console.log("returndatas====="+returndatas);
 							//還是要轉型成JSON物件
 							js = JSON.parse(datas);
-							console.log("js====" + js);
+							console.log("從AJAX回來的datas轉 js====" + js);
 
 							// 		---------------------------------------------舊方法開始 				
 
@@ -543,6 +546,7 @@ h1 {
 				//obj.check是將有否打勾，true就執行下面
 				if (obj[i].checked) {
 					selected.push(obj[i].value);//selected是愈加陣列的名稱，push是可以將值一個一個接到陣列後面
+					
 				}
 			}
 
@@ -554,17 +558,18 @@ h1 {
 				//像選到第0個，我就去抓js陣列中的第幾個元素，js陣列是我的
 				//SelectStudentInformation_controller中回傳的值
 				var selectobj = js[selected[i]];
+				console.log(selected[i]);
 				//concat() 方法用於連接兩個或多個陣列。
 				//方法不會改變原來陣列的值
 				//http://www.w3school.com.cn/jsref/jsref_concat_array.asp
-
+				
 				arr = arr.concat(selectobj);
 
 
 			}
 
 			selectedJSON = JSON.stringify(arr);
-
+			console.log("selectedJSON"+selectedJSON);			
 			alert("email寄送結束");
 			xhr.open('post', 'SendMail1.do', true);
 			xhr.setRequestHeader("Content-Type",

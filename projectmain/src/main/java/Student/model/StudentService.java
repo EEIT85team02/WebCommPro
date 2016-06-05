@@ -38,6 +38,9 @@ public class StudentService {
 			map.put("stu_applytime",stuaddVO.getStu_applytime());
 			map.put("sta_name",stuaddVO.getMember_statusVO().getSta_name());
 			memsc.add(map);
+//			System.out.println(stuaddVO.getMember_statusVO().getSta_name());
+//			System.out.println(stuVO.getStu_name());	
+		
 		}
            
 		String jsonString = JSONValue.toJSONString(memsc);
@@ -175,7 +178,7 @@ public class StudentService {
 
 		List<List<String>> stuVO = new LinkedList<List<String>>();
 		String jsonValue = null;
-		int count=1;//為了設value的值
+		int count=0;//為了設value的值
 		for(StudentVO a :list){
 			List<String> detailStuVO = new ArrayList<String>();
 			detailStuVO.add("<input type='checkbox' name='checkboxname' value='"+count+"'>");

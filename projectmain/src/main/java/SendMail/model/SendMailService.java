@@ -244,7 +244,7 @@ public static void SendPasswordMailToStudent(String emailString,String nameStrin
 	 
 	   message.setText("Dear "+nameString+"<br/>");
 
-	   message.setText("請登入以下網址更改你的密碼"+"http://localhost:8081/projectmain/SendMail/retypePassword.jsp?"+emailString);//內文
+	   message.setText("請登入以下網址更改你的密碼"+"http://localhost:8081/projectmain/LogIn/retypePassword.jsp?stu_email="+emailString);//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);

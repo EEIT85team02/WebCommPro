@@ -45,7 +45,7 @@ public class SendSelectedMail_controller extends HttpServlet {
 		PrintWriter out = res.getWriter();
 		
 		String json= req.getParameter("key");
-		
+		System.out.println("進controller的json"+json);
 		
 		
 		JSONArray ja = new JSONArray(json);
