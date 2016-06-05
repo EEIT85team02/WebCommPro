@@ -252,7 +252,7 @@ margin: 20px;
 				spanuclass_contact =$('#spanuclass_contact'),
 				spanuclass_teach =$('#spanuclass_teach');
 			
-			
+				var flag=null;
 				var checkclass_id=null;
 			 	var checkclass_name=null;
 				var checkclass_contact=null;
@@ -482,35 +482,40 @@ margin: 20px;
 			  
 			  
 				//新增表格欄位判斷
-				//ckeckclass_name欄位驗證(滑鼠離開後檢查)AJAX查詢登打的代號是否已存在資料庫中
-			    class_id.blur(fcheckclass_id);
-			    function fcheckclass_id() {
-			    	checkclass_id=true;
+				//ckeckclass_id欄位滑鼠離開後的判斷驗證
+				class_id.blur(function(){
 			    	var class_idVal=class_id.val();
 			    	var class_idValLength = class_idVal.length;
-			    	
 			    	$.get('ClassServletJSON.do',{'class_id':class_idVal,"action":"checkClassId"},function(data){
 			    		console.log(data);
-						if(data=="代號已存在"){
-							console.log("aaaaa");
-							spanclass_id.html("<img src='../img/error.png' style='width:16px'/>此班級代號已存在").css('color','red');
-							checkclass_id=false;
-						}else {
-							console.log("ddddddd");
-						    spanclass_id.html("<img src='../img/correct.png' style='width:16px'/>");
-						    checkclass_id=true;
-						    	
-				    	}
-						
-						
+			    		if(data=="代號已存在" || class_idVal=="" ||class_idValLength>10){
+							spanclass_id.html("<img src='../img/error.png' style='width:16px'/>此班級代號已存在或欄位格式不符").css('color','red');
+							flag=false;
+			    		}else if(data=="代號不存在"){
+							spanclass_id.html("<img src='../img/correct.png' style='width:16px'/>");
+							flag=true;
+			    		}
 					})
+			    });
+				
+				
+				function fcheckclass_id(){
+					checkclass_id=false;
+					var class_idVal=class_id.val();
+					var class_idValLength = class_idVal.length;
+					if ( class_idVal !="" && class_idValLength<=10 && flag ){
+						spanclass_id.html("<img src='../img/correct.png' style='width:16px'/>");
+						checkclass_id=true;
+					}else if ( class_idVal !="" && class_idValLength<=10 && !flag ){
+						spanclass_id.html("<img src='../img/error.png' style='width:16px'/>班級代號已存在").css('color','red');
+						checkclass_id=false;
+					}else if (class_idVal =="" || class_idValLength>10 || flag ){
+						spanclass_id.html("<img src='../img/error.png' style='width:16px'/>班級代號不可為空白且長度不可大於10碼").css('color','red');
+						checkclass_id=false;
+					}
 				}
-				
-				
 			    
-			    
-
-			  //ckeckclass_name欄位滑鼠離開後的判斷驗證
+				//ckeckclass_name欄位滑鼠離開後的判斷驗證
 				class_name.blur(fcheckclass_name);
 				function fcheckclass_name(){
 					checkclass_name=false;
@@ -564,20 +569,17 @@ margin: 20px;
 					fcheckclass_name();
 					fcheckclass_contact();
 					fcheckclass_teach();
-					console.log(checkclass_id);
-					console.log(checkclass_name);
-					console.log(checkclass_contact);
-					console.log(checkclass_teach);
-					if(checkclass_id && checkclass_name && checkclass_contact && checkclass_teach){
-						alert("資料皆正確，送出中");
-						return true;
-					}
-					else {
-						alert("資料錯誤，請檢查欄位長度格式是否正確");
-						return false;
-					} 
-						
-				}
+					console.log("flag========="+flag);
+					console.log("checkclass_id========="+checkclass_id);
+					if(flag && checkclass_id && checkclass_name && checkclass_contact && checkclass_teach){
+							alert("資料皆正確，送出中");
+							return true;
+						}
+						else {
+							alert("資料錯誤，請檢查欄位長度格式是否正確");
+							return false;
+						} 
+			    }
 			  
 			  	//修改表格欄位判斷
 				//ckeckuclass_name欄位滑鼠離開後的判斷驗證
@@ -629,7 +631,7 @@ margin: 20px;
 				}
 				
 				
-				//送出新增表單全部判斷
+				//送出更新表單全部判斷
 				function checkUpdateForm(){
 					fcheckuclass_name();
 					fcheckuclass_contact();
@@ -657,15 +659,7 @@ margin: 20px;
 	</script>
 </body>
 </html>
-<!--  if(class_idVal==""){ -->
-<!-- 									console.log("bbbbbb"); -->
-<!-- 									spanclass_id.html("<img src='../img/error.png' style='width:16px'/>班級代號不可為空白").css('color','red'); -->
-<!-- 						    		checkclass_id=false; -->
-<!-- 						    	}else if(class_idValLength>10){ -->
-<!-- 						    		console.log("cccccccc"); -->
-<!-- 						    		spanclass_id.html("<img src='../img/error.png' style='width:16px'/>班級代號欄位長度不可大於10碼").css('color','red'); -->
-<!-- 						    		checkclass_id=false; -->
-<!-- 						    	} -->
+
 
 
 

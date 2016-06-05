@@ -1,9 +1,3 @@
-drop database demo;
-create database demo;
-go
-use demo
-go
-
 drop table Mail_template;
 drop table Stu_additional;
 drop table Member_status;
@@ -17,8 +11,7 @@ drop table Test_period;
 drop table Class;
 drop table Edu;
 
---drop view view_examinerr;
---drop view view_Member;
+
 
 
 create table Edu
@@ -41,22 +34,7 @@ create table Class
 );  
 
 
-/*create table Student
-(
-  stu_id               nvarchar(10)  primary key  NOT NULL,     
-  stu_lastname         nvarchar(4)   NOT NULL ,           
-  stu_firstname        nvarchar(8)   NOT NULL,
-  stu_tel              nvarchar(15)  UNIQUE NOT NULL,
-  stu_mobile           nvarchar(15)  ,
-  stu_email            nvarchar(30)  UNIQUE NOT NULL,
-  stu_add              nvarchar(30)  ,
-  stu_age              int           NOT NULL,
-  stu_sch              nvarchar(10),
-  stu_dep              nvarchar(30),
-  class_id             nvarchar(10)  fk_class_id references  Class(class_id) NOT NULL,
-  log_pw               nvarchar(30)  UNIQUE NOT NULL 
-);  
-*/
+
 
 create table Student
 (
@@ -79,10 +57,10 @@ create table Student
   stu_final            int           ,
   stu_note2            nvarchar(100) ,
   class_id			   nvarchar(10)  foreign key references  Class(class_id) NOT NULL,
-  log_pw               varbinary(max),
-    pub_key               varbinary(max),
-  pri_key               varbinary(max),
-  cipher_text			varbinary(max) 
+  pub_key              varbinary(max),
+  pri_key              varbinary(max),
+  cipher_text		   varbinary(max) ,
+  log_pw               varbinary(max)
 );  
 
 
@@ -144,29 +122,12 @@ create table Member_status
 ); 
 
 
-/*
- create table Member_test
-(
-  stu_id           nvarchar(10)   fk_stu_id references  Student(stu_id) NOT NULL, 
-  test_startdate   timestamp      fk_test_startdate references  Test_interval(test_startdate) NOT NULL,
-  test_hour_id     int	          fk_test_hour_id references  Test_period(test_hour_id) NOT NULL,
-  mem_applytime    timestamp      UNIQUE NOT NULL,
-  mem_implement    double,
-  mem_interview    double,
-  sta_id           int            fk_sta_id references  Member_status(sta_id) NOT NULL ,
-  emp_id           nvarchar(10)   fk_emp_id references  Employee(emp_id) NOT NULL,
-  mem_checktime    timestamp,
-  CONSTRAINT pk_Member_test PRIMARY KEY (stu_id , test_startdate,test_hour_id)
-); 
-*/
-
-
  create table Stu_additional
 (
   stu_add_id       int            identity primary key ,
   stu_id           int   foreign key references  Student(stu_id) NOT NULL, 
-  test_startdate   date      NOT NULL,
-  test_hour_id     int	          foreign key references  Test_period(test_hour_id) NOT NULL,
+  test_start       date      NOT NULL,
+  test_end         date      NOT NULL,
   stu_applytime    time,
   sta_id           int            foreign key references  Member_status(sta_id) NOT NULL ,
   emp_id           nvarchar(10)   foreign key references  Employee(emp_id) NOT NULL,
@@ -188,29 +149,24 @@ create table Mail_template
  create table Examiner_offday
 (
   emp_id           nvarchar(10)	  foreign key references  Employee(emp_id) NOT NULL, 
-  off_startdate     date      NOT NULL,       
+  off_startdate    date      NOT NULL,       
   off_enddate      date      NOT NULL, 
   off_day          int            NOT NULL,
   emp_job_id       nvarchar(10)	  foreign key  references  Employee(emp_id) NOT NULL
 ); 
 
-
-
---create view view_examiner
---as
---select e.emp_id, o.off_stardate, o.off_enddate, o.off_day, o.emp_job_id, e.dep_id
---from Employee e left outer join Examiner_offday o
---on (s.emp_id = o.emp_id)
---inner join Employee e
---on (s.emp_id = e.emp_id)
---where s.sl_id=1 ;
-
-
---create view view_Member
---as
---select m.stu_id, s.stu_lastmame, s.stu_firstname, s.stu_tel, s.stu_mobile, s.stu_email, s.stu_add
---from Member_test m inner join Student s
---on (m.stu_id = s.stu_id);
-
+create table Fullcalendar
+(
+  order_id         int            primary key  NOT NULL  identity, 
+  ftest_hour_id    int            NOT NULL,
+  test_start       date      NOT NULL DEFAULT getdate(),
+  test_end         date      NOT NULL DEFAULT getdate(),
+  color            nvarchar(10)   NOT NULL,
+  stu_id           int            foreign key references  Student(stu_id) NOT NULL, 
+  title            nvarchar(20)   NOT NULL,
+  editable         int            NOT NULL DEFAULT 1 CHECK (editable = 1 OR editable = 0),
+  overlap          int            NOT NULL DEFAULT 1 CHECK (overlap = 1 OR overlap = 0),
+  rendering        nvarchar(10)   NOT NULL
+);
 
  
