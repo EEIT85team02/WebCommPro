@@ -148,7 +148,24 @@ public class Member_statusDAO implements IMember_statusDAO {
 					session.beginTransaction();
 					Query query = session.createQuery("from Member_statusVO where sta_name=:sta_name");
 					Member_statusVO member_statusVO = new Member_statusVO();
-					member_statusVO.setSta_name("已報名"); 
+					member_statusVO.setSta_name("已錄取"); 
+					query.setProperties(member_statusVO);
+					list = query.list();
+					session.getTransaction().commit();
+				} catch (RuntimeException ex) {
+					session.getTransaction().rollback();
+					throw ex;
+				}
+				return list;
+			}
+			public List<Member_statusVO> getStatusNYES() {
+				List<Member_statusVO> list = null;
+				Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+				try {
+					session.beginTransaction();
+					Query query = session.createQuery("from Member_statusVO where sta_name=:sta_name");
+					Member_statusVO member_statusVO = new Member_statusVO();
+					member_statusVO.setSta_name("未錄取"); 
 					query.setProperties(member_statusVO);
 					list = query.list();
 					session.getTransaction().commit();

@@ -102,7 +102,19 @@ public class ShowStatusJSON extends HttpServlet {
 			}
 			
 		}
-
+		if("getShowStatus05".equals(action)){
+			Member_statusService memSvc = new Member_statusService();
+			String jsonString;
+			try {
+				jsonString = memSvc.getStatusNYES();
+				out.write(jsonString);
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
 	}
 
 }

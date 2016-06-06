@@ -8,12 +8,14 @@
 <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link href="../css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
 <link href="../css/jquery-ui.css" rel="stylesheet">
+<link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.css" rel="stylesheet">
+<link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 <style>
 .my-error-class {
     color:#DF0101;
 }
 .my-valid-class {
-    color:#CC2EFA;
+    color:#0101DF;
 }
 </style>
 </head>
@@ -76,7 +78,7 @@
 </div>
 <!--                    <input type="button" value="成績" id="buttonJSON" -->
 <!-- 						class="btn btn-danger"> -->
-                     <table id="scoreTable" class="table table-bordered">
+                     <table id="scoreTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th>班別</th>
@@ -97,42 +99,66 @@
         <script src="../js/jquery.validate.min.js"></script>
         <script src="../js/additional-methods.min.js"></script>
         <script src="../js/messages_zh_TW.min.js"></script>
+        <script src="../DataTables/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
 		<script>
 				$(function() {
-			
+					//定義table資料來源json，與畫面顯示------>開始
+					$('#scoreTable').DataTable( {
+						 	"ajax": {
+					            "url": "upscoreJSON.do?action=getAllScore",
+					        },
+					     	"oLanguage": {
+							"sProcessing":"資料正處理中...",
+							"sLengthMenu": "顯示 _MENU_ 筆記錄",
+						    "sZeroRecords": "無符合資料",
+						    "sInfo": "目前記錄：_START_ 至 _END_, 總筆數：_TOTAL_",
+						    "sInfoEmpty":"顯示第 0 至 0 項結果，共 0 項",
+		                    "sInfoFiltered":"(從 _MAX_ 項結果過濾)",
+		                    "sSearch":"搜索:",
+		                    "oPaginate":{"sFirst":"首頁",
+		                              "sPrevious":"上頁",
+		                              "sNext":"下頁",
+		                              "sLast":"尾頁"}
+					 },
+				    	  "bProcessing": true,
+				    	  "sPaginationType":"full_numbers",
+				    	 
+				    	} );
+					//定義table資料來源json，與畫面顯示------>結束
                        
- 						$('#scoreTable>tbody').empty();   
+//  						$('#scoreTable>tbody').empty();   
 
-  						$.getJSON("upscoreJSON.do", {"action":"getAllScore"}, function(datas){												
+//   						$.getJSON("upscoreJSON.do", {"action":"getAllScore"}, function(datas){												
 						
-							$.each(datas, function(i, score) {
+// 							$.each(datas, function(i, score) {
 
-								var cell1 = $("<td></td>").text(score.stu_id);
-								var cell2 = $("<td></td>").text(score.stu_name);
-								var cell3 = $("<td></td>").text(score.stu_implement);
-								var cell4 = $("<td></td>").text(score.stu_interview);
-								var cell5 = $("<td></td>").html("<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+score.stu_id+" >修改</button>");
-//								console.log(score.stu_testtime)
-								var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5]);
+// 								var cell1 = $("<td></td>").text(score.stu_id);
+// 								var cell2 = $("<td></td>").text(score.stu_name);
+// 								var cell3 = $("<td></td>").text(score.stu_implement);
+// 								var cell4 = $("<td></td>").text(score.stu_interview);
+// 								var cell5 = $("<td></td>").html("<button type='button' class='btn btn-primary' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+score.stu_id+" >修改</button>");
+// //								console.log(score.stu_testtime)
+// 								var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5]);
                                    
-								$('#scoreTable>tbody').append(row);
+// 								$('#scoreTable>tbody').append(row);
 								
-							});
+// 							});
 		
-						});
+// 						});
 						
 					
 				})
-					 $(document).on("click",".btn-primary",function(){  //點擊修改按鈕
+					 $(document).on("click",".btn-info",function(){  //點擊修改按鈕
 						 updateID = $(this).val(); //拿出button的value的ID去資料庫找資料
 					     updateStu_id = $(this).parents("tr").find('td:eq(0)'); //找出各個欄位資料
 					     updateStu_name = $(this).parents("tr").find('td:eq(1)');
 					     updateStu_implement = $(this).parents("tr").find('td:eq(2)');
 					     updateStu_interview = $(this).parents("tr").find('td:eq(3)');
-//					     console.log(updateID)
+					     console.log(updateID)
 						 $.getJSON("upscoreJSON.do",{"action":"getPkId",'stu_id':updateID},function(datas){
+//							 console.log(datas)
 							 $.each(datas,function(i,score){
-//								 console.log(score.stu_testtime)
+//								 console.log(score.stu_id)
 								 $("#ustu_id").val(score.stu_id); //設定修改表單中各個欄位的值
 								 $("#ustu_name").val(score.stu_name);
 								 $("#ustu_implement").val(score.stu_implement);
