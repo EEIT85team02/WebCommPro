@@ -165,9 +165,6 @@ public class UpStuScoreJSON extends HttpServlet {
 			}
 		}
 	  }
-
 	}
 }
-
-
 

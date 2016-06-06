@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.json.simple.JSONValue;
 
+import Edu.model.EduVO;
 import Stu_additional.model.Stu_additionalVO;
 
 public class Member_statusService {
@@ -21,25 +22,7 @@ public class Member_statusService {
 	public List<Member_statusVO> getAll() throws SQLException {
 		return dao.getAll();
 	}
-	public String getStatusWAIT() throws SQLException {
-		List memsc = new LinkedList();
-		List<Member_statusVO> list = dao.getStatusWAIT();
-		for(Member_statusVO memVO : list){
-			
-			Set<Stu_additionalVO> set = (Set<Stu_additionalVO>) memVO.getStu_additionalVO();
-			for(Stu_additionalVO stuVO:set){
-			Map map = new HashMap();
-			map.put("stu_name",stuVO.getStudentVO().getStu_name());
-			map.put("stu_email",stuVO.getStudentVO().getStu_email());
-			map.put("stu_id",stuVO.getStudentVO().getStu_id());
-			map.put("stu_applytime",stuVO.getStu_applytime());
-			map.put("sta_name",((Member_statusVO) stuVO.getMember_statusVO()).getSta_name());
-			memsc.add(map);
-			}
-		}
-		String jsonString = JSONValue.toJSONString(memsc);
-		return jsonString;
-	}
+	
 	public String getStatusOK() throws SQLException {
 		List memsc = new LinkedList();
 		List<Member_statusVO> list = dao.getStatusOK();
@@ -48,11 +31,12 @@ public class Member_statusService {
 			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
-			map.put("stu_name",stuVO.getStudentVO().getStu_name());
-			map.put("stu_email",stuVO.getStudentVO().getStu_email());
-			map.put("stu_id",stuVO.getStudentVO().getStu_id());
-			map.put("stu_applytime",stuVO.getStu_applytime());
-			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
+			map.put("stu_name",stuVO.getStudentVO().getStu_name().toString());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email().toString());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id().toString());
+			map.put("stu_applytime",stuVO.getStu_applytime().toString());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name().toString());
+			map.put("stu_add_id",stuVO.getStu_add_id().toString());
 			memsc.add(map);
 			}
 		}
@@ -67,11 +51,12 @@ public class Member_statusService {
 			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
-			map.put("stu_name",stuVO.getStudentVO().getStu_name());
-			map.put("stu_email",stuVO.getStudentVO().getStu_email());
-			map.put("stu_id",stuVO.getStudentVO().getStu_id());
-			map.put("stu_applytime",stuVO.getStu_applytime());
-			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
+			map.put("stu_name",stuVO.getStudentVO().getStu_name().toString());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email().toString());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id().toString());
+			map.put("stu_applytime",stuVO.getStu_applytime().toString());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name().toString());
+			map.put("stu_add_id",stuVO.getStu_add_id().toString());
 			memsc.add(map);
 			}
 		}
@@ -86,11 +71,11 @@ public class Member_statusService {
 			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
-			map.put("stu_name",stuVO.getStudentVO().getStu_name());
-			map.put("stu_email",stuVO.getStudentVO().getStu_email());
-			map.put("stu_id",stuVO.getStudentVO().getStu_id());
-			map.put("stu_applytime",stuVO.getStu_applytime());
-			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
+			map.put("stu_name",stuVO.getStudentVO().getStu_name().toString());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email().toString());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id().toString());
+			map.put("stu_applytime",stuVO.getStu_applytime().toString());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name().toString());
 			memsc.add(map);
 			}
 		}
@@ -105,34 +90,17 @@ public class Member_statusService {
 			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 			for(Stu_additionalVO stuVO:set){
 			Map map = new HashMap();
-			map.put("stu_name",stuVO.getStudentVO().getStu_name());
-			map.put("stu_email",stuVO.getStudentVO().getStu_email());
-			map.put("stu_id",stuVO.getStudentVO().getStu_id());
-			map.put("stu_applytime",stuVO.getStu_applytime());
-			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
+			map.put("stu_name",stuVO.getStudentVO().getStu_name().toString());
+			map.put("stu_email",stuVO.getStudentVO().getStu_email().toString());
+			map.put("stu_id",stuVO.getStudentVO().getStu_id().toString());
+			map.put("stu_applytime",stuVO.getStu_applytime().toString());
+			map.put("sta_name",stuVO.getMember_statusVO().getSta_name().toString());
 			memsc.add(map);
 			}
 		}
 		String jsonString = JSONValue.toJSONString(memsc);
 		return jsonString;
 	}
-	public String getStatusWAITING() throws SQLException {
-		List memsc = new LinkedList();
-		List<Member_statusVO> list = dao.getStatusWAITING();
-		for(Member_statusVO memVO : list){
-			
-			Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
-			for(Stu_additionalVO stuVO:set){
-			Map map = new HashMap();
-			map.put("stu_name",stuVO.getStudentVO().getStu_name());
-			map.put("stu_email",stuVO.getStudentVO().getStu_email());
-			map.put("stu_id",stuVO.getStudentVO().getStu_id());
-			map.put("stu_applytime",stuVO.getStu_applytime());
-			map.put("sta_name",stuVO.getMember_statusVO().getSta_name());
-			memsc.add(map);
-			}
-		}
-		String jsonString = JSONValue.toJSONString(memsc);
-		return jsonString;
-	}
+
+
 }

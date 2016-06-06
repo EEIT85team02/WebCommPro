@@ -19,7 +19,7 @@ import Class.model.ClassVO;
 public class EduDAO implements IEduDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from EduVO order by edu_id";
+			"from EduVO";
 		
 		
 		public void insert(EduVO edu) {
@@ -100,9 +100,10 @@ public class EduDAO implements IEduDAO {
 		
 		
 		
-		public static void main(String[] args) {
+		public static void main(String[] args) throws Exception {
 
 			IEduDAO dao = new EduDAO();
+
 			List<EduVO> list1;
 			int count= 0;
 			System.out.println("=============="+ count++);
