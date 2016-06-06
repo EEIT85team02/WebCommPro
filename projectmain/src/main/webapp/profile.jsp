@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <!--  		<meta name="description" content="">
         <meta name="viewport" content="width=device-width"> -->
         <!-- 引入jQuery  and bootstrap css/js 檔案 -->
@@ -8,10 +9,8 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery-ui.min.js"></script>
 		<script src="js/bootstrap/bootstrap.min.js"></script> 
-		   
-        
-    	<!--jquery-steps-master -->
-        
+
+    <!--jquery-steps-master -->
       <link rel="stylesheet" type="text/css" href="css/jquery-steps-master/style.css" />
         <link rel="stylesheet" href="css/jquery-steps-master/normalize.css">
         <link rel="stylesheet" href="css/jquery-steps-master/main.css">
@@ -21,7 +20,8 @@
         <script src="js/jquery-steps-master/lib/jquery.cookie-1.3.1.js"></script>
         <script src="js/jquery-steps-master/build/jquery.steps.js"></script>  
    
-        <style>
+
+    <style>
         .user-row {
 		    margin-bottom: 14px;
 		}
@@ -60,6 +60,9 @@
         <script>
                
         $(document).ready(function() {
+        	
+        	
+        	
         $(function ()
                 {
                     $("#wizard").steps({
@@ -75,6 +78,8 @@
                         showFinishButtonAlways: false,
                         forceMoveForward: false
                     });
+    				
+					
                 });
                 
            /*      $.post(strUrl, {jsonData: JSON.stringify(formData)},
@@ -113,12 +118,31 @@
 						 $("#stu_sch").text(val.stu_sch);
 						 $("#stu_email").text(val.stu_email);
 						 $("#stu_workdate").text(val.stu_workdate);
-						 $("#test_startdate").text(val.test_startdate);
-						 $("#test_hour_id").text(val.test_hour_id);
+						 $("#test_start").text(val.test_start);
+						 $("#test_end").text(val.test_end);
 						 $("#stu_applytime").text(val.stu_applytime);
 						 $("#member_statusVO").text(val.member_statusVO);
 					})
+	 
 				});
+				
+				/* $("#editFrom").click(function(){
+					console.log("------editFrom------")
+					$.fancybox({//调用fancybox弹出层 
+		                'type':'ajax', 
+		                'href':'EditUserProfile.jsp?action=add&stu_id='+stu_id   
+		        });
+				}); */
+				
+				$(document).on('click', '#editFrom', function () {
+					console.log("------editFrom------")
+					$.fancybox({//调用fancybox弹出层 
+		                'type':'ajax', 
+		                'href':'EditUserProfile.jsp?action=add&stu_id='+stu_id   
+		        });
+				});
+				
+				
         });
         </script>
     
@@ -154,7 +178,8 @@
 			                      </tr>
 			                      <tr>
 			                        <td>Date of Birth</td>
-			                        <td id="stu_age"></td>
+			                        <td id="stu_age"><td></td>
+			                       
 			                      </tr>
 			                      <tr>
 			                       <tr>
@@ -181,7 +206,7 @@
 			            </div>
                     <div class="panel-footer">
                         <!-- <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> -->
-                    	<a href="EditUserProfile.jsp" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                    	<!-- <a href="EditUserProfile.jsp" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a> -->
                     </div>
 		          </div>
 		        </div>
@@ -203,11 +228,11 @@
 			                    <tbody>
 			                      <tr>
 			                        <td>Exam Date</td>
-			                        <td id="test_startdate"></td>
+			                        <td id="test_start"></td>
 			                      </tr>
 			                      <tr>
 			                        <td>Exam period</td>
-			                        <td id="test_hour_id"></td>
+			                        <td id="test_end"></td>
 			                      </tr>
 			                      <tr>
 			                        <td>Registration</td>
@@ -224,7 +249,7 @@
 			              </div>
 			              <div class="panel-footer">
                         <!-- <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> -->
-                    	<a href="EditUserProfile.jsp" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                    	<a href="<c:url value='/EditUserProfile.jsp' />" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"  ><i class="glyphicon glyphicon-edit"></i></a>
 			            </div>
 			            </div>
 		          </div>

@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:if test="${empty LoginOK}">
+	<c:set var="target" value="${pageContext.request.servletPath}" scope="session" />
+	<c:redirect url="login.jsp" />
+</c:if>
+<%
+response.setHeader("Pragma", "no-cache");
+response.setHeader("Cache-Control", "no-cache");
+response.setDateHeader("Expires", 0);
+response.flushBuffer();
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -65,109 +75,7 @@
         <script src="${pageContext.request.contextPath}/js/jquery-steps-master/build/jquery.steps.js"></script>
      
 
-  <!--   <script>
-	$(document).ready(function() {
-		
-		$('#external-events .fc-event').each(function() {
-			// store data so the calendar knows to render an event upon drop
-			$(this).data('event', {
-				title: $.trim($(this).text()), // use the element's text as the event title
-				stick: true // maintain when user navigates (see docs on the renderEvent method)
-			});
-	
-			// make the event draggable using jQuery UI
-			$(this).draggable({
-				zIndex: 999,
-				revert: true,      // will cause the event to go back to its
-				revertDuration: 0  //  original position after the drag
-			});
-	
-		});
-	
-		$('#my-button').click(function() {
-		    var moment = $('#calendar').fullCalendar('getDate');
-		    alert("The current date of the calendar is " + moment.format());
-		});
-		
-	$('#calendar').fullCalendar({
-        theme: false,
-        editable: false,
-        events:"CalendarJsonServlet.do", /* AddEditEvent*/
-       		
-        	header: {
-    			left : 'prev,next today',
-    			center :'title',
-    			right :'month,agendaWeek,agendaDay',
-    			prev: 'circle-triangle-w', 
-    			next: 'circle-triangle-e'
-    			},
-    			dayClick: function(start, end, jsEvent, view) {
-		    				start=moment(start).format('YYYY-MM-DD');
-		    				end=moment(start).format('YYYY-MM-DD')
-    						console.log(start);
-		    				console.log(end);
-     			            var selDate =$.fullCalendar.moment().format(start,"YYYY-MM-DD");//格式化日期 
-//    			            var selDate =$.fullCalendar.moment(date); 
-     			            console.log(selDate);
-    			            $.fancybox({//调用fancybox弹出层 
-    			                'type':'ajax', 
-    			                'href':'Event.jsp?action=add&start='+start+'&end='+end //	
-    			            });  
-    			            
-    			        },
-    			
-    			eventClick: function(calEvent, jsEvent, view) {
-    				console.log(calEvent.id);
-    						$.fancybox({
-    							'type':'ajax',
-    							'href':'Event.jsp?action=edit&id='+calEvent.id
-    						});
-    			 		},
-    				
-    			editable : true,
-    			
-    			droppable : true, // this allows things to be dropped onto the calendar
-    			
-    			drop: function() {
-    				// is the "remove after drop" checkbox checked?
-    				if ($('#drop-remove').is(':checked')) {
-    					// if so, remove the element from the "Draggable Events" list
-    					$(this).remove();
-    				}
-    			},
-    			selectable: true,
-    			selectHelper: true,
-    	/* 		select: function(start, end) {
-    				var title = prompt('Event Title:');
-    				var eventData;
-    				if (title) {
-    					eventData = {
-    						title: title,
-    						start: start,
-    						end: end,
-    						overlap: false,
-    					};
-    					$('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-    				}
-    				$('#calendar').fullCalendar('unselect');
-    			} ,
-*/    			editable: true,
-    			
-	    });
-    
-	
-	
-	/*  var calendar = $('#calendar').fullCalendar('getCalendar');
-	var m = calendar.moment();
-	//alert(m);
-	moment(calendar, "yyyy-MM-dd'T'HH:mm:ss.SSSZ"); 
-	
-	 moment.createFromInputFallback = function(config) {
-		  // unreliable string magic, or
-		  config._d = new Date(config._i);
-		};  */
-	});
-</script> -->
+ 
 
 </head>
 
@@ -204,7 +112,7 @@
                     </li>
                     <li class="page-scroll">
 							<!-- 登出 -->
-							 <iframe id="logoutframe" src="https://accounts.google.com/logout" style="display: none"></iframe>
+							<!--  <iframe id="logoutframe" src="https://accounts.google.com/logout" style="display: none"></iframe> -->
 							<c:if test="${not empty LoginOK}">
 				            <li><a href="<c:url value='/Logout.do'/>">Logout</a></li>
 							</c:if>

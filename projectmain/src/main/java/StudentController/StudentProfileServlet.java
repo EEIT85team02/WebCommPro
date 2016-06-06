@@ -54,7 +54,11 @@ public class StudentProfileServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		Object LoginOK = request.getSession().getAttribute("LoginOK");
+		if(LoginOK != null){
+			
+			System.out.println("LoginOK-----StudentProfileServlet:"+LoginOK);
+			
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 //		String action ="stu_add";
@@ -210,7 +214,14 @@ public class StudentProfileServlet extends HttpServlet {
 		}
 		
 
-	}
 	
-
+	
+	}else{
+		
+		System.out.println("StudentProfileServlet---------------/Login.jsp");
+		response.sendRedirect(
+			      response.encodeRedirectURL( "Login.jsp" ));
+		return;
+	}
+}
 }

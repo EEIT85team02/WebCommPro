@@ -98,7 +98,11 @@ public class StudentService {
 		
 	}
 
-	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,Timestamp stu_testtime,Double stu_total,Timestamp stu_workdate,Double stu_except,Integer stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno, String class_id,byte[] pub_key,byte[] pri_key,byte[] cipher_text,byte[] log_pw) throws SQLException {
+	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,
+							String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,java.sql.Date stu_testtime,
+							Double stu_total,java.sql.Date stu_workdate,Double stu_except,Integer stu_final,String stu_note2,
+							Double stu_implement,Double stu_interview,Integer stu_seatno, String class_id,byte[] pub_key,
+							byte[] pri_key,byte[] cipher_text,byte[] log_pw) throws SQLException {
 
 		StudentVO stuVO = new StudentVO();
 

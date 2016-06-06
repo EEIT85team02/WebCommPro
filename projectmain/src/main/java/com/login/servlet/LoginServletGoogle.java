@@ -53,7 +53,7 @@ public class LoginServletGoogle extends HttpServlet {
 			// -- 先將session取消 否則無限迴圈
 		request.getSession().invalidate();
 		
-		System.out.println("-------2------");
+
 													
 		loginPage = oa2.getAuthorizationUrl("http://localhost:8080/projectmain/LoginServletGoogle.do");
 		response.sendRedirect(loginPage);
@@ -62,7 +62,7 @@ public class LoginServletGoogle extends HttpServlet {
 			
 			// 如果code已經有東西表示google那邊已經驗證OK
 //			loginPage = oa2.getAuthorizationUrl("http://localhost:8080/OA2/UserInfo.jsp");
-			System.out.println("-------3------");
+
 			
 			String userCode = request.getParameter("code");
 			/**
@@ -143,8 +143,8 @@ public class LoginServletGoogle extends HttpServlet {
 			boolean isMember = studentVO==null?false:true;
 			if(isMember){
 				HttpSession session = request.getSession();
-				Integer stuID = studentVO.getStu_id();
-				session.setAttribute("stuID", stuID);
+				Integer stu_id = studentVO.getStu_id();
+				session.setAttribute("stu_id", stu_id);
 			
 			
 			/**
@@ -247,8 +247,8 @@ public class LoginServletGoogle extends HttpServlet {
 			response.sendRedirect("http://localhost:8080/projectmain"+service);
 			
 			}else{
-				System.out.println("即將導向網頁..."+"http://localhost:8080/projectmain/LoginBegin.jsp");
-				response.sendRedirect("http://localhost:8080/projectmain/LoginBegin.jsp");
+				System.out.println("即將導向網頁..."+"http://localhost:8080/projectmain/Login.jsp");
+				response.sendRedirect("http://localhost:8080/projectmain/Login.jsp");
 				
 				
 			}

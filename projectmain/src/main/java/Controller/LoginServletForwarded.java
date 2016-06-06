@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
+
+
 /*@WebServlet("/LoginServlet")*/
 public class LoginServletForwarded extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,9 +31,15 @@ public class LoginServletForwarded extends HttpServlet {
 			
 			Object LoginOK = request.getSession().getAttribute("LoginOK");
 			System.out.println("LoginServletForwarded------"+LoginOK);
+	
+			
 			if(LoginOK != null){
 			RequestDispatcher successMsg = request.getRequestDispatcher("/WEB-INF/JSPs/User_Profile.jsp");
 			successMsg.forward(request, response);
+			}else {
+				response.sendRedirect(
+					      response.encodeRedirectURL( "WebComm_index.jsp" ));
+				
 			}
 	}	
 }

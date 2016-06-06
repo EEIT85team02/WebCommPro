@@ -1,5 +1,6 @@
 package Student.model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.*;
 import java.io.Serializable;
@@ -20,10 +21,10 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private String stu_email ;
 	private Integer stu_pre ;
 	private Double stu_implement ;
-	private Timestamp stu_testtime  ;
+	private Date stu_testtime  ;
 	private Double stu_interview ;
 	private Double stu_total ;
-	private Timestamp stu_workdate ;
+	private Date stu_workdate ;
 	private Double stu_except ;
 	private Integer stu_final ;
 	private String stu_note2 ;
@@ -169,11 +170,11 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 		this.stu_implement = stu_implement;
 	}
 
-	public Timestamp getStu_testtime() {
+	public Date getStu_testtime() {
 		return stu_testtime;
 	}
 
-	public void setStu_testtime(Timestamp stu_testtime) {
+	public void setStu_testtime(Date stu_testtime) {
 		this.stu_testtime = stu_testtime;
 	}
 
@@ -201,11 +202,11 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 		this.stu_total = stu_total;
 	}
 
-	public Timestamp getStu_workdate() {
+	public Date getStu_workdate() {
 		return stu_workdate;
 	}
 
-	public void setStu_workdate(Timestamp stu_workdate) {
+	public void setStu_workdate(Date stu_workdate) {
 		this.stu_workdate = stu_workdate;
 	}
 
