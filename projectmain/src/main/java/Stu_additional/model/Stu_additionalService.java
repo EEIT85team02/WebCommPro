@@ -83,7 +83,7 @@ public class Stu_additionalService {
 		stuaddVO.setStudentVO(stuvo);
 		
 		Member_statusVO memvo = new Member_statusVO();
-		memvo.setSta_id(3);
+		memvo.setSta_id(2);
 		stuaddVO.setMember_statusVO(memvo);
 		
 		EmployeeVO empvo = new EmployeeVO();
@@ -109,7 +109,7 @@ public class Stu_additionalService {
 		stuaddVO.setStudentVO(stuvo);
 		
 		Member_statusVO memvo = new Member_statusVO();
-		memvo.setSta_id(2);
+		memvo.setSta_id(1);
 		stuaddVO.setMember_statusVO(memvo);
 		
 		EmployeeVO empvo = new EmployeeVO();

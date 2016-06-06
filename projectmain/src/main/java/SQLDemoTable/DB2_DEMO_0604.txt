@@ -71,12 +71,11 @@ insert into Test_interval (class_id, test_startdate, test_enddate) values ('SESE
 --insert into Test_Date (class_id, test_hour_id, test_date, test_people, exam_people) values ('EEIT85', '3', '2016-05-10', '2', '0');
 
  --Member_status
-insert into Member_status (sta_id, sta_name) values ('1','核准中');
-insert into Member_status (sta_id, sta_name) values ('2','已核准');
-insert into Member_status (sta_id, sta_name) values ('3','未核准');
-insert into Member_status (sta_id, sta_name) values ('4','未報名');
-insert into Member_status (sta_id, sta_name) values ('5','已報名');
-insert into Member_status (sta_id, sta_name) values ('6','報名中');
+insert into Member_status (sta_id, sta_name) values ('1','已核准');
+insert into Member_status (sta_id, sta_name) values ('2','未核准');
+insert into Member_status (sta_id, sta_name) values ('3','未報名');
+insert into Member_status (sta_id, sta_name) values ('4','已錄取');
+insert into Member_status (sta_id, sta_name) values ('5','未錄取');
 
  --Stu_additional
 insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (4,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 10:30:00', '4', '7004', '2016-05-09 15:00:00');
