@@ -166,7 +166,7 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(stu_final);
 				stu_note2 = request.getParameter("stu_note2");
 				System.out.println(stu_note2);
-				log_pw = request.getParameter("log_pw");
+				log_pw = (request.getParameter("log_pw"));
 				System.out.println(log_pw);
 				class_id = request.getParameter("class_id");
 				System.out.println(class_id);

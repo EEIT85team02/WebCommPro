@@ -30,18 +30,18 @@ public class LogoutServlet extends HttpServlet {
         //request.getRequestDispatcher("/WEB-INF/JSPs/User_Profile.jsp").include(request, response);  
 		System.out.println("LogoutServlet-----------"+request.getSession()); 
       
-
+	    request.getSession().invalidate();
 	
-		 HttpSession session=request.getSession();  
-	     session.invalidate();  
+		 //HttpSession session=request.getSession();  
+	     //session.invalidate();  
 	 	//response.sendRedirect("WebComm_index.jsp");
-	 	  session=request.getSession(false);  
-	 	 System.out.println("LogoutServlet-----------"+request.getSession(false)); 
-      if(session == null){  
+	 	  //session=request.getSession(false);  
+	 	 System.out.println("LogoutServlet-----------"+request.getSession()); 
+       
         	
         	response.sendRedirect("01_login/Logout.jsp");  
-       
-        }  
+       /* 	if(session == null){ 
+        }  */
 
     }  
 	

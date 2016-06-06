@@ -204,6 +204,7 @@
                     </li>
                     <li class="page-scroll">
 							<!-- 登出 -->
+							 <iframe id="logoutframe" src="https://accounts.google.com/logout" style="display: none"></iframe>
 							<c:if test="${not empty LoginOK}">
 				            <li><a href="<c:url value='/Logout.do'/>">Logout</a></li>
 							</c:if>
