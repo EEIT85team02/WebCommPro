@@ -1,5 +1,6 @@
 package SendMail.model;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.List;
 import java.util.Properties;
@@ -16,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import sun.misc.BASE64Encoder;
+import LogIn.model.SaveChangedPasswordService;
 import Student.model.StudentDAO;
 
 //這隻service主要功能是拿來寄信
@@ -103,7 +105,7 @@ public void SendMailToStudent(JSONArray ja){
 	  }
 }
 
-public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameStringArray,byte[][] publickeyArray,byte[][] privatekeyArray,byte[][] ciphertextArray,String classId){
+public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameStringArray,byte[][] publickeyArray,byte[][] privatekeyArray,byte[][] ciphertextArray,String classId) throws NoSuchAlgorithmException{
   	 
 
 	  String host = "smtp.gmail.com";
@@ -113,7 +115,10 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	  
 	  final String username = "eeit85team02@gmail.com";//發信的帳號
 	  final String password = "pw123456789";//your password
-
+	  
+	  EncryptService es =new EncryptService();
+	  
+	  
  
 	  Properties props = new Properties();
 	  props.put("mail.smtp.host", host);
@@ -132,6 +137,11 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   message.setFrom(new InternetAddress("eeit85team02@gmail.com"));
 	   
 	  for(int i=0,max=nameStringArray.length;i<max;i++){
+		  String ramdonString=es.GenerateRandomString();
+		  byte[] encodedByteArray=es.MD5Encrypt(ramdonString);
+		  SaveChangedPasswordService scp =new SaveChangedPasswordService(); 
+		  scp.SaveRandomPasswordToDataBase(encodedByteArray,emailStringArray[i]);
+		  String encodedByteArrayToString=org.apache.tomcat.util.codec.binary.Base64.encodeBase64URLSafeString(encodedByteArray);
 		  
 	   message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailStringArray[i]));//對方email
 	   message.setSubject("測試寄信.");
@@ -140,7 +150,7 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   //String a=new BASE64Encoder().encode(ciphertextArray[i],);
 
 	   message.setText("Dear "+nameStringArray[i]);
-	   message.setText("http://localhost:8081/projectmain/Verification_controller?key="+a+"&email="+emailStringArray[i]);//內文
+	   message.setText("Dear "+nameStringArray[i]+"<br/>"+"http://localhost:8081/projectmain/Verification_controller?key="+a+"&email="+emailStringArray[i]+"這是你的登錄密碼"+encodedByteArrayToString);//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);

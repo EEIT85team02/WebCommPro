@@ -1,11 +1,15 @@
 package LogIn.controller;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import LogIn.model.SaveChangedPasswordService;
 
 /**
  * Servlet implementation class ChangePassword_controller
@@ -38,6 +42,16 @@ public class ChangePassword_controller extends HttpServlet {
 		System.out.println("抓到的密碼＝"+password);
 		String email=req.getParameter("email");
 		System.out.println("抓到的email＝"+email);
+		
+		SaveChangedPasswordService snpt = new SaveChangedPasswordService();
+		try {
+			snpt.SaveNewPasswordToDataBase(password, email);
+		} catch (NoSuchAlgorithmException e) {
+
+			e.printStackTrace();
+		}
+		
+		
 		
 	}
 
