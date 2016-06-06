@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import Examiner_offday.model.Examiner_offday;
+import Examiner_offday.model.Examiner_offdayVO;
 import Examiner_offday.model.Examiner_offdayDAO;
 import Examiner_offday.model.IExaminer_offdayDAO;
 
@@ -40,7 +40,7 @@ public class InsertExaminer_offday extends HttpServlet {
 			java.sql.Timestamp off_enddate =  java.sql.Timestamp.valueOf(request.getParameter("off_enddate"));
 			Integer off_day = Integer.parseInt(request.getParameter("off_day"));
 			String emp_job_id = request.getParameter("emp_job_id");
-			Examiner_offday edu1= new Examiner_offday();
+			Examiner_offdayVO edu1= new Examiner_offdayVO();
 			edu1.setEmp_id(emp_id);
 			edu1.setOff_stardate(off_stardate);
 			edu1.setOff_enddate(off_enddate);
