@@ -87,10 +87,6 @@ public class StudentDAO implements IStudentDAO {
 			return stu;
 		}
 
-		public Set<Stu_additionalVO> getStusByStu_id(Integer stu_id) {		
-			Set<Stu_additionalVO> set = findByPrimaryKey(stu_id).getStu_additionalVO();
-			return set;
-		}
 		
 		public List<StudentVO> getAll() {
 			List<StudentVO> list = null;
@@ -201,7 +197,7 @@ public class StudentDAO implements IStudentDAO {
 		public Set<Stu_additionalVO> getStuByStu_id(Integer stu_id)
 				throws SQLException {			
 			Set<Stu_additionalVO> set = findByPrimaryKey(stu_id).getStu_additionalVO();
-			return null;
+			return set;
 		}
 		
 }

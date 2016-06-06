@@ -3,6 +3,7 @@ package StudentController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
@@ -80,12 +81,10 @@ public class UpStuScoreJSON extends HttpServlet {
 			Integer stu_pre=0;
 			String stufinal = req.getParameter("stu_final");
 			Integer stu_final=0;
-			String stutesttime = req.getParameter("stu_testtime");
-			java.sql.Date stu_testtime = null;
+			Timestamp stu_testtime = Timestamp.valueOf(req.getParameter("stu_testtime"));
 			String stutotal = req.getParameter("stu_total");
 			Double stu_total = 0.0;
-			String stuworkdate = req.getParameter("stu_workdate");
-			java.sql.Date stu_workdate = null;
+			Timestamp stu_workdate =Timestamp.valueOf(req.getParameter("stu_workdate"));
 			String stuexcept = req.getParameter("stu_except");
 			Double stu_except = 0.0;
 			String stugroup = req.getParameter("stu_group");
@@ -112,29 +111,6 @@ public class UpStuScoreJSON extends HttpServlet {
 			}else{
 				stu_total = Double.parseDouble(req.getParameter("stu_total"));
 			}
-			String stutt[] =req.getParameter("stu_testtime").split("-");
-			 GregorianCalendar stuttgc = new GregorianCalendar(Integer.parseInt(stutt[0]),Integer.parseInt(stutt[1])-1,Integer.parseInt(stutt[2]));
-			 stuttgc.getTime().getTime();
-//			for(String aa:stutt){
-//				System.out.println("aa==========="+aa);
-//			}
-//			System.out.println(new java.sql.Date(new Long());
-//			java.sql.Date stu_testtime = new java.sql.Date(new Long(req.getParameter("stu_testtime")));
-			if( stutesttime == null || stutesttime.length() == 0){
-				stu_testtime = null;
-			}else{
-				stu_testtime = new java.sql.Date(new Long(stuttgc.getTime().getTime()));
-			}
-			String stuwd[] =req.getParameter("stu_workdate").split("-");
-			 GregorianCalendar stuwdgc = new GregorianCalendar(Integer.parseInt(stuwd[0]),Integer.parseInt(stuwd[1])-1,Integer.parseInt(stuwd[2]));
-			 stuwdgc.getTime().getTime();
-			if( stuworkdate == null || stuworkdate.length() == 0){
-				stu_workdate = null;
-			}else{
-				stu_workdate = new java.sql.Date(new Long(stuwdgc.getTime().getTime()));
-			}
-//			java.sql.Date stu_workdate =new java.sql.Date(new Long(req.getParameter("stu_workdate")));
-//			Double	stu_except = Double.parseDouble(req.getParameter("stu_except"));
 			if( stuexcept == null || stuexcept.length() == 0){
 				stu_except = null;
 			}else{
@@ -171,15 +147,16 @@ public class UpStuScoreJSON extends HttpServlet {
 				errorMsgs.add("請填0到100之間的數字");
 			}
 			String class_id = req.getParameter("class_id");
-			byte[] pub_key = req.getParameter("pub_key").getBytes("UTF-8");
-			byte[] pri_key =req.getParameter("pri_key").getBytes("UTF-8");
-			byte[] cipher_text = req.getParameter("cipher_text").getBytes("UTF-8");
+			byte[] pub_key = req.getParameter("pub_key").getBytes();
+			byte[] pri_key =req.getParameter("pri_key").getBytes();
+			byte[] cipher_text = req.getParameter("cipher_text").getBytes();
+			byte[] log_pw = req.getParameter("log_pw").getBytes();
 			if (!errorMsgs.isEmpty()) {
 				out.write("資料更新失敗");
 			}else{
 			StudentService stuSvc = new StudentService();
 			try {
-				stuSvc.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_testtime,stu_total,stu_workdate,stu_except,stu_final,stu_note2,stu_implement, stu_interview,stu_seatno,class_id,pub_key,pri_key,cipher_text);
+				stuSvc.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_testtime,stu_total,stu_workdate,stu_except,stu_final,stu_note2,stu_implement, stu_interview,stu_seatno,class_id,pub_key,pri_key,cipher_text,log_pw);
 				out.write("資料更新成功");
 
 			} catch (SQLException e) {
@@ -191,4 +168,6 @@ public class UpStuScoreJSON extends HttpServlet {
 
 	}
 }
+
+
 
