@@ -8,7 +8,8 @@
 <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link href="../css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
 <link href="../css/jquery-ui.css" rel="stylesheet">
-
+<link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.css" rel="stylesheet">
+<link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
 <body>
 <form method="post" action="UpStuaddStatusJSON.do" name="cancelok">
@@ -38,7 +39,8 @@
         <li role="presentation"><a href="#OK" role="tab" id="OK-tab" data-toggle="tab" aria-controls="OK">已核准</a></li>
         <li role="presentation"><a href="#NO" id="NO-tab" role="tab" data-toggle="tab" aria-controls="NO">未核准</a></li>
         <li role="presentation"><a href="#NEVER" role="tab" id="NEVER-tab" data-toggle="tab" aria-controls="NEVER">未報名</a></li>
-        <li role="presentation"><a href="#YES" role="tab" id="YES-tab" data-toggle="tab" aria-controls="YES">已報名</a></li>
+        <li role="presentation"><a href="#YES" role="tab" id="YES-tab" data-toggle="tab" aria-controls="YES">已錄取</a></li>
+        <li role="presentation"><a href="#NYES" role="tab" id="NYES-tab" data-toggle="tab" aria-controls="NYES">未錄取</a></li>
       </ul>
       <div id="myTabContent" class="tab-content">
         
@@ -46,7 +48,7 @@
               <p>
 <!--                       <input type="button" value="狀態" id="buttonJSON" -->
 <!--                           class="btn btn-danger"> -->
-                      <table id="statusTable01" class="table table-bordered">
+                      <table id="statusTable01" class="display" cellspacing="0" width="100%">
                          <thead>
                             <tr>
                                 <th>姓名</th>
@@ -54,6 +56,8 @@
 		                        <th>班別</th>
 		                        <th>預約日期</th>
 		                        <th>狀態</th>
+		                        <th>送信</th>
+		                        <th>取消核准</th>
                             </tr>
                          </thead>
                          <tbody>
@@ -65,7 +69,7 @@
               <p>
 <!--                       <input type="button" value="狀態" id="buttonJSON" -->
 <!--                           class="btn btn-danger"> -->
-                      <table id="statusTable02" class="table table-bordered">
+                      <table id="statusTable02" class="display" cellspacing="0" width="100%">
                          <thead>
                             <tr>
                                 <th>姓名</th>
@@ -73,7 +77,7 @@
 		                        <th>班別</th>
 		                        <th>預約日期</th>
 		                        <th>狀態</th>
-		                    
+		                    	<th>核准</th>
                             </tr>
                          </thead>
                          <tbody>
@@ -85,7 +89,7 @@
               <p>
 <!--                       <input type="button" value="狀態" id="buttonJSON" -->
 <!--                           class="btn btn-danger"> -->
-                      <table id="statusTable03" class="table table-bordered">
+                      <table id="statusTable03" class="display" cellspacing="0" width="100%">
                          <thead>
                             <tr>
                                 <th>姓名</th>
@@ -104,7 +108,26 @@
               <p>
 <!--                       <input type="button" value="狀態" id="buttonJSON" -->
 <!--                           class="btn btn-danger"> -->
-                      <table id="statusTable04" class="table table-bordered">
+                      <table id="statusTable04" class="display" cellspacing="0" width="100%">
+                         <thead>
+                            <tr>
+                                <th>姓名</th>
+		                        <th>E-mail</th>
+		                        <th>班別</th>
+		                        <th>預約日期</th>
+		                        <th>狀態</th>
+                            </tr>
+                         </thead>
+                         <tbody>
+                         </tbody>
+                      </table>
+               <p>
+           </div>
+            <div role="tabpanel" class="tab-pane fade" id="NYES" aria-labelledBy="NYES-tab">
+              <p>
+<!--                       <input type="button" value="狀態" id="buttonJSON" -->
+<!--                           class="btn btn-danger"> -->
+                      <table id="statusTable05" class="display" cellspacing="0" width="100%">
                          <thead>
                             <tr>
                                 <th>姓名</th>
@@ -126,7 +149,7 @@
         <script src="../js/jquery.min.js"></script>
 		<script src="../js/bootstrap/bootstrap.min.js"></script>
 		<script src="../js/jquery-1.12.4.js"></script>
-
+        <script src="../DataTables/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
 		<script>
 		        $(function(){
 
@@ -148,41 +171,44 @@
                               var Updatedatas = $('form[name="cancelok"]').serialize();
 				 			     $.get('UpStuaddStatusJSON.do',Updatedatas,function(){
 				 			    	 
-				 			    	$('#statusTable01>tbody').empty();
+				 			    	table1.ajax.reload();
+				 			    	table2.ajax.reload();
 				 			    	
-				 			     $.getJSON('ShowStatusJSON.do',{'action':'getShowStatus01'},function(datas){
+// 				 			    	$('#statusTable01>tbody').empty();
+				 			    	
+// 				 			     $.getJSON('ShowStatusJSON.do',{'action':'getShowStatus01'},function(datas){
 						        		
-						        $.each(datas,function(i,status){
-						        	var cell1 = $("<td></td>").text(status.stu_name);
-									var cell2 = $("<td></td>").text(status.stu_email);
-									var cell3 = $("<td></td>").text(status.stu_id);
-									var cell4 = $("<td></td>").text(status.stu_applytime);
-									var cell5 = $("<td></td>").text(status.sta_name);
-									var cell6 = $("<td></td>").html("<button type='button' class='btn btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_id+" >送信</button>");
-									var cell7 = $("<td></td>").html("<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_add_id+" >取消核准</button>");
+// 						        $.each(datas,function(i,status){
+// 						        	var cell1 = $("<td></td>").text(status.stu_name);
+// 									var cell2 = $("<td></td>").text(status.stu_email);
+// 									var cell3 = $("<td></td>").text(status.stu_id);
+// 									var cell4 = $("<td></td>").text(status.stu_applytime);
+// 									var cell5 = $("<td></td>").text(status.sta_name);
+// 									var cell6 = $("<td></td>").html("<button type='button' class='btn btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_id+" >送信</button>");
+// 									var cell7 = $("<td></td>").html("<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_add_id+" >取消核准</button>");
 											
-									var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6,cell7]);
+// 									var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6,cell7]);
 											
-									$('#statusTable01>tbody').append(row);
-						             })
-						          })
-						     $('#statusTable02>tbody').empty();
+// 									$('#statusTable01>tbody').append(row);
+// 						             })
+// 						          })
+// 						     $('#statusTable02>tbody').empty();
 		        	
-		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus02'},function(datas){
+// 		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus02'},function(datas){
 		        		
-		        		$.each(datas,function(i,status){
-		        			var cell1 = $("<td></td>").text(status.stu_name);
-							var cell2 = $("<td></td>").text(status.stu_email);
-							var cell3 = $("<td></td>").text(status.stu_id);
-							var cell4 = $("<td></td>").text(status.stu_applytime);
-							var cell5 = $("<td></td>").text(status.sta_name);
-							var cell6 = $("<td></td>").html("<button type='button' class='btn btn-success' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_add_id+" >核准</button>");
+// 		        		$.each(datas,function(i,status){
+// 		        			var cell1 = $("<td></td>").text(status.stu_name);
+// 							var cell2 = $("<td></td>").text(status.stu_email);
+// 							var cell3 = $("<td></td>").text(status.stu_id);
+// 							var cell4 = $("<td></td>").text(status.stu_applytime);
+// 							var cell5 = $("<td></td>").text(status.sta_name);
+// 							var cell6 = $("<td></td>").html("<button type='button' class='btn btn-success' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_add_id+" >核准</button>");
 									
-							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6]);
+// 							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6]);
 							
-							$('#statusTable02>tbody').append(row);
-		        		})
-		        	})
+// 							$('#statusTable02>tbody').append(row);
+// 		        		})
+// 		        	})
 				 			    })
 							 })
 						 })
@@ -205,116 +231,245 @@
                               var Updatedatas = $('form[name="ok"]').serialize();
 				 			     $.get('UpStuaddStatusJSON.do',Updatedatas,function(){
 				 			    	 
-				 			    	$('#statusTable01>tbody').empty();
+				 			    	table1.ajax.reload();
+				 			    	table2.ajax.reload(); 
 				 			    	
-				 			     $.getJSON('ShowStatusJSON.do',{'action':'getShowStatus01'},function(datas){
+// 				 			    	$('#statusTable01>tbody').empty();
+				 			    	
+// 				 			     $.getJSON('ShowStatusJSON.do',{'action':'getShowStatus01'},function(datas){
 						        		
-						        $.each(datas,function(i,status){
-						        	var cell1 = $("<td></td>").text(status.stu_name);
-									var cell2 = $("<td></td>").text(status.stu_email);
-									var cell3 = $("<td></td>").text(status.stu_id);
-									var cell4 = $("<td></td>").text(status.stu_applytime);
-									var cell5 = $("<td></td>").text(status.sta_name);
-									var cell6 = $("<td></td>").html("<button type='button' class='btn btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_id+" >送信</button>");
-									var cell7 = $("<td></td>").html("<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_add_id+" >取消核准</button>");
+// 						        $.each(datas,function(i,status){
+// 						        	var cell1 = $("<td></td>").text(status.stu_name);
+// 									var cell2 = $("<td></td>").text(status.stu_email);
+// 									var cell3 = $("<td></td>").text(status.stu_id);
+// 									var cell4 = $("<td></td>").text(status.stu_applytime);
+// 									var cell5 = $("<td></td>").text(status.sta_name);
+// 									var cell6 = $("<td></td>").html("<button type='button' class='btn btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_id+" >送信</button>");
+// 									var cell7 = $("<td></td>").html("<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_add_id+" >取消核准</button>");
 											
-									var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6,cell7]);
+// 									var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6,cell7]);
 											
-									$('#statusTable01>tbody').append(row);
-						             })
-						          })
-						     $('#statusTable02>tbody').empty();
+// 									$('#statusTable01>tbody').append(row);
+// 						             })
+// 						          })
+// 						     $('#statusTable02>tbody').empty();
 		        	
-		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus02'},function(datas){
+// 		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus02'},function(datas){
 		        		
-		        		$.each(datas,function(i,status){
-		        			var cell1 = $("<td></td>").text(status.stu_name);
-							var cell2 = $("<td></td>").text(status.stu_email);
-							var cell3 = $("<td></td>").text(status.stu_id);
-							var cell4 = $("<td></td>").text(status.stu_applytime);
-							var cell5 = $("<td></td>").text(status.sta_name);
-							var cell6 = $("<td></td>").html("<button type='button' class='btn btn-success' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_add_id+" >核准</button>");
+// 		        		$.each(datas,function(i,status){
+// 		        			var cell1 = $("<td></td>").text(status.stu_name);
+// 							var cell2 = $("<td></td>").text(status.stu_email);
+// 							var cell3 = $("<td></td>").text(status.stu_id);
+// 							var cell4 = $("<td></td>").text(status.stu_applytime);
+// 							var cell5 = $("<td></td>").text(status.sta_name);
+// 							var cell6 = $("<td></td>").html("<button type='button' class='btn btn-success' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_add_id+" >核准</button>");
 									
-							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6]);
+// 							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6]);
 							
-							$('#statusTable02>tbody').append(row);
-		        		})
-		        	})
+// 							$('#statusTable02>tbody').append(row);
+// 		        		})
+// 		        	})
 				 			    })
 							 })
 						 })
 					 })
-				
-		        		$('#statusTable01>tbody').empty();
+							//定義table資料來源json，與畫面顯示------>開始
+					var table1 = $('#statusTable01').DataTable( {
+						 	"ajax": {
+					            "url": "ShowStatusJSON.do?action=getShowStatus01",
+					        },
+					     	"oLanguage": {
+							"sProcessing":"資料正處理中...",
+							"sLengthMenu": "顯示 _MENU_ 筆記錄",
+						    "sZeroRecords": "無符合資料",
+						    "sInfo": "目前記錄：_START_ 至 _END_, 總筆數：_TOTAL_",
+						    "sInfoEmpty":"顯示第 0 至 0 項結果，共 0 項",
+		                    "sInfoFiltered":"(從 _MAX_ 項結果過濾)",
+		                    "sSearch":"搜索:",
+		                    "oPaginate":{"sFirst":"首頁",
+		                              "sPrevious":"上頁",
+		                              "sNext":"下頁",
+		                              "sLast":"尾頁"}
+					 },
+				    	  "bProcessing": true,
+				    	  "sPaginationType":"full_numbers",
+				    	 
+				    	} );
+					//定義table資料來源json，與畫面顯示------>結束
+					
+				   var table2 = $('#statusTable02').DataTable( {
+						 	"ajax": {
+					            "url": "ShowStatusJSON.do?action=getShowStatus02",
+					        },
+					     	"oLanguage": {
+							"sProcessing":"資料正處理中...",
+							"sLengthMenu": "顯示 _MENU_ 筆記錄",
+						    "sZeroRecords": "無符合資料",
+						    "sInfo": "目前記錄：_START_ 至 _END_, 總筆數：_TOTAL_",
+						    "sInfoEmpty":"顯示第 0 至 0 項結果，共 0 項",
+		                    "sInfoFiltered":"(從 _MAX_ 項結果過濾)",
+		                    "sSearch":"搜索:",
+		                    "oPaginate":{"sFirst":"首頁",
+		                              "sPrevious":"上頁",
+		                              "sNext":"下頁",
+		                              "sLast":"尾頁"}
+					 },
+				    	  "bProcessing": true,
+				    	  "sPaginationType":"full_numbers",
+				    	 
+				    	} );
+					
+					$('#statusTable03').DataTable( {
+					 	"ajax": {
+				            "url": "ShowStatusJSON.do?action=getShowStatus03",
+				        },
+				     	"oLanguage": {
+						"sProcessing":"資料正處理中...",
+						"sLengthMenu": "顯示 _MENU_ 筆記錄",
+					    "sZeroRecords": "無符合資料",
+					    "sInfo": "目前記錄：_START_ 至 _END_, 總筆數：_TOTAL_",
+					    "sInfoEmpty":"顯示第 0 至 0 項結果，共 0 項",
+	                    "sInfoFiltered":"(從 _MAX_ 項結果過濾)",
+	                    "sSearch":"搜索:",
+	                    "oPaginate":{"sFirst":"首頁",
+	                              "sPrevious":"上頁",
+	                              "sNext":"下頁",
+	                              "sLast":"尾頁"}
+				 },
+			    	  "bProcessing": true,
+			    	  "sPaginationType":"full_numbers",
+			    	 
+			    	} );
+					
+					$('#statusTable04').DataTable( {
+					 	"ajax": {
+				            "url": "ShowStatusJSON.do?action=getShowStatus04",
+				        },
+				     	"oLanguage": {
+						"sProcessing":"資料正處理中...",
+						"sLengthMenu": "顯示 _MENU_ 筆記錄",
+					    "sZeroRecords": "無符合資料",
+					    "sInfo": "目前記錄：_START_ 至 _END_, 總筆數：_TOTAL_",
+					    "sInfoEmpty":"顯示第 0 至 0 項結果，共 0 項",
+	                    "sInfoFiltered":"(從 _MAX_ 項結果過濾)",
+	                    "sSearch":"搜索:",
+	                    "oPaginate":{"sFirst":"首頁",
+	                              "sPrevious":"上頁",
+	                              "sNext":"下頁",
+	                              "sLast":"尾頁"}
+				 },
+			    	  "bProcessing": true,
+			    	  "sPaginationType":"full_numbers",
+			    	 
+			    	} );
+					
+					$('#statusTable05').DataTable( {
+					 	"ajax": {
+				            "url": "ShowStatusJSON.do?action=getShowStatus05",
+				        },
+				     	"oLanguage": {
+						"sProcessing":"資料正處理中...",
+						"sLengthMenu": "顯示 _MENU_ 筆記錄",
+					    "sZeroRecords": "無符合資料",
+					    "sInfo": "目前記錄：_START_ 至 _END_, 總筆數：_TOTAL_",
+					    "sInfoEmpty":"顯示第 0 至 0 項結果，共 0 項",
+	                    "sInfoFiltered":"(從 _MAX_ 項結果過濾)",
+	                    "sSearch":"搜索:",
+	                    "oPaginate":{"sFirst":"首頁",
+	                              "sPrevious":"上頁",
+	                              "sNext":"下頁",
+	                              "sLast":"尾頁"}
+				 },
+			    	  "bProcessing": true,
+			    	  "sPaginationType":"full_numbers",
+			    	 
+			    	} );
+// 		        		$('#statusTable01>tbody').empty();
 		        	
-		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus01'},function(datas){
+// 		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus01'},function(datas){
 		        		
-		        		$.each(datas,function(i,status){
-		        			var cell1 = $("<td></td>").text(status.stu_name);
-							var cell2 = $("<td></td>").text(status.stu_email);
-							var cell3 = $("<td></td>").text(status.stu_id);
-							var cell4 = $("<td></td>").text(status.stu_applytime);
-							var cell5 = $("<td></td>").text(status.sta_name);
-							var cell6 = $("<td></td>").html("<button type='button' class='btn btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_id+" >送信</button>");
-							var cell7 = $("<td></td>").html("<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_add_id+" >取消核准</button>");
+// 		        		$.each(datas,function(i,status){
+// 		        			var cell1 = $("<td></td>").text(status.stu_name);
+// 							var cell2 = $("<td></td>").text(status.stu_email);
+// 							var cell3 = $("<td></td>").text(status.stu_id);
+// 							var cell4 = $("<td></td>").text(status.stu_applytime);
+// 							var cell5 = $("<td></td>").text(status.sta_name);
+// 							var cell6 = $("<td></td>").html("<button type='button' class='btn btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_id+" >送信</button>");
+// 							var cell7 = $("<td></td>").html("<button type='button' class='btn btn-warning' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_add_id+" >取消核准</button>");
 							
-							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6,cell7]);
+// 							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6,cell7]);
 							
-							$('#statusTable01>tbody').append(row);
-		        		})
-		        	})
-		        		$('#statusTable02>tbody').empty();
+// 							$('#statusTable01>tbody').append(row);
+// 		        		})
+// 		        	})
+// 		        		$('#statusTable02>tbody').empty();
 		        	
-		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus02'},function(datas){
+// 		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus02'},function(datas){
 		        		
-		        		$.each(datas,function(i,status){
-		        			var cell1 = $("<td></td>").text(status.stu_name);
-							var cell2 = $("<td></td>").text(status.stu_email);
-							var cell3 = $("<td></td>").text(status.stu_id);
-							var cell4 = $("<td></td>").text(status.stu_applytime);
-							var cell5 = $("<td></td>").text(status.sta_name);
-							var cell6 = $("<td></td>").html("<button type='button' class='btn btn-success' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_add_id+" >核准</button>");
+// 		        		$.each(datas,function(i,status){
+// 		        			var cell1 = $("<td></td>").text(status.stu_name);
+// 							var cell2 = $("<td></td>").text(status.stu_email);
+// 							var cell3 = $("<td></td>").text(status.stu_id);
+// 							var cell4 = $("<td></td>").text(status.stu_applytime);
+// 							var cell5 = $("<td></td>").text(status.sta_name);
+// 							var cell6 = $("<td></td>").html("<button type='button' class='btn btn-success' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+status.stu_add_id+" >核准</button>");
 									
-							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6]);
+// 							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5,cell6]);
 							
-							$('#statusTable02>tbody').append(row);
-		        		})
-		        	})
-		        		$('#statusTable03>tbody').empty();
+// 							$('#statusTable02>tbody').append(row);
+// 		        		})
+// 		        	})
+// 		        		$('#statusTable03>tbody').empty();
 		        	
-		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus03'},function(datas){
+// 		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus03'},function(datas){
 		        		
-		        		$.each(datas,function(i,status){
-		        			var cell1 = $("<td></td>").text(status.stu_name);
-							var cell2 = $("<td></td>").text(status.stu_email);
-							var cell3 = $("<td></td>").text(status.stu_id);
-							var cell4 = $("<td></td>").text(status.stu_applytime);
-							var cell5 = $("<td></td>").text(status.sta_name);
+// 		        		$.each(datas,function(i,status){
+// 		        			var cell1 = $("<td></td>").text(status.stu_name);
+// 							var cell2 = $("<td></td>").text(status.stu_email);
+// 							var cell3 = $("<td></td>").text(status.stu_id);
+// 							var cell4 = $("<td></td>").text(status.stu_applytime);
+// 							var cell5 = $("<td></td>").text(status.sta_name);
 							
 									
-							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5]);
+// 							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5]);
 							
-							$('#statusTable03>tbody').append(row);
-		        		})
-		        	})
-		        		$('#statusTable04>tbody').empty();
+// 							$('#statusTable03>tbody').append(row);
+// 		        		})
+// 		        	})
+// 		        		$('#statusTable04>tbody').empty();
 		        	
-		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus04'},function(datas){
+// 		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus04'},function(datas){
 		        		
-		        		$.each(datas,function(i,status){
-		        			var cell1 = $("<td></td>").text(status.stu_name);
-							var cell2 = $("<td></td>").text(status.stu_email);
-							var cell3 = $("<td></td>").text(status.stu_id);
-							var cell4 = $("<td></td>").text(status.stu_applytime);
-							var cell5 = $("<td></td>").text(status.sta_name);
+// 		        		$.each(datas,function(i,status){
+// 		        			var cell1 = $("<td></td>").text(status.stu_name);
+// 							var cell2 = $("<td></td>").text(status.stu_email);
+// 							var cell3 = $("<td></td>").text(status.stu_id);
+// 							var cell4 = $("<td></td>").text(status.stu_applytime);
+// 							var cell5 = $("<td></td>").text(status.sta_name);
 					
 									
-							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5]);
+// 							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5]);
 							
-							$('#statusTable04>tbody').append(row);
-		        		})
-		        	})
-		        		  
+// 							$('#statusTable04>tbody').append(row);
+// 		        		})
+// 		        	})
+// 		        	$('#statusTable05>tbody').empty();
+		        	
+// 		        	$.getJSON('ShowStatusJSON.do',{'action':'getShowStatus05'},function(datas){
+		        		
+// 		        		$.each(datas,function(i,status){
+// 		        			var cell1 = $("<td></td>").text(status.stu_name);
+// 							var cell2 = $("<td></td>").text(status.stu_email);
+// 							var cell3 = $("<td></td>").text(status.stu_id);
+// 							var cell4 = $("<td></td>").text(status.stu_applytime);
+// 							var cell5 = $("<td></td>").text(status.sta_name);
+					
+									
+// 							var row = $("<tr></tr>").append([cell1,cell2,cell3,cell4,cell5]);
+							
+// 							$('#statusTable05>tbody').append(row);
+// 		        		})
+// 		        	})	  
 		        })
 		</script>
 </body>

@@ -27,17 +27,15 @@ public class EncryptService{
 		return encryptedString;
 		
 	}
-	public static String MD5Encrypt(String msg) throws NoSuchAlgorithmException{
+	public static byte[] MD5Encrypt(String msg) throws NoSuchAlgorithmException{
 
 
 	        MessageDigest md = MessageDigest.getInstance("MD5");
 	        byte[] messageDigest = md.digest(msg.getBytes());
-			 for(int i =0,max=messageDigest.length;i<max;i++){
-				 System.out.print(messageDigest[i]+",");
-			}
-			 String encryptedmessageToString=new String(messageDigest); 
-			return encryptedmessageToString;	
+
+			return messageDigest;	
 	}
+	
 	public static byte[] AESEncrypt(String msg) throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
 
 

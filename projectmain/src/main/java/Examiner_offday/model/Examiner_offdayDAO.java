@@ -2,8 +2,10 @@ package Examiner_offday.model;
 
 
 import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
+
 import hibernate.util.HibernateUtil;
 
 
@@ -12,10 +14,10 @@ import hibernate.util.HibernateUtil;
 public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from Examiner_offday order by emp_id";
+			"from Examiner_offdayVO order by emp_id";
 
 
-		public void insert(Examiner_offday exa) {
+		public void insert(Examiner_offdayVO exa) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -29,7 +31,7 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 
 
 
-		public void update(Examiner_offday exa) {
+		public void update(Examiner_offdayVO exa) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -45,7 +47,7 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				Examiner_offday exa = (Examiner_offday) session.get(Examiner_offday.class, emp_id);
+				Examiner_offdayVO exa = (Examiner_offdayVO) session.get(Examiner_offdayVO.class, emp_id);
 				session.delete(exa);
 				session.getTransaction().commit();	
 			} catch (RuntimeException ex) {
@@ -55,12 +57,12 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 		}
 		
 
-		public Examiner_offday findByPrimaryKey(String emp_id) {
-			Examiner_offday exa = null;
+		public Examiner_offdayVO findByPrimaryKey(String emp_id) {
+			Examiner_offdayVO exa = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				exa = (Examiner_offday) session.get(Examiner_offday.class, emp_id);
+				exa = (Examiner_offdayVO) session.get(Examiner_offdayVO.class, emp_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -69,8 +71,8 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 			return exa;
 		}
 
-		public List<Examiner_offday> getAll() {
-			List<Examiner_offday> list = null;
+		public List<Examiner_offdayVO> getAll() {
+			List<Examiner_offdayVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
@@ -83,6 +85,14 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 			}
 			return list;
 		}
+		public static void main(String[] args) {
+			
+			Examiner_offdayDAO eo=new Examiner_offdayDAO();
+			Examiner_offdayVO eog=eo.findByPrimaryKey("7004");
 
+			System.out.println(eog.getEmp_id());
+
+
+		}
 
 }

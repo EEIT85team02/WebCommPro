@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="Examiner_offday.model.Examiner_offday" table="Examiner_offday" >
+    <class name="Examiner_offday.model.Examiner_offdayVO" table="Examiner_offday" >
         
         <id name="emp_id" column="emp_id">
             

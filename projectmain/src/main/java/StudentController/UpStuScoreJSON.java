@@ -43,27 +43,27 @@ public class UpStuScoreJSON extends HttpServlet {
         
 		String action = req.getParameter("action");
 		 
-
 		if ("getAllScore".equals(action)) {
 			
-				 StudentService stuSvc = new StudentService();
-				try {
-					String jsonString = stuSvc.getAllScoreJSON();
-					//out.print(jsonString);
-					out.write(jsonString);
-					//System.out.println(jsonString);
-				} catch (SQLException e) {
-					
-					e.printStackTrace();
-				}
+			 StudentService stuSvc = new StudentService();
+			try {
+				String jsonString = stuSvc.getAllScoreJSON();
+				//out.print(jsonString);
+				out.write(jsonString);
+				//System.out.println(jsonString);
+			} catch (SQLException e) {
 				
+				e.printStackTrace();
 			}
+			
+		}
 		if("getPkId".equals(action)){
 			Integer stu_id = Integer.parseInt(req.getParameter("stu_id"));
-			StudentService stuSvc = new StudentService();
+			StudentService stuSvcPK = new StudentService();
 			try {
-				String jsonString = stuSvc.getOneStu(stu_id);
+				String jsonString = stuSvcPK.getOneStu(stu_id);
 				out.write(jsonString);
+				System.out.println(jsonString);
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
@@ -154,9 +154,9 @@ public class UpStuScoreJSON extends HttpServlet {
 			if (!errorMsgs.isEmpty()) {
 				out.write("資料更新失敗");
 			}else{
-			StudentService stuSvc = new StudentService();
+			StudentService stuSvcUP = new StudentService();
 			try {
-				stuSvc.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_testtime,stu_total,stu_workdate,stu_except,stu_final,stu_note2,stu_implement, stu_interview,stu_seatno,class_id,pub_key,pri_key,cipher_text,log_pw);
+				stuSvcUP.upscore(stu_group,stu_note1,stu_id,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_testtime,stu_total,stu_workdate,stu_except,stu_final,stu_note2,stu_implement, stu_interview,stu_seatno,class_id,pub_key,pri_key,cipher_text,log_pw);
 				out.write("資料更新成功");
 
 			} catch (SQLException e) {
@@ -165,7 +165,6 @@ public class UpStuScoreJSON extends HttpServlet {
 			}
 		}
 	  }
-
 	}
 }
 

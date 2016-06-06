@@ -1,5 +1,6 @@
 package SendMail.model;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.List;
 import java.util.Properties;
@@ -16,6 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import sun.misc.BASE64Encoder;
+import LogIn.model.SaveChangedPasswordService;
+import SendMail.Controller.Verification_controller;
 import Student.model.StudentDAO;
 
 //這隻service主要功能是拿來寄信
@@ -103,7 +106,7 @@ public void SendMailToStudent(JSONArray ja){
 	  }
 }
 
-public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameStringArray,byte[][] publickeyArray,byte[][] privatekeyArray,byte[][] ciphertextArray,String classId){
+public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameStringArray,byte[][] publickeyArray,byte[][] privatekeyArray,byte[][] ciphertextArray,String classId) throws NoSuchAlgorithmException{
   	 
 
 	  String host = "smtp.gmail.com";
@@ -113,7 +116,10 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	  
 	  final String username = "eeit85team02@gmail.com";//發信的帳號
 	  final String password = "pw123456789";//your password
-
+	  
+	  EncryptService es =new EncryptService();
+	  
+	  
  
 	  Properties props = new Properties();
 	  props.put("mail.smtp.host", host);
@@ -132,6 +138,11 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   message.setFrom(new InternetAddress("eeit85team02@gmail.com"));
 	   
 	  for(int i=0,max=nameStringArray.length;i<max;i++){
+		  String ramdonString=es.GenerateRandomString();
+		  byte[] encodedByteArray=es.MD5Encrypt(ramdonString);
+		  SaveChangedPasswordService scp =new SaveChangedPasswordService(); 
+		  scp.SaveRandomPasswordToDataBase(encodedByteArray,emailStringArray[i]);
+		  String encodedByteArrayToString=org.apache.tomcat.util.codec.binary.Base64.encodeBase64URLSafeString(encodedByteArray);
 		  
 	   message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailStringArray[i]));//對方email
 	   message.setSubject("測試寄信.");
@@ -139,8 +150,9 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   String a=org.apache.tomcat.util.codec.binary.Base64.encodeBase64URLSafeString(ciphertextArray[i]);
 	   //String a=new BASE64Encoder().encode(ciphertextArray[i],);
 
+
 	   message.setText("Dear "+nameStringArray[i]);
-	   message.setText("http://localhost:8081/projectmain/Verification_controller?key="+a+"&email="+emailStringArray[i]);//內文
+	   message.setText("Dear"+nameStringArray[i]+"\n"+"請由下列的網址直接登錄並預約考試時間\n"+"http://localhost:8081/projectmain/Verification_controller?key="+a+"&email="+emailStringArray[i]+"\n如果你擁有Google帳號可以用google方式登錄，或是用我們提供的密碼做登錄"+"\n這是你的登錄密碼"+encodedByteArrayToString);//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);
@@ -244,7 +256,7 @@ public static void SendPasswordMailToStudent(String emailString,String nameStrin
 	 
 	   message.setText("Dear "+nameString+"<br/>");
 
-	   message.setText("請登入以下網址更改你的密碼"+"http://localhost:8081/projectmain/SendMail/retypePassword.jsp?"+emailString);//內文
+	   message.setText("請登入以下網址更改你的密碼"+"http://localhost:8081/projectmain/LogIn/retypePassword.jsp?stu_email="+emailString);//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);

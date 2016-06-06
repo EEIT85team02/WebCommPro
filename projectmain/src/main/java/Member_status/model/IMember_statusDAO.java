@@ -21,4 +21,5 @@ public interface IMember_statusDAO {
 	public List<Member_statusVO> getStatusNEVER() throws SQLException;
 	public List<Member_statusVO> getStatusYES() throws SQLException;
 	public Set<Stu_additionalVO> getStuBySta_id(Integer sta_id) throws SQLException;
+	public List<Member_statusVO> getStatusNYES()throws SQLException;
 }
