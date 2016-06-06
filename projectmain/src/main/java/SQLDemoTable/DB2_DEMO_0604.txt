@@ -3,9 +3,9 @@
 
 
 --Edu
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會', '台北市大安區復興南路一段', '026631666', 'Mary');
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會', '桃園市中壢區中大路300號', '034257387', 'John');
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會', '高雄市前金區中正四路211號', '079699885', 'Alean');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會', '台北市大安區復興南路一段', '02-6631666', 'Mary');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會', '桃園市中壢區中大路300號', '03-4257387', 'John');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會', '高雄市前金區中正四路211號', '07-9699885', 'Alean');
 
 --Class
 insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('EEIT85','Java程式設計師','羅秀燕','劉翰卿',1 );

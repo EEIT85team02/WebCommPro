@@ -1,11 +1,11 @@
 package Student.model;
-import java.sql.Time;
+
+import java.sql.Timestamp;
 import java.util.*;
 import java.io.Serializable;
 
 import Stu_additional.model.Stu_additionalVO;
 import Class.model.ClassVO;
-import Edu.model.EduVO;
 public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	
 	private static final long serialVersionUID = 1L;
@@ -20,10 +20,10 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private String stu_email ;
 	private Integer stu_pre ;
 	private Double stu_implement ;
-	private java.sql.Date stu_testtime  ;
+	private Timestamp stu_testtime  ;
 	private Double stu_interview ;
 	private Double stu_total ;
-	private java.sql.Date stu_workdate ;
+	private Timestamp stu_workdate ;
 	private Double stu_except ;
 	private Integer stu_final ;
 	private String stu_note2 ;
@@ -169,11 +169,11 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 		this.stu_implement = stu_implement;
 	}
 
-	public java.sql.Date getStu_testtime() {
+	public Timestamp getStu_testtime() {
 		return stu_testtime;
 	}
 
-	public void setStu_testtime(java.sql.Date stu_testtime) {
+	public void setStu_testtime(Timestamp stu_testtime) {
 		this.stu_testtime = stu_testtime;
 	}
 
@@ -201,11 +201,11 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 		this.stu_total = stu_total;
 	}
 
-	public java.sql.Date getStu_workdate() {
+	public Timestamp getStu_workdate() {
 		return stu_workdate;
 	}
 
-	public void setStu_workdate(java.sql.Date stu_workdate) {
+	public void setStu_workdate(Timestamp stu_workdate) {
 		this.stu_workdate = stu_workdate;
 	}
 

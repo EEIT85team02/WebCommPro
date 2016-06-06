@@ -3,6 +3,7 @@ package Stu_additional.model;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,8 +14,11 @@ import java.util.Map;
 import org.json.simple.JSONValue;
 
 import Class.model.ClassVO;
+import Employee.model.EmployeeVO;
+import Member_status.model.Member_statusVO;
 import Edu.model.EduVO;
 import Student.model.StudentVO;
+import Test_period.model.Test_periodVO;
 
 
 public class Stu_additionalService {
@@ -28,7 +32,9 @@ public class Stu_additionalService {
 			String stu_name,String stu_sch,Integer stu_sex,Integer stu_age,String stu_email,
 			Integer stu_pre,Double stu_implement,Date stu_testtime,Double stu_interview,
 			Double stu_total,Date stu_workdate,Double stu_except,Integer stu_final,
-			String stu_note2,byte[] log_pw,ClassVO class_id) throws SQLException {
+			String stu_note2,byte[] pub_key,byte[] pri_key,byte[] cipher_text,byte[] log_pw,
+			String class_id) throws SQLException {
+
 		StudentVO stuVO = new StudentVO();
 		stuVO.setStu_id(stu_id);
 		stuVO.setStu_group(stu_group);
@@ -48,14 +54,88 @@ public class Stu_additionalService {
 		stuVO.setStu_except(stu_except);
 		stuVO.setStu_final(stu_final);
 		stuVO.setStu_note2(stu_note2);
+		stuVO.setPub_key(pub_key);
+		stuVO.setPri_key(pri_key);
+		stuVO.setCipher_text(cipher_text);
 		stuVO.setLog_pw(log_pw);
-		stuVO.setClassVO(class_id);
-		
+		ClassVO classVO = new ClassVO();
+		classVO.setClass_id(class_id);
+		stuVO.setClassVO(classVO);
 		dao.update(stuVO);
 	}
 	
 	public List<Stu_additionalVO> getAll() throws SQLException {
 		return dao.getAll();
+	}
+	public Stu_additionalVO upstatuscancel(Integer stu_id,Integer stu_add_id,Timestamp test_start,Timestamp test_end,Timestamp stu_applytime,Integer sta_id,String emp_id,Timestamp confirm_time) throws SQLException {
+
+		Stu_additionalVO stuaddVO = new Stu_additionalVO();
+
+		stuaddVO.setStu_add_id(stu_add_id);			
+		stuaddVO.setTest_start(test_start);
+		stuaddVO.setTest_end(test_end);
+		stuaddVO.setStu_applytime(stu_applytime);			
+		stuaddVO.setConfirm_time(confirm_time);
+				
+		StudentVO stuvo = new StudentVO();
+		stuvo.setStu_id(stu_id);
+		stuaddVO.setStudentVO(stuvo);
+		
+		Member_statusVO memvo = new Member_statusVO();
+		memvo.setSta_id(3);
+		stuaddVO.setMember_statusVO(memvo);
+		
+		EmployeeVO empvo = new EmployeeVO();
+		empvo.setEmp_id(emp_id);
+		stuaddVO.setEmployeeVO(empvo);
+		
+		dao.update(stuaddVO);
+		
+		return stuaddVO;
+		}
+	public Stu_additionalVO upstatusok(Integer stu_id,Integer stu_add_id,Timestamp test_start,Timestamp test_end,Timestamp stu_applytime,Integer sta_id,String emp_id,Timestamp confirm_time) throws SQLException {
+
+		Stu_additionalVO stuaddVO = new Stu_additionalVO();
+
+		stuaddVO.setStu_add_id(stu_add_id);			
+		stuaddVO.setTest_start(test_start);
+		stuaddVO.setTest_end(test_end);
+		stuaddVO.setStu_applytime(stu_applytime);			
+		stuaddVO.setConfirm_time(confirm_time);
+				
+		StudentVO stuvo = new StudentVO();
+		stuvo.setStu_id(stu_id);
+		stuaddVO.setStudentVO(stuvo);
+		
+		Member_statusVO memvo = new Member_statusVO();
+		memvo.setSta_id(2);
+		stuaddVO.setMember_statusVO(memvo);
+		
+		EmployeeVO empvo = new EmployeeVO();
+		empvo.setEmp_id(emp_id);
+		stuaddVO.setEmployeeVO(empvo);
+		
+		dao.update(stuaddVO);
+		
+		return stuaddVO;
+		}
+	public String getOneStuadd(Integer stu_add_id) throws SQLException {	
+		List stuaddsc=new LinkedList();
+		Stu_additionalVO stuaddVO=dao.findByPrimaryKey(stu_add_id);
+
+			Map map = new HashMap();
+			map.put("stu_add_id",stuaddVO.getStu_add_id().toString());
+			map.put("stu_id",stuaddVO.getStudentVO().getStu_id().toString());
+			map.put("test_start",stuaddVO.getTest_start().toString());
+			map.put("test_end",stuaddVO.getTest_end().toString());
+			map.put("stu_applytime",stuaddVO.getStu_applytime().toString());
+			map.put("sta_id",stuaddVO.getMember_statusVO().getSta_id().toString());
+			map.put("emp_id",stuaddVO.getEmployeeVO().getEmp_id().toString());
+			map.put("confirm_time",stuaddVO.getConfirm_time().toString());	
+			stuaddsc.add(map);
+		String jsonString = JSONValue.toJSONString(stuaddsc);
+		return jsonString;
+		
 	}
 	
 	public String getStuByStu_id(Integer stu_id) throws SQLException {	
@@ -93,8 +173,14 @@ public class Stu_additionalService {
 			map.put("confirm_time",stu_addList.get(0).getConfirm_time().toString());
 			map.put("member_statusVO",stu_addList.get(0).getMember_statusVO().getSta_name().toString());
 			map.put("class_id",stu_addList.get(0).getStudentVO().getClassVO().getClass_id());
+
 			map.put("class_name",stu_addList.get(0).getStudentVO().getClassVO().getClass_name());
+//			map.put("pub_key",stu_addList.get(0).getStudentVO().getPub_key().toString());
+//			map.put("pri_key",stu_addList.get(0).getStudentVO().getPri_key().toString());
+//			map.put("cipher_text",stu_addList.get(0).getStudentVO().getCipher_text().toString());
+//			map.put("log_pw",stu_addList.get(0).getStudentVO().getLog_pw().toString());
 			
+
 			stusc.add(map);
 		String jsonString = JSONValue.toJSONString(stusc);
 		return jsonString;

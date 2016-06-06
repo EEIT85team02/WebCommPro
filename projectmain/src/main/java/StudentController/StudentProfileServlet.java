@@ -24,6 +24,7 @@ import org.apache.jasper.tagplugins.jstl.core.Out;
 import com.google.gson.Gson;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 
+import Class.model.ClassVO;
 import Edu.model.EduService;
 import Mail_template.model.Mail_templateService;
 import Stu_additional.model.IStu_additionalDAO;
@@ -121,7 +122,11 @@ public class StudentProfileServlet extends HttpServlet {
 			Double stu_except = null;
 			Integer stu_final = null;
 			String stu_note2 = null;
-			String log_pw = null;
+			byte[] pub_key = null;
+			byte[] pri_key = null;
+			byte[] cipher_text = null;
+			byte[] log_pw = null;
+			
 			String class_id = null;
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			
@@ -132,7 +137,7 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(stu_id);
 				stu_group = Integer.parseInt(request.getParameter("stu_group"));
 				System.out.println(stu_group);
-				stu_note1 = request.getParameter(stu_note1);
+				stu_note1 = request.getParameter("stu_note1");
 				System.out.println(stu_note1);
 				stu_seatno = Integer.parseInt(request.getParameter("stu_seatno"));
 				System.out.println(stu_seatno);
@@ -166,10 +171,16 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(stu_final);
 				stu_note2 = request.getParameter("stu_note2");
 				System.out.println(stu_note2);
-				log_pw = (request.getParameter("log_pw"));
-				System.out.println(log_pw);
 				class_id = request.getParameter("class_id");
 				System.out.println(class_id);
+				pub_key = request.getParameter("pub_key").getBytes();
+				System.out.println(pub_key);
+				pri_key = request.getParameter("pri_key").getBytes();
+				System.out.println(pri_key);
+				cipher_text = request.getParameter("cipher_text").getBytes();
+				System.out.println(cipher_text);
+				log_pw = request.getParameter("log_pw").getBytes();
+				System.out.println(log_pw);
 				
 				
 				if (!Msgs.isEmpty()) {
@@ -183,7 +194,7 @@ public class StudentProfileServlet extends HttpServlet {
 							stu_name,stu_sch,stu_sex,stu_age,stu_email,
 							stu_pre,stu_implement,stu_testtime,stu_interview,
 							stu_total,stu_workdate,stu_except,stu_final,
-							stu_note2,log_pw,class_id);
+							stu_note2,pub_key,pri_key,cipher_text,log_pw,class_id);
 					out.write("資料更新成功");
 					return;
 				}

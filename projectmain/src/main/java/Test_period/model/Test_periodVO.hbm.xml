@@ -17,14 +17,6 @@
 			</key>
 			<one-to-many class="Test_Date.model.Test_DateVO" />
 	</set>
-    
-    <set name="Stu_additionalVO" table="Stu_additional" lazy="false" cascade="all"  inverse="true"  order-by="test_hour_id asc">			
-			<key>
-				<column name="test_hour_id" />
-			</key>
-			<one-to-many class="Stu_additional.model.Stu_additionalVO" />
-		</set>
-        
 
     </class>
      

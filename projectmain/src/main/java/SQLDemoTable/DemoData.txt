@@ -13,10 +13,9 @@ truncate table Edu;
 
 
 --Edu
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會', '台北市大安區復興南路一段', '026631666', 'Mary');
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會', '桃園市中壢區中大路300號', '034257387', 'John');
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會', '高雄市前金區中正四路211號', '079699885', 'Alean');
-
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會', '台北市大安區復興南路一段', '02-6631666', 'Mary');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會', '桃園市中壢區中大路300號', '03-4257387', 'John');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會', '高雄市前金區中正四路211號', '07-9699885', 'Alean');
 
 --Class
 insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('EEIT85','Java程式設計師','羅秀燕','劉翰卿',1 );
@@ -49,7 +48,6 @@ insert into student values (2,'備註1',20,'test',77,'淡江大學電機系',1,'
 
 --Test_period
 insert into Test_period values('10:00','12:00');
-
 insert into Test_period values('14:00','16:00');
 insert into Test_period values('16:00','18:00');
 
@@ -77,14 +75,14 @@ insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_jo
 
 
  --Test_interval
-insert into Test_interval (class_id, test_startdate, test_enddate) values ('EEIT85','2016-5-09', '2016-5-23');
-insert into Test_interval (class_id, test_startdate, test_enddate) values ('MEME33','2016-5-15', '2016-5-29');
-insert into Test_interval (class_id, test_startdate, test_enddate) values ('SESE59','2016-6-01', '2016-5-15');
+--insert into Test_interval (class_id, test_startdate, test_enddate) values ('EEIT85','2016-5-09', '2016-5-23');
+--insert into Test_interval (class_id, test_startdate, test_enddate) values ('MEME33','2016-5-15', '2016-5-29');
+--insert into Test_interval (class_id, test_startdate, test_enddate) values ('SESE59','2016-6-01', '2016-5-15');
 
  --Test_Date
-insert into Test_Date (class_id, test_hour_id,test_date,test_people, exam_people) values ('EEIT85','1','2016-5-09','2', '0');
-insert into Test_Date (class_id, test_hour_id,test_date,test_people, exam_people) values ('EEIT85','2','2016-5-09','2', '0');
-insert into Test_Date (class_id, test_hour_id,test_date,test_people, exam_people) values ('EEIT85','3','2016-5-09','2', '0');
+--insert into Test_Date (class_id, test_hour_id,test_date,test_people, exam_people) values ('EEIT85','1','2016-5-09','2', '0');
+--insert into Test_Date (class_id, test_hour_id,test_date,test_people, exam_people) values ('EEIT85','2','2016-5-09','2', '0');
+--insert into Test_Date (class_id, test_hour_id,test_date,test_people, exam_people) values ('EEIT85','3','2016-5-09','2', '0');
 
 
 
@@ -98,11 +96,16 @@ insert into Member_status (sta_id, sta_name) values ('6','報名中');
 
 
  --Stu_additional
- insert into Stu_additional (stu_id, test_startdate, test_hour_id, stu_applytime, sta_id, emp_id, confirm_time) values (4,'2016-5-09', '3', '2016-5-10', '4', '7004', '15:00');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (4,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 10:30:00', '4', '7004', '2016-05-09 15:00:00');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (5,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 13:30:00', '2', '7003', '2016-05-09 10:00:00');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (6,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 16:30:00', '2', '7003', '2016-05-09 17:00:00');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (7,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '3', '7001', '2016-05-09 15:00:00');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (8,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 10:00:00', '4', '7004', '2016-05-09 12:00:00');
 
 
  --Mail_template
  insert into Mail_template (mail_name, mail_text) values ('預約成功通知0', '預約成功0');
  insert into Mail_template (mail_name, mail_text) values ('預約成功通知1', '預約成功1');
-  insert into Mail_template (mail_name, mail_text) values ('預約成功通知2', '預約成功2');
-   insert into Mail_template (mail_name, mail_text) values ('預約成功通知3', '預約成功3');
+ insert into Mail_template (mail_name, mail_text) values ('預約成功通知2', '預約成功2');
+ insert into Mail_template (mail_name, mail_text) values ('預約成功通知3', '預約成功3');
+

@@ -1,6 +1,7 @@
 package Student.model;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -29,7 +30,7 @@ public class StudentService {
 	public String getOneSta(Integer stu_id) throws SQLException {	
 		List memsc=new LinkedList();
 		StudentVO stuVO=dao.findByPrimaryKey(stu_id);	
-		Set<Stu_additionalVO> set = dao.getStuByStu_id(stu_id);
+		Set<Stu_additionalVO> set = dao.getStuByStu_id(stu_id);	
 		for(Stu_additionalVO stuaddVO:set){
 			Map map = new HashMap();
 			map.put("stu_name",stuVO.getStu_name());
@@ -38,6 +39,8 @@ public class StudentService {
 			map.put("stu_applytime",stuaddVO.getStu_applytime());
 			map.put("sta_name",stuaddVO.getMember_statusVO().getSta_name());
 			memsc.add(map);
+//		System.out.println(stuaddVO.getMember_statusVO().getSta_name());
+//		System.out.println(stuVO.getStu_name());
 		}
            
 		String jsonString = JSONValue.toJSONString(memsc);
@@ -60,17 +63,18 @@ public class StudentService {
 			map.put("stu_sex",stuVO.getStu_sex().toString());
 			map.put("stu_email",stuVO.getStu_email().toString());
 			map.put("stu_pre",stuVO.getStu_pre().toString());
-			map.put("stu_testtime",stuVO.getStu_testtime()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_testtime().toString());
+			map.put("stu_testtime",stuVO.getStu_testtime().toString());
 			map.put("stu_total",stuVO.getStu_total().toString());
-			map.put("stu_workdate",stuVO.getStu_workdate()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_workdate().toString());
+			map.put("stu_workdate",stuVO.getStu_workdate().toString());
 			map.put("stu_except",stuVO.getStu_except().toString());
 			map.put("stu_final",stuVO.getStu_final().toString());
 			map.put("stu_note2",stuVO.getStu_note2().toString());
 			map.put("stu_seatno",stuVO.getStu_seatno().toString());
 			map.put("class_id",stuVO.getClassVO().getClass_id().toString());
-			map.put("pub_key",stuVO.getPub_key());
-			map.put("pri_key",stuVO.getPri_key());
-			map.put("cipher_text",stuVO.getCipher_text());
+			map.put("pub_key",stuVO.getPub_key()==null?stuVO.getPub_key():stuVO.getPub_key().toString());
+			map.put("pri_key",stuVO.getPri_key()==null?stuVO.getPri_key():stuVO.getPri_key().toString());
+			map.put("cipher_text",stuVO.getCipher_text()==null?stuVO.getCipher_text():stuVO.getCipher_text().toString());
+			map.put("log_pw",stuVO.getLog_pw()==null?stuVO.getLog_pw():stuVO.getLog_pw().toString());
 			stusc.add(map);
 		String jsonString = JSONValue.toJSONString(stusc);
 		return jsonString;
@@ -84,8 +88,7 @@ public class StudentService {
 			map.put("stu_id",stu_addVO.getStudentVO().getStu_id().toString());
 			map.put("Test_start",stu_addVO.getTest_start().toString());
 			map.put("Test_end",stu_addVO.getTest_end().toString());
-			map.put("Test_hour_id",stu_addVO.getTest_periodVO().getTest_starthour().toString());
-			map.put("Stu_applytime(",stu_addVO.getStu_applytime());
+			map.put("Stu_applytime(",stu_addVO.getStu_applytime().toString());
 			map.put("Emp_id",stu_addVO.getEmployeeVO().getEmp_name());
 			map.put("Confirm_time",stu_addVO.getConfirm_time().toString());
 			map.put("Member_statusVO",stu_addVO.getMember_statusVO().toString());
@@ -95,7 +98,7 @@ public class StudentService {
 		
 	}
 
-	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,java.sql.Date stu_testtime,Double stu_total,java.sql.Date stu_workdate,Double stu_except,Integer stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno, String class_id,byte[] pub_key,byte[] pri_key,byte[] cipher_text) throws SQLException {
+	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,Timestamp stu_testtime,Double stu_total,Timestamp stu_workdate,Double stu_except,Integer stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno, String class_id,byte[] pub_key,byte[] pri_key,byte[] cipher_text,byte[] log_pw) throws SQLException {
 
 		StudentVO stuVO = new StudentVO();
 
@@ -120,6 +123,7 @@ public class StudentService {
 		stuVO.setPub_key(pub_key);			
 		stuVO.setPri_key(pri_key);
 		stuVO.setCipher_text(cipher_text);
+		stuVO.setLog_pw(log_pw);
 		
 		ClassVO clavo = new ClassVO();
 		clavo.setClass_id(class_id);
@@ -147,20 +151,21 @@ public class StudentService {
 			map.put("stu_email",stuVO.getStu_email().toString());
 			map.put("stu_pre",stuVO.getStu_pre().toString());
 //			map.put("stu_testtime",stuVO.getStu_testtime());			
-			map.put("stu_testtime",stuVO.getStu_testtime()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_testtime().toString());
+			map.put("stu_testtime",stuVO.getStu_testtime().toString());
 //			System.out.println(stuVO.getStu_testtime());
 			map.put("stu_total",stuVO.getStu_total().toString());
 //			map.put("stu_workdate",stuVO.getStu_workdate());
-			map.put("stu_workdate",stuVO.getStu_workdate()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_workdate().toString());
+			map.put("stu_workdate",stuVO.getStu_workdate().toString());
 			map.put("stu_except",stuVO.getStu_except().toString());
 			map.put("stu_final",stuVO.getStu_final().toString());
 			map.put("stu_note2",stuVO.getStu_note2().toString());
 			map.put("class_id",stuVO.getClassVO().getClass_id().toString());
 //			System.out.println(stuVO.getClassVO().getClass_id());
 			map.put("stu_seatno",stuVO.getStu_seatno().toString());
-			map.put("pub_key",stuVO.getPub_key());
-			map.put("pri_key",stuVO.getPri_key());
-			map.put("cipher_text",stuVO.getCipher_text());
+			map.put("pub_key",stuVO.getPub_key()==null?stuVO.getPub_key():stuVO.getPub_key().toString());
+			map.put("pri_key",stuVO.getPri_key()==null?stuVO.getPri_key():stuVO.getPri_key().toString());
+			map.put("cipher_text",stuVO.getCipher_text()==null?stuVO.getCipher_text():stuVO.getCipher_text().toString());
+			map.put("log_pw",stuVO.getLog_pw()==null?stuVO.getLog_pw():stuVO.getLog_pw().toString());
 			stusc.add(map);
 		}
 		
