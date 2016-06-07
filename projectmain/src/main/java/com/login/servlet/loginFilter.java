@@ -18,14 +18,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(  
+/*@WebFilter(  
 			urlPatterns = { "/*" }, 
 			initParams = {
-//		@WebInitParam(name = "url_1", value = "/UserInfo.jsp"),
-//		@WebInitParam(name = "url_2", value = "/uploadCSV.jsp"),
+		@WebInitParam(name = "url_1", value = "/WEB-INF/JSPs/User_Profile.jsp"),
+		@WebInitParam(name = "url_2", value = "/Profile.jsp"),
 //		@WebInitParam(name = "url_3", value = "/ch05_09/*"),
 //		@WebInitParam(name = "url_4", value = "/ch07_02/*") 
-		})
+		})*/
 public class loginFilter implements Filter {
 	
 	Collection<String> url = new ArrayList<String>();

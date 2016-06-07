@@ -1,5 +1,6 @@
 package Student.model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.*;
 import java.io.Serializable;
@@ -32,17 +33,16 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private byte[] pri_key;
 	private byte[] cipher_text;
 	private byte[] log_pw;
+	private Set<Stu_additionalVO> Stu_additionalVO = new HashSet<Stu_additionalVO>();
+	
+	
 	public byte[] getLog_pw() {
 		return log_pw;
 	}
-
-
+	
 	public void setLog_pw(byte[] log_pw) {
 		this.log_pw = log_pw;
 	}
-	private Set<Stu_additionalVO> Stu_additionalVO = new HashSet<Stu_additionalVO>();
-
-	
 	
 	public byte[] getPub_key() {
 		return pub_key;

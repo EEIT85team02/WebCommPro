@@ -281,8 +281,10 @@ public static void SendPasswordMailToStudent(String emailString){
 	  }
 }
 
-public static void main(String[] args){
-
+public static void main(String[] args) throws NoSuchAlgorithmException{
+	//SendPasswordMailToStudent("llluuuyyy123@gmail.com");
+	DecryptService de = new DecryptService();
+	de.compareIfMatchThePassword("llluuuyyy123@gmail.com", "asdf1");
 	
 }
 

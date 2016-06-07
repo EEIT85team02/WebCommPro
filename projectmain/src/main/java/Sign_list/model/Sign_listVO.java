@@ -2,11 +2,10 @@ package Sign_list.model;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import Class.model.ClassVO;
 import Employee.model.EmployeeVO;
 
 public class Sign_listVO {
+	private static final long serialVersionUID = 1L;
 	private Integer sl_id;
 	private String sl_name;
 	private Set<EmployeeVO> empVO = new HashSet<EmployeeVO>();

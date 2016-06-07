@@ -12,6 +12,9 @@
 <link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="../css/lobibox.min.css" rel="stylesheet">
 <style>
+.navbar-inverse {
+      background-image: linear-gradient(to bottom,#D842D3 0,#8E2681 100%);
+}
 .Main_Content {
 	margin-top: 100px;
 }
