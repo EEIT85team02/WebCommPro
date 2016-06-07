@@ -65,6 +65,7 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 			}
 			return list;
 		}
+
 		
 
 		public static void main(String[] args){
@@ -78,7 +79,9 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 				e.printStackTrace();
 			}
 			
+
+
 		}
 
-		
+
 }
