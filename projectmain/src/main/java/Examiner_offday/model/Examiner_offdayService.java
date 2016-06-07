@@ -114,17 +114,22 @@ public class Examiner_offdayService {
 					Map<String,String> map1 = new HashMap<String,String>();
 					map1.put("stu_id",a.getStudentVO().getStu_id().toString());
 					map1.put("stu_name",a.getStudentVO().getStu_name());
-//					map.put("class_contact",stu_addVO.getClass_contact());
-//					map.put("class_teach",stu_addVO.getClass_teach());
+//					map1.put("class_contact",stu_addVO.getClass_contact());
+//					map1.put("class_teach",stu_addVO.getClass_teach());
 					as.add(map1);
-					map2.put("key",as);
+					
+					//map.put("key",map1);
+					
 				}
 //				map.put("stu_id",examVO.getEmpVO().getStu_additionalVO().iterator().next().getStudentVO().getStu_id().toString());
 //				map.put("stu_name",examVO.getEmpVO().getStu_additionalVO().iterator().next().getStudentVO().getStu_name());
 //				map.put("test_start",examVO.getEmpVO().getStu_additionalVO().iterator().next().getTest_start().toString());
 //				map.put("test_end",examVO.getEmpVO().getStu_additionalVO().iterator().next().getTest_end().toString());
-				exams.add(map2);
+//				exams.add(map2);
+				map2.put("key",as);
 				exams.add(map);
+				exams.add(map2);
+				
 				jsonString = JSONValue.toJSONString(exams);
 				return jsonString;
 		}

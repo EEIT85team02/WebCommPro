@@ -53,6 +53,8 @@ public class Examiner_offdayServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("content-type", "text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		System.out.println(request.getParameter("exam_id"));
