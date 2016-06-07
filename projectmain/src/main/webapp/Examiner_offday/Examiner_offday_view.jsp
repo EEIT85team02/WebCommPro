@@ -21,7 +21,7 @@
 <meta name="author" content="">
 <style>
 .navbar-inverse {
-      background-image: linear-gradient(to bottom,#D842D3 0,#8E2681 100%);
+    background-image: linear-gradient(to bottom,#E4C00D 0,rgba(249, 68, 27, 0.97) 100%);
 }
 .Main_Content {
 	margin-top: 100px;
