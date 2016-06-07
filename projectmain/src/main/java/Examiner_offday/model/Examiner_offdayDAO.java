@@ -68,9 +68,9 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 		
 		public static void  main(String[] args){
 			IExaminer_offdayDAO dao = new Examiner_offdayDAO();
-			Examiner_offday vo = new Examiner_offday();
+			Examiner_offdayVO vo = new Examiner_offdayVO();
 			try {
-				vo = dao.findByPrimaryKey("7001");
+				vo = dao.findByPrimaryKey(1);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
