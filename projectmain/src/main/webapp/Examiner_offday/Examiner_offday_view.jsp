@@ -1,0 +1,156 @@
+<%@ page language="java" contentType="text/html; charset=BIG5"
+	pageEncoding="BIG5"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=BIG5">
+<title>Insert title here</title>
+<link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
+<script src="../js/jquery-1.12.3.min.js"></script>
+<script src="../js/bootstrap/bootstrap.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="author" content="">
+<style>
+.Main_Content {
+	margin-top: 100px;
+}
+
+#ok {
+	color: blue;
+}
+
+
+
+Toggle {
+	color: green;
+}
+
+label, input {
+	display: block;
+}
+
+input.text {
+	margin-bottom: 12px;
+	width: 95%;
+	padding: .4em;
+}
+
+fieldset {
+	padding: 0;
+	border: 0;
+	margin-top: 25px;
+}
+
+h1 {
+	font-size: 1.2em;
+	margin: .6em 0;
+}
+
+.ui-dialog .ui-state-error {
+	padding: .3em;
+}
+
+.validateTips {
+	border: 1px solid transparent;
+	padding: 0.3em;
+}
+</style>
+</head>
+<body>
+	<table id="studentTable" class="table table-bordered">
+		<tbody>
+
+		</tbody>
+	</table>
+
+
+
+	<div class="container">
+		<div class="Main_Content">
+			<div class="row">
+
+				<div class="col-md-12">
+					<hr>
+					<table id="StuTable" class="display" cellspacing="0" width="100%">
+						<thead>
+							班級：
+							<select id="class" name="class" class="display">
+							</select>
+							</select> email樣板:
+							<select id="content" name="content" class="display">
+							</select>
+							<tr>
+
+								<th class="col-md-1 col-xs-1">checkbox</th>
+								<th class="col-md-1 col-xs-1">學生姓名</th>
+								<th class="col-md-3 col-xs-3">學生年次</th>
+								<th class="col-md-3 col-xs-3">學校系級</th>
+								<th class="col-md-3 col-xs-3">學生email</th>
+								<th class="col-md-2 col-xs-2">發信種類</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>checkbox</th>
+								<th>學生姓名</th>
+								<th>學生年次</th>
+								<th>學校系級</th>
+								<th>學生email</th>
+								<th>發信種類</th>
+							</tr>
+						</tfoot>
+					</table>
+
+<script>
+
+$(function() {
+	//定義table資料來源json，與畫面顯示------>開始
+
+	table = $('#StuTable')
+			.DataTable(
+					{
+
+						"ajax" : {
+
+							"url" : "/projectmain/Examiner_offday/showExaminerOffDay_controller?"
+
+
+						},
+
+						"oLanguage" : {
+							"sProcessing" : "資料正處理中...",
+							"sLengthMenu" : "顯示 _MENU_ 筆記錄",
+							"sZeroRecords" : "無符合資料",
+							"sInfo" : "目前記錄：_START_ 至 _END_, 總筆數：_TOTAL_",
+							"sInfoEmpty" : "顯示第 0 至 0 項結果，共 0 項",
+							"sInfoFiltered" : "(從 _MAX_ 項結果過濾)",
+							"sSearch" : "搜索:",
+							"oPaginate" : {
+								"sFirst" : "首頁",
+								"sPrevious" : "上頁",
+								"sNext" : "下頁",
+								"sLast" : "尾頁"
+							}
+						},
+						"bJQueryUI" : true,
+						"bProcessing" : true,
+						"sPaginationType" : "full_numbers",
+
+					});
+
+})
+
+						
+</script>
+</body>
+</html>

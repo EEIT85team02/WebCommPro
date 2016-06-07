@@ -6,9 +6,11 @@
       username="sa" password="P@ssw0rd"
       driverClassName="com.ibm.db2.jcc.DB2Driver"
 
+
       url="jdbc:db2://localhost:50000/webcomm"
 
       maxActive="3"
+
       maxIdle="2"
       maxWait="5000"
   />   

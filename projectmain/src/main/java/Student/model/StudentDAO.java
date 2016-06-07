@@ -15,9 +15,9 @@ import hibernate.util.HibernateUtil;
 
 
 public class StudentDAO implements IStudentDAO {
-	
+		
 		private static final String GET_ALL_STMT = 
-			"from StudentVO order by stu_id";
+			    "from StudentVO order by stu_id";
 		private static final String GET_ALL_GMAIL = 
 				"select stu_email from Student where stu_email like '%@gmail.com'";	
 		private static final String GET_ALL_NONGMAIL = 
@@ -28,6 +28,7 @@ public class StudentDAO implements IStudentDAO {
 				"from StudentVO where class_id=?";		
 		private static final String GET_STUDENT_By_EMAIL = 
 				"from StudentVO where stu_email=?";	
+		
 		public void insert(StudentVO stu) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
@@ -86,10 +87,6 @@ public class StudentDAO implements IStudentDAO {
 			return stu;
 		}
 
-		public Set<Stu_additionalVO> getStusByStu_id(Integer stu_id) {		
-			Set<Stu_additionalVO> set = findByPrimaryKey(stu_id).getStu_additionalVO();
-			return set;
-		}
 		
 		public List<StudentVO> getAll() {
 			List<StudentVO> list = null;
@@ -200,7 +197,7 @@ public class StudentDAO implements IStudentDAO {
 		public Set<Stu_additionalVO> getStuByStu_id(Integer stu_id)
 				throws SQLException {			
 			Set<Stu_additionalVO> set = findByPrimaryKey(stu_id).getStu_additionalVO();
-			return null;
+			return set;
 		}
 		
 }

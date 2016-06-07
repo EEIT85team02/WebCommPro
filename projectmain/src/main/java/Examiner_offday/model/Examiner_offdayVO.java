@@ -1,6 +1,7 @@
 package Examiner_offday.model;
 
 import java.io.Serializable;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -61,6 +62,7 @@ public class Examiner_offdayVO implements Serializable{//主考官請假表
 		this.off_day = off_day;
 		this.emp_job_id = emp_job_id;
 		this.empVO = empVO;
+
 	}
 	public Examiner_offdayVO() {
 		super();

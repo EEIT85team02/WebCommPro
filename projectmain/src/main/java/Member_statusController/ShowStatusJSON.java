@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Edu.model.EduService;
 import Member_status.model.Member_statusService;
 import Student.model.StudentService;
 
@@ -48,21 +49,8 @@ public class ShowStatusJSON extends HttpServlet {
 				e.printStackTrace();
 			}
 		  }
-		
+	
 		if("getShowStatus01".equals(action)){
-			Member_statusService memSvc = new Member_statusService();
-			String jsonString;
-			try {
-				jsonString = memSvc.getStatusWAIT();
-				out.write(jsonString);
-				
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-			}
-			
-		}
-		if("getShowStatus02".equals(action)){
 			Member_statusService memSvc = new Member_statusService();
 			String jsonString;
 			try {
@@ -75,7 +63,7 @@ public class ShowStatusJSON extends HttpServlet {
 			}
 			
 		}
-		if("getShowStatus03".equals(action)){
+		if("getShowStatus02".equals(action)){
 			Member_statusService memSvc = new Member_statusService();
 			String jsonString;
 			try {
@@ -88,7 +76,7 @@ public class ShowStatusJSON extends HttpServlet {
 			}
 			
 		}
-		if("getShowStatus04".equals(action)){
+		if("getShowStatus03".equals(action)){
 			Member_statusService memSvc = new Member_statusService();
 			String jsonString;
 			try {
@@ -101,7 +89,7 @@ public class ShowStatusJSON extends HttpServlet {
 			}
 			
 		}
-		if("getShowStatus05".equals(action)){
+		if("getShowStatus04".equals(action)){
 			Member_statusService memSvc = new Member_statusService();
 			String jsonString;
 			try {
@@ -114,11 +102,11 @@ public class ShowStatusJSON extends HttpServlet {
 			}
 			
 		}
-		if("getShowStatus06".equals(action)){
+		if("getShowStatus05".equals(action)){
 			Member_statusService memSvc = new Member_statusService();
 			String jsonString;
 			try {
-				jsonString = memSvc.getStatusWAITING();
+				jsonString = memSvc.getStatusNYES();
 				out.write(jsonString);
 				
 			} catch (SQLException e) {

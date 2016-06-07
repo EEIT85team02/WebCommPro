@@ -1,6 +1,7 @@
 package Student.model;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -29,7 +30,7 @@ public class StudentService {
 	public String getOneSta(Integer stu_id) throws SQLException {	
 		List memsc=new LinkedList();
 		StudentVO stuVO=dao.findByPrimaryKey(stu_id);	
-		Set<Stu_additionalVO> set = dao.getStuByStu_id(stu_id);
+		Set<Stu_additionalVO> set = dao.getStuByStu_id(stu_id);	
 		for(Stu_additionalVO stuaddVO:set){
 			Map map = new HashMap();
 			map.put("stu_name",stuVO.getStu_name());
@@ -38,7 +39,11 @@ public class StudentService {
 			map.put("stu_applytime",stuaddVO.getStu_applytime());
 			map.put("sta_name",stuaddVO.getMember_statusVO().getSta_name());
 			memsc.add(map);
+
+//		System.out.println(stuaddVO.getMember_statusVO().getSta_name());
+//		System.out.println(stuVO.getStu_name());
 		}
+
            
 		String jsonString = JSONValue.toJSONString(memsc);
 	    return jsonString;
@@ -60,23 +65,25 @@ public class StudentService {
 			map.put("stu_sex",stuVO.getStu_sex().toString());
 			map.put("stu_email",stuVO.getStu_email().toString());
 			map.put("stu_pre",stuVO.getStu_pre().toString());
-			map.put("stu_testtime",stuVO.getStu_testtime()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_testtime().toString());
+			map.put("stu_testtime",stuVO.getStu_testtime().toString());
 			map.put("stu_total",stuVO.getStu_total().toString());
-			map.put("stu_workdate",stuVO.getStu_workdate()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_workdate().toString());
+			map.put("stu_workdate",stuVO.getStu_workdate().toString());
 			map.put("stu_except",stuVO.getStu_except().toString());
 			map.put("stu_final",stuVO.getStu_final().toString());
 			map.put("stu_note2",stuVO.getStu_note2().toString());
 			map.put("stu_seatno",stuVO.getStu_seatno().toString());
 			map.put("class_id",stuVO.getClassVO().getClass_id().toString());
-			map.put("pub_key",stuVO.getPub_key());
-			map.put("pri_key",stuVO.getPri_key());
-			map.put("cipher_text",stuVO.getCipher_text());
+			map.put("pub_key",stuVO.getPub_key()==null?stuVO.getPub_key():stuVO.getPub_key().toString());
+			map.put("pri_key",stuVO.getPri_key()==null?stuVO.getPri_key():stuVO.getPri_key().toString());
+			map.put("cipher_text",stuVO.getCipher_text()==null?stuVO.getCipher_text():stuVO.getCipher_text().toString());
+			map.put("log_pw",stuVO.getLog_pw()==null?stuVO.getLog_pw():stuVO.getLog_pw().toString());
 			stusc.add(map);
 		String jsonString = JSONValue.toJSONString(stusc);
+		//System.out.println(jsonString);
 		return jsonString;
-		
-	}
+		}
 	
+
 	public String getOneStuAll(Integer stu_id) throws SQLException {	
 		List stusc=new LinkedList();
 		Stu_additionalVO stu_addVO=(Stu_additionalVO) dao.getStuByStu_id(stu_id);
@@ -94,7 +101,7 @@ public class StudentService {
 		
 	}
 
-	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,java.sql.Date stu_testtime,Double stu_total,java.sql.Date stu_workdate,Double stu_except,Integer stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno, String class_id,byte[] pub_key,byte[] pri_key,byte[] cipher_text) throws SQLException {
+	public StudentVO upscore(Integer stu_group,String stu_note1,Integer stu_id,String stu_name,Integer stu_age,String stu_sch,Integer stu_sex,String stu_email,Integer stu_pre,Timestamp stu_testtime,Double stu_total,Timestamp stu_workdate,Double stu_except,Integer stu_final,String stu_note2,Double stu_implement,Double stu_interview,Integer stu_seatno, String class_id,byte[] pub_key,byte[] pri_key,byte[] cipher_text,byte[] log_pw) throws SQLException {
 
 		StudentVO stuVO = new StudentVO();
 
@@ -119,6 +126,7 @@ public class StudentService {
 		stuVO.setPub_key(pub_key);			
 		stuVO.setPri_key(pri_key);
 		stuVO.setCipher_text(cipher_text);
+		stuVO.setLog_pw(log_pw);
 		
 		ClassVO clavo = new ClassVO();
 		clavo.setClass_id(class_id);
@@ -129,41 +137,55 @@ public class StudentService {
 		return stuVO;
 		}
 
+//	public String getAllScoreJSON() throws SQLException{
+//		List stusc=new LinkedList();
+//		List<StudentVO> list=dao.getAll();	
+//		for(StudentVO stuVO :list){
+//			Map map = new HashMap();
+//			map.put("stu_id",stuVO.getStu_id().toString());
+//			map.put("stu_name",stuVO.getStu_name().toString());
+//			map.put("stu_implement",stuVO.getStu_implement().toString());
+//			map.put("stu_interview",stuVO.getStu_interview().toString());
+//			map.put("stu_group",stuVO.getStu_group().toString());
+//			map.put("stu_note1",stuVO.getStu_note1().toString());
+//			map.put("stu_age",stuVO.getStu_age().toString());
+//			map.put("stu_sch",stuVO.getStu_sch().toString());
+//			map.put("stu_sex",stuVO.getStu_sex().toString());
+//			map.put("stu_email",stuVO.getStu_email().toString());
+//			map.put("stu_pre",stuVO.getStu_pre().toString());			
+//			map.put("stu_testtime",stuVO.getStu_testtime().toString());
+//			map.put("stu_total",stuVO.getStu_total().toString());
+//			map.put("stu_workdate",stuVO.getStu_workdate().toString());
+//			map.put("stu_except",stuVO.getStu_except().toString());
+//			map.put("stu_final",stuVO.getStu_final().toString());
+//			map.put("stu_note2",stuVO.getStu_note2().toString());
+//			map.put("class_id",stuVO.getClassVO().getClass_id().toString());
+//			map.put("stu_seatno",stuVO.getStu_seatno().toString());
+//			map.put("pub_key",stuVO.getPub_key()==null?stuVO.getPub_key():stuVO.getPub_key().toString());
+//			map.put("pri_key",stuVO.getPri_key()==null?stuVO.getPri_key():stuVO.getPri_key().toString());
+//			map.put("cipher_text",stuVO.getCipher_text()==null?stuVO.getCipher_text():stuVO.getCipher_text().toString());
+//			map.put("log_pw",stuVO.getLog_pw()==null?stuVO.getLog_pw():stuVO.getLog_pw().toString());
+//			stusc.add(map);
+//		}
+//		
+//		String jsonString = JSONValue.toJSONString(stusc);
+//		return jsonString;
+//	}
 	public String getAllScoreJSON() throws SQLException{
 		List stusc=new LinkedList();
 		List<StudentVO> list=dao.getAll();	
 		for(StudentVO stuVO :list){
-			Map map = new HashMap();
-			map.put("stu_id",stuVO.getStu_id().toString());
-			map.put("stu_name",stuVO.getStu_name().toString());
-			map.put("stu_implement",stuVO.getStu_implement().toString());
-			map.put("stu_interview",stuVO.getStu_interview().toString());
-			map.put("stu_group",stuVO.getStu_group().toString());
-			map.put("stu_note1",stuVO.getStu_note1().toString());
-			map.put("stu_age",stuVO.getStu_age().toString());
-			map.put("stu_sch",stuVO.getStu_sch().toString());
-			map.put("stu_sex",stuVO.getStu_sex().toString());
-			map.put("stu_email",stuVO.getStu_email().toString());
-			map.put("stu_pre",stuVO.getStu_pre().toString());
-//			map.put("stu_testtime",stuVO.getStu_testtime());			
-			map.put("stu_testtime",stuVO.getStu_testtime()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_testtime().toString());
-//			System.out.println(stuVO.getStu_testtime());
-			map.put("stu_total",stuVO.getStu_total().toString());
-//			map.put("stu_workdate",stuVO.getStu_workdate());
-			map.put("stu_workdate",stuVO.getStu_workdate()==null?new java.sql.Date(new java.util.Date().getTime()).toString():stuVO.getStu_workdate().toString());
-			map.put("stu_except",stuVO.getStu_except().toString());
-			map.put("stu_final",stuVO.getStu_final().toString());
-			map.put("stu_note2",stuVO.getStu_note2().toString());
-			map.put("class_id",stuVO.getClassVO().getClass_id().toString());
-//			System.out.println(stuVO.getClassVO().getClass_id());
-			map.put("stu_seatno",stuVO.getStu_seatno().toString());
-			map.put("pub_key",stuVO.getPub_key());
-			map.put("pri_key",stuVO.getPri_key());
-			map.put("cipher_text",stuVO.getCipher_text());
-			stusc.add(map);
+			List stuVOg = new LinkedList();
+			stuVOg.add(stuVO.getStu_id().toString());
+			stuVOg.add(stuVO.getStu_name().toString());
+			stuVOg.add(stuVO.getStu_implement().toString());
+			stuVOg.add(stuVO.getStu_interview().toString());
+			stuVOg.add("<button type='button' class='btn btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+stuVO.getStu_id().toString()+" >修改</button>");
+			stusc.add(stuVOg);
 		}
-		
-		String jsonString = JSONValue.toJSONString(stusc);
+		Map map = new HashMap();
+		map.put("data", stusc);
+		String jsonString = JSONValue.toJSONString(map);
 		return jsonString;
 	}
 	
@@ -175,7 +197,7 @@ public class StudentService {
 
 		List<List<String>> stuVO = new LinkedList<List<String>>();
 		String jsonValue = null;
-		int count=1;//為了設value的值
+		int count=0;//為了設value的值
 		for(StudentVO a :list){
 			List<String> detailStuVO = new ArrayList<String>();
 			detailStuVO.add("<input type='checkbox' name='checkboxname' value='"+count+"'>");
