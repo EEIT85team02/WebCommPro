@@ -273,6 +273,13 @@
 							 })
 						 })
 					 })
+					 
+					 $(document).on("click",".btn-info",function(){ //點擊送信按鈕
+						 updateID = $(this).val();  //拿出button的value的stu_id去資料庫找資料
+						 $.getJSON("UpStuaddStatusJSON.do",{"action":"getStuAddId",'stu_add_id':updateID},function(datas){
+							 
+						 })
+					})
 							//定義table資料來源json，與畫面顯示------>開始
 					var table1 = $('#statusTable01').DataTable( {
 						 	"ajax": {
