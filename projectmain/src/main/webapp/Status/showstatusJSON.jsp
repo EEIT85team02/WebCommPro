@@ -13,7 +13,7 @@
 <link href="../css/lobibox.min.css" rel="stylesheet">
 <style>
 .navbar-inverse {
-      background-image: linear-gradient(to bottom,#D842D3 0,#8E2681 100%);
+    background-image: linear-gradient(to bottom,#E4C00D 0,rgba(249, 68, 27, 0.97) 100%);
 }
 .Main_Content {
 	margin-top: 100px;
@@ -112,7 +112,7 @@
                                 <th>姓名</th>
 		                        <th>E-mail</th>
 		                        <th>班別</th>
-		                        <th>預約日期</th>
+<!-- 		                        <th>預約日期</th> -->
 		                        <th>狀態</th>
                             </tr>
                          </thead>
