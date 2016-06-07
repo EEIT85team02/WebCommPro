@@ -115,6 +115,7 @@ h1 {
 
 
 var emp_id= <%=session.getAttribute("emp_id")%>;
+console.log(emp_id);
 $(function() {
 	//定義table資料來源json，與畫面顯示------>開始
 
