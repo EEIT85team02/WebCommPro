@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import Examiner_offday.model.Examiner_offdayVO;
 import Sign_list.model.Sign_listVO;
 import Stu_additional.model.Stu_additionalVO;
 
@@ -15,6 +16,8 @@ public class EmployeeVO implements Serializable{//員工
 	private	String	emp_mail;//mail
 	private Sign_listVO slVO;   //代表代號sl_id(sign_list) 
 	private Set<Stu_additionalVO> Stu_additionalVO = new HashSet<Stu_additionalVO>();
+	private Set<Examiner_offdayVO> examVO = new HashSet<Examiner_offdayVO>();
+	
 	
 	public String getEmp_id() {
 		return emp_id;
@@ -63,6 +66,12 @@ public class EmployeeVO implements Serializable{//員工
 		this.slVO = slVO;
 	}
 
+	public Set<Examiner_offdayVO> getExamVO() {
+		return examVO;
+	}
+	public void setExamVO(Set<Examiner_offdayVO> examVO) {
+		this.examVO = examVO;
+	}
 	public EmployeeVO(String emp_id, String emp_name, String emp_mail,
 			String dep_name, Sign_listVO slVO) {
 		super();

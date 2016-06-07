@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import sun.misc.BASE64Encoder;
 import LogIn.model.SaveChangedPasswordService;
+import SendMail.Controller.Verification_controller;
 import Student.model.StudentDAO;
 
 //這隻service主要功能是拿來寄信
@@ -149,8 +150,9 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   String a=org.apache.tomcat.util.codec.binary.Base64.encodeBase64URLSafeString(ciphertextArray[i]);
 	   //String a=new BASE64Encoder().encode(ciphertextArray[i],);
 
+
 	   message.setText("Dear "+nameStringArray[i]);
-	   message.setText("Dear "+nameStringArray[i]+"<br/>"+"http://localhost:8081/projectmain/Verification_controller?key="+a+"&email="+emailStringArray[i]+"這是你的登錄密碼"+encodedByteArrayToString);//內文
+	   message.setText("Dear"+nameStringArray[i]+"\n"+"請由下列的網址直接登錄並預約考試時間\n"+"http://localhost:8081/projectmain/Verification_controller?key="+a+"&email="+emailStringArray[i]+"\n如果你擁有Google帳號可以用google方式登錄，或是用我們提供的密碼做登錄"+"\n這是你的登錄密碼"+encodedByteArrayToString);//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);

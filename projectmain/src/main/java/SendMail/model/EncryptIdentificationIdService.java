@@ -15,6 +15,7 @@ import java.security.Signature;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -65,14 +66,14 @@ public class EncryptIdentificationIdService{
     		   Integer stu_pre=stuList.get(i).getStu_pre();
     		   String stu_sch=stuList.get(i).getStu_sch();
     		   Integer stu_sex=stuList.get(i).getStu_sex();         	   
-    		   java.sql.Date stu_testtime=stuList.get(i).getStu_testtime();         	   
+    		   Timestamp stu_testtime=stuList.get(i).getStu_testtime();         	   
     		   Integer stu_age=stuList.get(i).getStu_age();
     		   Double stu_except=stuList.get(i).getStu_except();
     		   int stu_group=stuList.get(i).getStu_group();
     		   double stu_implement=stuList.get(i).getStu_implement();
     		   double stu_interview=stuList.get(i).getStu_interview();
     		   double stu_total=stuList.get(i).getStu_total();
-    		   java.sql.Date stu_workdate=stuList.get(i).getStu_workdate();
+    		   Timestamp stu_workdate=stuList.get(i).getStu_workdate();
     		   Integer stu_seatno =stuList.get(i).getStu_seatno();
     		   String class_id1 =stuList.get(i).getClassVO().getClass_id();
     		   byte[] log_pw=stuList.get(i).getLog_pw();
