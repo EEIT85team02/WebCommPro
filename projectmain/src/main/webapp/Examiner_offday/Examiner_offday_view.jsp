@@ -65,6 +65,8 @@ h1 {
 </style>
 </head>
 <body>
+	<jsp:include page="/top/ExamierTop.jsp" />
+
 	<table id="studentTable" class="table table-bordered">
 		<tbody>
 
@@ -81,38 +83,38 @@ h1 {
 					<hr>
 					<table id="StuTable" class="display" cellspacing="0" width="100%">
 						<thead>
-							班級：
-							<select id="class" name="class" class="display">
-							</select>
-							</select> email樣板:
-							<select id="content" name="content" class="display">
-							</select>
-							<tr>
 
-								<th class="col-md-1 col-xs-1">checkbox</th>
-								<th class="col-md-1 col-xs-1">學生姓名</th>
-								<th class="col-md-3 col-xs-3">學生年次</th>
-								<th class="col-md-3 col-xs-3">學校系級</th>
-								<th class="col-md-3 col-xs-3">學生email</th>
-								<th class="col-md-2 col-xs-2">發信種類</th>
+							<tr>
+								<th class="col-md-3 col-xs-3">員工代號</th>
+								<th class="col-md-2 col-xs-3">員工請假單單號</th>
+								<th class="col-md-2 col-xs-3">請假開始日期</th>
+								<th class="col-md-3 col-xs-3">請假結束日期</th>
+								<th class="col-md-2 col-xs-3">請假天數</th>
+								<th class="col-md-3 col-xs-3">職務代理人代號</th>
 							</tr>
 						</thead>
 						<tbody>
 						</tbody>
 						<tfoot>
 							<tr>
-								<th>checkbox</th>
-								<th>學生姓名</th>
-								<th>學生年次</th>
-								<th>學校系級</th>
-								<th>學生email</th>
-								<th>發信種類</th>
+								<th>員工請假單單號</th>
+								<th>請假開始日期</th>
+								<th>請假結束日期</th>
+								<th>請假天數</th>
+								<th>職務代理人</th>
+								<th>員工代號</th>
 							</tr>
 						</tfoot>
 					</table>
 
+<!-- <script> -->
+<%-- <%session.setAttribute("emp_id","7004");%> --%>
+<!-- </script> -->
+
 <script>
 
+
+var emp_id= <%=session.getAttribute("emp_id")%>;
 $(function() {
 	//定義table資料來源json，與畫面顯示------>開始
 
@@ -122,7 +124,7 @@ $(function() {
 
 						"ajax" : {
 
-							"url" : "/projectmain/Examiner_offday/showExaminerOffDay_controller?"
+							"url" : "/projectmain/Examiner_offday/showExaminerOffDay_controller.do?emp_id="+emp_id
 
 
 						},

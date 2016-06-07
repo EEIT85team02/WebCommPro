@@ -10,7 +10,14 @@
 <link href="../css/jquery-ui.css" rel="stylesheet">
 <link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.css" rel="stylesheet">
 <link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../css/lobibox.min.css" rel="stylesheet">
 <style>
+.navbar-inverse {
+      background-image: linear-gradient(to bottom,#D842D3 0,#8E2681 100%);
+}
+.Main_Content {
+	margin-top: 100px;
+}
 .my-error-class {
     color:#DF0101;
 }
@@ -20,6 +27,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="/top/ExamierTop.jsp" />
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog">
   <form method="post" action="upscoreJSON.do" name="upup">
@@ -49,8 +57,8 @@
           </div>     
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-success" >送出</button>
+        <button type="button" class="btn-danger" data-dismiss="modal">取消</button>
+        <button type="button" class="btn-success" >送出</button>
         <input type="hidden" name="action"	value="upscore">
         <input type="hidden" id="stu_grouphid" name="stu_group" >
         <input type="hidden" id="stu_note1hid" name="stu_note1" >
@@ -76,6 +84,7 @@
     </form>
   </div>
 </div>
+<div class="Main_Content">
 <!--                    <input type="button" value="成績" id="buttonJSON" -->
 <!-- 						class="btn btn-danger"> -->
                      <table id="scoreTable" class="display" cellspacing="0" width="100%">
@@ -91,6 +100,7 @@
 						<tbody>
 						</tbody>
 					</table>
+</div>
 	    <script src="../js/jquery.min.js"></script>
 		<script src="../js/bootstrap/bootstrap.min.js"></script>
         <script src="../js/jquery-ui.js"></script>
@@ -100,6 +110,7 @@
         <script src="../js/additional-methods.min.js"></script>
         <script src="../js/messages_zh_TW.min.js"></script>
         <script src="../DataTables/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
+        <script src="../js/lobibox.min.js"></script>
 		<script>
 				$(function() {
 					//定義table資料來源json，與畫面顯示------>開始
@@ -196,8 +207,16 @@
 				 				updateStu_implement.text($("#ustu_implement").val()); //將各個欄位的值插入表格中
 				 				updateStu_interview.text($("#ustu_interview").val());
 				 				$('#exampleModal').modal('hide');
+				 				Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
+			 			    			{
+			 			    			msg: "資料更新成功"
+			 			    			});
 				 				}else if(data=="資料更新失敗"){
-				 					alert("資料更新失敗")
+				 					Lobibox.alert("error", //AVAILABLE TYPES: "error", "info", "success", "warning"
+				 			    			{
+				 			    			msg: "資料更新失敗"
+				 			    			});
+				 			     
 				 				}
 					            
 					 })

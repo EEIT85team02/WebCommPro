@@ -10,8 +10,24 @@
 <link href="../css/jquery-ui.css" rel="stylesheet">
 <link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.css" rel="stylesheet">
 <link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../css/lobibox.min.css" rel="stylesheet">
+<style>
+.navbar-inverse {
+      background-image: linear-gradient(to bottom,#D842D3 0,#8E2681 100%);
+}
+.Main_Content {
+	margin-top: 100px;
+}
+</style>
 </head>
 <body>
+<jsp:include page="/top/ExamierTop.jsp" />
+<form method="post" action="EmailJSON.do" name="EmailGOGO">
+        <input type="hidden" name="action"	value="sendEmaildata">
+        <input type="hidden" id="stu_namehid" name="stu_name" >
+        <input type="hidden" id="stu_emailhid" name="stu_email" >
+        <input type="hidden" id="stu_applytimehid" name="stu_applytime" >
+ </form> 
 <form method="post" action="UpStuaddStatusJSON.do" name="cancelok">
         <input type="hidden" name="action"	value="upstatuscancel">
         <input type="hidden" id="stu_add_idhidc" name="stu_add_id" >
@@ -33,7 +49,8 @@
         <input type="hidden" id="sta_idhidok" name="sta_id" >
         <input type="hidden" id="emp_idhidok" name="emp_id" >
         <input type="hidden" id="confirm_timehidok" name="confirm_time" >
- </form>       
+ </form> 
+ <div class="Main_Content">      
         <div class="bs-example bs-example-tabs" role="tabpanel">
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation"><a href="#OK" role="tab" id="OK-tab" data-toggle="tab" aria-controls="OK">已核准</a></li>
@@ -145,11 +162,12 @@
           
         </div>
      </div>
- 
+</div> 
         <script src="../js/jquery.min.js"></script>
 		<script src="../js/bootstrap/bootstrap.min.js"></script>
 		<script src="../js/jquery-1.12.4.js"></script>
         <script src="../DataTables/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
+        <script src="../js/lobibox.min.js"></script>
 		<script>
 		        $(function(){
 
@@ -168,10 +186,10 @@
 								 $("#emp_idhidc").val(score.emp_id);
 								 $("#confirm_timehidc").val(score.confirm_time);
            //                       console.log(score.test_start)
-                              var Updatedatas = $('form[name="cancelok"]').serialize();
-				 			     $.get('UpStuaddStatusJSON.do',Updatedatas,function(){
+                              var Updatedatas = $('form[name="cancelok"]').serialize();  //form表單資料序列化丟到servlet更新
+				 			     $.post('UpStuaddStatusJSON.do',Updatedatas,function(){
 				 			    	 
-				 			    	table1.ajax.reload();
+				 			    	table1.ajax.reload();  //重新讀取表格資料
 				 			    	table2.ajax.reload();
 				 			    	
 // 				 			    	$('#statusTable01>tbody').empty();
@@ -228,10 +246,10 @@
 								 $("#emp_idhidok").val(score.emp_id);
 								 $("#confirm_timehidok").val(score.confirm_time);
            //                       console.log(score.test_start)
-                              var Updatedatas = $('form[name="ok"]').serialize();
-				 			     $.get('UpStuaddStatusJSON.do',Updatedatas,function(){
+                              var Updatedatas = $('form[name="ok"]').serialize();   //form表單資料序列化丟到servlet更新
+				 			     $.post('UpStuaddStatusJSON.do',Updatedatas,function(){
 				 			    	 
-				 			    	table1.ajax.reload();
+				 			    	table1.ajax.reload();   //重新讀取表格資料
 				 			    	table2.ajax.reload(); 
 				 			    	
 // 				 			    	$('#statusTable01>tbody').empty();
@@ -273,6 +291,30 @@
 							 })
 						 })
 					 })
+					 
+					 $(document).on("click",".btn-info",function(){ //點擊送信按鈕	 
+						 updateID = $(this).val();  //拿出button的value的stu_id去資料庫找資料
+//						 console.log(updateID)
+						$.getJSON("EmailJSON.do",{"action":"getEmailPkId",'stu_id':updateID},function(datas){
+//							 console.log(datas)
+							 $.each(datas,function(i,email){
+								 
+								 $("#stu_namehid").val(email.stu_name); //取出值並放入hidden的value進行修改
+								 $("#stu_emailhid").val(email.stu_email);
+								 $("#stu_applytimehid").val(email.stu_applytime);
+
+ //                                 console.log(email.stu_name)
+                              var Updatedatas = $('form[name="EmailGOGO"]').serialize();   //form表單資料序列化丟到servlet
+				 			     $.post('EmailJSON.do',Updatedatas,function(){
+ 
+				 			   })
+				 			 })
+						 })
+						 Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		 			    			{
+		 			    			msg: "成功送出信件"
+		 			    			});
+					})
 							//定義table資料來源json，與畫面顯示------>開始
 					var table1 = $('#statusTable01').DataTable( {
 						 	"ajax": {
