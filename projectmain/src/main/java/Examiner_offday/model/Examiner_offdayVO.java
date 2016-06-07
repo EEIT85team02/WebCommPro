@@ -3,7 +3,7 @@ package Examiner_offday.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class Examiner_offday implements Serializable{//主考官請假表
+public class Examiner_offdayVO implements Serializable{//主考官請假表
 	private String	emp_id;  //員工代號
 	private	java.sql.Timestamp	off_stardate;//請假開始日期
 	private	java.sql.Timestamp	off_enddate;//請假結束日期
@@ -40,7 +40,7 @@ public class Examiner_offday implements Serializable{//主考官請假表
 		this.emp_job_id = emp_job_id;
 	}
 
-	public Examiner_offday(String emp_id, Timestamp off_stardate,
+	public Examiner_offdayVO(String emp_id, Timestamp off_stardate,
 			Timestamp off_enddate, Integer off_day, String emp_job_id) {
 		super();
 		this.emp_id = emp_id;
@@ -49,7 +49,7 @@ public class Examiner_offday implements Serializable{//主考官請假表
 		this.off_day = off_day;
 		this.emp_job_id = emp_job_id;
 	}
-	public Examiner_offday() {
+	public Examiner_offdayVO() {
 		super();
 	}
 	

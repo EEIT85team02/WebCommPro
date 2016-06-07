@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>EventForm</title>
 
-<link rel="stylesheet" type="text/css" href="css/fullCalendar/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 <style type="text/css">
 #calendar {
 	width: 960px;
@@ -84,7 +84,7 @@
 }
 </style>
 
-<script type="text/javascript" src="js/fancybox/jquery.form.min.js">
+<script type="text/javascript" src="js/jquery.form.min.js">
 	
 	$(document).ready(function(){ 
 		
@@ -111,7 +111,7 @@
 	        if(confirm("您确定要删除吗？")){ 
 	            var eventid = <%=request.getParameter("id")%>; 
 	            
-	            $.get("AddEditEvent.do?action=del&id="+eventid,function(msg){ 
+	            $.get("AddEditEvent?action=del&id="+eventid,function(msg){ 
 	               
 	                    $.fancybox.close(); 
 	                    $('#calendar').fullCalendar('refetchEvents'); 
@@ -160,7 +160,7 @@
 <body>
 	<div class="fancy">
 		<h3>新建預約</h3>
-		<form id="add_form" action="AddEditEvent.do" method="post">
+		<form id="add_form" action="AddEditEvent" method="post">
 			<input type="hidden" name="action" value="add">
 			<p>
 				預約人員：<input type="text" class="input" name="title" id="title"
@@ -202,7 +202,7 @@
 		        if(confirm("您確定要删除吗？")){ 
 		            var eventid = <%=request.getParameter("id")%>; 
 		            
-		            $.get("AddEditEvent.do?action=del&id="+eventid,function(msg){ 
+		            $.get("AddEditEvent?action=del&id="+eventid,function(msg){ 
 		               
 		                    $.fancybox.close(); 
 		                    $('#calendar').fullCalendar('refetchEvents'); //重新获取所有事件数据 
