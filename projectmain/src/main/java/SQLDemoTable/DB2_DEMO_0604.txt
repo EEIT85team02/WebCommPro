@@ -1,11 +1,12 @@
 --time       ->可打'10:00'
 --timestamp  ->如果要打時間，一定得打'2016-05-05 10:00:00'
+--燈箱的資料不可有空格
 
 
 --Edu
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會', '台北市大安區復興南路一段', '02-6631666', 'Mary');
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會', '桃園市中壢區中大路300號', '03-4257387', 'John');
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會', '高雄市前金區中正四路211號', '07-9699885', 'Alean');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會', '台北市大安區復興南路一段', '026631666', 'Mary');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會', '桃園市中壢區中大路300號', '034257387', 'John');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會', '高雄市前金區中正四路211號', '079699885', 'Alean');
 
 --Class
 insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('EEIT85','Java程式設計師','羅秀燕','劉翰卿',1 );
@@ -48,12 +49,12 @@ insert into Sign_list(sl_id, sl_name) values(2, 'Examiner');
 insert into Sign_list(sl_id, sl_name) values(3, 'Administrator');
 
  --Employee
-insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7001','許貿誠', '10','IT Department','test1@webcomme.com','3');
-insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7002','黃煜勝', '20','Administrative Department','test2@webcomme.com','3');
-insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7003','王潔', '30','Finance Department','test3@webcomme.com','2');
-insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7004','張書豪', '40','Marketing Department','test4@webcomme.com','2');
-insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7005','林俊佑', '50','Planning Department','test5@webcomme.com','1');
-insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7006','王彥淳', '60','Sales Department','test6@webcomme.com','1');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7001','許貿誠', '10','IT_Department','test1@webcomme.com','3');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7002','黃煜勝', '20','Administrative_Department','test2@webcomme.com','3');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7003','王潔', '30','Finance_Department','test3@webcomme.com','2');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7004','張書豪', '40','Marketing_Department','test4@webcomme.com','2');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7005','林俊佑', '50','Planning_Department','test5@webcomme.com','1');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7006','王彥淳', '60','Sales_Department','test6@webcomme.com','1');
 
  --Examiner_offday
 insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7006','2016-5-15', '2016-5-18','3','7001');

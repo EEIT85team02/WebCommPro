@@ -7,7 +7,7 @@
       driverClassName="com.ibm.db2.jcc.DB2Driver"
 
 
-      url="jdbc:db2://localhost:50000/demo01"
+      url="jdbc:db2://localhost:50000/webcomm"
 
       maxActive="3"
 

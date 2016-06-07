@@ -165,7 +165,7 @@ public class StudentDAO implements IStudentDAO {
 			return list;
 		}	
 		
-		public StudentVO getStudentByEmail(String stu_email) {
+		public static StudentVO getStudentByEmail(String stu_email) {
 			StudentVO stuVO = null;
 			List<StudentVO> list=null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -188,7 +188,10 @@ public class StudentDAO implements IStudentDAO {
 		
 		
 		public static void main(String args[]){
-			System.out.println(new StudentDAO().getAll().get(0).getStu_email());
+			String emailString="llluuuyyy123@gmail.com";
+
+
+			getStudentByEmail(emailString);
 		}
 
 
@@ -199,5 +202,5 @@ public class StudentDAO implements IStudentDAO {
 			Set<Stu_additionalVO> set = findByPrimaryKey(stu_id).getStu_additionalVO();
 			return set;
 		}
-		
+
 }

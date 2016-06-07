@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Student_MaintainForm</title>
 
-<link rel="stylesheet" type="text/css" href="../css/fullCalendar/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="/projectmain/css/fullCalendar/jquery-ui.css">
 <style type="text/css">
 
 .fancy {
@@ -112,22 +112,18 @@
 
 .div7{
 	float:left;
-	width:750px;
+	width:400px;
 	padding-top:50px;
-}
-
-.div8{
-	float:left;
-	width:20px;
-	padding-top:50px;
+	padding-left:400px;
+	
 }
 
 
 </style>
 <!-- fancybox -->
-	<link rel="stylesheet" type="text/css" href="../css/fancybox/jquery.fancybox.css"> 	
-	<script src='../js/fancybox/jquery.fancybox.pack.js'></script> 
-<script type="text/javascript" src="../js/fancybox/jquery.form.min.js">
+	<link rel="stylesheet" type="text/css" href="/projectmain/css/fancybox/jquery.fancybox.css"> 	
+	<script src='/projectmain/js/fancybox/jquery.fancybox.pack.js'></script> 
+<script type="text/javascript" src="/projectmain/js/fancybox/jquery.form.min.js">
 	
 	$(document).ready(function(){ 
 		
@@ -314,9 +310,6 @@
 			</div>	
 				
 			<div class="div7">
-				<input type="button" class="btn btn_del" id="del_event" value="取消"  onclick="del()"></span> 
-			</div>
-			<div class="div8">
 				<input type="submit" class="btn btn_ok" id="detailButton" value="存檔">
 				<!-- <input type="button" class="btn btn_cancel" value="取消" onClick="$.fancybox.close()"> -->
 			</div>

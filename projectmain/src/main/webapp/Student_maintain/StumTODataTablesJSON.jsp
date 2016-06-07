@@ -20,8 +20,8 @@
 <meta name="author" content="">
 
 <!-- fancybox -->
-	<link rel="stylesheet" type="text/css" href="../css/fancybox/jquery.fancybox.css"> 	
-	<script src='../js/fancybox/jquery.fancybox.pack.js'></script> 
+	<link rel="stylesheet" type="text/css" href="/projectmain/css/fancybox/jquery.fancybox.css"> 	
+	<script src='/projectmain/js/fancybox/jquery.fancybox.pack.js'></script> 
 	
 <style>
 .Main_Content {
@@ -187,7 +187,7 @@ h1 {
 						var log_pw = val.log_pw;
 						$.fancybox({//调用fancybox弹出层 
     			                'type':'ajax', 
-    			                'href':'Stum_Detail.jsp?action=add&stu_id='+stu_id
+    			                'href':'/projectmain/Student_maintain/Stum_Detail.jsp?action=add&stu_id='+stu_id
     			                +'&stu_name='+stu_name
     			                +'&class_id='+class_id
     			                +'&stu_email='+stu_email
