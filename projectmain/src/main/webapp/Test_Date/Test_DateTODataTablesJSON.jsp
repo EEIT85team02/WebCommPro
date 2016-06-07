@@ -33,17 +33,12 @@
 }
 
 
-label, input {
-	display: block;
-}
+input.text{ 
+	padding: .4em; 
+} 
 
-input.text {
-	margin-bottom: 12px;
-	width: 95%;
-	padding: .4em;
-}
 
-fieldset {
+fieldset{
 	padding: 0;
 	border: 0;
 	margin-top: 25px;
@@ -54,16 +49,23 @@ h1 {
 	margin: .6em 0;
 }
 
-.ui-dialog {
-
-}
-.ui-state-error {
+ 
+.ui-dialog, .ui-state-error {
 	padding: .3em;
 }
 
-.validateTips {
+.allValid {
 	border: 1px solid transparent;
 	padding: 0.3em;
+}
+.labelTitle{
+	float:left;
+	width:100px;
+	padding-right:3px;
+}
+.divForm{
+margin: 20px;
+
 }
 
 </style>
@@ -107,7 +109,7 @@ h1 {
 						</tfoot>
 					</table>
 					<!------------------點選新增教育中心表單區塊內容----------------------------- -->
-					<button id="buttonUpdate">編輯</button>
+					<button id="buttonUpdate">編輯考試日期或人數</button>
 					<button id="buttonDelete">刪除</button>
 					<button id="buttonAll">全部選取</button>
 					<button id="buttonRe">取消全選</button>
@@ -119,27 +121,36 @@ h1 {
 	
 	<!-- 設定修改FORM表單區塊dialog -->
 	<div id="dialog-updateForm" title="修改教育中心資料">
-		<p class="validateTips"></p>
+		<p class="allValid"></p>
 		<form name="TdUpdateForm" action="updateEdu">
 			<fieldset>
-				<label for="test_date_id">考試日期時段代號(不可修改)</label> 
-				<input type="text" name="test_date_id" id="utest_date_id" readOnly class="text ui-widget-content ui-corner-all">
-				
-				<label for="class_name">班級名稱(不可修改)</label> 
-				<input type="text" name="class_name" id="uclass_name" readOnly class="text ui-widget-content ui-corner-all" autocomplete="off">
-				
-				<input type="hidden" name="class_id" id="uclass_id"  class="text ui-widget-content ui-corner-all" autocomplete="off">
-				
-				<input type="hidden" name="test_hour_id" id="utest_hour_id"  class="text ui-widget-content ui-corner-all" autocomplete="off">
-				
-				<label for="test_date">考試日期</label> 
-				<input type="date" name="test_date" id="utest_date" class="text ui-widget-content ui-corner-all" autocomplete="off"> 
-				
-				<label for="test_people">可報名人數</label> 
-				<input type="text" name="test_people" id="utest_people" class="text ui-widget-content ui-corner-all" autocomplete="off">
-				
-				<label for="exam_people">已報名人數(不可修改)</label> 
-				<input type="text" name="exam_people" id="uexam_people" readOnly class="text ui-widget-content ui-corner-all" autocomplete="off">
+				<div class="divForm">
+					<label for="test_date_id" class="labelTitle">代號</label> 
+					<input type="text" name="test_date_id" size="20" id="utest_date_id" readOnly >
+					<br>
+				</div>
+				 	
+				<div class="divForm">
+					<label for="class_name" class="labelTitle">班級名稱:</label> 
+					<input type="text" name="class_name" size="20" id="uclass_name" readOnly autocomplete="off">
+					<br>
+				</div>
+				 	
+				<div class="divForm">
+					<label for="test_date" class="labelTitle">考試日期:</label> 
+					<input type="date" name="test_date" size="20" id="utest_date" autocomplete="off"> 
+					<span id="spanutest_date"></span><br>
+				</div>
+				 	
+				<div class="divForm">
+					<label for="test_people" class="labelTitle">報名人數:</label> 
+					<input type="number"  min="0" max="5" step="1" name="test_people" size="20" id="utest_people" autocomplete="off">
+					<span id="spanutest_people"></span><br>
+				</div>
+				 	
+				<input type="hidden" name="class_id" id="uclass_id">
+				<input type="hidden" name="test_hour_id" id="utest_hour_id">
+				<input type="hidden" name="exam_people" id="uexam_people">
 				
 				
 				<input type="hidden" name="action" value="updateTd">
@@ -183,43 +194,23 @@ h1 {
 				uclass_name = $('#uclass_name'),
 				utest_date = $('#utest_date'),
 				utest_people = $('#utest_people'),
-				uexam_people = $('#uexam_people');
+				uexam_people = $('#uexam_people'),
 				uclass_id = $('#uclass_id');
-				utest_hour_id = $('#utest_hour_id');
+				utest_hour_id = $('#utest_hour_id'),
+				
+				
+				spanutest_date = $('#spanutest_date'),
+				spanutest_people = $('#spanutest_people');
+				
+				var checkutest_date=null;
+				var checkutest_people=null;
+				
+				uallSpan = $( [] ).add( spanutest_date ).add( spanutest_people );
 			
 				uallFields = $( [] ).add( utest_date_id ).add( uclass_name ).add( utest_date ).add( utest_people ).add( uexam_people );
-		      	tips = $( ".validateTips" );
-		      //在驗證顯示區塊新增class t->傳入的一段文字
-			    function updateTips( t ) {
-			      tips
-			        .text( t )
-			        .css('color','red')
-			        .addClass( "ui-state-highlight" );
-			      setTimeout(function() {
-			        tips.removeClass( "ui-state-highlight", 1500 );
-			      }, 500 );
-			    }
-			 //驗證資料長度是否符合規則o->$('#欄位ID')欄位資料、n->欄位名稱、min->最短長度、max->最長長度
-			    function checkLength( o, n, min, max ) {
-			      if ( o.val().length > max || o.val().length < min ) {
-			        o.addClass( "ui-state-error" );
-			        updateTips( "欄位 " + n + ":長度必須於 " +
-			          min + " 到 " + max + "之間" );
-			        return false;
-			      } else {
-			        return true;
-			      }
-			    }
-			 //驗證表單資料是否符合規則 o->$('#欄位ID')、規則式、n->SHOW一段文字
-			    function checkRegexp( o, regexp, n ) {
-			      if ( !( regexp.test( o.val() ) ) ) {
-			        o.addClass( "ui-state-error" );
-			        updateTips( n );
-			        return false;
-			      } else {
-			        return true;
-			      }
-			    }
+				allValid =$('.allValid');
+				
+		   
 			 	//點選tr資料，更換class類別,若被選取則更新為未選取，反之選取
 				$('#Test_DateTable tbody').on( 'click', 'tr', function () {
 					$(this).toggleClass('selected');
@@ -230,8 +221,8 @@ h1 {
 				//設定表單寬度視窗資料開始
 				TdUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
-			      height: 650,
-			      width: 400,
+			      height: 400,
+			      width: 700,
 			      modal: true,
 			      buttons: {
 				        "send": updateTdFormToCreateTable,
@@ -242,6 +233,10 @@ h1 {
 			      close: function() {
 			        form[ 0 ].reset();
 			        uallFields.removeClass( "ui-state-error" );
+			       	uallFields.val("");//將更新form表單內容清空
+					allValid.text("");//將更新form表單驗證區塊內容清空
+					uallSpan.text("");//將更新FROM表單的span內容清空
+			      
 			      }
 			    });
 			    
@@ -268,8 +263,8 @@ h1 {
 								uclass_name.val(Tds.class_name);
 								utest_date.val(Tds.test_date);
 								utest_people.val(Tds.test_people);
-								uexam_people.val(Tds.exam_people);
 								
+								uexam_people.val(Tds.exam_people);
 								uclass_id.val(Tds.class_id);
 								utest_hour_id.val(Tds.test_hour_id);
 							});
@@ -279,18 +274,13 @@ h1 {
 			 	} );
 			    //點選修改鍵，所執行的方法
 			    function updateTdFormToCreateTable() {
-				      var valid = true;
-				      uallFields.removeClass( "ui-state-error" );
-				      valid = valid && checkLength( utest_date, "考試日期", 10, 30 );
-					  valid = valid && checkLength( utest_people, "可報名人數", 1, 30 );
-				    
-				      if ( valid ) {
+				      if ( checkUpdateForm()  ) {
 				 			var Updatedatas = $('form[name="TdUpdateForm"]').serialize();
 				 			//console.log(Updatedatas);
 				 			$.get('Test_DateServletJSON.do',Updatedatas,function(data){
 				 				console.log(data);
 				 				if(data=="資料更新失敗"){
-				 					 $('.validateTips').css('color','red').text("更新錯誤");
+				 					allValid.css('color','red').text("更新錯誤");
 				 				}
 				 				else if(data=="資料更新成功"){
 				 					table.ajax.reload();//重新載入data tables的資料 ?? 須改為直接抓取原更新表單的值回填回去表格
@@ -299,7 +289,6 @@ h1 {
 				 			});
 				 		}
 				 	  sel=[];
-				      return valid;
 				    }
 			  	//diolog程式部分以下(刪除)
 				//設定刪除確認表單寬度視窗資料開始
@@ -361,6 +350,56 @@ h1 {
 				 $('#buttonSel').click( function () {
 				        alert( table.rows('.selected').data().length +' 筆資料被選取' );
 				});
+				
+				//修改表格欄位判斷
+				//ckeckutest_date欄位滑鼠離開後的判斷驗證
+				utest_date.blur(fcheckutest_date);
+				function fcheckutest_date(){
+					checkutest_date=false;
+					var utest_dateVal=utest_date.val();
+					
+					if(utest_dateVal==""){
+						spanutest_date.html("<img src='../img/error.png' style='width:16px'/>考試日期不可為空白").css('color','red');
+					}else{
+						spanutest_date.html("<img src='../img/correct.png' style='width:16px'/>");
+						checkutest_date=true;
+					}
+				}
+				
+				//ckeckutest_date欄位滑鼠離開後的判斷驗證
+				utest_people.blur(fcheckutest_people);
+				function fcheckutest_people(){
+					checkutest_people=false;
+					var utest_peopleVal=utest_people.val();
+					var uexam_peopleVal=uexam_people.val();
+					if(utest_peopleVal==""){
+						spanutest_people.html("<img src='../img/error.png' style='width:16px'/>可報名人數不可為空白").css('color','red');
+					}else if(utest_peopleVal < uexam_peopleVal){
+						spanutest_people.html("<img src='../img/error.png' style='width:16px'/>考報名人數不可小於已報名人數").css('color','red');
+					}else{
+						spanutest_people.html("<img src='../img/correct.png' style='width:16px'/>");
+						checkutest_people=true;
+					}
+				}
+				
+				function checkUpdateForm(){
+					fcheckutest_date();
+					fcheckutest_people();
+					console.log(checkutest_date);
+					console.log(checkutest_people);
+					if(checkutest_date && checkutest_people){
+						alert("資料皆正確，送出中");
+						return true;
+					}
+					else {
+						alert("資料錯誤，請檢查欄位長度格式是否正確");
+						return false;
+					} 
+				}
+				
+				
+				
+				
 			} );//load函數結束
 	</script>
 </body>

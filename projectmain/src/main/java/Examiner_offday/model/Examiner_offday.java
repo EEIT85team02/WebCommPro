@@ -39,7 +39,6 @@ public class Examiner_offday implements Serializable{//主考官請假表
 	public void setEmp_job_id(String emp_job_id) {
 		this.emp_job_id = emp_job_id;
 	}
-
 	public Examiner_offday(String emp_id, Timestamp off_stardate,
 			Timestamp off_enddate, Integer off_day, String emp_job_id) {
 		super();
@@ -52,5 +51,6 @@ public class Examiner_offday implements Serializable{//主考官請假表
 	public Examiner_offday() {
 		super();
 	}
+	
 	
 }

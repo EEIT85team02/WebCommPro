@@ -1,9 +1,12 @@
 package Examiner_offday.model;
 
 
+import java.sql.SQLException;
 import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
+
 import hibernate.util.HibernateUtil;
 
 
@@ -82,6 +85,19 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 				throw ex;
 			}
 			return list;
+		}
+		
+		public static void  main(String[] args){
+			IExaminer_offdayDAO dao = new Examiner_offdayDAO();
+			Examiner_offday vo = new Examiner_offday();
+			try {
+				vo = dao.findByPrimaryKey("7001");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("vo===="+vo);
+			
 		}
 
 
