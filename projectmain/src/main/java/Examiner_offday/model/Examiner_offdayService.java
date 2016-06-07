@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.json.JSONArray;
 import org.json.simple.JSONValue;
@@ -16,6 +17,7 @@ import Class.model.ClassVO;
 import Class.model.IClassDAO;
 import Employee.model.EmployeeVO;
 import Sign_list.model.Sign_listVO;
+import Stu_additional.model.Stu_additionalVO;
 
 public class Examiner_offdayService {
 		private IExaminer_offdayDAO dao;
@@ -93,11 +95,13 @@ public class Examiner_offdayService {
 		//取得單筆資料轉JSON -MAP對應
 		public String findByPrimaryKeyExamToJSON(Integer exam_id) throws SQLException{
 			List exams=new LinkedList();
+			List as=new LinkedList();
+			Map<Object,Object> map2 = new HashMap<Object,Object>();
 			Examiner_offdayVO examVO=dao.findByPrimaryKey(exam_id);
 			String jsonString= null;
 				Map<String,String> map = new HashMap<String,String>();
 				map.put("exam_id",examVO.getExam_id().toString());
-				map.put("off_stardate",examVO.getOff_startdate().toString());
+				map.put("off_startdate",examVO.getOff_startdate().toString());
 				map.put("off_enddate",examVO.getOff_enddate().toString());
 				map.put("off_day",examVO.getOff_day().toString());
 				map.put("emp_job_id",examVO.getEmp_job_id());
@@ -105,8 +109,21 @@ public class Examiner_offdayService {
 				map.put("emp_name",examVO.getEmpVO().getEmp_name());
 				map.put("emp_mail",examVO.getEmpVO().getEmp_mail());
 				map.put("dep_name",examVO.getEmpVO().getDep_name());
-				
-				
+				Set<Stu_additionalVO> stu_addVO = examVO.getEmpVO().getStu_additionalVO();
+				for(Stu_additionalVO a :stu_addVO){
+					Map<String,String> map1 = new HashMap<String,String>();
+					map1.put("stu_id",a.getStudentVO().getStu_id().toString());
+					map1.put("stu_name",a.getStudentVO().getStu_name());
+//					map.put("class_contact",stu_addVO.getClass_contact());
+//					map.put("class_teach",stu_addVO.getClass_teach());
+					as.add(map1);
+					map2.put("key",as);
+				}
+//				map.put("stu_id",examVO.getEmpVO().getStu_additionalVO().iterator().next().getStudentVO().getStu_id().toString());
+//				map.put("stu_name",examVO.getEmpVO().getStu_additionalVO().iterator().next().getStudentVO().getStu_name());
+//				map.put("test_start",examVO.getEmpVO().getStu_additionalVO().iterator().next().getTest_start().toString());
+//				map.put("test_end",examVO.getEmpVO().getStu_additionalVO().iterator().next().getTest_end().toString());
+				exams.add(map2);
 				exams.add(map);
 				jsonString = JSONValue.toJSONString(exams);
 				return jsonString;
