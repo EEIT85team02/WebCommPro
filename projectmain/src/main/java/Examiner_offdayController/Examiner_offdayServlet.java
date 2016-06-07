@@ -123,7 +123,7 @@ public class Examiner_offdayServlet extends HttpServlet {
 				System.out.println(emp_id);
 				
 				if (!Msgs.isEmpty()) {
-					out.write("資料更新失敗");
+					out.write("failed");
 					return;
 				}
 				/*******************將資料(更新)至資料庫**********************/
@@ -131,16 +131,16 @@ public class Examiner_offdayServlet extends HttpServlet {
 					Examiner_offdayService examSvc = new Examiner_offdayService();
 					examSvc.updateExam(exam_id,off_startdate,off_enddate,off_day,
 							emp_job_id,emp_id);
-					out.write("資料更新成功");
+					out.write("success");
 					return;
 				}
 			} 
 			catch (SQLServerException e) {
-				out.write("資料更新失敗");
+				out.write("failed");
 				return;
 			}
 			catch (Exception e) {
-				out.write("資料更新失敗");
+				out.write("failed");
 				return;
 			}
 		}

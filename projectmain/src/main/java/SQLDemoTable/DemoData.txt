@@ -45,6 +45,7 @@ insert into student values (2,'備註1',20,'黃煜勝15',77,'淡江大學電機�
 insert into student values (2,'備註1',20,'黃煜勝16',77,'淡江大學電機系',1,'test18@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MMMH25',null,null,null,null);
 insert into student values (2,'備註1',20,'黃煜勝17',77,'淡江大學電機系',1,'test19@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MMMH25',null,null,null,null);
 insert into student values (2,'備註1',20,'test',77,'淡江大學電機系',1,'eeit85team02@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null,null,null);
+
 --Test_period
 insert into Test_period values('10:00','12:00');
 insert into Test_period values('14:00','16:00');
@@ -107,3 +108,4 @@ insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id,
  insert into Mail_template (mail_name, mail_text) values ('預約成功通知1', '預約成功1');
  insert into Mail_template (mail_name, mail_text) values ('預約成功通知2', '預約成功2');
  insert into Mail_template (mail_name, mail_text) values ('預約成功通知3', '預約成功3');
+

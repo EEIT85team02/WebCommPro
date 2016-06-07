@@ -11,7 +11,7 @@ public class DecryptService {
 		
 	}
 	
-	public static boolean compareIfMatchThePassword(String emailAccountInput,String passwordinput){
+	public static StudentVO compareIfMatchThePassword(String emailAccountInput,String passwordinput){
 		StudentDAO stdao = new StudentDAO();
 		StudentVO stvo=stdao.getStudentByEmail(emailAccountInput);
 		boolean match=true;
@@ -30,16 +30,16 @@ public class DecryptService {
 			}
 		}
 		if(match==true){
-			return true;
+			return stvo;
 		}else{
-			return false;
+			return null;
 		}
 		
 		
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(compareIfMatchThePassword("llluuuyyy123@gmail.com","CHxuejI-b0FbvWto7E7vAg"));
+		System.out.println(compareIfMatchThePassword("eeit85team02@gmail.com","YRfFF_0wmUNnsbbHJj3dCw"));
 
 	}
 

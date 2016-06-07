@@ -153,10 +153,13 @@
 				<p>請假結束日期：<%=request.getParameter("off_enddate")%></p>
 				<p>請假天數：<%=request.getParameter("off_day")%></p>
 				<p>職務代理人：<%=request.getParameter("emp_job_id")%></p>
-				
+
 			</div>
 			<div class="div3">
-				
+				<p>考生代號：<%=request.getParameter("stu_id")%></p>
+				<p>考生姓名：<%=request.getParameter("stu_name")%></p>
+<%-- 				<p>監考開始時間：<%=request.getParameter("test_start")%></p> --%>
+<%-- 				<p>監考結束時間：<%=request.getParameter("test_end")%></p> --%>
 			</div>
 			
 		</form>
