@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=BIG5">
 <title>Insert title here</title>
 <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
+<link href="../css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="../js/bootstrap/bootstrap.min.js"></script>
 <script
@@ -19,6 +20,9 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <style>
+.navbar-inverse {
+      background-image: linear-gradient(to bottom,#D842D3 0,#8E2681 100%);
+}
 .Main_Content {
 	margin-top: 100px;
 }
