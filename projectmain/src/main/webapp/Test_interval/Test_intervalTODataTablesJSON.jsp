@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
-<title>Class_Page</title>
+<title>Test_interval Page</title>
 
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
@@ -33,17 +33,14 @@
 }
 
 
-label, input {
-	display: block;
-}
 
-input.text {
-	margin-bottom: 12px;
-	width: 95%;
-	padding: .4em;
-}
 
-fieldset {
+input.text{ 
+	padding: .4em; 
+} 
+
+
+fieldset{
 	padding: 0;
 	border: 0;
 	margin-top: 25px;
@@ -54,13 +51,23 @@ h1 {
 	margin: .6em 0;
 }
 
-.ui-dialog .ui-state-error {
+ 
+.ui-dialog, .ui-state-error {
 	padding: .3em;
 }
 
-.validateTips {
+.allValid {
 	border: 1px solid transparent;
 	padding: 0.3em;
+}
+.labelTitle{
+	float:left;
+	width:100px;
+	padding-right:3px;
+}
+.divForm{
+margin: 20px;
+
 }
 
 </style>
@@ -70,7 +77,7 @@ h1 {
 	<jsp:include page="/top/top.jsp" />
 	<!-------------中間內容畫面開始------------>
 	<!-- 固定巡覽列位置，建立div使區塊下移 (starter-template)-->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-md-12">
@@ -108,37 +115,77 @@ h1 {
 	</div>
 	<!-- 設定新增FORM表單區塊dialog -->
 	<div id="dialog-insertForm" title="建立班級考試資料">
-		<p class="validateTips"></p>
+		<p class="allValid"></p>
 		<form name="TiInsertForm">
 			<fieldset>
-				<label for="class_id">班級名稱</label> 
-				<select id="selectClass_id" name='class_id'>
-			   	</select>
-			   	<span id="idspan"></span><br>
-			   	<label for="test_startdate">考試開始日期</label> 
-				<input type="date" name="test_startdate" id="test_startdate" class="text ui-widget-content ui-corner-all" placeholder="請輸入考試開始日期" autocomplete="off" >
-				<label for="test_enddate">考試結束日期</label> 
-				<input type="date" name="test_enddate" id="test_enddate" class="text ui-widget-content ui-corner-all" placeholder="請輸入考試結束日期" autocomplete="off" >
+				<div class="divForm">
+					<label for="class_id" class="labelTitle">班級名稱:</label> 
+					<select id="selectClass_id"  name='class_id'>
+				   	</select>
+				   	<span id="spanclass_id"></span><br>
+			   	</div>
+			   	
+			   	
+			   	<div class="divForm">
+			   	<label for="test_startdate" class="labelTitle">開始日期:</label> 
+				<input type="date" name="test_startdate" size="20" id="test_startdate" placeholder="請輸入考試開始日期" autocomplete="off" >
+				<span id="spantest_startdate"></span><br>
+				</div>
+				
+				<div class="divForm">
+				<label for="test_enddate" class="labelTitle">結束日期:</label> 
+				<input type="date" name="test_enddate" size="20" id="test_enddate" placeholder="請輸入考試結束日期" autocomplete="off" >
+				<span id="spantest_enddate"></span><br>
+				</div>
+				
+				
 				<input type="hidden" name="action" value="addTi">
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
+			
+			
 			</fieldset>
 		</form>
 	</div>
 	<!-- 設定修改FORM表單區塊dialog -->
 	<div id="dialog-updateForm" title="修改班級考試資料">
-		<p class="validateTips"></p>
+		<p class="allValid"></p>
 		<form name="TiUpdateForm">
 			<fieldset>
-				<label for="test_interval_id">班級考試日期代號(不可修改)</label> 
-				<input type="text" name="test_interval_id" id="utest_interval_id" class="text ui-widget-content ui-corner-all" placeholder="請輸入班級考試日期代號" autocomplete="off" readOnly> 
-				<label for="class_id">班級代號(不可修改)</label> 
-				<input type="text" name="class_id" id="uclass_id" class="text ui-widget-content ui-corner-all" placeholder="請輸入班級代號" autocomplete="off" readOnly> 
-				<label for="class_name">班級名稱(不可修改)</label> 
-				<input type="text" name="class_name" id="uclass_name" class="text ui-widget-content ui-corner-all" placeholder="請輸入班級名稱" autocomplete="off" readOnly> 
-				<label for="test_startdate">考試開始日期</label> 
-				<input type="text" name="test_startdate" id="utest_startdate" class="text ui-widget-content ui-corner-all" placeholder="請輸入考試開始日期" autocomplete="off">
-				<label for="test_enddate">考試結束日期</label> 
-				<input type="text" name="test_enddate" id="utest_enddate" class="text ui-widget-content ui-corner-all" placeholder="請輸入考試結束日期" autocomplete="off">
+			<div class="divForm">
+				<label for="test_interval_id" class="labelTitle">代號:</label> 
+				<input type="text" name="test_interval_id" size="20" id="utest_interval_id" placeholder="請輸入班級考試日期代號" autocomplete="off" readOnly> 
+				<br>
+				</div>
+				
+				
+				<div class="divForm">
+				<label for="class_id" class="labelTitle">班級代號:</label> 
+				<input type="text" name="class_id" size="20" id="uclass_id" placeholder="請輸入班級代號" autocomplete="off" readOnly> 
+				<br>
+				</div>
+				
+				
+				<div class="divForm">
+				<label for="class_name" class="labelTitle">班級名稱:</label> 
+				<input type="text" name="class_name" size="20" id="uclass_name" placeholder="請輸入班級名稱" autocomplete="off" readOnly> 
+				<br>
+				</div>
+				
+				
+				<div class="divForm">
+				<label for="test_startdate" class="labelTitle">開始日期:</label> 
+				<input type="date" name="test_startdate" size="20" id="utest_startdate" placeholder="請輸入考試開始日期" autocomplete="off">
+				<span id="spanutest_startdate"></span><br>
+				</div>
+				
+				<div class="divForm">
+				<label for="test_enddate" class="labelTitle">結束日期:</label> 
+				<input type="date" name="test_enddate" size="20" id="utest_enddate" class="text ui-widget-content ui-corner-all" placeholder="請輸入考試結束日期" autocomplete="off">
+				<span id="spanutest_enddate"></span><br>
+				</div>
+				
+				
+				
 				<input type="hidden" name="action" value="updateTi">
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
@@ -182,7 +229,7 @@ h1 {
 				class_id = $( "#selectClass_id" ),
 				test_startdate = $( "#test_startdate" ),
 				test_enddate = $( "#test_enddate" ),
-				idspan = $('#idspan'),
+				
 				
 				utest_interval_id = $( "#utest_interval_id" ),
 				uclass_id = $( "#uclass_id" ),
@@ -190,75 +237,61 @@ h1 {
 				utest_startdate = $( "#utest_startdate" ),
 				utest_enddate = $( "#utest_enddate" ),
 				
-			  	deleteOrUpdateValue = null;//檢查是否有選取資料行
+			  	deleteOrUpdateValue = null,//檢查是否有選取資料行
+			  	
+			  	spanclass_id = $('#spanclass_id'),
+			  	spantest_startdate = $('#spantest_startdate'),
+			  	spantest_enddate = $('#spantest_enddate'),
+			  	
+			  	spanutest_startdate = $('#spanutest_startdate'),
+			  	spanutest_enddate = $('#spanutest_enddate');
+			  	
+			  	var flag = null;
+			  	var checkclass_id=null;
+			  	var checktest_startdate=null;
+			  	var checktest_enddate=null;
 				
+			  	var checkutest_startdate=null;
+			  	var checkutest_enddate=null;
+			  	
+			  	allSpan = $( [] ).add( spanclass_id ).add( spantest_startdate ).add( spantest_enddate );
+				uallSpan = $( [] ).add( spanutest_startdate ).add( spanutest_enddate );
+				
+			  	
+			  	
 		      	allFields = $( [] ).add( class_id ).add( test_startdate ).add( test_enddate );
 		      	uallFields = $( [] ).add( utest_interval_id ).add( uclass_id ).add( utest_startdate ).add( utest_enddate ).add( uclass_name );
-		      	tips = $( ".validateTips" );
-		      //在驗證顯示區塊新增class t->傳入的一段文字
-			    function updateTips( t ) {
-			      tips
-			        .text( t )
-			        .css('color','red')
-			        .addClass( "ui-state-highlight" );
-			      setTimeout(function() {
-			        tips.removeClass( "ui-state-highlight", 1500 );
-			      }, 500 );
-			    }
+		    	allValid =$('.allValid');
+		      	
 		      
-			 //驗證資料長度是否符合規則o->$('#欄位ID')欄位資料、n->欄位名稱、min->最短長度、max->最長長度
-			    function checkLength( o, n, min, max ) {
-			      if ( o.val().length > max || o.val().length < min ) {
-			        o.addClass( "ui-state-error" );
-			        updateTips( "欄位 " + n + ":長度必須於 " +
-			          min + " 到 " + max + "之間" );
-			        return false;
-			      } else {
-			        return true;
-			      }
-			    }
-			 //驗證表單資料是否符合規則 o->$('#欄位ID')、規則式、n->SHOW一段文字
-			    function checkRegexp( o, regexp, n ) {
-			      if ( !( regexp.test( o.val() ) ) ) {
-			        o.addClass( "ui-state-error" );
-			        updateTips( n );
-			        return false;
-			      } else {
-			        return true;
-			      }
-			    }
 			  //點選新增鍵，所執行的方法
 			    function insertTiFormToCreateTable() {
-			      var valid = true;
-			      allFields.removeClass( "ui-state-error" );
-			      valid = valid && checkLength( class_id, "班級代號", 1, 30 );
-			      valid = valid && checkLength( test_startdate, "考試開始日期", 1, 10 );
-				  valid = valid && checkLength( test_enddate, "考試結束日期", 1, 30 );
-			   		if ( valid ) {
+			      if ( checkInsertForm()  ) {
 			  		  	var Insertdatas = $('form[name="TiInsertForm"]').serialize();
 			 			$.post('Test_intervalServletJSON.do',Insertdatas,function(data){
 			 				console.log(data);
 			 				if(data=="資料新增失敗"){
-			 					$('.validateTips').css('color','red').text("此班級代號已建立資料");
+			 					allValid.css('color','red').text("此班級代號已建立資料");
 			 				}
 			 				else if(data=="資料新增成功"){
 			 					table.ajax.reload();//重新載入data tables的資料
+			 					allFields.removeClass( "ui-state-error" );
 			 					allFields.val("");//將新增form表單內容清空
-						 		$('.validateTips').text("");////將新增form表單驗證區塊內容清空
-						 		deleteOrUpdateValue = null;
-						 		idspan.text("");
-				 				TiInsertForm.dialog( "close" );//將新增form表單關閉
+			 					allValid.text("");////將新增form表單驗證區塊內容清空
+			 					allSpan.text("");//將新增FROM表單的span內容清空
+						 		
+			 					deleteOrUpdateValue = null;
+						 		TiInsertForm.dialog( "close" );//將新增form表單關閉
 				 				//取回資料庫資料並建立table內容結束
 			 				}
 			 			});
 			 		}
-			      return valid;
 			    }
 			  //設定表單寬度視窗資料開始
 			    TiInsertForm = $( "#dialog-insertForm" ).dialog({
 			      autoOpen: false,
 			      height: 550,
-			      width: 400,
+			      width: 700,
 			      modal: true,
 			      buttons: {
 			        "send": insertTiFormToCreateTable,
@@ -269,9 +302,9 @@ h1 {
 			      close: function() {
 			        form[ 0 ].reset();
 			        allFields.removeClass( "ui-state-error" );
-			       	allFields.val("");//將新增form表單內容清空
-			       	idspan.text("");
-		 			$('.validateTips').text("");////將新增form表單驗證區塊內容清空
+ 					allFields.val("");//將新增form表單內容清空
+ 					allValid.text("");////將新增form表單驗證區塊內容清空
+ 					allSpan.text("");//將新增FROM表單的span內容清空
 			      }
 			    });
 			  	//設定表單寬度視窗資料結束
@@ -320,7 +353,7 @@ h1 {
 				  TiUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
 			      height: 650,
-			      width: 400,
+			      width: 700,
 			      modal: true,
 			      buttons: {
 				        "send": updateTiFormToCreateTable,
@@ -331,6 +364,9 @@ h1 {
 			      close: function() {
 			        form[ 0 ].reset();
 			        uallFields.removeClass( "ui-state-error" );
+					uallFields.val("");//將更新form表單內容清空
+					allValid.text("");//將更新form表單驗證區塊內容清空
+					uallSpan.text("");//將更新FROM表單的span內容清空
 			      }
 			    });
 			    
@@ -363,13 +399,7 @@ h1 {
 			    } );
 			    //點選修改鍵，所執行的方法
 			    function updateTiFormToCreateTable() {
-				      var valid = true;
-				      uallFields.removeClass( "ui-state-error" );
-				      valid = valid && checkLength( uclass_id, "班級代號", 1, 30 );
-				      valid = valid && checkLength( utest_startdate, "考試開始日期", 1, 10 );
-					  valid = valid && checkLength( utest_enddate, "考試結束日期", 1, 30 );
-				      
-				 		if ( valid ) {
+				     if ( checkUpdateForm() ) {
 				 			var Updatedatas = $('form[name="TiUpdateForm"]').serialize();
 				 			console.log(Updatedatas);
 				 			$.post('Test_intervalServletJSON.do',Updatedatas,function(data){
@@ -387,16 +417,16 @@ h1 {
 				 							test_enddateUpdateValue.text(tis.test_enddate); 
 				 			    		})
 				 			    	})
- 			 						$('.validateTips').text("");////將更新form表單驗證區塊內容清空
-							 		TiUpdateForm.dialog( "close" );
+				 			    	uallFields.removeClass( "ui-state-error" );
+ 									uallFields.val("");//將更新form表單內容清空
+ 									allValid.text("");//將更新form表單驗證區塊內容清空
+ 									uallSpan.text("");//將更新FROM表單的span內容清空
+ 			 						TiUpdateForm.dialog( "close" );
 				 				}
 				 			});
 				 		}
-				      return valid;
 				    }
-			  	
-			    
-    			//diolog程式部分以下(刪除)
+			  	//diolog程式部分以下(刪除)
 				//設定刪除確認表單寬度視窗資料開始
 			    TiDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
@@ -411,23 +441,18 @@ h1 {
 			          }
 			        }
 			    });
-			 	
-			    //點選刪除鍵，所執行的方法
+			 	//點選刪除鍵，所執行的方法
 				function deleteTiFormToCreateTable(){
-				$.get('Test_intervalServletJSON.do',{"test_interval_id":deleteOrUpdateValue,"class_id":class_idUpdateIndex,"action":"deleteTi"},function(data){
-					if(data=="資料刪除成功"){
-						table.row('.selected').remove().draw( false );//刪除畫面上class為selected的那行
-						TiDeleteConfirm.dialog( "close" );
-					}else if (data=="資料刪除失敗"){
-						$('#dialog-deleteForm p').text('資料刪除失敗，資料使用中');
-					}
-				});
-				
-		    	}
-			   
-		
-			 
-			    $('#buttonDelete').click( function () {
+					$.get('Test_intervalServletJSON.do',{"test_interval_id":deleteOrUpdateValue,"class_id":class_idUpdateIndex,"action":"deleteTi"},function(data){
+						if(data=="資料刪除成功"){
+							table.row('.selected').remove().draw( false );//刪除畫面上class為selected的那行
+							TiDeleteConfirm.dialog( "close" );
+						}else if (data=="資料刪除失敗"){
+							$('#dialog-deleteForm p').text('資料刪除失敗，資料使用中');
+						}
+				    });
+				}
+			   	$('#buttonDelete').click( function () {
 			    	
 			    	if(deleteOrUpdateValue==null){
 			    		alert("請先選取要刪除的資料");
@@ -435,20 +460,159 @@ h1 {
 			    		TiDeleteConfirm.dialog( "open" );
 			    	}
 			    } );
-			    
+			  //新增表格欄位判斷
 			  //class_id欄位驗證(滑鼠離開後檢查)AJAX查詢登打的代號是否已存在資料庫中
-			    class_id.change(function() {
-					$.get('Test_intervalServletJSON.do',{'class_id':class_id.val(),"action":"checkTiClassId"},function(data){
-						console.log(class_id.val());
-						console.log(data);
+			    class_id.blur(function(){
+			    	var class_idVal=class_id.val();
+			    	$.get('Test_intervalServletJSON.do',{'class_id':class_idVal,"action":"checkTiClassId"},function(data){
+			    		console.log(data);
 						if(data=="代號已存在"){
-							idspan.text("此班級代號已存在系統").css('color','red');
-						}else {
-							idspan.text("");
+							spanclass_id.html("<img src='../img/error.png' style='width:16px'/>此班級代號已存在或欄位格式不符").css('color','red');
+							flag=false;
+						}else if(data=="代號不存在"){
+							spanclass_id.html("<img src='../img/correct.png' style='width:16px'/>");
+							flag=true;
 						}
 					})
 				});
+			  
+			    function fcheckclass_id(){
+					checkclass_id=false;
+					if (flag){
+						spanclass_id.html("<img src='../img/correct.png' style='width:16px'/>");
+						checkclass_id=true;
+					}else {
+						spanclass_id.html("<img src='../img/error.png' style='width:16px'/>此班級代號已存在系統").css('color','red');
+						checkclass_id=false;
+					}
+				}
+			   
 			    
+			  //ckecktest_starthour欄位滑鼠離開後的判斷驗證
+				test_startdate.blur(fchecktest_startdate);
+				function fchecktest_startdate(){
+					checktest_startdate=false;
+					var test_startdateVal=test_startdate.val();
+					var test_enddateVal=test_enddate.val();
+					var startdateObj=new Date(test_startdateVal).getTime();
+					var enddateObj=new Date(test_enddateVal).getTime();
+					console.log("startdateObj===="+startdateObj);
+					console.log("enddateObj===="+enddateObj);
+					
+					if(test_startdateVal==""){
+						spantest_startdate.html("<img src='../img/error.png' style='width:16px'/>開始日期不可為空白").css('color','red');
+					}else if(startdateObj > enddateObj){
+						spantest_startdate.html("<img src='../img/error.png' style='width:16px'/>開始日期不可大於結束日期").css('color','red');
+					}else{
+						spantest_startdate.html("<img src='../img/correct.png' style='width:16px'/>");
+						checktest_startdate=true;
+					}
+				}
+				
+				 //ckecktest_starthour欄位滑鼠離開後的判斷驗證
+				test_enddate.blur(fchecktest_enddate);
+				function fchecktest_enddate(){
+					checktest_enddate=false;
+					var test_enddateVal=test_enddate.val();
+					var test_startdateVal=test_startdate.val();
+					
+					var startdateObj=new Date(test_startdateVal).getTime();
+					var enddateObj=new Date(test_enddateVal).getTime();
+					console.log("startdateObj===="+startdateObj);
+					console.log("enddateObj===="+enddateObj);
+					if(test_enddateVal==""){
+						spantest_enddate.html("<img src='../img/error.png' style='width:16px'/>結束日期不可為空白").css('color','red');
+					}else if(enddateObj < startdateObj){
+						spantest_enddate.html("<img src='../img/error.png' style='width:16px'/>結束日期不可小於開始日期").css('color','red');
+					}else{
+						spantest_enddate.html("<img src='../img/correct.png' style='width:16px'/>");
+						checktest_enddate=true;
+					}
+				}
+				
+				function checkInsertForm(){
+					fcheckclass_id();
+					fchecktest_startdate();
+					fchecktest_enddate();
+					console.log(checkclass_id);
+					console.log(checktest_startdate);
+					console.log(checktest_enddate);
+					if(checkclass_id && checktest_startdate && checktest_enddate){
+						alert("資料皆正確，送出中");
+						return true;
+					}
+					else {
+						alert("資料錯誤，請檢查欄位長度格式是否正確");
+						return false;
+					} 
+				}
+				
+				
+				//修改表格欄位判斷
+				//ckecktest_starthour欄位滑鼠離開後的判斷驗證
+				utest_startdate.blur(fcheckutest_startdate);
+				function fcheckutest_startdate(){
+					checkutest_startdate=false;
+					var utest_startdateVal=utest_startdate.val();
+					var utest_enddateVal=utest_enddate.val();
+					
+					var ustartdateObj=new Date(utest_startdateVal).getTime();
+					var uenddateObj=new Date(utest_enddateVal).getTime();
+					console.log("ustartdateObj===="+ustartdateObj);
+					console.log("uenddateObj===="+uenddateObj);
+					
+					if(utest_startdateVal==""){
+						spanutest_startdate.html("<img src='../img/error.png' style='width:16px'/>開始日期不可為空白").css('color','red');
+					}else if(ustartdateObj > uenddateObj ){
+						spanutest_startdate.html("<img src='../img/error.png' style='width:16px'/>開始日期不可大於結束日期").css('color','red');
+					}else{
+						spanutest_startdate.html("<img src='../img/correct.png' style='width:16px'/>");
+						checkutest_startdate=true;
+					}
+				}
+				
+				 //ckecktest_starthour欄位滑鼠離開後的判斷驗證
+				utest_enddate.blur(fcheckutest_enddate);
+				function fcheckutest_enddate(){
+					checkutest_enddate=false;
+					var utest_enddateVal=utest_enddate.val();
+					var utest_startdateVal=utest_startdate.val();
+					
+					var ustartdateObj=new Date(utest_startdateVal).getTime();
+					var uenddateObj=new Date(utest_enddateVal).getTime();
+					console.log("ustartdateObj===="+ustartdateObj);
+					console.log("uenddateObj===="+uenddateObj);
+					
+					
+					if(utest_enddateVal==""){
+						spanutest_enddate.html("<img src='../img/error.png' style='width:16px'/>開始日期不可為空白").css('color','red');
+					}else if(uenddateObj < ustartdateObj){
+						spanutest_enddate.html("<img src='../img/error.png' style='width:16px'/>結束日期不可小於開始日期").css('color','red');
+					}else{
+						spanutest_enddate.html("<img src='../img/correct.png' style='width:16px'/>");
+						checkutest_enddate=true;
+					}
+				}
+				
+				function checkUpdateForm(){
+					fcheckutest_startdate();
+					fcheckutest_enddate();
+					console.log(checkutest_startdate);
+					console.log(checkutest_enddate);
+					if(checkutest_startdate && checkutest_enddate){
+						alert("資料皆正確，送出中");
+						return true;
+					}
+					else {
+						alert("資料錯誤，請檢查欄位長度格式是否正確");
+						return false;
+					} 
+				}
+			  
+			  
+			  
+			  
+			     
 			  
 	} );//load函數結束
 	</script>

@@ -16,10 +16,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import SendMail.model.SendMailService;
 import Student.model.StudentService;
 import Student.model.StudentVO;
 
-@WebServlet("/Score/upscoreJSON.do")
+@WebServlet({"/Score/upscoreJSON.do","/Status/EmailJSON.do"})
 public class UpStuScoreJSON extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,7 +43,29 @@ public class UpStuScoreJSON extends HttpServlet {
         PrintWriter out = res.getWriter();
         
 		String action = req.getParameter("action");
-		 
+
+		if("sendEmaildata".equals(action)){
+			String nameString = req.getParameter("stu_name");
+			String emailString = req.getParameter("stu_email");
+			Timestamp stu_applytime = Timestamp.valueOf(req.getParameter("stu_applytime"));
+		    SendMailService sms = new SendMailService();
+		    sms.SendConfirmMailToStudent(emailString, nameString, stu_applytime);
+		}
+		
+		if("getEmailPkId".equals(action)){
+	
+			Integer stu_id = Integer.parseInt(req.getParameter("stu_id"));
+			StudentService stuSvcPK = new StudentService();
+			try {
+				String jsonString = stuSvcPK.getOneEmailStu(stu_id);
+				out.write(jsonString);
+			//	System.out.println(jsonString);
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+		  }
+		
 		if ("getAllScore".equals(action)) {
 			
 			 StudentService stuSvc = new StudentService();

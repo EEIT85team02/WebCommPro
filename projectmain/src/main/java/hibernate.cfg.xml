@@ -8,9 +8,9 @@
 
         
         <!-- 連線池c3p0設定-->
-
 		<property name="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</property>
-		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/webcomm</property>
+
+ 		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/demo01</property> 
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">p@ssw0rd</property> 
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
@@ -58,7 +58,7 @@
 		<mapping resource="Member_test/model/Member_test.hbm.xml" />
 		<mapping resource="Mail_template/model/Mail_template.hbm.xml" />
 		<mapping resource="Examiner_offday/model/Examiner_offday.hbm.xml" />
-<!-- 		<mapping resource="fullCalendar/Modle/Calendar.hbm.xml"/> -->
+<!-- 		<mapping resource="com/fullcalendar/model/calendar.hbm.xml"/> -->
 	</session-factory>
 	
 </hibernate-configuration>
