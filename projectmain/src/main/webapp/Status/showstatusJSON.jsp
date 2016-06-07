@@ -10,6 +10,7 @@
 <link href="../css/jquery-ui.css" rel="stylesheet">
 <link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.css" rel="stylesheet">
 <link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="../css/lobibox.min.css" rel="stylesheet">
 </head>
 <body>
 <form method="post" action="EmailJSON.do" name="EmailGOGO">
@@ -156,6 +157,7 @@
 		<script src="../js/bootstrap/bootstrap.min.js"></script>
 		<script src="../js/jquery-1.12.4.js"></script>
         <script src="../DataTables/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
+        <script src="../js/lobibox.min.js"></script>
 		<script>
 		        $(function(){
 
@@ -280,7 +282,7 @@
 						 })
 					 })
 					 
-					 $(document).on("click",".btn-info",function(){ //點擊送信按鈕
+					 $(document).on("click",".btn-info",function(){ //點擊送信按鈕	 
 						 updateID = $(this).val();  //拿出button的value的stu_id去資料庫找資料
 //						 console.log(updateID)
 						$.getJSON("EmailJSON.do",{"action":"getEmailPkId",'stu_id':updateID},function(datas){
@@ -294,11 +296,14 @@
  //                                 console.log(email.stu_name)
                               var Updatedatas = $('form[name="EmailGOGO"]').serialize();
 				 			     $.post('EmailJSON.do',Updatedatas,function(){
-				 			     
-				 			     
+ 
 				 			   })
 				 			 })
 						 })
+						 Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		 			    			{
+		 			    			msg: "成功送出信件"
+		 			    			});
 					})
 							//定義table資料來源json，與畫面顯示------>開始
 					var table1 = $('#statusTable01').DataTable( {

@@ -194,7 +194,7 @@ public class StudentService {
 			stuVOg.add(stuVO.getStu_name().toString());
 			stuVOg.add(stuVO.getStu_implement().toString());
 			stuVOg.add(stuVO.getStu_interview().toString());
-			stuVOg.add("<button type='button' class='btn btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+stuVO.getStu_id().toString()+" >修改</button>");
+			stuVOg.add("<button type='button' class='btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+stuVO.getStu_id().toString()+" >修改</button>");
 			stusc.add(stuVOg);
 		}
 		Map map = new HashMap();
