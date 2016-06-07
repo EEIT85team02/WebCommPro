@@ -48,7 +48,21 @@ public class StudentService {
 		String jsonString = JSONValue.toJSONString(memsc);
 	    return jsonString;
 	}	
-		
+	public String getOneEmailStu(Integer stu_id) throws SQLException {	
+		List stusc=new LinkedList();
+		StudentVO stu=dao.findByPrimaryKey(stu_id);
+		Set<Stu_additionalVO> set = stu.getStu_additionalVO();
+        for(Stu_additionalVO stuadd:set){
+			Map map = new HashMap();
+			map.put("stu_name",stu.getStu_name().toString());
+			map.put("stu_email",stu.getStu_email().toString());
+			map.put("stu_applytime",stuadd.getStu_applytime().toString());
+			stusc.add(map);
+		}
+	 
+		String jsonString = JSONValue.toJSONString(stusc);
+		return jsonString;
+		}
 	public String getOneStu(Integer stu_id) throws SQLException {	
 		List stusc=new LinkedList();
 		StudentVO stuVO=dao.findByPrimaryKey(stu_id);
@@ -180,7 +194,7 @@ public class StudentService {
 			stuVOg.add(stuVO.getStu_name().toString());
 			stuVOg.add(stuVO.getStu_implement().toString());
 			stuVOg.add(stuVO.getStu_interview().toString());
-			stuVOg.add("<button type='button' class='btn btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+stuVO.getStu_id().toString()+" >修改</button>");
+			stuVOg.add("<button type='button' class='btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+stuVO.getStu_id().toString()+" >修改</button>");
 			stusc.add(stuVOg);
 		}
 		Map map = new HashMap();
