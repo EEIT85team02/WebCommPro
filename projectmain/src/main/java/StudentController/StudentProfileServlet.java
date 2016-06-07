@@ -55,21 +55,16 @@ public class StudentProfileServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Object LoginOK = request.getSession().getAttribute("LoginOK");
+		String action = request.getParameter("action");
+		
 		if(LoginOK != null){
 			
-			System.out.println("LoginOK-----StudentProfileServlet:"+LoginOK);
+		System.out.println("LoginOK-----StudentProfileServlet:"+LoginOK);
 			
 		request.setCharacterEncoding("UTF-8");
-		String action = request.getParameter("action");
-//		String action ="stu_add";
-		System.out.println(request.getParameter("stu_id"));
+		System.out.println("stu_id-------------"+request.getParameter("stu_id"));
 		
 		try {
-			//Integer stu_id = 4;
-			System.out.println("------1------");
-			
-			
-	
 			if("stu_add".equals(action)){
 				Integer stu_id = Integer.parseInt(request.getParameter("stu_id"));
 				System.out.println(stu_id);
@@ -87,6 +82,14 @@ public class StudentProfileServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+
+		/*}else{
+			
+			System.out.println("StudentProfileServlet---------------/Login.jsp");
+			response.sendRedirect(
+				      response.encodeRedirectURL( "Login.jsp" ));
+			return;*/
+		}
 		/***************************初始連結呼叫StudentProfileServlet轉址至StumTODataTablesJSON.jsp********************/	
 		if ("initStumTODataTablesJSON".equals(action)) {
 			try {
@@ -216,12 +219,5 @@ public class StudentProfileServlet extends HttpServlet {
 
 	
 	
-	}else{
-		
-		System.out.println("StudentProfileServlet---------------/Login.jsp");
-		response.sendRedirect(
-			      response.encodeRedirectURL( "Login.jsp" ));
-		return;
-	}
 }
 }
