@@ -51,10 +51,10 @@ pageEncoding="UTF-8"%>
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li class=""><a href="${pageContext.request.contextPath}/indexOfAdminPage.jsp">考生核准查詢</a></li>
-						<li class=""><a href="${pageContext.request.contextPath}/SendMail/SendMail.jsp">考生成績變更</a></li>
-						<li class=""><a href="${pageContext.request.contextPath}/SendMail/SendMail.jsp">個人請假查詢</a></li>
-						
+
+						<li class=""><a href="${pageContext.request.contextPath}/Status/showstatusJSON.jsp">考生核准查詢</a></li>
+						<li class=""><a href="${pageContext.request.contextPath}/Score/showscoreJSON.jsp">考生成績變更</a></li>
+						<li class=""><a href="${pageContext.request.contextPath}/Examiner_offday/Examiner_offday_view.jsp">個人請假查詢</a></li>
 						<li class=""><a href="#">登出</a></li>
 
 

@@ -293,13 +293,13 @@ margin: 20px;
 			    //點選修改鍵，所執行的方法
 			    function updateExamFormToCreateTable() {
 				 		var Updatedatas = $('form[name="ExamUpdateForm"]').serialize();
-				 		$.get('Examiner_offdayServlet',Updatedatas,function(data){
+				 		$.get('/projectmain/Examiner_offdayServlet',Updatedatas,function(data){
 				 		console.log(data)
-				 			if(data=="資料更新失敗"){
+				 			if(data=="failed"){
 				 					$('.validateTips').css('color','red').text("更新錯誤");
 				 			}
-				 			else if(data=="資料更新成功"){
-				 					
+				 			else if(data=="success"){
+				 				console.log("11111")	
 				 				exam_idUpdateValue.text(uexam_id.val());
 				 				emp_idUpdateValue.text(uemp_id.val());
 				 				emp_nameUpdateValue.text(uemp_name.val());
@@ -319,11 +319,11 @@ margin: 20px;
 			//按下明細按鈕
 			$('#buttonDetail').click(function() {
 			console.log(deleteOrUpdateValue)
-				$.get('Examiner_offdayServlet',{"exam_id":deleteOrUpdateValue,"action":"getoneExam"},function(data){	
-					console.log(data);
-					$.each(JSON.parse(data),function(key,val){
+				$.get('/projectmain/Examiner_offdayServlet',{"exam_id":deleteOrUpdateValue,"action":"getoneExam"},function(data){	
+					console.log(data)
+					$.each(JSON.parse(data),function(i,val){
 						var exam_id = val.exam_id;
-						var off_stardate = val.off_stardate;
+						var off_startdate = val.off_startdate;
 						var off_enddate = val.off_enddate;
 						var off_day = val.off_day;
 						var emp_job_id = val.emp_job_id;
@@ -331,20 +331,45 @@ margin: 20px;
 						var emp_name = val.emp_name;
 						var emp_mail = val.emp_mail;
 						var dep_name = val.dep_name;
+						var key = JSON.stringify(val.key);
 						
-						$.fancybox({//调用fancybox弹出层 
-    			                'type':'ajax', 
-    			                'href':'/projectmain/Examiner_offday/Exam_Detail.jsp?action=add&exam_id='+exam_id
-    			                +'&off_stardate='+off_stardate
-    			                +'&off_enddate='+off_enddate
-    			                +'&off_day='+off_day
-    			                +'&emp_job_id='+emp_job_id
-    			                +'&emp_id='+emp_id
-    			                +'&emp_name='+emp_name
-    			                +'&emp_mail='+emp_mail
-    			                +'&dep_name='+dep_name
-    			                
-    			        }); 
+							$.each(JSON.parse(key),function(i,exams){
+							
+							
+							console.log(key)
+								console.log(exams.stu_id)
+							
+							
+// 							var stu_id = val.stu_id;
+// 							var stu_name = val.stu_name;
+								
+								
+								
+								
+								
+		// 						var test_start = val.test_start;
+		// 						var test_end = val.test_end;
+								
+							
+							$.fancybox({//调用fancybox弹出层 
+	    			                'type':'ajax', 
+	    			                'href':'/projectmain/Examiner_offday/Exam_Detail.jsp?action=add&exam_id='+exam_id
+	    			                +'&off_startdate='+off_startdate
+	    			                +'&off_enddate='+off_enddate
+	    			                +'&off_day='+off_day
+	    			                +'&emp_job_id='+emp_job_id
+	    			                +'&emp_id='+emp_id
+	    			                +'&emp_name='+emp_name
+	    			                +'&emp_mail='+emp_mail
+	    			                +'&dep_name='+dep_name
+// 	    			                +'&stu_id='+stu_id
+// 	    			                +'&stu_name='+stu_name
+	//     			                +'&test_start='+test_start
+	//     			                +'&test_end='+test_end
+	    			                
+	    			        });
+								    				
+	    				});
 					});
 						
 				});
