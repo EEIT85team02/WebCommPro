@@ -11,8 +11,14 @@
 <link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.css" rel="stylesheet">
 <link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="../css/lobibox.min.css" rel="stylesheet">
+<style>
+.Main_Content {
+	margin-top: 100px;
+}
+</style>
 </head>
 <body>
+<jsp:include page="/top/ExamierTop.jsp" />
 <form method="post" action="EmailJSON.do" name="EmailGOGO">
         <input type="hidden" name="action"	value="sendEmaildata">
         <input type="hidden" id="stu_namehid" name="stu_name" >
@@ -40,7 +46,8 @@
         <input type="hidden" id="sta_idhidok" name="sta_id" >
         <input type="hidden" id="emp_idhidok" name="emp_id" >
         <input type="hidden" id="confirm_timehidok" name="confirm_time" >
- </form>       
+ </form> 
+ <div class="Main_Content">      
         <div class="bs-example bs-example-tabs" role="tabpanel">
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation"><a href="#OK" role="tab" id="OK-tab" data-toggle="tab" aria-controls="OK">已核准</a></li>
@@ -152,7 +159,7 @@
           
         </div>
      </div>
- 
+</div> 
         <script src="../js/jquery.min.js"></script>
 		<script src="../js/bootstrap/bootstrap.min.js"></script>
 		<script src="../js/jquery-1.12.4.js"></script>

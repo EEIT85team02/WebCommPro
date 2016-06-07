@@ -12,6 +12,9 @@
 <link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="../css/lobibox.min.css" rel="stylesheet">
 <style>
+.Main_Content {
+	margin-top: 100px;
+}
 .my-error-class {
     color:#DF0101;
 }
@@ -21,6 +24,7 @@
 </style>
 </head>
 <body>
+<jsp:include page="/top/ExamierTop.jsp" />
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog">
   <form method="post" action="upscoreJSON.do" name="upup">
@@ -77,6 +81,7 @@
     </form>
   </div>
 </div>
+<div class="Main_Content">
 <!--                    <input type="button" value="成績" id="buttonJSON" -->
 <!-- 						class="btn btn-danger"> -->
                      <table id="scoreTable" class="display" cellspacing="0" width="100%">
@@ -92,6 +97,7 @@
 						<tbody>
 						</tbody>
 					</table>
+</div>
 	    <script src="../js/jquery.min.js"></script>
 		<script src="../js/bootstrap/bootstrap.min.js"></script>
         <script src="../js/jquery-ui.js"></script>
