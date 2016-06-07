@@ -169,7 +169,7 @@
 								 $("#confirm_timehidc").val(score.confirm_time);
            //                       console.log(score.test_start)
                               var Updatedatas = $('form[name="cancelok"]').serialize();
-				 			     $.get('UpStuaddStatusJSON.do',Updatedatas,function(){
+				 			     $.post('UpStuaddStatusJSON.do',Updatedatas,function(){
 				 			    	 
 				 			    	table1.ajax.reload();
 				 			    	table2.ajax.reload();
@@ -229,7 +229,7 @@
 								 $("#confirm_timehidok").val(score.confirm_time);
            //                       console.log(score.test_start)
                               var Updatedatas = $('form[name="ok"]').serialize();
-				 			     $.get('UpStuaddStatusJSON.do',Updatedatas,function(){
+				 			     $.post('UpStuaddStatusJSON.do',Updatedatas,function(){
 				 			    	 
 				 			    	table1.ajax.reload();
 				 			    	table2.ajax.reload(); 
