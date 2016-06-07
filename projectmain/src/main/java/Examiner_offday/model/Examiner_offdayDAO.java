@@ -88,9 +88,9 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 		public static void main(String[] args) {
 			
 			Examiner_offdayDAO eo=new Examiner_offdayDAO();
-			Examiner_offdayVO eog=eo.findByPrimaryKey("7004");
 
-			System.out.println(eog.getEmp_id());
+
+			System.out.println(eo.getAll());
 
 
 		}
