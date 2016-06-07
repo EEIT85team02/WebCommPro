@@ -12,6 +12,12 @@
 <link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
 <body>
+<form method="post" action="EmailJSON.do" name="EmailGOGO">
+        <input type="hidden" name="action"	value="sendEmaildata">
+        <input type="hidden" id="stu_namehid" name="stu_name" >
+        <input type="hidden" id="stu_emailhid" name="stu_email" >
+        <input type="hidden" id="stu_applytimehid" name="stu_applytime" >
+ </form> 
 <form method="post" action="UpStuaddStatusJSON.do" name="cancelok">
         <input type="hidden" name="action"	value="upstatuscancel">
         <input type="hidden" id="stu_add_idhidc" name="stu_add_id" >
@@ -276,8 +282,22 @@
 					 
 					 $(document).on("click",".btn-info",function(){ //點擊送信按鈕
 						 updateID = $(this).val();  //拿出button的value的stu_id去資料庫找資料
-						 $.getJSON("UpStuaddStatusJSON.do",{"action":"getStuAddId",'stu_add_id':updateID},function(datas){
-							 
+//						 console.log(updateID)
+						$.getJSON("EmailJSON.do",{"action":"getEmailPkId",'stu_id':updateID},function(datas){
+//							 console.log(datas)
+							 $.each(datas,function(i,email){
+								 
+								 $("#stu_namehid").val(email.stu_name); //取出值並放入hidden的value進行修改
+								 $("#stu_emailhid").val(email.stu_email);
+								 $("#stu_applytimehid").val(email.stu_applytime);
+
+ //                                 console.log(email.stu_name)
+                              var Updatedatas = $('form[name="EmailGOGO"]').serialize();
+				 			     $.post('EmailJSON.do',Updatedatas,function(){
+				 			     
+				 			     
+				 			   })
+				 			 })
 						 })
 					})
 							//定義table資料來源json，與畫面顯示------>開始

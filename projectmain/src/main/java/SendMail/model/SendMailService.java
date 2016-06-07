@@ -1,6 +1,9 @@
 package SendMail.model;
 
 import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.List;
 import java.util.Properties;
@@ -169,12 +172,13 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	  }
 }
 
-public static void SendConfirmMailToStudent(String emailString,String nameString,String stu_applytime){
+public static void SendConfirmMailToStudent(String emailString,String nameString,Timestamp stu_applytime){
  	 
-
+   
 	  String host = "smtp.gmail.com";
 	  int port = 587;
 	  
+	  SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日 h:mm a");
 
 	  
 	  final String username = "eeit85team02@gmail.com";//發信的帳號
@@ -205,7 +209,7 @@ public static void SendConfirmMailToStudent(String emailString,String nameString
 	 
 
 	   message.setText("Dear "+nameString+"\n");
-	   message.setText("你的預約日期是"+"時段是"+stu_applytime);//內文
+	   message.setText("你的預約日期是"+"時段是"+sdf.format(stu_applytime));//內文
 
 
 	   Transport transport = session.getTransport("smtp");
@@ -278,10 +282,7 @@ public static void SendPasswordMailToStudent(String emailString){
 }
 
 public static void main(String[] args){
-	String emailString="llluuuyyy123@gmail.com";
 
-
-	SendPasswordMailToStudent(emailString);
 	
 }
 
