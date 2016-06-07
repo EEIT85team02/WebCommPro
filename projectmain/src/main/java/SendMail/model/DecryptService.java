@@ -1,5 +1,7 @@
 package SendMail.model;
 
+import java.security.NoSuchAlgorithmException;
+
 import Student.model.StudentDAO;
 import Student.model.StudentVO;
 
@@ -11,14 +13,15 @@ public class DecryptService {
 		
 	}
 	
-	public static StudentVO compareIfMatchThePassword(String emailAccountInput,String passwordinput){
+	public static StudentVO compareIfMatchThePassword(String emailAccountInput,String passwordinput) throws NoSuchAlgorithmException{
 		StudentDAO stdao = new StudentDAO();
 		StudentVO stvo=stdao.getStudentByEmail(emailAccountInput);
 		boolean match=true;
 		
 		byte[] DateBasebyteArray=stvo.getLog_pw();
 		
-		byte[] passwordinputTobyteArray=decryptBase64String(passwordinput);
+		EncryptService es= new EncryptService();
+		byte[] passwordinputTobyteArray=es.MD5Encrypt(passwordinput);
 		for(int i =0,max=passwordinputTobyteArray.length;i<max;i++){
 			System.out.println(DateBasebyteArray[i]);
 			System.out.println(passwordinputTobyteArray[i]);
@@ -38,7 +41,7 @@ public class DecryptService {
 		
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws NoSuchAlgorithmException {
 		System.out.println(compareIfMatchThePassword("eeit85team02@gmail.com","YRfFF_0wmUNnsbbHJj3dCw"));
 
 	}
