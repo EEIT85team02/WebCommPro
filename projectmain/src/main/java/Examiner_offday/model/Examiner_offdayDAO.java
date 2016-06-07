@@ -65,6 +65,19 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 			}
 			return list;
 		}
+		
+		public static void main(String[] args){
+			IExaminer_offdayDAO dao = new Examiner_offdayDAO();
+			List<Examiner_offdayVO> aa;
+			try {
+				aa = dao.getAll();
+				System.out.println(aa);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 
 		
 }
