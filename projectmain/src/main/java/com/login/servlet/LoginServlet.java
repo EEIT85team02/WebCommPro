@@ -39,6 +39,8 @@ public class LoginServlet extends HttpServlet {
 			// 1. 讀取使用者輸入資料(<Input>標籤內的name屬性分別為 userId與pswd
 			String userId = request.getParameter("Username");
 			String password = request.getParameter("Password");
+			System.out.println("userId--------"+userId);
+			System.out.println("password--------"+password);
 			// 2. 進行必要的資料轉換
 			// 無
 			// 3. 檢查使用者輸入資料

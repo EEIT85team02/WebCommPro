@@ -40,8 +40,8 @@ public class CheckAccountAndPasswordServlet extends HttpServlet {
 		
 		String stu_email = request.getParameter("stu_email");
 		System.out.println("stu_email----------"+stu_email);
-		
-		SendMailService change = new SendMailService().SendPasswordMailToStudent(stu_email);
+		SendMailService.SendPasswordMailToStudent(stu_email);
+		System.out.println("stu_email----------ok");
 	}
 
 }
