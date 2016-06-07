@@ -12,6 +12,9 @@
 <link href="../DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="../css/lobibox.min.css" rel="stylesheet">
 <style>
+.navbar-inverse {
+      background-image: linear-gradient(to bottom,#D842D3 0,#8E2681 100%);
+}
 .Main_Content {
 	margin-top: 100px;
 }
@@ -183,10 +186,10 @@
 								 $("#emp_idhidc").val(score.emp_id);
 								 $("#confirm_timehidc").val(score.confirm_time);
            //                       console.log(score.test_start)
-                              var Updatedatas = $('form[name="cancelok"]').serialize();
+                              var Updatedatas = $('form[name="cancelok"]').serialize();  //form表單資料序列化丟到servlet更新
 				 			     $.post('UpStuaddStatusJSON.do',Updatedatas,function(){
 				 			    	 
-				 			    	table1.ajax.reload();
+				 			    	table1.ajax.reload();  //重新讀取表格資料
 				 			    	table2.ajax.reload();
 				 			    	
 // 				 			    	$('#statusTable01>tbody').empty();
@@ -243,10 +246,10 @@
 								 $("#emp_idhidok").val(score.emp_id);
 								 $("#confirm_timehidok").val(score.confirm_time);
            //                       console.log(score.test_start)
-                              var Updatedatas = $('form[name="ok"]').serialize();
+                              var Updatedatas = $('form[name="ok"]').serialize();   //form表單資料序列化丟到servlet更新
 				 			     $.post('UpStuaddStatusJSON.do',Updatedatas,function(){
 				 			    	 
-				 			    	table1.ajax.reload();
+				 			    	table1.ajax.reload();   //重新讀取表格資料
 				 			    	table2.ajax.reload(); 
 				 			    	
 // 				 			    	$('#statusTable01>tbody').empty();
@@ -301,7 +304,7 @@
 								 $("#stu_applytimehid").val(email.stu_applytime);
 
  //                                 console.log(email.stu_name)
-                              var Updatedatas = $('form[name="EmailGOGO"]').serialize();
+                              var Updatedatas = $('form[name="EmailGOGO"]').serialize();   //form表單資料序列化丟到servlet
 				 			     $.post('EmailJSON.do',Updatedatas,function(){
  
 				 			   })
