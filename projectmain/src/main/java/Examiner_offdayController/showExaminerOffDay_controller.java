@@ -1,6 +1,7 @@
 package Examiner_offdayController;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,13 +12,14 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.Session;
 
+import Examiner_offday.model.ExamierVoToDatatableJSONService;
 import Examiner_offday.model.Examiner_offdayVO;
-import Examiner_offday.model.SelectExamierOffdayInformationService;
+
 
 /**
  * Servlet implementation class showExaminerOffDay_controller
  */
-@WebServlet("/showExaminerOffDay_controller")
+@WebServlet("/Examiner_offday/showExaminerOffDay_controller.do")
 public class showExaminerOffDay_controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -40,11 +42,16 @@ public class showExaminerOffDay_controller extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8"); 
+		res.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = res.getWriter();
+		
 		System.out.println("歡迎進入showExaminerOffDay_controller");
-		HttpSession session=req.getSession();
-		String emp_id=(String) session.getAttribute("emp_id");
-		SelectExamierOffdayInformationService seoi= new SelectExamierOffdayInformationService();
-		Examiner_offdayVO eo=seoi.SelectExamierVOByEmpId(emp_id);
+
+		String emp_id=req.getParameter("emp_id");
+		ExamierVoToDatatableJSONService evtdj= new ExamierVoToDatatableJSONService();
+		String JSONString=evtdj.getDatatableJSON(emp_id);
+		out.print(JSONString);
 		
 	}
 
