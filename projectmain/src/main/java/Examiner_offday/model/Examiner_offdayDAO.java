@@ -12,14 +12,14 @@ import hibernate.util.HibernateUtil;
 public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from Examiner_offday order by emp_id";
+			"from Examiner_offdayVO order by exam_id";
 
 
-		public void insert(Examiner_offday exa) {
+		public void update(Examiner_offdayVO examVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(exa);
+				session.saveOrUpdate(examVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -27,50 +27,22 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 			}
 		}
 
-
-
-		public void update(Examiner_offday exa) {
+		public Examiner_offdayVO findByPrimaryKey(Integer exam_id) {
+			Examiner_offdayVO examVO = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(exa);
+				examVO = (Examiner_offdayVO) session.get(Examiner_offdayVO.class, exam_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;
 			}
+			return examVO;
 		}
 
-		public void delete(String emp_id) {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-			try {
-				session.beginTransaction();
-				Examiner_offday exa = (Examiner_offday) session.get(Examiner_offday.class, emp_id);
-				session.delete(exa);
-				session.getTransaction().commit();	
-			} catch (RuntimeException ex) {
-				session.getTransaction().rollback();
-				throw ex;
-			}
-		}
-		
-
-		public Examiner_offday findByPrimaryKey(String emp_id) {
-			Examiner_offday exa = null;
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-			try {
-				session.beginTransaction();
-				exa = (Examiner_offday) session.get(Examiner_offday.class, emp_id);
-				session.getTransaction().commit();
-			} catch (RuntimeException ex) {
-				session.getTransaction().rollback();
-				throw ex;
-			}
-			return exa;
-		}
-
-		public List<Examiner_offday> getAll() {
-			List<Examiner_offday> list = null;
+		public List<Examiner_offdayVO> getAll() {
+			List<Examiner_offdayVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();

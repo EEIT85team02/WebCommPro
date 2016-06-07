@@ -6,9 +6,7 @@ import java.util.List;
 
 
 public interface IExaminer_offdayDAO {
-	public void insert(Examiner_offday exa) throws SQLException;
-	public void update(Examiner_offday exa) throws SQLException;
-	public void delete(String emp_id) throws SQLException;
-	public Examiner_offday findByPrimaryKey(String emp_id) throws SQLException;
-	public List<Examiner_offday> getAll() throws SQLException;
+	public void update(Examiner_offdayVO examVO) throws SQLException;
+	public Examiner_offdayVO findByPrimaryKey(Integer exam_id) throws SQLException;
+	public List<Examiner_offdayVO> getAll() throws SQLException;
 }

@@ -21,6 +21,13 @@
 			</key>
 			<one-to-many class="Stu_additional.model.Stu_additionalVO" />
 		</set>
+		
+        <set name="examVO" table="Examiner_offday" lazy="false" cascade="all"  inverse="true"  order-by="emp_id asc">			
+			<key>
+				<column name="emp_id" />
+			</key>
+			<one-to-many class="Examiner_offday.model.Examiner_offdayVO" />
+		</set>
         
         <many-to-one name="slVO" class="Sign_list.model.Sign_listVO" lazy="false">
             <column name="sl_id"/>

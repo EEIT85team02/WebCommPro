@@ -25,7 +25,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 
 
-@WebServlet("/Employee/EmployeeServletJSON.do")
+@WebServlet({"/Employee/EmployeeServletJSON.do","/Examiner_offday/EmployeeServletJSON.do"})
 public class EmployeeServletJSON extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public EmployeeServletJSON() {
