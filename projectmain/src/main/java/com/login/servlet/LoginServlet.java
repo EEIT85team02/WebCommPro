@@ -62,11 +62,11 @@ public class LoginServlet extends HttpServlet {
 			}
 			// 將LoginService類別new為物件，存放物件參考的變數為 ls
 			//LoginService ls = new LoginService();
-			DecryptService ls = new DecryptService();
+			//DecryptService ls = new DecryptService();
 			// 呼叫 ls物件的 checkIDPassword()，要記得傳入userid與password兩個參數
 			// 同時將傳回值放入MemberBean型別的變數mb之內。
 			//StudentVO mb = ls.checkIDPassword(userId, password);
-			StudentVO mb = ls.compareIfMatchThePassword(userId, password);
+			StudentVO mb = DecryptService.compareIfMatchThePassword(userId, password);
 			// 如果變數mb的值不等於 null,表示資料庫含有userId搭配password的紀錄
 			if (mb != null) {
 				// OK, 將mb物件放入Session範圍內，識別字串為"LoginOK"，表示此使用者已經登入

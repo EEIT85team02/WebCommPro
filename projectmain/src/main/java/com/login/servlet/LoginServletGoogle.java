@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Employee.model.EmployeeVO;
 import Student.model.StudentVO;
 
 import com.google.api.client.auth.oauth2.Credential;
@@ -138,10 +139,132 @@ public class LoginServletGoogle extends HttpServlet {
 			System.out.println("特地列出Email:\n"+email);
 			// 必須進資料庫確認此email是否為本系統的使用者
 			
+			//Emp
+			EmployeeVO employeeVO = new LoginService().checkEmailGoogleByEmp(email);
+			System.out.println("Emp mail=====" + employeeVO);
+			boolean isEmp = employeeVO==null?false:true;
+			
+			//Stu
 			StudentVO studentVO = new LoginService().checkEmailGoogle(email);
-			System.out.println("mail=====" + studentVO);
+			System.out.println("Stu mail=====" + studentVO);
 			boolean isMember = studentVO==null?false:true;
-			if(isMember){
+			
+			//Emp 權限驗證分流
+			if(isEmp){
+				
+				HttpSession session = request.getSession();
+				String emp_id = employeeVO.getEmp_id();
+				session.setAttribute("emp_id", emp_id);
+			
+			
+			/**
+			 * 1. 使用googleToken換取UserId 
+			 * 2. 內容包裝在Util類別中
+			 */
+			// 取得UserId (用GoogleIdToken換)
+			String userId = oa2.getUserId(googleToken);
+			System.out.println("取得UserId\n"+userId);
+			
+			
+			/**
+			 * 自訂方法 驗證手上的UserId 
+			 * 只要手上有IdToken 就可以去換 UserId
+			 * 
+			 */
+			
+			System.out.println("儲存已解碼的IdToken是否成功\n"+oa2.storeIdToken(googleToken,request)); 
+			
+			
+//			String str = new Gson().toJson(googleToken);
+			
+			/**
+			 * 先設定credentials
+			 * @param request
+			 * @param redirectUrl
+			 * @param userId
+			 */
+//			oa2.setCredentials(request, "http://localhost:8080/OA2/LoginServletGoogle.do", userId);
+			
+			
+			/**
+			 * 先想辦法取得Credential
+			 * getCredential()
+			 * @UserId
+			 */
+//			Credential credentials = oa2.getCredential(userId);
+//			System.out.println("取得UserId的Credential\n"+credentials);
+//			
+		
+			/**
+			 * 自定方法 取得使用者的com.google.api.services.calendar.model.Calendar
+			 * getCalendar()
+			 * @Credential
+			 * 
+			 */
+//			com.google.api.services.calendar.model.Calendar calendars = oa2.getCalendar(credentials);
+//			System.out.println("取得該使用者的calendars"+ calendars.getSummary()+"\n"+calendars.getDescription()+"\n");
+				
+			/**
+			 * 先試試看是否可以成功取得Credential
+			 * @tokenResponse
+			 * @userId
+			 */
+			System.out.println("測試取得Credential\n"+oa2.testCredential(tokenResponse, userId));
+		
+			/**
+			 * 若成功取得Credential 印出
+			 * @tokenResponse
+			 * @userId
+			 */
+			
+			// 先取得credential 物件
+			Credential credential = oa2.getNewCredential(tokenResponse, userId);
+			// 再轉為Gson 物件
+			String credentialGson = new Gson().toJson(credential);
+			System.out.println("取得credential\n"+credentialGson);
+			// 儲存credential 物件
+			oa2.storeCredential(credentialGson, request);
+
+			
+			/**
+			 * 
+			 */
+			request.getSession().setAttribute("LoginOK", true);
+			request.getSession().setAttribute("code", userCode);
+			request.getSession().setAttribute("token", token);
+			request.getSession().setAttribute("idtoken", idToken);
+			request.getSession().setAttribute("googleidtoken", googleToken);
+			// 把userId暫時換成使用者姓名
+//			request.getSession().setAttribute("userId", userId);
+			
+			request.getSession().setAttribute("userId", employeeVO.getEmp_mail());
+			request.getSession().setAttribute("sign_list", employeeVO.getSlVO().getSl_name());
+			request.getSession().setAttribute("credential", credentialGson);
+//			 request.getSession().setAttribute("calSummary", calendars.getSummary());
+			
+			Object signCheck  =  request.getSession().getAttribute("sign_list");		
+			System.out.println("登入權限:" + signCheck);
+
+			//驗證分流
+			if(("Administrator").equals(signCheck)){
+				service = "//indexOfAdminPage.jsp";
+				System.out.println(service);
+				System.out.println("即將導向網頁..."+"http://localhost:8080/projectmain"+service);
+				response.sendRedirect("http://localhost:8080/projectmain"+service);
+			}else if (("Examiner").equals(signCheck)){
+				service = "//indexOfExamierPage.jsp";
+				System.out.println(service);
+				System.out.println("即將導向網頁..."+"http://localhost:8080/projectmain"+service);
+				response.sendRedirect("http://localhost:8080/projectmain"+service);
+			}else{
+				service = "//WebComm_index.jsp";
+			System.out.println(service);
+			System.out.println("即將導向網頁..."+"http://localhost:8080/projectmain"+service);
+			response.sendRedirect("http://localhost:8080/projectmain"+service);
+			}
+			
+			//Stu驗證	
+			}else if(isMember){
 				HttpSession session = request.getSession();
 				Integer stu_id = studentVO.getStu_id();
 				session.setAttribute("stu_id", stu_id);
@@ -176,7 +299,6 @@ public class LoginServletGoogle extends HttpServlet {
 //			oa2.setCredentials(request, "http://localhost:8080/OA2/LoginServletGoogle.do", userId);
 			
 			
-			
 			/**
 			 * 先想辦法取得Credential
 			 * getCredential()
@@ -185,8 +307,7 @@ public class LoginServletGoogle extends HttpServlet {
 //			Credential credentials = oa2.getCredential(userId);
 //			System.out.println("取得UserId的Credential\n"+credentials);
 //			
-			
-			
+		
 			/**
 			 * 自定方法 取得使用者的com.google.api.services.calendar.model.Calendar
 			 * getCalendar()
@@ -195,17 +316,14 @@ public class LoginServletGoogle extends HttpServlet {
 			 */
 //			com.google.api.services.calendar.model.Calendar calendars = oa2.getCalendar(credentials);
 //			System.out.println("取得該使用者的calendars"+ calendars.getSummary()+"\n"+calendars.getDescription()+"\n");
-			
-			
+				
 			/**
 			 * 先試試看是否可以成功取得Credential
 			 * @tokenResponse
 			 * @userId
 			 */
 			System.out.println("測試取得Credential\n"+oa2.testCredential(tokenResponse, userId));
-
-			
-			
+		
 			/**
 			 * 若成功取得Credential 印出
 			 * @tokenResponse
@@ -219,10 +337,7 @@ public class LoginServletGoogle extends HttpServlet {
 			System.out.println("取得credential\n"+credentialGson);
 			// 儲存credential 物件
 			oa2.storeCredential(credentialGson, request);
-			
-			
-			
-			
+
 			
 			/**
 			 * 

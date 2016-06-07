@@ -27,23 +27,21 @@ response.flushBuffer();
     <!-- jQuery -->
    <script src="${pageContext.request.contextPath}/js/jquery.js"></script> 
     
-  <%--   
+    
     <!-- FullCalendar -->
-	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/fullCalendar/fullcalendar.css' />
+<%-- 	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/fullCalendar/fullcalendar.css' />
 	<link href='${pageContext.request.contextPath}/css/fullCalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
 	<script src='${pageContext.request.contextPath}/js/jquery.min.js'></script> 
 	<script src='${pageContext.request.contextPath}/js/fullCalendar/moment.min.js'></script>
 	<script src='${pageContext.request.contextPath}/js/fullCalendar/fullcalendar.js'></script>
 	<script src='${pageContext.request.contextPath}/js/fullCalendar/jquery-ui.custom.min.js'></script>
-	<script src='${pageContext.request.contextPath}/js/fullCalendar/fullcalendar.min.js'></script>
+	<script src='${pageContext.request.contextPath}/js/fullCalendar/fullcalendar.min.js'></script> --%>
 	
 	
 	
-<!-- fancybox -->
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/fancybox/jquery.fancybox.css"> 	
-	<script src='${pageContext.request.contextPath}/js/fancybox/jquery.fancybox.pack.js'></script> 
+
     
-     --%>
+    
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet">

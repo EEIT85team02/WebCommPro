@@ -73,9 +73,10 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(stu_id);
 				String stu_AllListJSON = stu_AllSvc.getStuByStu_id(stu_id);
 				//String stu_AllListJSON = stu_AllSvc.getStuByStu_add_id(stu_add_id);
-				
+				request.getSession().setAttribute("stu_AllListJSON", stu_AllListJSON);
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().write(stu_AllListJSON);
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
