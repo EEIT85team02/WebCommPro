@@ -112,7 +112,7 @@
                                 <th>姓名</th>
 		                        <th>E-mail</th>
 		                        <th>班別</th>
-		                        <th>預約日期</th>
+<!-- 		                        <th>預約日期</th> -->
 		                        <th>狀態</th>
                             </tr>
                          </thead>
