@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-許茂誠拿去用!!!!!!!!
+許貿誠拿去用!!!!!!!!
 <%= session.getAttribute("stu_id")%>
 <script>
 </script>
