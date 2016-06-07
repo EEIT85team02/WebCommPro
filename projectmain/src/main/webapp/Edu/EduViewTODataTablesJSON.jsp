@@ -75,7 +75,7 @@ margin: 20px;
 	<jsp:include page="/top/top.jsp" />
 	<!-------------中間內容畫面開始------------>
 	<!-- 固定巡覽列位置，建立div使區塊下移 (starter-template)-->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-md-12">
@@ -365,8 +365,7 @@ margin: 20px;
 			 	} );
 			    //點選修改鍵，所執行的方法
 			    function updateEduFormToCreateTable() {
-				      
-				 		if ( checkUpdateForm() ) {
+				      if ( checkUpdateForm() ) {
 				 			var Updatedatas = $('form[name="EduUpdateForm"]').serialize();
 				 			//console.log(Updatedatas);
 				 			$.get('EduServletJSON.do',Updatedatas,function(data){

@@ -3,9 +3,15 @@ package Examiner_offday.model;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+
+import Employee.model.EmployeeDAO;
+import Employee.model.EmployeeVO;
+
+
 
 import hibernate.util.HibernateUtil;
 
@@ -17,7 +23,8 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 		private static final String GET_ALL_STMT = 
 
 			"from Examiner_offdayVO order by exam_id";
-
+		private static final String GET_EXAMINER_OFFDAY_By_EMPID = 
+				"from Examiner_offdayVO where empid=?";	
 
 
 
@@ -65,19 +72,23 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 			}
 			return list;
 		}
+
 		
+
 		public static void main(String[] args){
 			IExaminer_offdayDAO dao = new Examiner_offdayDAO();
-			List<Examiner_offdayVO> aa;
+			Examiner_offdayVO aa;
 			try {
-				aa = dao.getAll();
+				aa = dao.findByPrimaryKey(1);
 				System.out.println(aa);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
+
+
 		}
 
-		
+	
 }
