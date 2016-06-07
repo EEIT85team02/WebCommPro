@@ -1,6 +1,7 @@
 package Examiner_offday.model;
 
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -14,14 +15,18 @@ import hibernate.util.HibernateUtil;
 public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 	
 		private static final String GET_ALL_STMT = 
-			"from Examiner_offdayVO order by emp_id";
+
+			"from Examiner_offdayVO order by exam_id";
 
 
-		public void insert(Examiner_offdayVO exa) {
+
+
+		public void update(Examiner_offdayVO examVO) {
+
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(exa);
+				session.saveOrUpdate(examVO);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -30,46 +35,21 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 		}
 
 
+		public Examiner_offdayVO findByPrimaryKey(Integer exam_id) {
+			Examiner_offdayVO examVO = null;
 
-		public void update(Examiner_offdayVO exa) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
-				session.saveOrUpdate(exa);
+				examVO = (Examiner_offdayVO) session.get(Examiner_offdayVO.class, exam_id);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;
 			}
+			return examVO;
 		}
 
-		public void delete(String emp_id) {
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-			try {
-				session.beginTransaction();
-				Examiner_offdayVO exa = (Examiner_offdayVO) session.get(Examiner_offdayVO.class, emp_id);
-				session.delete(exa);
-				session.getTransaction().commit();	
-			} catch (RuntimeException ex) {
-				session.getTransaction().rollback();
-				throw ex;
-			}
-		}
-		
-
-		public Examiner_offdayVO findByPrimaryKey(String emp_id) {
-			Examiner_offdayVO exa = null;
-			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-			try {
-				session.beginTransaction();
-				exa = (Examiner_offdayVO) session.get(Examiner_offdayVO.class, emp_id);
-				session.getTransaction().commit();
-			} catch (RuntimeException ex) {
-				session.getTransaction().rollback();
-				throw ex;
-			}
-			return exa;
-		}
 
 		public List<Examiner_offdayVO> getAll() {
 			List<Examiner_offdayVO> list = null;
@@ -85,14 +65,23 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 			}
 			return list;
 		}
-		public static void main(String[] args) {
-			
-			Examiner_offdayDAO eo=new Examiner_offdayDAO();
-			Examiner_offdayVO eog=eo.findByPrimaryKey("7004");
 
-			System.out.println(eog.getEmp_id());
+		
+
+		public static void main(String[] args){
+			IExaminer_offdayDAO dao = new Examiner_offdayDAO();
+			List<Examiner_offdayVO> aa;
+			try {
+				aa = dao.getAll();
+				System.out.println(aa);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 
 
 		}
+
 
 }

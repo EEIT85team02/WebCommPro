@@ -75,7 +75,7 @@ margin: 20px;
 	<jsp:include page="/top/top.jsp" />
 	<!-------------中間內容畫面開始------------>
 	<!-- 固定巡覽列位置，建立div使區塊下移 (starter-template)-->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-md-12">
@@ -402,7 +402,6 @@ margin: 20px;
 				 			});
 				 		}
 				      sel=[];
-				      return valid;
 				    }
 			  	//diolog程式部分以下(刪除)
 				//設定刪除確認表單寬度視窗資料開始

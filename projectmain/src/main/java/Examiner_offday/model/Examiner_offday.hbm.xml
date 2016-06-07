@@ -5,14 +5,18 @@
 <hibernate-mapping>
     <class name="Examiner_offday.model.Examiner_offdayVO" table="Examiner_offday" >
         
-        <id name="emp_id" column="emp_id">
+        <id name="exam_id" column="exam_id">
             
         </id>
         
-        <property name="off_stardate" column="off_stardate" />
+        <property name="off_startdate" column="off_startdate" />
         <property name="off_enddate" column="off_enddate" />
         <property name="off_day" column="off_day" />
         <property name="emp_job_id" column="emp_job_id" />
+        
+        <many-to-one name="empVO" class="Employee.model.EmployeeVO" lazy="false">
+            <column name="emp_id"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>
 

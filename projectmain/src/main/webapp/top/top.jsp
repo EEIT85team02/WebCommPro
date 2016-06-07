@@ -77,7 +77,7 @@ pageEncoding="UTF-8"%>
 						<!-----------------------------------下拉式選單(系統設定結束)----------------------------------------------------						 -->
 
 						<li class=""><a
-							href="${pageContext.request.contextPath}/Examiner_offday/Examiner_offdayform.jsp">主考官請假查詢</a></li>
+							href="${pageContext.request.contextPath}/Examiner_offdayServlet?action=initExamTODataTablesJSON">主考官請假查詢</a></li>
 
 						<li class=""><a href="${pageContext.request.contextPath}/Test_Date/Test_DateServletJSON.do?action=initTdViewTODataTablesJSON"">開放報名日期查詢</a></li>
 						<li class=""><a href="${pageContext.request.contextPath}/SendMail/SendMail.jsp">EMAIL寄送</a></li>

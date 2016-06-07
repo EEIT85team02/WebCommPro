@@ -20,6 +20,7 @@ import sun.misc.BASE64Encoder;
 import LogIn.model.SaveChangedPasswordService;
 import SendMail.Controller.Verification_controller;
 import Student.model.StudentDAO;
+import Student.model.StudentVO;
 
 //這隻service主要功能是拿來寄信
 public class SendMailService {
@@ -202,8 +203,10 @@ public static void SendConfirmMailToStudent(String emailString,String nameString
 	   message.setSubject("恭喜你成功預約偉康考試");
 	   
 	 
-	   message.setText("Dear "+nameString+"<br/>");
-	   message.setText("你的預約日期是"+stu_applytime);//內文
+
+	   message.setText("Dear "+nameString+"\n");
+	   message.setText("你的預約日期是"+"時段是"+stu_applytime);//內文
+
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);
@@ -220,8 +223,11 @@ public static void SendConfirmMailToStudent(String emailString,String nameString
 
 
 
-public static void SendPasswordMailToStudent(String emailString,String nameString){
+public static void SendPasswordMailToStudent(String emailString){
 	 
+	StudentDAO stdao=new StudentDAO();
+	StudentVO stuvo=stdao.getStudentByEmail(emailString);
+	String nameString=stuvo.getStu_name();
 
 	  String host = "smtp.gmail.com";
 	  int port = 587;
@@ -273,9 +279,9 @@ public static void SendPasswordMailToStudent(String emailString,String nameStrin
 
 public static void main(String[] args){
 	String emailString="llluuuyyy123@gmail.com";
-	String nameString="黃煜勝";
 
-	SendPasswordMailToStudent(emailString,nameString);
+
+	SendPasswordMailToStudent(emailString);
 	
 }
 

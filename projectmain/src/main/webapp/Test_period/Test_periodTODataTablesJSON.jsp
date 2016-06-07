@@ -32,17 +32,12 @@
 }
 
 
-label, input {
-	display: block;
-}
+input.text{ 
+	padding: .4em; 
+} 
 
-input.text {
-	margin-bottom: 12px;
-	width: 95%;
-	padding: .4em;
-}
 
-fieldset {
+fieldset{
 	padding: 0;
 	border: 0;
 	margin-top: 25px;
@@ -53,13 +48,23 @@ h1 {
 	margin: .6em 0;
 }
 
-.ui-dialog .ui-state-error {
+ 
+.ui-dialog, .ui-state-error {
 	padding: .3em;
 }
 
-.validateTips {
+.allValid {
 	border: 1px solid transparent;
 	padding: 0.3em;
+}
+.labelTitle{
+	float:left;
+	width:100px;
+	padding-right:3px;
+}
+.divForm{
+margin: 20px;
+
 }
 
 </style>
@@ -69,7 +74,7 @@ h1 {
 	<jsp:include page="/top/top.jsp" />
 	<!-------------中間內容畫面開始------------>
 	<!-- 固定巡覽列位置，建立div使區塊下移 (starter-template)-->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-md-12">
@@ -106,13 +111,21 @@ h1 {
 	</div>
 	<!-- 設定新增FORM表單區塊dialog -->
 	<div id="dialog-insertForm" title="建立時段設定資料">
-		<p class="validateTips"></p>
+		<p class="allValid"></p>
 		<form name="TpInsertForm">
 			<fieldset>
-				<label for="test_starthour">時段開始時間</label> 
-				<input type="text" name="test_starthour" id="test_starthour" class="text ui-widget-content ui-corner-all">
-				<label for="test_endhour">時段結束時間</label> 
-				<input type="text" name="test_endhour" id="test_endhour" class="text ui-widget-content ui-corner-all">
+				<div class="divForm">
+					<label for="test_starthour" class="labelTitle">開始時間:</label> 
+					<input type="text" name="test_starthour" size="20" id="test_starthour" placeholder="開始時間(範例:24:00:00)" autocomplete="off">
+					<span id="spantest_starthour"></span><br>
+				</div>
+				
+				<div class="divForm">
+					<label for="test_endhour" class="labelTitle">結束時間:</label> 
+					<input type="text" name="test_endhour" size="20" id="test_endhour" placeholder="結束時間(範例:24:00:00)" autocomplete="off">
+					<span id="spantest_endhour"></span><br>
+				</div>
+				
 				<input type="hidden" name="action" value="addTp">
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
@@ -120,15 +133,28 @@ h1 {
 	</div>
 	<!-- 設定修改FORM表單區塊dialog -->
 	<div id="dialog-updateForm" title="修改時段設定資料">
-		<p class="validateTips"></p>
+		<p class="allValid"></p>
 		<form name="TpUpdateForm">
 			<fieldset>
-				<label for="test_hour_id">時段代號</label> 
-				<input type="text" name="test_hour_id" id="utest_hour_id" readOnly class="text ui-widget-content ui-corner-all">
-				<label for="test_starthour">時段開始時間</label> 
-				<input type="text" name="test_starthour" id="utest_starthour" class="text ui-widget-content ui-corner-all"> 
-				<label for="test_endhour">時段結束時間</label> 
-				<input type="text" name="test_endhour" id="utest_endhour" class="text ui-widget-content ui-corner-all"> 
+				<div class="divForm">
+					<label for="test_hour_id" class="labelTitle">時段代號:</label> 
+					<input type="text" name="test_hour_id" size="20" id="utest_hour_id" readOnly>
+					<br>
+				</div>
+				
+				<div class="divForm">
+					<label for="test_starthour" class="labelTitle">開始時間:</label> 
+					<input type="text" name="test_starthour" size="20" id="utest_starthour" autocomplete="off"> 
+					<span id="spanutest_starthour"></span><br>
+				</div>
+				
+				<div class="divForm">
+					<label for="test_endhour" class="labelTitle">結束時間:</label> 
+					<input type="text" name="test_endhour" size="20" id="utest_endhour" autocomplete="off"> 
+					<span id="spanutest_endhour"></span><br>
+				</div>
+				
+				
 				<input type="hidden" name="action" value="updateTp">
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
@@ -169,76 +195,65 @@ h1 {
 			
 		    //新增dialog區塊變數宣告
 			var form,TpInsertForm,TpUpdateForm,
-			 	test_starthour = $('#test_starthour'),
+			 	
+				test_starthour = $('#test_starthour'),
 			 	test_endhour = $('#test_endhour'),
-			  	utest_hour_id = $('#utest_hour_id'),
+			  	
+			 	
+			 	utest_hour_id = $('#utest_hour_id'),
 			 	utest_starthour = $('#utest_starthour'),
 			  	utest_endhour = $('#utest_endhour'),
-				allFields = $( [] ).add( test_starthour ).add( test_endhour );
+				
+			  
+				spantest_starthour =$('#spantest_starthour'),
+				spantest_endhour =$('#spantest_endhour'),
+				
+				spanutest_starthour =$('#spanutest_starthour'),
+				spanutest_endhour =$('#spanutest_endhour');
+				
+				
+				var checktest_starthour=null;
+				var checktest_endhour=null;
+				
+				var checkutest_starthour=null;
+				var checkutest_endhour=null;
+				
+				
+				
+				allSpan = $( [] ).add( spantest_starthour ).add( spantest_endhour );
+				uallSpan = $( [] ).add( spanutest_starthour ).add( spanutest_endhour );
+			  	
+			  	allFields = $( [] ).add( test_starthour ).add( test_endhour );
 		      	uallFields = $( [] ).add( utest_hour_id ).add( utest_starthour ).add( utest_endhour );
-		      	tips = $( ".validateTips" );
-		      //在驗證顯示區塊新增class t->傳入的一段文字
-			    function updateTips( t ) {
-			      tips
-			        .text( t )
-			        .css('color','red')
-			        .addClass( "ui-state-highlight" );
-			      setTimeout(function() {
-			        tips.removeClass( "ui-state-highlight", 1500 );
-			      }, 500 );
-			    }
-			 //驗證資料長度是否符合規則o->$('#欄位ID')欄位資料、n->欄位名稱、min->最短長度、max->最長長度
-			    function checkLength( o, n, min, max ) {
-			      if ( o.val().length > max || o.val().length < min ) {
-			        o.addClass( "ui-state-error" );
-			        updateTips( "欄位 " + n + ":長度必須於 " +
-			          min + " 到 " + max + "之間" );
-			        return false;
-			      } else {
-			        return true;
-			      }
-			    }
-			 //驗證表單資料是否符合規則 o->$('#欄位ID')、規則式、n->SHOW一段文字
-			    function checkRegexp( o, regexp, n ) {
-			      if ( !( regexp.test( o.val() ) ) ) {
-			        o.addClass( "ui-state-error" );
-			        updateTips( n );
-			        return false;
-			      } else {
-			        return true;
-			      }
-			    }
+		      	allValid =$('.allValid');
+		      
 			  //點選新增鍵，所執行的方法
 			    function insertTpFormToCreateTable() {
-			      var valid = true;
-			      allFields.removeClass( "ui-state-error" );
-			      valid = valid && checkLength( test_starthour, "開始時間", 1, 10 );
-			      valid = valid && checkLength( test_endhour, "結束時間", 1, 10 );
-			      valid = valid && checkRegexp( test_starthour, /^([0-1][0-9]|2[0-3])\:[0-5][0-9]\:[0-5][0-9]$/, "開始時間格式須為hh:mm:ss" );
-			      valid = valid && checkRegexp( test_endhour, /^([0-1][0-9]|2[0-3])\:[0-5][0-9]\:[0-5][0-9]$/, "結束時間格式須為hh:mm:ss" );
-			      if ( valid ) {
+			     
+			       if ( checkInsertForm() ) {
 			 			var Insertdatas = $('form[name="TpInsertForm"]').serialize();
 			 			$.post('Test_periodServletJSON.do',Insertdatas,function(data){
 			 				console.log(data);
 			 				if(data=="資料新增失敗"){
-			 					$('.validateTips').css('color','red').text("新增錯誤");
+			 					allValid.css('color','red').text("新增錯誤");
 			 				}
 			 				else if(data=="資料新增成功"){
 			 					table.ajax.reload();//重新載入data tables的資料
+			 					allFields.removeClass( "ui-state-error" );
 			 					allFields.val("");//將新增form表單內容清空
-						 		$('.validateTips').text("");////將新增form表單驗證區塊內容清空
+			 					allValid.text("");////將新增form表單驗證區塊內容清空
+			 					allSpan.text("");//將新增FROM表單的span內容清空
 				 				TpInsertForm.dialog( "close" );//將新增form表單關閉
 				 				//取回資料庫資料並建立table內容結束
 			 				}
 			 			});
 			 		}
-			      return valid;
 			    }
 			  //設定表單寬度視窗資料開始
 			    TpInsertForm = $( "#dialog-insertForm" ).dialog({
 			      autoOpen: false,
-			      height: 500,
-			      width: 400,
+			      height: 400,
+			      width: 700,
 			      modal: true,
 			      buttons: {
 			        "send": insertTpFormToCreateTable,
@@ -249,8 +264,9 @@ h1 {
 			      close: function() {
 			        form[ 0 ].reset();
 			        allFields.removeClass( "ui-state-error" );
-			       	allFields.val("");//將新增form表單內容清空
-		 			$('.validateTips').text("");////將新增form表單驗證區塊內容清空
+ 					allFields.val("");//將新增form表單內容清空
+ 					allValid.text("");////將新增form表單驗證區塊內容清空
+ 					allSpan.text("");//將新增FROM表單的span內容清空
 			      }
 			    });
 			  	//設定表單寬度視窗資料結束
@@ -275,8 +291,8 @@ h1 {
 				//設定表單寬度視窗資料開始
 				TpUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
-			      height: 650,
-			      width: 400,
+			      height: 400,
+			      width: 700,
 			      modal: true,
 			      buttons: {
 				        "send": updateTpFormToCreateTable,
@@ -287,6 +303,9 @@ h1 {
 			      close: function() {
 			        form[ 0 ].reset();
 			        uallFields.removeClass( "ui-state-error" );
+ 					uallFields.val("");//將新增form表單內容清空
+ 					allValid.text("");////將新增form表單驗證區塊內容清空
+ 					uallSpan.text("");//將新增FROM表單的span內容清空
 			      }
 			    });
 			    
@@ -322,14 +341,7 @@ h1 {
 				 	} );
 			    //點選修改鍵，所執行的方法
 			    function updateTpFormToCreateTable() {
-				      var valid = true;
-				      uallFields.removeClass( "ui-state-error" );
-					  valid = valid && checkLength( utest_hour_id, "代號", 1, 10 );
-				      valid = valid && checkLength( utest_starthour, "開始時間", 1, 10 );
-				      valid = valid && checkLength( utest_endhour, "結束時間", 1, 10 );
-				      valid = valid && checkRegexp( utest_starthour, /^([0-1][0-9]|2[0-3])\:[0-5][0-9]\:[0-5][0-9]$/, "開始時間格式須為hh:mm:ss" );
-				      valid = valid && checkRegexp( utest_endhour, /^([0-1][0-9]|2[0-3])\:[0-5][0-9]\:[0-5][0-9]$/, "結束時間格式須為hh:mm:ss" );
-				      if ( valid ) {
+				     if ( checkUpdateForm() ) {
 				 			var Updatedatas = $('form[name="TpUpdateForm"]').serialize();
 				 			$.get('Test_periodServletJSON.do',Updatedatas,function(data){
 				 				console.log(data);
@@ -343,7 +355,6 @@ h1 {
 				 			});
 				 		}
 				      sel=[];
-				      return valid;
 				    }
 			  	
 			    
@@ -409,7 +420,130 @@ h1 {
 					 $('#buttonSel').click( function () {
 					        alert( table.rows('.selected').data().length +' 筆資料被選取' );
 					});
-				    
+				   
+				   
+					
+					
+					//新增表格欄位判斷
+					//ckecktest_starthour欄位滑鼠離開後的判斷驗證
+					test_starthour.blur(fchecktest_starthour);
+					function fchecktest_starthour(){
+						checktest_starthour=false;
+						var test_starthourVal=test_starthour.val();
+						var test_starthourValLength = test_starthourVal.length;
+						var re = /^[0-2]{1}[0-9]{1}:[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/;
+						
+						if(test_starthourVal==""){
+							spantest_starthour.html("<img src='../img/error.png' style='width:16px'/>開始時間不可為空白").css('color','red');
+						}else if(test_starthourValLength>8){
+							spantest_starthour.html("<img src='../img/error.png' style='width:16px'/>開始時間欄位長度不可大於8碼").css('color','red');
+						}else if(!re.test(test_starthourVal)){
+							spantest_starthour.html("<img src='../img/error.png' style='width:16px'/>開始時間欄位格式不符").css('color','red');
+						}else{
+							spantest_starthour.html("<img src='../img/correct.png' style='width:16px'/>");
+							checktest_starthour=true;
+						}
+					}
+					
+					//ckecktest_endhour欄位滑鼠離開後的判斷驗證
+					test_endhour.blur(fchecktest_endhour);
+					function fchecktest_endhour(){
+						checktest_endhour=false;
+						var test_endhourVal=test_endhour.val();
+						var test_endhourValLength = test_endhourVal.length;
+						var re = /^[0-2]{1}[0-9]{1}:[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/;
+						
+						if(test_endhourVal==""){
+							spantest_endhour.html("<img src='../img/error.png' style='width:16px'/>結束時間不可為空白").css('color','red');
+						}else if(test_starthourValLength>8){
+							spantest_endhour.html("<img src='../img/error.png' style='width:16px'/>結束時間欄位長度不可大於8碼").css('color','red');
+						}else if(!re.test(test_endhourVal)){
+							spantest_endhour.html("<img src='../img/error.png' style='width:16px'/>結束時間欄位格式不符").css('color','red');
+						}else{
+							spantest_endhour.html("<img src='../img/correct.png' style='width:16px'/>");
+							checktest_endhour=true;
+						}
+					}
+					
+					function checkInsertForm(){
+						fchecktest_starthour();
+						fchecktest_endhour();
+						
+						console.log(checktest_starthour);
+						console.log(checktest_endhour);
+						if(checktest_starthour && checktest_endhour){
+							alert("資料皆正確，送出中");
+							return true;
+						}
+						else {
+							alert("資料錯誤，請檢查欄位長度格式是否正確");
+							return false;
+						} 
+					}
+					
+					
+					
+					////修改表格欄位判斷
+					//ckeckutest_starthour欄位滑鼠離開後的判斷驗證
+					utest_starthour.blur(fcheckutest_starthour);
+					function fcheckutest_starthour(){
+						checkutest_starthour=false;
+						var utest_starthourVal=utest_starthour.val();
+						var utest_starthourValLength = utest_starthourVal.length;
+						var re = /^[0-2]{1}[0-9]{1}:[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/;
+						
+						if(utest_starthourVal==""){
+							spanutest_starthour.html("<img src='../img/error.png' style='width:16px'/>開始時間不可為空白").css('color','red');
+						}else if(utest_starthourValLength>8){
+							spanutest_starthour.html("<img src='../img/error.png' style='width:16px'/>開始時間欄位長度不可大於8碼").css('color','red');
+						}else if(!re.test(utest_starthourVal)){
+							spanutest_starthour.html("<img src='../img/error.png' style='width:16px'/>開始時間欄位格式不符").css('color','red');
+						}else{
+							spanutest_starthour.html("<img src='../img/correct.png' style='width:16px'/>");
+							checkutest_starthour=true;
+						}
+					}
+					
+					//ckeckutest_endhour欄位滑鼠離開後的判斷驗證
+					utest_endhour.blur(fcheckutest_endhour);
+					function fcheckutest_endhour(){
+						checkutest_endhour=false;
+						var utest_endhourVal=utest_endhour.val();
+						var utest_endhourValLength = utest_endhourVal.length;
+						var re = /^[0-2]{1}[0-9]{1}:[0-5]{1}[0-9]{1}:[0-5]{1}[0-9]{1}$/;
+						
+						if(utest_endhourVal==""){
+							spanutest_endhour.html("<img src='../img/error.png' style='width:16px'/>結束時間不可為空白").css('color','red');
+						}else if(utest_endhourValLength>8){
+							spanutest_endhour.html("<img src='../img/error.png' style='width:16px'/>結束時間欄位長度不可大於8碼").css('color','red');
+						}else if(!re.test(utest_endhourVal)){
+							spanutest_endhour.html("<img src='../img/error.png' style='width:16px'/>結束時間欄位格式不符").css('color','red');
+						}else{
+							spanutest_endhour.html("<img src='../img/correct.png' style='width:16px'/>");
+							checkutest_endhour=true;
+						}
+					}
+					
+					function checkUpdateForm(){
+						fcheckutest_starthour();
+						fcheckutest_endhour();
+						
+						console.log(checkutest_starthour);
+						console.log(checkutest_endhour);
+						if(checkutest_starthour && checkutest_endhour){
+							alert("資料皆正確，送出中");
+							return true;
+						}
+						else {
+							alert("資料錯誤，請檢查欄位長度格式是否正確");
+							return false;
+						} 
+					}
+					
+					
+				   
+				   
+				   
 			    
 	} );//load函數結束
 	</script>
