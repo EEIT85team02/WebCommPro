@@ -30,10 +30,11 @@ public class Stu_additionalService {
 	
 	public void updateStum(Integer stu_id,Integer stu_group,String stu_note1,Integer stu_seatno,
 			String stu_name,String stu_sch,Integer stu_sex,Integer stu_age,String stu_email,
-			Integer stu_pre,Double stu_implement,Date stu_testtime,Double stu_interview,
-			Double stu_total,Date stu_workdate,Double stu_except,Integer stu_final,
+			Integer stu_pre,Double stu_implement,Timestamp stu_testtime,Double stu_interview,
+			Double stu_total,Timestamp stu_workdate,Double stu_except,Integer stu_final,
 			String stu_note2,byte[] pub_key,byte[] pri_key,byte[] cipher_text,byte[] log_pw,
 			String class_id) throws SQLException {
+
 		StudentVO stuVO = new StudentVO();
 		stuVO.setStu_id(stu_id);
 		stuVO.setStu_group(stu_group);
@@ -57,11 +58,9 @@ public class Stu_additionalService {
 		stuVO.setPri_key(pri_key);
 		stuVO.setCipher_text(cipher_text);
 		stuVO.setLog_pw(log_pw);
-		
 		ClassVO classVO = new ClassVO();
 		classVO.setClass_id(class_id);
 		stuVO.setClassVO(classVO);
-		
 		dao.update(stuVO);
 	}
 	

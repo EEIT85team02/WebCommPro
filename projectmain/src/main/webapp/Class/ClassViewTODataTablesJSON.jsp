@@ -9,10 +9,12 @@
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
+<link href="../css/lobibox.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+<script src="../js/lobibox.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <meta name="description" content="">
@@ -366,9 +368,17 @@ margin: 20px;
 			 	$('#buttonUpdate').click( function () {
 			 		
 			 		if(table.rows('.selected').data().length == 0){
-			    		alert("請選取一筆要進行編輯的資料");
+// 			    		alert("請選取一筆要進行編輯的資料");
+			 			 Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		 			    			{
+		 			    			msg: "請選取一筆要進行編輯的資料"
+		 			    			});
 			    	}else if(table.rows('.selected').data().length > 1){
-			    		alert("[編輯]功能僅能選取一筆資料。");
+// 			    		alert("[編輯]功能僅能選取一筆資料。");
+			    		Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "[編輯]功能僅能選取一筆資料。"
+	 			    			});
 			    	}else if(table.rows('.selected').data().length == 1){
 			    		ClickUpdateValue = $('tr.selected').find('td:eq(0)').text();//抓到選到的class為selected的教育中心代號
 				 		console.log(ClickUpdateValue);
@@ -435,10 +445,18 @@ margin: 20px;
 				var sel=[];
 			   $('#buttonDelete').click( function () {
 			    	if(table.rows('.selected').data().length==0){
-			    		alert("請先選取要刪除的資料");
+// 			    		alert("請先選取要刪除的資料");
+			    		Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "請先選取要刪除的資料"
+	 			    			});
 			    	}else if(table.rows('.selected').data().length>=1){
 			    		var trSelLength = $('tbody > tr.selected');//tr被SELECT到的長度
-			    		alert("共選取"+table.rows('.selected').data().length+"筆資料。");
+// 			    		alert("共選取"+table.rows('.selected').data().length+"筆資料。");
+			    		Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "共選取"+table.rows('.selected').data().length+"筆資料。"
+	 			    			});
 			    		for(var i=0,max=trSelLength.length;i<max;i++){
 			    			var	obj = $('tbody > tr.selected:eq('+i+')').find('td:eq(0)').text();
 			    			sel.push(obj);//將obj資料加到sel陣列
@@ -474,7 +492,11 @@ margin: 20px;
 				})
 				//icon查詢選取筆數
 				 $('#buttonSel').click( function () {
-				        alert( table.rows('.selected').data().length +' 筆資料被選取' );
+// 				        alert( table.rows('.selected').data().length +' 筆資料被選取' );
+					 Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: table.rows('.selected').data().length +' 筆資料被選取'
+	 			    			});
 				});
 				
 			  
@@ -571,11 +593,19 @@ margin: 20px;
 					console.log("flag========="+flag);
 					console.log("checkclass_id========="+checkclass_id);
 					if(flag && checkclass_id && checkclass_name && checkclass_contact && checkclass_teach){
-							alert("資料皆正確，送出中");
+// 							alert("資料皆正確，送出中");
+                     Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "資料皆正確，送出中"
+	 			    			});
 							return true;
 						}
 						else {
-							alert("資料錯誤，請檢查欄位長度格式是否正確");
+// 							alert("資料錯誤，請檢查欄位長度格式是否正確");
+                      Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "資料錯誤，請檢查欄位長度格式是否正確"
+	 			    			});
 							return false;
 						} 
 			    }
@@ -639,11 +669,19 @@ margin: 20px;
 					console.log(checkuclass_contact);
 					console.log(checkuclass_teach);
 					if( checkuclass_name && checkuclass_contact && checkuclass_teach){
-						alert("資料皆正確，送出中");
+// 						alert("資料皆正確，送出中");
+             Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "資料皆正確，送出中"
+	 			    			});
 						return true;
 					}
 					else {
-						alert("資料錯誤，請檢查欄位長度格式是否正確");
+// 						alert("資料錯誤，請檢查欄位長度格式是否正確");
+               Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "資料錯誤，請檢查欄位長度格式是否正確"
+	 			    			}); 
 						return false;
 					} 
 						
