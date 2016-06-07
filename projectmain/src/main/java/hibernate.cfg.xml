@@ -61,7 +61,7 @@
 		<mapping resource="Member_test/model/Member_test.hbm.xml" />
 		<mapping resource="Mail_template/model/Mail_template.hbm.xml" />
 		<mapping resource="Examiner_offday/model/Examiner_offday.hbm.xml" />
-<!-- 		<mapping resource="fullCalendar/Modle/Calendar.hbm.xml"/> -->
+<!-- 		<mapping resource="com/fullcalendar/model/calendar.hbm.xml"/> -->
 	</session-factory>
 	
 </hibernate-configuration>
