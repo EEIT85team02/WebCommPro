@@ -54,7 +54,7 @@
         <div class="bs-example bs-example-tabs" role="tabpanel">
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation"><a href="#OK" role="tab" id="OK-tab" data-toggle="tab" aria-controls="OK">已核准</a></li>
-        <li role="presentation"><a href="#NO" id="NO-tab" role="tab" data-toggle="tab" aria-controls="NO">未核准</a></li>
+        <li role="presentation" class="active"><a href="#NO" id="NO-tab" role="tab" data-toggle="tab" aria-controls="NO">未核准</a></li>
         <li role="presentation"><a href="#NEVER" role="tab" id="NEVER-tab" data-toggle="tab" aria-controls="NEVER">未報名</a></li>
         <li role="presentation"><a href="#YES" role="tab" id="YES-tab" data-toggle="tab" aria-controls="YES">已錄取</a></li>
         <li role="presentation"><a href="#NYES" role="tab" id="NYES-tab" data-toggle="tab" aria-controls="NYES">未錄取</a></li>
@@ -82,7 +82,7 @@
                       </table>
                <p>
            </div>
-           <div role="tabpanel" class="tab-pane fade" id="NO" aria-labelledBy="NO-tab">
+           <div role="tabpanel" class="tab-pane fade in active" id="NO" aria-labelledBy="NO-tab">
               <p>
 <!--                       <input type="button" value="狀態" id="buttonJSON" -->
 <!--                           class="btn btn-danger"> -->
