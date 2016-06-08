@@ -8,8 +8,8 @@
 <title>Examiner_offday_Page</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link href="../css/lobibox.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
@@ -281,10 +281,10 @@ margin: 20px;
 			    	if(deleteOrUpdateValue==null){
 			    		console.log(deleteOrUpdateValue);
 // 			    		alert("請先選取要編輯的資料");
-			    		Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
-	 			    			{
-	 			    			msg: "請先選取要編輯的資料"
-	 			    			});
+			    Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		 			    			{
+		 			    			msg: "請先選取要編輯的資料"
+		 			    			});
 			    	}else{
 			    		uexam_id.val(exam_idUpdateValue.text());
 		    			uemp_id.val(emp_idUpdateValue.text());
