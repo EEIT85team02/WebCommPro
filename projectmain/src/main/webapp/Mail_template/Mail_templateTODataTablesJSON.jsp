@@ -5,26 +5,28 @@
 <html lang="zh-tw">
 <head>
 <title>Mail_template_Page</title>
-
-<link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
-<link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet"
-	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
-<link href="../css/lobibox.min.css" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta name="author" content="">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
+<link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
+<link href="../css/lobibox.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
-<script
-	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="../js/lobibox.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+.ui-widget-overlay.custom-overlay
+{
+    background-color: black;
+    background-image: none;
+    opacity: 0.6;
+    z-index: 1040;    
+}
 .Main_Content {
 	margin-top: 100px;
 }
@@ -101,9 +103,9 @@ h1 {
 					</table>
 
 					<!------------------點選新增Email樣版表單區塊內容----------------------------- -->
-					<button id="buttonAdd">新增</button>
-					<button id="buttonUpdate">編輯</button>
-					<button id="buttonDelete">刪除</button>
+					<button id="buttonAdd" class="ui-button ui-corner-all ui-widget">新增</button>
+					<button id="buttonUpdate" class="ui-button ui-corner-all ui-widget">編輯</button>
+					<button id="buttonDelete" class="ui-button ui-corner-all ui-widget">刪除</button>
 				</div>
 			</div>
 		</div>
@@ -248,6 +250,12 @@ h1 {
 			      height: 500,
 			      width: 400,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 			        "send": insertMailFormToCreateTable,
 			        Cancel: function() {
@@ -285,6 +293,7 @@ h1 {
 					console.log(deleteOrUpdateValue);
 						if ( $(this).hasClass('selected') ) {
 				            $(this).removeClass('selected');
+				            deleteOrUpdateValue=null;
 				        }
 				        else {
 				            table.$('tr.selected').removeClass('selected');
@@ -301,6 +310,12 @@ h1 {
 			      height: 650,
 			      width: 400,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 				        "send": updateMailFormToCreateTable,
 				        Cancel: function() {
@@ -369,6 +384,12 @@ h1 {
 			        height: 200,
 			        width: 240,
 			        modal: true,
+			        open: function() {
+				          $('.ui-widget-overlay').addClass('custom-overlay');
+				      },
+				      close: function() {
+				          $('.ui-widget-overlay').removeClass('custom-overlay');
+				      },
 			        buttons: {
 			          "確認": deleteMailFormToCreateTable ,
 			          "放棄": function() {

@@ -54,6 +54,7 @@
 		<mapping resource="Mail_template/model/Mail_template.hbm.xml" />
 		<mapping resource="Examiner_offday/model/Examiner_offday.hbm.xml" />
 		<mapping resource="fullCalendar/Modle/Calendar.hbm.xml"/>
+		<!-- 		<mapping resource="Talk/model/TalkVO.hbm.xml" /> -->
 	</session-factory>
 	
 </hibernate-configuration>
