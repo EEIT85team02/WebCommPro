@@ -565,14 +565,14 @@ h1 {
 			//getElement"s"ByName,checkbox裡面的name都要是一樣的，我會將有相同名稱的一起抓入陣列
 			//obj是一個陣列，裡面裝的是被選到checkbox的名子
 			var obj = document.getElementsByName("checkboxname");
-
+			var checkedflag =0;
 			var selected = [];
 
 			for (var i = 0; i < obj.length; i++) {
 				//obj.check是將有否打勾，true就執行下面
 				if (obj[i].checked) {
 					selected.push(obj[i].value);//selected是愈加陣列的名稱，push是可以將值一個一個接到陣列後面
-					
+					checkedflag=1;
 				}
 			}
 
@@ -596,16 +596,23 @@ h1 {
 
 			selectedJSON = JSON.stringify(arr);
 			console.log("selectedJSON"+selectedJSON);			
-//  			alert("email寄送結束");
+//  			alert("email寄送結束");\
+
+if(selectedJSON!="[]"){
 Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
 		    			{
 		    			msg: "email寄送結束"
 		    			});
+}else{
+	Lobibox.alert("error", //AVAILABLE TYPES: "error", "info", "success", "warning"
+			{
+			msg: "需要選擇至少一個email"
+			});	
+}
 			xhr.open('post', 'SendMail1.do', true);
 			xhr.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded");
 			xhr.send("key=" + selectedJSON);
-
 			// 	        xhr.open('post','SendMail1.do',false);
 			// 	        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 			// 			xhr.send("key="+selectedJSON);	

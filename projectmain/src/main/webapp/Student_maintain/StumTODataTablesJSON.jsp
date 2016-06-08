@@ -183,10 +183,14 @@ h1 {
 						var confirm_time = val.confirm_time;
 						var stu_pre = val.stu_pre;
 						var stu_implement = val.stu_implement;
+
 						var stu_testtime=val.stu_testtime;
+
 						var stu_interview = val.stu_interview;
 						var stu_total = val.stu_total;
+
 						var stu_workdate = val.stu_workdate;
+
 						var stu_except = val.stu_except;
 						var stu_final = val.stu_final;
 						var stu_note1 = val.stu_note1;
@@ -216,10 +220,14 @@ h1 {
     			                +'&confirm_time='+confirm_time
     			                +'&stu_pre='+stu_pre
     			                +'&stu_implement='+stu_implement
+
     			                +'&stu_testtime='+stu_testtime
+
     			                +'&stu_interview='+stu_interview
     			                +'&stu_total='+stu_total
+
     			                +'&stu_workdate='+stu_workdate
+
     			                +'&stu_except='+stu_except
     			                +'&stu_final='+stu_final
     			                +'&stu_note1='+stu_note1
