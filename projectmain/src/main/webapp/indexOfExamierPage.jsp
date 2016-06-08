@@ -11,6 +11,11 @@
 <meta charset="UTF-8">
 <meta name="description" content="hello test">
 <meta name="author" content="">
+<style>
+.navbar-inverse {
+    background-image: linear-gradient(to bottom,#E4C00D 0,rgba(249, 68, 27, 0.97) 100%);
+}
+</style>
 </head>
 <body>
 <!-- 引入top.jsp標頭檔 巡覽列部分-->

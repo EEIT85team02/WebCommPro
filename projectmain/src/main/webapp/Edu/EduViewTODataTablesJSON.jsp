@@ -20,6 +20,13 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <style>
+.ui-widget-overlay.custom-overlay
+{
+    background-color: black;
+    background-image: none;
+    opacity: 0.6;
+    z-index: 1040;    
+}
 .Main_Content {
 	margin-top: 100px;
 }
@@ -287,6 +294,12 @@ margin: 20px;
 			      height: 500,
 			      width: 700,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 			        "send": insertEduFormToCreateTable,
 			        Cancel: function() {
@@ -321,6 +334,12 @@ margin: 20px;
 			      height: 600,
 			      width: 700,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 				        "send": updateEduFormToCreateTable,
 				        Cancel: function() {
@@ -397,6 +416,12 @@ margin: 20px;
 			        height: 200,
 			        width: 240,
 			        modal: true,
+			        open: function() {
+				          $('.ui-widget-overlay').addClass('custom-overlay');
+				      },
+				      close: function() {
+				          $('.ui-widget-overlay').removeClass('custom-overlay');
+				      },
 			        buttons: {
 			          "確認": deleteEduFormToCreateTable ,
 			          "放棄": function() {

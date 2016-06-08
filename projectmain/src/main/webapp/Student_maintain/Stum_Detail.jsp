@@ -7,6 +7,7 @@
 <title>Student_MaintainForm</title>
 
 <link rel="stylesheet" type="text/css" href="/projectmain/css/fullCalendar/jquery-ui.css">
+<link href="../css/lobibox.min.css" rel="stylesheet">
 <style type="text/css">
 
 .fancy {
@@ -123,6 +124,7 @@
 <!-- fancybox -->
 	<link rel="stylesheet" type="text/css" href="/projectmain/css/fancybox/jquery.fancybox.css"> 	
 	<script src='/projectmain/js/fancybox/jquery.fancybox.pack.js'></script> 
+	<script src="../js/lobibox.min.js"></script>
 <script type="text/javascript" src="/projectmain/js/fancybox/jquery.form.min.js">
 	
 	$(document).ready(function(){ 
@@ -170,7 +172,11 @@
 	function showRequest(){ 
 	    var events = $("#event").val(); 
 	    if(events==''){ 
-	        alert("请输入日程内容！"); 
+// 	        alert("请输入日程内容！");
+	Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+			 			    			{
+			 			    			msg: "请输入日程内容！"
+			 			    			});
 	        $("#event").focus(); 
 	        return false; 
 	    } 
@@ -185,10 +191,18 @@
 	            $.fancybox.close();//关闭弹出层 
 	            $('#calendar').fullCalendar('refetchEvents'); //重新获取所有事件数据 
 	        }else{ 
-	            alert(responseText); 
+// 	            alert(responseText); 
+	     Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+			    			{
+			    			msg: responseText
+			    			});
 	        } 
 	    }else{ 
-	        alert(statusText); 
+// 	        alert(statusText); 
+	   Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	    			{
+	    			msg: statusText
+	    			});
 	    } 
 	} 
 	

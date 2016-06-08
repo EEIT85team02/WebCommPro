@@ -13,6 +13,7 @@
 	<jsp:include page="/references/head_resources_css.jsp" />
 	<link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
+<link href="../css/lobibox.min.css" rel="stylesheet">
 <%-- <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script> --%>
 <%-- <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script> --%>
 <%-- <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script> --%>
@@ -24,7 +25,7 @@
 	<!-- 匯入js -->
 	<jsp:include page="/references/head_resources_js.jsp" />
 <body>
-	
+<script src="../js/lobibox.min.js"></script>	
  
  <div class="container">
 	<!-- 匯入功能表列 -->
@@ -173,10 +174,18 @@
 //         	  reader.readAsBinaryString(file); 
 //         	  reader.readAsArrayBuffer(form); 
         	  reader.readAsText(file,'UTF-8');
-        	  alert("上傳成功!!");
+//         	  alert("上傳成功!!");
+        	  Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		    			{
+		    			msg: "上傳成功!!"
+		    			});
         	 } 
         	 else { 
-        	  alert ("Please choose a file."); 
+//         	  alert ("Please choose a file."); 
+        		  Lobibox.alert("warning", //AVAILABLE TYPES: "error", "info", "success", "warning"
+  		    			{
+  		    			msg: "Please choose a file."
+  		    			});
         	 }  
         }
         	 
@@ -188,7 +197,11 @@
 			   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         	   xhr.overrideMimeType("./csv"); 
         	   xhr.send(globalv); 
-        	   alert("上傳成功!!");
+//         	   alert("上傳成功!!");
+        	   Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		    			{
+		    			msg: "上傳成功!!"
+		    			});
         }
 
         	 

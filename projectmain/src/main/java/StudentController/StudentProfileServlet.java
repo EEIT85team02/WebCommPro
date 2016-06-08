@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +28,7 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import Class.model.ClassVO;
 import Edu.model.EduService;
 import Mail_template.model.Mail_templateService;
+import SendMail.model.DecryptService;
 import Stu_additional.model.IStu_additionalDAO;
 import Stu_additional.model.Stu_additionalDAO;
 import Stu_additional.model.Stu_additionalService;
@@ -123,10 +125,10 @@ public class StudentProfileServlet extends HttpServlet {
 			String stu_email = null;
 			Integer stu_pre = null;
 			Double stu_implement = null;
-			Date stu_testtime = null;
+			Timestamp stu_testtime = null;
 			Double stu_interview = null;
 			Double stu_total = null;
-			Date stu_workdate = null;
+			Timestamp stu_workdate = null;
 			Double stu_except = null;
 			Integer stu_final = null;
 			String stu_note2 = null;
@@ -163,16 +165,19 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(stu_pre);
 				stu_implement =Double.valueOf(request.getParameter("stu_implement"));
 				System.out.println(stu_implement);
-//				String stu_testtime1 = sdf.format(request.getParameter("stu_testtime"));
-//				stu_testtime = Date.valueOf(stu_testtime1);
-//				
-//				System.out.println("aaa"+stu_testtime);
+				
+				//改為timestamp
+				String stu_testtime1 = sdf.format(request.getParameter("stu_testtime"));
+				stu_testtime = Timestamp.valueOf(stu_testtime1);
+				
+				System.out.println("aaa"+stu_testtime);
 				stu_interview = Double.valueOf(request.getParameter("stu_interview"));
 				System.out.println(stu_interview);
 				stu_total = Double.valueOf(request.getParameter("stu_total"));
 				System.out.println(stu_total);
-//				stu_workdate = Date.valueOf(request.getParameter("stu_workdate"));
-//				System.out.println(stu_workdate);
+				//改為timestamp			
+				stu_workdate = Timestamp.valueOf(request.getParameter("stu_workdate"));
+				System.out.println(stu_workdate);
 				stu_except =Double.valueOf(request.getParameter("stu_except"));
 				System.out.println(stu_except);
 				stu_final = Integer.parseInt(request.getParameter("stu_final"));
@@ -181,13 +186,16 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(stu_note2);
 				class_id = request.getParameter("class_id");
 				System.out.println(class_id);
-				pub_key = request.getParameter("pub_key").getBytes();
+				DecryptService ds=new DecryptService();
+				
+				//使用base64編碼解密
+				pub_key = ds.decryptBase64String(request.getParameter("pub_key"));
 				System.out.println(pub_key);
-				pri_key = request.getParameter("pri_key").getBytes();
+				pri_key = ds.decryptBase64String(request.getParameter("pri_key"));
 				System.out.println(pri_key);
-				cipher_text = request.getParameter("cipher_text").getBytes();
+				cipher_text = ds.decryptBase64String(request.getParameter("cipher_text"));
 				System.out.println(cipher_text);
-				log_pw = request.getParameter("log_pw").getBytes();
+				log_pw = ds.decryptBase64String(request.getParameter("log_pw"));
 				System.out.println(log_pw);
 				
 				
