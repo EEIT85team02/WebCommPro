@@ -146,12 +146,13 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 		  byte[] encodedByteArray=es.MD5Encrypt(ramdonString);
 		  SaveChangedPasswordService scp =new SaveChangedPasswordService(); 
 		  scp.SaveRandomPasswordToDataBase(encodedByteArray,emailStringArray[i]);
-		  String encodedByteArrayToString=org.apache.tomcat.util.codec.binary.Base64.encodeBase64URLSafeString(encodedByteArray);
+		  EncryptService ess=new EncryptService();
+		  String encodedByteArrayToString=ess.Base64Encrypt(encodedByteArray);
 		  
 	   message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailStringArray[i]));//對方email
 	   message.setSubject("測試寄信.");
-	   
-	   String a=org.apache.tomcat.util.codec.binary.Base64.encodeBase64URLSafeString(ciphertextArray[i]);
+
+	   String a=ess.Base64Encrypt(ciphertextArray[i]); 
 	   //String a=new BASE64Encoder().encode(ciphertextArray[i],);
 
 
