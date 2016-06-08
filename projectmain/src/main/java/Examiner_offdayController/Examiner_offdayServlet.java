@@ -68,7 +68,7 @@ public class Examiner_offdayServlet extends HttpServlet {
 				Examiner_offdayService examSvc = new Examiner_offdayService() ;
 				System.out.println(exam_id);
 				String exam_AllListJSON = examSvc.findByPrimaryKeyExamToJSON(exam_id);
-				
+				request.getSession().setAttribute("exam_AllListJSON", exam_AllListJSON);
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().write(exam_AllListJSON);
 			}

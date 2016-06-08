@@ -2,6 +2,7 @@ package Examiner_offday.model;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -96,10 +97,11 @@ public class Examiner_offdayService {
 		public String findByPrimaryKeyExamToJSON(Integer exam_id) throws SQLException{
 			List exams=new LinkedList();
 			List as=new LinkedList();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 			Map<Object,Object> map2 = new HashMap<Object,Object>();
 			Examiner_offdayVO examVO=dao.findByPrimaryKey(exam_id);
 			String jsonString= null;
-				Map<String,String> map = new HashMap<String,String>();
+				Map<Object,Object> map = new HashMap<Object,Object>();
 				map.put("exam_id",examVO.getExam_id().toString());
 				map.put("off_startdate",examVO.getOff_startdate().toString());
 				map.put("off_enddate",examVO.getOff_enddate().toString());
@@ -114,16 +116,19 @@ public class Examiner_offdayService {
 					Map<String,String> map1 = new HashMap<String,String>();
 					map1.put("stu_id",a.getStudentVO().getStu_id().toString());
 					map1.put("stu_name",a.getStudentVO().getStu_name());
-//					map.put("class_contact",stu_addVO.getClass_contact());
-//					map.put("class_teach",stu_addVO.getClass_teach());
+					java.util.Date test_start = a.getTest_start();
+					map1.put("test_start",sdf.format(test_start));
+					java.util.Date test_end = a.getTest_end();
+					map1.put("test_end",sdf.format(test_end));
 					as.add(map1);
-					map2.put("key",as);
+					map.put("key",as);
+					
 				}
 //				map.put("stu_id",examVO.getEmpVO().getStu_additionalVO().iterator().next().getStudentVO().getStu_id().toString());
 //				map.put("stu_name",examVO.getEmpVO().getStu_additionalVO().iterator().next().getStudentVO().getStu_name());
 //				map.put("test_start",examVO.getEmpVO().getStu_additionalVO().iterator().next().getTest_start().toString());
 //				map.put("test_end",examVO.getEmpVO().getStu_additionalVO().iterator().next().getTest_end().toString());
-				exams.add(map2);
+				
 				exams.add(map);
 				jsonString = JSONValue.toJSONString(exams);
 				return jsonString;
