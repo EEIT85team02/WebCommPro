@@ -9,10 +9,12 @@
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<link href="../css/lobibox.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="../js/lobibox.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <meta name="description" content="">
@@ -343,7 +345,11 @@ h1 {
 			    //綁定click事件使用者編輯icon，開啟dialog 表單EmployeeUpdateForm
 			 	$('#buttonUpdate').click( function () {
 		    	if(deleteOrUpdateValue==null){
-		    		alert("請先選取要編輯的資料");
+// 		    		alert("請先選取要編輯的資料");
+		    		Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+ 			    			{
+ 			    			msg: "請先選取要編輯的資料"
+ 			    			});
 		    	}else{
 		    		uemp_id.val(emp_idUpdateValue.text());
 	    			uemp_name.val(emp_nameUpdateValue.text());
@@ -411,7 +417,11 @@ h1 {
 		    		if(deleteOrUpdateValue==null){
 		    		console.log(deleteOrUpdateValue)
 							    	
-		    			alert("請先選取要刪除的資料");
+// 		    			alert("請先選取要刪除的資料");
+		    		Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+ 			    			{
+ 			    			msg: "請先選取要刪除的資料"
+ 			    			});
 		    		}else{
 		    			EmpDeleteConfirm.dialog( "open" );
 		    		}
