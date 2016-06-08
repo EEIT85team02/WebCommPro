@@ -1,13 +1,14 @@
 package SendMail.model;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 
 import Student.model.StudentDAO;
 import Student.model.StudentVO;
 
 public class DecryptService {
 	public static byte[] decryptBase64String(String encryptedBase64String){
-		byte[] decrytedBase64StringToByteArray=org.apache.tomcat.util.codec.binary.Base64.decodeBase64(encryptedBase64String);	
+		byte[] decrytedBase64StringToByteArray=Base64.getDecoder().decode(encryptedBase64String);	
 	
 		return decrytedBase64StringToByteArray;
 		

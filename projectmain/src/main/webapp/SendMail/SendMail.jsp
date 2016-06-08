@@ -596,7 +596,7 @@ h1 {
 
 			selectedJSON = JSON.stringify(arr);
 			console.log("selectedJSON"+selectedJSON);			
-// 			alert("email±H°eµ²§ô");
+//  			alert("email±H°eµ²§ô");
 Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
 		    			{
 		    			msg: "email±H°eµ²§ô"

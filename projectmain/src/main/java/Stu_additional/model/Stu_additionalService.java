@@ -17,6 +17,7 @@ import Class.model.ClassVO;
 import Employee.model.EmployeeVO;
 import Member_status.model.Member_statusVO;
 import Edu.model.EduVO;
+import SendMail.model.EncryptService;
 import Student.model.StudentVO;
 import Test_period.model.Test_periodVO;
 
@@ -175,10 +176,13 @@ public class Stu_additionalService {
 			map.put("class_id",stu_addList.get(0).getStudentVO().getClassVO().getClass_id());
 
 			map.put("class_name",stu_addList.get(0).getStudentVO().getClassVO().getClass_name());
-//			map.put("pub_key",stu_addList.get(0).getStudentVO().getPub_key().toString());
-//			map.put("pri_key",stu_addList.get(0).getStudentVO().getPri_key().toString());
-//			map.put("cipher_text",stu_addList.get(0).getStudentVO().getCipher_text().toString());
-//			map.put("log_pw",stu_addList.get(0).getStudentVO().getLog_pw().toString());
+			EncryptService es=new EncryptService();
+			
+			//將byte[]都先使用base64編碼
+			map.put("pub_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPub_key()));
+			map.put("pri_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPri_key()));
+			map.put("cipher_text",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getCipher_text()));
+			map.put("log_pw",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getLog_pw()));
 			
 
 			stusc.add(map);
