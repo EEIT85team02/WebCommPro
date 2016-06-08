@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<link href="../css/lobibox.min.css" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -22,6 +23,7 @@
 <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="../js/lobibox.min.js"></script>
 <style>
 .Main_Content {
 	margin-top: 100px;
@@ -314,7 +316,11 @@ h1 {
 			 	$('#buttonUpdate').click( function () {
 			    	if(deleteOrUpdateValue==null){
 			    		console.log(deleteOrUpdateValue);
-			    		alert("請先選取要編輯的資料");
+// 			    		alert("請先選取要編輯的資料");
+			   Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "請先選取要編輯的資料"
+	 			    			});
 			    	}else{
 			    		usl_id.val(sl_idUpdateValue.text());
 		    			usl_name.val(sl_nameUpdateValue.text());
@@ -385,7 +391,11 @@ h1 {
 			    $('#buttonDelete').click( function () {
 			    	
 			    	if(deleteOrUpdateValue==null){
-			    		alert("請先選取要刪除的資料");
+// 			    		alert("請先選取要刪除的資料");
+			     Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		 			    			{
+		 			    			msg: "請先選取要刪除的資料"
+		 			    			});
 			    	}else{
 			    		SlDeleteConfirm.dialog( "open" );
 			    	}

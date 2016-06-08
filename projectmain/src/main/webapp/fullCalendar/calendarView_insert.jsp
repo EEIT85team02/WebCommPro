@@ -9,12 +9,13 @@
 <!-- FullCalendar -->
 	<link rel='stylesheet' href='../css/fullCalendar/fullcalendar.css' />
 	<link href='../css/fullCalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
+	<link href="../css/lobibox.min.css" rel="stylesheet">
 	<script src='../js/jquery.min.js'></script>
 	<script src='../js/fullCalendar/moment.min.js'></script>
 	<script src='../js/fullCalendar/fullcalendar.js'></script>
 	<script src='../js/fullCalendar/jquery-ui.custom.min.js'></script>
 	<script src='../js/fullCalendar/fullcalendar.min.js'></script>
-	
+	<script src="../js/lobibox.min.js"></script>
 <!-- fancybox -->
 	<link rel="stylesheet" type="text/css" href="../css/fancybox/jquery.fancybox.css"> 	
 	<script src='../js/fancybox/jquery.fancybox.pack.js'></script> 
@@ -41,7 +42,11 @@ $(document).ready(function() {
 
 	$('#my-button').click(function() {
 	    var moment = $('#calendar').fullCalendar('getDate');
-	    alert("The current date of the calendar is " + moment.format());
+// 	    alert("The current date of the calendar is " + moment.format());
+		Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	    			{
+	    			msg: "The current date of the calendar is " + moment.format()
+	    			});
 	});
 	
 	$('#calendar').fullCalendar({

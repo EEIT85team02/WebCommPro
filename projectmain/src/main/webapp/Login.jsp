@@ -9,7 +9,8 @@
     <script src="http://s.codepen.io/assets/libs/modernizr.js" type="text/javascript"></script>
     <link rel="stylesheet" href="css/login/normalize.css">
     <link rel="stylesheet" href="css/login/style.css">
-    
+    <link href="../css/lobibox.min.css" rel="stylesheet">
+    <script src="../js/lobibox.min.js"></script>
      <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <!-- 	 <script src="js/login/index.js"></script>
 	    -->
@@ -32,7 +33,11 @@
 		    console.log(Username);
 		    console.log(Password);
 		    if(Username =='' && Password ==''){ 
-		        alert("请输入内容！"); 
+// 		        alert("请输入内容！"); 
+     Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+			 			    			{
+			 			    			msg: "请输入内容！"
+			 			    			});
 		        $("#Username").focus(); 
 		        $("#Password").focus(); 
 		        return false; 
@@ -46,10 +51,18 @@
 		            $.fancybox.close();//关闭弹出层 
 		            $('#calendar').fullCalendar('refetchEvents'); //重新获取所有事件数据 
 		        }else{ 
-		            alert(responseText); 
+// 		            alert(responseText);
+		  Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+ 			    			{
+ 			    			msg: responseText
+ 			    			});
 		        } 
 		    }else{ 
-		        alert(statusText); 
+// 		        alert(statusText); 
+		   Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+			    			{
+			    			msg: statusText
+			    			});
 		    } 
 		} 	
 		});

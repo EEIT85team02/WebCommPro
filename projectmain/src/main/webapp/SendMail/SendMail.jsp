@@ -11,6 +11,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
+<link href="../css/lobibox.min.css" rel="stylesheet">
+<script src="../js/lobibox.min.js"></script>
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="../js/bootstrap/bootstrap.min.js"></script>
 <script
@@ -299,7 +301,11 @@ h1 {
 
 							myBody.appendChild(frag);
 						} else {
-							alert(xhr.status + ":" + xhr.statusText);
+// 							alert(xhr.status + ":" + xhr.statusText);
+			Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		 			    			{
+		 			    			msg: xhr.status + ":" + xhr.statusText
+		 			    			});
 						}
 					}
 
@@ -311,7 +317,11 @@ h1 {
 						"application/x-www-form-urlencoded");
 				xhr.send();
 			} else {
-				alert("您的瀏覽器不支援Ajax功能!!");
+// 				alert("您的瀏覽器不支援Ajax功能!!");
+	Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+			    			{
+			    			msg: "您的瀏覽器不支援Ajax功能!!"
+			    			});
 			}
 
 		}
@@ -358,7 +368,11 @@ h1 {
 
 							myBody.appendChild(frag);
 						} else {
-							alert(xhr.status + ":" + xhr.statusText);
+// 							alert(xhr.status + ":" + xhr.statusText);
+			Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+					    			{
+					    			msg: xhr.status + ":" + xhr.statusText
+					    			});
 						}
 					}
 
@@ -370,7 +384,11 @@ h1 {
 						"application/x-www-form-urlencoded");
 				xhr.send();
 			} else {
-				alert("您的瀏覽器不支援Ajax功能!!");
+// 				alert("您的瀏覽器不支援Ajax功能!!");
+		Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		    			{
+		    			msg: "您的瀏覽器不支援Ajax功能!!"
+		    			});
 			}
 
 		}
@@ -509,7 +527,11 @@ h1 {
 							// 	 						myBody.appendChild(frag);
 							//--------------------------------舊方法結束 
 						} else {
-							alert(xhr.status + ":" + xhr.statusText);
+// 							alert(xhr.status + ":" + xhr.statusText);
+			Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+					    			{
+					    			msg: xhr.status + ":" + xhr.statusText
+					    			});
 						}
 					}
 
@@ -527,7 +549,11 @@ h1 {
 						"application/x-www-form-urlencoded");
 				xhr.send("class=" + classNumber + "&content=" + content);
 			} else {
-				alert("您的瀏覽器不支援Ajax功能!!");
+// 				alert("您的瀏覽器不支援Ajax功能!!");
+	Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		    			{
+		    			msg: "您的瀏覽器不支援Ajax功能!!"
+		    			});
 			}
 
 		}
@@ -570,7 +596,11 @@ h1 {
 
 			selectedJSON = JSON.stringify(arr);
 			console.log("selectedJSON"+selectedJSON);			
-			alert("email寄送結束");
+// 			alert("email寄送結束");
+Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		    			{
+		    			msg: "email寄送結束"
+		    			});
 			xhr.open('post', 'SendMail1.do', true);
 			xhr.setRequestHeader("Content-Type",
 					"application/x-www-form-urlencoded");
