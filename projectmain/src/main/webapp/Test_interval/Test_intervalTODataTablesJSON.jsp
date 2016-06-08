@@ -399,7 +399,7 @@ margin: 20px;
 			  //綁定click事件使用者編輯icon，開啟dialog 表單TiUpdateForm
 			 	$('#buttonUpdate').click( function () {
 			 		
-			    	if(deleteOrUpdateValue==null){
+			    	if(table.rows('.selected').data().length == 0){
 			    		console.log(deleteOrUpdateValue);
 // 			    		alert("請先選取要編輯的資料");
 			   Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"

@@ -239,6 +239,7 @@ margin: 20px;
 					console.log(deleteOrUpdateValue);
 						if ( $(this).hasClass('selected') ) {
 				            $(this).removeClass('selected');
+				            deleteOrUpdateValue=null;
 				        }
 				        else {
 				            table.$('tr.selected').removeClass('selected');

@@ -502,7 +502,7 @@ margin: 20px;
 						
 						if(test_endhourVal==""){
 							spantest_endhour.html("<img src='../img/error.png' style='width:16px'/>結束時間不可為空白").css('color','red');
-						}else if(test_starthourValLength>8){
+						}else if(test_endhourValLength>8){
 							spantest_endhour.html("<img src='../img/error.png' style='width:16px'/>結束時間欄位長度不可大於8碼").css('color','red');
 						}else if(!re.test(test_endhourVal)){
 							spantest_endhour.html("<img src='../img/error.png' style='width:16px'/>結束時間欄位格式不符").css('color','red');

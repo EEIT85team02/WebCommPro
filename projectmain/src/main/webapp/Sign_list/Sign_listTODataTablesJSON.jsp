@@ -291,6 +291,7 @@ h1 {
 					sl_nameUpdateValue = $(this).find('td:eq(1)');
 						if ( $(this).hasClass('selected') ) {
 				            $(this).removeClass('selected');
+				            deleteOrUpdateValue=null;
 				        }
 				        else {
 				            table.$('tr.selected').removeClass('selected');
