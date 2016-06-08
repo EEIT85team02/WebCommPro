@@ -1,0 +1,94 @@
+--time       ->可打'10:00'
+--timestamp  ->如果要打時間，一定得打'2016-05-05 10:00:00'
+--燈箱的資料不可有空格
+
+
+--Edu
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會', '台北市大安區復興南路一段', '026631666', 'Mary');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會', '桃園市中壢區中大路300號', '034257387', 'John');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會', '高雄市前金區中正四路211號', '079699885', 'Alean');
+
+--Class
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('EEIT85','Java程式設計師','羅秀燕','劉翰卿',1 );
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('EEIT70','Java程式設計師','羅秀燕','劉翰卿',1 );
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('MEME33','嵌入式軟體系統設計','羅秀燕','詹民進',2 );
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('MSIT05','全方位應用程式設計','羅秀燕','王芳芳',2 );
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('SESE59','網路系統整合工程師','羅秀燕','陳其元 ',3 );
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('MMMH25','網路多媒體設計師','羅秀燕','楊斐羽',3 );
+
+--Student
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝',77,'淡江大學電機系',1,'test1@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝1',77,'淡江大學電機系',1,'test2@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝2',77,'淡江大學電機系',1,'test3@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝3',77,'淡江大學電機系',1,'test4@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT85',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝4',77,'淡江大學電機系',1,'test5@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT70',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝5',77,'淡江大學電機系',1,'test6gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT70',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝6',77,'淡江大學電機系',1,'test7@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','EEIT70',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝7',77,'淡江大學電機系',1,'test8@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MEME33',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝8',77,'淡江大學電機系',1,'test9@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MEME33',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝9',77,'淡江大學電機系',1,'test10@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MEME33',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝10',77,'淡江大學電機系',1,'test11@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MSIT05',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝11',77,'淡江大學電機系',1,'test12@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MSIT05',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝12',77,'淡江大學電機系',1,'test14@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MSIT05',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝13',77,'淡江大學電機系',1,'test15@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','SESE59',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝14',77,'淡江大學電機系',1,'test16@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','SESE59',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝15',77,'淡江大學電機系',1,'test17@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MMMH25',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝16',77,'淡江大學電機系',1,'test18@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MMMH25',null,null,null,null);
+insert into student(stu_group,stu_note1,stu_seatno,stu_name,stu_age,stu_sch,stu_sex,stu_email,stu_pre,stu_implement,stu_testtime,stu_interview,stu_total,stu_workdate,stu_except,stu_final,stu_note2,class_id,pub_key,pri_key,cipher_text,log_pw) values (2,'備註1',20,'黃煜勝17',77,'淡江大學電機系',1,'test19@gmail.com',0,88.5,'2016-5-27',86,87.5,'2016-7-1',40000,1,'備註2','MMMH25',null,null,null,null);
+
+--Test_period
+insert into Test_period(test_starthour,test_endhour) values('10:00','12:00');
+insert into Test_period(test_starthour,test_endhour) values('12:00','15:00');
+insert into Test_period(test_starthour,test_endhour) values('14:00','16:00');
+insert into Test_period(test_starthour,test_endhour) values('16:00','18:00');
+
+ --Sign_list
+insert into Sign_list(sl_id, sl_name) values(0, 'No permission');
+insert into Sign_list(sl_id, sl_name) values(1, 'Employee');
+insert into Sign_list(sl_id, sl_name) values(2, 'Examiner');
+insert into Sign_list(sl_id, sl_name) values(3, 'Administrator');
+
+ --Employee
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7001','許貿誠', '10','IT_Department','test1@webcomme.com','3');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7002','黃煜勝', '20','Administrative_Department','test2@webcomme.com','3');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7003','王潔', '30','Finance_Department','test3@webcomme.com','2');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7004','張書豪', '40','Marketing_Department','test4@webcomme.com','2');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7005','林俊佑', '50','Planning_Department','test5@webcomme.com','1');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7006','王彥淳', '60','Sales_Department','test6@webcomme.com','1');
+
+ --Examiner_offday
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7006','2016-5-15', '2016-5-18','3','7001');
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7004','2016-5-16', '2016-5-20','10','7003');
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7001','2016-5-17', '2016-5-21','5','7002');
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7002','2016-5-18', '2016-5-25','3','7003');
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7003','2016-5-19', '2016-5-26','10','7004');
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7005','2016-5-12', '2016-5-27','5','7006');
+ --Test_interval
+insert into Test_interval (class_id, test_startdate, test_enddate) values ('EEIT85','2016-5-09', '2016-5-23');
+insert into Test_interval (class_id, test_startdate, test_enddate) values ('MEME33','2016-5-15', '2016-5-29');
+insert into Test_interval (class_id, test_startdate, test_enddate) values ('SESE59','2016-6-01', '2016-5-15');
+
+ --Test_Date
+--insert into Test_Date (class_id, test_hour_id, test_date, test_people, exam_people) values ('EEIT85', '1', '2016-05-09', '2', '0');
+--insert into Test_Date (class_id, test_hour_id, test_date, test_people, exam_people) values ('EEIT85', '2', '2016-05-10', '2', '0');
+--insert into Test_Date (class_id, test_hour_id, test_date, test_people, exam_people) values ('EEIT85', '3', '2016-05-10', '2', '0');
+
+ --Member_status
+insert into Member_status (sta_id, sta_name) values ('1','已核准');
+insert into Member_status (sta_id, sta_name) values ('2','未核准');
+insert into Member_status (sta_id, sta_name) values ('3','未報名');
+insert into Member_status (sta_id, sta_name) values ('4','已錄取');
+insert into Member_status (sta_id, sta_name) values ('5','未錄取');
+
+ --Stu_additional
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (4,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 10:30:00', '4', '7004', '2016-05-09 15:00:00');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (5,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 13:30:00', '2', '7003', '2016-05-09 10:00:00');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (6,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 16:30:00', '2', '7003', '2016-05-09 17:00:00');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (7,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '3', '7001', '2016-05-09 15:00:00');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (8,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 10:00:00', '4', '7004', '2016-05-09 12:00:00');
+
+ --Mail_template
+insert into Mail_template (mail_name, mail_text) values ('預約成功通知0', '預約成功0');
+insert into Mail_template (mail_name, mail_text) values ('預約成功通知1', '預約成功1');
+insert into Mail_template (mail_name, mail_text) values ('預約成功通知2', '預約成功2');
+insert into Mail_template (mail_name, mail_text) values ('預約成功通知3', '預約成功3');

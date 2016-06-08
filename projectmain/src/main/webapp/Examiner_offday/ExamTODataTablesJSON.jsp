@@ -325,10 +325,11 @@ margin: 20px;
 			//按下明細按鈕
 			$('#buttonDetail').click(function() {
 			console.log(deleteOrUpdateValue)
-				$.get('/projectmain/Examiner_offdayServlet',{"exam_id":deleteOrUpdateValue,"action":"getoneExam"},function(data){	
-					console.log(data)
-					$.each(JSON.parse(data),function(i,val){
-						var exam_id = val.exam_id;
+				$.getJSON('/projectmain/Examiner_offdayServlet',{"exam_id":deleteOrUpdateValue,"action":"getoneExam"},function(datas){	
+					console.log(datas)
+					$.each(datas,function(i,val){
+						var exam_id = i.exam_id;
+						console.log("exam_id=========="+exam_id);
 						var off_startdate = val.off_startdate;
 						var off_enddate = val.off_enddate;
 						var off_day = val.off_day;
@@ -337,52 +338,35 @@ margin: 20px;
 						var emp_name = val.emp_name;
 						var emp_mail = val.emp_mail;
 						var dep_name = val.dep_name;
-						var key = JSON.stringify(val.key);
-						
-							$.each(JSON.parse(key),function(i,exams){
-							
-							
-							console.log(key)
-								console.log(exams.stu_id)
-							
-							
-// 							var stu_id = val.stu_id;
-// 							var stu_name = val.stu_name;
-								
-								
-								
-								
-								
-		// 						var test_start = val.test_start;
-		// 						var test_end = val.test_end;
-								
-							
-							$.fancybox({//调用fancybox弹出层 
-	    			                'type':'ajax', 
-	    			                'href':'/projectmain/Examiner_offday/Exam_Detail.jsp?action=add&exam_id='+exam_id
-	    			                +'&off_startdate='+off_startdate
-	    			                +'&off_enddate='+off_enddate
-	    			                +'&off_day='+off_day
-	    			                +'&emp_job_id='+emp_job_id
-	    			                +'&emp_id='+emp_id
-	    			                +'&emp_name='+emp_name
-	    			                +'&emp_mail='+emp_mail
-	    			                +'&dep_name='+dep_name
+						var key = val.key;
+						//console.log("==============="+key);
+						$.each(key,function(a,value){
+						console.log("id================"+value.stu_id);
+						console.log("name=========="+value.stu_name);
+
+						 });	
+// 							$.fancybox({//调用fancybox弹出层 
+// 	    			                'type':'ajax', 
+// 	    			                'href':'/projectmain/Examiner_offday/Exam_Detail.jsp?action=add&exam_id='+exam_id
+// 	    			                +'&off_startdate='+off_startdate
+// 	    			                +'&off_enddate='+off_enddate
+// 	    			                +'&off_day='+off_day
+// 	    			                +'&emp_job_id='+emp_job_id
+// 	    			                +'&emp_id='+emp_id
+// 	    			                +'&emp_name='+emp_name
+// 	    			                +'&emp_mail='+emp_mail
+// 	    			                +'&dep_name='+dep_name
 // 	    			                +'&stu_id='+stu_id
 // 	    			                +'&stu_name='+stu_name
-	//     			                +'&test_start='+test_start
-	//     			                +'&test_end='+test_end
-	    			                
-	    			        });
-								    				
-	    				});
+// 	    			                +'&test_start='+test_start
+// 	    			                +'&test_end='+test_end
+	    			        
+						});						    				
+	    				
 					});
-						
 				});
-	    		
 			});
-			    
-		} );//load函數結束
+			//load函數結束
 		
 		
 	</script>
