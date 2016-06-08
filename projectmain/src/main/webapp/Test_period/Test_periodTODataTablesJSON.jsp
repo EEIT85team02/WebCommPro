@@ -10,16 +10,23 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link href="../css/lobibox.min.css" rel="stylesheet">
-<script src="../js/lobibox.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+<script src="../js/lobibox.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta name="author" content="">
 <style>
+.ui-widget-overlay.custom-overlay
+{
+    background-color: black;
+    background-image: none;
+    opacity: 0.6;
+    z-index: 1040;    
+}
 .Main_Content {
 	margin-top: 100px;
 }
@@ -257,6 +264,12 @@ margin: 20px;
 			      height: 400,
 			      width: 700,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 			        "send": insertTpFormToCreateTable,
 			        Cancel: function() {
@@ -296,6 +309,12 @@ margin: 20px;
 			      height: 400,
 			      width: 700,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 				        "send": updateTpFormToCreateTable,
 				        Cancel: function() {
@@ -375,6 +394,12 @@ margin: 20px;
 			        height: 200,
 			        width: 240,
 			        modal: true,
+			        open: function() {
+				          $('.ui-widget-overlay').addClass('custom-overlay');
+				      },
+				      close: function() {
+				          $('.ui-widget-overlay').removeClass('custom-overlay');
+				      },
 			        buttons: {
 			          "確認": deleteTpFormToCreateTable ,
 			          "放棄": function() {

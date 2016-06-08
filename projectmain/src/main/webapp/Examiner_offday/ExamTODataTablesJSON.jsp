@@ -26,7 +26,13 @@
 	<script src='/projectmain/js/fancybox/jquery.fancybox.pack.js'></script> 
 	
 <style>
-
+.ui-widget-overlay.custom-overlay
+{
+    background-color: black;
+    background-image: none;
+    opacity: 0.6;
+    z-index: 1040;    
+}
 .Main_Content {
 	margin-top: 100px;
 }
@@ -246,6 +252,12 @@ margin: 20px;
 			      height: 650,
 			      width: 400,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 				        "send": updateExamFormToCreateTable,
 				        Cancel: function() {

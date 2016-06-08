@@ -12,9 +12,9 @@
 <title>Insert title here</title>
 <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="../css/lobibox.min.css" rel="stylesheet">
-<script src="../js/lobibox.min.js"></script>
 <script src="../js/jquery-1.12.3.min.js"></script>
 <script src="../js/bootstrap/bootstrap.min.js"></script>
+<script src="../js/lobibox.min.js"></script>
 <script
 	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet"

@@ -25,6 +25,13 @@
 	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="../js/lobibox.min.js"></script>
 <style>
+.ui-widget-overlay.custom-overlay
+{
+    background-color: black;
+    background-image: none;
+    opacity: 0.6;
+    z-index: 1040;    
+}
 .Main_Content {
 	margin-top: 100px;
 }
@@ -248,6 +255,12 @@ h1 {
 			      height: 500,
 			      width: 400,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 			        "send": insertMailFormToCreateTable,
 			        Cancel: function() {
@@ -301,6 +314,12 @@ h1 {
 			      height: 650,
 			      width: 400,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 				        "send": updateMailFormToCreateTable,
 				        Cancel: function() {
@@ -369,6 +388,12 @@ h1 {
 			        height: 200,
 			        width: 240,
 			        modal: true,
+			        open: function() {
+				          $('.ui-widget-overlay').addClass('custom-overlay');
+				      },
+				      close: function() {
+				          $('.ui-widget-overlay').removeClass('custom-overlay');
+				      },
 			        buttons: {
 			          "確認": deleteMailFormToCreateTable ,
 			          "放棄": function() {
