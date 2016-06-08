@@ -128,8 +128,10 @@ public class Examiner_offdayService {
 //				map.put("stu_name",examVO.getEmpVO().getStu_additionalVO().iterator().next().getStudentVO().getStu_name());
 //				map.put("test_start",examVO.getEmpVO().getStu_additionalVO().iterator().next().getTest_start().toString());
 //				map.put("test_end",examVO.getEmpVO().getStu_additionalVO().iterator().next().getTest_end().toString());
-				
+
 				exams.add(map);
+				
+				
 				jsonString = JSONValue.toJSONString(exams);
 				return jsonString;
 		}

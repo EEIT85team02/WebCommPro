@@ -1,24 +1,28 @@
 package SendMail.model;
 
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+
 import Student.model.StudentDAO;
 import Student.model.StudentVO;
 
 public class DecryptService {
 	public static byte[] decryptBase64String(String encryptedBase64String){
-		byte[] decrytedBase64StringToByteArray=org.apache.tomcat.util.codec.binary.Base64.decodeBase64(encryptedBase64String);	
+		byte[] decrytedBase64StringToByteArray=Base64.getDecoder().decode(encryptedBase64String);	
 	
 		return decrytedBase64StringToByteArray;
 		
 	}
 	
-	public static boolean compareIfMatchThePassword(String emailAccountInput,String passwordinput){
+	public static StudentVO compareIfMatchThePassword(String emailAccountInput,String passwordinput) throws NoSuchAlgorithmException{
 		StudentDAO stdao = new StudentDAO();
 		StudentVO stvo=stdao.getStudentByEmail(emailAccountInput);
 		boolean match=true;
 		
 		byte[] DateBasebyteArray=stvo.getLog_pw();
 		
-		byte[] passwordinputTobyteArray=decryptBase64String(passwordinput);
+		EncryptService es= new EncryptService();
+		byte[] passwordinputTobyteArray=es.MD5Encrypt(passwordinput);
 		for(int i =0,max=passwordinputTobyteArray.length;i<max;i++){
 			System.out.println(DateBasebyteArray[i]);
 			System.out.println(passwordinputTobyteArray[i]);
@@ -30,16 +34,16 @@ public class DecryptService {
 			}
 		}
 		if(match==true){
-			return true;
+			return stvo;
 		}else{
-			return false;
+			return null;
 		}
 		
 		
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(compareIfMatchThePassword("llluuuyyy123@gmail.com","CHxuejI-b0FbvWto7E7vAg"));
+	public static void main(String[] args) throws NoSuchAlgorithmException {
+		System.out.println(compareIfMatchThePassword("eeit85team02@gmail.com","YRfFF_0wmUNnsbbHJj3dCw"));
 
 	}
 

@@ -1,6 +1,7 @@
 package Member_status.model;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -52,10 +53,11 @@ public class Member_statusService {
 		Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 		for(Stu_additionalVO stuVO:set){
 			List stuVOg = new LinkedList();
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日 h:mm a");
 			stuVOg.add(stuVO.getStudentVO().getStu_name().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_email().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_id().toString());
-			stuVOg.add(stuVO.getStu_applytime().toString());
+			stuVOg.add(sdf.format(stuVO.getStu_applytime()).toString());
 			stuVOg.add(stuVO.getMember_statusVO().getSta_name().toString());
 			stuVOg.add("<button type='button' class='btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+stuVO.getStudentVO().getStu_id().toString()+" >送信</button>");
 			stuVOg.add("<button type='button' class='btn-warning' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+stuVO.getStu_add_id().toString()+" >取消核准</button>");
@@ -98,10 +100,11 @@ public class Member_statusService {
 		Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 		for(Stu_additionalVO stuVO:set){
 			List stuVOg = new LinkedList();
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日 h:mm a");
 			stuVOg.add(stuVO.getStudentVO().getStu_name().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_email().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_id().toString());
-			stuVOg.add(stuVO.getStu_applytime().toString());
+			stuVOg.add(sdf.format(stuVO.getStu_applytime()).toString());
 			stuVOg.add(stuVO.getMember_statusVO().getSta_name().toString());
 			stuVOg.add("<button type='button' class='btn-success' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+stuVO.getStu_add_id().toString()+" >核准</button>");
 			stuVOg.add(stuVO.getStu_add_id().toString());
@@ -145,7 +148,7 @@ public class Member_statusService {
 			stuVOg.add(stuVO.getStudentVO().getStu_name().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_email().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_id().toString());
-			stuVOg.add(stuVO.getStu_applytime().toString());
+//			stuVOg.add(stuVO.getStu_applytime().toString());
 			stuVOg.add(stuVO.getMember_statusVO().getSta_name().toString());
 			memsc.add(stuVOg);
 		}
@@ -184,10 +187,11 @@ public class Member_statusService {
 		Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 		for(Stu_additionalVO stuVO:set){
 			List stuVOg = new LinkedList();
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日 h:mm a");
 			stuVOg.add(stuVO.getStudentVO().getStu_name().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_email().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_id().toString());
-			stuVOg.add(stuVO.getStu_applytime().toString());
+			stuVOg.add(sdf.format(stuVO.getStu_applytime()).toString());
 			stuVOg.add(stuVO.getMember_statusVO().getSta_name().toString());
 			memsc.add(stuVOg);
 		}
@@ -226,10 +230,11 @@ public class Member_statusService {
 		Set<Stu_additionalVO> set = memVO.getStu_additionalVO();
 		for(Stu_additionalVO stuVO:set){
 			List stuVOg = new LinkedList();
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy年MM月dd日 h:mm a");
 			stuVOg.add(stuVO.getStudentVO().getStu_name().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_email().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_id().toString());
-			stuVOg.add(stuVO.getStu_applytime().toString());
+			stuVOg.add(sdf.format(stuVO.getStu_applytime()).toString());
 			stuVOg.add(stuVO.getMember_statusVO().getSta_name().toString());
 			memsc.add(stuVOg);
 		}

@@ -18,7 +18,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class EncryptService{
 
-	public static String GenerateRandomString() throws NoSuchAlgorithmException{
+	public  String GenerateRandomString() throws NoSuchAlgorithmException{
 
 		SecureRandom sr=new SecureRandom();
 
@@ -28,7 +28,7 @@ public class EncryptService{
 		return encryptedString;
 		
 	}
-	public static byte[] MD5Encrypt(String msg) throws NoSuchAlgorithmException{
+	public  byte[] MD5Encrypt(String msg) throws NoSuchAlgorithmException{
 
 
 	        MessageDigest md = MessageDigest.getInstance("MD5");
@@ -36,8 +36,14 @@ public class EncryptService{
 
 			return messageDigest;	
 	}
+	public  String Base64Encrypt(byte[] encrtyptedByteArray){
+		
+		String toString=Base64.getUrlEncoder().encodeToString(encrtyptedByteArray);
+		return toString;
+		
+	}
 	
-	public static byte[] AESEncrypt(String msg) throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
+	public  byte[] AESEncrypt(String msg) throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
 
 
 		System.out.println("原始字串："+new String(msg));

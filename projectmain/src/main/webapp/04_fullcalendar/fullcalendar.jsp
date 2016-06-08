@@ -14,10 +14,12 @@
 	<jsp:include page="/references/fullcalendar.jsp" />
 
 <title>Insert title here</title>
+<link href="../css/lobibox.min.css" rel="stylesheet">
 </head>
 	<!-- 匯入js -->
 	<jsp:include page="/references/head_resources_js.jsp" />
 <body>
+  <script src="../js/lobibox.min.js"></script>
 	<div class="container">
 	<!-- 匯入功能表列 -->
 	<jsp:include page="/references/navigator.jsp" />
@@ -89,7 +91,11 @@ $(document).ready(function(){
 		
 		// --9. 註冊【點擊日期】事件
 		dayClick : function() {
-				alert('a day has been clicked!');
+// 				alert('a day has been clicked!');
+			Lobibox.alert("warning", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		    			{
+		    			msg: "a day has been clicked!"
+		    			});
 			},
 		
 		// --10.註冊【點擊事件標頭】事件

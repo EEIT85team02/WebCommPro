@@ -32,9 +32,12 @@ public class Stu_additionalService {
 	public void updateStum(Integer stu_id,Integer stu_group,String stu_note1,Integer stu_seatno,
 			String stu_name,String stu_sch,Integer stu_sex,Integer stu_age,String stu_email,
 			Integer stu_pre,Double stu_implement,Timestamp stu_testtime,Double stu_interview,
+
 			Double stu_total,Timestamp stu_workdate,Double stu_except,Integer stu_final,
+
 			String stu_note2,byte[] pub_key,byte[] pri_key,byte[] cipher_text,byte[] log_pw,
 			String class_id) throws SQLException {
+
 		StudentVO stuVO = new StudentVO();
 		stuVO.setStu_id(stu_id);
 		stuVO.setStu_group(stu_group);
@@ -58,11 +61,9 @@ public class Stu_additionalService {
 		stuVO.setPri_key(pri_key);
 		stuVO.setCipher_text(cipher_text);
 		stuVO.setLog_pw(log_pw);
-		
 		ClassVO classVO = new ClassVO();
 		classVO.setClass_id(class_id);
 		stuVO.setClassVO(classVO);
-		
 		dao.update(stuVO);
 	}
 	
@@ -144,7 +145,6 @@ public class Stu_additionalService {
 		List stusc=new LinkedList();
 		List<Stu_additionalVO> stu_addList =dao.findByStu_id(stu_id);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		EncryptService es=new EncryptService();
 		System.out.println("-----------*****"+stu_addList);
 			Map<String,String> map = new HashMap<String,String>();
 			map.put("stu_add_id",stu_addList.get(0).getStu_add_id().toString());
@@ -182,10 +182,13 @@ public class Stu_additionalService {
 			map.put("class_id",stu_addList.get(0).getStudentVO().getClassVO().getClass_id());
 
 			map.put("class_name",stu_addList.get(0).getStudentVO().getClassVO().getClass_name());
-//			map.put("pub_key",stu_addList.get(0).getStudentVO().getPub_key().toString());
-//			map.put("pri_key",stu_addList.get(0).getStudentVO().getPri_key().toString());
-//			map.put("cipher_text",stu_addList.get(0).getStudentVO().getCipher_text().toString());
-//			map.put("log_pw",stu_addList.get(0).getStudentVO().getLog_pw().toString());
+			EncryptService es=new EncryptService();
+			
+			//將byte[]都先使用base64編碼
+//			map.put("pub_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPub_key()));
+//			map.put("pri_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPri_key()));
+//			map.put("cipher_text",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getCipher_text()));
+//			map.put("log_pw",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getLog_pw()));
 			
 //			map.put("pub_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPub_key()));
 //			map.put("pri_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPri_key()));

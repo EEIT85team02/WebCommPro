@@ -1,3 +1,10 @@
+
+--drop database demo;
+--create database demo
+--go
+--use demo
+--go
+
 drop table Mail_template;
 drop table Stu_additional;
 drop table Member_status;
@@ -124,7 +131,7 @@ create table Member_status
 
  create table Stu_additional
 (
-  stu_add_id       int            identity primary key ,
+   stu_add_id       int            identity primary key ,
   stu_id           int   foreign key references  Student(stu_id) NOT NULL, 
   test_start       date      NOT NULL,
   test_end         date      NOT NULL,
@@ -168,5 +175,14 @@ create table Fullcalendar
   overlap          int            NOT NULL DEFAULT 1 CHECK (overlap = 1 OR overlap = 0),
   rendering        nvarchar(10)   NOT NULL
 );
+
+ /*create table Talk
+(
+  talkId       int   primary key  NOT NULL  identity,  
+  talkName     nvarchar(10)  NOT NULL ,          
+  talkGender   nvarchar(10)  NOT NULL,
+  talkChose    int  NOT NULL,
+  talkContent  nvarchar(100)  NOT NULL
+); */ 
 
  

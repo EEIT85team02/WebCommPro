@@ -205,8 +205,9 @@ public class EncryptIdentificationIdService{
 	    PKCS8EncodedKeySpec privKeySpec = new PKCS8EncodedKeySpec(
 	    		privatekeydb);
 	    PrivateKey privateKeydecode = keyFactory.generatePrivate(privKeySpec);
+	    DecryptService ds=new DecryptService();
 	    
-	    byte[] bb=org.apache.tomcat.util.codec.binary.Base64.decodeBase64(ciphertextString);
+	    byte[] bb=ds.decryptBase64String(ciphertextString);
 	    
 //	    System.out.println("----------------------");
 //	    for(int k=0,max2=bb.length;k<max2;k++){
@@ -220,7 +221,7 @@ public class EncryptIdentificationIdService{
 	    byte[] g=new byte[ciphertextdb.length];
 	    byte[] f=new byte[bb.length];	   
 	    System.out.println("ciphertextdb.length=="+ciphertextdb.length);
-	    System.out.println("new BASE64Decoder().decodeBuffer(ciphertextString).length="+bb.length);
+	    System.out.println(bb.length);
 	    System.out.println(ciphertextdb);
 	    System.out.println(bb);
 	    

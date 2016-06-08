@@ -5,20 +5,28 @@
 <html lang="zh-tw">
 <head>
 <title>Test_interval Page</title>
-
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
+<link href="../css/lobibox.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+<script src="../js/lobibox.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <meta name="description" content="">
 <meta name="author" content="">
 <style>
+.ui-widget-overlay.custom-overlay
+{
+    background-color: black;
+    background-image: none;
+    opacity: 0.6;
+    z-index: 1040;    
+}
 .Main_Content {
 	margin-top: 100px;
 }
@@ -106,9 +114,9 @@ margin: 20px;
 					</table>
 
 					<!------------------點選新增班級表單區塊內容----------------------------- -->
-					<button id="buttonAdd">新增</button>
-					<button id="buttonUpdate">編輯</button>
-					<button id="buttonDelete">刪除</button>
+					<button id="buttonAdd" class="ui-button ui-corner-all ui-widget">新增</button>
+					<button id="buttonUpdate" class="ui-button ui-corner-all ui-widget">編輯</button>
+					<button id="buttonDelete" class="ui-button ui-corner-all ui-widget">刪除</button>
 				</div>
 			</div>
 		</div>
@@ -293,6 +301,12 @@ margin: 20px;
 			      height: 550,
 			      width: 700,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 			        "send": insertTiFormToCreateTable,
 			        Cancel: function() {
@@ -355,6 +369,12 @@ margin: 20px;
 			      height: 650,
 			      width: 700,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 				        "send": updateTiFormToCreateTable,
 				        Cancel: function() {
@@ -379,9 +399,13 @@ margin: 20px;
 			  //綁定click事件使用者編輯icon，開啟dialog 表單TiUpdateForm
 			 	$('#buttonUpdate').click( function () {
 			 		
-			    	if(deleteOrUpdateValue==null){
+			    	if(table.rows('.selected').data().length == 0){
 			    		console.log(deleteOrUpdateValue);
-			    		alert("請先選取要編輯的資料");
+// 			    		alert("請先選取要編輯的資料");
+			   Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "請先選取要編輯的資料"
+	 			    			});
 			    	}else{
 			    		$.getJSON('Test_intervalServletJSON.do', {"action":"getoneTi","test_interval_id":deleteOrUpdateValue}, function(datas) {
 							
@@ -433,6 +457,12 @@ margin: 20px;
 			        height: 200,
 			        width: 240,
 			        modal: true,
+			        open: function() {
+				          $('.ui-widget-overlay').addClass('custom-overlay');
+				      },
+				      close: function() {
+				          $('.ui-widget-overlay').removeClass('custom-overlay');
+				      },
 			        buttons: {
 			          "確認": deleteTiFormToCreateTable ,
 			          "放棄": function() {
@@ -455,7 +485,11 @@ margin: 20px;
 			   	$('#buttonDelete').click( function () {
 			    	
 			    	if(deleteOrUpdateValue==null){
-			    		alert("請先選取要刪除的資料");
+// 			    		alert("請先選取要刪除的資料");
+			   Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "請先選取要刪除的資料"
+	 			    			});
 			    	}else{
 			    		TiDeleteConfirm.dialog( "open" );
 			    	}
@@ -538,11 +572,19 @@ margin: 20px;
 					console.log(checktest_startdate);
 					console.log(checktest_enddate);
 					if(checkclass_id && checktest_startdate && checktest_enddate){
-						alert("資料皆正確，送出中");
+// 						alert("資料皆正確，送出中");
+         Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "資料皆正確，送出中"
+	 			    			});
 						return true;
 					}
 					else {
-						alert("資料錯誤，請檢查欄位長度格式是否正確");
+// 						alert("資料錯誤，請檢查欄位長度格式是否正確");
+          Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "資料錯誤，請檢查欄位長度格式是否正確"
+	 			    			});
 						return false;
 					} 
 				}
@@ -600,11 +642,19 @@ margin: 20px;
 					console.log(checkutest_startdate);
 					console.log(checkutest_enddate);
 					if(checkutest_startdate && checkutest_enddate){
-						alert("資料皆正確，送出中");
+// 						alert("資料皆正確，送出中");
+       Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "資料皆正確，送出中"
+	 			    			});
 						return true;
 					}
 					else {
-						alert("資料錯誤，請檢查欄位長度格式是否正確");
+// 						alert("資料錯誤，請檢查欄位長度格式是否正確");
+		Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "資料錯誤，請檢查欄位長度格式是否正確"
+	 			    			});
 						return false;
 					} 
 				}

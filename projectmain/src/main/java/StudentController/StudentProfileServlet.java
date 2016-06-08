@@ -56,18 +56,17 @@ public class StudentProfileServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		Object LoginOK = request.getSession().getAttribute("LoginOK");
 		String action = request.getParameter("action");
-//		String action ="stu_add";
-		System.out.println(request.getParameter("stu_id"));
 		
+		if(LoginOK != null){
+			
+		System.out.println("LoginOK-----StudentProfileServlet:"+LoginOK);
+			
+		request.setCharacterEncoding("UTF-8");
+		System.out.println("stu_id-------------"+request.getParameter("stu_id"));
+		}
 		try {
-			//Integer stu_id = 4;
-			
-			System.out.println("------1------");
-			
-			
-	
 			if("stu_add".equals(action)){
 				Integer stu_id = Integer.parseInt(request.getParameter("stu_id"));
 				System.out.println(stu_id);
@@ -76,14 +75,23 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(stu_id);
 				String stu_AllListJSON = stu_AllSvc.getStuByStu_id(stu_id);
 				//String stu_AllListJSON = stu_AllSvc.getStuByStu_add_id(stu_add_id);
-				
+				request.getSession().setAttribute("stu_AllListJSON", stu_AllListJSON);
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().write(stu_AllListJSON);
+				
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+
+		/*}else{
+			
+			System.out.println("StudentProfileServlet---------------/Login.jsp");
+			response.sendRedirect(
+				      response.encodeRedirectURL( "Login.jsp" ));
+			return;*/
 		
 		/***************************初始連結呼叫StudentProfileServlet轉址至StumTODataTablesJSON.jsp********************/	
 		if ("initStumTODataTablesJSON".equals(action)) {
@@ -157,12 +165,15 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(stu_pre);
 				stu_implement =Double.valueOf(request.getParameter("stu_implement"));
 				System.out.println(stu_implement);
+
 				stu_testtime = Timestamp.valueOf(request.getParameter("stu_testtime"));
 				System.out.println(stu_testtime);
+
 				stu_interview = Double.valueOf(request.getParameter("stu_interview"));
 				System.out.println(stu_interview);
 				stu_total = Double.valueOf(request.getParameter("stu_total"));
 				System.out.println(stu_total);
+
 				stu_workdate = Timestamp.valueOf(request.getParameter("stu_workdate"));
 				System.out.println(stu_workdate);
 				stu_except =Double.valueOf(request.getParameter("stu_except"));
@@ -173,15 +184,6 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(stu_note2);
 				class_id = request.getParameter("class_id");
 				System.out.println(class_id);
-				pub_key = request.getParameter("pub_key").getBytes();
-				System.out.println(pub_key);
-				pri_key = request.getParameter("pri_key").getBytes();
-				System.out.println(pri_key);
-				cipher_text = request.getParameter("cipher_text").getBytes();
-				System.out.println(cipher_text);
-				log_pw = request.getParameter("log_pw").getBytes();
-				System.out.println(log_pw);
-				
 				DecryptService ds=new DecryptService();
 				
 				//使用base64編碼解密
@@ -193,6 +195,7 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(cipher_text);
 				log_pw = ds.decryptBase64String(request.getParameter("log_pw"));
 				System.out.println(log_pw);
+				
 				
 				if (!Msgs.isEmpty()) {
 					out.write("failed");
@@ -221,7 +224,7 @@ public class StudentProfileServlet extends HttpServlet {
 		}
 		
 
-	}
 	
-
+	
+}
 }

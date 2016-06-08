@@ -10,10 +10,12 @@
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<link href="/projectmain/css/lobibox.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="/projectmain/js/lobibox.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <meta name="description" content="">
@@ -24,7 +26,13 @@
 	<script src='/projectmain/js/fancybox/jquery.fancybox.pack.js'></script> 
 	
 <style>
-
+.ui-widget-overlay.custom-overlay
+{
+    background-color: black;
+    background-image: none;
+    opacity: 0.6;
+    z-index: 1040;    
+}
 .Main_Content {
 	margin-top: 100px;
 }
@@ -124,8 +132,10 @@ margin: 20px;
 							</tr>
 						</tfoot>
 					</table>
-					<button id="buttonDetail">明細</button>
-					<button id="buttonUpdate">編輯代理人</button>
+
+					<button id="buttonDetail" class="ui-button ui-corner-all ui-widget">明細</button>
+					<button id="buttonUpdate" class="ui-button ui-corner-all ui-widget">編輯代理人</button>
+
 				</div>
 			</div>
 		</div>
@@ -200,7 +210,6 @@ margin: 20px;
 		    	  "sPaginationType":"full_numbers",
 		    	  
 		    	} );
-		    	
 		    	 //新增dialog區塊變數宣告
 			var form,ExamUpdateForm,
 			 	
@@ -231,6 +240,7 @@ margin: 20px;
 					console.log(deleteOrUpdateValue);
 						if ( $(this).hasClass('selected') ) {
 				            $(this).removeClass('selected');
+				            deleteOrUpdateValue=null;
 				        }
 				        else {
 				            table.$('tr.selected').removeClass('selected');
@@ -244,6 +254,12 @@ margin: 20px;
 			      height: 650,
 			      width: 400,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 				        "send": updateExamFormToCreateTable,
 				        Cancel: function() {
@@ -266,7 +282,12 @@ margin: 20px;
 			 	$('#buttonUpdate').click( function () {
 			    	if(deleteOrUpdateValue==null){
 			    		console.log(deleteOrUpdateValue);
-			    		alert("請先選取要編輯的資料");
+// 			    		alert("請先選取要編輯的資料");
+			    		Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "請先選取要編輯的資料"
+	 			    			});
+		    
 			    	}else{
 			    		uexam_id.val(exam_idUpdateValue.text());
 		    			uemp_id.val(emp_idUpdateValue.text());
@@ -318,9 +339,14 @@ margin: 20px;
 
 			//按下明細按鈕
 			$('#buttonDetail').click(function() {
+
 			if(deleteOrUpdateValue==null){
 			   console.log(deleteOrUpdateValue);
-			   alert("請先選取要瀏覽的資料");
+// 			   alert("請先選取要瀏覽的資料");
+			   Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "請先選取要編輯的資料"
+	 			    			});
 			}else{
 			    console.log(deleteOrUpdateValue)
 				$.get('/projectmain/Examiner_offdayServlet',{"exam_id":deleteOrUpdateValue,"action":"getoneExam"},function(data){	
@@ -329,6 +355,7 @@ margin: 20px;
 					console.log("dd="+data)
 						var exam_id = val.exam_id;
 						console.log("ee="+exam_id)
+
 						var off_startdate = val.off_startdate;
 						var off_enddate = val.off_enddate;
 						var off_day = val.off_day;
@@ -337,6 +364,7 @@ margin: 20px;
 						var emp_name = val.emp_name;
 						var emp_mail = val.emp_mail;
 						var dep_name = val.dep_name;
+
 						
 						console.log("sss="+val.key)
 						if(val.key!=undefined){
@@ -416,13 +444,14 @@ margin: 20px;
 	    			         });      
 						}	
 						
+
 					});
-						
 				});
+
 	    		}
+		
 			});
-			    
-		} );//load函數結束
+		});	//load函數結束
 		
 		
 	</script>
