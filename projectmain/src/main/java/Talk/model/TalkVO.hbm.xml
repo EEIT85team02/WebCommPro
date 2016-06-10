@@ -3,16 +3,17 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="Talk.model.TalkVO" table="Talk" >
+    <class name="Talk.model.TalkVO" table="Talk">
         
         <id name="talkId" column="talkId">
             <generator class="identity"/>
         </id>
-        
+        <property name="talkTitle" column="talkTitle" />
         <property name="talkName" column="talkName" />
-        <property name="talkGender" column="talkGender" />
         <property name="talkChose" column="talkChose" />
-        <property name="talkContent" column="talkContent" />
+        <property name="talkContent" column="talkContent"/>
+        <property name="retalkContent" column="retalkContent" />
+     	<property name="talkDate" column="talkDate" />
     </class>
 </hibernate-mapping>
 
