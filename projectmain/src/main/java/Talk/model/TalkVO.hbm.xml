@@ -11,9 +11,12 @@
         <property name="talkTitle" column="talkTitle" />
         <property name="talkName" column="talkName" />
         <property name="talkChose" column="talkChose" />
+        <property name="talkMail" column="talkMail" />
         <property name="talkContent" column="talkContent"/>
         <property name="retalkContent" column="retalkContent" />
      	<property name="talkDate" column="talkDate" />
+     	<property name="retalkDate" column="retalkDate" />
+     	<property name="talkstatus" column="talkstatus" />
     </class>
 </hibernate-mapping>
 

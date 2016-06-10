@@ -84,10 +84,11 @@ margin: 20px;
 								<th class="col-md-1 col-xs-1">訊息代號</th>
 								<th class="col-md-2 col-xs-2">留言主題</th>
 								<th class="col-md-1 col-xs-1">訪客姓名</th>
-								<th class="col-md-1 col-xs-1">#</th>
-								<th class="col-md-3 col-xs-3">留言內容</th>
+								<th class="col-md-1 col-xs-1">悄悄話</th>
+								<th class="col-md-2 col-xs-2">留言內容</th>
 								<th class="col-md-2 col-xs-2">回復內容</th>
 								<th class="col-md-2 col-xs-2">留言時間</th>
+								<th class="col-md-1 col-xs-1">回覆狀態</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -103,7 +104,7 @@ margin: 20px;
 			</div>
 		</div>
 	</div>
-	<!-- 設定修改FORM表單區塊dialog -->
+	<!-- 設定修改FORM表單區塊dialog(留言板回覆) -->
 	<div id="dialog-updateForm" title="回覆留言">
 		<form name="TalkUpdateForm">
 			<fieldset>
@@ -114,8 +115,33 @@ margin: 20px;
 					
 				<div class="divForm">
 					<label for="retalkContent" class="labelTitle">回覆留言:</label> 
-					<input type="text" name="retalkContent" size="20" id="uretalkContent" autocomplete="off"> 
+					<textarea rows="10" cols="50" name="retalkContent" id="uretalkContent"></textarea> 
 				</div>
+				
+				<input type="hidden" name="action" value="updateTalk">
+				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
+			</fieldset>
+		</form>
+	</div>
+	<!-- 設定修改FORM表單區塊dialog(留言板回覆FOR悄悄話-MAIL) -->
+	<div id="dialog-mailForm" title="回覆留言(mail)">
+		<form name="TalkMailForm">
+			<fieldset>
+				<div class="divForm">	
+					<label for="talkId" class="labelTitle">訊息代號:</label> 
+					<input type="text" name="talkId" size="20" id="mtalkId" readOnly >
+				</div>
+				
+				<div class="divForm">
+					<label for="talkMail" class="labelTitle">mail:</label> 
+					<input type="text" name="talkMail" size="20" id="mtalkMail" readOnly >
+				</div>
+					
+				<div class="divForm">
+					<label for="retalkContent" class="labelTitle">回覆留言:</label> 
+					<textarea rows="10" cols="50" name="retalkContent" id="mretalkContent"></textarea> 
+				</div>
+				
 				<input type="hidden" name="action" value="updateTalk">
 				<input type="submit" tabindex="-1" style="position: absolute; top: -1000px">
 			</fieldset>
@@ -151,19 +177,24 @@ margin: 20px;
 		    	} );
 			//定義table資料來源json，與畫面顯示------>結束
 			//新增dialog區塊變數宣告
-			var form,TalkUpdateForm,
+			var form,TalkUpdateForm,TalkMailForm,
 			 	
 				utalkId = $('#utalkId'),
 			  	uretalkContent = $('#uretalkContent');
+			
+				mtalkId = $('#mtalkId'),
+				mtalkMail = $('#mtalkMail');
+				mretalkContent = $('#mretalkContent');
 			  	
 				//點選tr資料，更換class類別,若被選取則更新為未選取，反之選取
 				$('#TalkTable tbody').on( 'click', 'tr', function () {
 					$(this).toggleClass('selected');
 				    });
+				//設定回覆訊息的dialog
 				TalkUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
-			      height: 400,
-			      width: 500,
+			      height: 600,
+			      width: 800,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -181,11 +212,41 @@ margin: 20px;
 			        form[ 0 ].reset();
 			      }
 			    });
+				//設定回覆訊息的dialog for mail
+				TalkMailForm = $( "#dialog-mailForm" ).dialog({
+				      autoOpen: false,
+				      height: 600,
+				      width: 800,
+				      modal: true,
+				      open: function() {
+				          $('.ui-widget-overlay').addClass('custom-overlay');
+				      },
+				      close: function() {
+				          $('.ui-widget-overlay').removeClass('custom-overlay');
+				      },
+				      buttons: {
+					        "send": mailTalkFormToCreateTable,
+					        Cancel: function() {
+					        	TalkMailForm.dialog( "close" );
+					        }
+					      },
+				      close: function() {
+				        form[ 0 ].reset();
+				      }
+				    });
+				
 			    //設定表單寬度視窗資料結束
 			  	form = TalkUpdateForm.find( "form" ).on( "submit", function( event ) {
 			      event.preventDefault();
 			      updateTalkFormToCreateTable();
 			    });
+			    
+			  	form = TalkMailForm.find( "form" ).on( "submit", function( event ) {
+				      event.preventDefault();
+				      mailTalkFormToCreateTable();
+				    });
+			  	
+			  	
 				//table.rows('.selected').data().length->指的是，有幾筆列資料，套用得Class為selected
 			 	$('#buttonUpdate').click( function () {
 			 		if(table.rows('.selected').data().length == 0){
@@ -200,19 +261,33 @@ margin: 20px;
 	 			    	});
 			    	}else if(table.rows('.selected').data().length == 1){
 			    		ClickUpdateValue = $('tr.selected').find('td:eq(0)').text();
+			    		indexValue = $('tr.selected').find('td:eq(3)').text();
+			    		console.log("indexValue======"+indexValue);
 				 		$.getJSON('TalkServletJSON.do', {"action":"getoneTalk","talkId":ClickUpdateValue}, function(datas) {
 							console.log(datas);
 							$.each(datas, function(i, Talks) {
 								var talkId = Talks.talkId;
 		 						var retalkContent = Talks.retalkContent;
+		 						var talkMail = Talks.talkMail;
+		 						//將資料放到form表單中
 								utalkId.val(talkId);
 								uretalkContent.val(retalkContent);
+								mtalkId.val(talkId);
+								mretalkContent.val(retalkContent);
+								mtalkMail.val(talkMail);
 							});
 						});
-				 		TalkUpdateForm.dialog( "open" );
+				 		//判斷是否為悄悄話，若是則開啟mail表單;若否開啟普通表單
+				 		if(indexValue=="是"){
+				 			TalkMailForm.dialog( "open" );
+				 		}
+				 		
+				 		else{
+				 			TalkUpdateForm.dialog( "open" );
+				 		}
 			    	}
 			 	} );
-			    //點選修改鍵，所執行的方法
+			    //點選修改鍵，所執行的方法 for 非悄悄話
 			    function updateTalkFormToCreateTable() {
 				     var Updatedatas = $('form[name="TalkUpdateForm"]').serialize();
 				 	
@@ -224,6 +299,23 @@ margin: 20px;
 				 		else if(data=="資料更新成功"){
 				 			table.ajax.reload();//重新載入data tables的資料 ?? 須改為直接抓取原更新表單的值回填回去表格
 				 			TalkUpdateForm.dialog( "close" );
+				 		}
+				 	});
+				 		
+				 	sel=[];
+				}
+			  //點選修改鍵，所執行的方法 for 悄悄話     【改這邊】
+			  
+			    function mailTalkFormToCreateTable() {
+				     var Updatedatas = $('form[name="TalkMailForm"]').serialize();
+				 	$.get('TalkServletJSON.do',Updatedatas,function(data){
+				 		console.log(data);
+				 		if(data=="資料更新失敗"){
+				 			alert("aaaa");
+				 		}
+				 		else if(data=="資料更新成功"){
+				 			table.ajax.reload();//重新載入data tables的資料 ?? 須改為直接抓取原更新表單的值回填回去表格
+				 			TalkMailForm.dialog( "close" );
 				 		}
 				 	});
 				 		

@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html>
 <head>
-<title>Edu_Page</title>
+<title>留言板</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
@@ -18,7 +19,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>留言板</title>
+
 <style>
 body{
 	font-size:16px;
@@ -63,8 +64,13 @@ table td {
 	border:3px solid black;
 }
 #openFrom{
-	margin-top:10px;
+	margin-top: 10px;	
 }
+.ui-state-error {
+	padding: .3em;
+}
+
+
 </style>
 
 </head>
@@ -94,7 +100,7 @@ table td {
 		
 	
 	</div>
-	<center><button id="openFrom">我要留言</button></center>
+	<button id="openFrom">我要留言</button>
 </div>	
 	
 	
@@ -116,6 +122,7 @@ table td {
 				<label class="title">悄悄話:</label> 
 				<input type="radio" name="talkChose" value="1" >是
 				<input type="radio" name="talkChose" value="0" checked>否
+				<input type="text" id="talkMail" name="talkMail" size="30" placeholder="請輸入MAIL" autocomplete="off" disabled="disabled">
 			</div>
 			<div class="divinput">
 				<label class="title">留言內容:</label> 
@@ -134,8 +141,18 @@ $(function(){
 	
 	var talkTitle=$('#talkTitle');
 	var talkName=$('#talkName');
+	var talkMail=$('#talkMail');
 	var talkContent=$('#talkContent');
-	var allColumm = $( [] ).add( talkTitle ).add( talkName ).add( talkContent );
+	
+	
+	var checktalkTitle = null;
+	var checktalkName = null;
+	var checktalkContent = null;
+	var checktalkMail = true;
+	
+	
+	
+	var allColumm = $( [] ).add( talkTitle ).add( talkName ).add( talkMail ).add( talkContent );
 	
 	var talkChose=$('#talkChose');
 	var page =$('#content');
@@ -173,7 +190,8 @@ $(function(){
     });//diolog程式部分結束
     
   //點選新增鍵，所執行的方法
-    function insert() {	      
+    function insert() {	
+    	if ( checkInsertForm() ) {
 		var Insertdatas = $('form[name="talk"]').serialize();
  		$.post('TalkServletJSON.do',Insertdatas,function(data){
  			if(data=="資料新增失敗"){
@@ -183,20 +201,23 @@ $(function(){
 			    });
  			}
  			else if(data=="資料新增成功"){
- 				Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
-		    	{
-		    		msg: "資料新增成功"
-		    	});
- 			    page.empty();
- 				$.getJSON('TalkServletJSON.do', {"action":"getALLTalk"}, function(datas) {
+ 				page.empty();
+ 			   $.getJSON('TalkServletJSON.do', {"action":"getALLTalk"}, function(datas) {
  					console.log("datas======="+datas);
  					$.each(datas, function(i, Talks) {
  						var talkChose = Talks.talkChose;
+ 						var talkstatus = Talks.talkstatus;
  						var talkTitle = Talks.talkTitle;
  						var talkName = Talks.talkName;
  						var talkDate = Talks.talkDate;
+ 						if(talkstatus==0){
+ 							var retalkDate = "";
+ 						}else{
+ 							var retalkDate ="版主於時間("+Talks.retalkDate+")中回覆:";
+ 						}
  						var talkContent = Talks.talkContent;
  						var retalkContent = Talks.retalkContent;
+ 						
  						var val = "悄悄話";
  						if (talkChose == 1){
  							page.append( 
@@ -207,7 +228,7 @@ $(function(){
  							          "</tr>"+
  							          "<tr>" +
  							          "<td class='tdtitle'>"+ val +"</td>" +
- 							          "<td class='tdcontent'>[" + talkName +"]-於時間(" + talkDate +")時說到"+"</td>" +
+ 							          "<td class='tdcontent'>[" + val +"]-於時間(" + talkDate +")時提問"+"</td>" +
  							          "</tr>"+
  							          "<tr>" +
  							          "<td class='tdtitle'>"+ val +"</td>" +
@@ -215,7 +236,7 @@ $(function(){
  							          "</tr>"+
  							          "<tr>" +
  							          "<td class='tdtitle'>"+ val +"</td>" +
- 							          "<td class='tdcontent'>" + val +"</td>" +
+ 							          "<td class='tdcontent'>" + retalkDate +"[" +val +"]</td>" +
  							          "</tr>"+
  							          "</table>");
  						}else if(talkChose == 0){
@@ -227,7 +248,7 @@ $(function(){
  							          "</tr>"+
  							          "<tr>" +
  							          "<td class='tdtitle'>暱稱:</td>" +
- 							          "<td class='tdcontent'>[" + talkName +"]-於時間(" + talkDate +")時說到"+"</td>" +
+ 							          "<td class='tdcontent'>[" + talkName +"]-於時間(" + talkDate +")時提問"+"</td>" +
  							          "</tr>"+
  							          "<tr>" +
  							          "<td class='tdtitle'>留言內容:</td>" +
@@ -235,7 +256,7 @@ $(function(){
  							          "</tr>"+
  							          "<tr>" +
  							          "<td class='tdtitle'>版主回覆:</td>" +
- 							          "<td class='tdcontent'>" + retalkContent +"</td>" +
+ 							          "<td class='tdcontent'>"+ retalkDate + "["+retalkContent +"]</td>" +
  							          "</tr>"+
  							          "</table>");
  							
@@ -245,9 +266,11 @@ $(function(){
  					});
  				});
 
+
  				InsertForm.dialog( "close" );//將新增form表單關閉
 	 			}
  			});
+    	}
  	} 
     
     
@@ -257,11 +280,18 @@ $(function(){
 		console.log("datas======="+datas);
 		$.each(datas, function(i, Talks) {
 			var talkChose = Talks.talkChose;
+			var talkstatus = Talks.talkstatus;
 			var talkTitle = Talks.talkTitle;
 			var talkName = Talks.talkName;
 			var talkDate = Talks.talkDate;
+			if(talkstatus==0){
+				var retalkDate = "";
+			}else{
+				var retalkDate ="版主於時間("+Talks.retalkDate+")中回覆:";
+			}
 			var talkContent = Talks.talkContent;
 			var retalkContent = Talks.retalkContent;
+			
 			var val = "悄悄話";
 			if (talkChose == 1){
 				page.append( 
@@ -272,7 +302,7 @@ $(function(){
 				          "</tr>"+
 				          "<tr>" +
 				          "<td class='tdtitle'>"+ val +"</td>" +
-				          "<td class='tdcontent'>[" + talkName +"]-於時間(" + talkDate +")時說到"+"</td>" +
+				          "<td class='tdcontent'>[" + val +"]-於時間(" + talkDate +")時提問"+"</td>" +
 				          "</tr>"+
 				          "<tr>" +
 				          "<td class='tdtitle'>"+ val +"</td>" +
@@ -280,7 +310,7 @@ $(function(){
 				          "</tr>"+
 				          "<tr>" +
 				          "<td class='tdtitle'>"+ val +"</td>" +
-				          "<td class='tdcontent'>" + val +"</td>" +
+				          "<td class='tdcontent'>" + retalkDate +"[" +val +"]</td>" +
 				          "</tr>"+
 				          "</table>");
 			}else if(talkChose == 0){
@@ -292,7 +322,7 @@ $(function(){
 				          "</tr>"+
 				          "<tr>" +
 				          "<td class='tdtitle'>暱稱:</td>" +
-				          "<td class='tdcontent'>[" + talkName +"]-於時間(" + talkDate +")時說到"+"</td>" +
+				          "<td class='tdcontent'>[" + talkName +"]-於時間(" + talkDate +")時提問"+"</td>" +
 				          "</tr>"+
 				          "<tr>" +
 				          "<td class='tdtitle'>留言內容:</td>" +
@@ -300,7 +330,7 @@ $(function(){
 				          "</tr>"+
 				          "<tr>" +
 				          "<td class='tdtitle'>版主回覆:</td>" +
-				          "<td class='tdcontent'>" + retalkContent +"</td>" +
+				          "<td class='tdcontent'>"+ retalkDate + "["+retalkContent +"]</td>" +
 				          "</tr>"+
 				          "</table>");
 				
@@ -310,6 +340,115 @@ $(function(){
 		});
 	});
 
+    
+    var radioValue = $(':radio[name="talkChose"]');
+    radioValue.change(function(){
+    	if ($(this).val()==1){
+    		talkMail.prop("disabled",false);
+    	}else{
+    		talkMail.prop("disabled",true).val("").removeClass("ui-state-error");
+    		
+    	}
+     });
+    
+
+
+
+  //新增表格欄位判斷
+	//ckecktalkTitle欄位滑鼠離開後的判斷驗證
+	talkTitle.blur(fchecktalkTitle);
+	function fchecktalkTitle(){
+		checktalkTitle=false;
+		var talkTitleVal=talkTitle.val();
+		var talkTitleValLength = talkTitleVal.length;
+		if(talkTitleVal=="" ||talkTitleValLength>20){
+			talkTitle.addClass("ui-state-error");
+		}else{
+			talkTitle.removeClass("ui-state-error");
+			checktalkTitle=true;
+		}
+	}
+	talkName.blur(fchecktalkName);
+	function fchecktalkName(){
+		checktalkName=false;
+		var talkNameVal=talkName.val();
+		var talkNameValLength = talkNameVal.length;
+		if(talkNameVal=="" ||talkNameValLength>10){
+			talkName.addClass("ui-state-error");
+		}else{
+			talkName.removeClass("ui-state-error");
+			checktalkName=true;
+		}
+	}
+	talkContent.blur(fchecktalkContent);
+	function fchecktalkContent(){
+		checktalkContent=false;
+		var talkContentVal=talkContent.val();
+		var talkContentValLength = talkContentVal.length;
+		if(talkContentVal=="" ||talkContentValLength>100){
+			talkContent.addClass("ui-state-error");
+		}else{
+			talkContent.removeClass("ui-state-error");
+			checktalkContent=true;
+		}
+	}
+	
+	talkMail.blur(fchecktalkMail);
+	function fchecktalkMail(){
+		//checktalkMail=false;
+		var talkChoseVal=$(':checked').val();
+		var talkMailVal = talkMail.val();
+		var talkMailValLength = talkMailVal.length;
+		var re =/^.+@.+\..{2,3}$/;
+		if(talkChoseVal ==1){
+			console.log(talkMailVal);
+			if(talkMailVal=="" || talkMailValLength>30 ){
+				checktalkMail=false;
+				talkMail.addClass("ui-state-error");
+			}else if(!re.test(talkMailVal)){
+				checktalkMail=false;
+				talkMail.addClass("ui-state-error");
+			}else{
+				checktalkMail=true;
+				talkMail.removeClass("ui-state-error");
+			}
+		}else{
+			checktalkMail=true;
+			talkMail.removeClass("ui-state-error");
+		}
+		
+		
+		
+	}
+	
+	
+	
+	//送出新增表單全部判斷
+	function checkInsertForm(){
+		fchecktalkTitle();
+		fchecktalkName();
+		fchecktalkContent();
+		fchecktalkMail();
+		if(checktalkTitle && checktalkName && checktalkContent && checktalkMail){
+			Lobibox.alert("success", 
+		    {
+		    	msg: "資料皆正確，送出中"
+		    });
+			return true;
+		}
+		else {
+			Lobibox.alert("error",
+		    {
+		    	msg: "資料錯誤，請檢查欄位長度格式是否正確"
+		   });
+			return false;
+		} 
+	}
+    
+    
+    
+    
+    
 	
 })//load();
 </script>

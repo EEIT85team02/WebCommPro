@@ -2,6 +2,7 @@ package Talk.model;
 
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -18,7 +19,7 @@ public class TalkDAO implements ITalkDAO {
 		private static final String GET_ALL_STMT = 
 			"from TalkVO order by talkId";
 		private static final String UPDATE_STMT=
-			"UPDATE TalkVO SET  retalkContent=:retalkContent  WHERE talkId =:talkId";
+			"UPDATE TalkVO SET  retalkContent=:retalkContent,retalkDate=:retalkDate,talkstatus=:talkstatus  WHERE talkId =:talkId";
 		public void insert(TalkVO talk) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
@@ -30,12 +31,14 @@ public class TalkDAO implements ITalkDAO {
 				throw ex;
 			}
 		}
-		public void update(Integer talkId,String retalkContent) throws SQLException{
+		public void update(Integer talkId,String retalkContent,Timestamp retalkDate,Integer talkstatus) throws SQLException{
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {
 				session.beginTransaction();
 				Query query = session.createQuery(UPDATE_STMT);
 				query.setParameter("retalkContent", retalkContent);
+				query.setParameter("retalkDate", retalkDate);
+				query.setParameter("talkstatus", talkstatus);
 				query.setParameter("talkId", talkId);
 				query.executeUpdate();
 				session.getTransaction().commit();
@@ -99,7 +102,7 @@ public class TalkDAO implements ITalkDAO {
 			java.sql.Timestamp today= new java.sql.Timestamp(new java.util.Date().getTime());
 			ITalkDAO dao = new TalkDAO();
 			try {
-				dao.update(6,"123");
+				dao.update(3,"",today,1);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

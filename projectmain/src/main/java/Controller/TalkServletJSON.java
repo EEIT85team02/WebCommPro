@@ -2,6 +2,7 @@ package Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.exception.ConstraintViolationException;
 
-import Edu.model.EduService;
 import Talk.model.TalkService;
 
 @WebServlet("/Talk/TalkServletJSON.do")
@@ -38,15 +38,20 @@ public class TalkServletJSON extends HttpServlet {
 			String talkTitle= null;
 			String talkName= null;
 			Integer talkChose= null;
+			String talkMail = null;
 			String	talkContent= null;
 			String	retalkContent= "尚未回覆";
 			java.sql.Timestamp talkDate=null;
+			java.sql.Timestamp retalkDate=null;
+			Integer talkstatus=0;
 			try {
 				talkTitle = request.getParameter("talkTitle");
 				talkName = request.getParameter("talkName");
 				talkChose = Integer.parseInt(request.getParameter("talkChose"));
+				talkMail = request.getParameter("talkMail");
 				talkContent = request.getParameter("talkContent");
 				talkDate= new java.sql.Timestamp(new java.util.Date().getTime());
+				retalkDate= new java.sql.Timestamp(new java.util.Date().getTime());
 				if (talkTitle == null || talkTitle.trim().length() == 0) {
 					talkTitle="無標題";
 				}
@@ -57,7 +62,7 @@ public class TalkServletJSON extends HttpServlet {
 					talkContent ="無填寫內容";
 				}
 					talkSvc = new TalkService();
-					talkSvc.insertTalk(talkTitle,talkName,talkChose,talkContent,retalkContent,talkDate);
+					talkSvc.insertTalk(talkTitle,talkName,talkChose,talkMail,talkContent,retalkContent,talkDate,retalkDate,talkstatus);
 					out.write("資料新增成功");
 					return;
 			} 
@@ -68,12 +73,15 @@ public class TalkServletJSON extends HttpServlet {
 		if ("updateTalk".equals(action)) {
 			Integer talkId= null;
 			String	retalkContent= null;
+			Timestamp retalkDate= null;
+			Integer talkstatus=1;
 			try {
 				
 				talkId = Integer.parseInt(request.getParameter("talkId"));
 				retalkContent = request.getParameter("retalkContent");
+				retalkDate= new java.sql.Timestamp(new java.util.Date().getTime());
 				talkSvc = new TalkService();
-				talkSvc.updateTalk(talkId,retalkContent);
+				talkSvc.updateTalk(talkId,retalkContent,retalkDate,talkstatus);
 				out.write("資料更新成功");
 				return;
 			} 
