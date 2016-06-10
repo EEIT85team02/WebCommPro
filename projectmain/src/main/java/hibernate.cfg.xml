@@ -70,7 +70,7 @@
 		<mapping resource="Examiner_offday/model/Examiner_offday.hbm.xml" />
 
 <!-- 		<mapping resource="com/fullcalendar/model/calendar.hbm.xml"/> -->
-<!-- 		<mapping resource="Talk/model/TalkVO.hbm.xml" /> -->
+		<mapping resource="Talk/model/TalkVO.hbm.xml" />
 
 	</session-factory>
 	
