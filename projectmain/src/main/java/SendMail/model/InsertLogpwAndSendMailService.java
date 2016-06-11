@@ -14,11 +14,20 @@ import Student.model.StudentVO;
 public class InsertLogpwAndSendMailService {
 	
 	
-	public static void insertKeysCiphertextAndSendMail(String inputClassId) throws NoSuchAlgorithmException, SQLException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
+	public static void insertKeysCiphertextAndSendMail(String inputClassId,String path) throws NoSuchAlgorithmException, SQLException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
+//		請將這幾句程式加入servlet中
+//		String serverName=req.getServerName();
+//		int ServerPort=req.getServerPort();
+//		String contextPath=req.getContextPath();
+//		String path=serverName+":"+ServerPort+contextPath;
+
+		
+		
 		EncryptIdentificationIdService ls=new EncryptIdentificationIdService();
 		//輸入班級呼叫insertLogpwAndReturnAllStudentVO方法 ，方法裡會產生一組密碼存入資料庫
 		//並把此班級的學生用StudentVO一筆一筆裝入陣列傳回來
-
+		
+		
 		StudentVO[] st=ls.insertPubkeyPrivateKeyTextAndReturnAllStudentVO(inputClassId);
 	
 		String[] emailStringArray=new String[st.length];		
@@ -42,7 +51,7 @@ public class InsertLogpwAndSendMailService {
 		}
 		//將送信所需的資料pass給送信的方法
 		SendMailService sms=new SendMailService();
-		sms.SendlinkMailToStudent(emailStringArray, nameStringArray,publickeyArray,privatekeyArray,ciphertextArray,inputClassId);
+		sms.SendlinkMailToStudent(emailStringArray, nameStringArray,publickeyArray,privatekeyArray,ciphertextArray,inputClassId,path);
 		
 	}
 
@@ -55,7 +64,7 @@ public class InsertLogpwAndSendMailService {
 	
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, SQLException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
-		insertKeysCiphertextAndSendMail("EEIT85");
+//		insertKeysCiphertextAndSendMail("EEIT85");
 		
 		
 		//			EncryptIdentificationIdService ls=new EncryptIdentificationIdService();
