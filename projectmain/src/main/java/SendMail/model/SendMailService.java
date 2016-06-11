@@ -277,7 +277,7 @@ public static void SendPasswordMailToStudent(String emailString){
 	   
 
 	   System.out.println(emailString+"寄送email結束.");	  
-	  } catch (MessagingException|RuntimeException e) {
+	  } catch (MessagingException e) {
 		  throw new RuntimeException(e);
 	  }
 }

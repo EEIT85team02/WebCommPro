@@ -36,12 +36,7 @@ public class EncryptService{
 
 			return messageDigest;	
 	}
-	public  String Base64Encrypt(byte[] encrtyptedByteArray){
-		
-		String toString=Base64.getUrlEncoder().encodeToString(encrtyptedByteArray);
-		return toString;
-		
-	}
+
 	
 	public  byte[] AESEncrypt(String msg) throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
 
