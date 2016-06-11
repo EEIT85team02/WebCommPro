@@ -44,12 +44,19 @@ public class SendSelectedMail_controller extends HttpServlet {
 		res.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = res.getWriter();
 		
+//		String serverName=req.getServerName();
+//		int serverPort=req.getServerPort();
+//		String contextPath=req.getContextPath();
+//		String path = serverName+":"+serverPort+contextPath;
+		
+		
 		String json= req.getParameter("key");
 		System.out.println("進controller的json"+json);
 		
 		
 		JSONArray ja = new JSONArray(json);
-
+		
+		
 		
 		
 		
