@@ -232,9 +232,12 @@ create table Talk
   talkTitle    nvarchar(20)  NOT NULL , 
   talkName     nvarchar(10)  NOT NULL ,  
   talkChose    int  NOT NULL,
+  talkMail     nvarchar(30),
   talkContent  nvarchar(100)  NOT NULL,
   retalkContent  nvarchar(100)  ,
-  talkDate     timestamp      NOT NULL 
+  talkDate     timestamp      NOT NULL,
+  retalkDate   timestamp, 
+  talkstatus    int  NOT NULL    
 );  
 
 

@@ -24,18 +24,21 @@ public class TalkService {
 	
 	
 	public void insertTalk(String talkTitle,String talkName, Integer talkChose,
-			String talkContent,String retalkContent,Timestamp talkDate) throws SQLException {
+			String talkMail,String talkContent,String retalkContent,Timestamp talkDate,Timestamp retalkDate,Integer talkstatus) throws SQLException {
 		TalkVO talk = new TalkVO();
 		talk.setTalkTitle(talkTitle);
 		talk.setTalkName(talkName);
 		talk.setTalkChose(talkChose);
+		talk.setTalkMail(talkMail);
 		talk.setTalkContent(talkContent);
 		talk.setRetalkContent(retalkContent);
 		talk.setTalkDate(talkDate);
+		talk.setRetalkDate(retalkDate);
+		talk.setTalkstatus(talkstatus);
 		dao.insert(talk);
 	}
-	public void updateTalk(Integer talkId,String retalkContent) throws SQLException {
-		dao.update(talkId,retalkContent);
+	public void updateTalk(Integer talkId,String retalkContent,Timestamp retalkDate,Integer talkstatus) throws SQLException {
+		dao.update(talkId,retalkContent,retalkDate,talkstatus);
 	}
 	
 	public void deleteTalk(Integer talkId) throws SQLException{
@@ -67,9 +70,12 @@ public class TalkService {
 			map.put("talkTitle",talk.getTalkTitle());
 			map.put("talkName",talk.getTalkName());
 			map.put("talkChose",talk.getTalkChose().toString());
+			map.put("talkMail",talk.getTalkMail());
 			map.put("talkContent",talk.getTalkContent());
 			map.put("retalkContent",talk.getRetalkContent());
 			map.put("talkDate",talk.getTalkDate().toString());
+			map.put("retalkDate",talk.getRetalkDate().toString());
+			map.put("talkstatus",talk.getTalkstatus().toString());
 			talks.add(map);
 		}
 		jsonString = JSONValue.toJSONString(talks);
@@ -80,15 +86,38 @@ public class TalkService {
 		List<TalkVO> list=dao.getAll();
 		List<List<String>> talkVO = new LinkedList<List<String>>();
 		String jsonValue = null;
+		String talkChose=null;
+		String talkstatus=null;
 		for(TalkVO talk :list){
 			List<String> detail = new ArrayList<String>();
-			detail.add(talk.getTalkId().toString());
-			detail.add(talk.getTalkTitle());
-			detail.add(talk.getTalkName());
-			detail.add(talk.getTalkChose().toString());
-			detail.add(talk.getTalkContent());
-			detail.add(talk.getRetalkContent());
-			detail.add(talk.getTalkDate().toString());
+			String talkId =talk.getTalkId().toString();
+			String talkTitle =talk.getTalkTitle();
+			String talkName =talk.getTalkName();
+			Integer talkChoseValue =talk.getTalkChose();
+			System.out.println(talkChoseValue);
+			if (talkChoseValue==1){
+				talkChose="是";
+			}else {
+				talkChose="否";
+			}
+			String talkContent =talk.getTalkContent();
+			String retalkContent =talk.getRetalkContent();
+			String talkDate =talk.getTalkDate().toString();
+			Integer talkstatusValue =talk.getTalkstatus();
+			if (talkstatusValue == 1){
+				talkstatus ="已回覆";
+			}else{
+				talkstatus ="未回覆";
+			}
+			
+			detail.add(talkId);
+			detail.add(talkTitle);
+			detail.add(talkName);
+			detail.add(talkChose);
+			detail.add(talkContent);
+			detail.add(retalkContent);
+			detail.add(talkDate);
+			detail.add(talkstatus);
 			talkVO.add(detail);
 		}
 		Map<String,List<List<String>>> mapJSON=new HashMap<String,List<List<String>>>();
@@ -104,7 +133,7 @@ public class TalkService {
 			Map<String,String> map = new HashMap<String,String>();
 			map.put("talkId",talk.getTalkId().toString());
 			map.put("retalkContent",talk.getRetalkContent());
-			
+			map.put("talkMail",talk.getTalkMail());
 			talks.add(map);
 			jsonString = JSONValue.toJSONString(talks);
 			return jsonString;
