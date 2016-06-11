@@ -1,23 +1,18 @@
 package Controller;
 
 import java.io.IOException;
+import java.rmi.ServerException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.hibernate.ObjectDeletedException;
 import org.hibernate.exception.ConstraintViolationException;
-
-import com.microsoft.sqlserver.jdbc.SQLServerException;
-
 import Edu.model.*;
 import Class.model.*;
 
@@ -136,7 +131,7 @@ public class ClassServlet extends HttpServlet {
 				failureMsg.forward(request, response);
 				return;
 			}
-			catch(SQLServerException e){
+			catch(ServerException e){
 				System.out.println("資料庫錯誤sql");
 				errorMsgs.put("edu_idMsg", "教育代號外來鍵不存在");
 				request.setAttribute("errorMsgs", errorMsgs);
@@ -284,7 +279,7 @@ public class ClassServlet extends HttpServlet {
 				failureMsg.forward(request, response);
 				return;
 			}
-			catch(SQLServerException e){
+			catch(ServerException e){
 				System.out.println("資料庫錯誤sql");
 				errorMsgs.put("edu_idMsg", "教育代號外來鍵不存在");
 				request.setAttribute("errorMsgs", errorMsgs);

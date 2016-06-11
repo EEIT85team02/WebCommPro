@@ -21,7 +21,6 @@ import org.hibernate.exception.ConstraintViolationException;
 import Class.model.ClassService;
 import Test_period.model.Test_periodService;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 
 
@@ -173,10 +172,6 @@ public class Test_periodServletJSON extends HttpServlet {
 					return;
 				}
 			} 
-			catch (SQLServerException e) {
-				out.write("資料更新失敗");
-				return;
-			}
 			catch (Exception e) {
 				out.write("資料更新失敗");
 				return;

@@ -16,15 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.exception.ConstraintViolationException;
-import org.json.simple.JSONValue;
-
-import Edu.model.EduService;
-import Edu.model.EduVO;
 import Mail_template.model.Mail_templateService;
-import Mail_template.model.Mail_templateVO;
-import Sign_list.model.Sign_listService;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
+
 
 @WebServlet("/Mail_template/MailServletJSON.do")
 public class MailServletJSON extends HttpServlet {
@@ -155,12 +149,7 @@ public class MailServletJSON extends HttpServlet {
 						out.write("資料更新成功");
 						return;
 					}
-				} 
-				catch (SQLServerException e) {
-					out.write("資料更新失敗");
-					return;
-				}
-				catch (Exception e) {
+				}catch (Exception e) {
 					out.write("資料更新失敗");
 					return;
 				}

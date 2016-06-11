@@ -2,25 +2,14 @@ package SendMail.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.catalina.User;
 import org.json.*;
-
 import SendMail.model.SendMailService;
-import Student.model.StudentVO;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 
 @WebServlet("/SendMail/SendMail1.do")
