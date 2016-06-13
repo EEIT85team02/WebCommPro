@@ -13,7 +13,11 @@
 
  		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/webcomm</property> 
 		<property name="hibernate.connection.username">sa</property>
-		<property name="hibernate.connection.password">P@ssw0rd</property> 
+		<property name="hibernate.connection.password">P@ssw0rd</property>  -->
+		
+<!--		<property name="hibernate.connection.username">sa1</property>-->
+<!--		<property name="hibernate.connection.password">P@sswOrd</property> -->
+
 <!--  		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/demo01</property>  -->
 <!-- 		<property name="hibernate.connection.username">sa</property> -->
 <!-- 		<property name="hibernate.connection.password">sa123456</property>  -->
