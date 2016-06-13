@@ -15,11 +15,12 @@
  		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/webcomm</property> 
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">p@ssw0rd</property>
+		<property name="hibernate.default_schema">SA</property>
 		<property name="hibernate.c3p0.min_size">5</property>
 		<property name="hibernate.c3p0.max_size">20</property>
 		<property name="hibernate.c3p0.timeout">1800</property>
 		<property name="hibernate.c3p0.max_statements">50</property>
-<!-- 		<property name="hibernate.default_schema">DB2</property> -->
+		
 <!-- 		<property name="hibernate.c3p0.min_size">5</property> -->
 <!-- 		<property name="hibernate.c3p0.max_size">20</property> -->
 <!-- 		<property name="hibernate.c3p0.timeout">1800</property> -->
@@ -54,7 +55,6 @@
 		<mapping resource="Member_test/model/Member_test.hbm.xml" />
 		<mapping resource="Mail_template/model/Mail_template.hbm.xml" />
 		<mapping resource="Examiner_offday/model/Examiner_offday.hbm.xml" />
-
 		<mapping resource="com/fullcalendar/model/calendar.hbm.xml"/>
 		<mapping resource="Talk/model/TalkVO.hbm.xml" />
 
