@@ -194,6 +194,12 @@
 			<artifactId>db2jcc</artifactId>
 			<version>10.5</version>
 		</dependency>
+		<!--取db2.jar -->
+		<dependency>
+			<groupId>com.iiiedu</groupId>
+			<artifactId>db2jcc4</artifactId>
+			<version>1.0</version>
+		</dependency>
 
 
 	</dependencies>
