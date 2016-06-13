@@ -368,10 +368,10 @@ margin: 20px;
 						
 						console.log("sss="+val.key)
 						if(val.key!=undefined){
-// 							console.log("cc="+val.key)
+							console.log("cc="+val.key)
 							var key = JSON.stringify(val.key);
-// 							console.log("bb1="+key)
-// 							console.log("ee="+exam_id)
+							console.log("bb1="+key)
+							console.log("ee="+exam_id)
 		
 							for(var i=0;i<val.key.length;i++){
 // 								console.log("aa="+val.key[i].stu_id)
@@ -410,9 +410,9 @@ margin: 20px;
 			    			                +'&test_end='+test_end
 			    			                
 			    			        });
-								}else{
+								}else{console.log("8888");
 									$.fancybox({//调用fancybox弹出层 
-								
+										
 		    			                'type':'ajax', 
 		    			                'href':'/projectmain/Examiner_offday/Exam_Detail.jsp?action=add&exam_id='+exam_id
 		    			                +'&off_startdate='+off_startdate
