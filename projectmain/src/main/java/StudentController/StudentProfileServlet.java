@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import com.google.gson.Gson;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
+
 
 import Class.model.ClassVO;
 import Edu.model.EduService;
@@ -207,7 +207,7 @@ public class StudentProfileServlet extends HttpServlet {
 					return;
 				}
 			} 
-			catch (SQLServerException e) {
+			catch (SQLException e) {
 				out.write("資料更新失敗");
 				return;
 			}

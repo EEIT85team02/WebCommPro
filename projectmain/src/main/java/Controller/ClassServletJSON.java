@@ -15,14 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.exception.ConstraintViolationException;
 
-
-import org.json.JSONArray;
-
-import com.microsoft.sqlserver.jdbc.SQLServerException;
-
 import Class.model.ClassService;
 import Class.model.ClassVO;
-import Edu.model.EduService;
+
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 
 

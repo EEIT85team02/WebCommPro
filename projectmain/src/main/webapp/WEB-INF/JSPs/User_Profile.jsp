@@ -21,7 +21,7 @@ response.flushBuffer();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Freelancer</title>
     
         
     <!-- jQuery -->
@@ -129,7 +129,7 @@ response.flushBuffer();
                 <div class="col-lg-12">
                     <img class="img-responsive" src="${pageContext.request.contextPath}/img/profile.png" alt="">
                     <div class="intro-text">
-                        <span class="name">Start Bootstrap</span>
+                        <span class="name">Welcome Webcomm </span>
                         <hr class="star-light">
                         <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
                     </div>

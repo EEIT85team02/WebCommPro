@@ -155,6 +155,7 @@ create table Mail_template
 
  create table Examiner_offday
 (
+  exam_id          int            primary key  NOT NULL  identity, 
   emp_id           nvarchar(10)	  foreign key references  Employee(emp_id) NOT NULL, 
   off_startdate    date      NOT NULL,       
   off_enddate      date      NOT NULL, 
