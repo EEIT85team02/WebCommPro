@@ -17,6 +17,13 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <style>
+.ui-widget-overlay.custom-overlay
+{
+    background-color: black;
+    background-image: none;
+    opacity: 0.6;
+    z-index: 1040;    
+}
 .Main_Content {
 	margin-top: 100px;
 }
@@ -244,6 +251,12 @@ div#users-contain table td, div#users-contain table th {
 		      height: 600,
 		      width: 400,
 		      modal: true,
+		      open: function() {
+		          $('.ui-widget-overlay').addClass('custom-overlay');
+		      },
+		      close: function() {
+		          $('.ui-widget-overlay').removeClass('custom-overlay');
+		      },
 		      buttons: {
 		        "send": addData,
 		        Cancel: function() {
@@ -287,6 +300,12 @@ div#users-contain table td, div#users-contain table th {
 		      height: 650,
 		      width: 400,
 		      modal: true,
+		      open: function() {
+		          $('.ui-widget-overlay').addClass('custom-overlay');
+		      },
+		      close: function() {
+		          $('.ui-widget-overlay').removeClass('custom-overlay');
+		      },
 		      buttons: {
 			        "send": addData,
 			        Cancel: function() {

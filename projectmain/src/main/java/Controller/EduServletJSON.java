@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.rmi.ServerException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +18,7 @@ import org.hibernate.exception.ConstraintViolationException;
 
 import Edu.model.EduService;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
+
 
 
 @WebServlet({"/Edu/EduServletJSON.do","/Class/EduServletJSON.do"})
@@ -203,10 +204,6 @@ public class EduServletJSON extends HttpServlet {
 					return;
 				}
 			} 
-			catch (SQLServerException e) {
-				out.write("資料更新失敗");
-				return;
-			}
 			catch (Exception e) {
 				out.write("資料更新失敗");
 				return;

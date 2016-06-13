@@ -66,14 +66,14 @@ public class EncryptIdentificationIdService{
     		   Integer stu_pre=stuList.get(i).getStu_pre();
     		   String stu_sch=stuList.get(i).getStu_sch();
     		   Integer stu_sex=stuList.get(i).getStu_sex();         	   
-    		   java.sql.Date stu_testtime=stuList.get(i).getStu_testtime();         	   
+    		   Timestamp stu_testtime=stuList.get(i).getStu_testtime();         	   
     		   Integer stu_age=stuList.get(i).getStu_age();
     		   Double stu_except=stuList.get(i).getStu_except();
     		   int stu_group=stuList.get(i).getStu_group();
     		   double stu_implement=stuList.get(i).getStu_implement();
     		   double stu_interview=stuList.get(i).getStu_interview();
     		   double stu_total=stuList.get(i).getStu_total();
-    		   java.sql.Date stu_workdate=stuList.get(i).getStu_workdate();
+    		   Timestamp stu_workdate=stuList.get(i).getStu_workdate();
     		   Integer stu_seatno =stuList.get(i).getStu_seatno();
     		   String class_id1 =stuList.get(i).getClassVO().getClass_id();
     		   byte[] log_pw=stuList.get(i).getLog_pw();
@@ -205,8 +205,9 @@ public class EncryptIdentificationIdService{
 	    PKCS8EncodedKeySpec privKeySpec = new PKCS8EncodedKeySpec(
 	    		privatekeydb);
 	    PrivateKey privateKeydecode = keyFactory.generatePrivate(privKeySpec);
+	    DecryptService ds=new DecryptService();
 	    
-	    byte[] bb=org.apache.tomcat.util.codec.binary.Base64.decodeBase64(ciphertextString);
+	    byte[] bb=ds.decryptBase64String(ciphertextString);
 	    
 //	    System.out.println("----------------------");
 //	    for(int k=0,max2=bb.length;k<max2;k++){
@@ -220,7 +221,7 @@ public class EncryptIdentificationIdService{
 	    byte[] g=new byte[ciphertextdb.length];
 	    byte[] f=new byte[bb.length];	   
 	    System.out.println("ciphertextdb.length=="+ciphertextdb.length);
-	    System.out.println("new BASE64Decoder().decodeBuffer(ciphertextString).length="+bb.length);
+	    System.out.println(bb.length);
 	    System.out.println(ciphertextdb);
 	    System.out.println(bb);
 	    

@@ -1,5 +1,6 @@
 package com.login.servlet;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -36,7 +37,7 @@ public class LoginServletGoogle extends HttpServlet {
 		// 把target從session挖出來 再存起來
 		
 		//service = request.getSession().getAttribute("target")==null?service:request.getSession().getAttribute("target").toString();
-		service = "//LoginForwarded.do";
+		service = "/LoginForwarded.do";
 		// 錯誤碼
 		System.out.println("Error Code 授權失敗,或是還未Google驗證"+"\n"
 				+"授權代碼:"+request.getParameter("code")+"\n"
@@ -45,6 +46,34 @@ public class LoginServletGoogle extends HttpServlet {
 		// -- 如果登入失敗 不會拿到code
 		if(request.getParameter("code")==null || request.getParameter("error")!=null){
 			
+			String strPathFile = request.getSession().getServletContext().getRealPath(request.getRequestURI()); 
+			//String strDirPath = new File(request.getSession().getServletContext().getRealPath(request.getRequestURI())).getParent(); 
+			String path = getServletContext().getRealPath("/");
+			
+			String  path1=request.getRealPath("");
+			String  path2  =   (String)request.getContextPath();
+			String  path3 =   request.getRequestURI();
+			String  savePath = request.getServerName()+":"+request.getServerPort()+request.getContextPath()+request.getServletPath()+request.getPathInfo();	
+			File    file = new  File(".");   
+			String  path4 = file.getAbsolutePath();
+			        path4 = file.getPath();
+			        
+			System.out.println("文件的絕對路徑:" + strPathFile + ""); 
+			//System.out.println("目錄的絕對路徑:" + strDirPath + "");
+			System.out.println(this.getClass().getClassLoader().getResource("/").getPath());
+			System.out.println("path:"+request.getSession().getServletContext().getRealPath(request.getRequestURI()));
+			System.out.println("path:"+path);
+			System.out.println("path1:"+path1);
+			System.out.println("path2:"+path2);
+			System.out.println("path3:"+path3);
+			System.out.println("path4:"+path4);
+			System.out.println("---------------------------------------");
+			System.out.println("savePath:"+savePath);
+			System.out.println("savePath1:"+request.getServerName());
+			System.out.println("savePath2:"+request.getServerPort());
+			System.out.println("savePath3:"+request.getContextPath());
+			System.out.println("savePath4:"+request.getServletPath());
+			System.out.println("savePath5:"+request.getPathInfo());
 			
 			
 			System.out.println("Error Code 授權失敗,或是還未Google驗證"+"\n"
@@ -56,7 +85,7 @@ public class LoginServletGoogle extends HttpServlet {
 		
 
 													
-		loginPage = oa2.getAuthorizationUrl("http://localhost:8080/projectmain/LoginServletGoogle.do");
+		loginPage = oa2.getAuthorizationUrl("http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/LoginServletGoogle.do");
 		response.sendRedirect(loginPage);
 //		}
 		}else{
@@ -96,7 +125,7 @@ public class LoginServletGoogle extends HttpServlet {
 			 * 
 			 */
 			// 取得GoogleTokenResponse
-			GoogleTokenResponse tokenResponse= oa2.getToken(userCode, "http://localhost:8080/projectmain/LoginServletGoogle.do").execute();
+			GoogleTokenResponse tokenResponse= oa2.getToken(userCode, "http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/LoginServletGoogle.do").execute();
 			
 			
 			
@@ -249,18 +278,18 @@ public class LoginServletGoogle extends HttpServlet {
 			if(("Administrator").equals(signCheck)){
 				service = "//indexOfAdminPage.jsp";
 				System.out.println(service);
-				System.out.println("即將導向網頁..."+"http://localhost:8080/projectmain"+service);
-				response.sendRedirect("http://localhost:8080/projectmain"+service);
+				System.out.println("即將導向網頁..."+"http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+service);
+				response.sendRedirect("http://"+request.getServerName()+request.getServerPort()+request.getContextPath()+service);
 			}else if (("Examiner").equals(signCheck)){
 				service = "//indexOfExamierPage.jsp";
 				System.out.println(service);
 				System.out.println("即將導向網頁..."+"http://localhost:8080/projectmain"+service);
-				response.sendRedirect("http://localhost:8080/projectmain"+service);
+				response.sendRedirect("http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+service);
 			}else{
 				service = "//WebComm_index.jsp";
 			System.out.println(service);
 			System.out.println("即將導向網頁..."+"http://localhost:8080/projectmain"+service);
-			response.sendRedirect("http://localhost:8080/projectmain"+service);
+			response.sendRedirect("http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+service);
 			}
 			
 			//Stu驗證	
@@ -343,6 +372,8 @@ public class LoginServletGoogle extends HttpServlet {
 			 * 
 			 */
 			request.getSession().setAttribute("LoginOK", true);
+			System.out.println("------------------------------"+request.getSession().getAttribute("LoginOK"));
+			System.out.println("------------------------------"+request.getSession().toString());
 			request.getSession().setAttribute("code", userCode);
 			request.getSession().setAttribute("token", token);
 			request.getSession().setAttribute("idtoken", idToken);
@@ -358,14 +389,12 @@ public class LoginServletGoogle extends HttpServlet {
 			
 			
 			System.out.println(service);
-			System.out.println("即將導向網頁..."+"http://localhost:8080/projectmain"+service);
-			response.sendRedirect("http://localhost:8080/projectmain"+service);
+			System.out.println("即將導向網頁..."+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+service);
+			response.sendRedirect("http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+service);
 			
 			}else{
-				System.out.println("即將導向網頁..."+"http://localhost:8080/projectmain/Login.jsp");
-				response.sendRedirect("http://localhost:8080/projectmain/Login.jsp");
-				
-				
+				System.out.println("即將導向網頁..."+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/Login.jsp");
+				response.sendRedirect("http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/Login.jsp");	
 			}
 			
 			

@@ -28,8 +28,9 @@ public class LoginServletForwarded extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
+		//	request.getSession().setAttribute("LoginOK",true);
 			Object LoginOK = request.getSession().getAttribute("LoginOK");
+			System.out.println("------------------------------"+request.getSession().toString());
 			System.out.println("LoginServletForwarded------"+LoginOK);
 	
 			

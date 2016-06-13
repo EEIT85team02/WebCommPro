@@ -59,9 +59,11 @@ insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) value
 
  --Examiner_offday
 insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7006','2016-5-15', '2016-5-18','3','7001');
-insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7004','2016-5-10', '2016-5-20','10','7003');
-insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7001','2016-5-16', '2016-5-21','5','7002');
-
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7004','2016-5-16', '2016-5-20','10','7003');
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7001','2016-5-17', '2016-5-21','5','7002');
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7002','2016-5-18', '2016-5-25','3','7003');
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7003','2016-5-19', '2016-5-26','10','7004');
+insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7005','2016-5-12', '2016-5-27','5','7006');
  --Test_interval
 insert into Test_interval (class_id, test_startdate, test_enddate) values ('EEIT85','2016-5-09', '2016-5-23');
 insert into Test_interval (class_id, test_startdate, test_enddate) values ('MEME33','2016-5-15', '2016-5-29');

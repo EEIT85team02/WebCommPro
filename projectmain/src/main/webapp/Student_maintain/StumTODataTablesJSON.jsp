@@ -8,12 +8,14 @@
 <title>Student_maintain_Page</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
+<link href="/projectmain/css/lobibox.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+<script src="/projectmain/js/lobibox.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <meta name="description" content="">
@@ -102,7 +104,7 @@ h1 {
 							</tr>
 						</tfoot>
 					</table>
-					<button id="buttonDetail">明細修改</button>
+					<button id="buttonDetail" class="ui-button ui-corner-all ui-widget">明細修改</button>
 					
 				</div>
 			</div>
@@ -134,13 +136,14 @@ h1 {
 		    	  "sPaginationType":"full_numbers",
 		    	  
 		    	} );
-		    	
+		    var deleteOrUpdateValue = null;//檢查是否有選取資料行	
 		    	//點選要修改的那行，先將選擇的[行]資料儲存
 			$('#Student_MaintainTable tbody').on( 'click', 'tr', function () {
 					deleteOrUpdateValue = $(this).find('td:eq(0)').text(); 
 					console.log(deleteOrUpdateValue);
 						if ( $(this).hasClass('selected') ) {
 				            $(this).removeClass('selected');
+				            deleteOrUpdateValue=null;
 				        }
 				        else {
 				            table.$('tr.selected').removeClass('selected');
@@ -150,7 +153,16 @@ h1 {
 			
 			//按下明細修改按鈕
 			$('#buttonDetail').click(function() {
-			console.log(deleteOrUpdateValue)
+			if(deleteOrUpdateValue==null){
+			   console.log(deleteOrUpdateValue);
+// 			   alert("請先選取要編輯的資料");
+			   Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "請先選取要編輯的資料"
+	 			    			});
+			}else{
+				console.log(deleteOrUpdateValue)
+				console.log("aaaa")
 				$.get('StudentProfileServlet',{"stu_id":deleteOrUpdateValue,"action":"stu_add"},function(data){	
 					console.log(data);
 					$.each(JSON.parse(data),function(key,val){
@@ -171,10 +183,14 @@ h1 {
 						var confirm_time = val.confirm_time;
 						var stu_pre = val.stu_pre;
 						var stu_implement = val.stu_implement;
-// 						var stu_testtime=val.stu_testtime;
+
+						var stu_testtime=val.stu_testtime;
+
 						var stu_interview = val.stu_interview;
 						var stu_total = val.stu_total;
-// 						var stu_workdate = val.stu_workdate;
+
+						var stu_workdate = val.stu_workdate;
+
 						var stu_except = val.stu_except;
 						var stu_final = val.stu_final;
 						var stu_note1 = val.stu_note1;
@@ -204,10 +220,14 @@ h1 {
     			                +'&confirm_time='+confirm_time
     			                +'&stu_pre='+stu_pre
     			                +'&stu_implement='+stu_implement
-//     			                +'&stu_testtime='+stu_testtime
+
+    			                +'&stu_testtime='+stu_testtime
+
     			                +'&stu_interview='+stu_interview
     			                +'&stu_total='+stu_total
-//     			                +'&stu_workdate='+stu_workdate
+
+    			                +'&stu_workdate='+stu_workdate
+
     			                +'&stu_except='+stu_except
     			                +'&stu_final='+stu_final
     			                +'&stu_note1='+stu_note1
@@ -221,7 +241,7 @@ h1 {
 					});
 						
 				});
-	    		
+	    		}
 			});
 			    
 		} );//load函數結束

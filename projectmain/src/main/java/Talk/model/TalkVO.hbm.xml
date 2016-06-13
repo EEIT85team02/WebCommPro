@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="Talk.model.TalkVO" table="Talk">
+        
+        <id name="talkId" column="talkId">
+            <generator class="identity"/>
+        </id>
+        <property name="talkTitle" column="talkTitle" />
+        <property name="talkName" column="talkName" />
+        <property name="talkChose" column="talkChose" />
+        <property name="talkMail" column="talkMail" />
+        <property name="talkContent" column="talkContent"/>
+        <property name="retalkContent" column="retalkContent" />
+     	<property name="talkDate" column="talkDate" />
+     	<property name="retalkDate" column="retalkDate" />
+     	<property name="talkstatus" column="talkstatus" />
+    </class>
+</hibernate-mapping>
+

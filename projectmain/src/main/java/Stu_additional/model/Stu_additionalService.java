@@ -17,6 +17,7 @@ import Class.model.ClassVO;
 import Employee.model.EmployeeVO;
 import Member_status.model.Member_statusVO;
 import Edu.model.EduVO;
+import SendMail.model.EncryptService;
 import Student.model.StudentVO;
 import Test_period.model.Test_periodVO;
 
@@ -30,8 +31,10 @@ public class Stu_additionalService {
 	
 	public void updateStum(Integer stu_id,Integer stu_group,String stu_note1,Integer stu_seatno,
 			String stu_name,String stu_sch,Integer stu_sex,Integer stu_age,String stu_email,
-			Integer stu_pre,Double stu_implement,Date stu_testtime,Double stu_interview,
-			Double stu_total,Date stu_workdate,Double stu_except,Integer stu_final,
+			Integer stu_pre,Double stu_implement,Timestamp stu_testtime,Double stu_interview,
+
+			Double stu_total,Timestamp stu_workdate,Double stu_except,Integer stu_final,
+
 			String stu_note2,byte[] pub_key,byte[] pri_key,byte[] cipher_text,byte[] log_pw,
 			String class_id) throws SQLException {
 
@@ -142,7 +145,6 @@ public class Stu_additionalService {
 		List stusc=new LinkedList();
 		List<Stu_additionalVO> stu_addList =dao.findByStu_id(stu_id);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		
 		System.out.println("-----------*****"+stu_addList);
 			Map<String,String> map = new HashMap<String,String>();
 			map.put("stu_add_id",stu_addList.get(0).getStu_add_id().toString());
@@ -166,20 +168,32 @@ public class Stu_additionalService {
 			map.put("stu_final",stu_addList.get(0).getStudentVO().getStu_final().toString());
 			map.put("stu_note2",stu_addList.get(0).getStudentVO().getStu_note2().toString());
 			map.put("stu_seatno",stu_addList.get(0).getStudentVO().getStu_seatno().toString());
-			map.put("test_start",stu_addList.get(0).getTest_start().toString());
-			map.put("test_end",stu_addList.get(0).getTest_end().toString());
-			map.put("stu_applytime",stu_addList.get(0).getStu_applytime().toString());
+			java.util.Date test_start = stu_addList.get(0).getTest_start();
+			map.put("test_start",sdf.format(test_start));
+			java.util.Date test_end = stu_addList.get(0).getTest_end();
+			map.put("test_end",sdf.format(test_end));
+			java.util.Date stu_applytime = stu_addList.get(0).getStu_applytime();
+			map.put("stu_applytime",sdf.format(stu_applytime));
+			map.put("sta_id",stu_addList.get(0).getMember_statusVO().getSta_id().toString());
 			map.put("emp_id",stu_addList.get(0).getEmployeeVO().getEmp_name().toString());
-			map.put("confirm_time",stu_addList.get(0).getConfirm_time().toString());
+			java.util.Date confirm_time = stu_addList.get(0).getConfirm_time();
+			map.put("confirm_time",sdf.format(confirm_time));
 			map.put("member_statusVO",stu_addList.get(0).getMember_statusVO().getSta_name().toString());
 			map.put("class_id",stu_addList.get(0).getStudentVO().getClassVO().getClass_id());
 
 			map.put("class_name",stu_addList.get(0).getStudentVO().getClassVO().getClass_name());
-//			map.put("pub_key",stu_addList.get(0).getStudentVO().getPub_key().toString());
-//			map.put("pri_key",stu_addList.get(0).getStudentVO().getPri_key().toString());
-//			map.put("cipher_text",stu_addList.get(0).getStudentVO().getCipher_text().toString());
-//			map.put("log_pw",stu_addList.get(0).getStudentVO().getLog_pw().toString());
+			EncryptService es=new EncryptService();
 			
+			//將byte[]都先使用base64編碼
+//			map.put("pub_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPub_key()));
+//			map.put("pri_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPri_key()));
+//			map.put("cipher_text",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getCipher_text()));
+//			map.put("log_pw",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getLog_pw()));
+			
+//			map.put("pub_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPub_key()));
+//			map.put("pri_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPri_key()));
+//			map.put("cipher_text",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getCipher_text()));
+//			map.put("log_pw",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getLog_pw()));
 
 			stusc.add(map);
 		String jsonString = JSONValue.toJSONString(stusc);

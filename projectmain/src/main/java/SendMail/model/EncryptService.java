@@ -6,6 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
+import java.util.Base64;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -17,7 +18,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class EncryptService{
 
-	public static String GenerateRandomString() throws NoSuchAlgorithmException{
+	public  String GenerateRandomString() throws NoSuchAlgorithmException{
 
 		SecureRandom sr=new SecureRandom();
 
@@ -27,7 +28,7 @@ public class EncryptService{
 		return encryptedString;
 		
 	}
-	public static byte[] MD5Encrypt(String msg) throws NoSuchAlgorithmException{
+	public  byte[] MD5Encrypt(String msg) throws NoSuchAlgorithmException{
 
 
 	        MessageDigest md = MessageDigest.getInstance("MD5");
@@ -35,8 +36,9 @@ public class EncryptService{
 
 			return messageDigest;	
 	}
+
 	
-	public static byte[] AESEncrypt(String msg) throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
+	public  byte[] AESEncrypt(String msg) throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException{
 
 
 		System.out.println("原始字串："+new String(msg));
@@ -60,7 +62,12 @@ public class EncryptService{
 		 System.out.println();
 		 return	encryptData;	
 }	
-	
+	public  String Base64Encrypt(byte[] encrtyptedByteArray){
+		
+		String toString=Base64.getUrlEncoder().encodeToString(encrtyptedByteArray);
+		return toString;
+		
+	}
 	
 	
 	public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchProviderException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {

@@ -10,10 +10,12 @@
 <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" >
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+<link href="/projectmain/css/lobibox.min.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="/projectmain/js/lobibox.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <meta name="description" content="">
@@ -24,7 +26,13 @@
 	<script src='/projectmain/js/fancybox/jquery.fancybox.pack.js'></script> 
 	
 <style>
-
+.ui-widget-overlay.custom-overlay
+{
+    background-color: black;
+    background-image: none;
+    opacity: 0.6;
+    z-index: 1040;    
+}
 .Main_Content {
 	margin-top: 100px;
 }
@@ -124,8 +132,10 @@ margin: 20px;
 							</tr>
 						</tfoot>
 					</table>
-					<button id="buttonDetail">明細修改</button>
-					<button id="buttonUpdate">編輯代理人</button>
+
+					<button id="buttonDetail" class="ui-button ui-corner-all ui-widget">明細</button>
+					<button id="buttonUpdate" class="ui-button ui-corner-all ui-widget">編輯代理人</button>
+
 				</div>
 			</div>
 		</div>
@@ -200,7 +210,6 @@ margin: 20px;
 		    	  "sPaginationType":"full_numbers",
 		    	  
 		    	} );
-		    	
 		    	 //新增dialog區塊變數宣告
 			var form,ExamUpdateForm,
 			 	
@@ -231,6 +240,7 @@ margin: 20px;
 					console.log(deleteOrUpdateValue);
 						if ( $(this).hasClass('selected') ) {
 				            $(this).removeClass('selected');
+				            deleteOrUpdateValue=null;
 				        }
 				        else {
 				            table.$('tr.selected').removeClass('selected');
@@ -244,6 +254,12 @@ margin: 20px;
 			      height: 650,
 			      width: 400,
 			      modal: true,
+			      open: function() {
+			          $('.ui-widget-overlay').addClass('custom-overlay');
+			      },
+			      close: function() {
+			          $('.ui-widget-overlay').removeClass('custom-overlay');
+			      },
 			      buttons: {
 				        "send": updateExamFormToCreateTable,
 				        Cancel: function() {
@@ -266,7 +282,12 @@ margin: 20px;
 			 	$('#buttonUpdate').click( function () {
 			    	if(deleteOrUpdateValue==null){
 			    		console.log(deleteOrUpdateValue);
-			    		alert("請先選取要編輯的資料");
+// 			    		alert("請先選取要編輯的資料");
+			    		Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "請先選取要編輯的資料"
+	 			    			});
+		    
 			    	}else{
 			    		uexam_id.val(exam_idUpdateValue.text());
 		    			uemp_id.val(emp_idUpdateValue.text());
@@ -280,7 +301,7 @@ margin: 20px;
 			    } );
 			    
 			    //呼叫ServletJSON取回下拉選單資料--編輯表單(代理人下拉選單)
-			    $.getJSON('EmployeeServletJSON.do', {"action":"getALLEmp"}, function(datas) {
+			    $.getJSON('/projectmain/Examiner_offday/EmployeeServletJSON.do', {"action":"getALLEmp"}, function(datas) {
 					console.log("datas:"+datas);
 					$.each(datas, function(i, Emps) {
 						uselectEmp_job_id.append( 
@@ -318,11 +339,23 @@ margin: 20px;
 
 			//按下明細按鈕
 			$('#buttonDetail').click(function() {
-			console.log(deleteOrUpdateValue)
+
+			if(deleteOrUpdateValue==null){
+			   console.log(deleteOrUpdateValue);
+// 			   alert("請先選取要瀏覽的資料");
+			   Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+	 			    			{
+	 			    			msg: "請先選取要編輯的資料"
+	 			    			});
+			}else{
+			    console.log(deleteOrUpdateValue)
 				$.get('/projectmain/Examiner_offdayServlet',{"exam_id":deleteOrUpdateValue,"action":"getoneExam"},function(data){	
 					console.log(data)
 					$.each(JSON.parse(data),function(i,val){
+					console.log("dd="+data)
 						var exam_id = val.exam_id;
+						console.log("ee="+exam_id)
+
 						var off_startdate = val.off_startdate;
 						var off_enddate = val.off_enddate;
 						var off_day = val.off_day;
@@ -331,27 +364,72 @@ margin: 20px;
 						var emp_name = val.emp_name;
 						var emp_mail = val.emp_mail;
 						var dep_name = val.dep_name;
-						var key = JSON.stringify(val.key);
+
 						
-							$.each(JSON.parse(key),function(i,exams){
-							
-							
-							console.log(key)
-								console.log(exams.stu_id)
-							
-							
-// 							var stu_id = val.stu_id;
-// 							var stu_name = val.stu_name;
+						console.log("sss="+val.key)
+						if(val.key!=undefined){
+// 							console.log("cc="+val.key)
+							var key = JSON.stringify(val.key);
+// 							console.log("bb1="+key)
+// 							console.log("ee="+exam_id)
+		
+							for(var i=0;i<val.key.length;i++){
+// 								console.log("aa="+val.key[i].stu_id)
+// 								console.log("bb="+key)
+								var stu_id = val.key[i].stu_id;
+								var stu_name = val.key[i].stu_name;
+								var test_start = val.key[i].test_start;
+								var test_end = val.key[i].test_end;
 								
+								var date1 = off_startdateUpdateValue.text();
+								var date2 = off_enddateUpdateValue.text();
+								sdate = new Date(date1);
+								edate = new Date(date2);
+								tdate = new Date(test_start);
+								sdate1 = sdate.getTime();
+								edate1 = edate.getTime();
+								tdate1 = tdate.getTime();
 								
+								if(tdate1>=sdate1&&tdate1<=edate1){
+
+									$.fancybox({//调用fancybox弹出层 
+									
+			    			                'type':'ajax', 
+			    			                'href':'/projectmain/Examiner_offday/Exam_Detail.jsp?action=add&exam_id='+exam_id
+			    			                +'&off_startdate='+off_startdate
+			    			                +'&off_enddate='+off_enddate
+			    			                +'&off_day='+off_day
+			    			                +'&emp_job_id='+emp_job_id
+			    			                +'&emp_id='+emp_id
+			    			                +'&emp_name='+emp_name
+			    			                +'&emp_mail='+emp_mail
+			    			                +'&dep_name='+dep_name
+			    			                +'&stu_id='+stu_id
+			    			                +'&stu_name='+stu_name
+			    			                +'&test_start='+test_start
+			    			                +'&test_end='+test_end
+			    			                
+			    			        });
+								}else{
+									$.fancybox({//调用fancybox弹出层 
 								
-								
-								
-		// 						var test_start = val.test_start;
-		// 						var test_end = val.test_end;
-								
-							
+		    			                'type':'ajax', 
+		    			                'href':'/projectmain/Examiner_offday/Exam_Detail.jsp?action=add&exam_id='+exam_id
+		    			                +'&off_startdate='+off_startdate
+		    			                +'&off_enddate='+off_enddate
+		    			                +'&off_day='+off_day
+		    			                +'&emp_job_id='+emp_job_id
+		    			                +'&emp_id='+emp_id
+		    			                +'&emp_name='+emp_name
+		    			                +'&emp_mail='+emp_mail
+		    			                +'&dep_name='+dep_name
+		    			                
+		    			         	});      
+								}
+							}	
+						}else{
 							$.fancybox({//调用fancybox弹出层 
+							
 	    			                'type':'ajax', 
 	    			                'href':'/projectmain/Examiner_offday/Exam_Detail.jsp?action=add&exam_id='+exam_id
 	    			                +'&off_startdate='+off_startdate
@@ -362,21 +440,18 @@ margin: 20px;
 	    			                +'&emp_name='+emp_name
 	    			                +'&emp_mail='+emp_mail
 	    			                +'&dep_name='+dep_name
-// 	    			                +'&stu_id='+stu_id
-// 	    			                +'&stu_name='+stu_name
-	//     			                +'&test_start='+test_start
-	//     			                +'&test_end='+test_end
 	    			                
-	    			        });
-								    				
-	    				});
-					});
+	    			         });      
+						}	
 						
+
+					});
 				});
-	    		
+
+	    		}
+		
 			});
-			    
-		} );//load函數結束
+		});	//load函數結束
 		
 		
 	</script>

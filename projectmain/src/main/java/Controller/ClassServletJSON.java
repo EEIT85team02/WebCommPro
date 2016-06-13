@@ -2,23 +2,19 @@ package Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.rmi.ServerException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.hibernate.exception.ConstraintViolationException;
-
 import Class.model.ClassService;
 import Class.model.ClassVO;
-
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 
 
@@ -209,10 +205,6 @@ public class ClassServletJSON extends HttpServlet {
 					return;
 				}
 			} 
-			catch (SQLServerException e) {
-				out.write("資料更新失敗");
-				return;
-			}
 			catch (Exception e) {
 				out.write("資料更新失敗");
 				return;

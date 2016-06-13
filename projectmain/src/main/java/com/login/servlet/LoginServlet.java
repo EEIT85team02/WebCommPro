@@ -69,8 +69,10 @@ public class LoginServlet extends HttpServlet {
 			// 呼叫 ls物件的 checkIDPassword()，要記得傳入userid與password兩個參數
 			// 同時將傳回值放入MemberBean型別的變數mb之內。
 			//StudentVO mb = ls.checkIDPassword(userId, password);
+
 			StudentVO mb;
 			try {
+
 				mb = DecryptService.compareIfMatchThePassword(userId, password);
 			
 			// 如果變數mb的值不等於 null,表示資料庫含有userId搭配password的紀錄
@@ -89,7 +91,10 @@ public class LoginServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+<<<<<<< HEAD
 			
+=======
+>>>>>>> branch 'master' of https://github.com/EEIT85team02/WebCommPro.git
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
 			// 如果 errorMsgMap是空的，表示沒有任何錯誤，準備交棒給下一隻程式
 		if (errorMsgMap.isEmpty()) {

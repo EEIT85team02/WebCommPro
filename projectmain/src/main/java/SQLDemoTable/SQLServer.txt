@@ -177,4 +177,13 @@ create table Fullcalendar
   rendering        nvarchar(10)   NOT NULL
 );
 
+ /*create table Talk
+(
+  talkId       int   primary key  NOT NULL  identity,  
+  talkName     nvarchar(10)  NOT NULL ,          
+  talkGender   nvarchar(10)  NOT NULL,
+  talkChose    int  NOT NULL,
+  talkContent  nvarchar(100)  NOT NULL
+); */ 
+
  

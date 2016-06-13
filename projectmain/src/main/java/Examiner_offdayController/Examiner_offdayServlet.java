@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,23 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.jasper.tagplugins.jstl.core.Out;
-
-import com.google.gson.Gson;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
-
-import Class.model.ClassVO;
-import Edu.model.EduService;
 import Examiner_offday.model.Examiner_offdayService;
-import Mail_template.model.Mail_templateService;
-import Stu_additional.model.IStu_additionalDAO;
-import Stu_additional.model.Stu_additionalDAO;
-import Stu_additional.model.Stu_additionalService;
-import Student.model.IStudentDAO;
-import Student.model.StudentDAO;
-import Student.model.StudentService;
-import Student.model.StudentVO;
 
 
 @WebServlet("/Examiner_offdayServlet")
@@ -45,7 +27,6 @@ public class Examiner_offdayServlet extends HttpServlet {
     public Examiner_offdayServlet() {
     	
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,6 +34,8 @@ public class Examiner_offdayServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("content-type", "text/html;charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		System.out.println(request.getParameter("exam_id"));
@@ -68,7 +51,7 @@ public class Examiner_offdayServlet extends HttpServlet {
 				Examiner_offdayService examSvc = new Examiner_offdayService() ;
 				System.out.println(exam_id);
 				String exam_AllListJSON = examSvc.findByPrimaryKeyExamToJSON(exam_id);
-				
+				request.getSession().setAttribute("exam_AllListJSON", exam_AllListJSON);
 				response.setCharacterEncoding("UTF-8");
 				response.getWriter().write(exam_AllListJSON);
 			}
@@ -135,7 +118,7 @@ public class Examiner_offdayServlet extends HttpServlet {
 					return;
 				}
 			} 
-			catch (SQLServerException e) {
+			catch (SQLException e) {
 				out.write("failed");
 				return;
 			}

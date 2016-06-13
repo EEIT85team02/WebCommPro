@@ -7,11 +7,12 @@
 <title>Student_MaintainForm</title>
 
 <link rel="stylesheet" type="text/css" href="/projectmain/css/fullCalendar/jquery-ui.css">
+
 <style type="text/css">
 
 .fancy {
 	width: 700px;
-	height: 350px;
+	height: 500px;
 }
 
 .fancy h3 {
@@ -54,86 +55,37 @@
 
 .div3{
 	float:left;
-	padding-left:120px;
+	padding-left:50px;
+	padding-top:50px;
 }
 
+.div3 h1{
+	color:green;
+}
+
+.div4{
+	float:left;
+	padding-left:30px;
+}
+
+.div4 h1{
+	color:red;
+}
+
+.div4 p{
+	color:#ff7575;
+}
 
 </style>
 <!-- fancybox -->
-	<link rel="stylesheet" type="text/css" href="/projectmain/css/fancybox/jquery.fancybox.css"> 	
+	<link rel="stylesheet" type="text/css" href="/projectmain/css/fancybox/jquery.fancybox.css"> 
 	<script src='/projectmain/js/fancybox/jquery.fancybox.pack.js'></script> 
 <script type="text/javascript" src="/projectmain/js/fancybox/jquery.form.min.js">
-	
-	$(document).ready(function(){ 
-		
-		
-	    $(".datepicker").datepicker();//调用日历选择器 
-	    $("#isallday").click(function(){//是否是全天事件 
-	        if($("#sel_start").css("display")=="none"){ 
-	            $("#sel_start,#sel_end").show(); 
-	        }else{ 
-	            $("#sel_start,#sel_end").hide(); 
-	        } 
-	    }); 
-	     
-	    $("#isend").click(function(){//是否有结束时间 
-	        if($("#p_endtime").css("display")=="none"){ 
-	            $("#p_endtime").show(); 
-	        }else{ 
-	            $("#p_endtime").hide(); 
-	        } 
-	        $.fancybox.resize();//调整高度自适应 
-	    }); 
-	    
-	    $("#del_event").click(function(){ 
-	        if(confirm("您确定要删除吗？")){ 
-	            var eventid = <%=request.getParameter("id")%>; 
-	            
-	            $.get("AddEditEvent.do?action=del&id="+eventid,function(msg){ 
-	               
-	                    $.fancybox.close(); 
-	                    $('#calendar').fullCalendar('refetchEvents'); 
-        }); 
-     }     
-	});
-	    
-	
-	$(function(){ 
-	    //提交表单 
-	    $('#add_form').ajaxForm({ 
-	        beforeSubmit: showRequest, //表单验证 
-	        success: showResponse //成功返回 
-	    });  
-	}); 
-	 
-	function showRequest(){ 
-	    var events = $("#event").val(); 
-	    if(events==''){ 
-	        alert("请输入日程内容！"); 
-	        $("#event").focus(); 
-	        return false; 
-	    } 
-	} 
-	 
-	
-	
-	
-	function showResponse(responseText, statusText, xhr, $form){ 
-	    if(statusText=="success"){     
-	        if(responseText==1){ 
-	            $.fancybox.close();//关闭弹出层 
-	            $('#calendar').fullCalendar('refetchEvents'); //重新获取所有事件数据 
-	        }else{ 
-	            alert(responseText); 
-	        } 
-	    }else{ 
-	        alert(statusText); 
-	    } 
-	} 
-	
-	});
-</script> 
 
+</script> 
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
 </head>
 <body>
 	<div class="fancy">
@@ -155,13 +107,23 @@
 				<p>職務代理人：<%=request.getParameter("emp_job_id")%></p>
 
 			</div>
-			<div class="div3">
-				<p>考生代號：<%=request.getParameter("stu_id")%></p>
-				<p>考生姓名：<%=request.getParameter("stu_name")%></p>
-<%-- 				<p>監考開始時間：<%=request.getParameter("test_start")%></p> --%>
-<%-- 				<p>監考結束時間：<%=request.getParameter("test_end")%></p> --%>
-			</div>
 			
+			<%
+				if(request.getParameter("stu_id")==null){ 
+					out.print("<div class='div3'>");
+					out.print("<h1>此請假區間沒有面試預約</h1>");
+					out.print("</div>");
+				}else{
+					out.print("<div class='div4'>");
+					out.print("<h1>此請假區間有面試預約</h1>");
+					out.print("<p>考生代號："+request.getParameter("stu_id"));
+					out.print("<p>考生姓名："+request.getParameter("stu_name"));
+					out.print("<p>監考開始時間："+request.getParameter("test_start"));
+					out.print("<p>監考結束時間："+request.getParameter("test_end"));
+					out.print("</div>");
+				}
+				%>
+
 		</form>
 	</div>
 </body>
