@@ -90,7 +90,7 @@ response.flushBuffer();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top"><img src="${pageContext.request.contextPath}/webcommImg/emblemmatic-webcomm-logo-378-2.png"></a>
+                <a class="navbar-brand" href="#page-top">W.Webcomm<%-- <img src="${pageContext.request.contextPath}/webcommImg/emblemmatic-webcomm-logo-378-2.png"> --%></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->

@@ -91,10 +91,7 @@ public class LoginServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-<<<<<<< HEAD
-			
-=======
->>>>>>> branch 'master' of https://github.com/EEIT85team02/WebCommPro.git
+
 			// 5.依照 Business Logic 運算結果來挑選適當的畫面
 			// 如果 errorMsgMap是空的，表示沒有任何錯誤，準備交棒給下一隻程式
 		if (errorMsgMap.isEmpty()) {
