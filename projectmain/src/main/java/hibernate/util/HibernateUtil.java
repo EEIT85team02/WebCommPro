@@ -1,3 +1,34 @@
+///*
+// * This class not only produces the global org.hibernate.SessionFactory reference in its static initializer;
+// * it also hides the fact that it uses a static singleton
+//*/
+//
+//package hibernate.util;
+//
+//import org.hibernate.SessionFactory;
+//import org.hibernate.cfg.Configuration;
+//
+//public class HibernateUtil {
+//
+//    private static final SessionFactory sessionFactory;
+//
+//    static {
+//        try {
+//            // Create the SessionFactory from hibernate.cfg.xml
+//            sessionFactory = new Configuration().configure().buildSessionFactory();
+//        } catch (Throwable ex) {
+//            // Make sure you log the exception, as it might be swallowed
+//            System.err.println("Initial SessionFactory creation failed." + ex);
+//            throw new ExceptionInInitializerError(ex);
+//        }
+//    }
+//
+//    public static SessionFactory getSessionFactory() {
+//        return sessionFactory;
+//    }
+//
+//}
+
 /*
  * This class not only produces the global org.hibernate.SessionFactory reference in its static initializer;
  * it also hides the fact that it uses a static singleton
@@ -16,9 +47,11 @@ public class HibernateUtil {
         try {
             // Create the SessionFactory from hibernate.cfg.xml
             sessionFactory = new Configuration().configure().buildSessionFactory();
+            System.out.println("初始化sessionFactory成功");
         } catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
-            System.err.println("Initial SessionFactory creation failed." + ex);
+        	System.out.println("初始化sessionFactory出錯");
+            //System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

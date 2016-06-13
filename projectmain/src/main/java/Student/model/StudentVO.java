@@ -1,12 +1,16 @@
 package Student.model;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.util.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
-import Stu_additional.model.Stu_additionalVO;
 import Class.model.ClassVO;
+import Stu_additional.model.Stu_additionalVO;
+
+import com.fullcalendar.model.CalendarVO;
 public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	
 	private static final long serialVersionUID = 1L;
@@ -28,6 +32,7 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private Double stu_except ;
 	private Integer stu_final ;
 	private String stu_note2 ;
+	private Set<CalendarVO> calendarVO;
 	private ClassVO classVO;
 	private byte[] pub_key;
 	private byte[] pri_key;
@@ -36,6 +41,15 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 	private Set<Stu_additionalVO> Stu_additionalVO = new HashSet<Stu_additionalVO>();
 	
 	
+
+	public Set<CalendarVO> getCalendarVO() {
+		return calendarVO;
+	}
+
+	public void setCalendarVO(Set<CalendarVO> calendarVO) {
+		this.calendarVO = calendarVO;
+	}
+
 	public byte[] getLog_pw() {
 		return log_pw;
 	}

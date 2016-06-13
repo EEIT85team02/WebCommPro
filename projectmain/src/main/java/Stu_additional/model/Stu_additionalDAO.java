@@ -9,6 +9,7 @@ import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import Student.model.StudentDAO;
 import Student.model.StudentVO;
 
 public class Stu_additionalDAO implements IStu_additionalDAO{
@@ -131,5 +132,26 @@ public class Stu_additionalDAO implements IStu_additionalDAO{
 				throw ex;
 			}
 			return stu_add;
+		}
+		public static void main(String args[]){
+			try {
+//				Integer stuId = new Stu_additionalDAO().findByPrimaryKey2(new Integer("18")).getStu_add_id();
+				Integer stuId = new Integer("18");
+				String stuName = new StudentDAO().findByPrimaryKey(stuId).getStu_name();
+				System.out.println("\n●-stuName:\n\t"+stuName);
+				
+				Integer empId = new Integer("7007");
+				
+//				String empName = new Stu_additionalDAO().findByPrimaryKey2(stuId).getEmployeeVO().getEmp_name();
+				Set<Stu_additionalVO> stuAdd = new StudentDAO().findByPrimaryKey(stuId).getStu_additionalVO();
+				for(Stu_additionalVO one:stuAdd){
+					System.out.println("\n●-empName:\n\t"+one.getEmployeeVO().getEmp_name());
+					System.out.println("\n●-empMail:\n\t"+one.getEmployeeVO().getEmp_mail());
+					
+				}
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 }
