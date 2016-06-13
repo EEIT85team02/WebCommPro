@@ -35,12 +35,17 @@ public class CheckAccountAndPasswordServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		System.out.println("---------------------------CheckAccountAndPasswordServlet");
+//		請將這幾句程式加入servlet中
+		String serverName=req.getServerName();
+		int ServerPort=req.getServerPort();
+		String contextPath=req.getContextPath();
+		String path=serverName+":"+ServerPort+contextPath;
 		
-		String stu_email = request.getParameter("stu_email");
+		String stu_email = req.getParameter("stu_email");
 		System.out.println("stu_email----------"+stu_email);
-		SendMailService.SendPasswordMailToStudent(stu_email);
+		SendMailService.SendPasswordMailToStudent(stu_email,path);
 		System.out.println("stu_email----------ok");
 	}
 

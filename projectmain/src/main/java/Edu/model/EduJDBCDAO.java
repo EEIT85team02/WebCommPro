@@ -1,15 +1,20 @@
 package Edu.model;
 
 import java.sql.Connection;
+import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.DriverPropertyInfo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+import java.util.logging.Logger;
 
 import org.json.simple.JSONValue;
 
@@ -34,7 +39,51 @@ public  class EduJDBCDAO implements IEduJDBCDAO {
 			String connUrl = "jdbc:sqlserver://localhost:1433;DatabaseName=demo";
 			String userId="sa";
 			String userPwd="sa123456";
-			DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
+			DriverManager.registerDriver(new Driver() {
+				
+				@Override
+				public boolean jdbcCompliant() {
+					// TODO Auto-generated method stub
+					return false;
+				}
+				
+				@Override
+				public DriverPropertyInfo[] getPropertyInfo(String url, Properties info)
+						throws SQLException {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public int getMinorVersion() {
+					// TODO Auto-generated method stub
+					return 0;
+				}
+				
+				@Override
+				public int getMajorVersion() {
+					// TODO Auto-generated method stub
+					return 0;
+				}
+				
+				@Override
+				public Connection connect(String url, Properties info) throws SQLException {
+					// TODO Auto-generated method stub
+					return null;
+				}
+				
+				@Override
+				public boolean acceptsURL(String url) throws SQLException {
+					// TODO Auto-generated method stub
+					return false;
+				}
+			});
 			conn = DriverManager.getConnection(connUrl,userId,userPwd);
 
 		}

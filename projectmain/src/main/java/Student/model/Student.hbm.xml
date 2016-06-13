@@ -38,6 +38,12 @@
 			</key>
 			<one-to-many class="Stu_additional.model.Stu_additionalVO"/>
 	</set>    
+	<set name="CalendarVO" table="fullcalendar" lazy="false" cascade="all"  inverse="true"  order-by="order_id asc">			
+			<key>
+				<column name="stu_id"/>
+			</key>
+			<one-to-many class="com.fullcalendar.model.CalendarVO"/>
+	</set>    
 	  <many-to-one name="ClassVO" class="Class.model.ClassVO" lazy="false">
             <column name="class_id" />
         </many-to-one> 

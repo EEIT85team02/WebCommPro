@@ -2,10 +2,7 @@ package com.fullcalendar.model;
 
 import hibernate.util.HibernateUtil;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -84,18 +81,18 @@ public class CalendarDAO implements CalendarDAO_interface{
 		}
 		return list;
 	}
-
+/*
 	@Override
 	public List<CalendarVO> findLastUpdateEventsByStudentId(Integer stuID) {// 這邊的id不是primary key 而是某位人的id
 		List<CalendarVO> list = new ArrayList<CalendarVO>();
 		List<CalendarVO> events = new ArrayList<CalendarVO>();
-		Set<Integer> eventidset = new LinkedHashSet<Integer>();
+		Set<String> eventidset = new LinkedHashSet<String>();
 		List<CalendarVO> latestList = new ArrayList<CalendarVO>();
 		
 		//取得同所有人的所有events 紀錄
 		list = getAll();
 		for(CalendarVO one:list){
-			if(one.getStudentVO().getStu_id().equals(stuID)){
+			if(one.getStudentVO().getStuID().equals(stuID)){
 				//取得同一個人的所有events
 				events.add(one);
 				//取得事件的種類數目 不重複
@@ -103,7 +100,7 @@ public class CalendarDAO implements CalendarDAO_interface{
 			}
 		}
 		
-		for(Integer oneid:eventidset){
+		for(String oneid:eventidset){
 			CalendarVO latestone = null;
 			int a=0;
 			for(CalendarVO one:events){
@@ -124,7 +121,17 @@ public class CalendarDAO implements CalendarDAO_interface{
 		return latestList;
 	}	
 	
-	
-	
+	*/
+
+	@Override
+	public List<CalendarVO> findLastUpdateEventsByStudentId(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+public static void main(String args[]){
+	CalendarDAO_interface dao = new CalendarDAO();
+//	dao.findByPrimaryKey(new Integer("1"));
+//	dao.getAll();
+}
 
 }

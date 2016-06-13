@@ -513,10 +513,10 @@ $(function() {
 			              </div>
 			              <div class="panel-footer">
                         <!-- <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a> -->
-                    	<a href="<c:url value='/PWDChange.jsp' />" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"  ><i class="glyphicon glyphicon-edit">PASSWORDCHANGE</i></a>
+                    	<%-- <a href="<c:url value='/PWDChange.jsp' />" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"  ><i class="glyphicon glyphicon-edit">PASSWORDCHANGE</i></a> --%>
 			            <!-- <a id="editFrom" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"  ><i class="glyphicon glyphicon-edit">PASSWORDCHANGE</i></a> -->
 						<a href="#"  role="button" data-toggle="modal" data-target="#login-modal" data-original-title="Edit this user"  type="button" class="btn btn-sm btn-warning"  ><i class="glyphicon glyphicon-edit">PASSWORDCHANGE</i></a>
-					    <a href="#" class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Open Login Modal</a>
+					   <!--  <a href="#" class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Open Login Modal</a> -->
 					
 			            </div>
 			            <!-- BEGIN # MODAL LOGIN -->

@@ -64,13 +64,13 @@ public class Calendar2DBServlet_jQuery extends HttpServlet {
 		 */
 		// 先把request內的json讀出來 變成字串
 		String jsonTemp = request.getReader().readLine();
-		System.out.println(jsonTemp);
+		
+		jsonTemp = jsonTemp.replaceAll("\"overlap\":true,","\"overlap\": 1,").replaceAll( "\"overlap\":false,","\"overlap\": 0,");
+		System.out.println("●jsonTemp:\n"+jsonTemp);
 		/**
 		 *  前端使用jQuery 技術 串送格式為 FormDate 的資料
 		 *  後端使用getReader() 以及 readLine() 把整個事件的資訊在包成VO
 		 */
-		
-		
 		
 		/**
 		 * 2. 裝箱
@@ -78,12 +78,7 @@ public class Calendar2DBServlet_jQuery extends HttpServlet {
 		// 把json包成java物件
 		CalendarVO calendarVO = gson.fromJson(jsonTemp,CalendarVO.class);
 		
-		
-		// 一整個過程中我們都假設已知此人stuId 故此行沒有意義
-		// calendarVO.getStudentVO().getStuID();
-		
-		
-		String stuID = new String(request.getSession().getAttribute("stuID").toString());
+		Integer stuID = new Integer(request.getSession().getAttribute("stu_id").toString());
 		/**
 		 * 3. 呼叫service
 		 */

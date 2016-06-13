@@ -2,6 +2,7 @@ package StudentController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.rmi.ServerException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
@@ -20,10 +21,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
+
 
 import com.google.gson.Gson;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import Class.model.ClassVO;
 import Edu.model.EduService;
@@ -213,10 +213,6 @@ public class StudentProfileServlet extends HttpServlet {
 					return;
 				}
 			} 
-			catch (SQLServerException e) {
-				out.write("failed");
-				return;
-			}
 			catch (Exception e) {
 				out.write("failed");
 				return;

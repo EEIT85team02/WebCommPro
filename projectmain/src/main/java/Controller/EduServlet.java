@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.rmi.ServerException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import Edu.model.*;
 
@@ -207,7 +207,7 @@ public class EduServlet extends HttpServlet {
 
 				
 			} 
-			catch (SQLServerException e) {
+			catch (ServerException e) {
 				e.printStackTrace();
 				System.out.println("資料庫錯誤");
 			}

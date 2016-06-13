@@ -2,15 +2,17 @@ package Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.Timestamp;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.hibernate.exception.ConstraintViolationException;
+
 import Talk.model.TalkService;
 
 @WebServlet("/Talk/TalkServletJSON.do")
@@ -33,29 +35,58 @@ public class TalkServletJSON extends HttpServlet {
 		String action = request.getParameter("action");
 		/******************************** 新增資料表 ***********************/
 		if ("addTalk".equals(action)) {
-			Map<String, String> Msgs = null;
+			String talkTitle= null;
 			String talkName= null;
-			String talkGender= null;
 			Integer talkChose= null;
+			String talkMail = null;
 			String	talkContent= null;
+			String	retalkContent= "尚未回覆";
+			java.sql.Timestamp talkDate=null;
+			java.sql.Timestamp retalkDate=null;
+			Integer talkstatus=0;
 			try {
-				
+				talkTitle = request.getParameter("talkTitle");
 				talkName = request.getParameter("talkName");
-				talkGender =request.getParameter("talkGender") ;
 				talkChose = Integer.parseInt(request.getParameter("talkChose"));
+				talkMail = request.getParameter("talkMail");
 				talkContent = request.getParameter("talkContent");
+				talkDate= new java.sql.Timestamp(new java.util.Date().getTime());
+				retalkDate= new java.sql.Timestamp(new java.util.Date().getTime());
+				if (talkTitle == null || talkTitle.trim().length() == 0) {
+					talkTitle="無標題";
+				}
 				if (talkName == null || talkName.trim().length() == 0) {
-					talkName="無名氏";
+					talkName ="無名氏";
 				}
 				if (talkContent == null || talkContent.trim().length() == 0) {
-					talkContent ="無填寫內容。";
+					talkContent ="無填寫內容";
 				}
 					talkSvc = new TalkService();
-					talkSvc.insertTalk(talkName,talkGender,talkChose,talkContent);
+					talkSvc.insertTalk(talkTitle,talkName,talkChose,talkMail,talkContent,retalkContent,talkDate,retalkDate,talkstatus);
 					out.write("資料新增成功");
 					return;
 			} 
 			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}/******************************** 更新資料表 ***********************/
+		if ("updateTalk".equals(action)) {
+			Integer talkId= null;
+			String	retalkContent= null;
+			Timestamp retalkDate= null;
+			Integer talkstatus=1;
+			try {
+				
+				talkId = Integer.parseInt(request.getParameter("talkId"));
+				retalkContent = request.getParameter("retalkContent");
+				retalkDate= new java.sql.Timestamp(new java.util.Date().getTime());
+				talkSvc = new TalkService();
+				talkSvc.updateTalk(talkId,retalkContent,retalkDate,talkstatus);
+				out.write("資料更新成功");
+				return;
+			} 
+			catch (SQLException e) {
+				out.write("資料更新失敗");
 				e.printStackTrace();
 			}
 		}
@@ -89,11 +120,24 @@ public class TalkServletJSON extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
-		/***************************初始連結呼叫TalkServletJSON轉址至ClassViewTODataTablesJSON.jsp********************/	
+		/******************************** 查詢單一筆資料 ***********************/	
+		if ("getoneTalk".equals(action)) {
+			try {
+				// ============接收中心代號edu_id資料====================
+				Integer talkId =Integer.parseInt(request.getParameter("talkId"));
+				// ============查詢教育中心單筆資料回傳JSON字串============
+				talkSvc = new TalkService();
+				String jsonString = talkSvc.findByPrimaryKeyTalkToJSON(talkId);
+				out.write(jsonString);
+				return;
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		/***************************初始連結呼叫TalkServletJSON轉址至TalkViewTODataTablesJSON.jsp********************/	
 		if ("initTalkViewTODataTablesJSON".equals(action)) {
 			try {
-				// ============轉到班級TalkViewTODataTablesJSON====================
+				// ============轉到教育中心EduViewJSON====================
 				RequestDispatcher successMsg = request
 						.getRequestDispatcher("/Talk/TalkViewTODataTablesJSON.jsp");
 				successMsg.forward(request, response);
@@ -102,6 +146,7 @@ public class TalkServletJSON extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
 		/******************************** 結束 ***********************/		
 	}
 }

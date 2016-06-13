@@ -23,6 +23,7 @@ public class BookingEndpoint {
 	//開啟連線
 	@OnOpen
 	public void  onOpen(Session session){
+		session.setMaxIdleTimeout(-1);
 		System.out.println("Session"+ session.getId()+" connected");//記住每個連線 (session)
 		//加入清單
 		USERS.add(session);
@@ -31,21 +32,31 @@ public class BookingEndpoint {
 	//一但有人發言 -- 準備廣播
 	@OnMessage
 	public void onMessage(Session session, String message){
+		
 		System.out.println("Received message from session:"+ session.getId()+": "+message);
 //		Gson很方便 可以事先設定內容格式
+		/*
 		Gson gson = new GsonBuilder()
 //				.setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")// 我的時間格式 從fullcalendar撈出來的沒這麼多
 				.setDateFormat("yyyy-MM-dd'T'HH:mm")	// ●●●請參考: http://stackoverflow.com/questions/14796195/gson-unparseable-date
 				.setPrettyPrinting()
 				.create();
 		
-		
-		
+		*/
+		/**
+		 * 通知所有訂閱者
+		 */
 		for(Session users:USERS){
 			try {
+				
 				// -- Interface RemoteEndpoint.Basic
 //				users.getBasicRemote().sendText(gson.toJson(message));
-				users.getBasicRemote().sendText(message);
+				/**
+				 * 只要不是自己就要通知
+				 */
+				if(!(session.getId().equals(users.getId()))){
+					users.getBasicRemote().sendText(message);
+				}
 //				if(("User_"+session.getId()+": "+message).length()>25)
 ////					users.getBasicRemote().sendText("User_"+session.getId()+": "+message+"<p>"+"<p>");
 //				else{

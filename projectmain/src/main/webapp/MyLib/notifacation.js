@@ -59,14 +59,24 @@
 				'title':'已定位',
 				'textColor':'white',
 				'borderColor':'black',
-				'editable':false
-//				'editable':false,
+				'editable':false,
+				'overlap':true
 //				'id': 0
 			};
 			// 執行
 			$('#calendar').fullCalendar('renderEvent', newOtherEvent, true);
 		break;
-		}
+		
+	case 3:
+		pushAeventObject.editable = false;
+		pushAeventObject.color = "black";
+		
+		// 使用CSS的寫法
+		var newOtherEvent = pushAeventObject;
+		// 執行
+		$('#calendar').fullCalendar('renderEvent', newOtherEvent, true);
+		break;
+	}
 	}
 	
 	
@@ -76,4 +86,46 @@
 	
 	
 	
+// 	●●●●●●●●. WebSocket================
+	var ws = new WebSocket("ws://" + document.location.host + "//projectmain/booking.do");
+	// ●●.註冊【建立連線】事件
+	ws.onopen = function(){
+		console.log("0000-->notifacation--建立連線成功\n");
+		}
 	
+	
+	// ●●.註冊【接收訊息】事件
+	ws.onmessage = function(data) {
+		console.log("2222-->notifacation--接受訊息\n"+data);
+		var pushAevent = data.data;
+		// 裁切,"source"後面不需要的字串
+//		pushAevent = pushAevent.split('\,\"source')[0]+'}';
+		var pushAeventObject = JSON.parse(pushAevent);
+//		if(pushAeventObject.id!=2){
+			
+		
+		// ●●●●推播 
+		// @arg1: 要推播的事件物件
+		// @arg2: 推播風格
+//		bookingNotification(pushAeventObject,2);
+		bookingNotification(pushAeventObject,3);
+		// 也可以再次呼叫一個servlet
+// 		$('#calendar').fullCalendar('addEventSource', '/Hibernate01/CalendarFromDBServlet');
+
+//		}
+		
+	}
+
+	// ●●.註冊【發送訊息】事件
+	function sendMessage(data) {
+		console.log("1111-->notifacation--傳送訊息\n"+data);
+		//將輸入內容送到websocket物件
+		ws.send(data);//websocket自己的方法
+	}
+
+
+	// ●●.註冊【切斷連線】事件
+	function closeSocket() {
+		console.log("0000-->notifacation--關閉連線\n");
+		ws.close();
+	}

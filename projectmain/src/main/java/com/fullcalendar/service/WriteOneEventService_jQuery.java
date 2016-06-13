@@ -42,10 +42,11 @@ public class WriteOneEventService_jQuery {
 //			System.out.println(one.getStart()+"\t"+calendarVO.getStart()+"\t"+one.getId()+"\t"+calendarVO.getId());
 //			System.out.println(one.getStart().getClass().getName()+"\t"+calendarVO.getStart().getClass().getName()+"\t"+one.getId().getClass().getName()+"\t"+calendarVO.getId().getClass().getName());
 //			System.out.println(one.getStart().getTime()+"\t"+calendarVO.getStart().getTime()+"\t"+one.getId()+"\t"+calendarVO.getId());
+/*			
 			if((one.getStart().getTime()==(calendarVO.getStart().getTime()) && one.getId().equals(calendarVO.getId()))){
 				isRepeat |= true;
-//				break;
 			}
+			*/
 		}
 		 
 		if(!isRepeat){

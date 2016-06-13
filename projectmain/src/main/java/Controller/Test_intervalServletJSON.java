@@ -21,7 +21,6 @@ import org.hibernate.exception.ConstraintViolationException;
 import Test_interval.model.Test_intervalService;
 import Test_interval.model.Test_intervalVO;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import Class.model.ClassService;
 import Class.model.ClassVO;
@@ -92,11 +91,7 @@ public class Test_intervalServletJSON extends HttpServlet {
 				out.write("資料新增失敗");
 				return;
 			} 
-			catch (SQLServerException e) {
-				e.printStackTrace();
-				out.write("資料新增失敗");
-				return;
-			}catch (SQLException e) {
+			catch (SQLException e) {
 				e.printStackTrace();
 				out.write("資料新增失敗");
 				return;
@@ -171,10 +166,6 @@ public class Test_intervalServletJSON extends HttpServlet {
 					return;
 				}
 			} 
-			catch (SQLServerException e) {
-				out.write("資料更新失敗");
-				return;
-			}
 			catch (Exception e) {
 				out.write("資料更新失敗");
 				return;
