@@ -93,7 +93,7 @@ $(document).ready(function() {
         "serverSide": false,			// 注意 如果true, 則型別由server端決定		
         								// 官方解釋: Please note that if you are using server-side processing (serverSide) this option has no effect since the ordering and search actions are performed by a server-side script.
         								// 請參考: https://datatables.net/reference/option/columns.type
-        "ajax" : "/Hibernate01/ListAllStudents.do"        								
+        "ajax" : "/projectmain/ListAllStudents.do"        								
         	,
    
         								

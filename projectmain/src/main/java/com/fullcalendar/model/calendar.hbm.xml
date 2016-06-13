@@ -3,24 +3,24 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.fullcalendar.model.CalendarVO" table="calendar" >
+    <class name="com.fullcalendar.model.CalendarVO" table="Fullcalendar" >
         
-        <id name="orderId" column="orderId">
+        <id name="orderId" column="order_Id">
             <generator class="identity"/>
         </id>
-        <property name="id" column="id" />
+        <property name="id" column="ftest_hour_id" />
 <!--         <property name="stuID" column="stuID" /> -->
         <property name="title" column="title" />
-        <property name="start" column="start" />
-        <property name="end" column="end" />
+        <property name="start" column="test_start" />
+        <property name="end" column="test_end" />
         <property name="color" column="color" />
         <property name="editable" column="editable" />
         <property name="overlap" column="overlap" />
         <property name="rendering" column="rendering" />
         <property name="constraint" column="limit" />
         
-        <many-to-one name="studentVO" class="com.student.model.StudentVO" lazy="false">
-            <column name="stuID" />
+        <many-to-one name="studentVO" class="Student.model.StudentVO" lazy="false">
+            <column name="stu_id" />
         </many-to-one>
     </class>
 </hibernate-mapping>

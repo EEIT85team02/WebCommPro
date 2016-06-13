@@ -12,7 +12,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
     <!-- Bootstrap core CSS -->
-    <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/DataTables/datatables.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/DataTables/Buttons-1.1.2/css/buttons.jqueryui.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/DataTables/Buttons-1.1.2/css/buttons.dataTables.css"/>
@@ -27,9 +27,16 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/DataTables/Select-1.1.2/css/select.jqueryui.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/DataTables/Buttons-1.1.2/css/mixins.scss"/>
 
+<!-- bootstrap toggle -->
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Widgets/jquery-ui.css"/>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Widgets/jquery-ui.structure.css"/>
 
+
+<!-- 匯入LikeHangoutChat資源  會衝突!!!-->
+<%-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/LikeHangoutChat/css/LikeHangoutChat.css"/> --%>
 
 
 
@@ -60,7 +67,23 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/DataTables/Select-1.1.2/js/dataTables.select.js"></script>
 
+
+<!-- bootstrap toggle -->
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+
 <!--     記得只有頭的地方要引入jquery 而且不能重複 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/Widgets/jquery-ui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jQueryForm/Form-3-46-0.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/MyLib/deBugUtil.js"></script>
+
+<!-- 傳統websocket-- 考生清單 -->
+<script src='${pageContext.request.contextPath}/MyLib/notifacationOnlineStuList.js'></script>
+
+<!-- Paho -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/LikeHangoutChat/js/mqttws31.js"></script>
+
+
+<!-- 匯入LikeHangoutChat資源  會衝突!!!-->
+<%-- <script type="text/javascript" src="${pageContext.request.contextPath}/LikeHangoutChat/js/LikeHangoutChat.js"></script> --%>

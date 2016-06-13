@@ -12,29 +12,54 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-version>1.8</java-version>
-		<hibernate.version>4.3.11.Final</hibernate.version>
-<!-- google -->
+		<hibernate.version>3.6.10.Final</hibernate.version>
 		<project.http.version>1.21.0</project.http.version>
 		<project.oauth.version>1.21.0</project.oauth.version>
 		<project.calendar.version>1.21.0</project.calendar.version>
 		<project.gson.version>2.6.2</project.gson.version>
+		<project.websocket.version>1.1</project.websocket.version>
+		<project.paho.version>1.0.2</project.paho.version>
 	</properties>
 	<repositories>
 		<repository>
 			<id>JBoss repository</id>
 			<url>http://repository.jboss.org/nexus/content/groups/public/</url>
 		</repository>
+		<repository>
+			<id>repo</id>
+			<url>file://${project.basedir}/repository</url>
+		</repository>
+		<repository>
+			<id>Eclipse Paho Repo</id>
+			<url>https://repo.eclipse.org/content/repositories/paho-snapshots/</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
-	
-	
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>${project.websocket.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.paho</groupId>
+			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+			<version>${project.paho.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.paho</groupId>
+			<artifactId>org.eclipse.paho.mqtt.utility</artifactId>
+			<version>${project.paho.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.google.api-client</groupId>
 			<artifactId>google-api-client</artifactId>
 			<version>${project.oauth.version}</version>
 		</dependency>
-		<!-- Google OAuth2.0 -->
 		<dependency>
 			<groupId>com.google.apis</groupId>
 			<artifactId>google-api-services-oauth2</artifactId>
@@ -45,28 +70,21 @@
 			<artifactId>google-oauth-client-servlet</artifactId>
 			<version>${project.oauth.version}</version>
 		</dependency>
-		<!-- Google Calendar -->
 		<dependency>
 			<groupId>com.google.apis</groupId>
 			<artifactId>google-api-services-calendar</artifactId>
 			<version>v3-rev178-${project.calendar.version}</version>
 		</dependency>
-		<!-- Google Gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>${project.gson.version}</version>
 		</dependency>
-	
-	
-	
-		<!-- http://mvnrepository.com/artifact/org.jdom/jdom2 -->
 		<dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jdom2</artifactId>
 			<version>2.0.5</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
@@ -96,14 +114,11 @@
 			<artifactId>hibernate-proxool</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
-		<!-- org.json -->
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20160212</version>
 		</dependency>
-
-		<!-- Apache Commons -->
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
@@ -116,35 +131,28 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.19</version>
 		</dependency>
-
-		<!-- slf4j -->
-<!-- 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.19</version>
-		</dependency>
- -->
-		<!-- log4j -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-
-
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.19</version>
+		</dependency>
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
 			<version>3.12.1.GA</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
 
-	
-	
 
 		<!--取db2.jar -->
 		<dependency>
@@ -152,12 +160,6 @@
 			<artifactId>db2jcc4</artifactId>
 			<version>1.0</version>
 		</dependency>
-
-		<!-- <dependency> -->
-		<!-- <groupId>com.iiiedu</groupId> -->
-		<!-- <artifactId>db2jcc_license_cu</artifactId> -->
-		<!-- <version>1.0</version> -->
-		<!-- </dependency> -->
 
 
 		<!--取SQLserve.jar -->
@@ -174,52 +176,43 @@
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-
-
-		<!-- test dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
-		
-		<!-- jstl.jar -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
 
-	<!-- Servlet 3.1 API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 		</dependency>
-	<!-- http://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
 		<dependency>
-		    <groupId>javax.servlet.jsp</groupId>
-		    <artifactId>jsp-api</artifactId>
-		    <version>2.2</version>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
 		</dependency>
-
-		
-
-		<!-- jason.jar -->
 		<dependency>
-		    <groupId>com.googlecode.json-simple</groupId>
-		    <artifactId>json-simple</artifactId>
-		    <version>1.1.1</version>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
 		</dependency>
-		
-		<!-- jdom.jar -->
 		<dependency>
-		    <groupId>org.jdom</groupId>
-		    <artifactId>jdom</artifactId>
-		    <version>2.0.2</version>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>2.0.2</version>
 		</dependency>
-
+		<dependency>
+			<groupId>com.ibm.db2</groupId>
+			<artifactId>db2jcc</artifactId>
+			<version>10.5</version>
+		</dependency>
 
 
 	</dependencies>

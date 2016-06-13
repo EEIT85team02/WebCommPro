@@ -187,7 +187,7 @@ public class StudentDAO implements IStudentDAO {
 		
 		
 		public static void main(String args[]){
-			String emailString="llluuuyyy123@gmail.com";
+			String emailString="pighouse764701@gmail.com";
 
 
 			getStudentByEmail(emailString);

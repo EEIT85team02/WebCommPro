@@ -4,7 +4,7 @@ import Student.model.StudentVO;
 
 public class CalendarVO {
 	 	private Integer orderId;
-		private Integer id;
+		private String id;
 	    private String title;
 	    private java.util.Date start;
 	    private java.util.Date end;
@@ -20,10 +20,10 @@ public class CalendarVO {
 		public void setOrderId(Integer orderId) {
 			this.orderId = orderId;
 		}
-		public Integer getId() {
+		public String getId() {
 			return id;
 		}
-		public void setId(Integer id) {
+		public void setId(String id) {
 			this.id = id;
 		}
 		public String getTitle() {
