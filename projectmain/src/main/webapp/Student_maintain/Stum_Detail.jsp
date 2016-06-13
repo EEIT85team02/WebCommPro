@@ -7,7 +7,7 @@
 <title>Student_MaintainForm</title>
 
 <link rel="stylesheet" type="text/css" href="/projectmain/css/fullCalendar/jquery-ui.css">
-<link href="../css/lobibox.min.css" rel="stylesheet">
+
 <style type="text/css">
 
 .fancy {
@@ -124,7 +124,7 @@
 <!-- fancybox -->
 	<link rel="stylesheet" type="text/css" href="/projectmain/css/fancybox/jquery.fancybox.css"> 	
 	<script src='/projectmain/js/fancybox/jquery.fancybox.pack.js'></script> 
-	<script src="../js/lobibox.min.js"></script>
+
 <script type="text/javascript" src="/projectmain/js/fancybox/jquery.form.min.js">
 	
 	$(document).ready(function(){ 

@@ -101,3 +101,7 @@ insert into Mail_template (mail_name, mail_text) values ('預約成功通知0', 
 insert into Mail_template (mail_name, mail_text) values ('預約成功通知1', '預約成功1');
 insert into Mail_template (mail_name, mail_text) values ('預約成功通知2', '預約成功2');
 insert into Mail_template (mail_name, mail_text) values ('預約成功通知3', '預約成功3');
+
+--Talk
+insert into Talk(talkTitle,talkName,talkChose,talkMail,talkContent,retalkContent,talkDate,retalkDate,talkstatus) values('測試用','張書豪',1,'a25251226@gmail.com','你好，請問貴公司在哪兒?',null,'2015-01-01 09:05:10','2015-01-01 09:05:10',0);
+insert into Talk(talkTitle,talkName,talkChose,talkMail,talkContent,retalkContent,talkDate,retalkDate,talkstatus) values('使用中','林書豪',0,null,'你好，請問貴公司在哪兒?','你好，公司在台北市市民大道路口','2015-10-01 09:05:10','2016-10-10 09:05:10',1);

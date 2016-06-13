@@ -2,6 +2,7 @@ package StudentController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.rmi.ServerException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Time;
@@ -20,10 +21,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
+
 
 import com.google.gson.Gson;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 import Class.model.ClassVO;
 import Edu.model.EduService;
@@ -65,7 +65,7 @@ public class StudentProfileServlet extends HttpServlet {
 			
 		request.setCharacterEncoding("UTF-8");
 		System.out.println("stu_id-------------"+request.getParameter("stu_id"));
-		
+		}
 		try {
 			if("stu_add".equals(action)){
 				Integer stu_id = Integer.parseInt(request.getParameter("stu_id"));
@@ -92,7 +92,7 @@ public class StudentProfileServlet extends HttpServlet {
 			response.sendRedirect(
 				      response.encodeRedirectURL( "Login.jsp" ));
 			return;*/
-		}
+		
 		/***************************初始連結呼叫StudentProfileServlet轉址至StumTODataTablesJSON.jsp********************/	
 		if ("initStumTODataTablesJSON".equals(action)) {
 			try {
@@ -165,17 +165,15 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(stu_pre);
 				stu_implement =Double.valueOf(request.getParameter("stu_implement"));
 				System.out.println(stu_implement);
-				
-				//改為timestamp
-				String stu_testtime1 = sdf.format(request.getParameter("stu_testtime"));
-				stu_testtime = Timestamp.valueOf(stu_testtime1);
-				
-				System.out.println("aaa"+stu_testtime);
+
+				stu_testtime = Timestamp.valueOf(request.getParameter("stu_testtime"));
+				System.out.println(stu_testtime);
+
 				stu_interview = Double.valueOf(request.getParameter("stu_interview"));
 				System.out.println(stu_interview);
 				stu_total = Double.valueOf(request.getParameter("stu_total"));
 				System.out.println(stu_total);
-				//改為timestamp			
+
 				stu_workdate = Timestamp.valueOf(request.getParameter("stu_workdate"));
 				System.out.println(stu_workdate);
 				stu_except =Double.valueOf(request.getParameter("stu_except"));
@@ -200,7 +198,7 @@ public class StudentProfileServlet extends HttpServlet {
 				
 				
 				if (!Msgs.isEmpty()) {
-					out.write("資料更新失敗");
+					out.write("failed");
 					return;
 				}
 				/*******************將資料(更新)至資料庫**********************/
@@ -211,16 +209,12 @@ public class StudentProfileServlet extends HttpServlet {
 							stu_pre,stu_implement,stu_testtime,stu_interview,
 							stu_total,stu_workdate,stu_except,stu_final,
 							stu_note2,pub_key,pri_key,cipher_text,log_pw,class_id);
-					out.write("資料更新成功");
+					out.write("success");
 					return;
 				}
 			} 
-			catch (SQLServerException e) {
-				out.write("資料更新失敗");
-				return;
-			}
 			catch (Exception e) {
-				out.write("資料更新失敗");
+				out.write("failed");
 				return;
 			}
 		}

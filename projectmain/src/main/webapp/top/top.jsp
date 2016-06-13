@@ -51,7 +51,7 @@ pageEncoding="UTF-8"%>
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li class=""><a href="${pageContext.request.contextPath}/indexOfAdminPage.jsp">關於我們</a></li>
+						<li class=""><a href="${pageContext.request.contextPath}/Talk/TalkServletJSON.do?action=initTalkViewTODataTablesJSON">留言板</a></li>
 						<!-----------------------------------下拉式選單(資料建檔開始)---------------------------------------------------- -->
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"

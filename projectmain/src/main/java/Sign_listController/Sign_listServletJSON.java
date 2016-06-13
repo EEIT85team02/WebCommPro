@@ -19,7 +19,6 @@ import org.hibernate.exception.ConstraintViolationException;
 
 import Sign_list.model.Sign_listService;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 
 @WebServlet({"/Sign_list/Sign_listServletJSON.do","/Employee/Sign_listServletJSON.do"})
@@ -132,10 +131,6 @@ public class Sign_listServletJSON extends HttpServlet {
 					return;
 				}
 			} 
-			catch (SQLServerException e) {
-				out.write("資料更新失敗");
-				return;
-			}
 			catch (Exception e) {
 				out.write("資料更新失敗");
 				return;

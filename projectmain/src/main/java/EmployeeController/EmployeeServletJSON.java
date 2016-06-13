@@ -2,6 +2,7 @@ package EmployeeController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.rmi.ServerException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -21,7 +22,6 @@ import Employee.model.EmployeeService;
 import Employee.model.EmployeeVO;
 import Sign_list.model.Sign_listService;
 
-import com.microsoft.sqlserver.jdbc.SQLServerException;
 
 
 
@@ -129,10 +129,6 @@ public class EmployeeServletJSON extends HttpServlet {
 					return;
 				}
 			} 
-			catch (SQLServerException e) {
-				out.write("資料刪除失敗");
-				return;
-			}
 			catch (Exception e) {
 				out.write("資料刪除失敗");
 				return;
@@ -197,10 +193,6 @@ public class EmployeeServletJSON extends HttpServlet {
 					return;
 				}
 			} 
-			catch (SQLServerException e) {
-				out.write("資料更新失敗");
-				return;
-			}
 			catch (Exception e) {
 				out.write("資料更新失敗");
 				return;
