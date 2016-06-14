@@ -80,6 +80,10 @@
 .Main_Content {
 	margin-top: 100px;
 }
+a {
+    color: rgb(179, 24, 188);
+    text-decoration: none;
+}
 </style>
 </head>
 <body>
@@ -225,11 +229,11 @@
         </div>
      </div>
 </div> 
-        <script src="../js/jquery.min.js"></script>
-		<script src="../js/bootstrap/bootstrap.min.js"></script>
-		<script src="../js/jquery-1.12.4.js"></script>
-        <script src="../DataTables/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
-        <script src="../js/lobibox.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/jquery-1.12.4.js"></script>
+        <script src="${pageContext.request.contextPath}/DataTables/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/lobibox.min.js"></script>
 		<script>
 		        $(function(){
 
@@ -395,6 +399,7 @@
 		                              "sNext":"下頁",
 		                              "sLast":"尾頁"}
 					 },
+					      "bJQueryUI":true,
 				    	  "bProcessing": true,
 				    	  "sPaginationType":"full_numbers",
 				    	 
@@ -418,6 +423,7 @@
 		                              "sNext":"下頁",
 		                              "sLast":"尾頁"}
 					 },
+					      "bJQueryUI":true,
 				    	  "bProcessing": true,
 				    	  "sPaginationType":"full_numbers",
 				    	 
@@ -440,6 +446,7 @@
 	                              "sNext":"下頁",
 	                              "sLast":"尾頁"}
 				 },
+				      "bJQueryUI":true,
 			    	  "bProcessing": true,
 			    	  "sPaginationType":"full_numbers",
 			    	 
@@ -462,6 +469,7 @@
 	                              "sNext":"下頁",
 	                              "sLast":"尾頁"}
 				 },
+				      "bJQueryUI":true,
 			    	  "bProcessing": true,
 			    	  "sPaginationType":"full_numbers",
 			    	 
@@ -484,6 +492,7 @@
 	                              "sNext":"下頁",
 	                              "sLast":"尾頁"}
 				 },
+				      "bJQueryUI":true,
 			    	  "bProcessing": true,
 			    	  "sPaginationType":"full_numbers",
 			    	 

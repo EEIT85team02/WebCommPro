@@ -4,7 +4,7 @@
 <c:if test="${empty LoginOK}">
 	<c:set var="target" value="${pageContext.request.servletPath}"
 		scope="session" />
-	<c:redirect url="/01_login/LoginBegin.jsp" />
+	<c:redirect url="/WebComm_index.jsp" />
 </c:if>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
