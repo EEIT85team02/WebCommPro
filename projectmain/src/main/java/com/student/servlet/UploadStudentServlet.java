@@ -2,9 +2,14 @@ package com.student.servlet;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fileIO.util.FileIOUtil;
+import SendMail.model.InsertLogpwAndSendMailService;
+import Stu_additional.model.Stu_additionalService;
 import Student.model.IStudentDAO;
 import Student.model.StudentDAO;
 import Student.model.StudentVO;
@@ -66,7 +73,28 @@ public class UploadStudentServlet extends HttpServlet {
 			System.out.println("xxx");
 			try {
 				studao.insert(onestu);
+				String serverName=request.getServerName();
+				int ServerPort=request.getServerPort();
+				String contextPath=request.getContextPath();
+				String path=serverName+":"+ServerPort+contextPath;
+				InsertLogpwAndSendMailService ILSendMail = new InsertLogpwAndSendMailService();
+				ILSendMail.insertKeysCiphertextAndSendMail(onestu.getClassVO().getClass_id(),path);
 			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidKeyException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchAlgorithmException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (NoSuchPaddingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalBlockSizeException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (BadPaddingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
