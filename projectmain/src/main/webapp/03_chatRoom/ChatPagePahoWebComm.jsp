@@ -15,6 +15,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>MQTT Paho 主考官專用</title>
 
+<link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 
 <!-- 匯入LikeHangoutChat資源 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/LikeHangoutChat/css/LikeHangoutChat.css"/>
@@ -23,7 +26,9 @@
 
 <style>
 
-
+.navbar-inverse {
+    background-image: linear-gradient(to bottom,#E4C00D 0,rgba(249, 68, 27, 0.97) 100%);
+}
 
 
 </style>
@@ -35,8 +40,8 @@
 <body>
 <div class="container">
 	<!-- 匯入功能表列 -->
-	<jsp:include page="/references/navigatorB.jsp" />
-
+<%-- 	<jsp:include page="/references/navigatorB.jsp" /> --%>
+   <jsp:include page="/top/ExamierTop.jsp" />
       <div class="starter-template">
         <h1>MQTT Paho 主考官專用</h1>
 <!--         <p class="lead">目前聊天室仍為測試階段, 工作人員正盡力趕修中. <br> 使用過程中可能發生連線不穩定或異常斷線的情況,敬請見諒! </p> -->
