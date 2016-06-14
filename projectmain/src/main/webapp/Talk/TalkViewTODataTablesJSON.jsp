@@ -195,6 +195,11 @@ margin: 20px;
 				</div>
 				
 				<div class="divForm">
+					<label for="talkName" class="labelTitle">訪客姓名:</label> 
+					<input type="text" name="talkName" size="20" id="mtalkName" readOnly >
+				</div>
+				
+				<div class="divForm">
 					<label for="talkMail" class="labelTitle">mail:</label> 
 					<input type="text" name="talkMail" size="20" id="mtalkMail" readOnly >
 				</div>
@@ -246,6 +251,7 @@ margin: 20px;
 			
 				mtalkId = $('#mtalkId'),
 				mtalkMail = $('#mtalkMail');
+				mtalkName = $('#mtalkName');
 				mretalkContent = $('#mretalkContent');
 			  	
 				//點選tr資料，更換class類別,若被選取則更新為未選取，反之選取
@@ -331,12 +337,16 @@ margin: 20px;
 								var talkId = Talks.talkId;
 		 						var retalkContent = Talks.retalkContent;
 		 						var talkMail = Talks.talkMail;
+		 						var talkName = Talks.talkName;
 		 						//將資料放到form表單中
 								utalkId.val(talkId);
 								uretalkContent.val(retalkContent);
 								mtalkId.val(talkId);
 								mretalkContent.val(retalkContent);
 								mtalkMail.val(talkMail);
+								mtalkName.val(talkName);
+								
+								
 							});
 						});
 				 		//判斷是否為悄悄話，若是則開啟mail表單;若否開啟普通表單
@@ -376,6 +386,7 @@ margin: 20px;
 				 			alert("aaaa");
 				 		}
 				 		else if(data=="資料更新成功"){
+				 			
 				 			table.ajax.reload();//重新載入data tables的資料 ?? 須改為直接抓取原更新表單的值回填回去表格
 				 			TalkMailForm.dialog( "close" );
 				 		}

@@ -134,6 +134,7 @@ public class TalkService {
 			map.put("talkId",talk.getTalkId().toString());
 			map.put("retalkContent",talk.getRetalkContent());
 			map.put("talkMail",talk.getTalkMail());
+			map.put("talkName",talk.getTalkName());
 			talks.add(map);
 			jsonString = JSONValue.toJSONString(talks);
 			return jsonString;
