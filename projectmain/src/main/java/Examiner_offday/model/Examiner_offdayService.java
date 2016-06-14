@@ -85,7 +85,6 @@ public class Examiner_offdayService {
 				detailExamVO.add(a.getOff_enddate().toString());
 				detailExamVO.add(a.getOff_day().toString());
 				detailExamVO.add(a.getEmp_job_id());
-				detailExamVO.add(a.getEmp_job_id());
 				examVO.add(detailExamVO);
 			}
 			Map<String,List<List<String>>> mapJSON=new HashMap<String,List<List<String>>>();
