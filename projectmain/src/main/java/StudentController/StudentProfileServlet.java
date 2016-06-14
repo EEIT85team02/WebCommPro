@@ -184,14 +184,14 @@ public class StudentProfileServlet extends HttpServlet {
 				DecryptService ds=new DecryptService();
 				
 				//使用base64編碼解密
-				pub_key = ds.decryptBase64String(request.getParameter("pub_key"));
-				System.out.println(pub_key);
-				pri_key = ds.decryptBase64String(request.getParameter("pri_key"));
-				System.out.println(pri_key);
-				cipher_text = ds.decryptBase64String(request.getParameter("cipher_text"));
-				System.out.println(cipher_text);
-				log_pw = ds.decryptBase64String(request.getParameter("log_pw"));
-				System.out.println(log_pw);
+//				pub_key = ds.decryptBase64String(request.getParameter("pub_key"));
+//				System.out.println(pub_key);
+//				pri_key = ds.decryptBase64String(request.getParameter("pri_key"));
+//				System.out.println(pri_key);
+//				cipher_text = ds.decryptBase64String(request.getParameter("cipher_text"));
+//				System.out.println(cipher_text);
+//				log_pw = ds.decryptBase64String(request.getParameter("log_pw"));
+//				System.out.println(log_pw);
 				
 				
 				if (!Msgs.isEmpty()) {
