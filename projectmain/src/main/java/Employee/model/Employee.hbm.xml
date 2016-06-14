@@ -29,6 +29,7 @@
 			<one-to-many class="Examiner_offday.model.Examiner_offdayVO" />
 		</set>
         
+        
         <many-to-one name="slVO" class="Sign_list.model.Sign_listVO" lazy="false">
             <column name="sl_id"/>
         </many-to-one>
