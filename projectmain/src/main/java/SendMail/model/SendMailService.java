@@ -68,7 +68,7 @@ public void SendMailToStudent(JSONArray ja){
 	
 	
 	  String host = "smtp.gmail.com";
-	  int port = 587;
+	  int port = 465;
 	  
 
 	  

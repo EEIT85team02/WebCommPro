@@ -6,14 +6,14 @@
 
 	<session-factory>
   <!-- 連線池JNDI設定-->
-        <property name="connection.datasource">java:comp/env/jdbc/SQLjdbc</property>
+        <property name="connection.datasource">java:comp/env/jdbc/db2</property>
         
         <!-- 連線池c3p0設定-->
-<!-- 	<property name="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</property>
- 		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/webcomm</property> 
+<!--  	<property name="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</property> -->
+<!--  		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/webcomm</property>  -->
 
-		<property name="hibernate.connection.username">sa</property>
-		<property name="hibernate.connection.password">P@ssw0rd</property>  -->
+<!-- 		<property name="hibernate.connection.username">sa</property> -->
+<!-- 		<property name="hibernate.connection.password">P@sswOrd</property>   -->
 		
 <!--		<property name="hibernate.connection.username">sa1</property>-->
 <!--		<property name="hibernate.connection.password">P@sswOrd</property> -->
