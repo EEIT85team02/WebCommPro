@@ -144,7 +144,7 @@ public class Stu_additionalService {
 	public String getStuByStu_id(Integer stu_id) throws SQLException {	
 		List stusc=new LinkedList();
 		List<Stu_additionalVO> stu_addList =dao.findByStu_id(stu_id);
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println("-----------*****"+stu_addList);
 			Map<String,String> map = new HashMap<String,String>();
 			map.put("stu_add_id",stu_addList.get(0).getStu_add_id().toString());
@@ -185,10 +185,10 @@ public class Stu_additionalService {
 			EncryptService es=new EncryptService();
 			
 			//將byte[]都先使用base64編碼
-//			map.put("pub_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPub_key()));
-//			map.put("pri_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPri_key()));
-//			map.put("cipher_text",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getCipher_text()));
-//			map.put("log_pw",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getLog_pw()));
+			map.put("pub_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPub_key()));
+			map.put("pri_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPri_key()));
+			map.put("cipher_text",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getCipher_text()));
+			map.put("log_pw",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getLog_pw()));
 			
 //			map.put("pub_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPub_key()));
 //			map.put("pri_key",es.Base64Encrypt(stu_addList.get(0).getStudentVO().getPri_key()));

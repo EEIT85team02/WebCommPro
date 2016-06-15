@@ -48,17 +48,16 @@ public class Test_periodServletJSON extends HttpServlet {
 		/******************************** 新增資料表 ***********************/
 		if ("addTp".equals(action)) {
 			Map<String, String> Msgs = null;
-			Integer test_hour_id= null;
 			Time test_starthour= null;
 			Time test_endhour= null;
 			try {
 				Msgs = new HashMap<String, String>();
 				/***************(新增)取得Test_period-test_starthourMsg表單資料***************/
 				test_starthour = java.sql.Time.valueOf(request.getParameter("test_starthour"));
-				if (test_endhour == null) {
+				if (test_starthour == null) {
 					Msgs.put("test_starthourMsg", "開始時間不可空白");
 				}
-				if (test_endhour.toString().trim().length() >10) {
+				if (test_starthour.toString().trim().length() >10) {
 					Msgs.put("test_starthourMsg", "開始時間長度不可大於10碼");
 				}
 				/***************(新增)取得Test_period-test_endhourMsg表單資料***************/

@@ -81,7 +81,7 @@ public class Test_intervalServletJSON extends HttpServlet {
 					tiSvc = new Test_intervalService();
 					tiSvc.insertTi(class_id,test_startdate,test_enddate);
 					tiSvc.createTestDateDetailData(class_id,test_startdate,test_enddate);
-					
+					tiSvc.createFullcalendarDetailData(class_id,test_startdate,test_enddate);
 					out.write("資料新增成功");
 					return;
 				}

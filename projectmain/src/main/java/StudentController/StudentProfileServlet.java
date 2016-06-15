@@ -23,6 +23,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+
+import com.google.api.client.util.Base64;
 import com.google.gson.Gson;
 
 import Class.model.ClassVO;
@@ -56,14 +59,17 @@ public class StudentProfileServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("content-type", "text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+
 		Object LoginOK = request.getSession().getAttribute("LoginOK");
 		String action = request.getParameter("action");
 		
 		if(LoginOK != null){
 			
 		System.out.println("LoginOK-----StudentProfileServlet:"+LoginOK);
-			
-		request.setCharacterEncoding("UTF-8");
+		
 		System.out.println("stu_id-------------"+request.getParameter("stu_id"));
 		}
 		try {
@@ -166,7 +172,7 @@ public class StudentProfileServlet extends HttpServlet {
 				stu_implement =Double.valueOf(request.getParameter("stu_implement"));
 				System.out.println(stu_implement);
 
-				stu_testtime = Timestamp.valueOf(request.getParameter("stu_testtime"));
+				stu_testtime = Timestamp.valueOf(request.getParameter("stu_testtime")+" 00:00:00");
 				System.out.println(stu_testtime);
 
 				stu_interview = Double.valueOf(request.getParameter("stu_interview"));
@@ -174,7 +180,7 @@ public class StudentProfileServlet extends HttpServlet {
 				stu_total = Double.valueOf(request.getParameter("stu_total"));
 				System.out.println(stu_total);
 
-				stu_workdate = Timestamp.valueOf(request.getParameter("stu_workdate"));
+				stu_workdate = Timestamp.valueOf(request.getParameter("stu_workdate")+" 00:00:00");
 				System.out.println(stu_workdate);
 				stu_except =Double.valueOf(request.getParameter("stu_except"));
 				System.out.println(stu_except);
@@ -186,6 +192,8 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(class_id);
 				DecryptService ds=new DecryptService();
 				
+				
+//				pub_key=Base64.decodeBase64(request.getParameter("pub_key"));
 				//使用base64編碼解密
 				pub_key = ds.decryptBase64String(request.getParameter("pub_key"));
 				System.out.println(pub_key);
@@ -209,7 +217,10 @@ public class StudentProfileServlet extends HttpServlet {
 							stu_pre,stu_implement,stu_testtime,stu_interview,
 							stu_total,stu_workdate,stu_except,stu_final,
 							stu_note2,pub_key,pri_key,cipher_text,log_pw,class_id);
-					out.write("success");
+//					out.write("success");
+					RequestDispatcher successMsg = request
+							.getRequestDispatcher("/Student_maintain/StumTODataTablesJSON.jsp");
+					successMsg.forward(request, response);
 					return;
 				}
 			} 

@@ -170,13 +170,11 @@ margin: 20px;
 							<tr>
 								<th class="col-md-1.5 col-xs-1.5">請假單單號</th>
 								<th class="col-md-1.5 col-xs-1.5">主考官代號</th>
-								<th class="col-md-1.5 col-xs-1.5">主考官名字</th>
-								<th class="col-md-1.5 col-xs-1.5">請假開始日期</th>
-								<th class="col-md-1.5 col-xs-1.5">請假結束日期</th>
+								<th class="col-md-2 col-xs-2">主考官名字</th>
+								<th class="col-md-2 col-xs-2">請假開始日期</th>
+								<th class="col-md-2 col-xs-2">請假結束日期</th>
 								<th class="col-md-1.5 col-xs-1.5">請假天數</th>
 								<th class="col-md-1.5 col-xs-1.5">職務代理人代號</th>
-								<th class="col-md-1.5 col-xs-1.5">職務代理人</th>
-								
 							</tr>
 						</thead>
 						<tbody>
@@ -190,7 +188,6 @@ margin: 20px;
 								<th>請假結束日期</th>
 								<th>請假天數</th>
 								<th>職務代理人代號</th>
-								<th>職務代理人</th>
 							</tr>
 						</tfoot>
 					</table>

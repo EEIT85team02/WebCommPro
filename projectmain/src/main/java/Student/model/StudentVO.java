@@ -291,7 +291,7 @@ public class StudentVO implements Serializable{//學員	(所有資策會學員)
 		map.put("stu_except","\""+getStu_except()+"\"");
 		map.put("stu_final","\""+getStu_final()+"\"");
 		map.put("stu_note2","\""+getStu_note2()+"\"");
-		
+		map.put("class_id","\""+getClassVO().getClass_id()+"\"");
 		
 
 		return map;
