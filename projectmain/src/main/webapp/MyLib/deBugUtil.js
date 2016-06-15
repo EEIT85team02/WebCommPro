@@ -510,5 +510,22 @@
 //      }
 //  }
 //}
-
+    function dealWithCyclic(escapeObject){
+		var o = escapeObject;
+		var cache = [];
+		var escapedObject = JSON.stringify(o, function(key, value) {
+		    if (typeof value === 'object' && value !== null) {
+		        if (cache.indexOf(value) !== -1) {
+		            // Circular reference found, discard key
+		        	// 因為再垃圾堆中【cache】找到重複的 所以要準備跳脫
+		            return;
+		        }
+		        // Store value in our collection
+		        cache.push(value);
+		    }
+		    return value;
+		});
+		//cache = null; // Enable garbage collection
+		return escapedObject;
+	}
 	

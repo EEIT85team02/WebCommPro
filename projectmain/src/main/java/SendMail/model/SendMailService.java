@@ -1,5 +1,6 @@
 package SendMail.model;
 
+import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -15,6 +16,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,7 +35,7 @@ public class SendMailService {
 	
 	
 	
-public void SendMailToStudent(JSONArray ja){
+public void SendMailToStudent(JSONArray ja) throws UnsupportedEncodingException{
 
 	//將輸入的 json陣列分門別類並new出空陣列
 	String[] emailarray=new String[ja.length()];
@@ -68,7 +70,7 @@ public void SendMailToStudent(JSONArray ja){
 	
 	
 	  String host = "smtp.gmail.com";
-	  int port = 465;
+	  int port = 587;
 	  
 
 	  
@@ -81,6 +83,7 @@ public void SendMailToStudent(JSONArray ja){
 	  props.put("mail.smtp.auth", "true");
 	  props.put("mail.smtp.starttls.enable", "true");
 	  props.put("mail.smtp.port", port);
+	  
 	  Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 		    protected PasswordAuthentication getPasswordAuthentication() {
 		        return new PasswordAuthentication(username, password);
@@ -88,14 +91,17 @@ public void SendMailToStudent(JSONArray ja){
 		});
 
 	  try {
-
+		  System.setProperty("mail.mime.charset","UTF-8");
 	   Message message = new MimeMessage(session);
 	   message.setFrom(new InternetAddress("eeit85team02@gmail.com"));
 	   
 	  for(int i=0,max=ja.length();i<max;i++){
 	   message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailarray[i]));//對方email
-	   message.setSubject("測試寄信.");
-	   message.setText("Dear "+namearray[i]+","+mailtextarray[i]);//內文
+	   
+	   message.setContent(mailtextarray[i], "text/html;charset=UTF8");
+
+	   message.setSubject(MimeUtility.encodeText("Hello你好","UTF-8","B"));
+	   message.setContent("Dear "+MimeUtility.encodeText(namearray[i],"UTF-8","B")+","+MimeUtility.encodeText(mailtextarray[i],"UTF-8","B"),"text/html;charset=UTF-8");//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);
@@ -116,7 +122,7 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	  String host = "smtp.gmail.com";
 	  int port = 587;
 	  
-
+	  
 	  
 	  final String username = "eeit85team02@gmail.com";//發信的帳號
 	  final String password = "pw123456789";//your password
@@ -176,7 +182,7 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	  }
 }
 
-public static void SendConfirmMailToStudent(String emailString,String nameString,Timestamp stu_applytime){
+public  void SendConfirmMailToStudent(String emailString,String nameString,Timestamp stu_applytime){
  	 
    
 	  String host = "smtp.gmail.com";
@@ -231,7 +237,7 @@ public static void SendConfirmMailToStudent(String emailString,String nameString
 
 
 
-public static void SendPasswordMailToStudent(String emailString,String path){
+public void SendPasswordMailToStudent(String emailString,String path){
 	 
 	StudentDAO stdao=new StudentDAO();
 	StudentVO stuvo=stdao.getStudentByEmail(emailString);
@@ -284,6 +290,61 @@ public static void SendPasswordMailToStudent(String emailString,String path){
 		  throw new RuntimeException(e);
 	  }
 }
+
+public  void replyMessageBoardToStudent(String emailString,String nameString,String context){
+	 
+	   
+	  String host = "smtp.gmail.com";
+	  int port = 587;
+	  
+
+
+	  
+	  final String username = "eeit85team02@gmail.com";//發信的帳號
+	  final String password = "pw123456789";//your password
+
+
+	  Properties props = new Properties();
+	  props.put("mail.smtp.host", host);
+	  props.put("mail.smtp.auth", "true");
+	  props.put("mail.smtp.starttls.enable", "true");
+	  props.put("mail.smtp.port", port);
+	  Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+		    protected PasswordAuthentication getPasswordAuthentication() {
+		        return new PasswordAuthentication(username, password);
+		    }
+		});
+
+	  try {
+
+	   Message message = new MimeMessage(session);
+	   message.setFrom(new InternetAddress("eeit85team02@gmail.com"));
+	   
+
+		  
+	   message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailString));//對方email
+	   message.setSubject("您的回覆留言已經被回覆");
+	   
+	 
+
+	   message.setText("Dear "+nameString+"\n");
+	   message.setText(context);//內文
+
+
+	   Transport transport = session.getTransport("smtp");
+	   transport.connect(host, port, username, password);
+	   
+	   Transport.send(message);
+
+	   
+
+	  
+	  } catch (MessagingException|RuntimeException e) {
+		  throw new RuntimeException(e);
+	  }
+}
+
+
 
 public static void main(String[] args) throws NoSuchAlgorithmException{
 	//SendPasswordMailToStudent("llluuuyyy123@gmail.com");

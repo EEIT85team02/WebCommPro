@@ -3,6 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
 <link rel='stylesheet' href='${pageContext.request.contextPath}/fullcalendar/fullcalendar.css' />
+<link rel='stylesheet' href='${pageContext.request.contextPath}/fullcalendar/lib/cupertino/jquery-ui.min.css' />
+
+
 <script src='${pageContext.request.contextPath}/fullcalendar/lib/moment.js'></script>
 <script src='${pageContext.request.contextPath}/fullcalendar/fullcalendar.min.js'></script>
 <!-- 載入fullcalendar的語言包 -->

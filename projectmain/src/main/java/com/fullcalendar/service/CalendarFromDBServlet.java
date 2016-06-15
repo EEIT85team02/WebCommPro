@@ -2,6 +2,7 @@ package com.fullcalendar.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -49,14 +50,72 @@ public class CalendarFromDBServlet extends HttpServlet {
 					}
 
 				})
+//					.registerTypeAdapter(Boolean.class,  new TypeAdapter<Boolean>(){
+//
+//					@Override
+//					public void write(JsonWriter out, Boolean value)
+//							throws IOException {
+////						if(value.equals(new Integer("1"))){
+////							out.value(true);
+////						}
+////						if(value.equals(new Integer("0"))){
+////							out.value(false);
+////						}
+//						   if (value == null) {
+//							      out.nullValue();
+//							    } else {
+//							    	System.out.println("out==="+out);
+//							      out.value(value);
+//							    }
+//					}
+//
+//					@Override
+//					public Boolean read(JsonReader in) throws IOException {
+////						return null;
+//						  JsonToken peek = in.peek();
+//						    switch (peek) {
+//						    case BOOLEAN:
+//						      return in.nextBoolean();
+//						    case NULL:
+//						      in.nextNull();
+//						      return null;
+//						    case NUMBER:
+//						      return in.nextInt() != 0;
+//						    case STRING:
+//						      return Boolean.parseBoolean(in.nextString());
+//						    default:
+//						      throw new IllegalStateException("Expected BOOLEAN or NUMBER but was " + peek);
+//						    }
+//					}
+//					
+//				})
 				.setPrettyPrinting()
 				.create();
 		// 也可以在create()之前先.serializeNulls
 //		<h1>stuName:${sessionScope.userId}</h1>
 //		<h1>stuNumber:${sessionScope.stuID}</h1>
-		Integer stuID = new Integer(request.getSession().getAttribute("stuID").toString());
-		out.write(gson.toJson(new ListLatestEventsService()
-				.listLatestEvents(stuID)));
+		Integer stuID = new Integer(request.getSession().getAttribute("stu_id").toString());
+//		stuID = new Integer("4");
+//		out.write(gson.toJson(new ListLatestEventsService()
+//		.listLatestEvents(stuID)));//只更新限制條件
+		String str;
+		try {
+			str = gson.toJson(new ListLatestEventsService().listLatestEvents((stuID)));
+			out.write(str.replaceAll("\"overlap\": 0,",  "\"overlap\": false,").replaceAll("\"overlap\": 1,",  "\"overlap\": true,"));
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		out.write(str.replaceAll("\"overlap\": 0,",  "\"overlap\": false,"));
+		
+		// 只是把資料庫的 0 換成false 1換成true
+		
+		
+		
+//		.listLatestEvents(stuID)));
 //				.listLatestEvents(new Integer(1))));
 
 		/**
