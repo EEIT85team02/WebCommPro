@@ -69,7 +69,8 @@
 		</script>
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/jquery-ui.css" rel="stylesheet">
+<%-- <link href="${pageContext.request.contextPath}/css/jquery-ui.css" rel="stylesheet"> --%>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link href="${pageContext.request.contextPath}/DataTables/DataTables-1.10.11/css/jquery.dataTables.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/lobibox.min.css" rel="stylesheet">

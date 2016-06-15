@@ -70,7 +70,7 @@ public class Stu_additionalService {
 	public List<Stu_additionalVO> getAll() throws SQLException {
 		return dao.getAll();
 	}
-	public Stu_additionalVO upstatuscancel(Integer stu_id,Integer stu_add_id,Timestamp test_start,Timestamp test_end,Timestamp stu_applytime,Integer sta_id,String emp_id,Timestamp confirm_time) throws SQLException {
+	public Stu_additionalVO upstatuscancel(Integer stu_id,Integer stu_add_id,Timestamp test_start,Timestamp test_end,Timestamp stu_applytime,Integer sta_id,String emp_id,Timestamp confirm_time,String title) throws SQLException {
 
 		Stu_additionalVO stuaddVO = new Stu_additionalVO();
 
@@ -79,6 +79,7 @@ public class Stu_additionalService {
 		stuaddVO.setTest_end(test_end);
 		stuaddVO.setStu_applytime(stu_applytime);			
 		stuaddVO.setConfirm_time(confirm_time);
+		stuaddVO.setTitle(title);
 				
 		StudentVO stuvo = new StudentVO();
 		stuvo.setStu_id(stu_id);
@@ -96,7 +97,7 @@ public class Stu_additionalService {
 		
 		return stuaddVO;
 		}
-	public Stu_additionalVO upstatusok(Integer stu_id,Integer stu_add_id,Timestamp test_start,Timestamp test_end,Timestamp stu_applytime,Integer sta_id,String emp_id,Timestamp confirm_time) throws SQLException {
+	public Stu_additionalVO upstatusok(Integer stu_id,Integer stu_add_id,Timestamp test_start,Timestamp test_end,Timestamp stu_applytime,Integer sta_id,String emp_id,Timestamp confirm_time,String title) throws SQLException {
 
 		Stu_additionalVO stuaddVO = new Stu_additionalVO();
 
@@ -105,6 +106,7 @@ public class Stu_additionalService {
 		stuaddVO.setTest_end(test_end);
 		stuaddVO.setStu_applytime(stu_applytime);			
 		stuaddVO.setConfirm_time(confirm_time);
+		stuaddVO.setTitle(title);
 				
 		StudentVO stuvo = new StudentVO();
 		stuvo.setStu_id(stu_id);
@@ -134,7 +136,8 @@ public class Stu_additionalService {
 			map.put("stu_applytime",stuaddVO.getStu_applytime().toString());
 			map.put("sta_id",stuaddVO.getMember_statusVO().getSta_id().toString());
 			map.put("emp_id",stuaddVO.getEmployeeVO().getEmp_id().toString());
-			map.put("confirm_time",stuaddVO.getConfirm_time().toString());	
+			map.put("confirm_time",stuaddVO.getConfirm_time().toString());
+			map.put("title",stuaddVO.getTitle());
 			stuaddsc.add(map);
 		String jsonString = JSONValue.toJSONString(stuaddsc);
 		return jsonString;

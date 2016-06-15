@@ -157,7 +157,8 @@ create table Stu_additional
   stu_applytime    timestamp,
   sta_id           int            fk_sta_id references  Member_status(sta_id) NOT NULL ,
   emp_id           nvarchar(10)   fk_emp_id references  Employee(emp_id) NOT NULL,
-  confirm_time     timestamp
+  confirm_time     timestamp,
+  title            nvarchar(20) 
 ); 
 
 create table Mail_template
@@ -301,6 +302,8 @@ insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) value
 insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7004','張書豪', '40','Marketing_Department','test4@webcomme.com','2');
 insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7005','林俊佑', '50','Planning_Department','test5@webcomme.com','1');
 insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7006','王彥淳', '60','Sales_Department','test6@webcomme.com','1');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7007','瑞', '70','EEIT_Department','a61802123@gmail.com','2');
+insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('0000','未確認', '0','None','0000@webcomme.com','1');
 --insert into Employee (emp_id, emp_name, dep_id, dep_name, emp_mail, sl_id) values ('7007','陳顥賢員工', '70','Sales_Department','pighouse764701@gmail.com','1');
  --Examiner_offday
 insert into Examiner_offday (emp_id, off_startdate, off_enddate, off_day, emp_job_id) values ('7006','2016-5-15', '2016-5-18','3','7001');
@@ -325,24 +328,24 @@ insert into Member_status (sta_id, sta_name) values ('4','已錄取');
 insert into Member_status (sta_id, sta_name) values ('5','未錄取');
 
  --Stu_additional
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (1,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 10:30:00', '1', '7004', '2016-05-09 15:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (2,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 13:30:00', '2', '7003', '2016-05-09 10:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (3,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 16:30:00', '3', '7003', '2016-05-09 17:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (4,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '4', '7001', '2016-05-09 15:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (5,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 10:30:00', '5', '7004', '2016-05-09 15:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (6,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 13:30:00', '1', '7003', '2016-05-09 10:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (7,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 16:30:00', '2', '7003', '2016-05-09 17:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (8,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '3', '7001', '2016-05-09 15:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (9,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 10:30:00', '4', '7004', '2016-05-09 15:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (10,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 13:30:00', '5', '7003', '2016-05-09 10:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (11,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 16:30:00', '1', '7003', '2016-05-09 17:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (12,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '2', '7001', '2016-05-09 15:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (13,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 10:30:00', '3', '7004', '2016-05-09 15:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (14,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 13:30:00', '4', '7003', '2016-05-09 10:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (15,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 16:30:00', '5', '7003', '2016-05-09 17:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (16,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '1', '7001', '2016-05-09 15:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (17,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '1', '7001', '2016-05-09 15:00:00');
-insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time) values (18,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '1', '7001', '2016-05-09 15:00:00');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (1,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 10:30:00', '1', '7004', '2016-05-09 15:00:00','Java');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (2,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 13:30:00', '2', '7003', '2016-05-09 10:00:00','無科目');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (3,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 16:30:00', '3', '7003', '2016-05-09 17:00:00','Java');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (4,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '4', '7001', '2016-05-09 15:00:00','無科目');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (5,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 10:30:00', '5', '7004', '2016-05-09 15:00:00','Java');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (6,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 13:30:00', '1', '7003', '2016-05-09 10:00:00','無科目');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (7,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 16:30:00', '2', '7003', '2016-05-09 17:00:00','無科目');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (8,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '3', '7001', '2016-05-09 15:00:00','Java');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (9,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 10:30:00', '4', '7004', '2016-05-09 15:00:00','無科目');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (10,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 13:30:00', '5', '7003', '2016-05-09 10:00:00','無科目');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (11,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 16:30:00', '1', '7003', '2016-05-09 17:00:00','Java');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (12,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '2', '7001', '2016-05-09 15:00:00','無科目');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (13,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 10:30:00', '3', '7004', '2016-05-09 15:00:00','Java');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (14,'2016-5-09 10:00:00', '2016-5-09 12:00:00', '2016-5-05 13:30:00', '4', '7003', '2016-05-09 10:00:00','無科目');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (15,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 16:30:00', '5', '7003', '2016-05-09 17:00:00','Java');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (16,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '1', '7001', '2016-05-09 15:00:00','無科目');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (17,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '1', '7001', '2016-05-09 15:00:00','Java');
+insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (18,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '1', '7001', '2016-05-09 15:00:00','無科目');
 
  --Mail_template
 insert into Mail_template (mail_name, mail_text) values ('預約成功通知0', '預約成功0');
