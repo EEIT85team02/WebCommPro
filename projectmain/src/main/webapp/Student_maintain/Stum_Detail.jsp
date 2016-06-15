@@ -263,6 +263,7 @@
 				<p>班級代號：<%=request.getParameter("class_id")%></p>
 				<p>考生E-mail：<%=request.getParameter("stu_email")%></p>
 				<p>組別：<%=request.getParameter("stu_group")%></p>
+								
 			</div>
 			<div class="div2">
 				<p>座號：<%=request.getParameter("stu_seatno")%></p>

@@ -154,7 +154,7 @@ create table Stu_additional
   stu_id           int            fk_stu_id references  Student(stu_id) NOT NULL, 
   test_start       timestamp      NOT NULL,
   test_end         timestamp      NOT NULL,
-  stu_applytime    timestamp,
+  stu_applytime    timestamp      ,
   sta_id           int            fk_sta_id references  Member_status(sta_id) NOT NULL ,
   emp_id           nvarchar(10)   fk_emp_id references  Employee(emp_id) NOT NULL,
   confirm_time     timestamp,

@@ -12,6 +12,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import Class.model.ClassVO;
+import Edu.model.EduVO;
 import Student.model.StudentVO;
 
 public class FileIOUtil {
@@ -77,7 +79,9 @@ public class FileIOUtil {
 				studentRowVO.get(i-1).setStu_final(((new Integer(dataRow.get(i)[14].replace("是", "1").replace("否", "99")))));
 				studentRowVO.get(i-1).setStu_note1((((dataRow.get(i)[15])))); //備註欄位
 				studentRowVO.get(i-1).setStu_note2((((dataRow.get(i)[16])))); //備註欄位
-//				studentRowVO.get(i-1).setClass_id((((dataRow.get(i)[17])))); 
+				ClassVO classVO = new ClassVO();
+				classVO.setClass_id((((dataRow.get(i)[17]))));
+				studentRowVO.get(i-1).setClassVO(classVO);
 			}
 			//			out.write(str);
 
