@@ -64,7 +64,7 @@ public class InsertLogpwAndSendMailService {
 	
 
 	public static void main(String[] args) throws NoSuchAlgorithmException, SQLException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException {
-//		insertKeysCiphertextAndSendMail("EEIT85");
+		insertKeysCiphertextAndSendMail("EEIT85","localhost:8080/projectmain");
 		
 		
 		//			EncryptIdentificationIdService ls=new EncryptIdentificationIdService();

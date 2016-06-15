@@ -2,7 +2,6 @@ package Test_interval.model;
 
 import java.sql.Date;
 import java.sql.SQLException;
-
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,14 +9,18 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
+import java.util.Set;
 
 import org.json.simple.JSONValue;
 
+import com.fullcalendar.service.CalendarService;
+
+import Student.model.StudentVO;
 import Test_Date.model.Test_DateService;
 import Test_Date.model.Test_DateVO;
 import Test_period.model.Test_periodService;
 import Test_period.model.Test_periodVO;
+import Class.model.ClassService;
 import Class.model.ClassVO;
 
 public class Test_intervalService {
@@ -212,6 +215,40 @@ public class Test_intervalService {
 				tdSrc.deleteTd(test_date_id);
 			}
 		}
+		
+		
+		
+		
+		//新增產生Fullcalendar資料表明細資料
+		public void createFullcalendarDetailData(String class_id,Date test_startdate,Date test_enddate) throws SQLException{
+			CalendarService calendarSrc = new CalendarService();
+			ClassService classSrc = new ClassService();
+			ClassVO clas = new ClassVO(); 
+			clas = classSrc.findByPrimaryKeyClass(class_id);
+			String title0 = "";
+			String title1 = "java";
+			java.util.Date test_startdate1 = new Date(3600000);
+		    java.util.Date test_enddate1 = null;
+			String color0 = "#08d572";
+			String color1 = "#3A87AD";
+			Integer editable = 1;
+			Integer overlap = 1;
+			String rendering0="background";
+			String rendering1="";
+			String constraint="";
+			
+			Set<StudentVO> set = clas.getStus();
+			int count=1;
+			for(StudentVO stu :set){
+				System.out.println("count========"+count);
+				 Integer stu_id = stu.getStu_id();
+				 String id = stu_id.toString();
+				 calendarSrc.insertCalendar(id, title0, test_startdate, test_enddate, color0, stu_id, editable, overlap, rendering0, constraint);
+				 calendarSrc.insertCalendar(id, title1, test_startdate1, test_enddate1, color1, stu_id, editable, overlap, rendering1, constraint);
+				count++;
+			}
+		}
+		//方法結束
 	
 	
 
