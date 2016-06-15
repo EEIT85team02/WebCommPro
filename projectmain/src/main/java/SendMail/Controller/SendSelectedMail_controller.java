@@ -44,7 +44,7 @@ public class SendSelectedMail_controller extends HttpServlet {
 		
 		
 		JSONArray ja = new JSONArray(json);
-		
+		System.out.println("sendmail1.do===="+ja);
 		
 		
 		
