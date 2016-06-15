@@ -21,5 +21,7 @@ public interface IStudentDAO {
 	public List<String> getAllClass() throws SQLException;
 	public List<StudentVO> getAllStudentByClass(String class_id);	
 	public Set<Stu_additionalVO> getStuByStu_id(Integer stu_id) throws SQLException;
+	public StudentVO getStudentByEmail(String stu_email);
+
 
 }
