@@ -4,7 +4,7 @@
   <!--                  SQLServer2005, 2008                 -->                  
 
   <Resource name="jdbc/sysdesign" type="javax.sql.DataSource"
-      username="sa1" password="P@sswOrd"
+      username="sa1" password="P@ssw0rd"
    
       
       

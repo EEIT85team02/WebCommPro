@@ -237,7 +237,7 @@ public  void SendConfirmMailToStudent(String emailString,String nameString,Times
 
 
 
-public void SendPasswordMailToStudent(String emailString,String path){
+public static void SendPasswordMailToStudent(String emailString,String path){
 	 
 	StudentDAO stdao=new StudentDAO();
 	StudentVO stuvo=stdao.getStudentByEmail(emailString);
