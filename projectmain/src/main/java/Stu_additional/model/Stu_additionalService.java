@@ -34,6 +34,7 @@ public class Stu_additionalService {
 			Timestamp stu_applytime,Timestamp confirm_time,Integer stu_id,Integer sta_id,String emp_id,String title ) throws SQLException {
 		
 		Stu_additionalVO stuaddvo = new Stu_additionalVO();
+
 		stuaddvo.setTest_start(test_start);
 		stuaddvo.setTest_end(test_end);
 		stuaddvo.setStu_applytime(stu_applytime);
