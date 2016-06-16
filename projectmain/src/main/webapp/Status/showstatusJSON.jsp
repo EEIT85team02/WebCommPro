@@ -69,7 +69,8 @@
 		</script>
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/jquery-ui.css" rel="stylesheet">
+<%-- <link href="${pageContext.request.contextPath}/css/jquery-ui.css" rel="stylesheet"> --%>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link href="${pageContext.request.contextPath}/DataTables/DataTables-1.10.11/css/jquery.dataTables.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/lobibox.min.css" rel="stylesheet">
@@ -79,6 +80,10 @@
 }
 .Main_Content {
 	margin-top: 100px;
+}
+a {
+    color: rgb(179, 24, 188);
+    text-decoration: none;
 }
 </style>
 </head>
@@ -98,8 +103,9 @@
         <input type="hidden" id="test_endhidc" name="test_end" >
         <input type="hidden" id="stu_applytimehidc" name="stu_applytime" >
         <input type="hidden" id="sta_idhidc" name="sta_id" >
-        <input type="hidden" id="emp_idhidc" name="emp_id" >
+<!--         <input type="hidden" id="emp_idhidc" name="emp_id" > -->
         <input type="hidden" id="confirm_timehidc" name="confirm_time" >
+        <input type="hidden" id="titlehidc" name="title" >
  </form>  
  <form method="post" action="UpStuaddStatusJSON.do" name="ok">
         <input type="hidden" name="action"	value="upstatusok">
@@ -111,6 +117,7 @@
         <input type="hidden" id="sta_idhidok" name="sta_id" >
         <input type="hidden" id="emp_idhidok" name="emp_id" >
         <input type="hidden" id="confirm_timehidok" name="confirm_time" >
+        <input type="hidden" id="titlehidok" name="title" >
  </form> 
  <div class="Main_Content">      
         <div class="bs-example bs-example-tabs" role="tabpanel">
@@ -135,6 +142,9 @@
 		                        <th>班別</th>
 		                        <th>預約日期</th>
 		                        <th>狀態</th>
+		                        <th>主考官</th>
+		                        <th>確認時間</th>
+		                        <th>科目</th>
 		                        <th>送信</th>
 		                        <th>取消核准</th>
                             </tr>
@@ -156,6 +166,7 @@
 		                        <th>班別</th>
 		                        <th>預約日期</th>
 		                        <th>狀態</th>
+		                        <th>科目</th>
 		                    	<th>核准</th>
                             </tr>
                          </thead>
@@ -225,14 +236,16 @@
         </div>
      </div>
 </div> 
-        <script src="../js/jquery.min.js"></script>
-		<script src="../js/bootstrap/bootstrap.min.js"></script>
-		<script src="../js/jquery-1.12.4.js"></script>
-        <script src="../DataTables/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
-        <script src="../js/lobibox.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/jquery-1.12.4.js"></script>
+        <script src="${pageContext.request.contextPath}/DataTables/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/lobibox.min.js"></script>
 		<script>
 		        $(function(){
-
+		        	 var emp_id =<%=session.getAttribute("emp_id")%>
+		    //    	 console.log(emp_id)
+		 		    
 		        	 $(document).on("click",".btn-warning",function(){  //點擊取消核准按鈕
 						 updateID = $(this).val();   //拿出button的value的stu_add_id去資料庫找資料 
 						 $.getJSON("UpStuaddStatusJSON.do",{"action":"getStuAddId",'stu_add_id':updateID},function(datas){
@@ -245,8 +258,10 @@
 								 $("#test_endhidc").val(score.test_end);
 								 $("#stu_applytimehidc").val(score.stu_applytime);
 								 $("#sta_idhidc").val(score.sta_id);
-								 $("#emp_idhidc").val(score.emp_id);
+// 								 $("#emp_idhidc").val(score.emp_id);
 								 $("#confirm_timehidc").val(score.confirm_time);
+								 $("#titlehidc").val(score.title);
+		   //					    console.log(score.title)
            //                       console.log(score.test_start)
                               var Updatedatas = $('form[name="cancelok"]').serialize();  //form表單資料序列化丟到servlet更新
 				 			     $.post('UpStuaddStatusJSON.do',Updatedatas,function(){
@@ -293,8 +308,13 @@
 							 })
 						 })
 					 })
-					 $(document).on("click",".btn-success",function(){  //點擊核准按鈕
+					
+					 $(document).on("click",".btn-success",function(){  //點擊核准按鈕	
+
 						 updateID = $(this).val();   //拿出button的value的stu_add_id去資料庫找資料 
+                  var subjectValue = $(this).parent().parent().find('td:eq(5)').text();
+                  var stuIDValue = $(this).parent().parent().find('td:eq(2)').text();
+
 						 $.getJSON("UpStuaddStatusJSON.do",{"action":"getStuAddId",'stu_add_id':updateID},function(datas){
 			//				 console.log(datas)
 							 $.each(datas,function(i,score){
@@ -305,14 +325,18 @@
 								 $("#test_endhidok").val(score.test_end);
 								 $("#stu_applytimehidok").val(score.stu_applytime);
 								 $("#sta_idhidok").val(score.sta_id);
-								 $("#emp_idhidok").val(score.emp_id);
+		                         $("#emp_idhidok").val(emp_id);      //取登入的主考官id
+// 								 $("#emp_idhidok").val(score.emp_id);
 								 $("#confirm_timehidok").val(score.confirm_time);
+								 $("#titlehidok").val(score.title);
            //                       console.log(score.test_start)
                               var Updatedatas = $('form[name="ok"]').serialize();   //form表單資料序列化丟到servlet更新
 				 			     $.post('UpStuaddStatusJSON.do',Updatedatas,function(){
 				 			    	 
 				 			    	table1.ajax.reload();   //重新讀取表格資料
-				 			    	table2.ajax.reload(); 
+				 			    	table2.ajax.reload();
+
+						 
 				 			    	
 // 				 			    	$('#statusTable01>tbody').empty();
 				 			    	
@@ -349,9 +373,15 @@
 // 							$('#statusTable02>tbody').append(row);
 // 		        		})
 // 		        	})
-				 			    })
+				 			    
 							 })
+						 });
+							 $.post('/projectmain/Calendar2DBServlet_additional',{'stuID':stuIDValue,'subject':subjectValue},function(){
+								 
+			 			    	}); 
+							 
 						 })
+						 
 					 })
 					 
 					 $(document).on("click",".btn-info",function(){ //點擊送信按鈕	 
@@ -395,6 +425,7 @@
 		                              "sNext":"下頁",
 		                              "sLast":"尾頁"}
 					 },
+					      "bJQueryUI":true,
 				    	  "bProcessing": true,
 				    	  "sPaginationType":"full_numbers",
 				    	 
@@ -418,6 +449,7 @@
 		                              "sNext":"下頁",
 		                              "sLast":"尾頁"}
 					 },
+					      "bJQueryUI":true,
 				    	  "bProcessing": true,
 				    	  "sPaginationType":"full_numbers",
 				    	 
@@ -440,6 +472,7 @@
 	                              "sNext":"下頁",
 	                              "sLast":"尾頁"}
 				 },
+				      "bJQueryUI":true,
 			    	  "bProcessing": true,
 			    	  "sPaginationType":"full_numbers",
 			    	 
@@ -462,6 +495,7 @@
 	                              "sNext":"下頁",
 	                              "sLast":"尾頁"}
 				 },
+				      "bJQueryUI":true,
 			    	  "bProcessing": true,
 			    	  "sPaginationType":"full_numbers",
 			    	 
@@ -484,6 +518,7 @@
 	                              "sNext":"下頁",
 	                              "sLast":"尾頁"}
 				 },
+				      "bJQueryUI":true,
 			    	  "bProcessing": true,
 			    	  "sPaginationType":"full_numbers",
 			    	 

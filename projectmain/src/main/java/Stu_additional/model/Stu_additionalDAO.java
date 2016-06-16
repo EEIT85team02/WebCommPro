@@ -4,7 +4,6 @@ import hibernate.util.HibernateUtil;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -133,22 +132,25 @@ public class Stu_additionalDAO implements IStu_additionalDAO{
 			}
 			return stu_add;
 		}
-		public static void main(String args[]){
+		public static void main(String args[]) throws SQLException{
 			try {
+				Integer stuAddId = new Stu_additionalDAO().findByPrimaryKey2(new Integer("18")).getStu_add_id();
 //				Integer stuId = new Stu_additionalDAO().findByPrimaryKey2(new Integer("18")).getStu_add_id();
 				Integer stuId = new Integer("18");
 				String stuName = new StudentDAO().findByPrimaryKey(stuId).getStu_name();
+//				String stuTitle = new Stu_additionalDAO().findByPrimaryKey(stuAddId).getTitle();
 				System.out.println("\n●-stuName:\n\t"+stuName);
+//				System.out.println("\n●-stuTitle:\n\t"+stuTitle);
 				
-				Integer empId = new Integer("7007");
-				
-//				String empName = new Stu_additionalDAO().findByPrimaryKey2(stuId).getEmployeeVO().getEmp_name();
-				Set<Stu_additionalVO> stuAdd = new StudentDAO().findByPrimaryKey(stuId).getStu_additionalVO();
-				for(Stu_additionalVO one:stuAdd){
-					System.out.println("\n●-empName:\n\t"+one.getEmployeeVO().getEmp_name());
-					System.out.println("\n●-empMail:\n\t"+one.getEmployeeVO().getEmp_mail());
-					
-				}
+//				Integer empId = new Integer("7007");
+//				
+////				String empName = new Stu_additionalDAO().findByPrimaryKey2(stuId).getEmployeeVO().getEmp_name();
+//				Set<Stu_additionalVO> stuAdd = new StudentDAO().findByPrimaryKey(stuId).getStu_additionalVO();
+//				for(Stu_additionalVO one:stuAdd){
+//					System.out.println("\n●-empName:\n\t"+one.getEmployeeVO().getEmp_name());
+//					System.out.println("\n●-empMail:\n\t"+one.getEmployeeVO().getEmp_mail());
+//					
+//				}
 			} catch (NumberFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

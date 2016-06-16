@@ -56,7 +56,7 @@ public class ShowStatusJSON extends HttpServlet {
 			try {
 				jsonString = memSvc.getStatusOK();
 				out.write(jsonString);
-				
+
 			} catch (SQLException e) {
 				
 				e.printStackTrace();
@@ -69,7 +69,7 @@ public class ShowStatusJSON extends HttpServlet {
 			try {
 				jsonString = memSvc.getStatusNO();
 				out.write(jsonString);
-				
+	
 			} catch (SQLException e) {
 				
 				e.printStackTrace();

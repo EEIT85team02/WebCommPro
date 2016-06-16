@@ -12,14 +12,18 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-version>1.8</java-version>
+
 		<hibernate.version>3.6.10.Final</hibernate.version>
+
 		<project.http.version>1.21.0</project.http.version>
 		<project.oauth.version>1.21.0</project.oauth.version>
 		<project.calendar.version>1.21.0</project.calendar.version>
+
 		<project.gson.version>2.6.2</project.gson.version>
 		<project.websocket.version>1.1</project.websocket.version>
 		<project.paho.version>1.0.2</project.paho.version>
 	</properties>
+
 	<repositories>
 		<repository>
 			<id>JBoss repository</id>
@@ -36,6 +40,28 @@
 	</repositories>
 
 	<dependencies>
+<!-- http://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<!-- http://mvnrepository.com/artifact/com.sun.mail/smtp -->
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>smtp</artifactId>
+			<version>1.4.5</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/javax.activation/activation -->
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+
+
 		<dependency>
 			<groupId>javax.websocket</groupId>
 			<artifactId>javax.websocket-api</artifactId>
@@ -54,6 +80,7 @@
 			<artifactId>org.eclipse.paho.mqtt.utility</artifactId>
 			<version>${project.paho.version}</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>com.google.api-client</groupId>
@@ -79,17 +106,19 @@
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
 			<version>${project.gson.version}</version>
+
 		</dependency>
+
 		<dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jdom2</artifactId>
 			<version>2.0.5</version>
 		</dependency>
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.mail</groupId> -->
+<!-- 			<artifactId>mail</artifactId> -->
+<!-- 			<version>1.4.7</version> -->
+<!-- 		</dependency> -->
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -131,6 +160,7 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.19</version>
 		</dependency>
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -141,14 +171,11 @@
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>1.7.19</version>
 		</dependency>
+
 		
-		
-		
-		<dependency>
-			<groupId>javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.12.1.GA</version>
-		</dependency>
+
+
+
 		<dependency>
 		<groupId>org.hibernate</groupId>
 		<artifactId>hibernate-c3p0</artifactId>
@@ -156,9 +183,38 @@
 		</dependency>
 		
 		
-		
-		
 
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.12.1.GA</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+
+		<!--取db2.jar -->
+		<dependency>
+			<groupId>com.iiiedu</groupId>
+			<artifactId>db2jcc4</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+
+		<!--取SQLserve.jar -->
+<!--  		<dependency>  -->
+<!-- 			<groupId>com.iiiedu</groupId>  -->
+<!-- 			<artifactId>sqljdbc42</artifactId>  -->
+<!-- 			<version>1.0</version>  -->
+<!-- 		</dependency>  -->
+
+
+		<!--取JSON.jar -->
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
@@ -169,12 +225,15 @@
 			<artifactId>junit</artifactId>
 			<version>4.8.2</version>
 			<scope>test</scope>
+
 		</dependency>
+
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -186,11 +245,13 @@
 			<artifactId>jsp-api</artifactId>
 			<version>2.2</version>
 		</dependency>
+
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jdom</artifactId>
@@ -201,13 +262,6 @@
 			<artifactId>db2jcc</artifactId>
 			<version>10.5</version>
 		</dependency>
-		<!--取db2.jar -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.iiiedu</groupId> -->
-<!-- 			<artifactId>db2jcc4</artifactId> -->
-<!-- 			<version>1.0</version> -->
-<!-- 		</dependency> -->
-
 
 	</dependencies>
 	<build>

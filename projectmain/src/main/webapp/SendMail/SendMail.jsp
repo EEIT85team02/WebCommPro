@@ -234,12 +234,16 @@ h1 {
 	<!-- 	</table>					 -->
 
 	<script>
-	window.onload = function ()
+	window.onload=  function ()
 	{
 		loadSendAllMail();
 	}
+// 	$( document ).ready(function() {
+//    loadSendAllMail();
+// });
 		var sel = document.getElementById("class");//抓class下拉式選單的id
 		document.getElementById("class").onload = loadClassSelector();
+		
 		//document.getElementById("class").onload = loadSendAllMail();
 		sel.addEventListener("change", changeList);
 		sel.addEventListener("change", loadSendAllMail);
@@ -627,6 +631,7 @@ h1 {
 			//getElement"s"ByName,checkbox裡面的name都要是一樣的，我會將有相同名稱的一起抓入陣列
 			//obj是一個陣列，裡面裝的是被選到checkbox的名子
 			var obj = document.getElementsByName("checkboxname");
+			console.log("obj=="+obj);
 			var checkedflag =0;
 			var selected = [];
 

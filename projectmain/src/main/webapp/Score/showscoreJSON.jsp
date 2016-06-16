@@ -69,7 +69,8 @@
 		</script>
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/jquery-ui.css" rel="stylesheet">
+<%-- <link href="${pageContext.request.contextPath}/css/jquery-ui.css" rel="stylesheet"> --%>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css">
 <link href="${pageContext.request.contextPath}/DataTables/DataTables-1.10.11/css/jquery.dataTables.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/DataTables/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/lobibox.min.css" rel="stylesheet">
@@ -163,16 +164,16 @@
 						</tbody>
 					</table>
 </div>
-	    <script src="../js/jquery.min.js"></script>
-		<script src="../js/bootstrap/bootstrap.min.js"></script>
-        <script src="../js/jquery-ui.js"></script>
-        <script src="../js/jquery-ui.min.js"></script>
-        <script src="../js/jquery-migrate-1.2.1.min.js"></script>
-        <script src="../js/jquery.validate.min.js"></script>
-        <script src="../js/additional-methods.min.js"></script>
-        <script src="../js/messages_zh_TW.min.js"></script>
-        <script src="../DataTables/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
-        <script src="../js/lobibox.min.js"></script>
+	    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-ui.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery-migrate-1.2.1.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/additional-methods.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/messages_zh_TW.min.js"></script>
+        <script src="${pageContext.request.contextPath}/DataTables/DataTables-1.10.11/js/jquery.dataTables.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/lobibox.min.js"></script>
 		<script>
 				$(function() {
 					//定義table資料來源json，與畫面顯示------>開始
@@ -193,6 +194,7 @@
 		                              "sNext":"下頁",
 		                              "sLast":"尾頁"}
 					 },
+					      "bJQueryUI":true,
 				    	  "bProcessing": true,
 				    	  "sPaginationType":"full_numbers",
 				    	 

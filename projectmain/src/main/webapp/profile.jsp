@@ -368,7 +368,11 @@ $(function() {
 		        });
 				}); */
 				
-
+				var JSONObject = <%=request.getSession().getAttribute("stu_AllListJSON")%>;
+				console.log("JSONObject"+JSON.stringify(JSONObject));
+				
+				
+				
 				$(document).on('click', '#editFrom', function () {
 				
 					console.log("------editFrom------")
