@@ -100,8 +100,8 @@ public void SendMailToStudent(JSONArray ja) throws UnsupportedEncodingException{
 	   
 	   message.setContent(mailtextarray[i], "text/html;charset=UTF8");
 
-	   message.setSubject(MimeUtility.encodeText("Hello你好","UTF-8","B"));
-	   message.setContent("Dear "+MimeUtility.encodeText(namearray[i],"UTF-8","B")+","+MimeUtility.encodeText(mailtextarray[i],"UTF-8","B"),"text/html;charset=UTF-8");//內文
+	   message.setSubject("Hello你好");
+	   message.setContent("Dear "+namearray[i]+","+mailtextarray[i],"text/html;charset=UTF-8");//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);
@@ -118,6 +118,8 @@ public void SendMailToStudent(JSONArray ja) throws UnsupportedEncodingException{
 
 public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameStringArray,byte[][] publickeyArray,byte[][] privatekeyArray,byte[][] ciphertextArray,String classId,String path) throws NoSuchAlgorithmException{
   	 
+	
+	
 
 	  String host = "smtp.gmail.com";
 	  int port = 587;
