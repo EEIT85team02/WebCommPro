@@ -2,6 +2,7 @@ package com.fullcalendar.model;
 
 import hibernate.util.HibernateUtil;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -11,6 +12,9 @@ import org.hibernate.Session;
 
 public class CalendarDAO implements CalendarDAO_interface{
 	private static final String GET_ALL_STMT = "from CalendarVO order by orderId";
+	private static final String GET_VO_STMT = "from CalendarVO where stu_id=:stu_id and title=:title";
+	
+	
 	@Override
 	public void insert(CalendarVO calendarVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -128,10 +132,49 @@ public class CalendarDAO implements CalendarDAO_interface{
 		// TODO Auto-generated method stub
 		return null;
 	}
-public static void main(String args[]){
+	
+	
+	//--2016/06/16處理當使用者報名成立時，將資料查詢出來塞回stu_additional
+	public List<CalendarVO> findStu_additionalDetailData(Integer stu_id,String title){
+		List<CalendarVO> list = null;
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_VO_STMT);// B車
+			query.setParameter("stu_id", stu_id);
+			query.setParameter("title", title);
+			list = query.list();
+			session.getTransaction().commit();
+		} catch (RuntimeException ex) {
+			session.getTransaction().rollback();
+			throw ex;
+		}
+		return list;
+		
+		
+	}
+
+	
+	public static void main(String args[]){
 	CalendarDAO_interface dao = new CalendarDAO();
 //	dao.findByPrimaryKey(new Integer("1"));
 //	dao.getAll();
+	List<CalendarVO> list = null;
+	try {
+		list = dao.findStu_additionalDetailData(18,"Java");
+		for(CalendarVO aa :list){
+			System.out.println(aa.getTitle());
+			System.out.println(aa.getStudentVO().getStu_id());
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
 }
+
+
+
+
 
 }
