@@ -19,6 +19,7 @@ import Member_status.model.Member_statusVO;
 import Edu.model.EduVO;
 import SendMail.model.EncryptService;
 import Student.model.StudentVO;
+import Talk.model.TalkVO;
 import Test_period.model.Test_periodVO;
 
 
@@ -27,6 +28,30 @@ public class Stu_additionalService {
 
 	public Stu_additionalService() {
 		dao = new Stu_additionalDAO();
+	}
+	
+	public void insert(Integer stu_add_id,Timestamp test_start, Timestamp test_end,
+			Timestamp stu_applytime,Timestamp confirm_time,Integer stu_id,Integer sta_id,String emp_id,String title ) throws SQLException {
+		
+		Stu_additionalVO stuaddvo = new Stu_additionalVO();
+		stuaddvo.setStu_add_id(stu_add_id);
+		stuaddvo.setTest_start(test_start);
+		stuaddvo.setTest_end(test_end);
+		stuaddvo.setStu_applytime(stu_applytime);
+		stuaddvo.setConfirm_time(confirm_time);
+		stuaddvo.setTitle(title);
+		
+		StudentVO stuVO = new StudentVO();
+		stuVO.setStu_id(stu_id);
+		stuaddvo.setStudentVO(stuVO);
+		Member_statusVO memVO = new Member_statusVO();
+		memVO.setSta_id(sta_id);
+		stuaddvo.setMember_statusVO(memVO);
+		EmployeeVO empVO = new EmployeeVO();
+		empVO.setEmp_id(emp_id);
+		stuaddvo.setEmployeeVO(empVO);
+		
+		dao.insert(stuaddvo);
 	}
 	
 	public void updateStum(Integer stu_id,Integer stu_group,String stu_note1,Integer stu_seatno,
