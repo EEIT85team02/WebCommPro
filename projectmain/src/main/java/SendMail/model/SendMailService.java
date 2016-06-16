@@ -174,7 +174,7 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   transport.connect(host, port, username, password);
 	   
 	   Transport.send(message);
-
+	   transport.close();
 	   
 	   System.out.println(nameStringArray[i]+"寄送email結束."+"此人密碼編碼"+ a);
 	  }

@@ -56,7 +56,7 @@
 					xhr.addEventListener("readystatechange", function() {
 						if (xhr.readyState == 4) {
 							if (xhr.status == 200) {
-								location.href = "https://www.google.com.tw"
+								location.href = "/projectmain/LoginForwarded.do"
 
 							} else {
 								alert(xhr.status + ":" + xhr.statusText);
