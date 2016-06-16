@@ -19,6 +19,7 @@ import Member_status.model.Member_statusVO;
 import Edu.model.EduVO;
 import SendMail.model.EncryptService;
 import Student.model.StudentVO;
+import Talk.model.TalkVO;
 import Test_period.model.Test_periodVO;
 
 
@@ -27,6 +28,30 @@ public class Stu_additionalService {
 
 	public Stu_additionalService() {
 		dao = new Stu_additionalDAO();
+	}
+	
+	public void insert(Integer stu_add_id,Timestamp test_start, Timestamp test_end,
+			Timestamp stu_applytime,Timestamp confirm_time,Integer stu_id,Integer sta_id,String emp_id,String title ) throws SQLException {
+		
+		Stu_additionalVO stuaddvo = new Stu_additionalVO();
+		stuaddvo.setStu_add_id(stu_add_id);
+		stuaddvo.setTest_start(test_start);
+		stuaddvo.setTest_end(test_end);
+		stuaddvo.setStu_applytime(stu_applytime);
+		stuaddvo.setConfirm_time(confirm_time);
+		stuaddvo.setTitle(title);
+		
+		StudentVO stuVO = new StudentVO();
+		stuVO.setStu_id(stu_id);
+		stuaddvo.setStudentVO(stuVO);
+		Member_statusVO memVO = new Member_statusVO();
+		memVO.setSta_id(sta_id);
+		stuaddvo.setMember_statusVO(memVO);
+		EmployeeVO empVO = new EmployeeVO();
+		empVO.setEmp_id(emp_id);
+		stuaddvo.setEmployeeVO(empVO);
+		
+		dao.insert(stuaddvo);
 	}
 	
 	public void updateStum(Integer stu_id,Integer stu_group,String stu_note1,Integer stu_seatno,
@@ -70,7 +95,7 @@ public class Stu_additionalService {
 	public List<Stu_additionalVO> getAll() throws SQLException {
 		return dao.getAll();
 	}
-	public Stu_additionalVO upstatuscancel(Integer stu_id,Integer stu_add_id,Timestamp test_start,Timestamp test_end,Timestamp stu_applytime,Integer sta_id,String emp_id,Timestamp confirm_time) throws SQLException {
+	public Stu_additionalVO upstatuscancel(Integer stu_id,Integer stu_add_id,Timestamp test_start,Timestamp test_end,Timestamp stu_applytime,Integer sta_id,String emp_id,Timestamp confirm_time,String title) throws SQLException {
 
 		Stu_additionalVO stuaddVO = new Stu_additionalVO();
 
@@ -79,6 +104,7 @@ public class Stu_additionalService {
 		stuaddVO.setTest_end(test_end);
 		stuaddVO.setStu_applytime(stu_applytime);			
 		stuaddVO.setConfirm_time(confirm_time);
+		stuaddVO.setTitle(title);
 				
 		StudentVO stuvo = new StudentVO();
 		stuvo.setStu_id(stu_id);
@@ -96,7 +122,7 @@ public class Stu_additionalService {
 		
 		return stuaddVO;
 		}
-	public Stu_additionalVO upstatusok(Integer stu_id,Integer stu_add_id,Timestamp test_start,Timestamp test_end,Timestamp stu_applytime,Integer sta_id,String emp_id,Timestamp confirm_time) throws SQLException {
+	public Stu_additionalVO upstatusok(Integer stu_id,Integer stu_add_id,Timestamp test_start,Timestamp test_end,Timestamp stu_applytime,Integer sta_id,String emp_id,Timestamp confirm_time,String title) throws SQLException {
 
 		Stu_additionalVO stuaddVO = new Stu_additionalVO();
 
@@ -105,6 +131,7 @@ public class Stu_additionalService {
 		stuaddVO.setTest_end(test_end);
 		stuaddVO.setStu_applytime(stu_applytime);			
 		stuaddVO.setConfirm_time(confirm_time);
+		stuaddVO.setTitle(title);
 				
 		StudentVO stuvo = new StudentVO();
 		stuvo.setStu_id(stu_id);
@@ -134,7 +161,8 @@ public class Stu_additionalService {
 			map.put("stu_applytime",stuaddVO.getStu_applytime().toString());
 			map.put("sta_id",stuaddVO.getMember_statusVO().getSta_id().toString());
 			map.put("emp_id",stuaddVO.getEmployeeVO().getEmp_id().toString());
-			map.put("confirm_time",stuaddVO.getConfirm_time().toString());	
+			map.put("confirm_time",stuaddVO.getConfirm_time().toString());
+			map.put("title",stuaddVO.getTitle());
 			stuaddsc.add(map);
 		String jsonString = JSONValue.toJSONString(stuaddsc);
 		return jsonString;

@@ -83,7 +83,9 @@ pageEncoding="UTF-8"%>
 						<li class=""><a href="${pageContext.request.contextPath}/SendMail/SendMail.jsp">EMAIL寄送</a></li>
 						<li class=""><a href="${pageContext.request.contextPath}/StudentProfileServlet?action=initStumTODataTablesJSON">考生資料維護</a></li>
 						
-						<li class=""><a href="#">登出</a></li>
+						<c:if test="${not empty LoginOK}">
+				            <li class=""><a href="<c:url value='/Logout.do'/>">登出</a></li>
+						</c:if>
 
 
 					</ul>

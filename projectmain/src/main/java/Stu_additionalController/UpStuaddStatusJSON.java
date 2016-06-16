@@ -63,14 +63,16 @@ public class UpStuaddStatusJSON extends HttpServlet {
 			Timestamp test_end = Timestamp.valueOf(req.getParameter("test_end"));	
 			Timestamp stu_applytime = Timestamp.valueOf(req.getParameter("stu_applytime"));
 			Integer sta_id = Integer.parseInt(req.getParameter("sta_id"));	
-			String emp_id = req.getParameter("emp_id");	
+			String emp_id = "0000";	
+	
+			String title = req.getParameter("title");	
 
 //			Time confirm_time = new java.sql.Time(new java.util.Date(req.getParameter("confirm_time")).getTime());	
-			Timestamp confirm_time = Timestamp.valueOf(req.getParameter("confirm_time"));	
-			
+	
+			Timestamp confirm_time = new java.sql.Timestamp(new java.util.Date().getTime());
 			Stu_additionalService stuaddSvc = new Stu_additionalService();
 			try {
-				stuaddSvc.upstatuscancel(stu_id,stu_add_id,test_start,test_end,stu_applytime,sta_id,emp_id,confirm_time);
+				stuaddSvc.upstatuscancel(stu_id,stu_add_id,test_start,test_end,stu_applytime,sta_id,emp_id,confirm_time,title);
 				out.write("資料更新成功");
 
 			} catch (SQLException e) {
@@ -88,11 +90,14 @@ public class UpStuaddStatusJSON extends HttpServlet {
 			Timestamp stu_applytime = Timestamp.valueOf(req.getParameter("stu_applytime"));
 			Integer sta_id = Integer.parseInt(req.getParameter("sta_id"));	
 			String emp_id = req.getParameter("emp_id");	
-			Timestamp confirm_time = Timestamp.valueOf(req.getParameter("confirm_time"));
+			String title = req.getParameter("title");	
+//			Timestamp confirm_time = Timestamp.valueOf(req.getParameter("confirm_time"));
+//			String emp_id = "7001";
+			Timestamp confirm_time = new java.sql.Timestamp(new java.util.Date().getTime());
 			
 			Stu_additionalService stuaddSvc = new Stu_additionalService();
 			try {
-				stuaddSvc.upstatusok(stu_id,stu_add_id,test_start,test_end,stu_applytime,sta_id,emp_id,confirm_time);
+				stuaddSvc.upstatusok(stu_id,stu_add_id,test_start,test_end,stu_applytime,sta_id,emp_id,confirm_time,title);
 				out.write("資料更新成功");
 
 			} catch (SQLException e) {

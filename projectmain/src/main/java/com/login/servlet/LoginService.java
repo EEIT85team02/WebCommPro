@@ -20,25 +20,20 @@ public class LoginService {
 		
 		public StudentVO checkIDPassword(String id, String password){
 			
-			try {
-				List<StudentVO> vos;
-				vos = dao.getAll();
-				
-				for(StudentVO vo:vos){
-					System.out.println("password:" + password);
-					System.out.println("id:" + id);
-					System.out.println("vo.getStu_id():" + vo.getStu_id());
-					System.out.println("vo.getStu_email():" + vo.getStu_email());
-					System.out.println(vo.getStu_id().toString().equals(password));
-					System.out.println(vo.getStu_email().equals(id));
-					if(vo.getStu_id().toString().equals(password) && vo.getStu_email().equals(id)){
-						System.out.println("---------------checkIDPassword-------------------");
-						return vo;
-					}
+			List<StudentVO> vos;
+			vos = (List<StudentVO>) dao.getStudentByEmail(id);
+			
+			for(StudentVO vo:vos){
+				System.out.println("password:" + password);
+				System.out.println("id:" + id);
+				System.out.println("vo.getStu_id():" + vo.getStu_id());
+				System.out.println("vo.getStu_email():" + vo.getStu_email());
+				System.out.println(vo.getStu_id().toString().equals(password));
+				System.out.println(vo.getStu_email().equals(id));
+				if(vo.getStu_id().toString().equals(password) && vo.getStu_email().equals(id)){
+					System.out.println("---------------checkIDPassword-------------------");
+					return vo;
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 			return null;
 		}
@@ -46,37 +41,30 @@ public class LoginService {
 		
 		
 		public StudentVO checkEmailGoogle(String email){
-			try {
-				List<StudentVO> vos;
-				vos = dao.getAll();
-				for(StudentVO vo:vos){
-					if(vo.getStu_email().equals(email)){
-						return vo;
-					}
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			StudentVO vo;
+			vo = dao.getStudentByEmail(email);
+			if(vo != null){
 		
+				if(vo.getStu_email().equals(email)){
+					return vo;
+			}
+			return null;
+			}
 			return null;
 		}
 		
 		public EmployeeVO checkEmailGoogleByEmp(String email){
-			try {
-				List<EmployeeVO> vos;
-				vos = eDao.getAllEmp();
-				for(EmployeeVO vo:vos){
-					if(vo.getEmp_mail().equals(email)){
-						
-						return vo;
-					}
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			EmployeeVO vo;
+			vo =  eDao.getEmployeeByEmail(email);
+			if(vo != null){
+
+				if(vo.getEmp_mail().equals(email)){
+					
+					return vo;
+				
 			}
-		
+			return null;
+			}
 			return null;
 		}
 	}

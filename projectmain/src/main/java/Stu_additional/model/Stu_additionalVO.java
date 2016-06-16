@@ -22,10 +22,16 @@ public class Stu_additionalVO implements Serializable{
 	private StudentVO studentVO;
 	private Member_statusVO Member_statusVO;
 	private EmployeeVO EmployeeVO;
-
+	private String title;
 
 	
 	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public EmployeeVO getEmployeeVO() {
 		return EmployeeVO;
 	}
