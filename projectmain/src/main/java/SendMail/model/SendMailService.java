@@ -101,7 +101,7 @@ public void SendMailToStudent(JSONArray ja) throws UnsupportedEncodingException{
 	   message.setContent(mailtextarray[i], "text/html;charset=UTF8");
 
 	   message.setSubject(MimeUtility.encodeText("Hello你好","UTF-8","B"));
-	   message.setContent("Dear "+MimeUtility.encodeText(namearray[i],"UTF-8","B")+","+MimeUtility.encodeText(mailtextarray[i],"UTF-8","B"),"text/html;charset=UTF-8");//內文
+	   message.setContent("Dear "+namearray[i]+","+mailtextarray[i],"text/html;charset=UTF-8");//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);
@@ -237,7 +237,7 @@ public  void SendConfirmMailToStudent(String emailString,String nameString,Times
 
 
 
-public void SendPasswordMailToStudent(String emailString,String path){
+public static  void SendPasswordMailToStudent(String emailString,String path){
 	 
 	StudentDAO stdao=new StudentDAO();
 	StudentVO stuvo=stdao.getStudentByEmail(emailString);
@@ -346,11 +346,6 @@ public  void replyMessageBoardToStudent(String emailString,String nameString,Str
 
 
 
-public static void main(String[] args) throws NoSuchAlgorithmException{
-	//SendPasswordMailToStudent("llluuuyyy123@gmail.com");
-	DecryptService de = new DecryptService();
-	de.compareIfMatchThePassword("llluuuyyy123@gmail.com", "asdf1");
-	
-}
+
 
 }

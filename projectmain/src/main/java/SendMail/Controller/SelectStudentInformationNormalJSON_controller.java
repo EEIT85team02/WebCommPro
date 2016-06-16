@@ -41,6 +41,10 @@ public class SelectStudentInformationNormalJSON_controller extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		res.setHeader("Access-Control-Allow-Origin", "*");
+		res.setHeader("content-type", "text/html;charset=UTF-8");
+
+		
 		req.setCharacterEncoding("UTF-8"); 
 		res.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = res.getWriter();
