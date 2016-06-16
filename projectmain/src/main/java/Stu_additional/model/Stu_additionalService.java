@@ -30,11 +30,11 @@ public class Stu_additionalService {
 		dao = new Stu_additionalDAO();
 	}
 	
-	public void insert(Integer stu_add_id,Timestamp test_start, Timestamp test_end,
+	public void insert(Timestamp test_start, Timestamp test_end,
 			Timestamp stu_applytime,Timestamp confirm_time,Integer stu_id,Integer sta_id,String emp_id,String title ) throws SQLException {
 		
 		Stu_additionalVO stuaddvo = new Stu_additionalVO();
-		stuaddvo.setStu_add_id(stu_add_id);
+		
 		stuaddvo.setTest_start(test_start);
 		stuaddvo.setTest_end(test_end);
 		stuaddvo.setStu_applytime(stu_applytime);
