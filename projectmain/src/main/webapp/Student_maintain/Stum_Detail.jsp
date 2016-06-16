@@ -11,7 +11,7 @@
 <style type="text/css">
 
 .fancy {
-	width: 900px;
+	width: 1200px;
 	height: 600px;
 }
 
@@ -82,40 +82,46 @@
 
 .div1{
 	float:left;
+	width:350px;
 }
 
 .div2{
 	float:left;
-	padding-left:120px;
+	padding-left:80px;
+	width:350px;
 }
 
 .div3{
 	float:left;
 	padding-left:120px;
+	width:350px;
 }
 
 .div4{
 	float:left;
 	padding-top:50px;
+	width:350px;
 }
 
 .div5{
 	float:left;
-	padding-left:180px;
+	padding-left:90px;
 	padding-top:50px;
+	width:350px;
 }
 
 .div6{
 	float:left;
-	padding-left:180px;
+	padding-left:130px;
 	padding-top:50px;
+	width:350px;
 }
 
 .div7{
 	float:left;
 	width:400px;
 	padding-top:50px;
-	padding-left:400px;
+	padding-left:480px;
 	
 }
 

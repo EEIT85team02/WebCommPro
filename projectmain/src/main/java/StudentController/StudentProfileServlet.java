@@ -218,6 +218,7 @@ public class StudentProfileServlet extends HttpServlet {
 							stu_total,stu_workdate,stu_except,stu_final,
 							stu_note2,pub_key,pri_key,cipher_text,log_pw,class_id);
 //					out.write("success");
+					
 					RequestDispatcher successMsg = request
 							.getRequestDispatcher("/Student_maintain/StumTODataTablesJSON.jsp");
 					successMsg.forward(request, response);
