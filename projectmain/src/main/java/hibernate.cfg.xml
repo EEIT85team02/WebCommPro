@@ -8,7 +8,8 @@
 
 
   <!-- 連線池JNDI設定-->
-<!--         <property name="connection.datasource">java:comp/env/jdbc/db2</property> -->
+<!--         <property name="connection.datasource">java:comp/env/jdbc/SQLjdbc</property> -->
+
 
         
 
@@ -67,7 +68,6 @@
 		<mapping resource="Member_test/model/Member_test.hbm.xml" />
 		<mapping resource="Mail_template/model/Mail_template.hbm.xml" />
 		<mapping resource="Examiner_offday/model/Examiner_offday.hbm.xml" />
-
 		<mapping resource="com/fullcalendar/model/calendar.hbm.xml"/>
 		<mapping resource="Talk/model/TalkVO.hbm.xml" />
 

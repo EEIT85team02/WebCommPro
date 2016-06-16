@@ -21,28 +21,18 @@ response.flushBuffer();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Freelancer</title>
     
         
     <!-- jQuery -->
    <script src="${pageContext.request.contextPath}/js/jquery.js"></script> 
     
     
-    <!-- FullCalendar -->
-<%-- 	<link rel='stylesheet' href='${pageContext.request.contextPath}/css/fullCalendar/fullcalendar.css' />
-	<link href='${pageContext.request.contextPath}/css/fullCalendar/fullcalendar.print.css' rel='stylesheet' media='print' />
-	<script src='${pageContext.request.contextPath}/js/jquery.min.js'></script> 
-	<script src='${pageContext.request.contextPath}/js/fullCalendar/moment.min.js'></script>
-	<script src='${pageContext.request.contextPath}/js/fullCalendar/fullcalendar.js'></script>
-	<script src='${pageContext.request.contextPath}/js/fullCalendar/jquery-ui.custom.min.js'></script>
-	<script src='${pageContext.request.contextPath}/js/fullCalendar/fullcalendar.min.js'></script> --%>
-	
-	
-	
+	<!-- fullcalendar -->
+<!-- *********************************************************************************************************************** -->
 
-    
-    
 
+<!-- *********************************************************************************************************************** -->
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 
@@ -90,7 +80,7 @@ response.flushBuffer();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#page-top"><img src="${pageContext.request.contextPath}/webcommImg/emblemmatic-webcomm-logo-378-2.png"></a>
+                <a class="navbar-brand" href="#page-top">W.Webcomm<%-- <img src="${pageContext.request.contextPath}/webcommImg/emblemmatic-webcomm-logo-378-2.png"> --%></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -129,7 +119,7 @@ response.flushBuffer();
                 <div class="col-lg-12">
                     <img class="img-responsive" src="${pageContext.request.contextPath}/img/profile.png" alt="">
                     <div class="intro-text">
-                        <span class="name">Start Bootstrap</span>
+                        <span class="name">Welcome Webcomm </span>
                         <hr class="star-light">
                         <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
                     </div>
@@ -159,7 +149,7 @@ response.flushBuffer();
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
+                    <a href="/projectmain/04_fullcalendar/fullcalendarToUserprofile.jsp" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
@@ -168,8 +158,8 @@ response.flushBuffer();
                         <img src="${pageContext.request.contextPath}/img/portfolio/cake.png" class="img-responsive" alt="">
                     </a>
                 </div>
-             <%--    <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
+                <div class="col-sm-4 portfolio-item">
+                    <a href="/projectmain/Talk/Talk.jsp" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
@@ -178,7 +168,7 @@ response.flushBuffer();
                         <img src="${pageContext.request.contextPath}/img/portfolio/circus.png" class="img-responsive" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+               <%--  <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -197,7 +187,7 @@ response.flushBuffer();
                         </div>
                         <img src="${pageContext.request.contextPath}/img/portfolio/safe.png" class="img-responsive" alt="">
                     </a>
-                </div> --%>
+                </div>
                 <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
@@ -207,7 +197,7 @@ response.flushBuffer();
                         </div>
                         <img src="${pageContext.request.contextPath}/img/portfolio/submarine.png" class="img-responsive" alt="">
                     </a>
-                </div>
+                </div> --%>
             </div>
         </div>
     </section>
@@ -380,7 +370,7 @@ response.flushBuffer();
                                     </strong>
                                 </li>
                             </ul> -->
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                           <!--  <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button> -->
                         </div>
                     </div>
                 </div>
@@ -397,9 +387,10 @@ response.flushBuffer();
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
+                    <div class="col-lg-8 col-lg-offset-0">
                         <div class="modal-body">
-               <%--           <jsp:include page='/calendarView_insert.jsp' /> --%>
+                     
+                  <%--        <jsp:include page='/04_fullcalendar/fullcalendarToUserprofile.jsp' /> --%>
                            <!-- <h2>Project Title</h2>
                              <hr class="star-primary">
                             <img src="${pageContext.request.contextPath}/img/portfolio/cake.png" class="img-responsive img-centered" alt="">
@@ -418,7 +409,7 @@ response.flushBuffer();
                                     </strong>
                                 </li>
                             </ul> -->
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                   <!--          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button> -->
                         </div>
                     </div>
                 </div>
@@ -437,7 +428,8 @@ response.flushBuffer();
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                          
+                           <%--  <h2>Project Title</h2>
                             <hr class="star-primary">
                             <img src="${pageContext.request.contextPath}/img/portfolio/circus.png" class="img-responsive img-centered" alt="">
                             <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
@@ -454,7 +446,7 @@ response.flushBuffer();
                                     <strong><a href="http://startbootstrap.com">Web Development</a>
                                     </strong>
                                 </li>
-                            </ul>
+                            </ul> --%>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>

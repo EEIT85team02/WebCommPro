@@ -173,13 +173,9 @@
 		</dependency>
 
 		
-		
-		
-		<dependency>
-			<groupId>javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.12.1.GA</version>
-		</dependency>
+
+
+
 		<dependency>
 		<groupId>org.hibernate</groupId>
 		<artifactId>hibernate-c3p0</artifactId>
@@ -187,10 +183,38 @@
 		</dependency>
 		
 		
-		
-		
+
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.12.1.GA</version>
+		</dependency>
 
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-c3p0</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+
+		<!--取db2.jar -->
+		<dependency>
+			<groupId>com.iiiedu</groupId>
+			<artifactId>db2jcc4</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+
+		<!--取SQLserve.jar -->
+ 		<dependency> 
+			<groupId>com.iiiedu</groupId> 
+			<artifactId>sqljdbc42</artifactId> 
+			<version>1.0</version> 
+		</dependency> 
+
+
+		<!--取JSON.jar -->
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>

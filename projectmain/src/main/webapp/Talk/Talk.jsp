@@ -76,8 +76,8 @@ table td {
 </head>
 <body>
 <!-- 引入top.jsp標頭檔 巡覽列部分-->
-	<jsp:include page="/top/top.jsp" />
-<div class="allpage">
+	<%-- <jsp:include page="/top/top.jsp" /> --%>
+<div class="col-lg-8 col-lg-offset-2">
 	<div class="page" id="content">
 		<table>
 			<tr>

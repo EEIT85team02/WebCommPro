@@ -54,9 +54,17 @@ pageEncoding="UTF-8"%>
 
 						<li class=""><a href="${pageContext.request.contextPath}/Status/showstatusJSON.jsp">考生核准查詢</a></li>
 						<li class=""><a href="${pageContext.request.contextPath}/Score/showscoreJSON.jsp">考生成績變更</a></li>
+
+<%-- 						<li class=""><a href="${pageContext.request.contextPath}/Examiner_offday/Examiner_offday_view.jsp">個人請假查詢</a></li> --%>
+<%-- 						<li class=""><a href="${pageContext.request.contextPath}/03_chatRoom/ChatPagePahoWebComm.jsp">聊天</a></li> --%>
+<%-- 						<li class=""><a href="${pageContext.request.contextPath}/01_login/Logout.jsp">登出</a></li> --%>
+
 						<li class=""><a href="${pageContext.request.contextPath}/Examiner_offday/Examiner_offday_view.jsp">個人請假查詢</a></li>
-						<li class=""><a href="${pageContext.request.contextPath}/03_chatRoom/ChatPagePahoWebComm.jsp">聊天</a></li>
-						<li class=""><a href="${pageContext.request.contextPath}/01_login/Logout.jsp">登出</a></li>
+						<c:if test="${not empty LoginOK}">
+				            <li class=""><a href="<c:url value='/Logout.do'/>">登出</a></li>
+						</c:if>
+						
+
 
 
 					</ul>
