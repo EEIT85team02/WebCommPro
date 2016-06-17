@@ -4,7 +4,7 @@
   <!--                  SQLServer2005, 2008                 -->                  
 
 
-<!--   <Resource name="jdbc/sysdesign" type="javax.sql.DataSource"
+  <Resource name="jdbc/sysdesign" type="javax.sql.DataSource"
       username="sa" password="sa123456"
 
 
@@ -13,7 +13,7 @@
       maxActive="3"
       maxIdle="2"
       maxWait="5000"
-  />    -->
+   />    
   
 <!--    <Resource 
         name="jdbc/AZDB2" 
