@@ -100,8 +100,10 @@ public void SendMailToStudent(JSONArray ja) throws UnsupportedEncodingException{
 	   
 	   message.setContent(mailtextarray[i], "text/html;charset=UTF8");
 
-	   message.setSubject(MimeUtility.encodeText("Hello你好","UTF-8","B"));
-	   message.setContent("Dear "+MimeUtility.encodeText(namearray[i],"UTF-8","B")+","+MimeUtility.encodeText(mailtextarray[i],"UTF-8","B"),"text/html;charset=UTF-8");//內文
+
+	   message.setSubject("Hello你好");
+
+	   message.setContent("Dear "+namearray[i]+","+mailtextarray[i],"text/html;charset=UTF-8");//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);
@@ -118,6 +120,8 @@ public void SendMailToStudent(JSONArray ja) throws UnsupportedEncodingException{
 
 public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameStringArray,byte[][] publickeyArray,byte[][] privatekeyArray,byte[][] ciphertextArray,String classId,String path) throws NoSuchAlgorithmException{
   	 
+	
+	
 
 	  String host = "smtp.gmail.com";
 	  int port = 587;
@@ -153,7 +157,7 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 		  SaveChangedPasswordService scp =new SaveChangedPasswordService(); 
 		  scp.SaveRandomPasswordToDataBase(encodedByteArray,emailStringArray[i]);
 		  EncryptService ess=new EncryptService();
-		  String encodedByteArrayToString=ess.Base64Encrypt(encodedByteArray);
+//		  String encodedByteArrayToString=ess.Base64Encrypt(encodedByteArray);
 		  
 	   message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailStringArray[i]));//對方email
 	   message.setSubject("測試寄信.");
@@ -166,15 +170,15 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   
 
 	   message.setText("Dear "+nameStringArray[i]);
-	   message.setText("Dear"+nameStringArray[i]+"\n"+"請由下列的網址直接登錄並預約考試時間\n"+"http://"+path+"/Verification_controller?key="+a+"&email="+emailStringArray[i]+"\n如果你擁有Google帳號可以用google方式登錄，或是用我們提供的密碼做登錄"+"\n這是你的登錄密碼"+encodedByteArrayToString);//內文
+	   message.setText("Dear"+nameStringArray[i]+"\n"+"請由下列的網址直接登錄並預約考試時間\n"+"http://"+path+"/Verification_controller?key="+a+"&email="+emailStringArray[i]+"\n如果你擁有Google帳號可以用google方式登錄，或是用我們提供的密碼做登錄"+"\n這是你的登錄密碼"+ramdonString);//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);
 	   
 	   Transport.send(message);
-
+	   transport.close();
 	   
-	   System.out.println(nameStringArray[i]+"寄送email結束."+"此人密碼編碼"+ a);
+	   System.out.println(nameStringArray[i]+"寄送email結束."+"此人密碼編碼"+ ramdonString);
 	  }
 	  
 	  } catch (MessagingException|RuntimeException e) {
@@ -237,7 +241,9 @@ public  void SendConfirmMailToStudent(String emailString,String nameString,Times
 
 
 
+
 public static void SendPasswordMailToStudent(String emailString,String path){
+
 	 
 	StudentDAO stdao=new StudentDAO();
 	StudentVO stuvo=stdao.getStudentByEmail(emailString);
@@ -346,11 +352,6 @@ public  void replyMessageBoardToStudent(String emailString,String nameString,Str
 
 
 
-public static void main(String[] args) throws NoSuchAlgorithmException{
-	//SendPasswordMailToStudent("llluuuyyy123@gmail.com");
-	DecryptService de = new DecryptService();
-	de.compareIfMatchThePassword("llluuuyyy123@gmail.com", "asdf1");
-	
-}
+
 
 }

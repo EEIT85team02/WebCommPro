@@ -41,7 +41,7 @@ public class CalendarService {
 		dao.insert(calendar);
 	}
 	
-	//新增產生tu_additional資料
+	//新增產生stu_additional資料
 	public void createStu_additionalDetailData(Integer stu_id,String title) throws SQLException{
 		List<CalendarVO> list = null;
 		list = dao.findStu_additionalDetailData(stu_id, title);

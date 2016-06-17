@@ -548,7 +548,9 @@ $(function() {
             			</div>
 		    		    <div class="modal-footer">
                             <div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block"> 
+                                
+                                Send</button>
                             </div>
                             
 		    		    </div>

@@ -11,7 +11,7 @@
         <property name="test_starthour" column="test_starthour" />
         <property name="test_endhour" column="test_endhour" />
 
-    <set name="tds" table="Test_Date" lazy="false" inverse="true"  order-by="test_date_id asc" >			
+    <set name="tds" table="Test_Date" lazy="true" inverse="true"  order-by="test_date_id asc" >			
 			<key>
 				<column name="test_hour_id" />
 			</key>

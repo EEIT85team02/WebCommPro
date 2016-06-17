@@ -43,8 +43,8 @@ public class Test_periodServletJSON extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		Test_periodService tpSvc = null;
-/*		String action = request.getParameter("action");*/
-		String action = "getALLTp";
+		String action = request.getParameter("action");
+
 		
 		/******************************** 新增資料表 ***********************/
 		if ("addTp".equals(action)) {
@@ -209,7 +209,7 @@ public class Test_periodServletJSON extends HttpServlet {
 		/***************************初始連結呼叫Test_periodServletJSON轉址至Test_periodTODataTablesJSON.jsp********************/	
 		if ("initTpViewTODataTablesJSON".equals(action)) {
 			try {
-				
+				System.out.println("-----------------QQQQQQQQQ--------------------");
 				RequestDispatcher successMsg = request
 						.getRequestDispatcher("/Test_period/Test_periodTODataTablesJSON.jsp");
 				successMsg.forward(request, response);
