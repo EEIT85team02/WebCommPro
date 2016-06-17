@@ -254,6 +254,9 @@ public class EncryptIdentificationIdService{
 	    byte[] plainData = cipher.doFinal(f);  
 	    
 	    System.out.println("從資料庫抓出來解密完的plainText : " + new String(plainData));  
+	    
+	   
+
 	    byte[] plainData1 = cipher.doFinal(g); 
 	    System.out.println("從email抓出來解密完的plainText : " + new String(plainData1));  
 	    //Hello , world !

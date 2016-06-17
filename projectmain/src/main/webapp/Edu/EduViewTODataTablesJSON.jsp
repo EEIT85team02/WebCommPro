@@ -282,7 +282,7 @@ margin: 20px;
                               "sNext":"下頁",
                               "sLast":"尾頁"}
 			 },
-		    	  "bJQueryUI":true,
+		    	  "bJQueryUI":false,
 		    	  "bProcessing": true,
 		    	  "sPaginationType":"full_numbers",
 		    	} );

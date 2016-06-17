@@ -67,6 +67,7 @@ public class Verification_controller extends HttpServlet {
 				HttpSession session =req.getSession();
 				session.setAttribute("stu_name", stu_name);
 				session.setAttribute("stu_id", stu_id);
+				session.setAttribute("LoginOK", true);
 			req.getRequestDispatcher("/SendMail/Redirect.jsp").forward(req, res);
 
 			}else{

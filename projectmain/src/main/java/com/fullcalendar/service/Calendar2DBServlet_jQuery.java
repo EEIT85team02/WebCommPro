@@ -1,6 +1,7 @@
 package com.fullcalendar.service;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -77,7 +78,7 @@ public class Calendar2DBServlet_jQuery extends HttpServlet {
 		 */
 		// 把json包成java物件
 		CalendarVO calendarVO = gson.fromJson(jsonTemp,CalendarVO.class);
-		
+		String title = calendarVO.getTitle();
 		Integer stuID = new Integer(request.getSession().getAttribute("stu_id").toString());
 		/**
 		 * 3. 呼叫service
@@ -85,5 +86,10 @@ public class Calendar2DBServlet_jQuery extends HttpServlet {
 		
 		// 呼叫service 
 		new WriteOneEventService_jQuery().writeOneEventService(calendarVO, stuID);
+		try {
+			new CalendarService().createStu_additionalDetailData(stuID, title);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
