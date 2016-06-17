@@ -280,6 +280,7 @@ public class StudentService {
 			StudentVO aa=(StudentVO) list.get(i);
 			System.out.println(aa);
 			 Map m1 = new HashMap();       
+			 System.out.println("getStu_name======="+aa.getStu_name());
 			 m1.put("stu_name", aa.getStu_name()); 				 
 			 m1.put("stu_age",aa.getStu_age());   
 			 m1.put("stu_sch",aa.getStu_sch());   
@@ -290,8 +291,8 @@ public class StudentService {
 		}
 
 
-
 		 String jsonString = JSONValue.toJSONString(l1); //list轉成 JSON String                  
+		 System.out.println("studentservice json==="+jsonString);
 		
 		return jsonString;
 	}		
