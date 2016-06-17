@@ -677,16 +677,26 @@ Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning
 			msg: "需要選擇至少一個email"
 			});	
 }
-			xhr.open('post', 'SendMail1.do', true);
-			xhr.setRequestHeader("Content-Type",
-					"application/x-www-form-urlencoded;charset=UTF-8");
-// 			xhr.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
-			xhr.send("key=" + selectedJSON );
-			// 	        xhr.open('post','SendMail1.do',false);
-			// 	        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-			// 			xhr.send("key="+selectedJSON);	
+			SendAllMail2();
+// 			xhr.open('post', 'SendMail1.do', true);
+// 			xhr.setRequestHeader("Content-Type",
+// 					"application/x-www-form-urlencoded;charset=UTF-8");
+
+// 			xhr.send("key=" + selectedJSON );
+
 
 		}
+		
+					function SendAllMail2() {
+		    $.ajax({
+		       type: "POST",
+		       url: "SendMail1.do",
+		       dataType: "json",
+		       cache: false,
+		       contentType: "application/x-www-form-urlencoded",
+		       data:{"key":selectedJSON}
+		      });
+		      }
 	</script>
 </body>
 </html>
