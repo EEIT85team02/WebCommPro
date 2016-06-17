@@ -54,4 +54,39 @@ public class WriteOneEventService_jQuery {
 			dao.insert(calendarVO);
 		}
 	}
+
+	public void updateOneEventService(Integer stuID, String title) {
+		
+
+		// DAO
+		dao = new CalendarDAO();
+		List<CalendarVO> allEvents = dao.getAll();
+		CalendarVO oneEvent = new CalendarVO();
+//		StudentVO studentVO = new StudentVO();
+//		studentVO.setStu_id(stuID);
+//		
+		
+		Integer orderId = null;
+		for(CalendarVO one:allEvents){
+			if(one.getTitle()!=null){
+//				System.out.println("●one.getTitle():\n"+one.getTitle());
+				
+				if(one.getTitle().equals(title) && new Integer(one.getId()).equals(stuID)){
+					orderId = one.getOrderId();
+					
+//					System.out.println("●one.getTitle():\n"+one.getTitle());
+//					oneEvent = one;
+				}
+			}
+		}
+//		oneEvent = dao.findByPrimaryKey(new Integer("2"));
+		oneEvent = dao.findByPrimaryKey(orderId);
+		
+//		oneEvent.setOrderId(new Integer("2"));
+		oneEvent.setColor("blue");
+//		oneEvent.setStudentVO(studentVO);
+		dao.update(oneEvent);
+//		System.out.println("●allEvents.get(0).getTitle():\n"+allEvents.get(0).getTitle());
+	}
+
 }

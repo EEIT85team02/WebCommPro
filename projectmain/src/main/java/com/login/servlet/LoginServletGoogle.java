@@ -279,7 +279,7 @@ public class LoginServletGoogle extends HttpServlet {
 				service = "//indexOfAdminPage.jsp";
 				System.out.println(service);
 				System.out.println("即將導向網頁..."+"http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+service);
-				response.sendRedirect("http://"+request.getServerName()+request.getServerPort()+request.getContextPath()+service);
+				response.sendRedirect("http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+service);
 			}else if (("Examiner").equals(signCheck)){
 				service = "//indexOfExamierPage.jsp";
 				System.out.println(service);

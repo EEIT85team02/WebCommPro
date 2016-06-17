@@ -226,8 +226,8 @@ public class Test_intervalService {
 			ClassVO clas = new ClassVO(); 
 			clas = classSrc.findByPrimaryKeyClass(class_id);
 			String title0 = "";
-			String title1 = "java";
-			java.util.Date test_startdate1 = null;
+			String title1 = "Java";
+			java.util.Date test_startdate1 = new Date(3600000);
 		    java.util.Date test_enddate1 = null;
 			String color0 = "#08d572";
 			String color1 = "#3A87AD";

@@ -368,7 +368,11 @@ $(function() {
 		        });
 				}); */
 				
-
+				var JSONObject = <%=request.getSession().getAttribute("stu_AllListJSON")%>;
+				console.log("JSONObject"+JSON.stringify(JSONObject));
+				
+				
+				
 				$(document).on('click', '#editFrom', function () {
 				
 					console.log("------editFrom------")
@@ -544,7 +548,9 @@ $(function() {
             			</div>
 		    		    <div class="modal-footer">
                             <div>
-                                <button type="submit" class="btn btn-primary btn-lg btn-block">Send</button>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block"> 
+                                
+                                Send</button>
                             </div>
                             
 		    		    </div>

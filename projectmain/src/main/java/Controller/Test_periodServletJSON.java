@@ -45,6 +45,7 @@ public class Test_periodServletJSON extends HttpServlet {
 		Test_periodService tpSvc = null;
 		String action = request.getParameter("action");
 
+		
 		/******************************** 新增資料表 ***********************/
 		if ("addTp".equals(action)) {
 			Map<String, String> Msgs = null;
@@ -178,6 +179,7 @@ public class Test_periodServletJSON extends HttpServlet {
 		}
 		/******************************** 查詢全部資料表JSON ***********************/		
 		if ("getALLTp".equals(action)) {
+			System.out.println("---------------getALLTp------------------");
 			try {
 				// ============查詢教育中心全部資料回傳JSON字串====================
 				tpSvc = new Test_periodService();
@@ -207,7 +209,7 @@ public class Test_periodServletJSON extends HttpServlet {
 		/***************************初始連結呼叫Test_periodServletJSON轉址至Test_periodTODataTablesJSON.jsp********************/	
 		if ("initTpViewTODataTablesJSON".equals(action)) {
 			try {
-				
+				System.out.println("-----------------QQQQQQQQQ--------------------");
 				RequestDispatcher successMsg = request
 						.getRequestDispatcher("/Test_period/Test_periodTODataTablesJSON.jsp");
 				successMsg.forward(request, response);

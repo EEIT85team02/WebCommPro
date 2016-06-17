@@ -100,7 +100,9 @@ public void SendMailToStudent(JSONArray ja) throws UnsupportedEncodingException{
 	   
 	   message.setContent(mailtextarray[i], "text/html;charset=UTF8");
 
-	   message.setSubject(MimeUtility.encodeText("Hello你好","UTF-8","B"));
+
+	   message.setSubject("Hello你好");
+
 	   message.setContent("Dear "+namearray[i]+","+mailtextarray[i],"text/html;charset=UTF-8");//內文
 
 	   Transport transport = session.getTransport("smtp");
@@ -118,6 +120,8 @@ public void SendMailToStudent(JSONArray ja) throws UnsupportedEncodingException{
 
 public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameStringArray,byte[][] publickeyArray,byte[][] privatekeyArray,byte[][] ciphertextArray,String classId,String path) throws NoSuchAlgorithmException{
   	 
+	
+	
 
 	  String host = "smtp.gmail.com";
 	  int port = 587;
@@ -172,7 +176,7 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   transport.connect(host, port, username, password);
 	   
 	   Transport.send(message);
-
+	   transport.close();
 	   
 	   System.out.println(nameStringArray[i]+"寄送email結束."+"此人密碼編碼"+ a);
 	  }
@@ -237,7 +241,11 @@ public  void SendConfirmMailToStudent(String emailString,String nameString,Times
 
 
 
+<<<<<<< HEAD
 public static  void SendPasswordMailToStudent(String emailString,String path){
+=======
+public static void SendPasswordMailToStudent(String emailString,String path){
+>>>>>>> branch 'master' of https://github.com/EEIT85team02/WebCommPro.git
 	 
 	StudentDAO stdao=new StudentDAO();
 	StudentVO stuvo=stdao.getStudentByEmail(emailString);

@@ -8,6 +8,7 @@ import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import Employee.model.EmployeeVO;
 import Stu_additional.model.Stu_additionalVO;
 import hibernate.util.HibernateUtil;
 
@@ -164,7 +165,7 @@ public class StudentDAO implements IStudentDAO {
 			return list;
 		}	
 		
-		public static StudentVO getStudentByEmail(String stu_email) {
+		public StudentVO getStudentByEmail(String stu_email) {
 			StudentVO stuVO = null;
 			List<StudentVO> list=null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -176,7 +177,9 @@ public class StudentDAO implements IStudentDAO {
 				query.setParameter(0, stu_email);
 				list = query.list();
 				System.out.println("query.list()======"+query.list());
+				if(list.size() != 0){
 				stuVO=list.get(0);
+				}
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -185,13 +188,7 @@ public class StudentDAO implements IStudentDAO {
 			return stuVO;
 		}		
 		
-		
-		public static void main(String args[]){
-			String emailString="pighouse764701@gmail.com";
-
-
-			getStudentByEmail(emailString);
-		}
+	
 
 
 
@@ -201,5 +198,7 @@ public class StudentDAO implements IStudentDAO {
 			Set<Stu_additionalVO> set = findByPrimaryKey(stu_id).getStu_additionalVO();
 			return set;
 		}
+		
+		
 
 }

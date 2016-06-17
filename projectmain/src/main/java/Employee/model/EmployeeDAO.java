@@ -3,13 +3,13 @@ package Employee.model;
 
 import java.sql.SQLException;
 import java.util.List;
-
 import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 
 import Stu_additional.model.Stu_additionalVO;
+import Student.model.StudentVO;
 import hibernate.util.HibernateUtil;
 
 
@@ -19,6 +19,8 @@ public class EmployeeDAO implements IEmployeeDAO {
 	
 		private static final String GET_ALL_STMT = 
 			"from EmployeeVO where sl_id<>0 order by emp_id";
+		private static final String GET_Employee_By_EMAIL = 
+				"from EmployeeVO where emp_mail=?";	
 
 
 //		public void insert(EmployeeVO empVO) {
@@ -119,6 +121,27 @@ public class EmployeeDAO implements IEmployeeDAO {
 				throws SQLException {
 			Set<Stu_additionalVO> set = findByPrimaryKey(emp_id).getStu_additionalVO();
 			return null;
+		}
+		
+		public EmployeeVO  getEmployeeByEmail(String emp_mail) {
+			EmployeeVO empVO = null;
+			List<EmployeeVO> list=null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_Employee_By_EMAIL);
+				query.setParameter(0, emp_mail);
+				list = query.list();
+				System.out.println("query.list()======"+list);
+				if(list.size() != 0){
+				empVO=list.get(0);
+				}
+				session.getTransaction().commit();
+			} catch (Exception ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return empVO;
 		}
 
 

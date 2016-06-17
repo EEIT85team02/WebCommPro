@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-	<!-- 匯入共用css -->
+<!-- 匯入共用css -->
 	<jsp:include page="/references/head_resources_css.jsp" />
 
 	<!-- 聊天框專用js -->
@@ -20,10 +20,15 @@
 	</head>
 	<!-- 匯入js -->
 	<jsp:include page="/references/head_resources_js.jsp" />
+
+	
+	<title>fullcalendarToUserProfile</title>
+
+	
+
 <body>
 	<div class="container">
-	<!-- 匯入功能表列 -->
-	<jsp:include page="/references/navigator.jsp" />
+
 		<div class="starter-template">
 		<!-- 開始畫出日曆 -->
 			<script>
@@ -70,4 +75,5 @@
 
 </body>
 </html>
+
 
