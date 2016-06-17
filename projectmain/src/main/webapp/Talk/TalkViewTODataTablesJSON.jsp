@@ -386,10 +386,22 @@ margin: 20px;
 				 			alert("aaaa");
 				 		}
 				 		else if(data=="資料更新成功"){
-				 			
 				 			table.ajax.reload();//重新載入data tables的資料 ?? 須改為直接抓取原更新表單的值回填回去表格
-				 			TalkMailForm.dialog( "close" );
-				 		}
+				 			
+						//呼叫mail功能做傳送
+						var talkName = mtalkName.val();
+						console.log("talkName===="+talkName);
+						var talkMail = mtalkMail.val();
+						console.log("talkMail===="+talkMail);
+						var retalkContent = mretalkContent.val();
+						console.log("retalkContent===="+retalkContent);
+						
+						$.get('TalkServletJSON.do',{"talkName":talkName,"talkMail":talkMail,"retalkContent":retalkContent,"action":"talkMailTotalkName"},function(datass){
+				 			console.log(datass);
+				 			
+				 		});
+						TalkMailForm.dialog( "close" );
+				 	}
 				 	});
 				 		
 				 	sel=[];

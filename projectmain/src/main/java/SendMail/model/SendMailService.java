@@ -335,7 +335,9 @@ public  void replyMessageBoardToStudent(String emailString,String nameString,Str
 	   
 	 
 
-	   message.setText("Dear "+nameString+"\n"+context);
+
+
+	   message.setText("Dear "+nameString+"：\n\n"+context);//內文
 
 
 
