@@ -333,8 +333,8 @@ public  void replyMessageBoardToStudent(String emailString,String nameString,Str
 	   
 	 
 
-	   message.setText("Dear "+nameString+"\n");
-	   message.setText(context);//內文
+	   message.setText("Dear "+nameString+"\n"+context);
+
 
 
 	   Transport transport = session.getTransport("smtp");

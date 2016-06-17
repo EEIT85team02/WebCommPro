@@ -53,10 +53,11 @@ public class SelectStudentInformationNormalJSON_controller extends HttpServlet {
 		String textNumber=req.getParameter("content");//從jsp傳入的樣板編號		
 		System.out.println("從jsp傳入的classId="+classId);
 		System.out.println("從jsp傳入的樣板編號="+textNumber);
-	
+
 		   StudentService stSvc = new StudentService();
 
 		    try {
+		    	
 		    	String jsonString=stSvc.getAllStudentInformationByClass(classId, textNumber);
 				                    
 				 System.out.println("jsonString in .do2======"+jsonString);
