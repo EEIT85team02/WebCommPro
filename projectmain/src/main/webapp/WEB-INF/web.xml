@@ -45,14 +45,13 @@
 	</resource-ref>
 	  
 	  
-	 <servlet>
-	    <servlet-name>CalendarJsonServlet</servlet-name>
-	    <servlet-class>fullCalendar.Controler.CalendarJsonServlet</servlet-class>
-	  </servlet>
-	  <servlet-mapping>
-	    <servlet-name>CalendarJsonServlet</servlet-name>
-	    <url-pattern>/fullCalendar/CalendarJsonServlet.do</url-pattern>
-	  </servlet-mapping>
+<!-- 	 <servlet> -->
+<!-- 	    <servlet-name>CalendarJsonServlet</servlet-name> -->
+<!-- 	    <servlet-class>fullCalendar.Controler.CalendarJsonServlet</servlet-class> -->
+<!-- 	  </servlet> -->
+<!-- 	  <servlet-mapping> -->
+<!-- 	    <servlet-name>CalendarJsonServlet</servlet-name> -->
+<!-- 	  </servlet-mapping> -->
 	  
 	  	 <servlet>
 	    <servlet-name>AddEditEvent</servlet-name>

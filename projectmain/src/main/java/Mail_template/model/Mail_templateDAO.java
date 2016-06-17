@@ -58,7 +58,7 @@ public class Mail_templateDAO implements IMail_templateDAO {
 		}
 		
 
-		public Mail_templateVO findByPrimaryKey(Integer mail_id) {
+		public  Mail_templateVO findByPrimaryKey(Integer mail_id) {
 			Mail_templateVO mailVO = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			try {

@@ -101,7 +101,9 @@
 #buttonUpdate{
 	color: green;
 }
-
+#buttonSend{
+	color: purple;
+}
 
 
 
@@ -179,6 +181,8 @@ margin: 20px;
 					<button id="buttonAdd" class="ui-button ui-corner-all ui-widget">新增</button>
 					<button id="buttonUpdate" class="ui-button ui-corner-all ui-widget">編輯</button>
 					<button id="buttonDelete" class="ui-button ui-corner-all ui-widget">刪除</button>
+					<button id="buttonSend" class="ui-button ui-corner-all ui-widget">群發email</button>
+				
 				</div>
 			</div>
 		</div>
@@ -266,6 +270,9 @@ margin: 20px;
 		<p>是否要刪除此筆資料?</p>
 	</div>
 	<script>
+		var btn = document.getElementById("buttonSend");
+
+		btn.addEventListener("click", SendAllMail);
 		$(function() {
 			//定義table資料來源json，與畫面顯示------>開始
 			var table = $('#Test_intervalTable').DataTable( {
@@ -727,6 +734,37 @@ margin: 20px;
 			     
 			  
 	} );//load函數結束
+	
+	
+	 
+			function SendAllMail() {
+			var xhr = new XMLHttpRequest(), id = 0;
+			var frag = document.createDocumentFragment();
+			var class_idValue = $( '.selected' ).find('td:eq(1)').text();
+			console.log("class_idValue==="+class_idValue);
+			if (xhr != null) {
+				
+					
+
+
+
+				xhr.open('post', 'SendLinkedMailToAllStudent.do', true);
+				xhr.setRequestHeader("Content-Type",
+						"application/x-www-form-urlencoded");
+				xhr.send("class=" +class_idValue );
+Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		    			{
+		    			msg: "email已寄送" 
+		    			});				
+			} else {
+// 				alert("您的瀏覽器不支援Ajax功能!!");
+	Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		    			{
+		    			msg: "您的瀏覽器不支援Ajax功能!!"
+		    			});
+			}
+
+		}
 	</script>
 </body>
 </html>
