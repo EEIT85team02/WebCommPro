@@ -4,7 +4,7 @@
   <!--                  SQLServer2005, 2008                 -->                  
 
 
-  <Resource name="jdbc/sysdesign" type="javax.sql.DataSource"
+<!--   <Resource name="jdbc/sysdesign" type="javax.sql.DataSource"
       username="sa" password="sa123456"
 
 
@@ -13,5 +13,17 @@
       maxActive="3"
       maxIdle="2"
       maxWait="5000"
-  />   
+  />    -->
+  
+<!--    <Resource 
+        name="jdbc/AZDB2" 
+        type="javax.sql.DataSource" 
+        auth="Container" 
+        driverClassName="com.ibm.db2.jcc.DB2Driver" 
+        url="jdbc:db2://23.97.58.138:50000/webcomm" 
+        username="sa"
+        password="P@ssw0rd" 
+    />
+         -->
+        
 </Context>
