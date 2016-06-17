@@ -92,12 +92,12 @@ response.flushBuffer();
                     <li class="page-scroll">
                         <a href="#portfolio">Portfolio</a>
                     </li>
-                    <li class="page-scroll">
+               <!--      <li class="page-scroll">
                         <a href="#about">About</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#contact">Contact</a>
-                    </li>
+                    </li> -->
                     <li class="page-scroll">
 							<!-- 登出 -->
 							<!--  <iframe id="logoutframe" src="https://accounts.google.com/logout" style="display: none"></iframe> -->
@@ -203,7 +203,7 @@ response.flushBuffer();
     </section>
 
     <!-- About Section -->
-    <section class="success" id="about">
+    <!-- <section class="success" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -225,10 +225,10 @@ response.flushBuffer();
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Contact Section -->
-    <section id="contact">
+    <!-- <section id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -238,8 +238,8 @@ response.flushBuffer();
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                    To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.
+                    The form should work on most web servers, but if the form is not working you may need to configure your web server differently.
                     <form name="sentMessage" id="contactForm" novalidate>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
@@ -280,7 +280,7 @@ response.flushBuffer();
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Footer -->
     <footer class="text-center">

@@ -46,7 +46,7 @@ body{
 	margin:0 auto;
 }
 table {
-	width:1200px;
+	width:1000px;
 	margin: 10px auto;
 	border:3px solid red;
 }

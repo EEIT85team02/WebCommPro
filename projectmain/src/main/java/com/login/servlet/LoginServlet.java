@@ -73,7 +73,7 @@ public class LoginServlet extends HttpServlet {
 			StudentVO mb;
 			try {
 
-				mb = DecryptService.compareIfMatchThePassword(userId, password);
+				mb = DecryptService.compareIfMatchTheRandomPassword(userId, password);
 			
 			// 如果變數mb的值不等於 null,表示資料庫含有userId搭配password的紀錄
 			if (mb != null) {

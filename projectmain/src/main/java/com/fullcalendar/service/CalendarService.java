@@ -41,7 +41,7 @@ public class CalendarService {
 		dao.insert(calendar);
 	}
 	
-	//新增產生tu_additional資料
+	//新增產生stu_additional資料
 	public void createStu_additionalDetailData(Integer stu_id,String title) throws SQLException{
 		List<CalendarVO> list = null;
 		list = dao.findStu_additionalDetailData(stu_id, title);
@@ -66,7 +66,7 @@ public class CalendarService {
 	public static void main(String[] args){
 		CalendarService src = new CalendarService();
 		try {
-			src.createStu_additionalDetailData(8,"java");
+			src.createStu_additionalDetailData(135,"Java");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
