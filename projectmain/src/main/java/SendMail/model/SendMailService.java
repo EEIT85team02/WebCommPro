@@ -167,12 +167,12 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   message.setText("Dear "+nameStringArray[i]);
 	   message.setText("Dear"+nameStringArray[i]+"\n"+"請由下列的網址直接登錄並預約考試時間\n"+"http://"+path+"/Verification_controller?key="+a+"&email="+emailStringArray[i]+"\n如果你擁有Google帳號可以用google方式登錄，或是用我們提供的密碼做登錄"+"\n這是你的登錄密碼"+encodedByteArrayToString);//內文
 
-	   Transport transport = session.getTransport("smtp");
+/*	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);
 	   
 	   Transport.send(message);
 	   transport.close();
-	   
+	   */
 	   
 	   System.out.println(nameStringArray[i]+"寄送email結束."+"此人密碼編碼"+ a);
 	  }

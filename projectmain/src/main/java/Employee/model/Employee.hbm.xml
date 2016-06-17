@@ -15,14 +15,14 @@
         <property name="emp_mail" column="emp_mail" />
         
      
-        <set name="Stu_additionalVO" table="Stu_additional" lazy="false" cascade="all"  inverse="true"  order-by="emp_id asc">			
+        <set name="Stu_additionalVO" table="Stu_additional" lazy="true" cascade="all"  inverse="true"  order-by="emp_id asc">			
 			<key>
 				<column name="emp_id" />
 			</key>
 			<one-to-many class="Stu_additional.model.Stu_additionalVO" />
 		</set>
 		
-        <set name="examVO" table="Examiner_offday" lazy="false" cascade="all"  inverse="true"  order-by="emp_id asc">			
+        <set name="examVO" table="Examiner_offday" lazy="true" cascade="all"  inverse="true"  order-by="emp_id asc">			
 			<key>
 				<column name="emp_id" />
 			</key>
