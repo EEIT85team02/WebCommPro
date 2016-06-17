@@ -199,12 +199,14 @@
 
 
 		<!--取db2.jar -->
+
 	<!-- 	<dependency>
 			<groupId>com.iiiedu</groupId>
 			<artifactId>db2jcc4</artifactId>
 			<version>1.0</version>
 		</dependency>
  -->
+
 
 		<!--取SQLserve.jar -->
 <!--  		<dependency>  -->

@@ -3,6 +3,7 @@ package Stu_additional.model;
 import hibernate.util.HibernateUtil;
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -96,6 +97,13 @@ public class Stu_additionalDAO implements IStu_additionalDAO{
 				Query query = session.createQuery(GET_STU_ADD_BY_STU_ID);
 				query.setParameter(0,stu_id);
 				list = query.list();
+				for(Iterator iter = list.iterator();iter.hasNext();) {
+					Stu_additionalVO vo = 
+							(Stu_additionalVO) iter.next();
+					org.hibernate.Hibernate.initialize(vo. getStudentVO());
+					org.hibernate.Hibernate.initialize(vo. getMember_statusVO());
+					org.hibernate.Hibernate.initialize(vo. getEmployeeVO());
+				}
 				System.out.println("11111111111"+list);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {

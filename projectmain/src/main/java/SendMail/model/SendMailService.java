@@ -177,8 +177,10 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   
 	   Transport.send(message);
 	   transport.close();
+
 	   
 	   System.out.println(nameStringArray[i]+"寄送email結束."+"此人密碼編碼"+ ramdonString);
+
 	  }
 	  
 	  } catch (MessagingException|RuntimeException e) {
@@ -333,7 +335,9 @@ public  void replyMessageBoardToStudent(String emailString,String nameString,Str
 	   
 	 
 
-	   message.setText("Dear "+nameString+"\n"+context);
+
+
+	   message.setText("Dear "+nameString+"：\n\n"+context);//內文
 
 
 

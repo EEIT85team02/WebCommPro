@@ -18,6 +18,5 @@ public interface CalendarDAO_interface {
     public List<CalendarVO> getAllEventsForAdm();//給考官year calendar用的
     public List<CalendarVO> getLatestEvents(Integer stuID);
     public List<CalendarVO> getConstrains(Integer stuID);
-	public List<CalendarVO> findStu_additionalDetailData(Integer stu_id,
-			String title);
+	public List<CalendarVO> findStu_additionalDetailData(Integer stu_id,String title);
 }
