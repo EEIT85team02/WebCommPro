@@ -47,9 +47,9 @@ public class SendSelectedMail_controller extends HttpServlet {
 //		String path = serverName+":"+serverPort+contextPath;
 		
 //		String json=   new String(req.getParameter("key").getBytes(),"UTF-8");
-//		String json=  req.getParameter("key");
-		String json = new String(req.getParameter("key").getBytes("iso-8859-1"),
-				"UTF-8");
+		String json=  req.getParameter("key");
+//		String json = new String(req.getParameter("key").getBytes("iso-8859-1"),
+//				"UTF-8");
 //		username = new String(username.getBytes("iso-8859-1”), "GBK");
 		System.out.println("進controller的json"+json);
 		

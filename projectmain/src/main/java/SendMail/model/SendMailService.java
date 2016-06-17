@@ -157,7 +157,7 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 		  SaveChangedPasswordService scp =new SaveChangedPasswordService(); 
 		  scp.SaveRandomPasswordToDataBase(encodedByteArray,emailStringArray[i]);
 		  EncryptService ess=new EncryptService();
-		  String encodedByteArrayToString=ess.Base64Encrypt(encodedByteArray);
+//		  String encodedByteArrayToString=ess.Base64Encrypt(encodedByteArray);
 		  
 	   message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailStringArray[i]));//對方email
 	   message.setSubject("測試寄信.");
@@ -170,7 +170,7 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   
 
 	   message.setText("Dear "+nameStringArray[i]);
-	   message.setText("Dear"+nameStringArray[i]+"\n"+"請由下列的網址直接登錄並預約考試時間\n"+"http://"+path+"/Verification_controller?key="+a+"&email="+emailStringArray[i]+"\n如果你擁有Google帳號可以用google方式登錄，或是用我們提供的密碼做登錄"+"\n這是你的登錄密碼"+encodedByteArrayToString);//內文
+	   message.setText("Dear"+nameStringArray[i]+"\n"+"請由下列的網址直接登錄並預約考試時間\n"+"http://"+path+"/Verification_controller?key="+a+"&email="+emailStringArray[i]+"\n如果你擁有Google帳號可以用google方式登錄，或是用我們提供的密碼做登錄"+"\n這是你的登錄密碼"+ramdonString);//內文
 
 	   Transport transport = session.getTransport("smtp");
 	   transport.connect(host, port, username, password);
@@ -178,7 +178,7 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   Transport.send(message);
 	   transport.close();
 	   
-	   System.out.println(nameStringArray[i]+"寄送email結束."+"此人密碼編碼"+ a);
+	   System.out.println(nameStringArray[i]+"寄送email結束."+"此人密碼編碼"+ ramdonString);
 	  }
 	  
 	  } catch (MessagingException|RuntimeException e) {
@@ -241,11 +241,9 @@ public  void SendConfirmMailToStudent(String emailString,String nameString,Times
 
 
 
-<<<<<<< HEAD
-public static  void SendPasswordMailToStudent(String emailString,String path){
-=======
+
 public static void SendPasswordMailToStudent(String emailString,String path){
->>>>>>> branch 'master' of https://github.com/EEIT85team02/WebCommPro.git
+
 	 
 	StudentDAO stdao=new StudentDAO();
 	StudentVO stuvo=stdao.getStudentByEmail(emailString);
