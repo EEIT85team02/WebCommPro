@@ -1,9 +1,6 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8" 
 pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!-- <!DOCTYPE html > -->
-<!-- <html> -->
-<!-- <head> -->
 <style>
 	#gotop {
 		display: none;
@@ -75,23 +72,6 @@ pageEncoding="UTF-8"%>
 
 
 </style>
-
-
-
-
-<!-- <meta charset="UTF-8"> -->
-<!-- 引入jQuery  and bootstrap css/js 檔案 -->
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-<%-- <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" > --%>
-<%-- <link href="${pageContext.request.contextPath}/css/maincontentdiv.css" rel="stylesheet" type="text/css" > --%>
-<%-- <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script> --%>
-<%-- <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script> --%>
-<%-- <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script> --%>
-<!-- <script -->
-<!-- 	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
-
-<!-- </head> -->
-<!-- <body> -->
 	<!-- 巡覽列-->
 	<div class="container">
 		<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -174,6 +154,5 @@ pageEncoding="UTF-8"%>
     });
 
 </script>
-<!-- </body> -->
-<!-- </html> -->
+
 
