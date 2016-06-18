@@ -234,9 +234,15 @@ h1 {
 	<!-- 	</table>					 -->
 
 	<script>
-	window.onload=  function ()
-	{
+	
+	window.onclick=function myfunction(){
+ 	if(classNumber != null){
 		loadSendAllMail();
+		 }else{
+		classNumber="EEIT70";
+		content="1";
+		loadSendAllMail();
+		} 
 	}
 // 	$( document ).ready(function() {
 //    loadSendAllMail();
