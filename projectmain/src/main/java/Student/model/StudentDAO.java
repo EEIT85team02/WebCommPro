@@ -2,6 +2,7 @@ package Student.model;
 
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -29,6 +30,8 @@ public class StudentDAO implements IStudentDAO {
 				"from StudentVO where class_id=?";		
 		private static final String GET_STUDENT_By_EMAIL = 
 				"from StudentVO where stu_email=?";	
+		private static final String GET_STUDENT_By_Id = 
+				"from StudentVO where stu_id=?";	
 		
 		public void insert(StudentVO stu) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -80,12 +83,35 @@ public class StudentDAO implements IStudentDAO {
 			try {
 				session.beginTransaction();
 				stu = (StudentVO) session.get(StudentVO.class, stu_id);
+				org.hibernate.Hibernate.initialize(stu.getCalendarVO());
+				System.out.println("-------------findByPrimaryKey Stu-------------------");
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
 				throw ex;
 			}
 			return stu;
+		}
+		
+		
+		public List<StudentVO> getStudentByForCalendar(Integer stu_id) {
+			List<StudentVO> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_STUDENT_By_Id);
+				list = query.list();
+				for(Iterator iter = list.iterator();iter.hasNext();) {
+					StudentVO vo = 
+							(StudentVO) iter.next();
+					org.hibernate.Hibernate.initialize(vo.getCalendarVO());
+				}
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return list;
 		}
 		
 		public List<StudentVO> getAll() {
@@ -95,6 +121,11 @@ public class StudentDAO implements IStudentDAO {
 				session.beginTransaction();
 				Query query = session.createQuery(GET_ALL_STMT);
 				list = query.list();
+				for(Iterator iter = list.iterator();iter.hasNext();) {
+					StudentVO vo = 
+							(StudentVO) iter.next();
+					org.hibernate.Hibernate.initialize(vo.getCalendarVO());
+				}
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -102,6 +133,27 @@ public class StudentDAO implements IStudentDAO {
 			}
 			return list;
 		}
+		
+		public List<StudentVO> getAllCalendarStudentVOs() {
+			List<StudentVO> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_ALL_STMT);
+				list = query.list();
+				for(Iterator iter = list.iterator();iter.hasNext();) {
+					StudentVO vo = 
+							(StudentVO) iter.next();
+					org.hibernate.Hibernate.initialize(vo.getCalendarVO());
+				}
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return list;
+		}
+		
 		public List<String> getAllGmail() {
 			List<String> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
