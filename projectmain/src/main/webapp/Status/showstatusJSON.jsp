@@ -74,7 +74,7 @@
 <link href="${pageContext.request.contextPath}/css/lobibox.min.css" rel="stylesheet">
 <style>
 .navbar-inverse {
-    background-image: linear-gradient(to bottom,#E4C00D 0,rgba(249, 68, 27, 0.97) 100%);
+    background-image: linear-gradient(to bottom,RGBA(81, 177, 89, 0.66) 0,rgba(44, 74, 65, 0.31) 100%);
 }
 .Main_Content {
 	margin-top: 100px;

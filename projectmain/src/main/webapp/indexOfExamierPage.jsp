@@ -12,9 +12,7 @@
 <meta name="description" content="hello test">
 <meta name="author" content="">
 <style>
-.navbar-inverse {
-    background-image: linear-gradient(to bottom,#E4C00D 0,rgba(249, 68, 27, 0.97) 100%);
-}
+
  html {
             height: 100%;
         }
