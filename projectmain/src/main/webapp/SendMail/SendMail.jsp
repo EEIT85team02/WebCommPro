@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>E-mail寄送</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -180,7 +180,7 @@ body {
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-xs-10 col-xs-offset-1">
-				<p id="ptitle">e-mail寄送</p>
+				<p id="ptitle">E-mail寄送</p>
 					<hr>
 					<table id="StuTable" class="display" cellspacing="0" width="100%">
 						<thead>

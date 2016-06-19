@@ -348,10 +348,10 @@ insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id,
 insert into Stu_additional (stu_id, test_start, test_end, stu_applytime, sta_id, emp_id, confirm_time, title) values (18,'2016-5-09 14:00:00', '2016-5-09 16:00:00', '2016-5-05 12:00:00', '1', '7001', '2016-05-09 15:00:00','無科目');
 
  --Mail_template
-insert into Mail_template (mail_name, mail_text) values ('預約成功通知0', '預約成功0');
-insert into Mail_template (mail_name, mail_text) values ('預約成功通知1', '預約成功1');
-insert into Mail_template (mail_name, mail_text) values ('預約成功通知2', '預約成功2');
-insert into Mail_template (mail_name, mail_text) values ('預約成功通知3', '預約成功3');
+insert into Mail_template (mail_name, mail_text) values ('錄取通知', '恭喜您通過本公司的甄試！感謝您這段期間的配合及協助，本公司決定錄取您，竭誠歡迎您的加入，成為公司共同打拼的夥伴。');
+insert into Mail_template (mail_name, mail_text) values ('不錄取通知', '本公司此次公開徵求人才， 台端之條件頗為優秀，然而因為應徵人數眾多，而職位有限，目前無法提供適合您的職務，尚祈見諒。
+感謝您對我們的愛護與支持，您在本公司網站所登錄之個人履歷資料，已建入人才資料庫，日後若有適合您的職位出缺，我們將會儘快與您聯繫，屆時請一本愛護本公司，再惠予支持。 ');
+
 
 --Talk
 insert into Talk(talkTitle,talkName,talkChose,talkMail,talkContent,retalkContent,talkDate,retalkDate,talkstatus) values('測試用','張書豪',1,'a25251226@gmail.com','你好，請問貴公司在哪兒?',null,'2015-01-01 09:05:10','2015-01-01 09:05:10',0);

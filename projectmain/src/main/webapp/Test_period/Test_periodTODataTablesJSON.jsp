@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
-<title>Test_period_Page</title>
+<title>時段設定</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -128,7 +128,7 @@ h1 {
 }
 .labelTitle{
 	float:left;
-	width:100px;
+	width:130px;
 	padding-right:3px;
 }
 .divForm{
@@ -225,7 +225,7 @@ body {
 			<fieldset>
 				<div class="divForm">
 					<label for="test_hour_id" class="labelTitle">時段代號:</label> 
-					<input type="text" name="test_hour_id" size="20" id="utest_hour_id" readOnly>
+					<input type="text" name="test_hour_id" size="20" id="utest_hour_id" readOnly style="background-color:#DDDDDD">
 					<br>
 				</div>
 				
@@ -340,7 +340,7 @@ body {
 			    TpInsertForm = $( "#dialog-insertForm" ).dialog({
 			      autoOpen: false,
 			      height: 400,
-			      width: 700,
+			      width: 800,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -349,8 +349,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-			        "send": insertTpFormToCreateTable,
-			        Cancel: function() {
+			        "送出": insertTpFormToCreateTable,
+			        "取消": function() {
 			        	TpInsertForm.dialog( "close" );
 			        }
 			      },
@@ -384,8 +384,8 @@ body {
 				//設定表單寬度視窗資料開始
 				TpUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
-			      height: 400,
-			      width: 700,
+			      height: 500,
+			      width: 900,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -394,8 +394,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-				        "send": updateTpFormToCreateTable,
-				        Cancel: function() {
+				        "送出": updateTpFormToCreateTable,
+				        "取消": function() {
 				        	TpUpdateForm.dialog( "close" );
 				        }
 				      },
@@ -469,8 +469,8 @@ body {
 				//設定刪除確認表單寬度視窗資料開始
 			    TpDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
-			        height: 200,
-			        width: 240,
+			        height: 330	,
+			        width: 440,
 			        modal: true,
 			        open: function() {
 				          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -480,7 +480,7 @@ body {
 				      },
 			        buttons: {
 			          "確認": deleteTpFormToCreateTable ,
-			          "放棄": function() {
+			          "返回": function() {
 			            $( this ).dialog( "close" );
 			            $('#dialog-deleteForm p').text('是否要刪除此筆資料?');
 			          }

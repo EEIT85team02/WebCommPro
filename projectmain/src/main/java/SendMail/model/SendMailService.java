@@ -337,7 +337,7 @@ public  void replyMessageBoardToStudent(String emailString,String nameString,Str
 
 
 
-	   message.setText("Dear "+nameString+"：\n\n"+context);//內文
+	   message.setText("Dear "+nameString+"：\n\n"+"非常感謝您在網站上面的留言，對於您的問題，我們的管理團隊有以下的回覆：\n"+"["+context+"]"+"\n謝謝您的回覆");//內文
 
 
 
