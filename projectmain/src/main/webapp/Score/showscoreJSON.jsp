@@ -85,6 +85,22 @@
 .my-valid-class {
     color:#0101DF;
 }
+
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -147,6 +163,7 @@
 </div>
 <div class="Main_Content">
 <div class="col-xs-10 col-xs-offset-1">
+<p id="ptitle">考生成績查詢</p>
 
 <!--                    <input type="button" value="成績" id="buttonJSON" -->
 <!-- 						class="btn btn-danger"> -->

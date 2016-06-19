@@ -136,6 +136,22 @@ margin: 20px;
 
 }
 
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
 
 </style>
 </head>
@@ -148,15 +164,16 @@ margin: 20px;
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-xs-10 col-xs-offset-1">
+				<p id="ptitle">班級資料</p>
 				<hr>
 					<table id="ClassTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th class="col-md-1 col-xs-2">班級代號</th>
-								<th class="col-md-3 col-xs-3">班級名稱</th>
-								<th class="col-md-2 col-xs-2">聯絡人</th>
+								<th class="col-md-2 col-xs-2">班級代號</th>
+								<th class="col-md-2 col-xs-2">班級名稱</th>
+								<th class="col-md-1 col-xs-1">聯絡人</th>
 								<th class="col-md-2 col-xs-2">班級導師</th>
-								<th class="col-md-1 col-xs-1">中心代號</th>
+								<th class="col-md-2 col-xs-2">中心代號</th>
 								<th class="col-md-2 col-xs-2">中心名稱</th>
 							</tr>
 						</thead>

@@ -97,9 +97,9 @@ Toggle {
 	color: green;
 }
 
-label, input {
-	display: block;
-}
+/* label, input { */
+/* 	display: block; */
+/* } */
 
 input.text {
 	margin-bottom: 12px;
@@ -126,6 +126,22 @@ h1 {
 	border: 1px solid transparent;
 	padding: 0.3em;
 }
+
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -139,39 +155,43 @@ h1 {
 
 
 
-	<div class="container">
+	<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
-
-				<div class="col-md-12">
+				<div class="col-xs-10 col-xs-offset-1">
+					<p id="ptitle">主考官請假查詢</p>
 					<hr>
 					<table id="StuTable" class="display" cellspacing="0" width="100%">
 						<thead>
 
 							<tr>
-								<th class="col-md-3 col-xs-3">員工代號</th>
-								<th class="col-md-2 col-xs-3">員工請假單單號</th>
-								<th class="col-md-2 col-xs-3">請假開始日期</th>
-								<th class="col-md-3 col-xs-3">請假結束日期</th>
-								<th class="col-md-2 col-xs-3">請假天數</th>
-								<th class="col-md-3 col-xs-3">職務代理人代號</th>
+								<th class="col-md-2 col-xs-2">員工代號</th>
+								<th class="col-md-2 col-xs-2">員工請假單單號</th>
+								<th class="col-md-2 col-xs-2">請假開始日期</th>
+								<th class="col-md-2 col-xs-2">請假結束日期</th>
+								<th class="col-md-2 col-xs-2">請假天數</th>
+								<th class="col-md-2 col-xs-2">代理人</th>
 							</tr>
 						</thead>
 						<tbody>
 						</tbody>
 						<tfoot>
 							<tr>
+								<th>員工代號</th>
 								<th>員工請假單單號</th>
 								<th>請假開始日期</th>
 								<th>請假結束日期</th>
 								<th>請假天數</th>
-								<th>職務代理人</th>
-								<th>員工代號</th>
+								<th>代理人</th>
 							</tr>
 						</tfoot>
 					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<!-- <script> -->
+	<!-- <script> -->
 <%-- <%session.setAttribute("emp_id","7004");%> --%>
 <!-- </script> -->
 

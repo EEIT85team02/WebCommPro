@@ -137,6 +137,22 @@ h1 {
 margin: 20px;
 
 }
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
 
 </style>
 </head>
@@ -149,16 +165,17 @@ margin: 20px;
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-xs-10 col-xs-offset-1">
+				<p id="ptitle">各班級考試時段人數表</p>
 				<hr>
 					<table id="Test_DateTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th>#</th>
+								<th></th>
 								<th class="col-md-2 col-xs-2">班級代號</th>
 								<th class="col-md-2 col-xs-2">班級名稱</th>
 								<th class="col-md-2 col-xs-2">考試日期</th>
-								<th class="col-md-1 col-xs-1">可報/人</th>
-								<th class="col-md-1 col-xs-1">已報/人</th>
+								<th class="col-md-1 col-xs-1">可報</th>
+								<th class="col-md-1 col-xs-1">已報</th>
 								<th class="col-md-2 col-xs-2">開始時間</th>
 								<th class="col-md-2 col-xs-2">結束時間</th>
 							</tr>
@@ -167,12 +184,12 @@ margin: 20px;
 						</tbody>
 						<tfoot>
 							<tr>
-								<th>#</th>
+								<th></th>
 								<th>班級代號</th>
 								<th>班級名稱</th>
 								<th>考試日期</th>
-								<th>可報/人</th>
-								<th>已報/人</th>
+								<th>可報</th>
+								<th>已報</th>
 								<th>開始時間</th>
 								<th>結束時間</th>
 							</tr>
@@ -190,7 +207,7 @@ margin: 20px;
 	</div>
 	
 	<!-- 設定修改FORM表單區塊dialog -->
-	<div id="dialog-updateForm" title="修改教育中心資料">
+	<div id="dialog-updateForm" title="修改時段人數資料">
 		<p class="allValid"></p>
 		<form name="TdUpdateForm" action="updateEdu">
 			<fieldset>

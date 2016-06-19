@@ -131,6 +131,22 @@ h1 {
 	padding: 0.3em;
 }
 
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
 </style>
 
 
@@ -164,6 +180,7 @@ h1 {
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-xs-10 col-xs-offset-1">
+				<p id="ptitle">e-mail寄送</p>
 					<hr>
 					<table id="StuTable" class="display" cellspacing="0" width="100%">
 						<thead>
@@ -175,9 +192,9 @@ h1 {
 							</select>
 							<tr>
 
-								<th class="col-md-1 col-xs-1">checkbox</th>
-								<th class="col-md-1 col-xs-1">學生姓名</th>
-								<th class="col-md-3 col-xs-3">學生年次</th>
+								<th class="col-md-1 col-xs-1">選取</th>
+								<th class="col-md-2 col-xs-2">學生姓名</th>
+								<th class="col-md-1 col-xs-1">年次</th>
 								<th class="col-md-3 col-xs-3">學校系級</th>
 								<th class="col-md-3 col-xs-3">學生email</th>
 								<th class="col-md-2 col-xs-2">發信種類</th>
@@ -187,9 +204,9 @@ h1 {
 						</tbody>
 						<tfoot>
 							<tr>
-								<th>checkbox</th>
+								<th>選取</th>
 								<th>學生姓名</th>
-								<th>學生年次</th>
+								<th>年次</th>
 								<th>學校系級</th>
 								<th>學生email</th>
 								<th>發信種類</th>

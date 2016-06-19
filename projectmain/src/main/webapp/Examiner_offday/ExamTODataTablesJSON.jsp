@@ -151,6 +151,22 @@ margin: 20px;
 
 }
 
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
 </style>
 </head>
 <body>
@@ -162,6 +178,7 @@ margin: 20px;
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-xs-10 col-xs-offset-1">
+				<p id="ptitle">主考官請假查詢</p>
 				<hr>
 					<table id="Examiner_offdayTable" class="display" cellspacing="0" width="100%">
 						<thead>

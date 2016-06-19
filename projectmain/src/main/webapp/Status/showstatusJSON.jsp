@@ -83,6 +83,21 @@ a {
     color: rgb(179, 24, 188);
     text-decoration: none;
 }
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -119,6 +134,7 @@ a {
  </form> 
  <div class="Main_Content">    
 	<div class="col-xs-10 col-xs-offset-1"> 
+	<p id="ptitle">考生核准查詢</p>
         <div class="bs-example bs-example-tabs" role="tabpanel">
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation"><a href="#OK" role="tab" id="OK-tab" data-toggle="tab" aria-controls="OK">已核准</a></li>
