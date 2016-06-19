@@ -20,7 +20,7 @@
         }
         
  body {
-            background-image: url(img/bird.jpg);
+            background-image: url(img/background/examiner.jpg);
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-position: center;

@@ -28,12 +28,9 @@ import Student.model.StudentDAO;
 import Student.model.StudentVO;
 
 //這隻service主要功能是拿來寄信
-public class SendMailService {
+public class SendMailService  {
 
-	
 
-	
-	
 	
 public void SendMailToStudent(JSONArray ja) throws UnsupportedEncodingException{
 
@@ -119,7 +116,7 @@ public void SendMailToStudent(JSONArray ja) throws UnsupportedEncodingException{
 public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameStringArray,byte[][] publickeyArray,byte[][] privatekeyArray,byte[][] ciphertextArray,String classId,String path) throws NoSuchAlgorithmException{
   	 
 	
-	
+
 
 	  String host = "smtp.gmail.com";
 	  int port = 587;
@@ -175,6 +172,7 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	   
 	   Transport.send(message);
 	   transport.close();
+	   
 	   
 	   System.out.println(nameStringArray[i]+"寄送email結束."+"此人密碼編碼"+ a);
 	  }

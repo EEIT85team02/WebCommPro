@@ -102,7 +102,7 @@
                                 <h4>
                                     <strong>企業整合</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p>敏捷業務流程管理 : 敏捷式預期市場變動、超越客戶期望</p>
                                 <a href="http://www.webcomm.com.tw/solutions3-2.html" class="btn btn-light">Learn More</a>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                                 <h4>
                                     <strong>入口網站</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p>企業入口網站 : 馭繁化簡、打造事半功倍的企業入口網站 </p>
                                 <a href="http://www.webcomm.com.tw/solutions3-3.html" class="btn btn-light">Learn More</a>
                             </div>
                         </div>
@@ -128,8 +128,8 @@
                                 <h4>
                                     <strong>軟體開發</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="http://www.webcomm.com.tw/solutions3-3.html" class="btn btn-light">Learn More</a>
+                                <p>跨平台行動應用: 開發、管理、整合跨行動應用程式的解決方案</p>
+                                <a href="http://www.webcomm.com.tw/solutions3-1.html" class="btn btn-light">Learn More</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -141,7 +141,7 @@
                                 <h4>
                                     <strong>單一登入</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                <p>WebComm Application Conversion for z/OS®</p>
                                 <a href="http://www.webcomm.com.tw/solutions3-2.html" class="btn btn-light">Learn More</a>
                             </div>
                         </div>
