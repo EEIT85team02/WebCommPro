@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>成績出來囉</title>
+<title>考生成績查詢</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -116,11 +116,11 @@ body {
       <div class="modal-body">  
          <div class="form-group">
             <label for="recipient-name" class="control-label">班別:</label>
-            <input type="text" class="form-control" id="ustu_id" name="stu_id"  readonly="readonly">
+            <input type="text" class="form-control" id="ustu_id" name="stu_id"  readOnly style="background-color:#DDDDDD">
           </div>
            <div class="form-group">
             <label for="recipient-name" class="control-label">姓名:</label>
-            <input type="text" class="form-control" id="ustu_name" name="stu_name"  readonly="readonly">
+            <input type="text" class="form-control" id="ustu_name" name="stu_name"  readOnly style="background-color:#DDDDDD">
           </div>
           <div class="form-group">
             <label for="recipient-name" class="control-label">上機成績:</label>

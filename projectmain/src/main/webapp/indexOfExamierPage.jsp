@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>indexOfAdminpage</title>
+<title>主考官首頁</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
@@ -25,7 +25,14 @@
             background-attachment: fixed;
             background-position: center;
             background-size: cover;
+            font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 20px;
+            line-height: 1.42857143;
+            color: #4d6384;
+            background-color: #ffffff;
+            font-weight: bold;
         }
+
 </style>
 </head>
 <body>
