@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
-<title>Test_interval Page</title>
+<title>各班級考試日期設定</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -132,7 +132,7 @@ h1 {
 }
 .labelTitle{
 	float:left;
-	width:100px;
+	width:130px;
 	padding-right:3px;
 }
 .divForm{
@@ -242,21 +242,21 @@ body {
 			<fieldset>
 			<div class="divForm">
 				<label for="test_interval_id" class="labelTitle">代號:</label> 
-				<input type="text" name="test_interval_id" size="20" id="utest_interval_id" placeholder="請輸入班級考試日期代號" autocomplete="off" readOnly> 
+				<input type="text" name="test_interval_id" size="20" id="utest_interval_id" placeholder="請輸入班級考試日期代號" autocomplete="off" readOnly style="background-color:#DDDDDD"> 
 				<br>
 				</div>
 				
 				
 				<div class="divForm">
 				<label for="class_id" class="labelTitle">班級代號:</label> 
-				<input type="text" name="class_id" size="20" id="uclass_id" placeholder="請輸入班級代號" autocomplete="off" readOnly> 
+				<input type="text" name="class_id" size="20" id="uclass_id" placeholder="請輸入班級代號" autocomplete="off" readOnly style="background-color:#DDDDDD"> 
 				<br>
 				</div>
 				
 				
 				<div class="divForm">
 				<label for="class_name" class="labelTitle">班級名稱:</label> 
-				<input type="text" name="class_name" size="20" id="uclass_name" placeholder="請輸入班級名稱" autocomplete="off" readOnly> 
+				<input type="text" name="class_name" size="20" id="uclass_name" placeholder="請輸入班級名稱" autocomplete="off" readOnly style="background-color:#DDDDDD"> 
 				<br>
 				</div>
 				
@@ -269,7 +269,7 @@ body {
 				
 				<div class="divForm">
 				<label for="test_enddate" class="labelTitle">結束日期:</label> 
-				<input type="date" name="test_enddate" size="20" id="utest_enddate" class="text ui-widget-content ui-corner-all" placeholder="請輸入考試結束日期" autocomplete="off">
+				<input type="date" name="test_enddate" size="20" id="utest_enddate"  placeholder="請輸入考試結束日期" autocomplete="off">
 				<span id="spanutest_enddate"></span><br>
 				</div>
 				
@@ -383,7 +383,7 @@ body {
 			    TiInsertForm = $( "#dialog-insertForm" ).dialog({
 			      autoOpen: false,
 			      height: 550,
-			      width: 700,
+			      width: 850,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -392,8 +392,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-			        "send": insertTiFormToCreateTable,
-			        Cancel: function() {
+			        "送出": insertTiFormToCreateTable,
+			        "取消": function() {
 			        	TiInsertForm.dialog( "close" );
 			        }
 			      },
@@ -451,7 +451,7 @@ body {
 				  TiUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
 			      height: 650,
-			      width: 700,
+			      width: 850,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -460,8 +460,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-				        "send": updateTiFormToCreateTable,
-				        Cancel: function() {
+				        "送出": updateTiFormToCreateTable,
+				        "取消": function() {
 				        	TiUpdateForm.dialog( "close" );
 				        }
 				      },
@@ -538,8 +538,8 @@ body {
 				//設定刪除確認表單寬度視窗資料開始
 			    TiDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
-			        height: 200,
-			        width: 240,
+			        height: 330,
+			        width: 440,
 			        modal: true,
 			        open: function() {
 				          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -549,7 +549,7 @@ body {
 				      },
 			        buttons: {
 			          "確認": deleteTiFormToCreateTable ,
-			          "放棄": function() {
+			          "返回": function() {
 			            $( this ).dialog( "close" );
 			            $('#dialog-deleteForm p').text('是否要刪除此筆資料?');
 			          }

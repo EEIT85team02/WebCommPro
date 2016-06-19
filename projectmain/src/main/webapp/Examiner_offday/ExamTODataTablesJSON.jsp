@@ -5,7 +5,7 @@
 <html lang="zh-tw">
 <html>
 <head>
-<title>Examiner_offday_Page</title>
+<title>主考官請假查詢</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -142,7 +142,7 @@ h1 {
 }
 .labelTitle{
 	float:left;
-	width:100px;
+	width:150px;
 	padding-right:3px;
 }
 
@@ -221,30 +221,30 @@ body {
 			<fieldset>
 				<div class="divForm">
 					<label for="exam_id" class="labelTitle">請假單單號:</label> 
-					<input type="text" name="exam_id" id="uexam_id" size="20"  readOnly> 
+					<input type="text" name="exam_id" id="uexam_id" size="20"  readOnly style="background-color:#DDDDDD"> 
 					
 				</div>
 				
 				<div class="divForm">
 					<label for="emp_id" class="labelTitle">主考官代號:</label> 
-					<input type="text" name="emp_id" id="uemp_id" size="20"  readOnly> 
+					<input type="text" name="emp_id" id="uemp_id" size="20"  readOnly style="background-color:#DDDDDD"> 
 					
 				</div>
 				
 				<div class="divForm">
 					<label for="off_startdate" class="labelTitle">請假開始日期:</label> 
-					<input type="text" name="off_startdate" id="uoff_startdate" size="20"  autocomplete="off" readOnly>
+					<input type="text" name="off_startdate" id="uoff_startdate" size="20"  autocomplete="off" readOnly style="background-color:#DDDDDD">
 					
 				</div>
 				
 				<div class="divForm">
 					<label for="off_enddate" class="labelTitle">請假結束日期:</label> 
-					<input type="text" name="off_enddate" id="uoff_enddate" size="20"  autocomplete="off" readOnly> 
+					<input type="text" name="off_enddate" id="uoff_enddate" size="20"  autocomplete="off" readOnly style="background-color:#DDDDDD"> 
 					
 				</div>
 				<div class="divForm">
 					<label for="off_day" class="labelTitle">請假天數:</label> 
-					<input type="text" name="off_day" id="uoff_day" size="20"  autocomplete="off" readOnly> 
+					<input type="text" name="off_day" id="uoff_day" size="20"  autocomplete="off" readOnly style="background-color:#DDDDDD"> 
 					
 				</div>
 				<div class="divForm">
@@ -325,8 +325,8 @@ body {
 				//設定表單寬度視窗資料開始
 				ExamUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
-			      height: 650,
-			      width: 400,
+			      height: 770,
+			      width: 500,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -335,8 +335,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-				        "send": updateExamFormToCreateTable,
-				        Cancel: function() {
+				        "送出": updateExamFormToCreateTable,
+				        "取消": function() {
 				        	ExamUpdateForm.dialog( "close" );
 				        }
 				      },

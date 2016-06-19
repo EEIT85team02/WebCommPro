@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
-<title>Mail_template_Page</title>
+<title>E-mail樣板設定</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -158,7 +158,7 @@ body {
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-xs-10 col-xs-offset-1">
-				<p id="ptitle">e-mail樣板資料</p>
+				<p id="ptitle">E-mail樣板資料</p>
 				<hr>
 					<table id="Mail_templateTable" class="display" cellspacing="0" width="100%">
 						<thead>
@@ -207,7 +207,7 @@ body {
 		<form name="MailUpdateForm" action="updateMail">
 			<fieldset>
 				<label for="mail_id">樣版代號</label> 
-				<input type="text" name="mail_id" id="umail_id" readOnly class="text ui-widget-content ui-corner-all">
+				<input type="text" name="mail_id" id="umail_id" readOnly style="background-color:#DDDDDD" class="text ui-widget-content ui-corner-all">
 				<label for="mail_name">樣版名稱</label> 
 				<input type="text" name="mail_name" id="umail_name" class="text ui-widget-content ui-corner-all"> 
 				<label for="mail_text">樣版內容</label> 
@@ -334,8 +334,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-			        "send": insertMailFormToCreateTable,
-			        Cancel: function() {
+			        "送出": insertMailFormToCreateTable,
+			        "取消": function() {
 			        	MailInsertForm.dialog( "close" );
 			        }
 			      },
@@ -385,7 +385,7 @@ body {
 				MailUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
 			      height: 650,
-			      width: 400,
+			      width: 500,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -394,8 +394,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-				        "send": updateMailFormToCreateTable,
-				        Cancel: function() {
+				        "送出": updateMailFormToCreateTable,
+				        "取消": function() {
 				        	MailUpdateForm.dialog( "close" );
 				        }
 				      },
@@ -458,8 +458,8 @@ body {
 				//設定刪除確認表單寬度視窗資料開始
 			    MailDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
-			        height: 200,
-			        width: 240,
+			        height: 330,
+			        width: 440,
 			        modal: true,
 			        open: function() {
 				          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -469,7 +469,7 @@ body {
 				      },
 			        buttons: {
 			          "確認": deleteMailFormToCreateTable ,
-			          "放棄": function() {
+			          "返回": function() {
 			            $( this ).dialog( "close" );
 			            $('#dialog-deleteForm p').text('是否要刪除此筆資料?');
 			          }

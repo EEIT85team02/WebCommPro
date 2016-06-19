@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
-<title>Sign_list_Page</title>
+<title>權限設定資料</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -325,7 +325,7 @@ body {
 			    SlInsertForm = $( "#dialog-insertForm" ).dialog({
 			      autoOpen: false,
 			      height: 500,
-			      width: 400,
+			      width: 500,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -334,8 +334,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-			        "send": insertSlFormToCreateTable,
-			        Cancel: function() {
+			        "送出": insertSlFormToCreateTable,
+			        "取消": function() {
 			        	SlInsertForm.dialog( "close" );
 			        }
 			      },
@@ -383,7 +383,7 @@ body {
 				SlUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
 			      height: 650,
-			      width: 400,
+			      width: 500,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -392,8 +392,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-				        "send": updateSlFormToCreateTable,
-				        Cancel: function() {
+				        "送出": updateSlFormToCreateTable,
+				        "取消": function() {
 				        	SlUpdateForm.dialog( "close" );
 				        }
 				      },
@@ -455,8 +455,8 @@ body {
 				//設定刪除確認表單寬度視窗資料開始
 			    SlDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
-			        height: 200,
-			        width: 240,
+			        height: 330,
+			        width: 440,
 			        modal: true,
 			        open: function() {
 				          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -466,7 +466,7 @@ body {
 				      },
 			        buttons: {
 			          "確認": deleteSlFormToCreateTable ,
-			          "放棄": function() {
+			          "返回": function() {
 			            $( this ).dialog( "close" );
 			            $('#dialog-deleteForm p').text('是否要刪除此筆資料?');
 			          }

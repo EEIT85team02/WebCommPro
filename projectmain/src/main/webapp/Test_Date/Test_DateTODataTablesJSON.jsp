@@ -130,7 +130,7 @@ h1 {
 }
 .labelTitle{
 	float:left;
-	width:100px;
+	width:130px;
 	padding-right:3px;
 }
 .divForm{
@@ -213,13 +213,13 @@ body {
 			<fieldset>
 				<div class="divForm">
 					<label for="test_date_id" class="labelTitle">代號</label> 
-					<input type="text" name="test_date_id" size="20" id="utest_date_id" readOnly >
+					<input type="text" name="test_date_id" size="20" id="utest_date_id" readOnly style="background-color:#DDDDDD" >
 					<br>
 				</div>
 				 	
 				<div class="divForm">
 					<label for="class_name" class="labelTitle">班級名稱:</label> 
-					<input type="text" name="class_name" size="20" id="uclass_name" readOnly autocomplete="off">
+					<input type="text" name="class_name" size="20" id="uclass_name" readOnly style="background-color:#DDDDDD" autocomplete="off">
 					<br>
 				</div>
 				 	
@@ -308,8 +308,8 @@ body {
 				//設定表單寬度視窗資料開始
 				TdUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
-			      height: 400,
-			      width: 700,
+			      height: 600,
+			      width: 800,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -318,8 +318,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-				        "send": updateTdFormToCreateTable,
-				        Cancel: function() {
+				        "送出": updateTdFormToCreateTable,
+				        "取消": function() {
 				        	TdUpdateForm.dialog( "close" );
 				        }
 				      },
@@ -395,8 +395,8 @@ body {
 				//設定刪除確認表單寬度視窗資料開始
 			   TdDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
-			        height: 200,
-			        width: 240,
+			        height: 330,
+			        width: 440,
 			        modal: true,
 			        open: function() {
 				          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -406,7 +406,7 @@ body {
 				      },
 			        buttons: {
 			          "確認": deleteTdFormToCreateTable ,
-			          "放棄": function() {
+			          "返回": function() {
 			        	sel=[];
 			            $( this ).dialog( "close" );
 			            $('#dialog-deleteForm p').text('是否要刪除資料?');
