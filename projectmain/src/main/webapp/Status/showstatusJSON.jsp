@@ -119,7 +119,8 @@ a {
         <input type="hidden" id="confirm_timehidok" name="confirm_time" >
         <input type="hidden" id="titlehidok" name="title" >
  </form> 
- <div class="Main_Content">      
+ <div class="Main_Content">    
+	<div class="col-xs-10 col-xs-offset-1"> 
         <div class="bs-example bs-example-tabs" role="tabpanel">
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation"><a href="#OK" role="tab" id="OK-tab" data-toggle="tab" aria-controls="OK">已核准</a></li>
@@ -232,7 +233,7 @@ a {
                       </table>
                <p>
            </div>
-          
+          </div> 
         </div>
      </div>
 </div> 

@@ -109,9 +109,9 @@
 }
 
 
-label, input {
-	display: block;
-}
+/* label, input { */
+/* 	display: block; */
+/* } */
 
 input.text {
 	margin-bottom: 12px;
@@ -160,10 +160,10 @@ margin: 20px;
 	<jsp:include page="/top/top.jsp" />
 	<!-------------中間內容畫面開始------------>
 	<!-- 固定巡覽列位置，建立div使區塊下移 (starter-template)-->
-	<div class="container">
+	<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-xs-10 col-xs-offset-1">
 				<hr>
 					<table id="Examiner_offdayTable" class="display" cellspacing="0" width="100%">
 						<thead>

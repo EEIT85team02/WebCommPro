@@ -152,7 +152,7 @@ margin: 20px;
 	<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-xs-10 col-xs-offset-1">
 				<hr>
 					<table id="Test_intervalTable" class="display" cellspacing="0" width="100%">
 						<thead>

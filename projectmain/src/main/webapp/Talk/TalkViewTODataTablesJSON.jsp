@@ -138,12 +138,12 @@ margin: 20px;
 	<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-xs-10 col-xs-offset-1">
 				<hr>
 					<table id="TalkTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th class="col-md-1 col-xs-1">訊息代號</th>
+								<th class="col-md-1 col-xs-1">#</th>
 								<th class="col-md-2 col-xs-2">留言主題</th>
 								<th class="col-md-1 col-xs-1">訪客姓名</th>
 								<th class="col-md-1 col-xs-1">悄悄話</th>

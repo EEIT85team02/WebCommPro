@@ -101,9 +101,9 @@ Toggle {
 	color: green;
 }
 
-label, input {
-	display: block;
-}
+/* label, input { */
+/* 	display: block; */
+/* } */
 
 input.text {
 	margin-bottom: 12px;
@@ -160,11 +160,10 @@ h1 {
 
 
 
-	<div class="container">
+<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
-
-				<div class="col-md-12">
+				<div class="col-xs-10 col-xs-offset-1">
 					<hr>
 					<table id="StuTable" class="display" cellspacing="0" width="100%">
 						<thead>

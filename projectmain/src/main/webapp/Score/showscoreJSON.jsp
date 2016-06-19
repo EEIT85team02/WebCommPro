@@ -148,6 +148,8 @@
   </div>
 </div>
 <div class="Main_Content">
+<div class="col-xs-10 col-xs-offset-1">
+
 <!--                    <input type="button" value="成績" id="buttonJSON" -->
 <!-- 						class="btn btn-danger"> -->
                      <table id="scoreTable" class="display" cellspacing="0" width="100%">
@@ -163,6 +165,7 @@
 						<tbody>
 						</tbody>
 					</table>
+</div>
 </div>
 	    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 		<script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
