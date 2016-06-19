@@ -9,6 +9,7 @@ import java.util.Set;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import Examiner_offday.model.Examiner_offdayVO;
 import Stu_additional.model.Stu_additionalVO;
 import Student.model.StudentVO;
 import hibernate.util.HibernateUtil;
@@ -22,6 +23,8 @@ public class EmployeeDAO implements IEmployeeDAO {
 			"from EmployeeVO where sl_id<>0 order by emp_id";
 		private static final String GET_Employee_By_EMAIL = 
 				"from EmployeeVO where emp_mail=?";	
+		private static final String GET_Employee_By_EMPID = 
+				"from EmployeeVO where emp_id=?";	
 
 
 //		public void insert(EmployeeVO empVO) {
@@ -84,6 +87,27 @@ public class EmployeeDAO implements IEmployeeDAO {
 			return empVO;
 		}
 
+		public List<EmployeeVO> findExamByEmpId(String emp_id) {
+			List<EmployeeVO> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_Employee_By_EMPID);
+				query.setParameter(0, emp_id);
+				list = query.list();
+				for(Iterator iter = list.iterator();iter.hasNext();) {
+					EmployeeVO vo = 
+							(EmployeeVO) iter.next();
+					org.hibernate.Hibernate.initialize(vo.getExamVO());
+				}
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return list;
+		}
+		
 		
 		public List<EmployeeVO> getAllEmp() {
 			List<EmployeeVO> list = null;

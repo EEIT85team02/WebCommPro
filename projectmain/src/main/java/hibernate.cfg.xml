@@ -11,7 +11,7 @@
 
 <!--         <property name="connection.datasource">java:comp/env/jdbc/db2</property> -->
 
-<!--    <property name="connection.datasource">java:comp/env/jdbc/AZDB2</property> -->
+   <property name="connection.datasource">java:comp/env/jdbc/AZDB2</property>
 
 
         
