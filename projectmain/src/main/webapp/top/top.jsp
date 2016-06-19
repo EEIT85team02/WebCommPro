@@ -22,7 +22,7 @@ pageEncoding="UTF-8"%>
      background-color: rgba(49, 55, 179, 0); 
      
 
- } 
+ } z
 .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
     color: #c8cc2e;
     background-color: transparent;
@@ -69,7 +69,10 @@ pageEncoding="UTF-8"%>
     color: #e4dc3c;
     background-color: transparent;
 }
-
+a {
+    font-size: 19px;
+    background-color: transparent;
+}
 
 </style>
 	<!-- 巡覽列-->

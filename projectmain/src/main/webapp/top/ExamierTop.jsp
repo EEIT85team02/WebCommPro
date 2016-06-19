@@ -16,7 +16,18 @@ pageEncoding="UTF-8"%>
 		color: white;
 		cursor: pointer;
 	}
-
+a {
+    font-size: 19px;
+    background-color: transparent;
+}
+.navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #e4dc3c;
+    background-color: transparent;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #e4dc3c;
+    background-color: transparent;
+}
 </style>
 
 
