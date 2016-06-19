@@ -2,6 +2,7 @@ package Examiner_offday.model;
 
 
 import java.sql.SQLException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -90,5 +91,27 @@ public class Examiner_offdayDAO implements IExaminer_offdayDAO {
 
 		}
 
-	
+
+		@Override
+			public List<Examiner_offdayVO> findByEmpForExamier(Integer exam_id) {
+				List<Examiner_offdayVO> list = null;
+				Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+				try {
+					session.beginTransaction();
+					Query query = session.createQuery(GET_ALL_STMT);
+					list = query.list();
+					for(Iterator iter = list.iterator();iter.hasNext();) {
+						Examiner_offdayVO vo = 
+								(Examiner_offdayVO) iter.next();
+						/*org.hibernate.Hibernate.initialize(vo.getEmpVO());*/
+						org.hibernate.Hibernate.initialize(vo.getEmpVO().getStu_additionalVO());
+					}
+					session.getTransaction().commit();
+				} catch (RuntimeException ex) {
+					session.getTransaction().rollback();
+					throw ex;
+				}
+				return list;
+			}
+
 }

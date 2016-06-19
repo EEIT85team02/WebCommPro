@@ -21,7 +21,7 @@
 
 
 
- 	    <property name="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</property>
+ 	   <!--  <property name="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</property>
  		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/webcomm</property> 
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">P@ssw0rd</property>
@@ -31,7 +31,7 @@
 		<property name="hibernate.c3p0.timeout">1800</property>
 		<property name="hibernate.c3p0.max_statements">50</property>
 
-
+ -->
 
 
         

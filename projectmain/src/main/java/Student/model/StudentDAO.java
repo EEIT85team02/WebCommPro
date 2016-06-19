@@ -189,6 +189,11 @@ public class StudentDAO implements IStudentDAO {
 				session.beginTransaction();
 				Query query = session.createQuery(GET_ALL_Class);
 				list = query.list();
+				for(Iterator iter = list.iterator();iter.hasNext();) {
+					StudentVO vo = 
+							(StudentVO) iter.next();
+					org.hibernate.Hibernate.initialize(vo.getClassVO());
+				}
 				System.out.println("query.list()======"+query.list());
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {

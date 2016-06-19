@@ -38,7 +38,7 @@
 			</key>
 			<one-to-many class="Stu_additional.model.Stu_additionalVO"/>
 	</set>    
-	<set name="CalendarVO" table="fullcalendar" lazy="false" cascade="all"  inverse="true"  order-by="order_id asc">			
+	<set name="CalendarVO" table="fullcalendar" lazy="true" cascade="all"  inverse="true"  order-by="order_id asc">			
 			<key>
 				<column name="stu_id"/>
 			</key>
