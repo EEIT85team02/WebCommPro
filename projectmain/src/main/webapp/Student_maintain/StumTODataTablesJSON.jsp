@@ -266,7 +266,9 @@ h1 {
 						$.fancybox({//调用fancybox弹出层 
     			                'type':'ajax', 
     			                'href':'/projectmain/Student_maintain/Stum_Detail.jsp?action=add&stu_id='+stu_id
+    			                
     			                +'&stu_name='+stu_name
+    			                
     			                +'&class_id='+class_id
     			                +'&stu_email='+stu_email
     			                +'&stu_group='+stu_group
@@ -298,7 +300,7 @@ h1 {
     			                +'&pri_key='+pri_key
     			                +'&cipher_text='+cipher_text
     			                +'&log_pw='+log_pw
-    			                
+    			                console.log(stu_sch);
     			        }); 
 					});
 						
