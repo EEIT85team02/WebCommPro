@@ -13,7 +13,7 @@
 	<jsp:include page="/references/head_resources_cssB.jsp" />
 	
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MQTT Paho 主考官專用</title>
+<title>聊天室</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -88,7 +88,14 @@
 .navbar-inverse {
     background-image: linear-gradient(to bottom,#E4C00D 0,rgba(249, 68, 27, 0.97) 100%);
 }
-
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
 
 </style>
 </head>
@@ -102,7 +109,7 @@
 <%-- 	<jsp:include page="/references/navigatorB.jsp" /> --%>
    <jsp:include page="/top/ExamierTop.jsp" />
       <div class="starter-template">
-        <h1>MQTT Paho 主考官專用</h1>
+        <h1>聊天室</h1>
 <!--         <p class="lead">目前聊天室仍為測試階段, 工作人員正盡力趕修中. <br> 使用過程中可能發生連線不穩定或異常斷線的情況,敬請見諒! </p> -->
 
 <div class="stuList"></div>

@@ -38,10 +38,10 @@ public static String getAllMailText() throws SQLException {
 List  l2 = new LinkedList();
 for(int i=0,max=alltemplatelist.size();i<max;i++){
 
-	String mailTextString=(String) alltemplatelist.get(i).getMail_text();	
+	String mailNameString=(String) alltemplatelist.get(i).getMail_name();	
 
 	 Map m2 = new HashMap(); 
-	 m2.put("Mail_template",mailTextString);
+	 m2.put("Mail_template",mailNameString);
 	 l2.add(m2);	 
 }
 
