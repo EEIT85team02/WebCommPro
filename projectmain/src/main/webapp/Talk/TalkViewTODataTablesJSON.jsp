@@ -117,7 +117,7 @@ h1 {
 
 .labelTitle{
 	float:left;
-	width:100px;
+	width:130px;
 	padding-right:3px;
 }
 .divForm{
@@ -285,8 +285,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-				        "send": updateTalkFormToCreateTable,
-				        Cancel: function() {
+				        "送出": updateTalkFormToCreateTable,
+				        "取消": function() {
 				        	TalkUpdateForm.dialog( "close" );
 				        }
 				      },
@@ -307,8 +307,8 @@ body {
 				          $('.ui-widget-overlay').removeClass('custom-overlay');
 				      },
 				      buttons: {
-					        "send": mailTalkFormToCreateTable,
-					        Cancel: function() {
+					        "送出": mailTalkFormToCreateTable,
+					        "取消": function() {
 					        	TalkMailForm.dialog( "close" );
 					        }
 					      },
@@ -424,8 +424,8 @@ body {
 				//設定刪除確認表單寬度視窗資料開始
 			    TalkDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
-			        height: 200,
-			        width: 240,
+			        height: 300,
+			        width: 440,
 			        modal: true,
 			        open: function() {
 				          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -435,7 +435,7 @@ body {
 				      },
 			        buttons: {
 			          "確認": deleteTalkFormToCreateTable ,
-			          "放棄": function() {
+			          "返回": function() {
 			        	sel=[];
 			            $( this ).dialog( "close" );
 			            $('#dialog-deleteForm p').text('是否要刪除資料?');
