@@ -4,7 +4,7 @@
 <html>
 <head>
 
-<title>indexOfAdminNewpage</title>
+<title>系統管理者首頁</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
@@ -32,11 +32,12 @@ body {
 	background-position: center;
 	background-size: cover;
 	/*BOOTSTRAP*/
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 19px;
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
     line-height: 1.42857143;
     color: #B21FB3;
     background-color: #ffffff;
+    font-weight: bold;
 
 }
 </style>

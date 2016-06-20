@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
-<title>Talk_Page</title>
+<title>留言板後台</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -48,15 +48,13 @@
 					thumb_links				:	1,			// Individual thumb links for each slide
 					thumbnail_navigation    :   0,			// Thumbnail navigation
 					slides 					:  	[			// Slideshow Images
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-1.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-2.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg'},  
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-3.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-1.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-1.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-2.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-2.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-3.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-1.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-1.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-2.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-2.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-3.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-3.jpg'}
+						       					   	 		{image : '../img/background.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg'},
+															{image : '../img/background2.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg'},  
+															{image : '../img/background3.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg'},
+															{image : '../img/background3.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-1.jpg'},
+															{image : '../img/background4.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-2.jpg'},
+															{image : '../img/background5.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg'},
+															{image : '../img/background6.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg'}
 												],
 												
 					// Theme Options			   
@@ -127,6 +125,21 @@ margin: 20px;
 
 }
 
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
 
 </style>
 </head>
@@ -138,19 +151,20 @@ margin: 20px;
 	<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-xs-10 col-xs-offset-1">
+				<p id="ptitle">留言板回覆</p>
 				<hr>
 					<table id="TalkTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th class="col-md-1 col-xs-1">訊息代號</th>
+								<th></th>
 								<th class="col-md-2 col-xs-2">留言主題</th>
-								<th class="col-md-1 col-xs-1">訪客姓名</th>
-								<th class="col-md-1 col-xs-1">悄悄話</th>
+								<th class="col-md-2 col-xs-2">訪客姓名</th>
+								<th class="col-md-1 col-xs-1">悄悄</th>
 								<th class="col-md-2 col-xs-2">留言內容</th>
-								<th class="col-md-2 col-xs-2">回復內容</th>
+								<th class="col-md-2 col-xs-2">回覆內容</th>
 								<th class="col-md-2 col-xs-2">留言時間</th>
-								<th class="col-md-1 col-xs-1">回覆狀態</th>
+								<th class="col-md-1 col-xs-1">狀態</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -386,10 +400,22 @@ margin: 20px;
 				 			alert("aaaa");
 				 		}
 				 		else if(data=="資料更新成功"){
-				 			
 				 			table.ajax.reload();//重新載入data tables的資料 ?? 須改為直接抓取原更新表單的值回填回去表格
-				 			TalkMailForm.dialog( "close" );
-				 		}
+				 			
+						//呼叫mail功能做傳送
+						var talkName = mtalkName.val();
+						console.log("talkName===="+talkName);
+						var talkMail = mtalkMail.val();
+						console.log("talkMail===="+talkMail);
+						var retalkContent = mretalkContent.val();
+						console.log("retalkContent===="+retalkContent);
+						
+						$.get('TalkServletJSON.do',{"talkName":talkName,"talkMail":talkMail,"retalkContent":retalkContent,"action":"talkMailTotalkName"},function(datass){
+				 			console.log(datass);
+				 			
+				 		});
+						TalkMailForm.dialog( "close" );
+				 	}
 				 	});
 				 		
 				 	sel=[];

@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Set;
 
+import com.fullcalendar.model.CalendarVO;
+
 import Stu_additional.model.Stu_additionalVO;
 import Class.model.ClassVO;
 
@@ -22,6 +24,8 @@ public interface IStudentDAO {
 	public List<StudentVO> getAllStudentByClass(String class_id);	
 	public Set<Stu_additionalVO> getStuByStu_id(Integer stu_id) throws SQLException;
 	public StudentVO getStudentByEmail(String stu_email);
+	public List<StudentVO> getAllCalendarStudentVOs();
+
 
 
 }

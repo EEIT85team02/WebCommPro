@@ -29,8 +29,16 @@ public class SendSelectedMail_controller extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-		req.setCharacterEncoding("UTF-8"); 
-		res.setContentType("text/html; charset=UTF-8");
+	/*	res.setHeader("Access-Control-Allow-Origin", "*");
+		res.setHeader("content-type", "application/json;charset=UTF-8");
+		*/
+		
+		res.setHeader("Access-Control-Allow-Origin", "*");
+		res.setHeader("content-type", "text/html;charset=UTF-8");
+		req.setCharacterEncoding("UTF-8");
+
+	/*	req.setCharacterEncoding("UTF-8"); 
+		res.setContentType("application/json; charset=UTF-8");*/
 		PrintWriter out = res.getWriter();
 		
 //		String serverName=req.getServerName();
@@ -38,8 +46,11 @@ public class SendSelectedMail_controller extends HttpServlet {
 //		String contextPath=req.getContextPath();
 //		String path = serverName+":"+serverPort+contextPath;
 		
-		
-		String json= req.getParameter("key");
+//		String json=   new String(req.getParameter("key").getBytes(),"UTF-8");
+		String json=  req.getParameter("key");
+//		String json = new String(req.getParameter("key").getBytes("iso-8859-1"),
+//				"UTF-8");
+//		username = new String(username.getBytes("iso-8859-1”), "GBK");
 		System.out.println("進controller的json"+json);
 		
 		

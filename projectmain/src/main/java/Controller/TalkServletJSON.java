@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.exception.ConstraintViolationException;
 
+import SendMail.model.SendMailService;
 import Talk.model.TalkService;
 
 @WebServlet("/Talk/TalkServletJSON.do")
@@ -123,9 +124,9 @@ public class TalkServletJSON extends HttpServlet {
 		/******************************** 查詢單一筆資料 ***********************/	
 		if ("getoneTalk".equals(action)) {
 			try {
-				// ============接收中心代號edu_id資料====================
+				
 				Integer talkId =Integer.parseInt(request.getParameter("talkId"));
-				// ============查詢教育中心單筆資料回傳JSON字串============
+				
 				talkSvc = new TalkService();
 				String jsonString = talkSvc.findByPrimaryKeyTalkToJSON(talkId);
 				out.write(jsonString);
@@ -134,10 +135,22 @@ public class TalkServletJSON extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		/***************************留言板悄悄話mail發送********************/	
+		if ("talkMailTotalkName".equals(action)) {
+			
+				SendMailService sendmailSrc=new SendMailService();
+				String emailString = request.getParameter("talkMail");
+				String nameString = request.getParameter("talkName");
+				String context = request.getParameter("retalkContent");
+				sendmailSrc.replyMessageBoardToStudent(emailString, nameString, context);
+				out.write("OK");
+				return;
+			
+		}
 		/***************************初始連結呼叫TalkServletJSON轉址至TalkViewTODataTablesJSON.jsp********************/	
 		if ("initTalkViewTODataTablesJSON".equals(action)) {
 			try {
-				// ============轉到教育中心EduViewJSON====================
+			
 				RequestDispatcher successMsg = request
 						.getRequestDispatcher("/Talk/TalkViewTODataTablesJSON.jsp");
 				successMsg.forward(request, response);

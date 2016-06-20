@@ -34,7 +34,8 @@ public class Stu_additionalService {
 			Timestamp stu_applytime,Timestamp confirm_time,Integer stu_id,Integer sta_id,String emp_id,String title ) throws SQLException {
 		
 		Stu_additionalVO stuaddvo = new Stu_additionalVO();
-
+		
+	
 		stuaddvo.setTest_start(test_start);
 		stuaddvo.setTest_end(test_end);
 		stuaddvo.setStu_applytime(stu_applytime);
@@ -50,6 +51,17 @@ public class Stu_additionalService {
 		EmployeeVO empVO = new EmployeeVO();
 		empVO.setEmp_id(emp_id);
 		stuaddvo.setEmployeeVO(empVO);
+		
+
+		
+		System.out.println("stu_id:"+stu_id);
+		System.out.println("sta_id:"+sta_id);
+		System.out.println("emp_id:"+emp_id);
+		System.out.println("test_start:"+test_start);
+		System.out.println("test_end:"+test_end);
+		System.out.println("stu_applytime:"+stu_applytime);
+		System.out.println("confirm_time:"+confirm_time);
+		System.out.println("title:"+title);
 		
 		dao.insert(stuaddvo);
 	}

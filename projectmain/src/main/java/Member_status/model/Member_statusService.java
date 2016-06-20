@@ -60,7 +60,7 @@ public class Member_statusService {
 			stuVOg.add(sdf.format(stuVO.getStu_applytime()).toString());
 			stuVOg.add(stuVO.getMember_statusVO().getSta_name().toString());
 			stuVOg.add(stuVO.getEmployeeVO().getEmp_id().toString());
-			stuVOg.add(stuVO.getConfirm_time().toString());
+			stuVOg.add(sdf.format(stuVO.getConfirm_time()).toString());
 			stuVOg.add(stuVO.getTitle().toString());
 			stuVOg.add("<button type='button' class='btn-info' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+stuVO.getStudentVO().getStu_id().toString()+" >送信</button>");
 			stuVOg.add("<button type='button' class='btn-warning' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+stuVO.getStu_add_id().toString()+" >取消核准</button>");

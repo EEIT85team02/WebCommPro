@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
-<title>Edu_Page</title>
+<title>教育中心資料</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -48,15 +48,13 @@
 					thumb_links				:	1,			// Individual thumb links for each slide
 					thumbnail_navigation    :   0,			// Thumbnail navigation
 					slides 					:  	[			// Slideshow Images
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-1.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-2.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg'},  
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-3.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-1.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-1.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-2.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-2.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-3.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-1.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-1.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-2.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-2.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-3.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-3.jpg'}
+						       					   	 		{image : '../img/background.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg'},
+															{image : '../img/background2.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg'},  
+															{image : '../img/background3.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg'},
+															{image : '../img/background3.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-1.jpg'},
+															{image : '../img/background4.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-2.jpg'},
+															{image : '../img/background5.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg'},
+															{image : '../img/background6.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg'}
 												],
 												
 					// Theme Options			   
@@ -129,13 +127,29 @@ h1 {
 }
 .labelTitle{
 	float:left;
-	width:100px;
+	width:130px;
 	padding-right:3px;
 }
 .divForm{
 margin: 20px;
 
 }
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
 
 
 </style>
@@ -148,12 +162,13 @@ margin: 20px;
 	<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-xs-10 col-xs-offset-1">
+				<p id="ptitle">教育中心資料</p>
 				<hr>
 					<table id="EduTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th class="col-md-1 col-xs-1">代號</th>
+								<th class="col-md-1 col-xs-1"></th>
 								<th class="col-md-3 col-xs-3">中心名稱</th>
 								<th class="col-md-3 col-xs-3">中心地址</th>
 								<th class="col-md-3 col-xs-3">中心電話</th>
@@ -164,7 +179,7 @@ margin: 20px;
 						</tbody>
 						<tfoot>
 							<tr>
-								<th>代號</th>
+								<th></th>
 								<th>中心名稱</th>
 								<th>中心地址</th>
 								<th>中心電話</th>
@@ -225,7 +240,7 @@ margin: 20px;
 			<fieldset>
 				<div class="divForm">	
 					<label for="edu_id" class="labelTitle">中心代號:</label> 
-					<input type="text" name="edu_id" size="20" id="uedu_id" readOnly style="background-color:	#888888">
+					<input type="text" name="edu_id" size="20" id="uedu_id" readOnly style="background-color:#DDDDDD">
 					<span id="spanuedu_id"></span>
 				</div>
 					
@@ -354,7 +369,7 @@ margin: 20px;
 			    EduInsertForm = $( "#dialog-insertForm" ).dialog({
 			      autoOpen: false,
 			      height: 500,
-			      width: 700,
+			      width: 860,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -363,8 +378,8 @@ margin: 20px;
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-			        "send": insertEduFormToCreateTable,
-			        Cancel: function() {
+			        "送出": insertEduFormToCreateTable,
+			        "取消": function() {
 			        	EduInsertForm.dialog( "close" );
 			        }
 			      },
@@ -394,7 +409,7 @@ margin: 20px;
 				EduUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
 			      height: 600,
-			      width: 700,
+			      width: 860,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -403,8 +418,8 @@ margin: 20px;
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-				        "send": updateEduFormToCreateTable,
-				        Cancel: function() {
+				        "送出": updateEduFormToCreateTable,
+				        "取消": function() {
 				        	EduUpdateForm.dialog( "close" );
 				        }
 				      },
@@ -475,8 +490,8 @@ margin: 20px;
 				//設定刪除確認表單寬度視窗資料開始
 			    EduDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
-			        height: 200,
-			        width: 240,
+			        height: 300,
+			        width: 440,
 			        modal: true,
 			        open: function() {
 				          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -486,7 +501,7 @@ margin: 20px;
 				      },
 			        buttons: {
 			          "確認": deleteEduFormToCreateTable ,
-			          "放棄": function() {
+			          "返回": function() {
 			        	sel=[];
 			            $( this ).dialog( "close" );
 			            $('#dialog-deleteForm p').text('是否要刪除資料?');

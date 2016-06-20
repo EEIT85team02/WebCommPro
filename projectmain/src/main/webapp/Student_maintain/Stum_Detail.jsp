@@ -11,8 +11,8 @@
 <style type="text/css">
 
 .fancy {
-	width: 1200px;
-	height: 600px;
+	width: 1400px;
+	height: 550px;
 }
 
 .fancy h3 {
@@ -82,49 +82,48 @@
 
 .div1{
 	float:left;
-	width:350px;
+	width:420px;
 }
 
 .div2{
 	float:left;
 	padding-left:80px;
-	width:350px;
+	width:420px;
 }
 
 .div3{
 	float:left;
 	padding-left:120px;
-	width:350px;
+	width:420px;
 }
 
 .div4{
 	float:left;
 	padding-top:50px;
-	width:350px;
+	width:420px;
 }
 
 .div5{
 	float:left;
 	padding-left:90px;
 	padding-top:50px;
-	width:350px;
+	width:420px;
 }
 
 .div6{
 	float:left;
 	padding-left:130px;
 	padding-top:50px;
-	width:350px;
+	width:450px;
 }
 
 .div7{
 	float:left;
 	width:400px;
 	padding-top:50px;
-	padding-left:480px;
+	padding-left:650px;
 	
 }
-
 
 </style>
 <!-- fancybox -->
@@ -138,7 +137,7 @@
 </head>
 <body>
 	<div class="fancy">
-		<h3>考生資料明細</h3>
+		<p>考生資料明細</p>
 		<form id="Student_MaintainForm" action="StudentProfileServlet" method="post">
 			<input type="hidden" name="action" value="updateStum">
 			
@@ -240,7 +239,6 @@
 				<label>Final Ranking：</label>
 				<input type="text" class="input" name="stu_final"
 					id="stu_final" value=<%=request.getParameter("stu_final")%>>
-				<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 				<label>備註1：</label>
 				<input type="text" class="input" name="stu_note1"
 					id="stu_note1" value=<%=request.getParameter("stu_note1")%>>

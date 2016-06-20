@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
-<title>Test_interval Page</title>
+<title>各班級考試日期設定</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -48,15 +48,13 @@
 					thumb_links				:	1,			// Individual thumb links for each slide
 					thumbnail_navigation    :   0,			// Thumbnail navigation
 					slides 					:  	[			// Slideshow Images
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-1.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-2.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg'},  
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-3.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-1.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-1.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-2.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-2.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-3.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-1.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-1.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-2.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-2.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-3.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-3.jpg'}
+						       					   	 		{image : '../img/background.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg'},
+															{image : '../img/background2.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg'},  
+															{image : '../img/background3.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg'},
+															{image : '../img/background3.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-1.jpg'},
+															{image : '../img/background4.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-2.jpg'},
+															{image : '../img/background5.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg'},
+															{image : '../img/background6.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg'}
 												],
 												
 					// Theme Options			   
@@ -101,7 +99,9 @@
 #buttonUpdate{
 	color: green;
 }
-
+#buttonSend{
+	color: purple;
+}
 
 
 
@@ -132,12 +132,28 @@ h1 {
 }
 .labelTitle{
 	float:left;
-	width:100px;
+	width:130px;
 	padding-right:3px;
 }
 .divForm{
 margin: 20px;
 
+}
+
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
 }
 
 </style>
@@ -150,7 +166,8 @@ margin: 20px;
 	<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-xs-10 col-xs-offset-1">
+				<p id="ptitle">班級考試日期設定</p>
 				<hr>
 					<table id="Test_intervalTable" class="display" cellspacing="0" width="100%">
 						<thead>
@@ -179,6 +196,8 @@ margin: 20px;
 					<button id="buttonAdd" class="ui-button ui-corner-all ui-widget">新增</button>
 					<button id="buttonUpdate" class="ui-button ui-corner-all ui-widget">編輯</button>
 					<button id="buttonDelete" class="ui-button ui-corner-all ui-widget">刪除</button>
+					<button id="buttonSend" class="ui-button ui-corner-all ui-widget">群發email</button>
+				
 				</div>
 			</div>
 		</div>
@@ -223,21 +242,21 @@ margin: 20px;
 			<fieldset>
 			<div class="divForm">
 				<label for="test_interval_id" class="labelTitle">代號:</label> 
-				<input type="text" name="test_interval_id" size="20" id="utest_interval_id" placeholder="請輸入班級考試日期代號" autocomplete="off" readOnly> 
+				<input type="text" name="test_interval_id" size="20" id="utest_interval_id" placeholder="請輸入班級考試日期代號" autocomplete="off" readOnly style="background-color:#DDDDDD"> 
 				<br>
 				</div>
 				
 				
 				<div class="divForm">
 				<label for="class_id" class="labelTitle">班級代號:</label> 
-				<input type="text" name="class_id" size="20" id="uclass_id" placeholder="請輸入班級代號" autocomplete="off" readOnly> 
+				<input type="text" name="class_id" size="20" id="uclass_id" placeholder="請輸入班級代號" autocomplete="off" readOnly style="background-color:#DDDDDD"> 
 				<br>
 				</div>
 				
 				
 				<div class="divForm">
 				<label for="class_name" class="labelTitle">班級名稱:</label> 
-				<input type="text" name="class_name" size="20" id="uclass_name" placeholder="請輸入班級名稱" autocomplete="off" readOnly> 
+				<input type="text" name="class_name" size="20" id="uclass_name" placeholder="請輸入班級名稱" autocomplete="off" readOnly style="background-color:#DDDDDD"> 
 				<br>
 				</div>
 				
@@ -250,7 +269,7 @@ margin: 20px;
 				
 				<div class="divForm">
 				<label for="test_enddate" class="labelTitle">結束日期:</label> 
-				<input type="date" name="test_enddate" size="20" id="utest_enddate" class="text ui-widget-content ui-corner-all" placeholder="請輸入考試結束日期" autocomplete="off">
+				<input type="date" name="test_enddate" size="20" id="utest_enddate"  placeholder="請輸入考試結束日期" autocomplete="off">
 				<span id="spanutest_enddate"></span><br>
 				</div>
 				
@@ -266,6 +285,9 @@ margin: 20px;
 		<p>是否要刪除此筆資料?</p>
 	</div>
 	<script>
+		var btn = document.getElementById("buttonSend");
+
+		btn.addEventListener("click", SendAllMail);
 		$(function() {
 			//定義table資料來源json，與畫面顯示------>開始
 			var table = $('#Test_intervalTable').DataTable( {
@@ -361,7 +383,7 @@ margin: 20px;
 			    TiInsertForm = $( "#dialog-insertForm" ).dialog({
 			      autoOpen: false,
 			      height: 550,
-			      width: 700,
+			      width: 850,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -370,8 +392,8 @@ margin: 20px;
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-			        "send": insertTiFormToCreateTable,
-			        Cancel: function() {
+			        "送出": insertTiFormToCreateTable,
+			        "取消": function() {
 			        	TiInsertForm.dialog( "close" );
 			        }
 			      },
@@ -429,7 +451,7 @@ margin: 20px;
 				  TiUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
 			      height: 650,
-			      width: 700,
+			      width: 850,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -438,8 +460,8 @@ margin: 20px;
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-				        "send": updateTiFormToCreateTable,
-				        Cancel: function() {
+				        "送出": updateTiFormToCreateTable,
+				        "取消": function() {
 				        	TiUpdateForm.dialog( "close" );
 				        }
 				      },
@@ -516,8 +538,8 @@ margin: 20px;
 				//設定刪除確認表單寬度視窗資料開始
 			    TiDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
-			        height: 200,
-			        width: 240,
+			        height: 330,
+			        width: 440,
 			        modal: true,
 			        open: function() {
 				          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -527,7 +549,7 @@ margin: 20px;
 				      },
 			        buttons: {
 			          "確認": deleteTiFormToCreateTable ,
-			          "放棄": function() {
+			          "返回": function() {
 			            $( this ).dialog( "close" );
 			            $('#dialog-deleteForm p').text('是否要刪除此筆資料?');
 			          }
@@ -727,6 +749,37 @@ margin: 20px;
 			     
 			  
 	} );//load函數結束
+	
+	
+	 
+			function SendAllMail() {
+			var xhr = new XMLHttpRequest(), id = 0;
+			var frag = document.createDocumentFragment();
+			var class_idValue = $( '.selected' ).find('td:eq(1)').text();
+			console.log("class_idValue==="+class_idValue);
+			if (xhr != null) {
+				
+					
+
+
+
+				xhr.open('post', 'SendLinkedMailToAllStudent.do', true);
+				xhr.setRequestHeader("Content-Type",
+						"application/x-www-form-urlencoded");
+				xhr.send("class=" +class_idValue );
+Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		    			{
+		    			msg: "email已寄送" 
+		    			});				
+			} else {
+// 				alert("您的瀏覽器不支援Ajax功能!!");
+	Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
+		    			{
+		    			msg: "您的瀏覽器不支援Ajax功能!!"
+		    			});
+			}
+
+		}
 	</script>
 </body>
 </html>

@@ -34,21 +34,16 @@ body{
 .divbutton{    
 	margin-top:20px;
 }
-.allpage{
-	padding:10px;
-	background-color:black;
-	height:100%;
-}
 .page{
-	background-color:#DDDDDD;
-	border:3px solid red;
+	background-color:#CCBBFF; 
+	border:1px solid #0000FF; 
 	padding:10px;
-	margin:0 auto;
+	margin:50px 0 auto auto;
 }
 table {
 	width:1000px;
 	margin: 10px auto;
-	border:3px solid red;
+	border:1px solid #BBFFEE;
 }
 
 table td {
@@ -57,11 +52,9 @@ table td {
 
 .tdtitle{
 	width:100px;
-	border:3px solid white;
 }
 .tdcontent{
 	width:900px;
-	border:3px solid black;
 }
 #openFrom{
 	margin-top: 10px;	
@@ -76,34 +69,35 @@ table td {
 </head>
 <body>
 <!-- 引入top.jsp標頭檔 巡覽列部分-->
-	<%-- <jsp:include page="/top/top.jsp" /> --%>
-<div class="col-lg-8 col-lg-offset-2">
-	<div class="page" id="content">
-		<table>
-			<tr>
-				<td class="tdtitle">主題:</td>
-				<td class="tdcontent">詢問關於面試的注意事項</td>
-			</tr>
-			<tr>
-				<td class="tdtitle">暱稱:</td>
-				<td class="tdcontent">小肥狗-於:2016-10-10 10:10:10 100 -時說道</td>
-			</tr>
-			<tr>
-				<td class="tdtitle">留言內容:</td>
-				<td class="tdcontent">請問面試時有需要準備什麼事項呢?</td>
-			</tr>
-			<tr>
-				<td class="tdtitle">版主回覆:</td>
-				<td class="tdcontent">帶著腦袋即可，當天將有上機測驗</td>
-			</tr>
-		</table>
-		
-	
+	<jsp:include page="/top/top.jsp" />
+	<div class="col-lg-10 col-lg-offset-2">
+		<div class="container-fluid">
+			<div class="page" id="content">
+				<table>
+					<tr>
+						<td class="tdtitle">主題:</td>
+						<td class="tdcontent">詢問關於面試的注意事項</td>
+					</tr>
+					<tr>
+						<td class="tdtitle">暱稱:</td>
+						<td class="tdcontent">小肥狗-於:2016-10-10 10:10:10 100 -時說道</td>
+					</tr>
+					<tr>
+						<td class="tdtitle">留言內容:</td>
+						<td class="tdcontent">請問面試時有需要準備什麼事項呢?</td>
+					</tr>
+					<tr>
+						<td class="tdtitle">版主回覆:</td>
+						<td class="tdcontent">帶著腦袋即可，當天將有上機測驗</td>
+					</tr>
+				</table>
+
+			</div>
+		</div>
+		<button id="openFrom">我要留言</button>
 	</div>
-	<button id="openFrom">我要留言</button>
-</div>	
-	
-	
+
+
 	<!-- 留言板輸入畫面start -->
 	<div id="dialog-From"  title="到此一遊">
 		<h3>訪客留言版</h3>
@@ -221,7 +215,7 @@ $(function(){
  						var val = "悄悄話";
  						if (talkChose == 1){
  							page.append( 
- 									"<table>"+
+ 									"<table class='table table-striped'>"+
  									"<tr>" +
  									  "<td class='tdtitle'>"+ val +"</td>" +
  							          "<td class='tdcontent'>" + val + "</td>" +
@@ -241,7 +235,7 @@ $(function(){
  							          "</table>");
  						}else if(talkChose == 0){
  							page.append( 
- 									"<table>"+
+ 									"<table class='table table-striped'>"+
  									"<tr>" +
  									  "<td class='tdtitle'>留言主題:</td>" +
  							          "<td class='tdcontent'>" + talkTitle + "</td>" +
@@ -295,7 +289,7 @@ $(function(){
 			var val = "悄悄話";
 			if (talkChose == 1){
 				page.append( 
-						"<table>"+
+						"<table class='table table-striped'>"+
 						"<tr>" +
 						  "<td class='tdtitle'>"+ val +"</td>" +
 				          "<td class='tdcontent'>" + val + "</td>" +
@@ -315,7 +309,7 @@ $(function(){
 				          "</table>");
 			}else if(talkChose == 0){
 				page.append( 
-						"<table>"+
+						"<table class='table table-striped'>"+
 						"<tr>" +
 						  "<td class='tdtitle'>留言主題:</td>" +
 				          "<td class='tdcontent'>" + talkTitle + "</td>" +

@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="BIG5"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  
+    pageEncoding="UTF-8"%>  
+ 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="Student.model.*"%>
@@ -8,8 +9,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>E-mailå¯„é€</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -20,7 +21,7 @@
 		<script type="text/javascript" src="../theme/supersized.shutter.min.js"></script>
 		<script type="text/javascript">
 			
-			jQuery(function($){
+						jQuery(function($){
 				
 				$.supersized({
 				
@@ -53,16 +54,15 @@
 					thumb_links				:	1,			// Individual thumb links for each slide
 					thumbnail_navigation    :   0,			// Thumbnail navigation
 					slides 					:  	[			// Slideshow Images
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-1.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-2.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg'},  
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/kazvan-3.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-1.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-1.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-2.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-2.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/wojno-3.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-1.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-1.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-2.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-2.jpg'},
-														{image : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/slides/shaden-3.jpg', title : 'Image Credit: Brooke Shaden', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/shaden-3.jpg'}
-												],
+														{image : '../img/background.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-1.jpg'},
+														{image : '../img/background2.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-2.jpg'},  
+														{image : '../img/background3.jpg', title : 'Image Credit: Maria Kazvan', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/kazvan-3.jpg'},
+														{image : '../img/background3.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-1.jpg'},
+														{image : '../img/background4.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-2.jpg'},
+														{image : '../img/background5.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg'},
+														{image : '../img/background6.jpg', title : 'Image Credit: Colin Wojno', thumb : 'http://buildinternet.s3.amazonaws.com/projects/supersized/3.2/thumbs/wojno-3.jpg'},
+														
+														],
 												
 					// Theme Options			   
 					progress_bar			:	1,			// Timer for each slide							
@@ -70,7 +70,6 @@
 					
 				});
 		    });
-		    
 		</script>
 <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
 <link href="../css/lobibox.min.css" rel="stylesheet">
@@ -102,9 +101,9 @@ Toggle {
 	color: green;
 }
 
-label, input {
-	display: block;
-}
+/* label, input { */
+/* 	display: block; */
+/* } */
 
 input.text {
 	margin-bottom: 12px;
@@ -131,16 +130,33 @@ h1 {
 	border: 1px solid transparent;
 	padding: 0.3em;
 }
+
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
 </style>
 
 
 </head>
 <body>
 
-	<!-- ¤Ş¤Jtop.jsp¼ĞÀYÀÉ ¨µÄı¦C³¡¤À-->
+	<!-- å¼•å…¥top.jspæ¨™é ­æª” å·¡è¦½åˆ—éƒ¨åˆ†-->
 	<jsp:include page="/top/top.jsp" />
-	<!-------------¤¤¶¡¤º®eµe­±¶}©l------------>
-	<!-- ©T©w¨µÄı¦C¦ì¸m¡A«Ø¥ßdiv¨Ï°Ï¶ô¤U²¾ (starter-template)-->
+	<!-------------ä¸­é–“å…§å®¹ç•«é¢é–‹å§‹------------>
+	<!-- å›ºå®šå·¡è¦½åˆ—ä½ç½®ï¼Œå»ºç«‹divä½¿å€å¡Šä¸‹ç§» (starter-template)-->
 
 
 
@@ -160,54 +176,54 @@ h1 {
 
 
 
-	<div class="container">
+<div class="container-fluid">
 		<div class="Main_Content">
 			<div class="row">
-
-				<div class="col-md-12">
+				<div class="col-xs-10 col-xs-offset-1">
+				<p id="ptitle">E-mailå¯„é€</p>
 					<hr>
 					<table id="StuTable" class="display" cellspacing="0" width="100%">
 						<thead>
-							¯Z¯Å¡G
+							ç­ç´šï¼š
 							<select id="class" name="class" class="display">
 							</select>
-							</select> email¼ËªO:
+							</select> emailæ¨£æ¿:
 							<select id="content" name="content" class="display">
 							</select>
 							<tr>
 
-								<th class="col-md-1 col-xs-1">checkbox</th>
-								<th class="col-md-1 col-xs-1">¾Ç¥Í©m¦W</th>
-								<th class="col-md-3 col-xs-3">¾Ç¥Í¦~¦¸</th>
-								<th class="col-md-3 col-xs-3">¾Ç®Õ¨t¯Å</th>
-								<th class="col-md-3 col-xs-3">¾Ç¥Íemail</th>
-								<th class="col-md-2 col-xs-2">µo«HºØÃş</th>
+								<th class="col-md-1 col-xs-1">é¸å–</th>
+								<th class="col-md-2 col-xs-2">å­¸ç”Ÿå§“å</th>
+								<th class="col-md-1 col-xs-1">å¹´æ¬¡</th>
+								<th class="col-md-3 col-xs-3">å­¸æ ¡ç³»ç´š</th>
+								<th class="col-md-3 col-xs-3">å­¸ç”Ÿemail</th>
+								<th class="col-md-2 col-xs-2">ç™¼ä¿¡ç¨®é¡</th>
 							</tr>
 						</thead>
 						<tbody>
 						</tbody>
 						<tfoot>
 							<tr>
-								<th>checkbox</th>
-								<th>¾Ç¥Í©m¦W</th>
-								<th>¾Ç¥Í¦~¦¸</th>
-								<th>¾Ç®Õ¨t¯Å</th>
-								<th>¾Ç¥Íemail</th>
-								<th>µo«HºØÃş</th>
+								<th>é¸å–</th>
+								<th>å­¸ç”Ÿå§“å</th>
+								<th>å¹´æ¬¡</th>
+								<th>å­¸æ ¡ç³»ç´š</th>
+								<th>å­¸ç”Ÿemail</th>
+								<th>ç™¼ä¿¡ç¨®é¡</th>
 							</tr>
 						</tfoot>
 					</table>
 
-					<!------------------ÂI¿ï·s¼W±Ğ¨|¤¤¤ßªí³æ°Ï¶ô¤º®e----------------------------- -->
-					<button id="Toggle">¥ş³¡¿ï¨ú</button>
-					<button id="ok">½T©w</button>
+					<!------------------é»é¸æ–°å¢æ•™è‚²ä¸­å¿ƒè¡¨å–®å€å¡Šå…§å®¹----------------------------- -->
+					<button id="Toggle">å…¨éƒ¨é¸å–</button>
+					<button id="ok">ç¢ºå®š</button>
 
 
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- 	¸Õ¸Õ¬İ¥ÎEL§ì¸ê®Æ -->
+	<!-- 	è©¦è©¦çœ‹ç”¨ELæŠ“è³‡æ–™ -->
 	<!-- 	<table> -->
 
 	<%-- 	<c:forEach var="studentVO" items="${allstudent}" > --%>
@@ -234,14 +250,20 @@ h1 {
 	<!-- 	</table>					 -->
 
 	<script>
-	window.onload=  function ()
-	{
+	
+	window.onclick=function myfunction(){
+ 	if(classNumber != null){
 		loadSendAllMail();
+		 }else{
+		classNumber="EEIT70";
+		content="1";
+		loadSendAllMail();
+		} 
 	}
 // 	$( document ).ready(function() {
 //    loadSendAllMail();
 // });
-		var sel = document.getElementById("class");//§ìclass¤U©Ô¦¡¿ï³æªºid
+		var sel = document.getElementById("class");//æŠ“classä¸‹æ‹‰å¼é¸å–®çš„id
 		document.getElementById("class").onload = loadClassSelector();
 		
 		//document.getElementById("class").onload = loadSendAllMail();
@@ -269,7 +291,7 @@ h1 {
 		console.log("classNumber" + classNumber + "content" + content)
 
 		$(function() {
-			//©w¸qtable¸ê®Æ¨Ó·½json¡A»Pµe­±Åã¥Ü------>¶}©l
+			//å®šç¾©tableè³‡æ–™ä¾†æºjsonï¼Œèˆ‡ç•«é¢é¡¯ç¤º------>é–‹å§‹
 
 			table = $('#StuTable')
 					.DataTable(
@@ -285,18 +307,18 @@ h1 {
 								},
 
 								"oLanguage" : {
-									"sProcessing" : "¸ê®Æ¥¿³B²z¤¤...",
-									"sLengthMenu" : "Åã¥Ü _MENU_ µ§°O¿ı",
-									"sZeroRecords" : "µL²Å¦X¸ê®Æ",
-									"sInfo" : "¥Ø«e°O¿ı¡G_START_ ¦Ü _END_, Á`µ§¼Æ¡G_TOTAL_",
-									"sInfoEmpty" : "Åã¥Ü²Ä 0 ¦Ü 0 ¶µµ²ªG¡A¦@ 0 ¶µ",
-									"sInfoFiltered" : "(±q _MAX_ ¶µµ²ªG¹LÂo)",
-									"sSearch" : "·j¯Á:",
+									"sProcessing" : "è³‡æ–™æ­£è™•ç†ä¸­...",
+									"sLengthMenu" : "é¡¯ç¤º _MENU_ ç­†è¨˜éŒ„",
+									"sZeroRecords" : "ç„¡ç¬¦åˆè³‡æ–™",
+									"sInfo" : "ç›®å‰è¨˜éŒ„ï¼š_START_ è‡³ _END_, ç¸½ç­†æ•¸ï¼š_TOTAL_",
+									"sInfoEmpty" : "é¡¯ç¤ºç¬¬ 0 è‡³ 0 é …çµæœï¼Œå…± 0 é …",
+									"sInfoFiltered" : "(å¾ _MAX_ é …çµæœéæ¿¾)",
+									"sSearch" : "æœç´¢:",
 									"oPaginate" : {
-										"sFirst" : "­º­¶",
-										"sPrevious" : "¤W­¶",
-										"sNext" : "¤U­¶",
-										"sLast" : "§À­¶"
+										"sFirst" : "é¦–é ",
+										"sPrevious" : "ä¸Šé ",
+										"sNext" : "ä¸‹é ",
+										"sLast" : "å°¾é "
 									}
 								},
 								"bJQueryUI" : true,
@@ -307,25 +329,25 @@ h1 {
 
 		})
 
-// 		-------------------------¥ş¿ï¥\¯à¶}©l
+// 		-------------------------å…¨é¸åŠŸèƒ½é–‹å§‹
  Toggle.click(function(){	 
 	 //this vs $(this)	 
 	if(flag==0){
 	
 	 $(':checkbox').prop('checked',true);
-	 Toggle.text('¨ú®ø¥ş¿ï');
+	 Toggle.text('å–æ¶ˆå…¨é¸');
 	 flag=1;
 	}else if(flag==1){
 			 $(':checkbox').prop('checked',false);
-			 Toggle.text('¥ş³¡¿ï¨ú');
+			 Toggle.text('å…¨éƒ¨é¸å–');
 			 flag=0;
 	}
  });
 
-// 		-------------------------¥ş¿ï¥\¯àµ²§ô
+// 		-------------------------å…¨é¸åŠŸèƒ½çµæŸ
 
 
-		//--------------------¤@¶}©l±N¯Z¯Å¥ş³¡§ì¥X¨Óªº¤èªk--------------------------------
+		//--------------------ä¸€é–‹å§‹å°‡ç­ç´šå…¨éƒ¨æŠ“å‡ºä¾†çš„æ–¹æ³•--------------------------------
 		function loadClassSelector() {
 			var xhr = new XMLHttpRequest(), id = 0;
 			var frag = document.createDocumentFragment();
@@ -336,21 +358,21 @@ h1 {
 						if (xhr.status == 200) {
 							datas = xhr.responseText;
 							console.log("datas" + datas);
-							//ÁÙ¬O­nÂà«¬¦¨JSONª«¥ó
+							//é‚„æ˜¯è¦è½‰å‹æˆJSONç‰©ä»¶
 							js = JSON.parse(datas);
 							console.log("js" + js);
 
 							//var myBody = document.querySelector("select");
 							var myBody = document.getElementById("class")
-							//¥ı§R°£ªí®æ¤¤ªº¤º®e
+							//å…ˆåˆªé™¤è¡¨æ ¼ä¸­çš„å…§å®¹
 							while (myBody.hasChildNodes()) {
 								myBody.removeChild(myBody.lastChild);
 							}
 
-							//Åª¥XJSON¤¤ªº¸ê®Æ
-							//±N¸ê®ÆÅã¥Ü¦bhtmlªºselect¼ĞÅÒ¤¤
+							//è®€å‡ºJSONä¸­çš„è³‡æ–™
+							//å°‡è³‡æ–™é¡¯ç¤ºåœ¨htmlçš„selectæ¨™ç±¤ä¸­
 
-							//¥Îfor°j°éÅª¥XJSON¤¤ªº¸ê®Æ   
+							//ç”¨forè¿´åœˆè®€å‡ºJSONä¸­çš„è³‡æ–™   
 							for (var i = 0, max = js.length; i < max; i++) {
 
 								var class_id = js[i].class_id;
@@ -380,18 +402,18 @@ h1 {
 				xhr.open('post', 'LoadStartingClassComboBox_controller.do',
 						true);
 				xhr.setRequestHeader("Content-Type",
-						"application/x-www-form-urlencoded");
+						"application/x-www-form-urlencoded;charset=UTF-8");
 				xhr.send();
 			} else {
-// 				alert("±zªºÂsÄı¾¹¤£¤ä´©Ajax¥\¯à!!");
+// 				alert("æ‚¨çš„ç€è¦½å™¨ä¸æ”¯æ´AjaxåŠŸèƒ½!!");
 	Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
 			    			{
-			    			msg: "±zªºÂsÄı¾¹¤£¤ä´©Ajax¥\¯à!!"
+			    			msg: "æ‚¨çš„ç€è¦½å™¨ä¸æ”¯æ´AjaxåŠŸèƒ½!!"
 			    			});
 			}
 
 		}
-		//-------------------¤@¶}©l±Nemail¼Ë¥»¥ş³¡§ì¥X¨Óªºµo¯¼-----------------------
+		//-------------------ä¸€é–‹å§‹å°‡emailæ¨£æœ¬å…¨éƒ¨æŠ“å‡ºä¾†çš„ç™¼ç´¡-----------------------
 		function loadMailTextSelector() {
 			var xhr = new XMLHttpRequest(), id = 0;
 			var frag = document.createDocumentFragment();
@@ -402,21 +424,21 @@ h1 {
 						if (xhr.status == 200) {
 							datas = xhr.responseText;
 							console.log("datas" + datas);
-							//ÁÙ¬O­nÂà«¬¦¨JSONª«¥ó
+							//é‚„æ˜¯è¦è½‰å‹æˆJSONç‰©ä»¶
 							js = JSON.parse(datas);
 							console.log("js" + js);
 
 							//var myBody = document.querySelector("select");
 							var myBody = document.getElementById("content")
-							//¥ı§R°£ªí®æ¤¤ªº¤º®e
+							//å…ˆåˆªé™¤è¡¨æ ¼ä¸­çš„å…§å®¹
 							while (myBody.hasChildNodes()) {
 								myBody.removeChild(myBody.lastChild);
 							}
 
-							//Åª¥XJSON¤¤ªº¸ê®Æ
-							//±N¸ê®ÆÅã¥Ü¦bhtmlªºselect¼ĞÅÒ¤¤
+							//è®€å‡ºJSONä¸­çš„è³‡æ–™
+							//å°‡è³‡æ–™é¡¯ç¤ºåœ¨htmlçš„selectæ¨™ç±¤ä¸­
 
-							//¥Îfor°j°éÅª¥XJSON¤¤ªº¸ê®Æ   
+							//ç”¨forè¿´åœˆè®€å‡ºJSONä¸­çš„è³‡æ–™   
 							for (var i = 0, max = js.length; i < max; i++) {
 
 								var Mail_template = js[i].Mail_template;
@@ -450,10 +472,10 @@ h1 {
 						"application/x-www-form-urlencoded");
 				xhr.send();
 			} else {
-// 				alert("±zªºÂsÄı¾¹¤£¤ä´©Ajax¥\¯à!!");
+// 				alert("æ‚¨çš„ç€è¦½å™¨ä¸æ”¯æ´AjaxåŠŸèƒ½!!");
 		Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
 		    			{
-		    			msg: "±zªºÂsÄı¾¹¤£¤ä´©Ajax¥\¯à!!"
+		    			msg: "æ‚¨çš„ç€è¦½å™¨ä¸æ”¯æ´AjaxåŠŸèƒ½!!"
 		    			});
 			}
 
@@ -482,25 +504,25 @@ h1 {
 							datas = xhr.responseText;
 							//returndatas=datas;
 
-							console.log("±qAJAX¦^¨Óªºdatas====" + datas);
+							console.log("å¾AJAXå›ä¾†çš„datas====" + datas);
 							//console.log("returndatas====="+returndatas);
-							//ÁÙ¬O­nÂà«¬¦¨JSONª«¥ó
+							//é‚„æ˜¯è¦è½‰å‹æˆJSONç‰©ä»¶
 							js = JSON.parse(datas);
-							console.log("±qAJAX¦^¨ÓªºdatasÂà js====" + js);
+							console.log("å¾AJAXå›ä¾†çš„datasè½‰ js====" + js);
 
-							// 		---------------------------------------------ÂÂ¤èªk¶}©l 				
+							// 		---------------------------------------------èˆŠæ–¹æ³•é–‹å§‹ 				
 
 							// 						var myBody = document.querySelector(".table>tbody");
 
-							// 						//¥ı§R°£ªí®æ¤¤ªº¤º®e
+							// 						//å…ˆåˆªé™¤è¡¨æ ¼ä¸­çš„å…§å®¹
 							// 						while(myBody.hasChildNodes()){
 							// 							myBody.removeChild(myBody.lastChild);
 							// 						}
 
-							//Åª¥XJSON¤¤ªº¸ê®Æ
-							//±N¸ê®ÆÅã¥Ü¦bhtmlªºselect¼ĞÅÒ¤¤
+							//è®€å‡ºJSONä¸­çš„è³‡æ–™
+							//å°‡è³‡æ–™é¡¯ç¤ºåœ¨htmlçš„selectæ¨™ç±¤ä¸­
 
-							//¥Îfor°j°éÅª¥XJSON¤¤ªº¸ê®Æ   
+							//ç”¨forè¿´åœˆè®€å‡ºJSONä¸­çš„è³‡æ–™   
 							// 		               	  for(var i = 0,max=js.length;i<max;i++){
 							// 		               		  var stu_name=js[i].stu_name;
 							// 		               		  var stu_age=js[i].stu_age;
@@ -557,12 +579,12 @@ h1 {
 							// 		 					  cell6.id="mail_name"+i;
 							// 		 					  cell6.name="mail_name"+i;		 					 
 							// 		 					  cell6.appendChild(txt6);
-							//­ì¨Ó¹w·Q¥»¨Ó¬O¥Îformªí³æ¤@­Ó¤@­Ó¾Ç¥Í¥]°_¨Ó°e¥X©Ò¥H­n¤@­Ó­Ó¦³«ö¶s 
+							//åŸä¾†é æƒ³æœ¬ä¾†æ˜¯ç”¨formè¡¨å–®ä¸€å€‹ä¸€å€‹å­¸ç”ŸåŒ…èµ·ä¾†é€å‡ºæ‰€ä»¥è¦ä¸€å€‹å€‹æœ‰æŒ‰éˆ• 
 							// 		 					  var cell6=document.createElement("td");
 							// 		 					  var button=document.createElement("button");
 							// 		 					  button.type="submit";
 							// 		 					  button.value="Submit"
-							// 		 					  var txt6=document.createTextNode("°e¥X");
+							// 		 					  var txt6=document.createTextNode("é€å‡º");
 							// 		 					  cell6.appendChild(button);
 							// 		 					 button.appendChild(txt6);
 
@@ -579,19 +601,19 @@ h1 {
 							// 	 					   	 frag.appendChild(row);
 							// 		               	  }
 
-							// 		                  //¦A±NÅª¥Xªº¸ê®ÆÅã¥Ü¦bhtmlªºtable¼ĞÅÒ¤¤
-							// 		               	  //°Ñ¦Ò»yªk¦p¤U
-							// 		               	  //«Ø¥ß<td>iPhone</td>
+							// 		                  //å†å°‡è®€å‡ºçš„è³‡æ–™é¡¯ç¤ºåœ¨htmlçš„tableæ¨™ç±¤ä¸­
+							// 		               	  //åƒè€ƒèªæ³•å¦‚ä¸‹
+							// 		               	  //å»ºç«‹<td>iPhone</td>
 							// 		               	  //var cell1 = document.createElement("td");
 							// 	 					  //var txt1 = document.createTextNode("iPhone");
 							// 	 					  //cell1.appendChild(txt1);
-							// 	 					  //±N<td>¥[¨ì<tr>¤§¤U
+							// 	 					  //å°‡<td>åŠ åˆ°<tr>ä¹‹ä¸‹
 							// 	 					  //var row = document.createElement("tr");
 							// 	 					  //row.appendChild(cell1);
-							// 	 					  //±N<tr>¥[¨ì<tbody>¤§¤U
+							// 	 					  //å°‡<tr>åŠ åˆ°<tbody>ä¹‹ä¸‹
 
 							// 	 						myBody.appendChild(frag);
-							//--------------------------------ÂÂ¤èªkµ²§ô 
+							//--------------------------------èˆŠæ–¹æ³•çµæŸ 
 						} else {
 // 							alert(xhr.status + ":" + xhr.statusText);
 			Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
@@ -603,11 +625,11 @@ h1 {
 
 				});
 
-				//Åª¨úhtml select¼ĞÅÒ¤¤¡A¥Ø«e³Q¿ï¨ú¶µ¥Øªºvalue(CategoryID)¡A»yªk°Ñ¦Ò¦p¤U
+				//è®€å–html selectæ¨™ç±¤ä¸­ï¼Œç›®å‰è¢«é¸å–é …ç›®çš„value(CategoryID)ï¼Œèªæ³•åƒè€ƒå¦‚ä¸‹
 				//select.options[select.selectedIndex].value
 				classNumber = sel.options[sel.selectedIndex].value;
 				content = sel1.options[sel1.selectedIndex].value;
-				//¨Ï¥Îgetªº¤è¦¡¡A±N¸ê®Æid¶Ç¨ìServerºİProducts.javaªºµ{¦¡
+				//ä½¿ç”¨getçš„æ–¹å¼ï¼Œå°‡è³‡æ–™idå‚³åˆ°Serverç«¯Products.javaçš„ç¨‹å¼
 				console.log(classNumber);
 				console.log(content);
 				xhr.open('post', 'SelectStudentInformationNormalJSON_controller.do', true);
@@ -615,30 +637,30 @@ h1 {
 						"application/x-www-form-urlencoded");
 				xhr.send("class=" + classNumber + "&content=" + content);
 			} else {
-// 				alert("±zªºÂsÄı¾¹¤£¤ä´©Ajax¥\¯à!!");
+// 				alert("æ‚¨çš„ç€è¦½å™¨ä¸æ”¯æ´AjaxåŠŸèƒ½!!");
 	Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
 		    			{
-		    			msg: "±zªºÂsÄı¾¹¤£¤ä´©Ajax¥\¯à!!"
+		    			msg: "æ‚¨çš„ç€è¦½å™¨ä¸æ”¯æ´AjaxåŠŸèƒ½!!"
 		    			});
 			}
 
 		}
-		//-------------------------------enterInformationToSendMail¬O¿ï¾Ücheckbox¤§«á«ö¤U°e¥X©Ò³Bµoªº¤èªk---------------------	
+		//-------------------------------enterInformationToSendMailæ˜¯é¸æ“‡checkboxä¹‹å¾ŒæŒ‰ä¸‹é€å‡ºæ‰€è™•ç™¼çš„æ–¹æ³•---------------------	
 		function enterInformationToSendMail() {
 			var xhr = new XMLHttpRequest(), id = 0;
 			var frag = document.createDocumentFragment();
 			var arr = new Array();
-			//getElement"s"ByName,checkbox¸Ì­±ªºname³£­n¬O¤@¼Ëªº¡A§Ú·|±N¦³¬Û¦P¦WºÙªº¤@°_§ì¤J°}¦C
-			//obj¬O¤@­Ó°}¦C¡A¸Ì­±¸Ëªº¬O³Q¿ï¨ìcheckboxªº¦W¤l
+			//getElement"s"ByName,checkboxè£¡é¢çš„nameéƒ½è¦æ˜¯ä¸€æ¨£çš„ï¼Œæˆ‘æœƒå°‡æœ‰ç›¸åŒåç¨±çš„ä¸€èµ·æŠ“å…¥é™£åˆ—
+			//objæ˜¯ä¸€å€‹é™£åˆ—ï¼Œè£¡é¢è£çš„æ˜¯è¢«é¸åˆ°checkboxçš„åå­
 			var obj = document.getElementsByName("checkboxname");
 			console.log("obj=="+obj);
 			var checkedflag =0;
 			var selected = [];
 
 			for (var i = 0; i < obj.length; i++) {
-				//obj.check¬O±N¦³§_¥´¤Ä¡Atrue´N°õ¦æ¤U­±
+				//obj.checkæ˜¯å°‡æœ‰å¦æ‰“å‹¾ï¼Œtrueå°±åŸ·è¡Œä¸‹é¢
 				if (obj[i].checked) {
-					selected.push(obj[i].value);//selected¬O·U¥[°}¦Cªº¦WºÙ¡Apush¬O¥i¥H±N­È¤@­Ó¤@­Ó±µ¨ì°}¦C«á­±
+					selected.push(obj[i].value);//selectedæ˜¯æ„ˆåŠ é™£åˆ—çš„åç¨±ï¼Œpushæ˜¯å¯ä»¥å°‡å€¼ä¸€å€‹ä¸€å€‹æ¥åˆ°é™£åˆ—å¾Œé¢
 					checkedflag=1;
 				}
 			}
@@ -647,13 +669,13 @@ h1 {
 
 			for (var i = 0, max = selected.length; i < max; i++) {
 
-				//±Nselected°}¦C¸Ì­±ªº¼Æ­È§@¬°°}¦C²Ä´X­Ó¤¸¯Àªº°Ñ¦Ò
-				//¹³¿ï¨ì²Ä0­Ó¡A§Ú´N¥h§ìjs°}¦C¤¤ªº²Ä´X­Ó¤¸¯À¡Ajs°}¦C¬O§Úªº
-				//SelectStudentInformation_controller¤¤¦^¶Çªº­È
+				//å°‡selectedé™£åˆ—è£¡é¢çš„æ•¸å€¼ä½œç‚ºé™£åˆ—ç¬¬å¹¾å€‹å…ƒç´ çš„åƒè€ƒ
+				//åƒé¸åˆ°ç¬¬0å€‹ï¼Œæˆ‘å°±å»æŠ“jsé™£åˆ—ä¸­çš„ç¬¬å¹¾å€‹å…ƒç´ ï¼Œjsé™£åˆ—æ˜¯æˆ‘çš„
+				//SelectStudentInformation_controllerä¸­å›å‚³çš„å€¼
 				var selectobj = js[selected[i]];
 				console.log(selected[i]);
-				//concat() ¤èªk¥Î©ó³s±µ¨â­Ó©Î¦h­Ó°}¦C¡C
-				//¤èªk¤£·|§ïÅÜ­ì¨Ó°}¦Cªº­È
+				//concat() æ–¹æ³•ç”¨æ–¼é€£æ¥å…©å€‹æˆ–å¤šå€‹é™£åˆ—ã€‚
+				//æ–¹æ³•ä¸æœƒæ”¹è®ŠåŸä¾†é™£åˆ—çš„å€¼
 				//http://www.w3school.com.cn/jsref/jsref_concat_array.asp
 				
 				arr = arr.concat(selectobj);
@@ -662,29 +684,40 @@ h1 {
 			}
 
 			selectedJSON = JSON.stringify(arr);
-			console.log("selectedJSON"+selectedJSON);			
-//  			alert("email±H°eµ²§ô");\
+			console.log("selectedJSON"+ selectedJSON );			
+//  			alert("emailå¯„é€çµæŸ");\
 
 if(selectedJSON!="[]"){
 Lobibox.alert("success", //AVAILABLE TYPES: "error", "info", "success", "warning"
 		    			{
-		    			msg: "email±H°eµ²§ô"
+		    			msg: "emailå¯„é€çµæŸ"
 		    			});
 }else{
 	Lobibox.alert("error", //AVAILABLE TYPES: "error", "info", "success", "warning"
 			{
-			msg: "»İ­n¿ï¾Ü¦Ü¤Ö¤@­Óemail"
+			msg: "éœ€è¦é¸æ“‡è‡³å°‘ä¸€å€‹email"
 			});	
 }
-			xhr.open('post', 'SendMail1.do', true);
-			xhr.setRequestHeader("Content-Type",
-					"application/x-www-form-urlencoded");
-			xhr.send("key=" + selectedJSON);
-			// 	        xhr.open('post','SendMail1.do',false);
-			// 	        xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-			// 			xhr.send("key="+selectedJSON);	
+			SendAllMail2();
+// 			xhr.open('post', 'SendMail1.do', true);
+// 			xhr.setRequestHeader("Content-Type",
+// 					"application/x-www-form-urlencoded;charset=UTF-8");
+
+// 			xhr.send("key=" + selectedJSON );
+
 
 		}
+		
+					function SendAllMail2() {
+		    $.ajax({
+		       type: "POST",
+		       url: "SendMail1.do",
+		       dataType: "json",
+		       cache: false,
+		       contentType: "application/x-www-form-urlencoded",
+		       data:{"key":selectedJSON}
+		      });
+		      }
 	</script>
 </body>
 </html>

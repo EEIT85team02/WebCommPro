@@ -69,7 +69,7 @@ public class ListLatestEventsService {
 		// 取得dao
 		dao = new StudentDAO();
 		List<StudentVO> otherStudentVOs = new ArrayList<StudentVO>();
-		List<StudentVO> allStudentVOs = dao.getAll();
+		List<StudentVO> allStudentVOs = dao.getAllCalendarStudentVOs();
 		for (StudentVO oneStudentVO : allStudentVOs) {
 			if (oneStudentVO.getStu_id().equals(stuID)) {
 				continue;// exclude myself

@@ -76,7 +76,7 @@
                     	由一群熱愛軟體技術、具備豐富實務經驗、且時時以高品質專業服務為念之優秀技術團隊所共同經營。</br>
                     	偉康科技於2016/1/20 取得 IBM WebSphere Application Server Gold Accreditation 合作伙伴認證，</br>
                     	是 IBM 大中華區 第一家 WAS Gold Accreditation，台灣區 第一家 Accreditation 合作伙伴。</h3>
-                    <p class="lead">This theme features some wonderful photography courtesy of <a target="_blank" href="http://www.webcomm.com.tw/about.html">WebComm</a>.</p>
+                    <p class="lead">更多資訊請點首頁 <a target="_blank" href="http://www.webcomm.com.tw/about.html">WebComm</a>.</p>
                 </div>
             </div>
             <!-- /.row -->
@@ -102,8 +102,8 @@
                                 <h4>
                                     <strong>企業整合</strong>
                                 </h4>
-                                <p>敏捷業務流程管理 : 敏捷式預期市場變動、超越客戶期望</p>
-                                <a href="http://www.webcomm.com.tw/solutions3-2.html" class="btn btn-light">Learn More</a>
+                                <p>敏捷業務流程管理解決方案: 敏捷式預期市場變動、超越客戶期望</p>
+                                <a href="http://www.webcomm.com.tw/solutions3-2.html" class="btn btn-light">了解更多</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -115,8 +115,8 @@
                                 <h4>
                                     <strong>入口網站</strong>
                                 </h4>
-                                <p>企業入口網站 : 馭繁化簡、打造事半功倍的企業入口網站 </p>
-                                <a href="http://www.webcomm.com.tw/solutions3-3.html" class="btn btn-light">Learn More</a>
+                                <p>企業入口網站解決方案: 馭繁化簡、打造事半功倍的企業入口網站</p>
+                                <a href="http://www.webcomm.com.tw/solutions3-3.html" class="btn btn-light">了解更多</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -128,8 +128,8 @@
                                 <h4>
                                     <strong>軟體開發</strong>
                                 </h4>
-                                <p>跨平台行動應用: 開發、管理、整合跨行動應用程式的解決方案</p>
-                                <a href="http://www.webcomm.com.tw/solutions3-1.html" class="btn btn-light">Learn More</a>
+                                <p>跨平台行動應用解決方案: 開發、管理、整合跨行動應用程式的解決方案</p>
+								<a href="http://www.webcomm.com.tw/solutions3-1.html" class="btn btn-light">了解更多</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -141,8 +141,8 @@
                                 <h4>
                                     <strong>單一登入</strong>
                                 </h4>
-                                <p>WebComm Application Conversion for z/OS®</p>
-                                <a href="http://www.webcomm.com.tw/solutions3-2.html" class="btn btn-light">Learn More</a>
+                                <p>提供整合客製化的系統轉換及驗證服務，完成快速的應用系統轉換服務</p>
+                                <a href="http://www.webcomm.com.tw/solutions3-2.html" class="btn btn-light">了解更多</a>
                             </div>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
     <!-- Callout -->
     <aside class="callout">
         <div class="text-vertical-center">
-            <h1>Vertically Centered Text</h1>
+            <h1>精準快速的達到客戶需求</h1>
         </div>
     </aside>
 
@@ -167,7 +167,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h2>Our Work</h2>
+                    <h2>我們的工作</h2>
                     <hr class="small">
                     <div class="row">
                         <div class="col-md-6">
@@ -200,7 +200,7 @@
                         </div>
                     </div>
                     <!-- /.row (nested) -->
-                    <a href="#" class="btn btn-dark">View More Items</a>
+                    <a href="#" class="btn btn-dark">了解更多</a>
                 </div>
                 <!-- /.col-lg-10 -->
             </div>
@@ -214,7 +214,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2><strong>JOIN US！！</strong></h2>
+                    <h2><strong>加入緯康 成為緯康的一份子！！</strong></h2>
                     <a href="${pageContext.request.contextPath}/LoginServletGoogle.do" class="btn btn-lg btn-light"><strong>GOOGLE登入</strong></br>Click Me!</a>
                     <a href="Login.jsp" class="btn btn-lg btn-dark"><strong>非GOOGLE登入</strong></br>Look at Me!</a>
                 </div>

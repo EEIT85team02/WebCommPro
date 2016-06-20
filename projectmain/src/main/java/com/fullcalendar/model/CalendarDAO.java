@@ -214,8 +214,11 @@ public class CalendarDAO implements CalendarDAO_interface {
 		}
 		return list;		
 	}
-	@Override
+
 	//--2016/06/16處理當使用者報名成立時，將資料查詢出來塞回stu_additional
+
+	@Override
+
 		public List<CalendarVO> findStu_additionalDetailData(Integer stu_id,String title){
 			List<CalendarVO> list = null;
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
