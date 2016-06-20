@@ -203,7 +203,13 @@ public class StudentProfileServlet extends HttpServlet {
 				System.out.println(stu_workdate);
 				stu_except =Double.valueOf(request.getParameter("stu_except"));
 				System.out.println(stu_except);
-				stu_final = Integer.parseInt(request.getParameter("stu_final"));
+				
+				if(request.getParameter("stu_final")=="是"){
+					stu_final = 1;
+				}else{
+					stu_final = 99;
+				}
+//				stu_final = Integer.parseInt(request.getParameter("stu_final"));
 				System.out.println(stu_final);
 				stu_note2 = request.getParameter("stu_note2");
 				System.out.println(stu_note2);
@@ -237,6 +243,7 @@ public class StudentProfileServlet extends HttpServlet {
 							stu_total,stu_workdate,stu_except,stu_final,
 							stu_note2,pub_key,pri_key,cipher_text,log_pw,class_id);
 //					out.write("success");
+					
 					RequestDispatcher successMsg = request
 							.getRequestDispatcher("/Student_maintain/StumTODataTablesJSON.jsp");
 					successMsg.forward(request, response);

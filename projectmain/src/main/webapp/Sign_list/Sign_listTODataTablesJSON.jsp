@@ -504,6 +504,7 @@ body {
 			    	}
 			    } );
 			    
+			    
 	} );//load函數結束
 	</script>
 </body>

@@ -76,7 +76,7 @@ public class FileIOUtil {
 				studentRowVO.get(i-1).setStu_total(((((new Double(dataRow.get(i)[11]))))));
 				studentRowVO.get(i-1).setStu_workdate(new Timestamp(formatter.parse((dataRow.get(i)[12].replaceAll("/","-"))).getTime()));
 				studentRowVO.get(i-1).setStu_except((((((new Double(dataRow.get(i)[13])))))));
-				studentRowVO.get(i-1).setStu_final(((new Integer(dataRow.get(i)[14].replace("是", "1").replace("否", "99")))));
+				studentRowVO.get(i-1).setStu_final((((new Integer(dataRow.get(i)[14].replace("是", "1").replace("否", "99"))))));
 				studentRowVO.get(i-1).setStu_note1((((dataRow.get(i)[15])))); //備註欄位
 				studentRowVO.get(i-1).setStu_note2((((dataRow.get(i)[16])))); //備註欄位
 				ClassVO classVO = new ClassVO();

@@ -6,7 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
-import java.util.Base64;
+import com.google.api.client.util.Base64;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -64,7 +64,7 @@ public class EncryptService{
 }	
 	public  String Base64Encrypt(byte[] encrtyptedByteArray){
 		
-		String toString=Base64.getUrlEncoder().encodeToString(encrtyptedByteArray);
+		String toString=Base64.encodeBase64String(encrtyptedByteArray);
 		return toString;
 		
 	}
