@@ -214,7 +214,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2><strong>加入緯康 成為緯康的一份子！！</strong></h2>
+                    <h2><strong>加入偉康 成為偉康的一份子！！</strong></h2>
                     <a href="${pageContext.request.contextPath}/LoginServletGoogle.do" class="btn btn-lg btn-light"><strong>GOOGLE登入</strong></br>Click Me!</a>
                     <a href="Login.jsp" class="btn btn-lg btn-dark"><strong>非GOOGLE登入</strong></br>Look at Me!</a>
                 </div>
