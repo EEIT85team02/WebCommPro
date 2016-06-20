@@ -66,7 +66,7 @@ public class CalendarService {
 	public static void main(String[] args){
 		CalendarService src = new CalendarService();
 		try {
-			src.createStu_additionalDetailData(8,"java");
+			src.createStu_additionalDetailData(8,"Java");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

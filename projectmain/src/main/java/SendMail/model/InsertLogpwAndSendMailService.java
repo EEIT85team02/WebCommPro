@@ -50,6 +50,7 @@ public class InsertLogpwAndSendMailService {
 			
 		}
 		//將送信所需的資料pass給送信的方法
+		
 		SendMailService sms=new SendMailService();
 		sms.SendlinkMailToStudent(emailStringArray, nameStringArray,publickeyArray,privatekeyArray,ciphertextArray,inputClassId,path);
 		
