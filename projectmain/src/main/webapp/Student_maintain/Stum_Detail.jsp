@@ -201,7 +201,14 @@ h1{
 				<p>座號：<%=request.getParameter("stu_seatno")%></p>
 				<p>年次：<%=request.getParameter("stu_age")%></p>
 				<p>畢業學校：<%=request.getParameter("stu_sch")%></p>
-				<p>性別：<%=request.getParameter("stu_sex")%></p>
+				<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<%
+				if(request.getParameter("stu_sex")=="0"){ 
+					out.print("<p>性別：</p>");
+				}else{
+					out.print("<p>性別：男</p>");
+				}
+				%>
 				<p>預約報名時間：<%=request.getParameter("stu_applytime")%></p>
 				
 			</div>
@@ -211,7 +218,13 @@ h1{
 				<p>狀況代號：<%=request.getParameter("sta_id")%></p>
 				<p>主考官：<%=request.getParameter("emp_id")%></p>
 				<p>確認時間：<%=request.getParameter("confirm_time")%></p>
-				<p>是否已約上機考：<%=request.getParameter("stu_pre")%></p>
+				<%
+				if(request.getParameter("stu_sex")=="0"){ 
+					out.print("<p>是否已約上機考：否</p>");
+				}else{
+					out.print("<p>是否已約上機考：是</p>");
+				}
+				%>
 			</div>
 			
 			<div class="div4">
@@ -245,7 +258,13 @@ h1{
 			<div class="div6">
 				<label>Final Ranking：</label>
 				<input type="text" class="input" name="stu_final"
-					id="stu_final" value=<%=request.getParameter("stu_final")%>>
+					id="stu_final" value=<%
+				if(request.getParameter("stu_final")=="1"){ 
+					out.print("是");
+				}else{
+					out.print("否");
+				}
+				%>>
 				<label>備註1：</label>
 				<input type="text" class="input" name="stu_note1"
 					id="stu_note1" value=<%=request.getParameter("stu_note1")%>>

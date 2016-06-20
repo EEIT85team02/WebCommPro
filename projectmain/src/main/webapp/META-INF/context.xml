@@ -5,6 +5,7 @@
 
 
   <Resource name="jdbc/sysdesign" type="javax.sql.DataSource"
+
       username="sa" password="P@ssw0rd"
 	  driverClassName="com.ibm.db2.jcc.DB2Driver"
 	  url="jdbc:db2://localhost:50000/webcomm"

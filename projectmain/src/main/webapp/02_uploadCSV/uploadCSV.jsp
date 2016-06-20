@@ -325,7 +325,7 @@ p{
         	}
         	// -- error 
      	  	xhr.onerror = function(){
-     		  var eleDiv03 = document.createElement("H3");
+     		  var eleDiv03 = document.createElement("p");
      		  	eleDiv03.setAttribute("style","color:red");
      		  var textH303 = document.createTextNode("無法寫入資料庫!!!");
      		  eleDiv03.appendChild(textH303);

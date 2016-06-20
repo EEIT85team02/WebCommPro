@@ -63,20 +63,20 @@ public class FileIOUtil {
 			for(int i=1;i<dataRow.size();i++){
 				studentRowVO.add(new StudentVO());
 				studentRowVO.get(i-1).setStu_name((dataRow.get(i)[0]));
-				studentRowVO.get(i-1).setStu_age(new Integer(dataRow.get(i)[1].replace("", "0")));
-				studentRowVO.get(i-1).setStu_sex(new Integer(dataRow.get(i)[2].replace("男", "1").replace("女", "0").replace("", "2")));
+				studentRowVO.get(i-1).setStu_age(new Integer(dataRow.get(i)[1]));
+				studentRowVO.get(i-1).setStu_sex(new Integer(dataRow.get(i)[2].replace("男", "1").replace("女", "0")));
 				studentRowVO.get(i-1).setStu_sch(((dataRow.get(i)[3])));
-				studentRowVO.get(i-1).setStu_group((new Integer(dataRow.get(i)[4].replace("", "0"))));
-				studentRowVO.get(i-1).setStu_seatno(((new Integer(dataRow.get(i)[5].replace("", "0")))));
+				studentRowVO.get(i-1).setStu_group((new Integer(dataRow.get(i)[4])));
+				studentRowVO.get(i-1).setStu_seatno(((new Integer(dataRow.get(i)[5]))));
 				studentRowVO.get(i-1).setStu_email(((dataRow.get(i)[6])));
-				studentRowVO.get(i-1).setStu_pre((new Integer(dataRow.get(i)[7].replace("是", "1").replace("否", "0").replace("", "2"))));
-				studentRowVO.get(i-1).setStu_implement(((new Double(dataRow.get(i)[8].replace("", "0")))));
+				studentRowVO.get(i-1).setStu_pre((new Integer(dataRow.get(i)[7].replace("是", "1").replace("否", "0"))));
+				studentRowVO.get(i-1).setStu_implement(((new Double(dataRow.get(i)[8]))));
 				studentRowVO.get(i-1).setStu_testtime(new Timestamp(formatter.parse((dataRow.get(i)[9].replaceAll("/","-"))).getTime()));
-				studentRowVO.get(i-1).setStu_interview((((new Double(dataRow.get(i)[10].replace("", "0"))))));
-				studentRowVO.get(i-1).setStu_total(((((new Double(dataRow.get(i)[11].replace("", "0")))))));
+				studentRowVO.get(i-1).setStu_interview((((new Double(dataRow.get(i)[10])))));
+				studentRowVO.get(i-1).setStu_total(((((new Double(dataRow.get(i)[11]))))));
 				studentRowVO.get(i-1).setStu_workdate(new Timestamp(formatter.parse((dataRow.get(i)[12].replaceAll("/","-"))).getTime()));
-				studentRowVO.get(i-1).setStu_except((((((new Double(dataRow.get(i)[13].replace("", "0"))))))));
-				studentRowVO.get(i-1).setStu_final(((new Integer(dataRow.get(i)[14].replace("是", "1").replace("否", "99").replace("", "0")))));
+				studentRowVO.get(i-1).setStu_except((((((new Double(dataRow.get(i)[13])))))));
+				studentRowVO.get(i-1).setStu_final((((new Integer(dataRow.get(i)[14].replace("是", "1").replace("否", "99"))))));
 				studentRowVO.get(i-1).setStu_note1((((dataRow.get(i)[15])))); //備註欄位
 				studentRowVO.get(i-1).setStu_note2((((dataRow.get(i)[16])))); //備註欄位
 				ClassVO classVO = new ClassVO();
