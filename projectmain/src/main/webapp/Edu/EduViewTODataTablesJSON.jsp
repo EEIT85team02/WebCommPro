@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
-<title>Edu_Page</title>
+<title>教育中心資料</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -127,7 +127,7 @@ h1 {
 }
 .labelTitle{
 	float:left;
-	width:100px;
+	width:130px;
 	padding-right:3px;
 }
 .divForm{
@@ -240,7 +240,7 @@ body {
 			<fieldset>
 				<div class="divForm">	
 					<label for="edu_id" class="labelTitle">中心代號:</label> 
-					<input type="text" name="edu_id" size="20" id="uedu_id" readOnly style="background-color:	#888888">
+					<input type="text" name="edu_id" size="20" id="uedu_id" readOnly style="background-color:#DDDDDD">
 					<span id="spanuedu_id"></span>
 				</div>
 					
@@ -369,7 +369,7 @@ body {
 			    EduInsertForm = $( "#dialog-insertForm" ).dialog({
 			      autoOpen: false,
 			      height: 500,
-			      width: 700,
+			      width: 860,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -378,8 +378,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-			        "send": insertEduFormToCreateTable,
-			        Cancel: function() {
+			        "送出": insertEduFormToCreateTable,
+			        "取消": function() {
 			        	EduInsertForm.dialog( "close" );
 			        }
 			      },
@@ -409,7 +409,7 @@ body {
 				EduUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
 			      height: 600,
-			      width: 700,
+			      width: 860,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -418,8 +418,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-				        "send": updateEduFormToCreateTable,
-				        Cancel: function() {
+				        "送出": updateEduFormToCreateTable,
+				        "取消": function() {
 				        	EduUpdateForm.dialog( "close" );
 				        }
 				      },
@@ -490,8 +490,8 @@ body {
 				//設定刪除確認表單寬度視窗資料開始
 			    EduDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
-			        height: 200,
-			        width: 240,
+			        height: 300,
+			        width: 440,
 			        modal: true,
 			        open: function() {
 				          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -501,7 +501,7 @@ body {
 				      },
 			        buttons: {
 			          "確認": deleteEduFormToCreateTable ,
-			          "放棄": function() {
+			          "返回": function() {
 			        	sel=[];
 			            $( this ).dialog( "close" );
 			            $('#dialog-deleteForm p').text('是否要刪除資料?');

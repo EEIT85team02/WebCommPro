@@ -25,6 +25,7 @@ public interface IStudentDAO {
 	public Set<Stu_additionalVO> getStuByStu_id(Integer stu_id) throws SQLException;
 	public StudentVO getStudentByEmail(String stu_email);
 	public List<StudentVO> getAllCalendarStudentVOs();
+	public StudentVO findStu_AddByStu_id(Integer stu_id);
 
 
 

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
-<title>Employee_Page</title>
+<title>員工權限資料</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -207,11 +207,11 @@ body {
 				<input type="text" name="emp_id" id="emp_id" class="text ui-widget-content ui-corner-all" placeholder="請輸入員工代號" autocomplete="off" required="required"> 
 				<div id="div1"></div>
 				<label for="emp_name">員工名稱</label> 
-				<input type="text" name="emp_name" id="emp_name" class="text ui-widget-content ui-corner-all" readOnly autocomplete="off">
+				<input type="text" name="emp_name" id="emp_name" class="text ui-widget-content ui-corner-all" readOnly style="background-color:#DDDDDD" autocomplete="off">
 				<label for="emp_mail">Email</label> 
-				<input type="text" name="emp_mail" id="emp_mail" class="text ui-widget-content ui-corner-all" readOnly autocomplete="off">
+				<input type="text" name="emp_mail" id="emp_mail" class="text ui-widget-content ui-corner-all" readOnly style="background-color:#DDDDDD" autocomplete="off">
 				<label for="dep_name">部門</label> 
-				<input type="text" name="dep_name" id="dep_name" class="text ui-widget-content ui-corner-all" readOnly autocomplete="off"> 
+				<input type="text" name="dep_name" id="dep_name" class="text ui-widget-content ui-corner-all" readOnly style="background-color:#DDDDDD" autocomplete="off"> 
 				<label for="sl_id">權限</label> 
 				<select id="selectSl_id" name='sl_id'>
 			   	</select>
@@ -226,13 +226,13 @@ body {
 		<form name="EmpUpdateForm" action="updateEmp">
 			<fieldset>
 				<label for="emp_id">員工代號</label> 
-				<input type="text" name="emp_id" id="uemp_id" class="text ui-widget-content ui-corner-all" readOnly> 
+				<input type="text" name="emp_id" id="uemp_id" class="text ui-widget-content ui-corner-all" readOnly style="background-color:#DDDDDD"> 
 				<label for="emp_name">員工名稱</label> 
-				<input type="text" name="emp_name" id="uemp_name" class="text ui-widget-content ui-corner-all" readOnly autocomplete="off">
+				<input type="text" name="emp_name" id="uemp_name" class="text ui-widget-content ui-corner-all" readOnly style="background-color:#DDDDDD" autocomplete="off">
 				<label for="emp_mail">Email</label> 
-				<input type="text" name="emp_mail" id="uemp_mail" class="text ui-widget-content ui-corner-all" readOnly autocomplete="off">
+				<input type="text" name="emp_mail" id="uemp_mail" class="text ui-widget-content ui-corner-all" readOnly style="background-color:#DDDDDD" autocomplete="off">
 				<label for="dep_name">部門</label> 
-				<input type="text" name="dep_name" id="udep_name" class="text ui-widget-content ui-corner-all" readOnly autocomplete="off"> 
+				<input type="text" name="dep_name" id="udep_name" class="text ui-widget-content ui-corner-all" readOnly style="background-color:#DDDDDD" autocomplete="off"> 
 				<label for="sl_id">權限</label> 
 				<select id="uselectSl_id" name='sl_id'>
 			   	</select>
@@ -350,8 +350,8 @@ body {
 			  //設定表單寬度視窗資料開始
 			    EmpInsertForm = $( "#dialog-insertForm" ).dialog({
 			      autoOpen: false,
-			      height: 550,
-			      width: 400,
+			      height: 800,
+			      width: 500,
 			      modal: true,
 			      open: function() {
 			          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -360,8 +360,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-			        "send": insertEmpFormToCreateTable,
-			        Cancel: function() {
+			        "送出": insertEmpFormToCreateTable,
+			        "取消": function() {
 			        	EmpInsertForm.dialog( "close" );
 			        }
 			      },
@@ -413,7 +413,7 @@ body {
 				//設定表單寬度視窗資料開始
 				  EmpUpdateForm = $( "#dialog-updateForm" ).dialog({
 			      autoOpen: false,
-			      height: 650,
+			      height: 700,
 			      width: 400,
 			      modal: true,
 			      open: function() {
@@ -423,8 +423,8 @@ body {
 			          $('.ui-widget-overlay').removeClass('custom-overlay');
 			      },
 			      buttons: {
-				        "send": updateEmpFormToCreateTable,
-				        Cancel: function() {
+				        "送出": updateEmpFormToCreateTable,
+				        "取消": function() {
 				        	EmpUpdateForm.dialog( "close" );
 				        }
 				      },
@@ -498,8 +498,8 @@ body {
 				//設定刪除確認表單寬度視窗資料開始
 			    EmpDeleteConfirm =$( "#dialog-deleteForm" ).dialog({
 			        autoOpen: false,
-			        height: 200,
-			        width: 240,
+			        height: 330,
+			        width: 440,
 			        modal: true,
 			        open: function() {
 				          $('.ui-widget-overlay').addClass('custom-overlay');
@@ -509,7 +509,7 @@ body {
 				      },
 			        buttons: {
 			          "確認": deleteEmpFormToCreateTable ,
-			          "放棄": function() {
+			          "返回": function() {
 			            $( this ).dialog( "close" );
 			            $('#dialog-deleteForm p').text('是否要刪除此筆資料?');
 			          }

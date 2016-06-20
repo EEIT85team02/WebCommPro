@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>狀態出來了</title>
+<title>考生核准查詢</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -74,7 +74,7 @@
 <link href="${pageContext.request.contextPath}/css/lobibox.min.css" rel="stylesheet">
 <style>
 .navbar-inverse {
-    background-image: linear-gradient(to bottom,#E4C00D 0,rgba(249, 68, 27, 0.97) 100%);
+    background-image: linear-gradient(to bottom,RGBA(81, 177, 89, 0.66) 0,rgba(44, 74, 65, 0.31) 100%);
 }
 .Main_Content {
 	margin-top: 100px;

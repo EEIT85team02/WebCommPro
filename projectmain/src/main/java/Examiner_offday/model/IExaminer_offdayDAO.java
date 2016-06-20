@@ -10,4 +10,5 @@ public interface IExaminer_offdayDAO {
 	public void update(Examiner_offdayVO examVO) throws SQLException;
 	public Examiner_offdayVO findByPrimaryKey(Integer exam_id) throws SQLException;
 	public List<Examiner_offdayVO> getAll() throws SQLException;
+	public List<Examiner_offdayVO>  findByEmpForExamier(Integer exam_id);
 }

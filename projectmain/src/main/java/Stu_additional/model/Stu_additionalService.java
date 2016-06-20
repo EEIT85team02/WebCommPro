@@ -18,6 +18,8 @@ import Employee.model.EmployeeVO;
 import Member_status.model.Member_statusVO;
 import Edu.model.EduVO;
 import SendMail.model.EncryptService;
+import Student.model.IStudentDAO;
+import Student.model.StudentDAO;
 import Student.model.StudentVO;
 import Talk.model.TalkVO;
 import Test_period.model.Test_periodVO;
@@ -25,9 +27,11 @@ import Test_period.model.Test_periodVO;
 
 public class Stu_additionalService {
 	private IStu_additionalDAO dao;
+	private IStudentDAO dao2;
 
 	public Stu_additionalService() {
 		dao = new Stu_additionalDAO();
+		dao2 = new StudentDAO() ;
 	}
 	
 	public void insert(Timestamp test_start, Timestamp test_end,
@@ -181,7 +185,7 @@ public class Stu_additionalService {
 		
 	}
 	
-	public String getStuByStu_id(Integer stu_id) throws SQLException {	
+	public String getStu_addByStu_id(Integer stu_id) throws SQLException {	
 		List stusc=new LinkedList();
 		List<Stu_additionalVO> stu_addList =dao.findByStu_id(stu_id);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -240,6 +244,37 @@ public class Stu_additionalService {
 		return jsonString;
 		
 	}
+	
+	public String getStuByStu_id(Integer stu_id) throws SQLException {
+		
+		List stusc=new LinkedList();
+		System.out.println("-----------stu_id:"+stu_id);
+		StudentVO stu_List = dao2.findByPrimaryKey(stu_id);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println("-----------*****"+stu_List);
+			Map<String,String> map = new HashMap<String,String>();
+			map.put("stu_id",stu_List.getStu_id().toString());
+			map.put("stu_name",stu_List.getStu_name().toString());
+			map.put("stu_group",stu_List.getStu_group().toString());
+			map.put("stu_age",stu_List.getStu_age().toString());
+			map.put("stu_sch",stu_List.getStu_sch().toString());
+			map.put("stu_sex",stu_List.getStu_sex().toString());
+			map.put("stu_email",stu_List.getStu_email().toString());
+			
+			java.util.Date stu_workdate = stu_List.getStu_workdate();
+			map.put("stu_workdate",sdf.format(stu_workdate));
+
+			map.put("stu_seatno",stu_List.getStu_seatno().toString());
+			map.put("class_id",stu_List.getClassVO().getClass_id());
+			map.put("class_name",stu_List.getClassVO().getClass_name());
+		
+
+			stusc.add(map);
+		String jsonString = JSONValue.toJSONString(stusc);
+		return jsonString;
+		
+	}
+	
 	
 	public String getAllStumToJSONInitTable() throws SQLException{
 		List<Stu_additionalVO> list=dao.getAll();

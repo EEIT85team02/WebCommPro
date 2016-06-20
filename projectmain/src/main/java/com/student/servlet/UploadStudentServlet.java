@@ -73,28 +73,8 @@ public class UploadStudentServlet extends HttpServlet {
 			System.out.println("xxx");
 			try {
 				studao.insert(onestu);
-				String serverName=request.getServerName();
-				int ServerPort=request.getServerPort();
-				String contextPath=request.getContextPath();
-				String path=serverName+":"+ServerPort+contextPath;
-				InsertLogpwAndSendMailService ILSendMail = new InsertLogpwAndSendMailService();
-				ILSendMail.insertKeysCiphertextAndSendMail(onestu.getClassVO().getClass_id(),path);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvalidKeyException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (NoSuchAlgorithmException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (NoSuchPaddingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalBlockSizeException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (BadPaddingException e) {
+				
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

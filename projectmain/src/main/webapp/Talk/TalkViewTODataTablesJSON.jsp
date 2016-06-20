@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="zh-tw">
 <head>
-<title>Talk_Page</title>
+<title>留言板後台</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
 
@@ -125,6 +125,21 @@ margin: 20px;
 
 }
 
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
 
 </style>
 </head>
@@ -137,18 +152,19 @@ margin: 20px;
 		<div class="Main_Content">
 			<div class="row">
 				<div class="col-xs-10 col-xs-offset-1">
+				<p id="ptitle">留言板回覆</p>
 				<hr>
 					<table id="TalkTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th class="col-md-1 col-xs-1">#</th>
+								<th></th>
 								<th class="col-md-2 col-xs-2">留言主題</th>
-								<th class="col-md-1 col-xs-1">訪客姓名</th>
-								<th class="col-md-1 col-xs-1">悄悄話</th>
+								<th class="col-md-2 col-xs-2">訪客姓名</th>
+								<th class="col-md-1 col-xs-1">悄悄</th>
 								<th class="col-md-2 col-xs-2">留言內容</th>
-								<th class="col-md-2 col-xs-2">回復內容</th>
+								<th class="col-md-2 col-xs-2">回覆內容</th>
 								<th class="col-md-2 col-xs-2">留言時間</th>
-								<th class="col-md-1 col-xs-1">回覆狀態</th>
+								<th class="col-md-1 col-xs-1">狀態</th>
 							</tr>
 						</thead>
 						<tbody>

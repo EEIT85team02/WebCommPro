@@ -50,7 +50,7 @@ public class StudentService {
 	}	
 	public String getOneEmailStu(Integer stu_id) throws SQLException {	
 		List stusc=new LinkedList();
-		StudentVO stu=dao.findByPrimaryKey(stu_id);
+		StudentVO stu=dao.findStu_AddByStu_id(stu_id);
 		Set<Stu_additionalVO> set = stu.getStu_additionalVO();
         for(Stu_additionalVO stuadd:set){
 			Map map = new HashMap();
