@@ -11,10 +11,11 @@
 
 <!--         <property name="connection.datasource">java:comp/env/jdbc/db2</property> -->
 
+
 <!--    <property name="connection.datasource">java:comp/env/jdbc/AZDB2</property> -->
+
    
         <!-- 連線池c3p0設定-->     
-
 
  	    <property name="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</property>
  		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/webcomm</property> 

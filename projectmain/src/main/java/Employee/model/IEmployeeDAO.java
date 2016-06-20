@@ -20,5 +20,6 @@ public interface IEmployeeDAO {
 //	public List<EmployeeVO> getAllEmployee() throws SQLException;
 	public Set<Stu_additionalVO> getEmpByEmp_id(String emp_id) throws SQLException;
 	public EmployeeVO getEmployeeByEmail(String emp_mail);
+	public List<EmployeeVO> findExamByEmpId(String emp_id);
 
 }

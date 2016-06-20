@@ -125,6 +125,13 @@
 	
 }
 
+h1{
+	font-size:24px;
+	color:black;
+	font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: bold;
+}
+
 </style>
 <!-- fancybox -->
 	<link rel="stylesheet" type="text/css" href="/projectmain/css/fancybox/jquery.fancybox.css"> 	
@@ -137,7 +144,7 @@
 </head>
 <body>
 	<div class="fancy">
-		<p>考生資料明細</p>
+		<h1>考生資料明細</h1>
 		<form id="Student_MaintainForm" action="StudentProfileServlet" method="post">
 			<input type="hidden" name="action" value="updateStum">
 			

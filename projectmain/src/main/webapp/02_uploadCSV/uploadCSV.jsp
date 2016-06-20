@@ -79,7 +79,28 @@
 <%-- <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script> --%>
 <!-- <script -->
 <!-- 	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
-	
+<style>
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
+p{
+	padding-top:30px;
+}
+
+</style>	
 <title>上傳考生資料</title>
 
 </head>
@@ -110,7 +131,7 @@
   			<input class="btn btn-default" type="button" value="寫入資料庫">
 		</form>
 		
-        
+        	
 		
 <!-- 		空標籤 -->
 		<div id=MyDiv ></div>
@@ -295,7 +316,7 @@
         	// -- success
      	  	xhr.onload = function(){
         		if(xhr.status==200){
-     		  var eleDiv02 = document.createElement("H3");
+     		  var eleDiv02 = document.createElement("p");
      		 	eleDiv02.setAttribute("style","color:blue");
      		  var textH302 = document.createTextNode("成功寫入資料庫!!!");
      		  eleDiv02.appendChild(textH302);

@@ -65,28 +65,51 @@ public class StudentProfileServlet extends HttpServlet {
 		if(LoginOK != null){
 			
 		System.out.println("LoginOK-----StudentProfileServlet:"+LoginOK);
-		
 		System.out.println("stu_id-------------"+request.getParameter("stu_id"));
+		
 		}
 		try {
-			if("stu_add".equals(action)){
-				Integer stu_id = Integer.parseInt(request.getParameter("stu_id"));
-				System.out.println(stu_id);
-				System.out.println("------2------");
-				Stu_additionalService stu_AllSvc = new Stu_additionalService() ;
-				System.out.println(stu_id);
-				String stu_AllListJSON = stu_AllSvc.getStuByStu_id(stu_id);
-				//String stu_AllListJSON = stu_AllSvc.getStuByStu_add_id(stu_add_id);
-				request.getSession().setAttribute("stu_AllListJSON", stu_AllListJSON);
-				response.setCharacterEncoding("UTF-8");
-				response.getWriter().write(stu_AllListJSON);
+			
+		if("stu".equals(action)){
+			try{
+			Integer stu_id = Integer.parseInt(request.getParameter("stu_id"));
+			System.out.println(stu_id);
+			System.out.println("------1------");
+			Stu_additionalService stu_AllSvc = new Stu_additionalService() ;
+			System.out.println(stu_id);
+			String stuListJSON = stu_AllSvc.getStuByStu_id(stu_id);
+			
+		
+			request.getSession().setAttribute("stuListJSON", stuListJSON);
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(stuListJSON);
 				
+							
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		
+		if("stu_add".equals(action)){
+			Integer stu_id = Integer.parseInt(request.getParameter("stu_id"));
+			System.out.println(stu_id);
+			System.out.println("------2------");
+			Stu_additionalService stu_AllSvc = new Stu_additionalService() ;
+			System.out.println(stu_id);
+			String stu_AllListJSON = stu_AllSvc.getStu_addByStu_id(stu_id);
+
+			
+			//String stu_AllListJSON = stu_AllSvc.getStuByStu_add_id(stu_add_id);
+			request.getSession().setAttribute("stu_AllListJSON", stu_AllListJSON);
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(stu_AllListJSON);
+			
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
 		/*}else{
 			

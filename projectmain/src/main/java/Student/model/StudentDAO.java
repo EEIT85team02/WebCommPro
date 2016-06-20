@@ -84,7 +84,7 @@ public class StudentDAO implements IStudentDAO {
 				session.beginTransaction();
 				stu = (StudentVO) session.get(StudentVO.class, stu_id);
 				org.hibernate.Hibernate.initialize(stu.getCalendarVO());
-				System.out.println("-------------findByPrimaryKey Stu-------------------");
+				System.out.println("-------------findByPrimaryKey Stu-------------------"+stu);
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
 				session.getTransaction().rollback();
@@ -93,6 +93,22 @@ public class StudentDAO implements IStudentDAO {
 			return stu;
 		}
 		
+		
+		public StudentVO findStu_AddByStu_id(Integer stu_id) {
+			StudentVO stu = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				stu = (StudentVO) session.get(StudentVO.class, stu_id);
+				org.hibernate.Hibernate.initialize(stu.getStu_additionalVO());
+				System.out.println("-------------findByPrimaryKey Stu-------------------");
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return stu;
+		}
 		
 		public List<StudentVO> getStudentByForCalendar(Integer stu_id) {
 			List<StudentVO> list = null;
@@ -189,6 +205,11 @@ public class StudentDAO implements IStudentDAO {
 				session.beginTransaction();
 				Query query = session.createQuery(GET_ALL_Class);
 				list = query.list();
+				for(Iterator iter = list.iterator();iter.hasNext();) {
+					StudentVO vo = 
+							(StudentVO) iter.next();
+					org.hibernate.Hibernate.initialize(vo.getClassVO());
+				}
 				System.out.println("query.list()======"+query.list());
 				session.getTransaction().commit();
 			} catch (RuntimeException ex) {
