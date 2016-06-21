@@ -50,11 +50,11 @@ public void SendMailToStudent(JSONArray ja) throws UnsupportedEncodingException{
 		JSONObject jo=(JSONObject) ja.get(i);
 		String email=jo.getString("stu_email");
 		String stu_name=jo.getString("stu_name");
-		String mail_name=jo.getString("mail_name");
-		
+		String mail_text=jo.getString("mail_text");
+
 		emailarray[i]=email;
 		namearray[i]=stu_name;
-		mailtextarray[i]=mail_name;
+		mailtextarray[i]=mail_text;
 		 
 		
 		}

@@ -28,18 +28,15 @@ public class DecryptService {
 
 		byte[] passwordinputTobyteArray=es.MD5Encrypt(passwordinput);
 		for(int i =0,max=passwordinputTobyteArray.length;i<max;i++){
-			System.out.println(DateBasebyteArray[i]);
-			System.out.println(passwordinputTobyteArray[i]);
-			if(DateBasebyteArray[i]==passwordinputTobyteArray[i]){
-				System.out.println("match");
-			}else{
-				System.out.println("no match");
-				match=false;
-			}
+			System.out.print(DateBasebyteArray[i]);
+			System.out.print(passwordinputTobyteArray[i]);
+
 		}
 		if(match==true){
+			System.out.println("match");
 			return stvo;
 		}else{
+			System.out.println("nomatch");
 			return null;
 		}
 		
@@ -75,7 +72,7 @@ public class DecryptService {
 		
 	}
 	public static void main(String[] args) throws NoSuchAlgorithmException {
-		System.out.println(compareIfMatchThePassword("eeit85team02@gmail.com","YRfFF_0wmUNnsbbHJj3dCw"));
+		System.out.println(compareIfMatchThePassword("llluuuyyy123@gmail.com","241o1788"));
 
 	}
 
