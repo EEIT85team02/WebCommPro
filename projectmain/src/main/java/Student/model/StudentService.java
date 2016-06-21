@@ -268,9 +268,11 @@ public class StudentService {
 
 		Mail_templateDAO mtSvc =new Mail_templateDAO();//new Mail_templateDAO
 		String mail_name = mtSvc.findByPrimaryKey(Integer.parseInt(textNumber)).getMail_name(); //抓Mail_template裡面真正的文字
+		String mail_text = mtSvc.findByPrimaryKey(Integer.parseInt(textNumber)).getMail_text();		
+		
 		List<StudentVO> list= dao.getAllStudentByClass(class_id);//依照class抓取學生
 		
-		
+
 		
 
 
@@ -286,6 +288,7 @@ public class StudentService {
 			 m1.put("stu_sch",aa.getStu_sch());   
 			 m1.put("stu_email", aa.getStu_email());					 
 			 m1.put("mail_name", mail_name);
+			 m1.put("mail_text", mail_text);
 
 			 l1.add(m1);					
 		}

@@ -380,7 +380,7 @@ public class LoginServletGoogle extends HttpServlet {
 			request.getSession().setAttribute("googleidtoken", googleToken);
 			// 把userId暫時換成使用者姓名
 //			request.getSession().setAttribute("userId", userId);
-			
+			request.getSession().setAttribute("userName", studentVO.getStu_name());
 			request.getSession().setAttribute("userId", studentVO.getStu_email());
 			request.getSession().setAttribute("credential", credentialGson);
 //			 request.getSession().setAttribute("calSummary", calendars.getSummary());

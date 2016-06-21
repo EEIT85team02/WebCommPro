@@ -60,11 +60,15 @@ public class StudentProfileServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		Object LoginOK = request.getSession().getAttribute("LoginOK");
+		Object Reservation = request.getSession().getAttribute("reservation");
 		String action = request.getParameter("action");
+		
+		
 		
 		if(LoginOK != null){
 			
 		System.out.println("LoginOK-----StudentProfileServlet:"+LoginOK);
+		System.out.println("Reservation-----StudentProfileServlet:"+Reservation);
 		System.out.println("stu_id-------------"+request.getParameter("stu_id"));
 		
 		}
@@ -91,7 +95,7 @@ public class StudentProfileServlet extends HttpServlet {
 			}
 		}
 		
-		if("stu_add".equals(action)){
+		if(Reservation != null||"stu_add".equals(action)){
 			Integer stu_id = Integer.parseInt(request.getParameter("stu_id"));
 			System.out.println(stu_id);
 			System.out.println("------2------");

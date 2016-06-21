@@ -45,6 +45,14 @@
 	    <url-pattern>/fullCalendar/AddEditEvent.do</url-pattern>
 	  </servlet-mapping>
 	
+	 <servlet>
+	    <servlet-name>LoginServlet</servlet-name>
+	    <servlet-class>com.login.servlet.LoginServlet</servlet-class>
+	  </servlet>
+	  <servlet-mapping>
+	    <servlet-name>LoginServlet</servlet-name>
+	    <url-pattern>/Login.do</url-pattern>
+	  </servlet-mapping>
 
 	
 	

@@ -64,7 +64,7 @@ public class EncryptService{
 }	
 	public  String Base64Encrypt(byte[] encrtyptedByteArray){
 		
-		String toString=Base64.encodeBase64String(encrtyptedByteArray);
+		String toString=Base64.encodeBase64URLSafeString(encrtyptedByteArray);
 		return toString;
 		
 	}
