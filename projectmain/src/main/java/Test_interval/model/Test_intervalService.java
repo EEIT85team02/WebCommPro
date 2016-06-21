@@ -219,8 +219,8 @@ public class Test_intervalService {
 		
 		
 		
-		//新增產生Fullcalendar資料表明細資料
-		public void createFullcalendarDetailData(String class_id,Date test_startdate,Date test_enddate) throws SQLException{
+		//新增產生Fullcalendar資料表明細資料(無變數產生多時段，簡單來說就是寫死)
+		public void createFullcalendarDetailData111(String class_id,Date test_startdate,Date test_enddate) throws SQLException{
 			CalendarService calendarSrc = new CalendarService();
 			ClassService classSrc = new ClassService();
 			ClassVO clas = new ClassVO(); 
@@ -254,18 +254,15 @@ public class Test_intervalService {
 		}
 		
 		
-		//新增產生Fullcalendar含時段........資料表明細資料
-				public void createFullcalendarDetailData111(String class_id,Date test_startdate,Date test_enddate) throws SQLException{
+		//新增產生Fullcalendar含時段........資料表明細資料(變數產生多時段，簡單來說..用這個就對了)
+				public void createFullcalendarDetailData(String class_id,Date test_startdate,Date test_enddate) throws SQLException{
 					CalendarService calendarSrc = new CalendarService();
 					ClassService classSrc = new ClassService();
 					ClassVO clas = new ClassVO(); 
 					clas = classSrc.findByPrimaryKeyClass(class_id);
 					String title0 = null;
-					String title1 = "Java(10AM)";
-					String title2 = "Java(02PM)";
-					java.util.Date test_startdate1 = new Date(-2*60*60*1000);
-					java.util.Date test_startdate2 = new Date(2*60*60*1000);
-				    java.util.Date test_enddate1 = null;
+					String titleValue = "Java";
+					java.util.Date test_enddate1 = null;
 					String color0 = "#08d572";
 					String color1 = "#3A87AD";
 					Integer editable =1;
@@ -279,14 +276,15 @@ public class Test_intervalService {
 						 Integer stu_id = stu.getStu_id();
 						 String id = stu_id.toString();
 						 calendarSrc.insertCalendar(id, title0, test_startdate, test_enddate, color0, stu_id, editable, overlap, rendering0, constraint);
-						 
 						 Test_periodService tpSrc =new Test_periodService();
 						 List<Test_periodVO> list = tpSrc.getAllTp();
 						for(Test_periodVO tpVO :list){
-							String aa = tpVO.getTest_starthour().toString().substring(0, 1);
-							System.out.println("aaaaaaaaaa===="+aa);
-							 calendarSrc.insertCalendar(id, title1, test_startdate1, test_enddate1, color1, stu_id, editable, overlap, rendering1, constraint);
-							 calendarSrc.insertCalendar(id, title2, test_startdate2, test_enddate1, color1, stu_id, editable, overlap, rendering1, constraint);
+							Integer timeValue = Integer.parseInt(tpVO.getTest_starthour().toString().substring(0,2));
+							System.out.println("抓取到的時段為===="+timeValue);
+							String title = titleValue+"("+timeValue+":00)";
+							java.util.Date test_startdate1 = new Date((timeValue-12)*60*60*1000);
+							 calendarSrc.insertCalendar(id, title, test_startdate1, test_enddate1, color1, stu_id, editable, overlap, rendering1, constraint);
+							
 							
 						}
 						 
