@@ -9,17 +9,19 @@
 <!--         <p class="lead">目前聊天室仍為測試階段, 工作人員正盡力趕修中. <br> 使用過程中可能發生連線不穩定或異常斷線的情況,敬請見諒! </p> -->
 
 <div id="chatSection" style="display:none">
- <div class = "chat-windowOut">
-    <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
-        <div class="col-xs-12 col-md-12">
+ <div class = "chat-windowOut" style="z-index:10">
+    <div class="row chat-window col-xs-8 col-sm-5 col-md-3 col-lg-3" id="chat_window_1" style="margin-left:10px;">
+<!--     <div class="row chat-window col-xs-3 col-sm-3 col-md-3 col-lg-3" id="chat_window_1" style="margin-left:10px;"> -->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         	<div class="panel panel-default">
 				<!-- 標題框框 -->
                 <div class="panel-heading top-bar">
-                    <div class="col-md-8 col-xs-8">
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 <!--                         <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat - Miguel</h3> -->
                         <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span></h3>
                     </div>
-                    <div class="col-md-4 col-xs-4" style="text-align: right;">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" >
+<!--                     <div class="col-md-4 col-xs-4" style="text-align: right;"> -->
 						<!-- 小視窗 -->
 							<!-- 初始設為關閉 -->
                         <a href="#"><span id="minim_chat_window" class="glyphicon icon_minim panel-collapsed glyphicon-plus"></span></a>
@@ -38,28 +40,28 @@
 				<div id="footPosition"></div>
  <div class="panel-footer">
                     <div class="input-group">
-                        <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
+                        <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="請輸入訊息..." />
                         <span class="input-group-btn">
-                        <button class="btn btn-primary btn-sm" id="btn-chat" onclick="publish_message();">Send</button>
+                        <button class="btn btn-primary btn-sm" id="btn-chat" onclick="publish_message();">送出</button>
                         </span>
                     </div>
                 </div>
     		</div>
 	    </div>
     </div>
-    <div class="btn-group dropup">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            <span class="glyphicon glyphicon-cog"></span>
-            <span class="sr-only">Toggle Dropdown</span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="#" id="new_chat"><span class="glyphicon glyphicon-plus"></span> Novo</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-list"></span> Ver outras</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-remove"></span> Fechar Tudo</a></li>
-            <li class="divider"></li>
-            <li><a href="#"><span class="glyphicon glyphicon-eye-close"></span> Invisivel</a></li>
-        </ul>
-    </div>
+<!--     <div class="btn-group dropup"> -->
+<!--         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"> -->
+<!--             <span class="glyphicon glyphicon-cog"></span> -->
+<!--             <span class="sr-only">Toggle Dropdown</span> -->
+<!--         </button> -->
+<!--         <ul class="dropdown-menu" role="menu"> -->
+<!--             <li><a href="#" id="new_chat"><span class="glyphicon glyphicon-plus"></span> Novo</a></li> -->
+<!--             <li><a href="#"><span class="glyphicon glyphicon-list"></span> Ver outras</a></li> -->
+<!--             <li><a href="#"><span class="glyphicon glyphicon-remove"></span> Fechar Tudo</a></li> -->
+<!--             <li class="divider"></li> -->
+<!--             <li><a href="#"><span class="glyphicon glyphicon-eye-close"></span> Invisivel</a></li> -->
+<!--         </ul> -->
+<!--     </div> -->
     </div>
 </div>
 

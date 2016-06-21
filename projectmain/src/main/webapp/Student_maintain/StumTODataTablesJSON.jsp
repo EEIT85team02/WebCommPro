@@ -281,7 +281,9 @@ body {
 						$.fancybox({//调用fancybox弹出层 
     			                'type':'ajax', 
     			                'href':'/projectmain/Student_maintain/Stum_Detail.jsp?action=add&stu_id='+stu_id
+    			                
     			                +'&stu_name='+stu_name
+    			                
     			                +'&class_id='+class_id
     			                +'&stu_email='+stu_email
     			                +'&stu_group='+stu_group
@@ -315,6 +317,7 @@ body {
     			                +'&log_pw='+log_pw
     			                
     			        }); 
+    			        
 					});
 						
 				});

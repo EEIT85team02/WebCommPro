@@ -13,10 +13,14 @@ import Student.model.IStudentDAO;
 import Student.model.StudentDAO;
 import Student.model.StudentVO;
 
+import com.fullcalendar.model.CalendarVO;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
+import com.google.gson.stream.JsonWriter;
 
 @WebServlet("/CalendarAllFromDBServlet")
 public class CalendarAllFromDBServlet extends HttpServlet {
@@ -46,25 +50,23 @@ public class CalendarAllFromDBServlet extends HttpServlet {
 					}
 
 				})
-//				.registerTypeAdapter(Boolean.class,  new TypeAdapter<Boolean>(){
-//
-//					@Override
-//					public void write(JsonWriter out, Boolean value)
+//				.registerTypeAdapter(CalendarVO.class,  new CalendarVOSerializer()
+//				{
+
+//					public void write(JsonWriter out, Boolean value){
 //							throws IOException {
-////						if(value.equals(new Integer("1"))){
-////							out.value(true);
-////						}
-////						if(value.equals(new Integer("0"))){
-////							out.value(false);
-////						}
+//						if(value.equals(new Integer("1"))){
+//							out.value(true);
+//						}
+//						if(value.equals(new Integer("0"))){
+//							out.value(false);
+//						}
 //						   if (value == null) {
 //							      out.nullValue();
 //							    } else {
 //							      out.value(value);
 //							    }
 //					}
-//
-//					@Override
 //					public Boolean read(JsonReader in) throws IOException {
 ////						return null;
 //						  JsonToken peek = in.peek();
@@ -82,11 +84,14 @@ public class CalendarAllFromDBServlet extends HttpServlet {
 //						      throw new IllegalStateException("Expected BOOLEAN or NUMBER but was " + peek);
 //						    }
 //					}
-//					
-//				})
+					
+//				}
+//	)
 //				.setDateFormat("yyyy-MM-dd")//因為constrain 不能太清確的格式!!
+//				.setDateFormat("yyyy,MM,dd")//因為constrain 不能太清確的格式!!
 //				.setDateFormat("yyyy-MM-dd'T'HH:mm:ss")//因為前端套件要用這種格式的樣子
 				.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")//因為前端套件要用這種格式的樣子
+//				.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZZZZ")//因為前端套件要用這種格式的樣子
 				.setPrettyPrinting()
 				.create();
 		// 也可以在create()之前先.serializeNulls
@@ -112,13 +117,12 @@ public class CalendarAllFromDBServlet extends HttpServlet {
 		/**
 		 * 因為資料庫和前台所需要的格式不符
 		 */
-		// overlap : int -> boolean 
+		// 只是把資料庫的 0 換成false 1換成true
 		str = str.replaceAll("\"overlap\": 0,",  "\"overlap\": false,").replaceAll("\"overlap\": 1,",  "\"overlap\": true,");
-		// start   :
 		str = str.replaceAll("\"start\":", "\"startDate\": ").replaceAll("\"end\":","\"endDate\":");
+		str = str.replaceAll("\"title\":", "\"name\": ").replaceAll("\"constraint\":","\"location\":");
 //		str = str.replaceAll("\"start\":", "\"startDate\": new Date(").replaceAll("\"end\":","\"endDate\": new Date(");
 //		str = str.replaceAll("Z\",", "Z\"),");
-		// 只是把資料庫的 0 換成false 1換成true
 		out.write(str);
 		
 		

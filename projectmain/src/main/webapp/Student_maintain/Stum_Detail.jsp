@@ -11,8 +11,8 @@
 <style type="text/css">
 
 .fancy {
-	width: 900px;
-	height: 600px;
+	width: 1400px;
+	height: 550px;
 }
 
 .fancy h3 {
@@ -82,43 +82,55 @@
 
 .div1{
 	float:left;
+	width:420px;
 }
 
 .div2{
 	float:left;
-	padding-left:120px;
+	padding-left:80px;
+	width:420px;
 }
 
 .div3{
 	float:left;
 	padding-left:120px;
+	width:420px;
 }
 
 .div4{
 	float:left;
 	padding-top:50px;
+	width:420px;
 }
 
 .div5{
 	float:left;
-	padding-left:180px;
+	padding-left:90px;
 	padding-top:50px;
+	width:420px;
 }
 
 .div6{
 	float:left;
-	padding-left:180px;
+	padding-left:130px;
 	padding-top:50px;
+	width:450px;
 }
 
 .div7{
 	float:left;
 	width:400px;
 	padding-top:50px;
-	padding-left:400px;
+	padding-left:650px;
 	
 }
 
+h1{
+	font-size:24px;
+	color:black;
+	font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: bold;
+}
 
 </style>
 <!-- fancybox -->
@@ -127,92 +139,12 @@
 
 <script type="text/javascript" src="/projectmain/js/fancybox/jquery.form.min.js">
 	
-	$(document).ready(function(){ 
-		
-		
-	    $(".datepicker").datepicker();//调用日历选择器 
-	    $("#isallday").click(function(){//是否是全天事件 
-	        if($("#sel_start").css("display")=="none"){ 
-	            $("#sel_start,#sel_end").show(); 
-	        }else{ 
-	            $("#sel_start,#sel_end").hide(); 
-	        } 
-	    }); 
-	     
-	    $("#isend").click(function(){//是否有结束时间 
-	        if($("#p_endtime").css("display")=="none"){ 
-	            $("#p_endtime").show(); 
-	        }else{ 
-	            $("#p_endtime").hide(); 
-	        } 
-	        $.fancybox.resize();//调整高度自适应 
-	    }); 
-	    
-	    $("#del_event").click(function(){ 
-	        if(confirm("您确定要删除吗？")){ 
-	            var eventid = <%=request.getParameter("id")%>; 
-	            
-	            $.get("AddEditEvent.do?action=del&id="+eventid,function(msg){ 
-	               
-	                    $.fancybox.close(); 
-	                    $('#calendar').fullCalendar('refetchEvents'); 
-        }); 
-     }     
-	});
-	    
-	
-	$(function(){ 
-	    //提交表单 
-	    $('#add_form').ajaxForm({ 
-	        beforeSubmit: showRequest, //表单验证 
-	        success: showResponse //成功返回 
-	    });  
-	}); 
-	 
-	function showRequest(){ 
-	    var events = $("#event").val(); 
-	    if(events==''){ 
-// 	        alert("请输入日程内容！");
-	Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
-			 			    			{
-			 			    			msg: "请输入日程内容！"
-			 			    			});
-	        $("#event").focus(); 
-	        return false; 
-	    } 
-	} 
-	 
-	
-	
-	
-	function showResponse(responseText, statusText, xhr, $form){ 
-	    if(statusText=="success"){     
-	        if(responseText==1){ 
-	            $.fancybox.close();//关闭弹出层 
-	            $('#calendar').fullCalendar('refetchEvents'); //重新获取所有事件数据 
-	        }else{ 
-// 	            alert(responseText); 
-	     Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
-			    			{
-			    			msg: responseText
-			    			});
-	        } 
-	    }else{ 
-// 	        alert(statusText); 
-	   Lobibox.alert("info", //AVAILABLE TYPES: "error", "info", "success", "warning"
-	    			{
-	    			msg: statusText
-	    			});
-	    } 
-	} 
-	
-	});
 </script> 
 
 </head>
 <body>
 	<div class="fancy">
-		<h3>考生資料明細</h3>
+		<h1>考生資料明細</h1>
 		<form id="Student_MaintainForm" action="StudentProfileServlet" method="post">
 			<input type="hidden" name="action" value="updateStum">
 			
@@ -269,7 +201,14 @@
 				<p>座號：<%=request.getParameter("stu_seatno")%></p>
 				<p>年次：<%=request.getParameter("stu_age")%></p>
 				<p>畢業學校：<%=request.getParameter("stu_sch")%></p>
-				<p>性別：<%=request.getParameter("stu_sex")%></p>
+				<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<%
+				if(request.getParameter("stu_sex")=="0"){ 
+					out.print("<p>性別：</p>");
+				}else{
+					out.print("<p>性別：男</p>");
+				}
+				%>
 				<p>預約報名時間：<%=request.getParameter("stu_applytime")%></p>
 				
 			</div>
@@ -279,7 +218,13 @@
 				<p>狀況代號：<%=request.getParameter("sta_id")%></p>
 				<p>主考官：<%=request.getParameter("emp_id")%></p>
 				<p>確認時間：<%=request.getParameter("confirm_time")%></p>
-				<p>是否已約上機考：<%=request.getParameter("stu_pre")%></p>
+				<%
+				if(request.getParameter("stu_sex")=="0"){ 
+					out.print("<p>是否已約上機考：否</p>");
+				}else{
+					out.print("<p>是否已約上機考：是</p>");
+				}
+				%>
 			</div>
 			
 			<div class="div4">
@@ -313,8 +258,13 @@
 			<div class="div6">
 				<label>Final Ranking：</label>
 				<input type="text" class="input" name="stu_final"
-					id="stu_final" value=<%=request.getParameter("stu_final")%>>
-				<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					id="stu_final" value=<%
+				if(request.getParameter("stu_final")=="1"){ 
+					out.print("是");
+				}else{
+					out.print("否");
+				}
+				%>>
 				<label>備註1：</label>
 				<input type="text" class="input" name="stu_note1"
 					id="stu_note1" value=<%=request.getParameter("stu_note1")%>>

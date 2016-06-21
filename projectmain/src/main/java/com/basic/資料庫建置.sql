@@ -250,13 +250,13 @@ create table Talk
 
 
 --Edu
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會', '台北市大安區復興南路一段', '026631666', 'Mary');
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會', '桃園市中壢區中大路300號', '034257387', 'John');
-insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會', '高雄市前金區中正四路211號', '079699885', 'Alean');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('台北資策會', '台北市大安區復興南路一段', '02-6631666', 'Mary');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('中壢資策會', '桃園市中壢區中大路300號', '03-4257387', 'John');
+insert into edu(edu_name, edu_add, edu_tel, edu_contact)  values ('高雄資策會', '高雄市前金區中正四路211號', '07-9699885', 'Alean');
 
 --Class
 insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('EEIT85','Java程式設計師','羅秀燕','劉翰卿',1 );
-insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('EEIT70','Java程式設計師','羅秀燕','劉翰卿',1 );
+insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('EEIT70','Java程式設計師EEIT70','羅秀燕','劉翰卿',1 );
 insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('MEME33','嵌入式軟體系統設計','羅秀燕','詹民進',2 );
 insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('MSIT05','全方位應用程式設計','羅秀燕','王芳芳',2 );
 insert into class(class_id, class_name, class_contact, class_teach,edu_id) values ('SESE59','網路系統整合工程師','羅秀燕','陳其元 ',3 );
@@ -363,12 +363,12 @@ insert into Talk(talkTitle,talkName,talkChose,talkMail,talkContent,retalkContent
 
 
 insert into fullcalendar (ftest_hour_id,stu_ID,color,test_start,test_end,rendering) values ('18',18,'#08d572','2016-06-06','2016-06-14','background');
-insert into fullcalendar (ftest_hour_id,stu_ID,title,color) values ('18',18,'Java','#3A87AD');--ID代表可以選擇的range
+insert into fullcalendar (ftest_hour_id,stu_ID,title,color,test_start) values ('18',18,'Java','#3A87AD','2016-06-06-14.00.00');--ID代表可以選擇的range
+
 
 
 insert into fullcalendar (ftest_hour_id,stu_ID,color,test_start,test_end,rendering) values ('17',17,'#08d572','2016-06-06','2016-06-14','background');
-insert into fullcalendar (ftest_hour_id,stu_ID,title,color) values ('17',17,'Java','#3A87AD');--ID代表可以選擇的range
-
+insert into fullcalendar (ftest_hour_id,stu_ID,title,color,test_start) values ('17',17,'Java','#3A87AD','2016-06-06-14.00.00');--ID代表可以選擇的range
 
 
 

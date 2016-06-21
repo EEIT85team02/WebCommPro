@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <title>留言板</title>
 <link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" >
@@ -51,7 +52,7 @@ table td {
 }
 
 .tdtitle{
-	width:100px;
+	width:110px;
 }
 .tdcontent{
 	width:900px;
@@ -62,15 +63,29 @@ table td {
 .ui-state-error {
 	padding: .3em;
 }
+body {
+	background-image: url("../img/lang.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+	/*BOOTSTRAP*/
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #B21FB3;
+    background-color: #ffffff;
+    font-weight: bold;
 
+}
 
 </style>
 
 </head>
 <body>
 <!-- 引入top.jsp標頭檔 巡覽列部分-->
-	<jsp:include page="/top/top.jsp" />
-	<div class="col-lg-10 col-lg-offset-2">
+
+	<div class="col-lg-8 col-lg-offset-2">
 		<div class="container-fluid">
 			<div class="page" id="content">
 				<table>
@@ -217,19 +232,19 @@ $(function(){
  							page.append( 
  									"<table class='table table-striped'>"+
  									"<tr>" +
- 									  "<td class='tdtitle'>"+ val +"</td>" +
+ 									  "<td class='tdtitle'>留言主題:</td>" +
  							          "<td class='tdcontent'>" + val + "</td>" +
  							          "</tr>"+
  							          "<tr>" +
- 							          "<td class='tdtitle'>"+ val +"</td>" +
+ 							          "<td class='tdtitle'>暱稱:</td>" +
  							          "<td class='tdcontent'>[" + val +"]-於時間(" + talkDate +")時提問"+"</td>" +
  							          "</tr>"+
  							          "<tr>" +
- 							          "<td class='tdtitle'>"+ val +"</td>" +
+ 							          "<td class='tdtitle'>留言內容:</td>" +
  							          "<td class='tdcontent'>" + val +"</td>" +
  							          "</tr>"+
  							          "<tr>" +
- 							          "<td class='tdtitle'>"+ val +"</td>" +
+ 							          "<td class='tdtitle'>版主回覆:</td>" +
  							          "<td class='tdcontent'>" + retalkDate +"[" +val +"]</td>" +
  							          "</tr>"+
  							          "</table>");
@@ -291,19 +306,19 @@ $(function(){
 				page.append( 
 						"<table class='table table-striped'>"+
 						"<tr>" +
-						  "<td class='tdtitle'>"+ val +"</td>" +
+						  "<td class='tdtitle'>版主回覆:</td>" +
 				          "<td class='tdcontent'>" + val + "</td>" +
 				          "</tr>"+
 				          "<tr>" +
-				          "<td class='tdtitle'>"+ val +"</td>" +
+				          "<td class='tdtitle'>暱稱:</td>" +
 				          "<td class='tdcontent'>[" + val +"]-於時間(" + talkDate +")時提問"+"</td>" +
 				          "</tr>"+
 				          "<tr>" +
-				          "<td class='tdtitle'>"+ val +"</td>" +
+				          "<td class='tdtitle'>留言內容:</td>" +
 				          "<td class='tdcontent'>" + val +"</td>" +
 				          "</tr>"+
 				          "<tr>" +
-				          "<td class='tdtitle'>"+ val +"</td>" +
+				          "<td class='tdtitle'>版主回覆:</td>" +
 				          "<td class='tdcontent'>" + retalkDate +"[" +val +"]</td>" +
 				          "</tr>"+
 				          "</table>");
@@ -311,7 +326,7 @@ $(function(){
 				page.append( 
 						"<table class='table table-striped'>"+
 						"<tr>" +
-						  "<td class='tdtitle'>留言主題:</td>" +
+						  "<td class='tdtitle'>版主回覆:</td>" +
 				          "<td class='tdcontent'>" + talkTitle + "</td>" +
 				          "</tr>"+
 				          "<tr>" +

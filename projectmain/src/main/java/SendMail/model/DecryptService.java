@@ -23,8 +23,9 @@ public class DecryptService {
 		boolean match=true;
 		
 		byte[] DateBasebyteArray=stvo.getLog_pw();
-		
+
 		EncryptService es= new EncryptService();
+
 		byte[] passwordinputTobyteArray=es.MD5Encrypt(passwordinput);
 		for(int i =0,max=passwordinputTobyteArray.length;i<max;i++){
 			System.out.println(DateBasebyteArray[i]);
@@ -44,7 +45,35 @@ public class DecryptService {
 		
 		
 	}
-	
+	public static StudentVO compareIfMatchTheRandomPassword(String emailAccountInput,String passwordinput) throws NoSuchAlgorithmException{
+		StudentDAO stdao = new StudentDAO();
+		StudentVO stvo=stdao.getStudentByEmail(emailAccountInput);
+		boolean match=true;
+		
+		byte[] DateBasebyteArray=stvo.getLog_pw();
+		DecryptService ds=new DecryptService();
+
+		
+		byte[] passwordinputTobyteArray=ds.decryptBase64String(passwordinput);
+		
+		for(int i =0,max=passwordinputTobyteArray.length;i<max;i++){
+			System.out.println(DateBasebyteArray[i]);
+			System.out.println(passwordinputTobyteArray[i]);
+			if(DateBasebyteArray[i]==passwordinputTobyteArray[i]){
+				System.out.println("match");
+			}else{
+				System.out.println("no match");
+				match=false;
+			}
+		}
+		if(match==true){
+			return stvo;
+		}else{
+			return null;
+		}
+		
+		
+	}
 	public static void main(String[] args) throws NoSuchAlgorithmException {
 		System.out.println(compareIfMatchThePassword("eeit85team02@gmail.com","YRfFF_0wmUNnsbbHJj3dCw"));
 

@@ -125,9 +125,12 @@ function createHTMLElement(messageContent, isMyselfMessage){
 	
 	
 	var eleTime = document.createElement("time");
-	eleTime.setAttribute("datetime", "2017-02-14");
+	var nowTime = new Date();
+//	eleTime.setAttribute("datetime", "2017-02-14");
+	eleTime.setAttribute("datetime", nowTime.toString());
 //	eleTime.setAttribute("datetime", new Date().getTime());
-	var textT = document.createTextNode("Timothy51min");
+//	var textT = document.createTextNode("Timothy51min");
+	var textT = document.createTextNode(nowTime.toString());
 	eleTime.appendChild(textT);
 //	ele2.appendChild(ele3);
 //	ele1.appendChild(ele2);
@@ -139,13 +142,15 @@ function createHTMLElement(messageContent, isMyselfMessage){
 	ele4.appendChild(eleImage);
 		// 訊息是自己發的
 	if(isMyselfMessage=="1"){
-		eleImage.setAttribute("src", "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTyyeNFb9UyIHwUuGlqFFuZjXTyGDx80DCdgK65SwqH389Do4SVLQ");			// 待續
+//		eleImage.setAttribute("src", "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTyyeNFb9UyIHwUuGlqFFuZjXTyGDx80DCdgK65SwqH389Do4SVLQ");			// 待續
+		eleImage.setAttribute("src", "/projectmain/LikeHangoutChat/img/student.png");			// 待續
 		ele2.appendChild(ele3);
 		ele1.appendChild(ele2);
 		ele1.appendChild(ele4);
 		// 訊息是別人發的
 	}else{
-		eleImage.setAttribute("src", "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQRZhELNV1_8yF6K4IusYiAykQijhlT2DUwOJzBsesQmWJzu3ix");			// 待續
+//		eleImage.setAttribute("src", "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQRZhELNV1_8yF6K4IusYiAykQijhlT2DUwOJzBsesQmWJzu3ix");			// 待續
+		eleImage.setAttribute("src", "/projectmain/LikeHangoutChat/img/student.png");			// 待續
 		ele1.appendChild(ele4);
 		ele2.appendChild(ele3);
 		ele1.appendChild(ele2);
@@ -230,16 +235,16 @@ function addBadge(notificationStr, unreadNumber){
 	
 	
 	
-	console.log("通知數量型別"+typeof($("span.badge").text()));
-	console.log("通知數量內容"+$("span.badge").text().trim());
+//	console.log("通知數量型別"+typeof($("span.badge").text()));
+//	console.log("通知數量內容"+$("span.badge").text().trim());
 	
 	
 	
 	// 難道parseInt只能一次?
 	var badgeNum = parseInt($("span.badge").text());
 	
-	console.log("通知數量型別【轉型】"+typeof(badgeNum));
-	console.log("通知數量內容【轉型】"+badgeNum);
+//	console.log("通知數量型別【轉型】"+typeof(badgeNum));
+//	console.log("通知數量內容【轉型】"+badgeNum);
 	
 	
 	/*

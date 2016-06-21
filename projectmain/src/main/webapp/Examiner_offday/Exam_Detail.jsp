@@ -56,24 +56,32 @@
 .div3{
 	float:left;
 	padding-left:50px;
-	padding-top:50px;
+	padding-top:100px;
 }
 
-.div3 h1{
+.div3 p{
 	color:green;
 }
 
 .div4{
 	float:left;
 	padding-left:30px;
-}
-
-.div4 h1{
-	color:red;
+	padding-top:30px;
 }
 
 .div4 p{
 	color:#ff7575;
+}
+
+h1{
+	font-size:24px;
+	color:black;
+	font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight: bold;
+}
+
+.title{
+	font-size:24px;
 }
 
 </style>
@@ -89,7 +97,7 @@
 </head>
 <body>
 	<div class="fancy">
-		<h3>主考官資料明細</h3>
+		<h1>主考官資料明細</h1>
 		<form id="Student_MaintainForm" action="StudentProfileServlet" method="post">
 					
 			<div class="div1">
@@ -111,11 +119,11 @@
 			<%
 				if(request.getParameter("stu_id")==null){ 
 					out.print("<div class='div3'>");
-					out.print("<h1>此請假區間沒有面試預約</h1>");
+					out.print("<p class='title'>此請假區間沒有面試預約</p>");
 					out.print("</div>");
 				}else{
 					out.print("<div class='div4'>");
-					out.print("<h1>此請假區間有面試預約</h1>");
+					out.print("<p class='title'>此請假區間有面試預約</p>");
 					out.print("<p>考生代號："+request.getParameter("stu_id"));
 					out.print("<p>考生姓名："+request.getParameter("stu_name"));
 					out.print("<p>監考開始時間："+request.getParameter("test_start"));

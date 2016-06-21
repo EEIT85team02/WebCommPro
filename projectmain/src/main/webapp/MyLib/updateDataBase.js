@@ -26,7 +26,7 @@ function iniFullcalendar(){
 	     	editable: false,	// 似乎已資料庫為準
 			droppable : true,	// this allows things to be dropped onto the calendar
 	    	selectable: false,
-	    	businessHours: true,// display business hours
+//	    	businessHours: true,// display business hours
 			// --1-5 or 1-7 【days】
 			weekends:false,
 			weekNumbers: false,
@@ -39,6 +39,7 @@ function iniFullcalendar(){
 //	     	hiddenDays: [ 2, 4 ],// 把2,4給遮起來
 //	 		contentHeight: 400,
 //			aspectRatio: 0.9,		 //	寬/高
+//	 		height: "auto",
 //	 		height: 600,
 	    	// asking servlet 
 	        events: "/projectmain/CalendarFromDBServlet",
@@ -200,10 +201,11 @@ function iniFullcalendar(){
 	
 	function createExternalEvents(){
 		
+//		var url = "/projectmain/getTokenFromDBServlet";
 		var url = "/projectmain/CalendarEventTokensFromDBServlet";
 		// 將event壓成json String格式
-		var str = event;	//	●●●請參考:http://stackoverflow.com/questions/11491938/issues-with-date-when-using-json-stringify-and-json-parse
-		var str = JSON.stringify(event);	//	●●●請參考:http://stackoverflow.com/questions/11491938/issues-with-date-when-using-json-stringify-and-json-parse
+//		var str = event;	//	●●●請參考:http://stackoverflow.com/questions/11491938/issues-with-date-when-using-json-stringify-and-json-parse
+//		var str = JSON.stringify(event);	//	●●●請參考:http://stackoverflow.com/questions/11491938/issues-with-date-when-using-json-stringify-and-json-parse
 	// 這樣寫法不通的原因是 接資料的servlet沒有解析event裡面的資料
 		
 		
@@ -215,17 +217,13 @@ function iniFullcalendar(){
 			function(data){
 			$.each(data,function(){
 				// 加入time 屬性到json中  
-						console.log(this)
-				$(this).attr("time", "09:00");
+//				$(this).attr("time", "09:00");
 				// 加入duration 屬性到json中  
 				$(this).attr("duration","01:00");
 				// 製作HTML標籤
 				var divEle = $('<div></div>').addClass("fc-event ui-draggable ui-draggable-handle").text(this.title).css({"margin-bottom":"0.5em", "text-align":"center"});
 				// 加入event (來自servlet)
 				divEle.data('event',this);
-			
-				
-				
 				// 定義拖曳事件
 				divEle.draggable({
 					zIndex: 999,
@@ -235,8 +233,7 @@ function iniFullcalendar(){
 				// 加入標籤
 				myExternalEvents.append(divEle);
 			})
-			})
-		;
+		});
 		
 		/*	
 		 * 

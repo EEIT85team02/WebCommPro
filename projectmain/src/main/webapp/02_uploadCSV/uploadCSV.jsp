@@ -79,7 +79,28 @@
 <%-- <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script> --%>
 <!-- <script -->
 <!-- 	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
-	
+<style>
+#ptitle{
+	text-align:center;
+	font-size:50px;
+	font-weight: bold;
+	font-family:"Microsoft JhengHei";
+	color:#008888;
+}
+body {
+    font-family: "Microsoft JhengHei","Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 1.42857143;
+    color: #4d6384;
+    background-color: #ffffff;
+    font-weight: bold;
+}
+
+p{
+	padding-top:30px;
+}
+
+</style>	
 <title>上傳考生資料</title>
 
 </head>
@@ -94,11 +115,11 @@
 	<jsp:include page="/top/top.jsp" />
       
       <div class="starter-template">
-        <h1>上傳考生資料</h1>
-        <p class="lead">請準備一份CSV檔案並且確認即將匯入的檔案沒有重複的資料.<br> 重複的定義係指【班別】【期別】【座號】同時相同的兩份資料.</p>
+<!--         <h1>上傳考生資料</h1> -->
+<!--         <p class="lead">請準備一份CSV檔案並且確認即將匯入的檔案沒有重複的資料.<br> 重複的定義係指【班別】【期別】【座號】同時相同的兩份資料.</p> -->
         
-		<a href="/projectmain/UploadStudentServlet">上傳會員資料</a>
-		<a href="/projectmain/UploadOneServlet">上傳一筆資料</a><br>
+<!-- 		<a href="/projectmain/UploadStudentServlet">上傳會員資料</a> -->
+<!-- 		<a href="/projectmain/UploadOneServlet">上傳一筆資料</a><br> -->
 		
 		<form action="javascript: uploadAndSubmit();" enctype="multipart/form-data" id="uploadForm" method="post" name="uploadForm">
 			<input class="btn btn-default" type="button" value="選擇csv檔">
@@ -107,9 +128,10 @@
 <!-- 		<input  type="file" id="choosefile" name="file"  style="display:none"  accept="video/mp4,video/avi,video/3gpp,video/x-matroska,video/ogg,image/jpeg,image/png,image/bmp,image/gif,image/tiff"/>  -->
 			<input  type="file" id="choosefile" name="file"  style="display:none"  accept=".csv"/> 
   			<input  type="submit" id="submitfile" style="display:none" >
+  			<input class="btn btn-default" type="button" value="寫入資料庫">
 		</form>
 		
-        <input class="btn btn-default" type="button" value="寫入資料庫">
+        	
 		
 <!-- 		空標籤 -->
 		<div id=MyDiv ></div>
@@ -294,7 +316,7 @@
         	// -- success
      	  	xhr.onload = function(){
         		if(xhr.status==200){
-     		  var eleDiv02 = document.createElement("H3");
+     		  var eleDiv02 = document.createElement("p");
      		 	eleDiv02.setAttribute("style","color:blue");
      		  var textH302 = document.createTextNode("成功寫入資料庫!!!");
      		  eleDiv02.appendChild(textH302);
@@ -303,7 +325,7 @@
         	}
         	// -- error 
      	  	xhr.onerror = function(){
-     		  var eleDiv03 = document.createElement("H3");
+     		  var eleDiv03 = document.createElement("p");
      		  	eleDiv03.setAttribute("style","color:red");
      		  var textH303 = document.createTextNode("無法寫入資料庫!!!");
      		  eleDiv03.appendChild(textH303);

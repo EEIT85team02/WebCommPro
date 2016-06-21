@@ -2,7 +2,9 @@ package com.fullcalendar.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Type;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,27 +14,42 @@ import javax.servlet.http.HttpServletResponse;
 
 import Student.model.StudentVO;
 
+import com.fullcalendar.model.CalendarVO;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
 
 @WebServlet("/CalendarEventTokensFromDBServlet")
 public class CalendarEventTokensFromDBServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public CalendarEventTokensFromDBServlet() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public CalendarEventTokensFromDBServlet() {
+		super();
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
+		Integer stuID = new Integer(request.getSession().getAttribute("stu_id")
+				.toString());
+		// 準備日期格式工具
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
-		// 告訴Gson 我們要的格式 必須配合 Hibernate的ORM技術
-		Gson gson = new GsonBuilder().setExclusionStrategies(
-				new ExclusionStrategy() {
+		
+		
+		Gson gson = new GsonBuilder()
+				.setExclusionStrategies(new ExclusionStrategy() {
 
 					@Override
 					public boolean shouldSkipField(FieldAttributes f) {
@@ -46,36 +63,67 @@ public class CalendarEventTokensFromDBServlet extends HttpServlet {
 					}
 
 				})
-				.setPrettyPrinting()
+				.registerTypeAdapter(CalendarVO.class,  new JsonSerializer<CalendarVO>(){
+					@Override
+					public JsonElement serialize(CalendarVO calendarVO, Type typeOfSrc,
+							JsonSerializationContext context) {
+						JsonObject result = new JsonObject();
+						result.add("constraint", new JsonPrimitive(stuID.toString()));
+						result.add("orderId", new JsonPrimitive(calendarVO.getOrderId()));
+						result.add("id", new JsonPrimitive(calendarVO.getId()));
+						result.add("title", new JsonPrimitive(calendarVO.getTitle()));
+						result.add("start", new JsonPrimitive(sdf.format(calendarVO.getStart())));
+						result.add("color", new JsonPrimitive(calendarVO.getColor()));
+						result.add("editable", new JsonPrimitive((calendarVO.getEditable().equals(new Integer("1"))?true:false)));
+						result.add("overlap", new JsonPrimitive((calendarVO.getOverlap().equals(new Integer("1"))?true:false)));
+						// 寫死在javascript內
+//						result.add("duration", new JsonPrimitive("01:00"));
+						// 只有限制式需要
+//						result.add("rendering", new JsonPrimitive(calendarVO.getRendering()));
+						return result;
+					}
+				})
+				.setDateFormat("HH:mm").setPrettyPrinting()
 				.create();
-		// 也可以在create()之前先.serializeNulls
-//		<h1>stuName:${sessionScope.userId}</h1>
-//		<h1>stuNumber:${sessionScope.stuID}</h1>
-//		Integer stuID = new Integer(request.getParameter("stuID").toString());
-		
-		Integer stuID = new Integer(request.getSession().getAttribute("stu_id").toString());
-		
-//		out.write(gson.toJson(new ListOthersEventsService()
-//		.ListAllEvents(stuID)));
-//		Integer stuID = new Integer("2");
+
 		String str;
 		try {
-			str = gson.toJson(new ListLatestEventsService().listTokens((stuID)));
-			str = str.replaceAll("\"overlap\": 0,",  "\"overlap\": false,").replaceAll("\"overlap\": 1,",  "\"overlap\": true,");
+			// 舊方法
+			// str = gson.toJson(new
+			// ListLatestEventsService().listTokens((stuID))); 
+			
+			// 新方法
+			str = gson.toJson(new ListLatestEventsService()
+					.listTokensTest((stuID))); 
+			
+			
+			/*
+			 *	以 Gson 方式寫 【比較有系統性】	 
+			 * 
+			 * 
+			 * 
+				str = str.replaceAll("\"overlap\": 0,", "\"overlap\": false,")
+					.replaceAll("\"overlap\": \"1\",", "\"overlap\": true,")
+					.replaceAll("\"overlap\": \"0\",", "\"overlap\": true,")
+					.replaceAll("\"overlap\": 1,", "\"overlap\": true,")
+					.replaceAll("\"start\":", "\"time\": ")
+					.replaceAll("\"time\": ").replaceAll("\"end\":","\"duration\":");
+			*
+			*
+			*/
+			
+
 			out.write(str);
-			
-			
-			
+
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request,response);
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }

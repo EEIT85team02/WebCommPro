@@ -129,7 +129,7 @@
                                     <strong>軟體開發</strong>
                                 </h4>
                                 <p>跨平台行動應用解決方案: 開發、管理、整合跨行動應用程式的解決方案</p>
-                                <a href="http://www.webcomm.com.tw/solutions3-3.html" class="btn btn-light">了解更多</a>
+								<a href="http://www.webcomm.com.tw/solutions3-1.html" class="btn btn-light">了解更多</a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -214,7 +214,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2><strong>加入緯康 成為緯康的一份子！！</strong></h2>
+                    <h2><strong>加入偉康 成為偉康的一份子！！</strong></h2>
                     <a href="${pageContext.request.contextPath}/LoginServletGoogle.do" class="btn btn-lg btn-light"><strong>GOOGLE登入</strong></br>Click Me!</a>
                     <a href="Login.jsp" class="btn btn-lg btn-dark"><strong>非GOOGLE登入</strong></br>Look at Me!</a>
                 </div>

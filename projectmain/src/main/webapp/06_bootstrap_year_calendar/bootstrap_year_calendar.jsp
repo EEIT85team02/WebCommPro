@@ -141,7 +141,6 @@ var theRequest = $.ajax({
 
 
 function iniCalendar(dataSourceStr){
-	
 	var currentYear = new Date().getFullYear();
 	$('.calendar').calendar({
 // 		 	style:'background',
@@ -193,7 +192,7 @@ console.log("CLICK!");
 			dataSource: dataSourceStr
 	});
 }	
-
+// 記得我有修改過官方js檔【把英文改成中文】
 function getDataSourceFromDB(){
 	$.getJSON("/projectmain/CalendarAllFromDBServlet",{},function(data){
 	var strT = 	$.parseJSON(data, true);

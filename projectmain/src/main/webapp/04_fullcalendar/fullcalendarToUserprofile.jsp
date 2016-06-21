@@ -1,9 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	<c:if test="${empty LoginOK}">
+		<c:set var="target" value="${pageContext.request.servletPath}"
+ 			scope="session" />
+		<c:redirect url="/01_login/LoginBegin.jsp" />
+	</c:if>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+<style>
 
+#external-events {
+		float: left;
+/*  		width: 150px;  */
+  		width: 15%;  
+		padding: 0 10px;
+		border: 1px solid #ccc;
+		background: #eee;
+ 		text-align: left; 
+ 		margin-top: 2em; 
+/*  		margin-right: 2em;  */
+	}
+	#external-events > .fc-event{
+		text-align: center;
+		margin-bottom:3px;
+	
+	}
+/* 		#wrap { */
+/* 		width: 1100px; */
+/* 		margin: 0 auto; */
+/* 	} */
+	
+	#calendar {
+	float:right;
+}
 
-<!-- 匯入共用css -->
+</style>
+	<!-- 匯入共用css -->
 	<jsp:include page="/references/head_resources_css.jsp" />
 
 	<!-- 聊天框專用js -->
@@ -16,19 +50,14 @@
 	<!-- 匯入fullcalendar專用 -->
 	<jsp:include page="/references/fullcalendar.jsp" />
 	
-		<title>fullcalendar_jQuery.jsp</title>
+		<title>面試預約系統</title>
 	</head>
 	<!-- 匯入js -->
 	<jsp:include page="/references/head_resources_js.jsp" />
-
-	
-	<title>fullcalendarToUserProfile</title>
-
-	
-
 <body>
 	<div class="container">
-
+	<!-- 匯入功能表列 -->
+<%-- 	<jsp:include page="/references/navigator.jsp" /> --%>
 		<div class="starter-template">
 		<!-- 開始畫出日曆 -->
 			<script>
@@ -36,7 +65,7 @@
 				$(document).ready(function(){
 							// 只要按下是登出 就要通知考官
 						var logoutButton = $("a:contains('登出')");
-					console.log("logoutButton"+logoutButton);
+// 					console.log("logoutButton"+logoutButton);
 					
 					logoutButton.on("click",function(){
 						sendMessageStuList("CLOSE:${sessionScope.userId}");
@@ -61,10 +90,11 @@
 						<p>
 						</p>
 				</div>
+				<div id='calendar' class="fc fc-ltr ui-widget col-xs-10 col-sm-10 col-md-8 col-lg-8" ></div>
+<!-- 				<div id='calendar' class="fc fc-ltr fc-unthemed" ></div> -->
+			
 <!-- 			    	匯入聊天對話框 -->
 	<jsp:include page="/references/chatPahoStudent.jsp" />
-				<div id='calendar' class="fc fc-ltr fc-unthemed" ></div>
-			
 			</div>
 		</div>
     </div>
@@ -75,5 +105,4 @@
 
 </body>
 </html>
-
 
