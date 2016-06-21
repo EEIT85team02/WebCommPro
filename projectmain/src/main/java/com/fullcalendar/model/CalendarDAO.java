@@ -13,7 +13,8 @@ import org.hibernate.criterion.Restrictions;
 
 public class CalendarDAO implements CalendarDAO_interface {
 	private static final String GET_ALL_STMT = "from CalendarVO order by orderId";
-	private static final String GET_VO_STMT = "from CalendarVO where stu_id and title=:title";
+	private static final String GET_VO_STMT = "from CalendarVO where stu_id=:stu_id and title=:title";
+	
 	@Override
 	public void insert(CalendarVO calendarVO) {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();

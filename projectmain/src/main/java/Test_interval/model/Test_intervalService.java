@@ -225,22 +225,22 @@ public class Test_intervalService {
 			ClassService classSrc = new ClassService();
 			ClassVO clas = new ClassVO(); 
 			clas = classSrc.findByPrimaryKeyClass(class_id);
-			String title0 = "";
+			String title0 = null;
 			String title1 = "Java";
 			java.util.Date test_startdate1 = new Date(3600000);
 		    java.util.Date test_enddate1 = null;
 			String color0 = "#08d572";
 			String color1 = "#3A87AD";
-			Integer editable = 1;
-			Integer overlap = 1;
+			Integer editable =1;
+			Integer overlap =1;
 			String rendering0="background";
-			String rendering1="";
-			String constraint="";
+			String rendering1=null;
+			String constraint=null;
 			
 			Set<StudentVO> set = clas.getStus();
 			int count=1;
 			for(StudentVO stu :set){
-				System.out.println("count========"+count);
+				System.out.println("count============"+count);
 				 Integer stu_id = stu.getStu_id();
 				 String id = stu_id.toString();
 				 calendarSrc.insertCalendar(id, title0, test_startdate, test_enddate, color0, stu_id, editable, overlap, rendering0, constraint);

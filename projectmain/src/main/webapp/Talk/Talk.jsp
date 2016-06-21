@@ -52,7 +52,7 @@ table td {
 }
 
 .tdtitle{
-	width:100px;
+	width:130px;
 }
 .tdcontent{
 	width:900px;
@@ -232,19 +232,19 @@ $(function(){
  							page.append( 
  									"<table class='table table-striped'>"+
  									"<tr>" +
- 									  "<td class='tdtitle'>"+ val +"</td>" +
+ 									  "<td class='tdtitle'>留言主題:</td>" +
  							          "<td class='tdcontent'>" + val + "</td>" +
  							          "</tr>"+
  							          "<tr>" +
- 							          "<td class='tdtitle'>"+ val +"</td>" +
+ 							          "<td class='tdtitle'>暱稱:</td>" +
  							          "<td class='tdcontent'>[" + val +"]-於時間(" + talkDate +")時提問"+"</td>" +
  							          "</tr>"+
  							          "<tr>" +
- 							          "<td class='tdtitle'>"+ val +"</td>" +
+ 							          "<td class='tdtitle'>留言內容:</td>" +
  							          "<td class='tdcontent'>" + val +"</td>" +
  							          "</tr>"+
  							          "<tr>" +
- 							          "<td class='tdtitle'>"+ val +"</td>" +
+ 							          "<td class='tdtitle'>版主回覆:</td>" +
  							          "<td class='tdcontent'>" + retalkDate +"[" +val +"]</td>" +
  							          "</tr>"+
  							          "</table>");
@@ -306,19 +306,19 @@ $(function(){
 				page.append( 
 						"<table class='table table-striped'>"+
 						"<tr>" +
-						  "<td class='tdtitle'>"+ val +"</td>" +
+						  "<td class='tdtitle'>版主回覆:</td>" +
 				          "<td class='tdcontent'>" + val + "</td>" +
 				          "</tr>"+
 				          "<tr>" +
-				          "<td class='tdtitle'>"+ val +"</td>" +
+				          "<td class='tdtitle'>暱稱:</td>" +
 				          "<td class='tdcontent'>[" + val +"]-於時間(" + talkDate +")時提問"+"</td>" +
 				          "</tr>"+
 				          "<tr>" +
-				          "<td class='tdtitle'>"+ val +"</td>" +
+				          "<td class='tdtitle'>留言內容:</td>" +
 				          "<td class='tdcontent'>" + val +"</td>" +
 				          "</tr>"+
 				          "<tr>" +
-				          "<td class='tdtitle'>"+ val +"</td>" +
+				          "<td class='tdtitle'>版主回覆:</td>" +
 				          "<td class='tdcontent'>" + retalkDate +"[" +val +"]</td>" +
 				          "</tr>"+
 				          "</table>");
@@ -326,7 +326,7 @@ $(function(){
 				page.append( 
 						"<table class='table table-striped'>"+
 						"<tr>" +
-						  "<td class='tdtitle'>留言主題:</td>" +
+						  "<td class='tdtitle'>版主回覆:</td>" +
 				          "<td class='tdcontent'>" + talkTitle + "</td>" +
 				          "</tr>"+
 				          "<tr>" +

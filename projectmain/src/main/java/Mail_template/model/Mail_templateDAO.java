@@ -16,7 +16,8 @@ public class Mail_templateDAO implements IMail_templateDAO {
 	
 		private static final String GET_ALL_STMT = 
 			"from Mail_templateVO order by mail_id";
-
+		private static final String GET_VO_BY_NAME = 
+				"from Mail_templateVO where mail_name=?";
 
 		public void insert(Mail_templateVO mailVO) {
 			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -71,6 +72,24 @@ public class Mail_templateDAO implements IMail_templateDAO {
 			}
 			return mailVO;
 		}
+		public List<Mail_templateVO> findMyName(String MailName) {
+			List<Mail_templateVO> list = null;
+			Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+			try {
+				session.beginTransaction();
+				Query query = session.createQuery(GET_VO_BY_NAME);
+				query.setParameter(0,MailName);
+				list = query.list();
+				
+				session.getTransaction().commit();
+			} catch (RuntimeException ex) {
+				session.getTransaction().rollback();
+				throw ex;
+			}
+			return list;
+		}	
+		
+		
 
 		public List<Mail_templateVO> getAllMail() {
 			List<Mail_templateVO> list = null;
