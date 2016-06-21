@@ -52,7 +52,7 @@ table td {
 }
 
 .tdtitle{
-	width:110px;
+	width:130px;
 }
 .tdcontent{
 	width:900px;
