@@ -76,7 +76,10 @@
 		    });
 		    
 		</script>
-
+<!-- bootstrap巡覽列要用 -->
+<link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap/bootstrap-theme.min.css" rel="stylesheet">
+<script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap.min.js"></script>
 
 <!-- 匯入LikeHangoutChat資源 -->
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/LikeHangoutChat/css/LikeHangoutChat.css"/>
@@ -84,24 +87,11 @@
 
 
 <style>
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border-color: #101010;
-    margin-top: 5px;
-}
+
 .navbar-inverse {
     background-image: linear-gradient(to bottom,#E4C00D 0,rgba(249, 68, 27, 0.97) 100%);
 }
-.navbar-inverse .navbar-brand {
-    color: #f3f3f3;
-    margin-top: 5px;
-}
-.navbar-inverse .navbar-nav>li>a {
-    color: #e9e9e9;
-}
- .navbar { 
-     min-height: 60px; 
-     margin-bottom: 21px; 
- } 
+
 #ptitle{
 	text-align:center;
 	font-size:50px;
