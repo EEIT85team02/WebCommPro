@@ -188,7 +188,7 @@ public void SendlinkMailToStudent(String[] emailStringArray,String[]  nameString
 	  }
 }
 
-public  void SendConfirmMailToStudent(String emailString,String nameString,Timestamp stu_applytime){
+public  void SendConfirmMailToStudent(String emailString,String nameString,Timestamp test_start){
  	 
    
 	  String host = "smtp.gmail.com";
@@ -225,7 +225,7 @@ public  void SendConfirmMailToStudent(String emailString,String nameString,Times
 	 
 
 	   message.setText("Dear "+nameString+"\n");
-	   message.setText("你的預約日期是"+"時段是"+sdf.format(stu_applytime));//內文
+	   message.setText("你的預約日期是"+"時段是"+sdf.format(test_start));//內文
 
 
 	   Transport transport = session.getTransport("smtp");

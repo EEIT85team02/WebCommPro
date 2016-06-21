@@ -106,7 +106,7 @@ body {
         <input type="hidden" name="action"	value="sendEmaildata">
         <input type="hidden" id="stu_namehid" name="stu_name" >
         <input type="hidden" id="stu_emailhid" name="stu_email" >
-        <input type="hidden" id="stu_applytimehid" name="stu_applytime" >
+        <input type="hidden" id="test_starthid" name="test_start" >
  </form> 
 <form method="post" action="UpStuaddStatusJSON.do" name="cancelok">
         <input type="hidden" name="action"	value="upstatuscancel">
@@ -408,8 +408,8 @@ body {
 								 
 								 $("#stu_namehid").val(email.stu_name); //取出值並放入hidden的value進行修改
 								 $("#stu_emailhid").val(email.stu_email);
-								 $("#stu_applytimehid").val(email.stu_applytime);
-
+								 $("#test_starthid").val(email.test_start);
+                              
  //                                 console.log(email.stu_name)
                               var Updatedatas = $('form[name="EmailGOGO"]').serialize();   //form表單資料序列化丟到servlet
 				 			     $.post('EmailJSON.do',Updatedatas,function(){

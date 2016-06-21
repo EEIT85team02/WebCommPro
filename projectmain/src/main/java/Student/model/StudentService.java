@@ -56,7 +56,7 @@ public class StudentService {
 			Map map = new HashMap();
 			map.put("stu_name",stu.getStu_name().toString());
 			map.put("stu_email",stu.getStu_email().toString());
-			map.put("stu_applytime",stuadd.getStu_applytime().toString());
+			map.put("test_start",stuadd.getTest_start().toString());
 			stusc.add(map);
 		}
 	 

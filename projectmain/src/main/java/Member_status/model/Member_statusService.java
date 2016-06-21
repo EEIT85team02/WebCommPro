@@ -195,7 +195,7 @@ public class Member_statusService {
 			stuVOg.add(stuVO.getStudentVO().getStu_name().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_email().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_id().toString());
-			stuVOg.add(sdf.format(stuVO.getStu_applytime()).toString());
+			stuVOg.add(sdf.format(stuVO.getTest_start()).toString());
 			stuVOg.add(stuVO.getMember_statusVO().getSta_name().toString());
 			memsc.add(stuVOg);
 		}
@@ -238,7 +238,7 @@ public class Member_statusService {
 			stuVOg.add(stuVO.getStudentVO().getStu_name().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_email().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_id().toString());
-			stuVOg.add(sdf.format(stuVO.getStu_applytime()).toString());
+			stuVOg.add(sdf.format(stuVO.getTest_start()).toString());
 			stuVOg.add(stuVO.getMember_statusVO().getSta_name().toString());
 			memsc.add(stuVOg);
 		}

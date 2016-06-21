@@ -47,9 +47,9 @@ public class UpStuScoreJSON extends HttpServlet {
 		if("sendEmaildata".equals(action)){
 			String nameString = req.getParameter("stu_name");
 			String emailString = req.getParameter("stu_email");
-			Timestamp stu_applytime = Timestamp.valueOf(req.getParameter("stu_applytime"));
+			Timestamp test_start = Timestamp.valueOf(req.getParameter("test_start"));
 		    SendMailService sms = new SendMailService();
-		    sms.SendConfirmMailToStudent(emailString, nameString, stu_applytime);
+		    sms.SendConfirmMailToStudent(emailString, nameString, test_start);
 		}
 		
 		if("getEmailPkId".equals(action)){
