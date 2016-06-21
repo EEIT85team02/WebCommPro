@@ -251,6 +251,47 @@ public class Test_intervalService {
 			}
 		}
 		
+		
+		//新增產生Fullcalendar含時段........資料表明細資料
+				public void createFullcalendarDetailData111(String class_id,Date test_startdate,Date test_enddate) throws SQLException{
+					CalendarService calendarSrc = new CalendarService();
+					ClassService classSrc = new ClassService();
+					ClassVO clas = new ClassVO(); 
+					clas = classSrc.findByPrimaryKeyClass(class_id);
+					String title0 = null;
+					String title1 = "Java(10AM)";
+					String title2 = "Java(02PM)";
+					java.util.Date test_startdate1 = new Date(-2*60*60*1000);
+					java.util.Date test_startdate2 = new Date(2*60*60*1000);
+				    java.util.Date test_enddate1 = null;
+					String color0 = "#08d572";
+					String color1 = "#3A87AD";
+					Integer editable =1;
+					Integer overlap =1;
+					String rendering0="background";
+					String rendering1=null;
+					String constraint=null;
+					
+					Set<StudentVO> set = clas.getStus();
+					for(StudentVO stu :set){
+						 Integer stu_id = stu.getStu_id();
+						 String id = stu_id.toString();
+						 calendarSrc.insertCalendar(id, title0, test_startdate, test_enddate, color0, stu_id, editable, overlap, rendering0, constraint);
+						 
+						 Test_periodService tpSrc =new Test_periodService();
+						 List<Test_periodVO> list = tpSrc.getAllTp();
+						for(Test_periodVO tpVO :list){
+							String aa = tpVO.getTest_starthour().toString().substring(0, 1);
+							System.out.println("aaaaaaaaaa===="+aa);
+							 calendarSrc.insertCalendar(id, title1, test_startdate1, test_enddate1, color1, stu_id, editable, overlap, rendering1, constraint);
+							 calendarSrc.insertCalendar(id, title2, test_startdate2, test_enddate1, color1, stu_id, editable, overlap, rendering1, constraint);
+							
+						}
+						 
+						
+					}
+				}
+		
 	
 				
 		//方法結束
