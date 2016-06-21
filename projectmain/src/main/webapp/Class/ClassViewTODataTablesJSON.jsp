@@ -411,6 +411,7 @@ body {
 			    });
 			 	//綁定click事件使用者新增icon，開啟dialog 表單ClassInsertForm
 			    $( "#buttonAdd" ).button().on( "click", function() {
+			    	edu_id.empty();
 			    	//呼叫ServletJSON取回下拉選單資料--新增表單
 			    	$.getJSON('EduServletJSON.do', {"action":"getALLEdu"}, function(datas) {
 						//console.log(datas);
