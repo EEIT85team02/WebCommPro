@@ -12,8 +12,8 @@
 <!--         <property name="connection.datasource">java:comp/env/jdbc/db2</property> -->
 
 
-   <property name="connection.datasource">java:comp/env/jdbc/db2</property>
-<!--    <property name="connection.datasource">java:comp/env/jdbc/AZDB2</property> -->
+<!--    <property name="connection.datasource">java:comp/env/jdbc/db2</property> -->
+   <property name="connection.datasource">java:comp/env/jdbc/AZDB2</property>
 
 
    
@@ -21,12 +21,7 @@
 
 <!-- 
  	    <property name="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</property>
-<<<<<<< HEAD
- 		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/DB01</property> 
-
-=======
  		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/webcomm</property> 
->>>>>>> branch 'master' of https://github.com/EEIT85team02/WebCommPro.git
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">P@ssw0rd</property>
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
