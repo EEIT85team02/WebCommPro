@@ -13,13 +13,13 @@
 	<jsp:include page="/references/head_resources_cssB.jsp" />
 	
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<<<<<<< HEAD
+
 <title>MQTT Paho 主考官專用</title>
-=======
+
 <title>聊天室</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/supersized.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/theme/supersized.shutter.css" type="text/css" media="screen" />
->>>>>>> branch 'master' of https://github.com/EEIT85team02/WebCommPro.git
+
 
 
 <!-- 匯入LikeHangoutChat資源 -->
@@ -29,10 +29,10 @@
 
 <style>
 
-<<<<<<< HEAD
 
 
-=======
+
+
 .navbar-inverse {
     background-image: linear-gradient(to bottom,#E4C00D 0,rgba(249, 68, 27, 0.97) 100%);
 }
@@ -44,7 +44,7 @@ body {
     background-color: #ffffff;
     font-weight: bold;
 }
->>>>>>> branch 'master' of https://github.com/EEIT85team02/WebCommPro.git
+
 
 </style>
 </head>
@@ -170,7 +170,7 @@ ${name}<br>
 	</c:forEach>
 
 <!-- MQTT專用 -->
-<script src="../mqttws31.js"></script>
+<script src="../LikeHangoutChat/js/mqttws31.js"></script>
 <script type="text/javascript">
 	
 	
