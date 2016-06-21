@@ -210,7 +210,7 @@ body {
 		<form name="SlUpdateForm" action="updateSl">
 			<fieldset>
 				<label for="sl_id">權限代號</label> 
-				<input type="text" name="sl_id" id="usl_id" readOnly class="text ui-widget-content ui-corner-all">
+				<input type="text" name="sl_id" id="usl_id" readOnly style="background-color:#DDDDDD" class="text ui-widget-content ui-corner-all">
 				<label for="sl_name">權限名稱</label> 
 				<input type="text" name="sl_name" id="usl_name" class="text ui-widget-content ui-corner-all" autocomplete="off"> 
 				<input type="hidden" name="action" value="updateSl">
