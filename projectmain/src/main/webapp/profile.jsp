@@ -326,7 +326,8 @@ $(function() {
                  */
                 
                 var id =<%=session.getAttribute("stu_id")%>;
-            	 var add = null;
+            	 var add = <%=session.getAttribute("reservation")%>;
+            	 console.log("add:"+add);
              /*  	$.getJSON('StudentProfileServlet?action=stu&',{'stu_id':id},function(data){
 					$.each(data,function(key,val){
 						
@@ -337,39 +338,53 @@ $(function() {
 				}); */
 				
 				
-		if(id != null){
-				$.getJSON('StudentProfileServlet?action=stu',{'stu_id':id},function(data){
-					$.each(data,function(key,val){
-						 $("#stu_id").text(val.stu_id);
-						 console.log(val.stu_id);
-						 $('#stu_name').text(val.stu_name);
-						 $('#class_id').text(val.class_id);
-						 $('#stu_name2').text(val.stu_name);
-						 $("#stu_age").text(val.stu_age);
-						 if ( val.stu_sex !='0'){
-						 	$("#stu_sex").text("Male");
-						 }else{
-							 $("#stu_sex").text("Female");
-						 }
-						 $("#stu_sch").text(val.stu_sch);
-						 $("#stu_email").text(val.stu_email);
-						 $("#stu_workdate").text(val.stu_workdate);
-						 
-					})
-	 
-				});
-		}else if(id != null && add != null){
-				$.getJSON('StudentProfileServlet?action=stu_add&',{'stu_id':id},function(data){
-					$.each(data,function(key,val){
-						
-						 $("#test_start").text(val.test_start);
-						 $("#test_end").text(val.test_end);
-						 $("#stu_applytime").text(val.stu_applytime);
-						 $("#member_statusVO").text(val.member_statusVO);
-						 
-					})
-	 
-				});
+		if(id != null && add != null){
+			$.getJSON('StudentProfileServlet?action=stu_add&',{'stu_id':id},function(data){
+				$.each(data,function(key,val){
+					 $("#stu_id").text(val.stu_id);
+					 console.log(val.stu_id);
+					 $('#stu_name').text(val.stu_name);
+					 $('#class_id').text(val.class_id);
+					 $('#stu_name2').text(val.stu_name);
+					 $("#stu_age").text(val.stu_age);
+					 if ( val.stu_sex !='0'){
+					 	$("#stu_sex").text("Male");
+					 }else{
+						 $("#stu_sex").text("Female");
+					 }
+					 $("#stu_sch").text(val.stu_sch);
+					 $("#stu_email").text(val.stu_email);
+					 $("#stu_workdate").text(val.stu_workdate);
+					 $("#test_start").text(val.test_start);
+					 $("#test_end").text(val.test_end);
+					 $("#stu_applytime").text(val.stu_applytime);
+					 $("#member_statusVO").text(val.member_statusVO);
+					 
+				})
+ 
+			});
+			
+		}else if(id != null){
+					$.getJSON('StudentProfileServlet?action=stu',{'stu_id':id},function(data){
+						$.each(data,function(key,val){
+							 $("#stu_id").text(val.stu_id);
+							 console.log(val.stu_id);
+							 $('#stu_name').text(val.stu_name);
+							 $('#class_id').text(val.class_id);
+							 $('#stu_name2').text(val.stu_name);
+							 $("#stu_age").text(val.stu_age);
+							 if ( val.stu_sex !='0'){
+							 	$("#stu_sex").text("Male");
+							 }else{
+								 $("#stu_sex").text("Female");
+							 }
+							 $("#stu_sch").text(val.stu_sch);
+							 $("#stu_email").text(val.stu_email);
+							 $("#stu_workdate").text(val.stu_workdate);
+							 
+						})
+		 
+					});
 		}	
 				/* $("#editFrom").click(function(){
 					console.log("------editFrom------")

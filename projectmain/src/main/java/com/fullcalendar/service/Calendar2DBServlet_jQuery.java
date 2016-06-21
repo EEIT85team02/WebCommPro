@@ -22,6 +22,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
+import com.ibm.db2.jcc.am.re;
 
 @WebServlet("/Calendar2DBServlet_jQuery")
 public class Calendar2DBServlet_jQuery extends HttpServlet {
@@ -118,8 +119,10 @@ public class Calendar2DBServlet_jQuery extends HttpServlet {
 		
 		// 呼叫service 
 		new WriteOneEventService_jQuery().writeOneEventService(calendarVO, stuID);
-		
-		 
+			
+		System.out.println("sruId:"+stuID);
+			request.getSession().setAttribute("reservation", true);
+			System.out.println("reservation:"+request.getAttribute("reservation"));
 			try {
 				new CalendarService().createStu_additionalDetailData(stuID, title);
 			} catch (SQLException e) {
