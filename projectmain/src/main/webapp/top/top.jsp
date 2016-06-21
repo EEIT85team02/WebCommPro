@@ -76,9 +76,9 @@ a {
 
 </style>
 	<!-- 巡覽列-->
-	<div class="container">
+	<div class="container-fluid">
 		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
+			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed"
 						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -122,13 +122,17 @@ a {
 						<li class=""><a href="${pageContext.request.contextPath}/Test_Date/Test_DateServletJSON.do?action=initTdViewTODataTablesJSON">開放報名日期查詢</a></li>
 						<li class=""><a href="${pageContext.request.contextPath}/SendMail/SendMail.jsp">E-MAIL寄送</a></li>
 						<li class=""><a href="${pageContext.request.contextPath}/StudentProfileServlet?action=initStumTODataTablesJSON">考生資料維護</a></li>
+						</ul>
 						
+						<ul class="nav navbar-nav navbar-right">
 						<c:if test="${not empty LoginOK}">
+							<li><a href="#"><c:out value="${sessionScope.userId}"/></a></li>
 				            <li class=""><a href="<c:url value='/Logout.do'/>">登出</a></li>
+				            
 						</c:if>
+						</ul>
 
-
-					</ul>
+					
 <!-- 					menu nav navbar-nav結束 -->
 				</div>
 <!-- 				container collapse navbar-collapse結束 -->

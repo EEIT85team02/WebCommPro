@@ -22,6 +22,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <style>
+.ui-widget-overlay.custom-overlay
+{
+    background-color: black;
+    background-image: none;
+    opacity: 0.6;
+    z-index: 1040;    
+}
 body{
 	font-size:16px;
 }
@@ -179,8 +186,8 @@ $(function(){
           $('.ui-widget-overlay').removeClass('custom-overlay');
       },
       buttons: {
-        "send": insert,
-        Cancel: function() {
+        "送出": insert,
+        "取消": function() {
         	InsertForm.dialog( "close" );
         }
       },

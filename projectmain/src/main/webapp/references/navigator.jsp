@@ -15,11 +15,11 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="${pageContext.request.contextPath}/index.jsp">首頁</a></li>
+            <li class="active"><a href="${pageContext.request.contextPath}/WebComm_index.jsp">首頁</a></li>
 <%--             <li><a href="${pageContext.request.contextPath}/02_uploadCSV/uploadCSV.jsp">上傳考生資料</a></li> --%>
 <%--             <li><a href="${pageContext.request.contextPath}/03_chatRoom/ChatPage.jsp">WebSocket聊天室</a></li> --%>
 <%--             <li><a href="${pageContext.request.contextPath}/04_fullcalendar/fullcalendar.jsp">fullCalendar日曆</a></li> --%>
-            <li><a href="${pageContext.request.contextPath}/04_fullcalendar/fullcalendar_jQuery.jsp">面試預約專區</a></li>
+            <li><a href="${pageContext.request.contextPath}/04_fullcalendar/fullcalendarToUserprofile.jsp">面試預約專區</a></li>
 <%--             <li><a href="${pageContext.request.contextPath}/05_studentInformation/studentInfo.jsp">顯示學生資料</a></li> --%>
 <!--             <li><a href="LoginBegin.jsp">登入</a></li> -->
 <%--             <li><a href="#">使用者編號:${sessionScope.stuID}</a></li> --%>

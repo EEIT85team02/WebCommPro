@@ -31,7 +31,7 @@
 								<p>使用您在報名時期填寫的e-mail帳戶登入本預約系統</p>
 								<p>
 <!-- 									<a href="http://localhost:8080/Hibernate01/Login.jsp" class="btn btn-primary" role="button">登入報名系統</a> -->
-									<a href="${pageContext.request.contextPath}/01_login/Login.jsp" class="btn btn-primary" role="button">登入報名系統</a>
+									<a href="${pageContext.request.contextPath}/Login.jsp" class="btn btn-primary" role="button">登入報名系統</a>
 <!-- 									<a href="#" class="btn btn-default" role="button">Button</a> -->
 								</p>
 							</div>

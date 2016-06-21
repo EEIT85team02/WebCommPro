@@ -57,7 +57,7 @@
 <body>
 	<div class="container">
 	<!-- 匯入功能表列 -->
-<%-- 	<jsp:include page="/references/navigator.jsp" /> --%>
+	<jsp:include page="/references/navigator.jsp" />
 		<div class="starter-template">
 		<!-- 開始畫出日曆 -->
 			<script>

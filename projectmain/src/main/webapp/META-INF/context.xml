@@ -6,9 +6,9 @@
 
   <Resource name="jdbc/sysdesign" type="javax.sql.DataSource"
 
-      username="sa" password="sa123456"
+      username="sa" password="P@ssw0rd"
 	  driverClassName="com.ibm.db2.jcc.DB2Driver"
-	  url="jdbc:db2://localhost:50000/demo01"
+	  url="jdbc:db2://localhost:50000/webcomm"
       maxActive="3"
       maxIdle="2"
       maxWait="5000"

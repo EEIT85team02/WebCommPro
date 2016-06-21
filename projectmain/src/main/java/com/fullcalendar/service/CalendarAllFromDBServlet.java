@@ -2,6 +2,7 @@ package com.fullcalendar.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,14 +14,10 @@ import Student.model.IStudentDAO;
 import Student.model.StudentDAO;
 import Student.model.StudentVO;
 
-import com.fullcalendar.model.CalendarVO;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
 
 @WebServlet("/CalendarAllFromDBServlet")
 public class CalendarAllFromDBServlet extends HttpServlet {
@@ -33,6 +30,8 @@ public class CalendarAllFromDBServlet extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
+		
+	
 
 		// 告訴Gson 我們要的格式 必須配合 Hibernate的ORM技術
 		Gson gson = new GsonBuilder().setExclusionStrategies(
