@@ -9,3 +9,6 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 <%--     <script src="${pageScope.request.servletPath}/bootstrap/js/bootstrap.js"></script> --%>
     <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.js"></script>
+    
+    
+    

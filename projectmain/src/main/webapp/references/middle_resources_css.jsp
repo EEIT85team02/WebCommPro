@@ -13,7 +13,7 @@
 								<p>
 <!-- 									<a href="#" class="btn btn-primary" role="button">Button</a> -->
 <!-- 									<a href="http://localhost:8080/Hibernate01/UserInfo.jsp" class="btn btn-primary" role="button">登入報名系統</a> -->
-									<a href="${pageContext.request.contextPath}/UserInfo.jsp" class="btn btn-primary" role="button">登入報名系統</a>
+									<a href="${pageContext.request.contextPath}/LoginServletGoogle.do" class="btn btn-primary" role="button">登入報名系統</a>
 								</p>
 							</div>
 						</div>
