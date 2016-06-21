@@ -57,7 +57,7 @@ public class Member_statusService {
 			stuVOg.add(stuVO.getStudentVO().getStu_name().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_email().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_id().toString());
-			stuVOg.add(sdf.format(stuVO.getStu_applytime()).toString());
+			stuVOg.add(sdf.format(stuVO.getTest_start()).toString());
 			stuVOg.add(stuVO.getMember_statusVO().getSta_name().toString());
 			stuVOg.add(stuVO.getEmployeeVO().getEmp_id().toString());
 			stuVOg.add(sdf.format(stuVO.getConfirm_time()).toString());
@@ -107,7 +107,7 @@ public class Member_statusService {
 			stuVOg.add(stuVO.getStudentVO().getStu_name().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_email().toString());
 			stuVOg.add(stuVO.getStudentVO().getStu_id().toString());
-			stuVOg.add(sdf.format(stuVO.getStu_applytime()).toString());
+			stuVOg.add(sdf.format(stuVO.getTest_start()).toString());
 			stuVOg.add(stuVO.getMember_statusVO().getSta_name().toString());
 			stuVOg.add(stuVO.getTitle().toString());
 			stuVOg.add("<button type='button' class='btn-success' data-toggle='modal' data-target='#exampleModal' data-whatever='@mdo' value="+stuVO.getStu_add_id().toString()+" >核准</button>");
