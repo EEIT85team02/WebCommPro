@@ -52,7 +52,9 @@ public class TalkServletJSON extends HttpServlet {
 				talkMail = request.getParameter("talkMail");
 				talkContent = request.getParameter("talkContent");
 				talkDate= new java.sql.Timestamp(new java.util.Date().getTime());
+				//talkDate= new java.sql.Timestamp(new java.util.Date().getTime()-(4*60*60*1000));
 				retalkDate= new java.sql.Timestamp(new java.util.Date().getTime());
+				//retalkDate= new java.sql.Timestamp(new java.util.Date().getTime()-(4*60*60*1000));
 				if (talkTitle == null || talkTitle.trim().length() == 0) {
 					talkTitle="無標題";
 				}
@@ -81,6 +83,7 @@ public class TalkServletJSON extends HttpServlet {
 				talkId = Integer.parseInt(request.getParameter("talkId"));
 				retalkContent = request.getParameter("retalkContent");
 				retalkDate= new java.sql.Timestamp(new java.util.Date().getTime());
+				//retalkDate= new java.sql.Timestamp(new java.util.Date().getTime()-(4*60*60*1000));
 				talkSvc = new TalkService();
 				talkSvc.updateTalk(talkId,retalkContent,retalkDate,talkstatus);
 				out.write("資料更新成功");

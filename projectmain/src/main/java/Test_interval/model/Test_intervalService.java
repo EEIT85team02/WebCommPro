@@ -226,8 +226,10 @@ public class Test_intervalService {
 			ClassVO clas = new ClassVO(); 
 			clas = classSrc.findByPrimaryKeyClass(class_id);
 			String title0 = null;
-			String title1 = "Java";
-			java.util.Date test_startdate1 = new Date(3600000);
+			String title1 = "Java1";
+			String title2 = "Java2";
+			java.util.Date test_startdate1 = new Date(2*60*60*1000);
+			java.util.Date test_startdate2 = new Date(6*60*60*1000);
 		    java.util.Date test_enddate1 = null;
 			String color0 = "#08d572";
 			String color1 = "#3A87AD";
@@ -236,7 +238,6 @@ public class Test_intervalService {
 			String rendering0="background";
 			String rendering1=null;
 			String constraint=null;
-			
 			Set<StudentVO> set = clas.getStus();
 			int count=1;
 			for(StudentVO stu :set){
@@ -245,9 +246,13 @@ public class Test_intervalService {
 				 String id = stu_id.toString();
 				 calendarSrc.insertCalendar(id, title0, test_startdate, test_enddate, color0, stu_id, editable, overlap, rendering0, constraint);
 				 calendarSrc.insertCalendar(id, title1, test_startdate1, test_enddate1, color1, stu_id, editable, overlap, rendering1, constraint);
+				 calendarSrc.insertCalendar(id, title2, test_startdate2, test_enddate1, color1, stu_id, editable, overlap, rendering1, constraint);
 				count++;
 			}
 		}
+		
+	
+				
 		//方法結束
 	
 	
