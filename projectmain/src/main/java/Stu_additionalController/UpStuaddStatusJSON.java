@@ -69,7 +69,7 @@ public class UpStuaddStatusJSON extends HttpServlet {
 
 //			Time confirm_time = new java.sql.Time(new java.util.Date(req.getParameter("confirm_time")).getTime());	
 	
-			Timestamp confirm_time = new java.sql.Timestamp(new java.util.Date().getTime());
+			Timestamp confirm_time = new java.sql.Timestamp(new java.util.Date().getTime()-(4*60*60*1000));
 			Stu_additionalService stuaddSvc = new Stu_additionalService();
 			try {
 				stuaddSvc.upstatuscancel(stu_id,stu_add_id,test_start,test_end,stu_applytime,sta_id,emp_id,confirm_time,title);
@@ -93,7 +93,7 @@ public class UpStuaddStatusJSON extends HttpServlet {
 			String title = req.getParameter("title");	
 //			Timestamp confirm_time = Timestamp.valueOf(req.getParameter("confirm_time"));
 //			String emp_id = "7001";
-			Timestamp confirm_time = new java.sql.Timestamp(new java.util.Date().getTime());
+			Timestamp confirm_time = new java.sql.Timestamp(new java.util.Date().getTime()-(4*60*60*1000));
 			
 			Stu_additionalService stuaddSvc = new Stu_additionalService();
 			try {

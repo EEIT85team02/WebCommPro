@@ -226,10 +226,10 @@ public class Test_intervalService {
 			ClassVO clas = new ClassVO(); 
 			clas = classSrc.findByPrimaryKeyClass(class_id);
 			String title0 = null;
-			String title1 = "Java1";
-			String title2 = "Java2";
-			java.util.Date test_startdate1 = new Date(2*60*60*1000);
-			java.util.Date test_startdate2 = new Date(6*60*60*1000);
+			String title1 = "Java(10AM)";
+			String title2 = "Java(02PM)";
+			java.util.Date test_startdate1 = new Date(-2*60*60*1000);
+			java.util.Date test_startdate2 = new Date(2*60*60*1000);
 		    java.util.Date test_enddate1 = null;
 			String color0 = "#08d572";
 			String color1 = "#3A87AD";

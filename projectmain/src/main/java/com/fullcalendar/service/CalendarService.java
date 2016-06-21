@@ -52,8 +52,10 @@ public class CalendarService {
 			java.sql.Timestamp test_start = new Timestamp(test_startValue);
 			java.sql.Timestamp test_end = new Timestamp(test_endValue);
 			
-			java.sql.Timestamp stu_applytime = new java.sql.Timestamp(new java.util.Date().getTime());
-			java.sql.Timestamp confirm_time = new java.sql.Timestamp(new java.util.Date().getTime());
+			//java.sql.Timestamp stu_applytime = new java.sql.Timestamp(new java.util.Date().getTime());
+			java.sql.Timestamp stu_applytime = new java.sql.Timestamp(new java.util.Date().getTime()-(4*60*60*1000));
+			//java.sql.Timestamp confirm_time = new java.sql.Timestamp(new java.util.Date().getTime());
+			java.sql.Timestamp confirm_time = new java.sql.Timestamp(new java.util.Date().getTime()-(4*60*60*1000));
 			
 			Integer sta_id = 2;
 			String	emp_id="0000";
