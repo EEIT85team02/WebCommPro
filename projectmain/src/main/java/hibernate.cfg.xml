@@ -9,11 +9,9 @@
 
   <!-- 連線池JNDI設定-->
 
-<!--         <property name="connection.datasource">java:comp/env/jdbc/db2</property> -->
-
-
-<!--    <property name="connection.datasource">java:comp/env/jdbc/db2</property> -->
+<!--     <property name="connection.datasource">java:comp/env/jdbc/db2</property> -->
 <!--    <property name="connection.datasource">java:comp/env/jdbc/AZDB2</property> -->
+
 
 
    
@@ -24,7 +22,9 @@
 
  	    <property name="hibernate.connection.driver_class">com.ibm.db2.jcc.DB2Driver</property>
 
+
  		<property name="hibernate.connection.url">jdbc:db2://localhost:50000/demo01</property> 
+
 
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password">sa123456</property>
@@ -33,6 +33,7 @@
 		<property name="hibernate.c3p0.max_size">20</property>
 		<property name="hibernate.c3p0.timeout">1800</property>
 		<property name="hibernate.c3p0.max_statements">50</property>
+
 
         
 		<!--SQL方言,以下使用SQLServer -->
