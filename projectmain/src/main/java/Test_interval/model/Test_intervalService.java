@@ -282,7 +282,7 @@ public class Test_intervalService {
 							Integer timeValue = Integer.parseInt(tpVO.getTest_starthour().toString().substring(0,2));
 							System.out.println("抓取到的時段為===="+timeValue);
 							String title = titleValue+"("+timeValue+":00)";
-							java.util.Date test_startdate1 = new Date((timeValue-12)*60*60*1000);
+							java.util.Date test_startdate1 = new Date((timeValue-8)*60*60*1000);
 							 calendarSrc.insertCalendar(id, title, test_startdate1, test_enddate1, color1, stu_id, editable, overlap, rendering1, constraint);
 							
 							
